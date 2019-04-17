@@ -13,7 +13,7 @@ class MapGenerator {
     private int mapSizeX = numberOfTilesX * TileSize;
     private int mapSizeY = numberOfTilesY * TileSize;
     private String[][] mapSketch = new String[mapSizeX][mapSizeY];
-    private MapTile[][] mapTilesArray = new MapTile[numberOfTilesX][numberOfTilesY];
+    MapTile[][] mapTilesArray = new MapTile[numberOfTilesX][numberOfTilesY];
     private boolean upperBorder, lowerBorder, leftBorder, rightBorder;
     private BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\A753403\\Desktop\\DEBUG.txt"));
     private boolean isThisTheFirstSpawningRoom = true;
@@ -21,26 +21,26 @@ class MapGenerator {
     MapGenerator() throws IOException {
     }
 
-    private void DEBUG(String typeOfTile) throws IOException {
-        switch (typeOfTile) {
-            case "RoomSeed":
-            case "Room":
-                writer.write("*");
-                break;
-            case "Corridor":
-                writer.write("C");
-                break;
-            case "CorridorVertical":
-                writer.write("V");
-                break;
-            case "CorridorHorizontal":
-                writer.write("H");
-                break;
-            case "Blank":
-                writer.write("#");
-                break;
-        }
-    }
+//    private void DEBUG(String typeOfTile) throws IOException {
+//        switch (typeOfTile) {
+//            case "RoomSeed":
+//            case "Room":
+//                writer.write("*");
+//                break;
+//            case "Corridor":
+//                writer.write("C");
+//                break;
+//            case "CorridorVertical":
+//                writer.write("V");
+//                break;
+//            case "CorridorHorizontal":
+//                writer.write("H");
+//                break;
+//            case "Blank":
+//                writer.write("#");
+//                break;
+//        }
+//    }
 
     private void fillTheMapWithRooms() {
         for (int i = 0; i < numberOfTilesX; i++) {
@@ -100,7 +100,7 @@ class MapGenerator {
         }
         mapTilesArray[i][j].fillTheTile(TileSize, upperBorder, lowerBorder, leftBorder, rightBorder);
         copyToMapSketch(i, j);
-        addADebuggerFrame();
+        //addADebuggerFrame();
         writer.newLine();
     }
 
@@ -110,21 +110,21 @@ class MapGenerator {
         }
     }
 
-    private void addADebuggerFrame() throws IOException {
-        for (int k = 0; k < numberOfTilesX; k++) {
-            for (int l = 0; l < numberOfTilesY; l++) {
-                try {
-                    DEBUG(mapTilesArray[k][l].typeOfTile);
-                } catch (NullPointerException ignored) {
-                    writer.write("@");
-                }
-            }
-            writer.newLine();
-
-        }
-        writer.newLine();
-        writer.newLine();
-    }
+//    private void addADebuggerFrame() throws IOException {
+//        for (int k = 0; k < numberOfTilesX; k++) {
+//            for (int l = 0; l < numberOfTilesY; l++) {
+//                try {
+//                    DEBUG(mapTilesArray[k][l].typeOfTile);
+//                } catch (NullPointerException ignored) {
+//                    writer.write("@");
+//                }
+//            }
+//            writer.newLine();
+//
+//        }
+//        writer.newLine();
+//        writer.newLine();
+//    }
 
     private void seedARoom(int initialXPos, int initialYPos) {
         Random randomH = new Random();
@@ -340,7 +340,7 @@ class MapGenerator {
                         mapTilesArray[i][j].typeOfTile = "Blank";
                         mapTilesArray[i][j].fillTheTile(TileSize, false, false, false, false);
                         copyToMapSketch(i, j);
-                        addADebuggerFrame();
+                        //addADebuggerFrame();
                     }
                 }
             }
