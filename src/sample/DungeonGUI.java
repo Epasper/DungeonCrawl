@@ -18,7 +18,6 @@ public class DungeonGUI {
     private int mapHeight = 40;
     private Button[][] buttonGrid = new Button[mapWidth][mapHeight];
     private GridPane mapGridPane = new GridPane();
-    Button returnToMainMenu = new Button();
     ScrollPane mapScrollPane = new ScrollPane();
     private Image wallImage = new Image(getClass().getResourceAsStream("Images\\wall.png"));
     private Image floorImage = new Image(getClass().getResourceAsStream("Images\\floor.png"));
@@ -79,9 +78,9 @@ public class DungeonGUI {
 
     public DungeonGUI() {
         mapScrollPane.setContent(mapGridPane);
-        //returnToMainMenu.setMaxSize(50, 50);
+        Button returnToMainMenu = new Button();
         returnToMainMenu.setText("Return to Main Menu");
-        mapGridPane.add(returnToMainMenu, 0, mapWidth + 1, 3, 3);
+        mapGridPane.add(returnToMainMenu, 0, mapHeight + 1, 3, 3);
         returnToMainMenu.setOnAction(event -> returnToMainMenu());
         getMap().drawAMap();
         updateGUIAccordingToMap(getMap());

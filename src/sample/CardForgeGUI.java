@@ -1,45 +1,48 @@
 package sample;
 
 import javafx.geometry.Insets;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.*;
 
 public class CardForgeGUI {
+    private MainMenuGUI mainMenuGUI = new MainMenuGUI();
     ScrollPane cardForgeScrollPane = new ScrollPane();
     private BorderPane cardForgeBorderPane = new BorderPane();
     private HBox topBox = new HBox();
-    private VBox leftBox = new VBox();
-    private FlowPane middlePane = new FlowPane();
-    private Button newDungeonButton = new Button();
-    private Button exitToMainMenu = new Button();
-    private Scene aScene = new Scene(new Group());
-    Stage aStage = Main.getPrimaryStage();
+    private FlowPane leftBox = new FlowPane();
+    private GridPane middlePane = new GridPane();
+    private Button forgeANewCard = new Button();
+    private Button returnToMainMenu = new Button();
+    private TextField cardTitle = new TextField();
 
     public CardForgeGUI() {
+        initializeCardForgeGUI();
     }
 
-    void initializeCardForgeGUI() {
-//        cardForgeScrollPane.setContent(cardForgeBorderPane);
-//        cardForgeBorderPane.setTop(topBox);
-//        cardForgeBorderPane.setLeft(leftBox);
-//        cardForgeBorderPane.setCenter(middlePane);
-//        middlePane.setPadding(new Insets(5, 0, 5, 0));
-//        middlePane.setVgap(4);
-//        middlePane.setHgap(4);
-//        middlePane.setPrefWrapLength(170);
-//        middlePane.setStyle("-fx-background-color: DAE6F3;");
-        middlePane.getChildren().add(newDungeonButton);
-        middlePane.getChildren().add(exitToMainMenu);
-        aScene.setRoot(middlePane);
-        aStage.setScene(aScene);
-        aStage.show();
-
+    private void initializeCardForgeGUI() {
+        cardForgeScrollPane.setContent(cardForgeBorderPane);
+        cardForgeBorderPane.setTop(topBox);
+        cardForgeBorderPane.setLeft(leftBox);
+        cardForgeBorderPane.setCenter(middlePane);
+        cardTitle.setText("Insert a Card Name");
+        middlePane.add(cardTitle, 0, 0, 1, 10);
+        leftBox.setPadding(new Insets(5, 5, 5, 5));
+        leftBox.setVgap(4);
+        leftBox.setHgap(4);
+        leftBox.setPrefWrapLength(170);
+        leftBox.setStyle("-fx-background-color: DAE6F3;");
+        leftBox.getChildren().add(returnToMainMenu);
+        leftBox.getChildren().add(forgeANewCard);
+        returnToMainMenu.setText("Return to Main Menu");
+        forgeANewCard.setText("Forge a new Card");
+        returnToMainMenu.setOnAction(event -> returnToMainMenu());
+    }
+    private void returnToMainMenu() {
+        mainMenuGUI.aStage = Main.getPrimaryStage();
+        mainMenuGUI.aStage.setScene(mainMenuGUI.aScene);
+        mainMenuGUI.aStage.show();
+        System.out.println("Stage is closing");
     }
 }

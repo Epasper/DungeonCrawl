@@ -36,7 +36,7 @@ public class MainMenuGUI {
         mainMenuBorderPane.setTop(topBox);
         mainMenuBorderPane.setLeft(leftBox);
         mainMenuBorderPane.setCenter(middlePane);
-        middlePane.setPadding(new Insets(5, 0, 5, 0));
+        middlePane.setPadding(new Insets(5, 5, 5, 5));
         middlePane.setVgap(4);
         middlePane.setHgap(4);
         middlePane.setPrefWrapLength(170);
@@ -62,27 +62,14 @@ public class MainMenuGUI {
         aScene.setRoot(dungeonGui.mapScrollPane);
         aStage.setScene(aScene);
         aStage.show();
-        aStage.setOnCloseRequest(event ->
-                onCloseEvent()
-        );
-    }
-
-    private void onCloseEvent() {
-        aStage = Main.getPrimaryStage();
-        aScene.setRoot(mainMenuScrollPane);
-        aStage.setScene(aScene);
-        aStage.show();
-        System.out.println("Stage is closing");
     }
 
     private void openCardForgeGUI() {
         CardForgeGUI cardForgeGUI = new CardForgeGUI();
+        aStage.close();
         aScene.setRoot(cardForgeGUI.cardForgeScrollPane);
         aStage.setScene(aScene);
         aStage.show();
-        aStage.setOnCloseRequest(event ->
-                onCloseEvent()
-        );
     }
 
 
