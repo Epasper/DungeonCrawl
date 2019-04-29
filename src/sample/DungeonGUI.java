@@ -43,7 +43,7 @@ public class DungeonGUI {
     private int currentlyActiveHeroID;
     private boolean hasTheCharacterBeenSelected = false;
 
-    public Map getMap() {
+    private Map getMap() {
         return map;
     }
 
@@ -55,15 +55,15 @@ public class DungeonGUI {
         return currentlyActiveHeroID;
     }
 
-    public void setCurrentlyActiveHeroID(int currentlyActiveHeroID) {
+    private void setCurrentlyActiveHeroID(int currentlyActiveHeroID) {
         this.currentlyActiveHeroID = currentlyActiveHeroID;
     }
 
-    public boolean isHasTheCharacterBeenSelected() {
+    private boolean isHasTheCharacterBeenSelected() {
         return hasTheCharacterBeenSelected;
     }
 
-    public void setHasTheCharacterBeenSelected(boolean hasTheCharacterBeenSelected) {
+    private void setHasTheCharacterBeenSelected(boolean hasTheCharacterBeenSelected) {
         this.hasTheCharacterBeenSelected = hasTheCharacterBeenSelected;
     }
 
