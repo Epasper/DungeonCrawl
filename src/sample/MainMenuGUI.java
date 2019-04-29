@@ -21,14 +21,17 @@ public class MainMenuGUI {
     private VBox leftBox = new VBox();
     private FlowPane middlePane = new FlowPane();
     private Button newDungeonButton = new Button();
-    Scene freshScene = new Scene(new Group());
-    private Stage freshStage = new Stage();
+    private Button cardForgeGUIButton = new Button();
+    Scene aScene = new Scene(new Group());
+    Stage aStage = new Stage();
 
     public MainMenuGUI() {
-        initializeMainMenu();
+        buildTheMainMenu();
     }
 
-    private void initializeMainMenu() {
+
+    private void buildTheMainMenu() {
+        aStage = Main.getPrimaryStage();
         mainMenuScrollPane.setContent(mainMenuBorderPane);
         mainMenuBorderPane.setTop(topBox);
         mainMenuBorderPane.setLeft(leftBox);
@@ -39,22 +42,48 @@ public class MainMenuGUI {
         middlePane.setPrefWrapLength(170);
         middlePane.setStyle("-fx-background-color: DAE6F3;");
         middlePane.getChildren().add(newDungeonButton);
-        freshScene.setRoot(mainMenuScrollPane);
+        middlePane.getChildren().add(cardForgeGUIButton);
         newDungeonButton.setText("Generate a New Dungeon");
         newDungeonButton.setOnAction(event -> openDungeonGUI());
+        cardForgeGUIButton.setText("Card Forge");
+        cardForgeGUIButton.setOnAction(event -> openCardForgeGUI());
+        aScene.setRoot(mainMenuScrollPane);
+        aStage.show();
+    }
+
+    private void getBackToMainMenu() {
+        aStage = Main.getPrimaryStage();
+        aStage.show();
     }
 
     private void openDungeonGUI() {
         DungeonGUI dungeonGui = new DungeonGUI();
-        freshStage.close();
-        freshScene.setRoot(dungeonGui.mapScrollPane);
-        freshStage.setScene(freshScene);
-        freshStage.show();
-        freshStage.setOnCloseRequest(event -> {
-            freshScene.setRoot(mainMenuScrollPane);
-            freshStage.setScene(freshScene);
-            freshStage.show();
-            System.out.println("Stage is closing");
-        });
+        aStage.close();
+        aScene.setRoot(dungeonGui.mapScrollPane);
+        aStage.setScene(aScene);
+        aStage.show();
+        aStage.setOnCloseRequest(event ->
+                onCloseEvent()
+        );
     }
+
+    private void onCloseEvent() {
+        aStage = Main.getPrimaryStage();
+        aScene.setRoot(mainMenuScrollPane);
+        aStage.setScene(aScene);
+        aStage.show();
+        System.out.println("Stage is closing");
+    }
+
+    private void openCardForgeGUI() {
+        CardForgeGUI cardForgeGUI = new CardForgeGUI();
+        aScene.setRoot(cardForgeGUI.cardForgeScrollPane);
+        aStage.setScene(aScene);
+        aStage.show();
+        aStage.setOnCloseRequest(event ->
+                onCloseEvent()
+        );
+    }
+
+
 }

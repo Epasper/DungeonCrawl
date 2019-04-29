@@ -13,11 +13,12 @@ import java.util.Random;
 public class DungeonGUI {
 
     //todo Create a pane on top of the map grid, that will show the available cards.
-
+    private MainMenuGUI mainMenuGUI = new MainMenuGUI();
     private int mapWidth = 40;
     private int mapHeight = 40;
     private Button[][] buttonGrid = new Button[mapWidth][mapHeight];
     private GridPane mapGridPane = new GridPane();
+    Button returnToMainMenu = new Button();
     ScrollPane mapScrollPane = new ScrollPane();
     private Image wallImage = new Image(getClass().getResourceAsStream("Images\\wall.png"));
     private Image floorImage = new Image(getClass().getResourceAsStream("Images\\floor.png"));
@@ -42,7 +43,7 @@ public class DungeonGUI {
     private Map map = new Map(generateAHeroList(createAnIDList()), generateAMonsterList(createAnIDList()));
     private int currentlyActiveHeroID;
     private boolean hasTheCharacterBeenSelected = false;
-    int numberOfHeroesThatFinishedMovement;
+    private int numberOfHeroesThatFinishedMovement;
 
     public int getNumberOfHeroesThatFinishedMovement() {
         return numberOfHeroesThatFinishedMovement;
@@ -78,6 +79,10 @@ public class DungeonGUI {
 
     public DungeonGUI() {
         mapScrollPane.setContent(mapGridPane);
+        //returnToMainMenu.setMaxSize(50, 50);
+        returnToMainMenu.setText("Return to Main Menu");
+        mapGridPane.add(returnToMainMenu, 0, mapWidth + 1, 3, 3);
+        returnToMainMenu.setOnAction(event -> returnToMainMenu());
         getMap().drawAMap();
         updateGUIAccordingToMap(getMap());
     }
@@ -207,6 +212,13 @@ public class DungeonGUI {
         if (currentHeroID > 100 && isTheTileInteractive) {
             eventOnHeroAttackingAMonster(XPos, YPos);
         }
+    }
+
+    private void returnToMainMenu() {
+        mainMenuGUI.aStage = Main.getPrimaryStage();
+        mainMenuGUI.aStage.setScene(mainMenuGUI.aScene);
+        mainMenuGUI.aStage.show();
+        System.out.println("Stage is closing");
     }
 
     private void eventOnHeroAttackingAMonster(int XPos, int YPos) {
