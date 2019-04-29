@@ -12,7 +12,7 @@ public class Creature {
     int someResource;
     private String imagePath;
     double speed = 6;
-    double currentSpeed;
+    private double currentSpeed = speed;
 
     public void setHeroName(String heroName) {
         this.heroName = heroName;
@@ -28,6 +28,14 @@ public class Creature {
 
     public void setMapYPos(int mapYPos) {
         this.mapYPos = mapYPos;
+    }
+
+    public double getCurrentSpeed() {
+        return currentSpeed;
+    }
+
+    public void setCurrentSpeed(double currentSpeed) {
+        this.currentSpeed = currentSpeed;
     }
 
     public void setHeroClass(String heroClass) {

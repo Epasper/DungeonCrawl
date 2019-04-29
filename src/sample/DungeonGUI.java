@@ -42,6 +42,15 @@ public class DungeonGUI {
     private Map map = new Map(generateAHeroList(createAnIDList()), generateAMonsterList(createAnIDList()));
     private int currentlyActiveHeroID;
     private boolean hasTheCharacterBeenSelected = false;
+    int numberOfHeroesThatFinishedMovement;
+
+    public int getNumberOfHeroesThatFinishedMovement() {
+        return numberOfHeroesThatFinishedMovement;
+    }
+
+    public void setNumberOfHeroesThatFinishedMovement(int numberOfHeroesThatFinishedMovement) {
+        this.numberOfHeroesThatFinishedMovement = numberOfHeroesThatFinishedMovement;
+    }
 
     private Map getMap() {
         return map;
@@ -222,9 +231,23 @@ public class DungeonGUI {
         Hero hero = getHeroByID(getCurrentlyActiveHeroID(), heroList);
         getMap().getMapTilesArray()[hero.mapXPos][hero.mapYPos].setOccupyingCreatureId(0);
         getMap().getMapTilesArray()[XPos][YPos].setOccupyingCreatureId(getCurrentlyActiveHeroID());
+        int deltaX = Math.abs(hero.getMapXPos() - XPos);
+        int deltaY = Math.abs(hero.getMapYPos() - YPos);
+        hero.setCurrentSpeed(hero.getCurrentSpeed() - (deltaX + deltaY));
         hero.setMapXPos(XPos);
         hero.setMapYPos(YPos);
         aButton.setGraphic(new ImageView(hero.heroImage));
+        if (hero.getCurrentSpeed() < 1) {
+            numberOfHeroesThatFinishedMovement++;
+            System.out.println(hero.heroName + " has finished moving. " + numberOfHeroesThatFinishedMovement + " heroes had already finished moving");
+            if (numberOfHeroesThatFinishedMovement == heroList.size()) {
+                for (Hero currentHero : heroList) {
+                    currentHero.setCurrentSpeed(currentHero.getSpeed());
+                    System.out.println("Resetting the movement points for " + currentHero.heroName);
+                }
+                numberOfHeroesThatFinishedMovement = 0;
+            }
+        }
     }
 
 
@@ -323,12 +346,20 @@ public class DungeonGUI {
         }
     }
 
+    //todo change the range calculator so that the range is a circle, not a diamond.
+
     private void checkTheAvailableDistance(Hero hero) {
         int YPos = hero.mapYPos;
         int XPos = hero.mapXPos;
-        double heroSteps = hero.speed;
+        double heroSteps = hero.getCurrentSpeed();
+        double heroInteractionSteps;
+        if (hero.getCurrentSpeed() > 0.9) {
+            heroInteractionSteps = 1;
+        } else {
+            heroInteractionSteps = 0;
+        }
         recursiveCheckDistance(YPos, XPos, heroSteps, "Walk Range");
-        recursiveCheckDistance(YPos, XPos, 1, "Interaction Range");
+        recursiveCheckDistance(YPos, XPos, heroInteractionSteps, "Interaction Range");
         System.out.println("X: " + XPos + " Y: " + YPos + " Speed: " + hero.speed);
     }
 
@@ -388,6 +419,9 @@ public class DungeonGUI {
             } else if (reasonForChecking.contains("Interact")) {
                 mapTile.withinInteractionRange = true;
                 gridButton.setStyle("-fx-color: #ffff00");
+                if (mapTile.getOccupyingCreatureId() > 100) {
+                    gridButton.setStyle("-fx-color: #ff0000");
+                }
             }
             recursiveCheckDistance(temporaryY, temporaryX, iterations - 1, reasonForChecking);
         } else if (currentDirection.contains("Wall")) {
@@ -395,12 +429,12 @@ public class DungeonGUI {
         } else if (currentDirection.contains("Closed")) {
             mapTile.visible = true;
             mapTile.inWalkRange = true;
-            gridButton.setStyle("-fx-color: #0000ff");
+            gridButton.setStyle("-fx-color: #333399");
             if (reasonForChecking.contains("Interact")) {
                 mapTile.withinInteractionRange = true;
             }
         }
-        map.getMapTilesArray()[temporaryX][temporaryY] = mapTile;
+        getMap().getMapTilesArray()[temporaryX][temporaryY] = mapTile;
         buttonGrid[temporaryX][temporaryY] = gridButton;
     }
 }
