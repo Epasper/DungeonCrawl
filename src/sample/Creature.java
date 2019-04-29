@@ -12,6 +12,7 @@ public class Creature {
     int someResource;
     private String imagePath;
     double speed = 6;
+    double currentSpeed;
 
     public void setHeroName(String heroName) {
         this.heroName = heroName;

@@ -176,41 +176,55 @@ public class DungeonGUI {
         }
     }
 
-    //todo encapsulate fields by adding getters and setters
-
     private void buttonEvent(Button aButton, int XPos, int YPos) {
         String currentTypeOfTile = getMap().getMapTilesArray()[XPos][YPos].getTypeOfTile();
         int currentHeroID = getMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureId();
         boolean isTheTileInteractive = getMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange();
         if (isHasTheCharacterBeenSelected() && currentHeroID > 0) {
-            getMap().clearMapReachableProperties(getMap());
-            updateMapGraphics(getMap());
-            setHasTheCharacterBeenSelected(false);
+            eventOnReachableTileClick();
         }
         if (currentHeroID > 0 && currentHeroID < 100) {
-            checkTheAvailableDistance(getHeroByID(currentHeroID, heroList));
-            setCurrentlyActiveHeroID(currentHeroID);
-            setHasTheCharacterBeenSelected(true);
+            eventOnHeroClick(currentHeroID);
             isTheTileInteractive = getMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange();
         } else if (getMap().getMapTilesArray()[XPos][YPos].isInWalkRange()) {
             if (currentTypeOfTile.contains("Closed") && getMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange()) {
                 getMap().getMapTilesArray()[XPos][YPos].setTypeOfTile(getMap().getMapTilesArray()[XPos][YPos].getTypeOfTile().replaceFirst("Closed", "Opened"));
             } else if (!currentTypeOfTile.contains("Closed")) {
-                Hero hero = getHeroByID(currentlyActiveHeroID, heroList);
-                getMap().getMapTilesArray()[hero.mapXPos][hero.mapYPos].setOccupyingCreatureId(0);
-                getMap().getMapTilesArray()[XPos][YPos].setOccupyingCreatureId(currentlyActiveHeroID);
-                hero.setMapXPos(XPos);
-                hero.setMapYPos(YPos);
-                aButton.setGraphic(new ImageView(hero.heroImage));
+                eventOnHeroMovement(aButton, XPos, YPos);
             }
             updateMapGraphics(getMap());
             getMap().clearMapReachableProperties(getMap());
-        }//todo finish the hero attacking a monster
-        if (currentHeroID > 100 && isTheTileInteractive) {
-            Hero hero = getHeroByID(currentlyActiveHeroID, heroList);
-            Monster monster = getMonsterByID(getMap().getMapTilesArray()[XPos][YPos].occupyingCreatureId, monsterList);
-            hero.attackAMonster(monster);
         }
+        if (currentHeroID > 100 && isTheTileInteractive) {
+            eventOnHeroAttackingAMonster(XPos, YPos);
+        }
+    }
+
+    private void eventOnHeroAttackingAMonster(int XPos, int YPos) {
+        Hero hero = getHeroByID(getCurrentlyActiveHeroID(), heroList);
+        Monster monster = getMonsterByID(getMap().getMapTilesArray()[XPos][YPos].occupyingCreatureId, monsterList);
+        hero.attackAMonster(monster);
+    }
+
+    private void eventOnReachableTileClick() {
+        getMap().clearMapReachableProperties(getMap());
+        updateMapGraphics(getMap());
+        setHasTheCharacterBeenSelected(false);
+    }
+
+    private void eventOnHeroClick(int currentHeroID) {
+        checkTheAvailableDistance(getHeroByID(currentHeroID, heroList));
+        setCurrentlyActiveHeroID(currentHeroID);
+        setHasTheCharacterBeenSelected(true);
+    }
+
+    private void eventOnHeroMovement(Button aButton, int XPos, int YPos) {
+        Hero hero = getHeroByID(getCurrentlyActiveHeroID(), heroList);
+        getMap().getMapTilesArray()[hero.mapXPos][hero.mapYPos].setOccupyingCreatureId(0);
+        getMap().getMapTilesArray()[XPos][YPos].setOccupyingCreatureId(getCurrentlyActiveHeroID());
+        hero.setMapXPos(XPos);
+        hero.setMapYPos(YPos);
+        aButton.setGraphic(new ImageView(hero.heroImage));
     }
 
 

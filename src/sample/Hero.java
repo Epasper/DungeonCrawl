@@ -1,19 +1,13 @@
 package sample;
 
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 public class Hero extends Creature {
-//    private String heroName;
-    //int heroID;
-    //int mapXPos;
-    //int mapYPos;
-    //String heroClass;
+
     int hitPoints;
     int someResource;
     private String imagePath;
     Image heroImage = new Image(getClass().getResourceAsStream("Images\\icon1.png"));
-    double speed = 6;
 
     public void setHitPoints(int hitPoints) {
         this.hitPoints = hitPoints;
