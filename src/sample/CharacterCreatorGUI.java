@@ -8,6 +8,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CharacterCreatorGUI {
     private MainMenuGUI mainMenuGUI = new MainMenuGUI();
@@ -58,29 +63,68 @@ public class CharacterCreatorGUI {
         initializeCardForgeGUI();
     }
 
+    //todo finishing the character creation should save it in a database.
+
     private void initializeCardForgeGUI() {
+        manageThePanes();
+        addElementsToPanes();
+        setStyling();
+        addTheAbilityChoices();
+        returnToMainMenu.setOnAction(event -> returnToMainMenu());
+    }
+
+    enum characterClasses {
+
+    }
+
+    enum Stats {
+        Strength, Constitution, Dexterity, Intelligence, Wisdom, Charisma
+    }
+
+    private void addTheAbilityChoices() {
+        List<ComboBox<Integer>> comboBoxList = new ArrayList<>();
+        List<Text> abilityTextsList = new ArrayList<>();
+        ObservableList<Integer> statPointsOptions = FXCollections.observableArrayList();
+        for (int i = 3; i < 20; i++) {
+            statPointsOptions.add(i);
+        }
+        for (Stats currentStat : Stats.values()) {
+            abilityTextsList.add(new Text(currentStat.toString()));
+            comboBoxList.add(new ComboBox<>(statPointsOptions));
+        }
+        for (int i = 0; i < 6; i++) {
+            middleBox.add(comboBoxList.get(i), 1, i + 1);
+            middleBox.add(abilityTextsList.get(i), 0, i + 1);
+        }
+    }
+
+    private void manageThePanes() {
         characterCreatorOuterPane.setContent(characterCreatorInnerPane);
         characterCreatorInnerPane.setTop(topBox);
         characterCreatorInnerPane.setLeft(leftBox);
         characterCreatorInnerPane.setCenter(middleBox);
-        characterName.setPromptText("Insert your character name");
-        middleBox.add(characterName, 0, 0, 1, 10);
+    }
+
+    private void addElementsToPanes() {
+        middleBox.add(characterName, 0, 0, 10, 1);
+        leftBox.getChildren().add(classChoice);
+        leftBox.getChildren().add(raceChoice);
+        leftBox.getChildren().add(returnToMainMenu);
+    }
+
+    private void setStyling() {
         leftBox.setPadding(new Insets(5, 5, 5, 5));
         leftBox.setVgap(4);
         leftBox.setHgap(4);
         leftBox.setPrefWrapLength(170);
-        leftBox.setStyle("-fx-background-color: DAE6F3;");
-        leftBox.getChildren().add(classChoice);
-        leftBox.getChildren().add(raceChoice);
-        raceChoice.setPromptText("Choose your race");
-        classChoice.setPromptText("Choose your class");
-        characterName.setMinWidth(150);
+        characterName.setMinWidth(170);
         raceChoice.setMinWidth(150);
         classChoice.setMinWidth(150);
-        leftBox.getChildren().add(returnToMainMenu);
+        leftBox.setStyle("-fx-background-color: DAE6F3;");
+        raceChoice.setPromptText("Choose your race");
+        classChoice.setPromptText("Choose your class");
+        characterName.setPromptText("Insert your character name");
         returnToMainMenu.setText("Return to Main Menu");
-
-        returnToMainMenu.setOnAction(event -> returnToMainMenu());
     }
 
     private void returnToMainMenu() {
