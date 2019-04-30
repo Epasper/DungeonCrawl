@@ -5,10 +5,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
@@ -26,6 +23,9 @@ public class CharacterCreatorGUI {
     private ComboBox<String> raceChoice = new ComboBox<>();
     private Button returnToMainMenu = new Button();
     private TextField characterName = new TextField();
+    private final ToggleGroup racialToggleGroup = new ToggleGroup();
+    private List<RadioButton> racialBonusesRadioButtons = new ArrayList<>();
+    private List<Text> racialBonusesModifiers = new ArrayList<>();
 
 
     public CharacterCreatorGUI() {
@@ -56,9 +56,10 @@ public class CharacterCreatorGUI {
     }
 
     private void addTheAbilityChoices() {
-        List<ComboBox<Integer>> comboBoxList = new ArrayList<>();
+        List<Spinner<Integer>> valueSpinnerList = new ArrayList<>();
         List<Text> abilityTextsList = new ArrayList<>();
         List<Text> modifierTextList = new ArrayList<>();
+        List<Text> racialBonusTextList = new ArrayList<>();
         List<Text> modifierNumbersTextList = new ArrayList<>();
         ObservableList<Integer> statPointsOptions = FXCollections.observableArrayList();
         for (int i = 3; i < 21; i++) {
@@ -66,27 +67,36 @@ public class CharacterCreatorGUI {
         }
         for (Stats currentStat : Stats.values()) {
             abilityTextsList.add(new Text("  " + currentStat.toString() + " "));
-            comboBoxList.add(new ComboBox<>(statPointsOptions));
-            modifierTextList.add(new Text("  Modifier: "));
-            modifierNumbersTextList.add(new Text(" " + " "));
+            valueSpinnerList.add(new Spinner<>(statPointsOptions));
+            modifierTextList.add(new Text("  Ability Modifier: "));
+            racialBonusTextList.add(new Text("  Racial Bonus: "));
+            modifierNumbersTextList.add(new Text(" "));
+            racialBonusesModifiers.add(new Text("      "));
+            racialBonusesRadioButtons.add(new RadioButton());
         }
         for (int i = 0; i < 6; i++) {
             int finalI = i;
-            comboBoxList.get(i).valueProperty().addListener(new ChangeListener<Integer>() {
-                @Override
-                public void changed(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue) {
-                    if (newValue < 9) {
-                        modifierNumbersTextList.get(finalI).setText(" " + ((newValue - 10) / 2) + " ");
-                    } else {
-                        modifierNumbersTextList.get(finalI).setText("+" + ((newValue - 10) / 2) + " ");
-                    }
+            valueSpinnerList.get(i).valueProperty().addListener((observable, oldValue, newValue) -> {
+                if (newValue < 9) {
+                    modifierNumbersTextList.get(finalI).setText(" " + ((newValue - 10) / 2) + " ");
+                } else {
+                    modifierNumbersTextList.get(finalI).setText("+" + ((newValue - 10) / 2) + " ");
                 }
             });
+            valueSpinnerList.get(i).getValueFactory().setValue(10);
+            racialBonusesRadioButtons.get(i).setToggleGroup(racialToggleGroup);
+            racialBonusesRadioButtons.get(i).setDisable(true);
             middleBox.add(abilityTextsList.get(i), 0, i + 1);
-            middleBox.add(comboBoxList.get(i), 1, i + 1);
+            middleBox.add(valueSpinnerList.get(i), 1, i + 1);
             middleBox.add(modifierTextList.get(i), 2, i + 1);
             middleBox.add(modifierNumbersTextList.get(i), 3, i + 1);
+            middleBox.add(racialBonusTextList.get(i), 4, i + 1);
+            middleBox.add(racialBonusesModifiers.get(i), 5, i + 1);
+            middleBox.add(racialBonusesRadioButtons.get(i), 6, i + 1);
         }
+//        racialToggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+//
+//        });
     }
 
     private void manageThePanes() {
@@ -107,12 +117,93 @@ public class CharacterCreatorGUI {
         for (CharacterRaces currentRace : CharacterRaces.values()) {
             raceOptions.add(currentRace.toString());
         }
+        raceChoice.valueProperty().addListener((observable, oldValue, newValue) -> {
+            manageRacialStatBonuses(newValue);
+        });
         classChoice.setItems(classOptions);
         raceChoice.setItems(raceOptions);
         middleBox.add(characterName, 0, 0, 10, 1);
         leftBox.getChildren().add(classChoice);
         leftBox.getChildren().add(raceChoice);
         leftBox.getChildren().add(returnToMainMenu);
+    }
+
+    private void manageRacialStatBonuses(String raceName) {
+        switchTheRace();
+        switch (raceName) {
+            case "Deva": {
+                applyStatBonuses("Charisma", "Intelligence", "Wisdom");
+                break;
+            }
+            case "Dragonborn": {
+                applyStatBonuses("Charisma", "Strength", "Constitution");
+                break;
+            }
+            case "Dwarf": {
+                applyStatBonuses("Constitution", "Strength", "Wisdom");
+                break;
+            }
+            case "Eladrin":
+            case "Gnome": {
+                applyStatBonuses("Intelligence", "Dexterity", "Charisma");
+                break;
+            }
+            case "Elf": {
+                applyStatBonuses("Dexterity", "Intelligence", "Wisdom");
+                break;
+            }
+            case "Goliath": {
+                applyStatBonuses("Strength", "Constitution", "Wisdom");
+                break;
+            }
+            case "Halfelf": {
+                applyStatBonuses("Constitution", "Wisdom", "Charisma");
+                break;
+            }
+            case "Halforc": {
+                applyStatBonuses("Dexterity", "Strength", "Constitution");
+                break;
+            }
+            case "Halfling": {
+                applyStatBonuses("Dexterity", "Charisma", "Constitution");
+                break;
+            }
+            case "Shifter": {
+                applyStatBonuses("Wisdom", "Strength", "Dexterity");
+                break;
+            }
+            case "Tiefling": {
+                applyStatBonuses("Charisma", "Constitution", "Intelligence");
+                break;
+            }
+            case "Human": {
+                racialBonusesRadioButtons.get(getStatID("Strength")).setDisable(false);
+                racialBonusesRadioButtons.get(getStatID("Constitution")).setDisable(false);
+                racialBonusesRadioButtons.get(getStatID("Dexterity")).setDisable(false);
+                racialBonusesRadioButtons.get(getStatID("Intelligence")).setDisable(false);
+                racialBonusesRadioButtons.get(getStatID("Wisdom")).setDisable(false);
+                racialBonusesRadioButtons.get(getStatID("Charisma")).setDisable(false);
+            }
+        }
+    }
+
+    private void applyStatBonuses(String mainStat, String secondaryStat1, String secondaryStat2) {
+        racialBonusesModifiers.get(getStatID(mainStat)).setText(" +2 ");
+        racialBonusesRadioButtons.get(getStatID(secondaryStat1)).setDisable(false);
+        racialBonusesRadioButtons.get(getStatID(secondaryStat2)).setDisable(false);
+    }
+
+    private int getStatID(String name) {
+        return Stats.valueOf(name).ordinal();
+    }
+
+    private void switchTheRace() {
+        for (RadioButton racialBonusesRadioButton : racialBonusesRadioButtons) {
+            racialBonusesRadioButton.setDisable(true);
+        }
+        for (Text racialBonusesModifier : racialBonusesModifiers) {
+            racialBonusesModifier.setText("      ");
+        }
     }
 
     private void setStyling() {
