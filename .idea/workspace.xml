@@ -6,7 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Character Creation - refactor of the fields on ability points">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Character Creation - refactor of the class and race fields onto enums">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java" afterDir="false" />
     </list>
@@ -116,8 +116,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="102" column="35" lean-forward="true" selection-start-line="102" selection-start-column="35" selection-end-line="102" selection-end-column="35" />
+            <state relative-caret-position="129">
+              <caret line="70" column="61" lean-forward="true" selection-start-line="70" selection-start-column="61" selection-end-line="70" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#711#712#0" expanded="true" />
@@ -580,7 +580,14 @@
       <option name="project" value="LOCAL" />
       <updated>1556609614666</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Character Creation - refactor of the class and race fields onto enums">
+      <created>1556611289383</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1556611289383</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -606,8 +613,8 @@
       <window_info id="Favorites" order="4" weight="0.3294621" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32976446" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.15203427" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39828694" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.15203427" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39828694" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32869378" />
@@ -644,7 +651,8 @@
     <MESSAGE value="Graphics Update" />
     <MESSAGE value="Update to standard dnd 4ed character creation instead of card forge" />
     <MESSAGE value="Character Creation - refactor of the fields on ability points" />
-    <option name="LAST_COMMIT_MESSAGE" value="Character Creation - refactor of the fields on ability points" />
+    <MESSAGE value="Character Creation - refactor of the class and race fields onto enums" />
+    <option name="LAST_COMMIT_MESSAGE" value="Character Creation - refactor of the class and race fields onto enums" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -867,8 +875,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="102" column="35" lean-forward="true" selection-start-line="102" selection-start-column="35" selection-end-line="102" selection-end-column="35" />
+        <state relative-caret-position="129">
+          <caret line="70" column="61" lean-forward="true" selection-start-line="70" selection-start-column="61" selection-end-line="70" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#711#712#0" expanded="true" />

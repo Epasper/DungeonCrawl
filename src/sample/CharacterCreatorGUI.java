@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -57,19 +59,33 @@ public class CharacterCreatorGUI {
         List<ComboBox<Integer>> comboBoxList = new ArrayList<>();
         List<Text> abilityTextsList = new ArrayList<>();
         List<Text> modifierTextList = new ArrayList<>();
+        List<Text> modifierNumbersTextList = new ArrayList<>();
         ObservableList<Integer> statPointsOptions = FXCollections.observableArrayList();
-        for (int i = 3; i < 20; i++) {
+        for (int i = 3; i < 21; i++) {
             statPointsOptions.add(i);
         }
         for (Stats currentStat : Stats.values()) {
             abilityTextsList.add(new Text("  " + currentStat.toString() + " "));
             comboBoxList.add(new ComboBox<>(statPointsOptions));
             modifierTextList.add(new Text("  Modifier: "));
+            modifierNumbersTextList.add(new Text(" " + " "));
         }
         for (int i = 0; i < 6; i++) {
+            int finalI = i;
+            comboBoxList.get(i).valueProperty().addListener(new ChangeListener<Integer>() {
+                @Override
+                public void changed(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue) {
+                    if (newValue < 9) {
+                        modifierNumbersTextList.get(finalI).setText(" " + ((newValue - 10) / 2) + " ");
+                    } else {
+                        modifierNumbersTextList.get(finalI).setText("+" + ((newValue - 10) / 2) + " ");
+                    }
+                }
+            });
             middleBox.add(abilityTextsList.get(i), 0, i + 1);
             middleBox.add(comboBoxList.get(i), 1, i + 1);
             middleBox.add(modifierTextList.get(i), 2, i + 1);
+            middleBox.add(modifierNumbersTextList.get(i), 3, i + 1);
         }
     }
 
