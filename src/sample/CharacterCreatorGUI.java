@@ -9,7 +9,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,43 +20,11 @@ public class CharacterCreatorGUI {
     private HBox topBox = new HBox();
     private FlowPane leftBox = new FlowPane();
     private GridPane middleBox = new GridPane();
-    private ObservableList<String> classOptions =
-            FXCollections.observableArrayList(
-                    "Avenger",
-                    "Barbarian",
-                    "Bard",
-                    "Cleric",
-                    "Druid",
-                    "Fighter",
-                    "Invoker",
-                    "Paladin",
-                    "Ranger",
-                    "Rogue",
-                    "Shaman",
-                    "Sorcerer",
-                    "Warden",
-                    "Warlock",
-                    "Warlord",
-                    "Wizard");
-    private ObservableList<String> raceOptions =
-            FXCollections.observableArrayList(
-                    "Deva",
-                    "Dragonborn",
-                    "Dwarf",
-                    "Eladrin",
-                    "Elf",
-                    "Gnome",
-                    "Goliath",
-                    "Half-Elf",
-                    "Half-Orc",
-                    "Halfling",
-                    "Human",
-                    "Shifter",
-                    "Tiefling");
-    private ComboBox<String> classChoice = new ComboBox<>(classOptions);
-    private ComboBox<String> raceChoice = new ComboBox<>(raceOptions);
+    private ComboBox<String> classChoice = new ComboBox<>();
+    private ComboBox<String> raceChoice = new ComboBox<>();
     private Button returnToMainMenu = new Button();
     private TextField characterName = new TextField();
+
 
     public CharacterCreatorGUI() {
         initializeCardForgeGUI();
@@ -73,8 +40,13 @@ public class CharacterCreatorGUI {
         returnToMainMenu.setOnAction(event -> returnToMainMenu());
     }
 
-    enum characterClasses {
 
+    enum CharacterClasses {
+        Avenger, Barbarian, Bard, Cleric, Druid, Fighter, Invoker, Paladin, Ranger, Rogue, Shaman, Sorcerer, Warden, Warlock, Warlord, Wizard
+    }
+
+    enum CharacterRaces {
+        Deva, Dragonborn, Dwarf, Eladrin, Elf, Gnome, Goliath, Halfelf, Halforc, Halfling, Human, Shifter, Tiefling
     }
 
     enum Stats {
@@ -84,17 +56,20 @@ public class CharacterCreatorGUI {
     private void addTheAbilityChoices() {
         List<ComboBox<Integer>> comboBoxList = new ArrayList<>();
         List<Text> abilityTextsList = new ArrayList<>();
+        List<Text> modifierTextList = new ArrayList<>();
         ObservableList<Integer> statPointsOptions = FXCollections.observableArrayList();
         for (int i = 3; i < 20; i++) {
             statPointsOptions.add(i);
         }
         for (Stats currentStat : Stats.values()) {
-            abilityTextsList.add(new Text(currentStat.toString()));
+            abilityTextsList.add(new Text("  " + currentStat.toString() + " "));
             comboBoxList.add(new ComboBox<>(statPointsOptions));
+            modifierTextList.add(new Text("  Modifier: "));
         }
         for (int i = 0; i < 6; i++) {
-            middleBox.add(comboBoxList.get(i), 1, i + 1);
             middleBox.add(abilityTextsList.get(i), 0, i + 1);
+            middleBox.add(comboBoxList.get(i), 1, i + 1);
+            middleBox.add(modifierTextList.get(i), 2, i + 1);
         }
     }
 
@@ -106,6 +81,18 @@ public class CharacterCreatorGUI {
     }
 
     private void addElementsToPanes() {
+        ObservableList<String> classOptions =
+                FXCollections.observableArrayList();
+        ObservableList<String> raceOptions =
+                FXCollections.observableArrayList();
+        for (CharacterClasses currentClass : CharacterClasses.values()) {
+            classOptions.add(currentClass.toString());
+        }
+        for (CharacterRaces currentRace : CharacterRaces.values()) {
+            raceOptions.add(currentRace.toString());
+        }
+        classChoice.setItems(classOptions);
+        raceChoice.setItems(raceOptions);
         middleBox.add(characterName, 0, 0, 10, 1);
         leftBox.getChildren().add(classChoice);
         leftBox.getChildren().add(raceChoice);
@@ -120,7 +107,7 @@ public class CharacterCreatorGUI {
         characterName.setMinWidth(170);
         raceChoice.setMinWidth(150);
         classChoice.setMinWidth(150);
-        leftBox.setStyle("-fx-background-color: DAE6F3;");
+        middleBox.setStyle("-fx-background-color: DAE6F3;");
         raceChoice.setPromptText("Choose your race");
         classChoice.setPromptText("Choose your class");
         characterName.setPromptText("Insert your character name");
