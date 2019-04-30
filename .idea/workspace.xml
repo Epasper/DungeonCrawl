@@ -6,7 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Character Creation - added ability points selection and event listeners for ability modifiers.">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Character Creation - completed final score calculations.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java" afterDir="false" />
     </list>
@@ -116,13 +116,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="84" column="15" lean-forward="true" selection-start-line="84" selection-start-column="15" selection-end-line="84" selection-end-column="15" />
+            <state relative-caret-position="413">
+              <caret line="116" column="57" lean-forward="true" selection-start-line="116" selection-start-column="57" selection-end-line="116" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#711#712#0" expanded="true" />
                 <element signature="e#751#752#0" expanded="true" />
-                <element signature="e#8223#8224#0" expanded="true" />
+                <element signature="e#10165#10166#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -209,9 +209,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>click</find>
-      <find>aroom</find>
-      <find>visi</find>
       <find>//</find>
       <find>//deb</find>
       <find>stage</find>
@@ -239,6 +236,9 @@
       <find>modifier:</find>
       <find>spinn</find>
       <find>radiob</find>
+      <find>listene</find>
+      <find>liste</find>
+      <find>final</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -595,7 +595,21 @@
       <option name="project" value="LOCAL" />
       <updated>1556613826909</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Character Creation - added race selection listeners to stat blocks.">
+      <created>1556618954714</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1556618954714</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Character Creation - completed final score calculations.">
+      <created>1556628108942</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1556628108942</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -660,7 +674,9 @@
     <MESSAGE value="Character Creation - refactor of the fields on ability points" />
     <MESSAGE value="Character Creation - refactor of the class and race fields onto enums" />
     <MESSAGE value="Character Creation - added ability points selection and event listeners for ability modifiers." />
-    <option name="LAST_COMMIT_MESSAGE" value="Character Creation - added ability points selection and event listeners for ability modifiers." />
+    <MESSAGE value="Character Creation - added race selection listeners to stat blocks." />
+    <MESSAGE value="Character Creation - completed final score calculations." />
+    <option name="LAST_COMMIT_MESSAGE" value="Character Creation - completed final score calculations." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -883,13 +899,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="84" column="15" lean-forward="true" selection-start-line="84" selection-start-column="15" selection-end-line="84" selection-end-column="15" />
+        <state relative-caret-position="413">
+          <caret line="116" column="57" lean-forward="true" selection-start-line="116" selection-start-column="57" selection-end-line="116" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#711#712#0" expanded="true" />
             <element signature="e#751#752#0" expanded="true" />
-            <element signature="e#8223#8224#0" expanded="true" />
+            <element signature="e#10165#10166#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -26,10 +26,11 @@ public class CharacterCreatorGUI {
     private List<Text> racialBonusesModifiers = new ArrayList<>();
     private List<Spinner<Integer>> valueSpinnerList = new ArrayList<>();
     private List<Text> abilityTextsList = new ArrayList<>();
-    private List<Text> modifierTextList = new ArrayList<>();
-    private List<Text> racialBonusTextList = new ArrayList<>();
+    private Text modifierText = new Text();
+    private Text racialBonusText = new Text();
     private List<Text> modifierNumbersTextList = new ArrayList<>();
     private ObservableList<Integer> statPointsOptions = FXCollections.observableArrayList();
+    private Text finalScoreText = new Text("  Final  \n  Score  ");
     private List<Text> finalAbilityScores = new ArrayList<>();
 
 
@@ -72,6 +73,11 @@ public class CharacterCreatorGUI {
         for (int i = 0; i < 6; i++) {
             displayASingleAttribute(i);
         }
+        racialBonusText.setText("  Racial  \n  Bonus: ");
+        middleBox.add(racialBonusText, 2, 1);
+        middleBox.add(finalScoreText, 4, 1);
+        modifierText.setText("  Ability  \n  Modifier: ");
+        middleBox.add(modifierText, 5, 1);
         racialToggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
             eventOnRadioButtonChange(oldValue, newValue);
             calculateAllFinalAbilityScores();
@@ -94,12 +100,10 @@ public class CharacterCreatorGUI {
     private void prepareASingleAttribute(Stats currentStat) {
         abilityTextsList.add(new Text("  " + currentStat.toString() + " "));
         valueSpinnerList.add(new Spinner<>(statPointsOptions));
-        modifierTextList.add(new Text("  Ability Modifier: "));
-        racialBonusTextList.add(new Text("  Racial Bonus: "));
         modifierNumbersTextList.add(new Text(" "));
         racialBonusesModifiers.add(new Text("      "));
         racialBonusesRadioButtons.add(new RadioButton(currentStat.toString()));
-        finalAbilityScores.add(new Text(" Final Score:  "));
+        finalAbilityScores.add(new Text(" "));
     }
 
     private void displayASingleAttribute(int i) {
@@ -109,14 +113,12 @@ public class CharacterCreatorGUI {
         valueSpinnerList.get(i).getValueFactory().setValue(10);
         racialBonusesRadioButtons.get(i).setToggleGroup(racialToggleGroup);
         racialBonusesRadioButtons.get(i).setDisable(true);
-        middleBox.add(abilityTextsList.get(i), 0, i + 1);
-        middleBox.add(valueSpinnerList.get(i), 1, i + 1);
-        middleBox.add(racialBonusTextList.get(i), 2, i + 1);
-        middleBox.add(racialBonusesModifiers.get(i), 3, i + 1);
-        middleBox.add(racialBonusesRadioButtons.get(i), 4, i + 1);
-        middleBox.add(finalAbilityScores.get(i), 5, i + 1);
-        middleBox.add(modifierTextList.get(i), 6, i + 1);
-        middleBox.add(modifierNumbersTextList.get(i), 7, i + 1);
+        middleBox.add(abilityTextsList.get(i), 0, i + 2);
+        middleBox.add(valueSpinnerList.get(i), 1, i + 2);
+        middleBox.add(racialBonusesModifiers.get(i), 2, i + 2);
+        middleBox.add(racialBonusesRadioButtons.get(i), 3, i + 2);
+        middleBox.add(finalAbilityScores.get(i), 4, i + 2);
+        middleBox.add(modifierNumbersTextList.get(i), 5, i + 2);
     }
 
     private void manageThePanes() {
@@ -125,6 +127,8 @@ public class CharacterCreatorGUI {
         characterCreatorInnerPane.setLeft(leftBox);
         characterCreatorInnerPane.setCenter(middleBox);
     }
+
+    //todo create a "total points available" and "points spent" fields
 
     private void calculateAllFinalAbilityScores() {
         for (int i = 0; i < finalAbilityScores.size(); i++) {
@@ -136,11 +140,11 @@ public class CharacterCreatorGUI {
             }
             int sum = racialBonus + bonusFromChoice;
             textToBeSet = "" + sum;
-            finalAbilityScores.get(i).setText(" Final Score:  " + textToBeSet);
+            finalAbilityScores.get(i).setText("   " + textToBeSet);
             if (sum < 9) {
-                modifierNumbersTextList.get(i).setText(" " + ((sum - 10) / 2) + " ");
+                modifierNumbersTextList.get(i).setText("   " + ((sum - 10) / 2) + " ");
             } else {
-                modifierNumbersTextList.get(i).setText("+" + ((sum - 10) / 2) + " ");
+                modifierNumbersTextList.get(i).setText("  +" + ((sum - 10) / 2) + " ");
             }
         }
     }
