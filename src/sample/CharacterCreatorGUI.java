@@ -1,7 +1,5 @@
 package sample;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -26,19 +24,27 @@ public class CharacterCreatorGUI {
     private final ToggleGroup racialToggleGroup = new ToggleGroup();
     private List<RadioButton> racialBonusesRadioButtons = new ArrayList<>();
     private List<Text> racialBonusesModifiers = new ArrayList<>();
+    private List<Spinner<Integer>> valueSpinnerList = new ArrayList<>();
+    private List<Text> abilityTextsList = new ArrayList<>();
+    private List<Text> modifierTextList = new ArrayList<>();
+    private List<Text> racialBonusTextList = new ArrayList<>();
+    private List<Text> modifierNumbersTextList = new ArrayList<>();
+    private ObservableList<Integer> statPointsOptions = FXCollections.observableArrayList();
+    private List<Text> finalAbilityScores = new ArrayList<>();
 
 
     public CharacterCreatorGUI() {
-        initializeCardForgeGUI();
+        initializeCharacterCreatorGUI();
     }
 
     //todo finishing the character creation should save it in a database.
 
-    private void initializeCardForgeGUI() {
+    private void initializeCharacterCreatorGUI() {
         manageThePanes();
         addElementsToPanes();
         setStyling();
         addTheAbilityChoices();
+        calculateAllFinalAbilityScores();
         returnToMainMenu.setOnAction(event -> returnToMainMenu());
     }
 
@@ -56,47 +62,61 @@ public class CharacterCreatorGUI {
     }
 
     private void addTheAbilityChoices() {
-        List<Spinner<Integer>> valueSpinnerList = new ArrayList<>();
-        List<Text> abilityTextsList = new ArrayList<>();
-        List<Text> modifierTextList = new ArrayList<>();
-        List<Text> racialBonusTextList = new ArrayList<>();
-        List<Text> modifierNumbersTextList = new ArrayList<>();
-        ObservableList<Integer> statPointsOptions = FXCollections.observableArrayList();
-        for (int i = 3; i < 21; i++) {
+
+        for (int i = 3; i < 19; i++) {
             statPointsOptions.add(i);
         }
         for (Stats currentStat : Stats.values()) {
-            abilityTextsList.add(new Text("  " + currentStat.toString() + " "));
-            valueSpinnerList.add(new Spinner<>(statPointsOptions));
-            modifierTextList.add(new Text("  Ability Modifier: "));
-            racialBonusTextList.add(new Text("  Racial Bonus: "));
-            modifierNumbersTextList.add(new Text(" "));
-            racialBonusesModifiers.add(new Text("      "));
-            racialBonusesRadioButtons.add(new RadioButton());
+            prepareASingleAttribute(currentStat);
         }
         for (int i = 0; i < 6; i++) {
-            int finalI = i;
-            valueSpinnerList.get(i).valueProperty().addListener((observable, oldValue, newValue) -> {
-                if (newValue < 9) {
-                    modifierNumbersTextList.get(finalI).setText(" " + ((newValue - 10) / 2) + " ");
-                } else {
-                    modifierNumbersTextList.get(finalI).setText("+" + ((newValue - 10) / 2) + " ");
-                }
-            });
-            valueSpinnerList.get(i).getValueFactory().setValue(10);
-            racialBonusesRadioButtons.get(i).setToggleGroup(racialToggleGroup);
-            racialBonusesRadioButtons.get(i).setDisable(true);
-            middleBox.add(abilityTextsList.get(i), 0, i + 1);
-            middleBox.add(valueSpinnerList.get(i), 1, i + 1);
-            middleBox.add(modifierTextList.get(i), 2, i + 1);
-            middleBox.add(modifierNumbersTextList.get(i), 3, i + 1);
-            middleBox.add(racialBonusTextList.get(i), 4, i + 1);
-            middleBox.add(racialBonusesModifiers.get(i), 5, i + 1);
-            middleBox.add(racialBonusesRadioButtons.get(i), 6, i + 1);
+            displayASingleAttribute(i);
         }
-//        racialToggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
-//
-//        });
+        racialToggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+            eventOnRadioButtonChange(oldValue, newValue);
+            calculateAllFinalAbilityScores();
+        });
+    }
+
+    private void eventOnRadioButtonChange(Toggle oldValue, Toggle newValue) {
+        if (oldValue != null) {
+            String oldValueString = oldValue.toString();
+            String trimmedString = oldValueString.substring(oldValueString.indexOf('\'')).replaceAll("\\W", "");
+            racialBonusesModifiers.get(getStatID(trimmedString)).setText("      ");
+            System.out.println(trimmedString);
+        }
+        String radioButtonString = newValue.toString();
+        String trimmedString = radioButtonString.substring(radioButtonString.indexOf('\'')).replaceAll("\\W", "");
+        racialBonusesModifiers.get(getStatID(trimmedString)).setText(" +2 ");
+        System.out.println(trimmedString);
+    }
+
+    private void prepareASingleAttribute(Stats currentStat) {
+        abilityTextsList.add(new Text("  " + currentStat.toString() + " "));
+        valueSpinnerList.add(new Spinner<>(statPointsOptions));
+        modifierTextList.add(new Text("  Ability Modifier: "));
+        racialBonusTextList.add(new Text("  Racial Bonus: "));
+        modifierNumbersTextList.add(new Text(" "));
+        racialBonusesModifiers.add(new Text("      "));
+        racialBonusesRadioButtons.add(new RadioButton(currentStat.toString()));
+        finalAbilityScores.add(new Text(" Final Score:  "));
+    }
+
+    private void displayASingleAttribute(int i) {
+        valueSpinnerList.get(i).valueProperty().addListener((observable, oldValue, newValue) -> {
+            calculateAllFinalAbilityScores();
+        });
+        valueSpinnerList.get(i).getValueFactory().setValue(10);
+        racialBonusesRadioButtons.get(i).setToggleGroup(racialToggleGroup);
+        racialBonusesRadioButtons.get(i).setDisable(true);
+        middleBox.add(abilityTextsList.get(i), 0, i + 1);
+        middleBox.add(valueSpinnerList.get(i), 1, i + 1);
+        middleBox.add(racialBonusTextList.get(i), 2, i + 1);
+        middleBox.add(racialBonusesModifiers.get(i), 3, i + 1);
+        middleBox.add(racialBonusesRadioButtons.get(i), 4, i + 1);
+        middleBox.add(finalAbilityScores.get(i), 5, i + 1);
+        middleBox.add(modifierTextList.get(i), 6, i + 1);
+        middleBox.add(modifierNumbersTextList.get(i), 7, i + 1);
     }
 
     private void manageThePanes() {
@@ -104,6 +124,25 @@ public class CharacterCreatorGUI {
         characterCreatorInnerPane.setTop(topBox);
         characterCreatorInnerPane.setLeft(leftBox);
         characterCreatorInnerPane.setCenter(middleBox);
+    }
+
+    private void calculateAllFinalAbilityScores() {
+        for (int i = 0; i < finalAbilityScores.size(); i++) {
+            int bonusFromChoice = valueSpinnerList.get(i).getValue();
+            String textToBeSet = racialBonusesModifiers.get(i).getText().replaceAll("\\D", "");
+            int racialBonus = 0;
+            if (textToBeSet.length() > 0) {
+                racialBonus = Integer.parseInt(textToBeSet);
+            }
+            int sum = racialBonus + bonusFromChoice;
+            textToBeSet = "" + sum;
+            finalAbilityScores.get(i).setText(" Final Score:  " + textToBeSet);
+            if (sum < 9) {
+                modifierNumbersTextList.get(i).setText(" " + ((sum - 10) / 2) + " ");
+            } else {
+                modifierNumbersTextList.get(i).setText("+" + ((sum - 10) / 2) + " ");
+            }
+        }
     }
 
     private void addElementsToPanes() {
@@ -119,6 +158,7 @@ public class CharacterCreatorGUI {
         }
         raceChoice.valueProperty().addListener((observable, oldValue, newValue) -> {
             manageRacialStatBonuses(newValue);
+            calculateAllFinalAbilityScores();
         });
         classChoice.setItems(classOptions);
         raceChoice.setItems(raceOptions);
