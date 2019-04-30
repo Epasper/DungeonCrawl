@@ -45,7 +45,7 @@ public class MainMenuGUI {
         middlePane.getChildren().add(cardForgeGUIButton);
         newDungeonButton.setText("Generate a New Dungeon");
         newDungeonButton.setOnAction(event -> openDungeonGUI());
-        cardForgeGUIButton.setText("Card Forge");
+        cardForgeGUIButton.setText("Character Creator");
         cardForgeGUIButton.setOnAction(event -> openCardForgeGUI());
         aScene.setRoot(mainMenuScrollPane);
         aStage.show();
@@ -65,9 +65,9 @@ public class MainMenuGUI {
     }
 
     private void openCardForgeGUI() {
-        CardForgeGUI cardForgeGUI = new CardForgeGUI();
+        CharacterCreatorGUI characterCreatorGUI = new CharacterCreatorGUI();
         aStage.close();
-        aScene.setRoot(cardForgeGUI.cardForgeScrollPane);
+        aScene.setRoot(characterCreatorGUI.characterCreatorOuterPane);
         aStage.setScene(aScene);
         aStage.show();
     }
