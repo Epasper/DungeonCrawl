@@ -41,12 +41,16 @@ public class CharacterCreatorGUI {
     private TextField pointsToSpend = new TextField(String.valueOf(availableStatPoints));
     private ObservableList<String> availableSkills = FXCollections.observableArrayList();
     private ObservableList<String> selectedSkills = FXCollections.observableArrayList();
-
+    private int MaxHP = 0;
+    private int fort = 0;
+    private int reflex = 0;
+    private int will = 0;
 
     public CharacterCreatorGUI() {
         initializeCharacterCreatorGUI();
     }
 
+    //todo encapsulate fields by getters and setters
     //todo finishing the character creation should save it in a database.
 
     private void initializeCharacterCreatorGUI() {
@@ -56,6 +60,7 @@ public class CharacterCreatorGUI {
         addTheAbilityChoices();
         addTheSkillList();
         calculateAllFinalAbilityScores();
+        addTheDerivedElements();
         returnToMainMenu.setOnAction(event -> returnToMainMenu());
     }
 
@@ -75,7 +80,26 @@ public class CharacterCreatorGUI {
         Strength, Constitution, Dexterity, Intelligence, Wisdom, Charisma
     }
 
+    //todo add the saving throws (Fortitude/Will/Reflex)
+    //todo add the hit points maximum at level 1 in accordance to th Class
+    //todo add Armor Class and AC calculations
+    //todo add starting equipment selection
+    //todo add starting powers selection (daily/encounter/at-will)
 
+    private void addTheDerivedElements() {
+        Text breakLine = new Text("    ");
+        middleBox.add(breakLine,0,10);
+        Text maxHpText = new Text("Max HP: " + MaxHP);
+        middleBox.add(maxHpText, 0, 11);
+        Text savingText = new Text("Saving Throws:  ");
+        middleBox.add(savingText, 0,12);
+        Text fortitudeSaveText = new Text("Fortitude: " + fort);
+        Text reflexSaveText = new Text("Reflex: " + reflex);
+        Text willSaveText = new Text("Will: " + will);
+        middleBox.add(fortitudeSaveText, 0, 13);
+        middleBox.add(reflexSaveText, 0, 14);
+        middleBox.add(willSaveText, 0, 15);
+    }
 
     private void addTheSkillList() {
         Text availableSkillPointsText = new Text("Number of available skill points: ");

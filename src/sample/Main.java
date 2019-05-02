@@ -10,6 +10,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        SQLConnector sqlConnector = new SQLConnector();
+        sqlConnector.startAConnection();
         setPrimaryStage(primaryStage);
         MainMenuGUI mainMenuGUI = new MainMenuGUI();
         primaryStage.setWidth(500);
