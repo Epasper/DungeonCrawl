@@ -6,7 +6,6 @@ import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,16 +21,18 @@ public class CharacterCreatorGUI {
     private Button returnToMainMenu = new Button();
     private TextField characterName = new TextField();
     private final ToggleGroup racialToggleGroup = new ToggleGroup();
-    private List<RadioButton> racialBonusesRadioButtons = new ArrayList<>();
-    private List<Text> racialBonusesModifiers = new ArrayList<>();
-    private List<Spinner<Integer>> valueSpinnerList = new ArrayList<>();
-    private List<Text> abilityTextsList = new ArrayList<>();
+    private List<RadioButton> racialBonusRadioButtons = new ArrayList<>();
+    private List<Text> racialBonusNumbers = new ArrayList<>();
+    private List<Spinner<Integer>> statsValueSpinners = new ArrayList<>();
+    private List<Text> statNames = new ArrayList<>();
     private Text modifierText = new Text();
     private Text racialBonusText = new Text();
     private List<Text> modifierNumbersTextList = new ArrayList<>();
     private ObservableList<Integer> statPointsOptions = FXCollections.observableArrayList();
     private Text finalScoreText = new Text("  Final  \n  Score  ");
     private List<Text> finalAbilityScores = new ArrayList<>();
+    private int availableStatPoints = 20;
+    private TextField pointsToSpend = new TextField(String.valueOf(availableStatPoints));
 
 
     public CharacterCreatorGUI() {
@@ -64,7 +65,7 @@ public class CharacterCreatorGUI {
 
     private void addTheAbilityChoices() {
 
-        for (int i = 3; i < 19; i++) {
+        for (int i = 8; i < 19; i++) {
             statPointsOptions.add(i);
         }
         for (Stats currentStat : Stats.values()) {
@@ -78,6 +79,10 @@ public class CharacterCreatorGUI {
         middleBox.add(finalScoreText, 4, 1);
         modifierText.setText("  Ability  \n  Modifier: ");
         middleBox.add(modifierText, 5, 1);
+        Text AvailablePointsText = new Text("  Available \n    Points");
+        middleBox.add(AvailablePointsText, 0, 9);
+        pointsToSpend.setDisable(true);
+        middleBox.add(pointsToSpend, 1, 9);
         racialToggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
             eventOnRadioButtonChange(oldValue, newValue);
             calculateAllFinalAbilityScores();
@@ -88,35 +93,37 @@ public class CharacterCreatorGUI {
         if (oldValue != null) {
             String oldValueString = oldValue.toString();
             String trimmedString = oldValueString.substring(oldValueString.indexOf('\'')).replaceAll("\\W", "");
-            racialBonusesModifiers.get(getStatID(trimmedString)).setText("      ");
+            racialBonusNumbers.get(getStatID(trimmedString)).setText("      ");
             System.out.println(trimmedString);
         }
         String radioButtonString = newValue.toString();
         String trimmedString = radioButtonString.substring(radioButtonString.indexOf('\'')).replaceAll("\\W", "");
-        racialBonusesModifiers.get(getStatID(trimmedString)).setText(" +2 ");
+        racialBonusNumbers.get(getStatID(trimmedString)).setText(" +2 ");
         System.out.println(trimmedString);
     }
 
     private void prepareASingleAttribute(Stats currentStat) {
-        abilityTextsList.add(new Text("  " + currentStat.toString() + " "));
-        valueSpinnerList.add(new Spinner<>(statPointsOptions));
+        statNames.add(new Text("  " + currentStat.toString() + " "));
+        statsValueSpinners.add(new Spinner<>(statPointsOptions));
         modifierNumbersTextList.add(new Text(" "));
-        racialBonusesModifiers.add(new Text("      "));
-        racialBonusesRadioButtons.add(new RadioButton(currentStat.toString()));
+        racialBonusNumbers.add(new Text("      "));
+        racialBonusRadioButtons.add(new RadioButton(currentStat.toString()));
         finalAbilityScores.add(new Text(" "));
     }
 
     private void displayASingleAttribute(int i) {
-        valueSpinnerList.get(i).valueProperty().addListener((observable, oldValue, newValue) -> {
+        statsValueSpinners.get(i).getValueFactory().setValue(10);
+        statsValueSpinners.get(i).valueProperty().addListener((observable, oldValue, newValue) -> {
+            availableStatPoints += calculateTotalPointsChange(oldValue, newValue);
+            pointsToSpend.setText(String.valueOf(availableStatPoints));
             calculateAllFinalAbilityScores();
         });
-        valueSpinnerList.get(i).getValueFactory().setValue(10);
-        racialBonusesRadioButtons.get(i).setToggleGroup(racialToggleGroup);
-        racialBonusesRadioButtons.get(i).setDisable(true);
-        middleBox.add(abilityTextsList.get(i), 0, i + 2);
-        middleBox.add(valueSpinnerList.get(i), 1, i + 2);
-        middleBox.add(racialBonusesModifiers.get(i), 2, i + 2);
-        middleBox.add(racialBonusesRadioButtons.get(i), 3, i + 2);
+        racialBonusRadioButtons.get(i).setToggleGroup(racialToggleGroup);
+        racialBonusRadioButtons.get(i).setDisable(true);
+        middleBox.add(statNames.get(i), 0, i + 2);
+        middleBox.add(statsValueSpinners.get(i), 1, i + 2);
+        middleBox.add(racialBonusNumbers.get(i), 2, i + 2);
+        middleBox.add(racialBonusRadioButtons.get(i), 3, i + 2);
         middleBox.add(finalAbilityScores.get(i), 4, i + 2);
         middleBox.add(modifierNumbersTextList.get(i), 5, i + 2);
     }
@@ -128,12 +135,22 @@ public class CharacterCreatorGUI {
         characterCreatorInnerPane.setCenter(middleBox);
     }
 
-    //todo create a "total points available" and "points spent" fields
+    private int calculateTotalPointsChange(int oldValue, int newValue) {
+        int pointsForSingleStat;
+        if (newValue < 12) {
+            return (oldValue - newValue);
+        } else if (newValue > oldValue) {
+            pointsForSingleStat = (newValue - 10) / 2;
+        } else {
+            pointsForSingleStat = (oldValue - 10) / 2;
+        }
+        return pointsForSingleStat * (oldValue - newValue);
+    }
 
     private void calculateAllFinalAbilityScores() {
         for (int i = 0; i < finalAbilityScores.size(); i++) {
-            int bonusFromChoice = valueSpinnerList.get(i).getValue();
-            String textToBeSet = racialBonusesModifiers.get(i).getText().replaceAll("\\D", "");
+            int bonusFromChoice = statsValueSpinners.get(i).getValue();
+            String textToBeSet = racialBonusNumbers.get(i).getText().replaceAll("\\D", "");
             int racialBonus = 0;
             if (textToBeSet.length() > 0) {
                 racialBonus = Integer.parseInt(textToBeSet);
@@ -221,20 +238,20 @@ public class CharacterCreatorGUI {
                 break;
             }
             case "Human": {
-                racialBonusesRadioButtons.get(getStatID("Strength")).setDisable(false);
-                racialBonusesRadioButtons.get(getStatID("Constitution")).setDisable(false);
-                racialBonusesRadioButtons.get(getStatID("Dexterity")).setDisable(false);
-                racialBonusesRadioButtons.get(getStatID("Intelligence")).setDisable(false);
-                racialBonusesRadioButtons.get(getStatID("Wisdom")).setDisable(false);
-                racialBonusesRadioButtons.get(getStatID("Charisma")).setDisable(false);
+                racialBonusRadioButtons.get(getStatID("Strength")).setDisable(false);
+                racialBonusRadioButtons.get(getStatID("Constitution")).setDisable(false);
+                racialBonusRadioButtons.get(getStatID("Dexterity")).setDisable(false);
+                racialBonusRadioButtons.get(getStatID("Intelligence")).setDisable(false);
+                racialBonusRadioButtons.get(getStatID("Wisdom")).setDisable(false);
+                racialBonusRadioButtons.get(getStatID("Charisma")).setDisable(false);
             }
         }
     }
 
     private void applyStatBonuses(String mainStat, String secondaryStat1, String secondaryStat2) {
-        racialBonusesModifiers.get(getStatID(mainStat)).setText(" +2 ");
-        racialBonusesRadioButtons.get(getStatID(secondaryStat1)).setDisable(false);
-        racialBonusesRadioButtons.get(getStatID(secondaryStat2)).setDisable(false);
+        racialBonusNumbers.get(getStatID(mainStat)).setText(" +2 ");
+        racialBonusRadioButtons.get(getStatID(secondaryStat1)).setDisable(false);
+        racialBonusRadioButtons.get(getStatID(secondaryStat2)).setDisable(false);
     }
 
     private int getStatID(String name) {
@@ -242,10 +259,10 @@ public class CharacterCreatorGUI {
     }
 
     private void switchTheRace() {
-        for (RadioButton racialBonusesRadioButton : racialBonusesRadioButtons) {
+        for (RadioButton racialBonusesRadioButton : racialBonusRadioButtons) {
             racialBonusesRadioButton.setDisable(true);
         }
-        for (Text racialBonusesModifier : racialBonusesModifiers) {
+        for (Text racialBonusesModifier : racialBonusNumbers) {
             racialBonusesModifier.setText("      ");
         }
     }
