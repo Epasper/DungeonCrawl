@@ -3,7 +3,7 @@ package sample;
 import java.util.List;
 import java.util.Random;
 
-class Map {
+class DungeonMap {
     private int corridorMaxLength = 8;
     private int numberOfTilesY = 40;
     private int numberOfTilesX = 40;
@@ -12,7 +12,7 @@ class Map {
     private List<Hero> heroList;
     private List<Monster> monsterList;
 
-    public Map(List<Hero> heroList, List<Monster> monsterList) {
+    public DungeonMap(List<Hero> heroList, List<Monster> monsterList) {
         this.heroList = heroList;
         this.monsterList = monsterList;
         for (Hero hero : heroList) {
@@ -317,11 +317,11 @@ class Map {
         }
     }
 
-    void clearMapReachableProperties(Map map) {
+    void clearMapReachableProperties(DungeonMap dungeonMap) {
         for (int i = 0; i < numberOfTilesX; i++) {
             for (int j = 0; j < numberOfTilesY; j++) {
-                map.getMapTilesArray()[i][j].inWalkRange = false;
-                map.getMapTilesArray()[i][j].withinInteractionRange = false;
+                dungeonMap.getMapTilesArray()[i][j].inWalkRange = false;
+                dungeonMap.getMapTilesArray()[i][j].withinInteractionRange = false;
             }
         }
     }

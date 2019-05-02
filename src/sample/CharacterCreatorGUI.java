@@ -6,6 +6,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,9 +34,10 @@ public class CharacterCreatorGUI {
     private Text finalScoreText = new Text("  Final  \n  Score  ");
     private List<Text> finalAbilityScores = new ArrayList<>();
     private int availableStatPoints = 20;
-    private int availableSkillPoints = 0;
+    private int numberOfAvailableSkillPoints = 0;
+    private Text skillPointsText = new Text(String.valueOf(numberOfAvailableSkillPoints));
     private ListView<String> selectedSkillsListView = new ListView<>();
-    private ListView<String> skillsListView = new ListView<>();
+    private ListView<String> availableSkillsListView = new ListView<>();
     private TextField pointsToSpend = new TextField(String.valueOf(availableStatPoints));
     private ObservableList<String> availableSkills = FXCollections.observableArrayList();
     private ObservableList<String> selectedSkills = FXCollections.observableArrayList();
@@ -73,22 +75,44 @@ public class CharacterCreatorGUI {
         Strength, Constitution, Dexterity, Intelligence, Wisdom, Charisma
     }
 
+
+
     private void addTheSkillList() {
         Text availableSkillPointsText = new Text("Number of available skill points: ");
         Text skillListText = new Text("List of Skills: ");
-        Text skillPointsText = new Text(String.valueOf(availableSkillPoints));
         Text selectedSkillsText = new Text("Trained skills: ");
         for (CharacterSkills currentSkill : CharacterSkills.values()) {
             availableSkills.add(currentSkill.toString());
-            skillsListView.getItems().add(currentSkill.toString());
         }
+        availableSkillsListView.setItems(availableSkills);
+        availableSkillsListView.setMaxHeight(availableSkills.size() * 24);
+        availableSkillsListView.setOnMouseClicked(event -> {
+            eventOnSkillSelection();
+        });
         rightBox.getChildren().add(availableSkillPointsText);
         rightBox.getChildren().add(skillPointsText);
         rightBox.getChildren().add(skillListText);
-        rightBox.getChildren().add(skillsListView);
+        rightBox.getChildren().add(availableSkillsListView);
         rightBox.getChildren().add(selectedSkillsText);
-        selectedSkillsListView.setMaxHeight(50);
+        selectedSkillsListView.setMaxHeight(0);
+        availableSkillsListView.setDisable(true);
         rightBox.getChildren().add(selectedSkillsListView);
+    }
+
+    private void eventOnSkillSelection() {
+        String selection = availableSkillsListView.getSelectionModel().getSelectedItems().toString().replaceAll("[^a-zA-Z]", "");
+        availableSkills.removeAll(selection);
+        availableSkillsListView.setItems(availableSkills);
+        selectedSkills.add(selection);
+        selectedSkillsListView.setItems(selectedSkills);
+        System.out.println(selection);
+        selectedSkillsListView.setMaxHeight(selectedSkills.size() * 24);
+        availableSkillsListView.setMaxHeight(availableSkills.size() * 24);
+        numberOfAvailableSkillPoints--;
+        skillPointsText.setText(String.valueOf(numberOfAvailableSkillPoints));
+        if (numberOfAvailableSkillPoints == 0) {
+            availableSkillsListView.setDisable(true);
+        }
     }
 
     private void addTheAbilityChoices() {
@@ -210,12 +234,28 @@ public class CharacterCreatorGUI {
             manageRacialStatBonuses(newValue);
             calculateAllFinalAbilityScores();
         });
+        classChoice.valueProperty().addListener((observable, oldValue, newValue) -> {
+            eventOnSelectHeroClass(newValue);
+        });
         classChoice.setItems(classOptions);
         raceChoice.setItems(raceOptions);
         middleBox.add(characterName, 0, 0, 10, 1);
         leftBox.getChildren().add(classChoice);
         leftBox.getChildren().add(raceChoice);
         leftBox.getChildren().add(returnToMainMenu);
+    }
+
+    private void eventOnSelectHeroClass(String newValue) {
+        HeroClassInformation heroClassInformation = new HeroClassInformation();
+        System.out.println(newValue);
+        availableSkills.clear();
+        selectedSkills.clear();
+        availableSkills.addAll(heroClassInformation.availableSkills.get(newValue));
+        availableSkillsListView.setMaxHeight(availableSkills.size() * 24);
+        selectedSkillsListView.setMaxHeight(selectedSkills.size() * 24);
+        numberOfAvailableSkillPoints = heroClassInformation.classSkillPoints.get(newValue);
+        skillPointsText.setText(String.valueOf(numberOfAvailableSkillPoints));
+        availableSkillsListView.setDisable(false);
     }
 
     private void manageRacialStatBonuses(String raceName) {

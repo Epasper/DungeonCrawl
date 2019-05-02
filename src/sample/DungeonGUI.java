@@ -12,7 +12,7 @@ import java.util.Random;
 
 public class DungeonGUI {
 
-    //todo Create a pane on top of the map grid, that will show the available cards.
+    //todo Create a pane on top of the dungeonMap grid, that will show the available cards.
     private MainMenuGUI mainMenuGUI = new MainMenuGUI();
     private int mapWidth = 40;
     private int mapHeight = 40;
@@ -39,7 +39,7 @@ public class DungeonGUI {
     private List<Hero> heroList = new ArrayList<>();
     private List<Monster> monsterList = new ArrayList<>();
     private FakeDatabase database = new FakeDatabase();
-    private Map map = new Map(generateAHeroList(createAnIDList()), generateAMonsterList(createAnIDList()));
+    private DungeonMap dungeonMap = new DungeonMap(generateAHeroList(createAnIDList()), generateAMonsterList(createAnIDList()));
     private int currentlyActiveHeroID;
     private boolean hasTheCharacterBeenSelected = false;
     private int numberOfHeroesThatFinishedMovement;
@@ -52,12 +52,12 @@ public class DungeonGUI {
         this.numberOfHeroesThatFinishedMovement = numberOfHeroesThatFinishedMovement;
     }
 
-    private Map getMap() {
-        return map;
+    private DungeonMap getDungeonMap() {
+        return dungeonMap;
     }
 
-    public void setMap(Map map) {
-        this.map = map;
+    public void setDungeonMap(DungeonMap dungeonMap) {
+        this.dungeonMap = dungeonMap;
     }
 
     public int getCurrentlyActiveHeroID() {
@@ -82,8 +82,8 @@ public class DungeonGUI {
         returnToMainMenu.setText("Return to Main Menu");
         mapGridPane.add(returnToMainMenu, 0, mapHeight + 1, 3, 3);
         returnToMainMenu.setOnAction(event -> returnToMainMenu());
-        getMap().drawAMap();
-        updateGUIAccordingToMap(getMap());
+        getDungeonMap().drawAMap();
+        updateGUIAccordingToMap(getDungeonMap());
     }
 
     //todo create a database and relink these to it
@@ -155,7 +155,7 @@ public class DungeonGUI {
         return monsterNotFound;
     }
 
-    private void updateGUIAccordingToMap(Map map) {
+    private void updateGUIAccordingToMap(DungeonMap dungeonMap) {
         for (int i = 0; i < mapWidth; i++) {
             for (int j = 0; j < mapHeight; j++) {
                 Button aButton = new Button();
@@ -167,22 +167,22 @@ public class DungeonGUI {
                 mapGridPane.add(aButton, j, i);
             }
         }
-        updateMapGraphics(map);
+        updateMapGraphics(dungeonMap);
     }
 
-    private void updateMapGraphics(Map map) {
+    private void updateMapGraphics(DungeonMap dungeonMap) {
         for (int i = 0; i < mapWidth; i++) {
             for (int j = 0; j < mapHeight; j++) {
-                int currentEntityID = map.getMapTilesArray()[i][j].occupyingCreatureId;
+                int currentEntityID = dungeonMap.getMapTilesArray()[i][j].occupyingCreatureId;
                 String typeOfTile;
-                typeOfTile = map.getMapTilesArray()[i][j].typeOfTile;
-                //debug mode only - make the whole map visible:
-                map.getMapTilesArray()[i][j].visible = true;
+                typeOfTile = dungeonMap.getMapTilesArray()[i][j].typeOfTile;
+                //debug mode only - make the whole dungeonMap visible:
+                dungeonMap.getMapTilesArray()[i][j].visible = true;
                 applyATileImageToAButton(typeOfTile, buttonGrid[i][j]);
                 if (currentEntityID > 0) {
                     applyEntityIconToAButton(currentEntityID, buttonGrid[i][j]);
                 }
-                if (!map.getMapTilesArray()[i][j].visible) {
+                if (!dungeonMap.getMapTilesArray()[i][j].visible) {
                     applyATileImageToAButton("Fog", buttonGrid[i][j]);
                 }
             }
@@ -190,23 +190,23 @@ public class DungeonGUI {
     }
 
     private void buttonEvent(Button aButton, int XPos, int YPos) {
-        String currentTypeOfTile = getMap().getMapTilesArray()[XPos][YPos].getTypeOfTile();
-        int currentHeroID = getMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureId();
-        boolean isTheTileInteractive = getMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange();
+        String currentTypeOfTile = getDungeonMap().getMapTilesArray()[XPos][YPos].getTypeOfTile();
+        int currentHeroID = getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureId();
+        boolean isTheTileInteractive = getDungeonMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange();
         if (isHasTheCharacterBeenSelected() && currentHeroID > 0) {
             eventOnReachableTileClick();
         }
         if (currentHeroID > 0 && currentHeroID < 100) {
             eventOnHeroClick(currentHeroID);
-            isTheTileInteractive = getMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange();
-        } else if (getMap().getMapTilesArray()[XPos][YPos].isInWalkRange()) {
-            if (currentTypeOfTile.contains("Closed") && getMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange()) {
-                getMap().getMapTilesArray()[XPos][YPos].setTypeOfTile(getMap().getMapTilesArray()[XPos][YPos].getTypeOfTile().replaceFirst("Closed", "Opened"));
+            isTheTileInteractive = getDungeonMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange();
+        } else if (getDungeonMap().getMapTilesArray()[XPos][YPos].isInWalkRange()) {
+            if (currentTypeOfTile.contains("Closed") && getDungeonMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange()) {
+                getDungeonMap().getMapTilesArray()[XPos][YPos].setTypeOfTile(getDungeonMap().getMapTilesArray()[XPos][YPos].getTypeOfTile().replaceFirst("Closed", "Opened"));
             } else if (!currentTypeOfTile.contains("Closed")) {
                 eventOnHeroMovement(aButton, XPos, YPos);
             }
-            updateMapGraphics(getMap());
-            getMap().clearMapReachableProperties(getMap());
+            updateMapGraphics(getDungeonMap());
+            getDungeonMap().clearMapReachableProperties(getDungeonMap());
         }
         if (currentHeroID > 100 && isTheTileInteractive) {
             eventOnHeroAttackingAMonster(XPos, YPos);
@@ -222,13 +222,13 @@ public class DungeonGUI {
 
     private void eventOnHeroAttackingAMonster(int XPos, int YPos) {
         Hero hero = getHeroByID(getCurrentlyActiveHeroID(), heroList);
-        Monster monster = getMonsterByID(getMap().getMapTilesArray()[XPos][YPos].occupyingCreatureId, monsterList);
+        Monster monster = getMonsterByID(getDungeonMap().getMapTilesArray()[XPos][YPos].occupyingCreatureId, monsterList);
         hero.attackAMonster(monster);
     }
 
     private void eventOnReachableTileClick() {
-        getMap().clearMapReachableProperties(getMap());
-        updateMapGraphics(getMap());
+        getDungeonMap().clearMapReachableProperties(getDungeonMap());
+        updateMapGraphics(getDungeonMap());
         setHasTheCharacterBeenSelected(false);
     }
 
@@ -240,8 +240,8 @@ public class DungeonGUI {
 
     private void eventOnHeroMovement(Button aButton, int XPos, int YPos) {
         Hero hero = getHeroByID(getCurrentlyActiveHeroID(), heroList);
-        getMap().getMapTilesArray()[hero.mapXPos][hero.mapYPos].setOccupyingCreatureId(0);
-        getMap().getMapTilesArray()[XPos][YPos].setOccupyingCreatureId(getCurrentlyActiveHeroID());
+        getDungeonMap().getMapTilesArray()[hero.mapXPos][hero.mapYPos].setOccupyingCreatureId(0);
+        getDungeonMap().getMapTilesArray()[XPos][YPos].setOccupyingCreatureId(getCurrentlyActiveHeroID());
         int deltaX = Math.abs(hero.getMapXPos() - XPos);
         int deltaY = Math.abs(hero.getMapYPos() - YPos);
         hero.setCurrentSpeed(hero.getCurrentSpeed() - (deltaX + deltaY));
@@ -382,19 +382,19 @@ public class DungeonGUI {
         String currentTileTypeWest = "West";
         String currentTileTypeSouth = "South";
         try {
-            currentTileTypeNorth += map.getMapTilesArray()[XPos][YPos + 1].typeOfTile;
+            currentTileTypeNorth += dungeonMap.getMapTilesArray()[XPos][YPos + 1].typeOfTile;
         } catch (IndexOutOfBoundsException ignored) {
         }
         try {
-            currentTileTypeEast += map.getMapTilesArray()[XPos + 1][YPos].typeOfTile;
+            currentTileTypeEast += dungeonMap.getMapTilesArray()[XPos + 1][YPos].typeOfTile;
         } catch (IndexOutOfBoundsException ignored) {
         }
         try {
-            currentTileTypeWest += map.getMapTilesArray()[XPos - 1][YPos].typeOfTile;
+            currentTileTypeWest += dungeonMap.getMapTilesArray()[XPos - 1][YPos].typeOfTile;
         } catch (IndexOutOfBoundsException ignored) {
         }
         try {
-            currentTileTypeSouth += map.getMapTilesArray()[XPos][YPos - 1].typeOfTile;
+            currentTileTypeSouth += dungeonMap.getMapTilesArray()[XPos][YPos - 1].typeOfTile;
         } catch (IndexOutOfBoundsException ignored) {
         }
 
@@ -420,7 +420,7 @@ public class DungeonGUI {
         } else if (currentDirection.contains("South")) {
             temporaryY--;
         }
-        mapTile = map.getMapTilesArray()[temporaryX][temporaryY];
+        mapTile = dungeonMap.getMapTilesArray()[temporaryX][temporaryY];
         gridButton = buttonGrid[temporaryX][temporaryY];
         if (currentDirection.contains("Room") || currentDirection.contains("Corridor") || currentDirection.contains("Opened")) {
             mapTile.inWalkRange = true;
@@ -445,7 +445,7 @@ public class DungeonGUI {
                 mapTile.withinInteractionRange = true;
             }
         }
-        getMap().getMapTilesArray()[temporaryX][temporaryY] = mapTile;
+        getDungeonMap().getMapTilesArray()[temporaryX][temporaryY] = mapTile;
         buttonGrid[temporaryX][temporaryY] = gridButton;
     }
 }

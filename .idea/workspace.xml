@@ -6,9 +6,12 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Character Creation - Available points field addition.">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Character Creation - Skill list addition">
+      <change afterPath="$PROJECT_DIR$/src/sample/HeroClassInformation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/DungeonGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DungeonGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DungeonMap.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,46 +69,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="32" column="21" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/DungeonGUI.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2754">
-              <caret line="172" column="45" selection-start-line="172" selection-start-column="45" selection-end-line="172" selection-end-column="45" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Map.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4998">
-              <caret line="295" column="6" selection-start-line="295" selection-start-column="6" selection-end-line="295" selection-end-column="6" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/MainMenuGUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="53" column="38" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
+              <caret line="172" column="59" selection-start-line="172" selection-start-column="59" selection-end-line="172" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -116,11 +83,35 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="84" selection-start-line="84" selection-end-line="84" />
+            <state relative-caret-position="374">
+              <caret line="113" column="9" lean-forward="true" selection-start-line="113" selection-start-column="9" selection-end-line="113" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#12492#12493#0" expanded="true" />
+                <element signature="e#14427#14428#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/HeroClassInformation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/DungeonMap.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -207,11 +198,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>trim</find>
-      <find>case</find>
-      <find>inWalkRange</find>
-      <find>opened</find>
-      <find>buttonev</find>
       <find>door</find>
       <find>100</find>
       <find>spawn</find>
@@ -231,12 +217,17 @@
       <find>spinn</find>
       <find>radiob</find>
       <find>listene</find>
-      <find>liste</find>
       <find>final</find>
       <find>todo</find>
       <find>3</find>
       <find>returnt</find>
       <find>observabl</find>
+      <find>50</find>
+      <find>race</find>
+      <find>liste</find>
+      <find>24</find>
+      <find>event</find>
+      <find>eventon</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -259,7 +250,6 @@
         <option value="$PROJECT_DIR$/src/sample/HeroMonsterInterface.java" />
         <option value="$PROJECT_DIR$/src/Entity.java" />
         <option value="$PROJECT_DIR$/src/sample/Entity.java" />
-        <option value="$PROJECT_DIR$/src/sample/Map.java" />
         <option value="$PROJECT_DIR$/src/sample/MapTile.java" />
         <option value="$PROJECT_DIR$/src/sample/Monster.java" />
         <option value="$PROJECT_DIR$/src/sample/FakeDatabase.java" />
@@ -269,6 +259,13 @@
         <option value="$PROJECT_DIR$/src/sample/CardForgeGUI.java" />
         <option value="$PROJECT_DIR$/src/sample/MainMenuGUI.java" />
         <option value="$PROJECT_DIR$/src/sample/DungeonGUI.java" />
+        <option value="$PROJECT_DIR$/src/sample/HeroClasses/Barbarian.java" />
+        <option value="$PROJECT_DIR$/src/sample/HeroClasses/Avenger.java" />
+        <option value="$PROJECT_DIR$/src/sample/HeroClasses/HeroClassInterface.java" />
+        <option value="$PROJECT_DIR$/src/sample/Map.java" />
+        <option value="$PROJECT_DIR$/src/sample/DungeonMap.java" />
+        <option value="$PROJECT_DIR$/src/sample/heroClassInformation.java" />
+        <option value="$PROJECT_DIR$/src/sample/HeroClassInformation.java" />
         <option value="$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java" />
       </list>
     </option>
@@ -621,7 +618,14 @@
       <option name="project" value="LOCAL" />
       <updated>1556779941417</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Character Creation - Skill list addition">
+      <created>1556783287249</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1556783287249</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -690,7 +694,8 @@
     <MESSAGE value="Character Creation - completed final score calculations." />
     <MESSAGE value="Character Creation - rearranging the interface" />
     <MESSAGE value="Character Creation - Available points field addition." />
-    <option name="LAST_COMMIT_MESSAGE" value="Character Creation - Available points field addition." />
+    <MESSAGE value="Character Creation - Skill list addition" />
+    <option name="LAST_COMMIT_MESSAGE" value="Character Creation - Skill list addition" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -820,16 +825,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4998">
-          <caret line="295" column="6" selection-start-line="295" selection-start-column="6" selection-end-line="295" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/MainMenuGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
@@ -901,10 +896,61 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/HeroClasses/Bard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/HeroClasses/Barbarian.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="16" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/HeroClasses/Avenger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="25" lean-forward="true" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/HeroClasses/HeroClasses.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/DungeonGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2754">
-          <caret line="172" column="45" selection-start-line="172" selection-start-column="45" selection-end-line="172" selection-end-column="45" />
+          <caret line="172" column="59" selection-start-line="172" selection-start-column="59" selection-end-line="172" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/DungeonMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/HeroClassInformation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -913,11 +959,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="84" selection-start-line="84" selection-end-line="84" />
+        <state relative-caret-position="374">
+          <caret line="113" column="9" lean-forward="true" selection-start-line="113" selection-start-column="9" selection-end-line="113" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#12492#12493#0" expanded="true" />
+            <element signature="e#14427#14428#0" expanded="true" />
           </folding>
         </state>
       </provider>
