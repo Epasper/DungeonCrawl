@@ -16,6 +16,7 @@ public class CharacterCreatorGUI {
     private HBox topBox = new HBox();
     private FlowPane leftBox = new FlowPane();
     private GridPane middleBox = new GridPane();
+    private VBox rightBox = new VBox();
     private ComboBox<String> classChoice = new ComboBox<>();
     private ComboBox<String> raceChoice = new ComboBox<>();
     private Button returnToMainMenu = new Button();
@@ -32,7 +33,12 @@ public class CharacterCreatorGUI {
     private Text finalScoreText = new Text("  Final  \n  Score  ");
     private List<Text> finalAbilityScores = new ArrayList<>();
     private int availableStatPoints = 20;
+    private int availableSkillPoints = 0;
+    private ListView<String> selectedSkillsListView = new ListView<>();
+    private ListView<String> skillsListView = new ListView<>();
     private TextField pointsToSpend = new TextField(String.valueOf(availableStatPoints));
+    private ObservableList<String> availableSkills = FXCollections.observableArrayList();
+    private ObservableList<String> selectedSkills = FXCollections.observableArrayList();
 
 
     public CharacterCreatorGUI() {
@@ -46,10 +52,14 @@ public class CharacterCreatorGUI {
         addElementsToPanes();
         setStyling();
         addTheAbilityChoices();
+        addTheSkillList();
         calculateAllFinalAbilityScores();
         returnToMainMenu.setOnAction(event -> returnToMainMenu());
     }
 
+    enum CharacterSkills {
+        Acrobatics, Arcana, Athletics, Bluff, Diplomacy, Dungeoneering, Endurance, Heal, History, Insight, Intimidate, Nature, Perception, Religion, Stealth, Streetwise, Thievery
+    }
 
     enum CharacterClasses {
         Avenger, Barbarian, Bard, Cleric, Druid, Fighter, Invoker, Paladin, Ranger, Rogue, Shaman, Sorcerer, Warden, Warlock, Warlord, Wizard
@@ -61,6 +71,24 @@ public class CharacterCreatorGUI {
 
     enum Stats {
         Strength, Constitution, Dexterity, Intelligence, Wisdom, Charisma
+    }
+
+    private void addTheSkillList() {
+        Text availableSkillPointsText = new Text("Number of available skill points: ");
+        Text skillListText = new Text("List of Skills: ");
+        Text skillPointsText = new Text(String.valueOf(availableSkillPoints));
+        Text selectedSkillsText = new Text("Trained skills: ");
+        for (CharacterSkills currentSkill : CharacterSkills.values()) {
+            availableSkills.add(currentSkill.toString());
+            skillsListView.getItems().add(currentSkill.toString());
+        }
+        rightBox.getChildren().add(availableSkillPointsText);
+        rightBox.getChildren().add(skillPointsText);
+        rightBox.getChildren().add(skillListText);
+        rightBox.getChildren().add(skillsListView);
+        rightBox.getChildren().add(selectedSkillsText);
+        selectedSkillsListView.setMaxHeight(50);
+        rightBox.getChildren().add(selectedSkillsListView);
     }
 
     private void addTheAbilityChoices() {
@@ -133,6 +161,7 @@ public class CharacterCreatorGUI {
         characterCreatorInnerPane.setTop(topBox);
         characterCreatorInnerPane.setLeft(leftBox);
         characterCreatorInnerPane.setCenter(middleBox);
+        characterCreatorInnerPane.setRight(rightBox);
     }
 
     private int calculateTotalPointsChange(int oldValue, int newValue) {
