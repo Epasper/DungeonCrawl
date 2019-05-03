@@ -48,6 +48,9 @@ public class CharacterCreatorGUI {
     private ObservableList<String> availableSkills = FXCollections.observableArrayList();
     private ObservableList<String> selectedSkills = FXCollections.observableArrayList();
     private Text maxHpText = new Text("Max HP: " + getMaxHP());
+    private Text fortitudeSaveText = new Text("Fortitude: " + getFort());
+    private Text reflexSaveText = new Text("Reflex: " + getReflex());
+    private Text willSaveText = new Text("Will: " + getWill());
 
 
     public int getAvailableStatPoints() {
@@ -143,9 +146,6 @@ public class CharacterCreatorGUI {
         middleBox.add(maxHpText, 0, 11);
         Text savingText = new Text("Saving Throws:  ");
         middleBox.add(savingText, 0, 12);
-        Text fortitudeSaveText = new Text("Fortitude: " + getFort());
-        Text reflexSaveText = new Text("Reflex: " + getReflex());
-        Text willSaveText = new Text("Will: " + getWill());
         middleBox.add(fortitudeSaveText, 0, 13);
         middleBox.add(reflexSaveText, 0, 14);
         middleBox.add(willSaveText, 0, 15);
@@ -238,13 +238,17 @@ public class CharacterCreatorGUI {
             String trimmedString = oldValueString.substring(oldValueString.indexOf('\'')).replaceAll("\\W", "");
             racialBonusNumbers.get(getStatID(trimmedString)).setText("      ");
             System.out.println(trimmedString);
-            updateMaxHP(selectedHeroClass);
         }
-        String radioButtonString = newValue.toString();
-        String trimmedString = radioButtonString.substring(radioButtonString.indexOf('\'')).replaceAll("\\W", "");
-        racialBonusNumbers.get(getStatID(trimmedString)).setText(" +2 ");
-        System.out.println(trimmedString);
+        String radioButtonString = null;
+        try {
+            radioButtonString = newValue.toString();
+            String trimmedString = radioButtonString.substring(radioButtonString.indexOf('\'')).replaceAll("\\W", "");
+            racialBonusNumbers.get(getStatID(trimmedString)).setText(" +2 ");
+            System.out.println(trimmedString);
+        } catch (NullPointerException ignored) {
+        }
         updateMaxHP(selectedHeroClass);
+        updateSavingThrows();
     }
 
     private void updateMaxHP(String selectedClass) {
@@ -263,6 +267,31 @@ public class CharacterCreatorGUI {
         }
     }
 
+    private void updateSavingThrows() {
+        fort = 0;
+        reflex = 0;
+        will = 0;
+        for (int i = 0; i < abilityIntegersArray.length; i++) {
+            int currentStat = abilityIntegersArray[i];
+            int currentSave = (currentStat - 10) / 2;
+            if (i < 2) {
+                if (currentSave > fort) {
+                    fort = currentSave;
+                }
+            } else if (i < 4) {
+                if (currentSave > reflex) {
+                    reflex = currentSave;
+                }
+            } else {
+                if (currentSave > will) {
+                    will = currentSave;
+                }
+            }
+        }
+        fortitudeSaveText.setText("Fortitude: " + getFort());
+        reflexSaveText.setText("Reflex: " + getReflex());
+        willSaveText.setText("Will: " + getWill());
+    }
 
     private void prepareASingleAttribute(Stats currentStat) {
         statNames.add(new Text("  " + currentStat.toString() + " "));
@@ -293,6 +322,7 @@ public class CharacterCreatorGUI {
         pointsToSpend.setText(String.valueOf(getAvailableStatPoints()));
         calculateAllFinalAbilityScores();
         updateMaxHP(selectedHeroClass);
+        updateSavingThrows();
     }
 
     private void manageThePanes() {
@@ -367,6 +397,7 @@ public class CharacterCreatorGUI {
         for (int i = 0; i < 6; i++) {
             racialBonusRadioButtons.get(i).setSelected(false);
         }
+        updateSavingThrows();
     }
 
     private void eventOnSelectHeroClass(String newValue) {
@@ -382,6 +413,7 @@ public class CharacterCreatorGUI {
         availableSkillsListView.setDisable(false);
         updateMaxHP(newValue);
         selectedHeroClass = newValue;
+        updateSavingThrows();
     }
 
     private void manageRacialStatBonuses(String raceName) {
