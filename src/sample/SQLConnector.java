@@ -14,8 +14,6 @@ public class SQLConnector {
         Connection conn = null;
         Statement stmt = null;
         try {
-
-
             System.out.println("Connecting to database...");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
