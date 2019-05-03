@@ -177,6 +177,15 @@ public class HeroClassInformation {
         wizard.add("Insight");
         wizard.add("Nature");
         wizard.add("Religion");
-        availableSkills.put("Bard", wizard);
+        availableSkills.put("Wizard", wizard);
+        classSkillPoints.put("Warlord", 4);
+        List<String> warlord = new ArrayList<>();
+        warlord.add("Athletics");
+        warlord.add("Diplomacy");
+        warlord.add("Endurance");
+        warlord.add("Heal");
+        warlord.add("History");
+        warlord.add("Intimidate");
+        availableSkills.put("Warlord", warlord);
     }
 }
