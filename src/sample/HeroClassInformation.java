@@ -9,11 +9,29 @@ public class HeroClassInformation {
 
     Map<String, Integer> classSkillPoints = new HashMap<>();
     Map<String, List<String>> availableSkills = new HashMap<>();
-    static Map<String, Integer> hidDice = new HashMap<>();
+    Map<String, Integer> hitDiceAt1st = new HashMap<>();
+    Map<String, Integer> hitDicePerLevel = new HashMap<>();
+    Map<String, List<String>> armorProficiencies = new HashMap<>();
 
     //todo think about refactoring the Map onto something else, perhaps something DRY
 
     public HeroClassInformation() {
+        hitDiceAt1st.put("Avenger", 14);
+        hitDiceAt1st.put("Barbarian", 15);
+        hitDiceAt1st.put("Bard", 12);
+        hitDiceAt1st.put("Cleric", 12);
+        hitDiceAt1st.put("Druid", 12);
+        hitDiceAt1st.put("Fighter", 15);
+        hitDiceAt1st.put("Invoker", 10);
+        hitDiceAt1st.put("Paladin", 15);
+        hitDiceAt1st.put("Ranger", 12);
+        hitDiceAt1st.put("Rogue", 12);
+        hitDiceAt1st.put("Shaman", 12);
+        hitDiceAt1st.put("Warden", 17);
+        hitDiceAt1st.put("Warlord", 12);
+        hitDiceAt1st.put("Warlock", 12);
+        hitDiceAt1st.put("Sorcerer", 12);
+        hitDiceAt1st.put("Wizard", 10);
         classSkillPoints.put("Avenger", 4);
         List<String> avenger = new ArrayList<>();
         avenger.add("Acrobatics");
@@ -177,6 +195,15 @@ public class HeroClassInformation {
         wizard.add("Insight");
         wizard.add("Nature");
         wizard.add("Religion");
-        availableSkills.put("Bard", wizard);
+        availableSkills.put("Wizard", wizard);
+        classSkillPoints.put("Warlord", 4);
+        List<String> warlord = new ArrayList<>();
+        warlord.add("Athletics");
+        warlord.add("Diplomacy");
+        warlord.add("Endurance");
+        warlord.add("Heal");
+        warlord.add("History");
+        warlord.add("Intimidate");
+        availableSkills.put("Warlord", warlord);
     }
 }

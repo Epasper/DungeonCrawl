@@ -12,6 +12,7 @@ import java.util.List;
 
 public class CharacterCreatorGUI {
     private MainMenuGUI mainMenuGUI = new MainMenuGUI();
+    private String selectedHeroClass;
     ScrollPane characterCreatorOuterPane = new ScrollPane();
     private BorderPane characterCreatorInnerPane = new BorderPane();
     private HBox topBox = new HBox();
@@ -33,24 +34,77 @@ public class CharacterCreatorGUI {
     private ObservableList<Integer> statPointsOptions = FXCollections.observableArrayList();
     private Text finalScoreText = new Text("  Final  \n  Score  ");
     private List<Text> finalAbilityScores = new ArrayList<>();
+    private int[] abilityIntegersArray = new int[6];
     private int availableStatPoints = 20;
     private int numberOfAvailableSkillPoints = 0;
-    private Text skillPointsText = new Text(String.valueOf(numberOfAvailableSkillPoints));
-    private ListView<String> selectedSkillsListView = new ListView<>();
-    private ListView<String> availableSkillsListView = new ListView<>();
-    private TextField pointsToSpend = new TextField(String.valueOf(availableStatPoints));
-    private ObservableList<String> availableSkills = FXCollections.observableArrayList();
-    private ObservableList<String> selectedSkills = FXCollections.observableArrayList();
-    private int MaxHP = 0;
+    private int maxHP = 0;
     private int fort = 0;
     private int reflex = 0;
     private int will = 0;
+    private Text skillPointsText = new Text(String.valueOf(getNumberOfAvailableSkillPoints()));
+    private ListView<String> selectedSkillsListView = new ListView<>();
+    private ListView<String> availableSkillsListView = new ListView<>();
+    private TextField pointsToSpend = new TextField(String.valueOf(getAvailableStatPoints()));
+    private ObservableList<String> availableSkills = FXCollections.observableArrayList();
+    private ObservableList<String> selectedSkills = FXCollections.observableArrayList();
+    private Text maxHpText = new Text("Max HP: " + getMaxHP());
+    private Text fortitudeSaveText = new Text("Fortitude: " + getFort());
+    private Text reflexSaveText = new Text("Reflex: " + getReflex());
+    private Text willSaveText = new Text("Will: " + getWill());
+
+
+    public int getAvailableStatPoints() {
+        return availableStatPoints;
+    }
+
+    public void setAvailableStatPoints(int availableStatPoints) {
+        this.availableStatPoints = availableStatPoints;
+    }
+
+    public int getNumberOfAvailableSkillPoints() {
+        return numberOfAvailableSkillPoints;
+    }
+
+    public void setNumberOfAvailableSkillPoints(int numberOfAvailableSkillPoints) {
+        this.numberOfAvailableSkillPoints = numberOfAvailableSkillPoints;
+    }
+
+    public int getMaxHP() {
+        return maxHP;
+    }
+
+    public void setMaxHP(int maxHP) {
+        this.maxHP = maxHP;
+    }
+
+    public int getFort() {
+        return fort;
+    }
+
+    public void setFort(int fort) {
+        this.fort = fort;
+    }
+
+    public int getReflex() {
+        return reflex;
+    }
+
+    public void setReflex(int reflex) {
+        this.reflex = reflex;
+    }
+
+    public int getWill() {
+        return will;
+    }
+
+    public void setWill(int will) {
+        this.will = will;
+    }
 
     public CharacterCreatorGUI() {
         initializeCharacterCreatorGUI();
     }
 
-    //todo encapsulate fields by getters and setters
     //todo finishing the character creation should save it in a database.
 
     private void initializeCharacterCreatorGUI() {
@@ -62,6 +116,7 @@ public class CharacterCreatorGUI {
         calculateAllFinalAbilityScores();
         addTheDerivedElements();
         returnToMainMenu.setOnAction(event -> returnToMainMenu());
+        updateMaxHP(null);
     }
 
     enum CharacterSkills {
@@ -81,21 +136,16 @@ public class CharacterCreatorGUI {
     }
 
     //todo add the saving throws (Fortitude/Will/Reflex)
-    //todo add the hit points maximum at level 1 in accordance to th Class
     //todo add Armor Class and AC calculations
     //todo add starting equipment selection
     //todo add starting powers selection (daily/encounter/at-will)
 
     private void addTheDerivedElements() {
         Text breakLine = new Text("    ");
-        middleBox.add(breakLine,0,10);
-        Text maxHpText = new Text("Max HP: " + MaxHP);
+        middleBox.add(breakLine, 0, 10);
         middleBox.add(maxHpText, 0, 11);
         Text savingText = new Text("Saving Throws:  ");
-        middleBox.add(savingText, 0,12);
-        Text fortitudeSaveText = new Text("Fortitude: " + fort);
-        Text reflexSaveText = new Text("Reflex: " + reflex);
-        Text willSaveText = new Text("Will: " + will);
+        middleBox.add(savingText, 0, 12);
         middleBox.add(fortitudeSaveText, 0, 13);
         middleBox.add(reflexSaveText, 0, 14);
         middleBox.add(willSaveText, 0, 15);
@@ -112,6 +162,9 @@ public class CharacterCreatorGUI {
         availableSkillsListView.setMaxHeight(availableSkills.size() * 24);
         availableSkillsListView.setOnMouseClicked(event -> {
             eventOnSkillSelection();
+        });
+        selectedSkillsListView.setOnMouseClicked(event -> {
+            eventOnSkillDeselection();
         });
         rightBox.getChildren().add(availableSkillPointsText);
         rightBox.getChildren().add(skillPointsText);
@@ -132,11 +185,25 @@ public class CharacterCreatorGUI {
         System.out.println(selection);
         selectedSkillsListView.setMaxHeight(selectedSkills.size() * 24);
         availableSkillsListView.setMaxHeight(availableSkills.size() * 24);
-        numberOfAvailableSkillPoints--;
-        skillPointsText.setText(String.valueOf(numberOfAvailableSkillPoints));
-        if (numberOfAvailableSkillPoints == 0) {
+        setNumberOfAvailableSkillPoints(getNumberOfAvailableSkillPoints() - 1);
+        skillPointsText.setText(String.valueOf(getNumberOfAvailableSkillPoints()));
+        if (getNumberOfAvailableSkillPoints() == 0) {
             availableSkillsListView.setDisable(true);
         }
+    }
+
+    private void eventOnSkillDeselection() {
+        String selection = selectedSkillsListView.getSelectionModel().getSelectedItems().toString().replaceAll("[^a-zA-Z]", "");
+        selectedSkills.removeAll(selection);
+        selectedSkillsListView.setItems(selectedSkills);
+        availableSkills.add(selection);
+        availableSkillsListView.setItems(availableSkills);
+        System.out.println(selection);
+        selectedSkillsListView.setMaxHeight(selectedSkills.size() * 24);
+        availableSkillsListView.setMaxHeight(availableSkills.size() * 24);
+        setNumberOfAvailableSkillPoints(getNumberOfAvailableSkillPoints() + 1);
+        skillPointsText.setText(String.valueOf(getNumberOfAvailableSkillPoints()));
+        availableSkillsListView.setDisable(false);
     }
 
     private void addTheAbilityChoices() {
@@ -172,10 +239,58 @@ public class CharacterCreatorGUI {
             racialBonusNumbers.get(getStatID(trimmedString)).setText("      ");
             System.out.println(trimmedString);
         }
-        String radioButtonString = newValue.toString();
-        String trimmedString = radioButtonString.substring(radioButtonString.indexOf('\'')).replaceAll("\\W", "");
-        racialBonusNumbers.get(getStatID(trimmedString)).setText(" +2 ");
-        System.out.println(trimmedString);
+        String radioButtonString = null;
+        try {
+            radioButtonString = newValue.toString();
+            String trimmedString = radioButtonString.substring(radioButtonString.indexOf('\'')).replaceAll("\\W", "");
+            racialBonusNumbers.get(getStatID(trimmedString)).setText(" +2 ");
+            System.out.println(trimmedString);
+        } catch (NullPointerException ignored) {
+        }
+        updateMaxHP(selectedHeroClass);
+        updateSavingThrows();
+    }
+
+    private void updateMaxHP(String selectedClass) {
+        int constitution = abilityIntegersArray[1];
+        try {
+            HeroClassInformation classInfo = new HeroClassInformation();
+
+            int a = classInfo.hitDiceAt1st.get(selectedClass);
+            System.out.println(a);
+            setMaxHP(classInfo.hitDiceAt1st.get(selectedClass) + constitution);
+            maxHpText.setText("Max HP: " + String.valueOf(getMaxHP()));
+        } catch (NullPointerException e) {
+            setMaxHP(constitution);
+            maxHpText.setText("Max HP: " + String.valueOf(getMaxHP()));
+
+        }
+    }
+
+    private void updateSavingThrows() {
+        fort = 0;
+        reflex = 0;
+        will = 0;
+        for (int i = 0; i < abilityIntegersArray.length; i++) {
+            int currentStat = abilityIntegersArray[i];
+            int currentSave = (currentStat - 10) / 2;
+            if (i < 2) {
+                if (currentSave > fort) {
+                    fort = currentSave;
+                }
+            } else if (i < 4) {
+                if (currentSave > reflex) {
+                    reflex = currentSave;
+                }
+            } else {
+                if (currentSave > will) {
+                    will = currentSave;
+                }
+            }
+        }
+        fortitudeSaveText.setText("Fortitude: " + getFort());
+        reflexSaveText.setText("Reflex: " + getReflex());
+        willSaveText.setText("Will: " + getWill());
     }
 
     private void prepareASingleAttribute(Stats currentStat) {
@@ -190,9 +305,7 @@ public class CharacterCreatorGUI {
     private void displayASingleAttribute(int i) {
         statsValueSpinners.get(i).getValueFactory().setValue(10);
         statsValueSpinners.get(i).valueProperty().addListener((observable, oldValue, newValue) -> {
-            availableStatPoints += calculateTotalPointsChange(oldValue, newValue);
-            pointsToSpend.setText(String.valueOf(availableStatPoints));
-            calculateAllFinalAbilityScores();
+            eventOnSpinnerChange(oldValue, newValue);
         });
         racialBonusRadioButtons.get(i).setToggleGroup(racialToggleGroup);
         racialBonusRadioButtons.get(i).setDisable(true);
@@ -202,6 +315,14 @@ public class CharacterCreatorGUI {
         middleBox.add(racialBonusRadioButtons.get(i), 3, i + 2);
         middleBox.add(finalAbilityScores.get(i), 4, i + 2);
         middleBox.add(modifierNumbersTextList.get(i), 5, i + 2);
+    }
+
+    private void eventOnSpinnerChange(Integer oldValue, Integer newValue) {
+        setAvailableStatPoints(getAvailableStatPoints() + calculateTotalPointsChange(oldValue, newValue));
+        pointsToSpend.setText(String.valueOf(getAvailableStatPoints()));
+        calculateAllFinalAbilityScores();
+        updateMaxHP(selectedHeroClass);
+        updateSavingThrows();
     }
 
     private void manageThePanes() {
@@ -224,6 +345,7 @@ public class CharacterCreatorGUI {
         return pointsForSingleStat * (oldValue - newValue);
     }
 
+
     private void calculateAllFinalAbilityScores() {
         for (int i = 0; i < finalAbilityScores.size(); i++) {
             int bonusFromChoice = statsValueSpinners.get(i).getValue();
@@ -233,6 +355,7 @@ public class CharacterCreatorGUI {
                 racialBonus = Integer.parseInt(textToBeSet);
             }
             int sum = racialBonus + bonusFromChoice;
+            abilityIntegersArray[i] = sum;
             textToBeSet = "" + sum;
             finalAbilityScores.get(i).setText("   " + textToBeSet);
             if (sum < 9) {
@@ -255,8 +378,7 @@ public class CharacterCreatorGUI {
             raceOptions.add(currentRace.toString());
         }
         raceChoice.valueProperty().addListener((observable, oldValue, newValue) -> {
-            manageRacialStatBonuses(newValue);
-            calculateAllFinalAbilityScores();
+            eventOnSelectHeroRace(newValue);
         });
         classChoice.valueProperty().addListener((observable, oldValue, newValue) -> {
             eventOnSelectHeroClass(newValue);
@@ -269,6 +391,15 @@ public class CharacterCreatorGUI {
         leftBox.getChildren().add(returnToMainMenu);
     }
 
+    private void eventOnSelectHeroRace(String newValue) {
+        manageRacialStatBonuses(newValue);
+        calculateAllFinalAbilityScores();
+        for (int i = 0; i < 6; i++) {
+            racialBonusRadioButtons.get(i).setSelected(false);
+        }
+        updateSavingThrows();
+    }
+
     private void eventOnSelectHeroClass(String newValue) {
         HeroClassInformation heroClassInformation = new HeroClassInformation();
         System.out.println(newValue);
@@ -277,9 +408,12 @@ public class CharacterCreatorGUI {
         availableSkills.addAll(heroClassInformation.availableSkills.get(newValue));
         availableSkillsListView.setMaxHeight(availableSkills.size() * 24);
         selectedSkillsListView.setMaxHeight(selectedSkills.size() * 24);
-        numberOfAvailableSkillPoints = heroClassInformation.classSkillPoints.get(newValue);
-        skillPointsText.setText(String.valueOf(numberOfAvailableSkillPoints));
+        setNumberOfAvailableSkillPoints(heroClassInformation.classSkillPoints.get(newValue));
+        skillPointsText.setText(String.valueOf(getNumberOfAvailableSkillPoints()));
         availableSkillsListView.setDisable(false);
+        updateMaxHP(newValue);
+        selectedHeroClass = newValue;
+        updateSavingThrows();
     }
 
     private void manageRacialStatBonuses(String raceName) {
