@@ -2,26 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de97b43a-8902-45e2-a345-dc80bad4fa20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/BondOfPursuit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/BondOfRetribution.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/OverwhelmingStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/RadiantVengeance.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/DevastatingStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/HowlingStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/PressingStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/RecuperatingStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/HeroPower.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Bard/GuidingStrike.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Bard/MisdirectedMark.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Bard/ViciousMockery.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Bard/WarSongStrike.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/CharacterCreatorGUI$CharacterClasses.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/CharacterCreatorGUI$CharacterRaces.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/CharacterCreatorGUI$CharacterSkills.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/CharacterCreatorGUI$Stats.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/CharacterCreatorGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/CharacterCreatorGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroClassInformation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroClassInformation.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/HeroClassInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroClassInformation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPower.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,15 +19,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="98" column="43" lean-forward="true" selection-start-line="98" selection-start-column="43" selection-end-line="98" selection-end-column="43" />
+            <state relative-caret-position="246">
+              <caret line="344" column="27" lean-forward="true" selection-start-line="344" selection-start-column="27" selection-end-line="344" selection-end-column="27" />
               <folding>
                 <element signature="e#3727#3728#0" expanded="true" />
                 <element signature="e#3774#3775#0" expanded="true" />
-                <element signature="e#20221#20222#0" expanded="true" />
+                <element signature="e#20636#20637#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -51,90 +38,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
               <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Avenger/RadiantVengeance.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Avenger/BondOfPursuit.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Avenger/BondOfRetribution.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/HowlingStrike.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/DevastatingStrike.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/PressingStrike.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/RecuperatingStrike.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -214,6 +117,79 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/sample/HeroClassInformation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="365">
+              <caret line="113" column="8" selection-start-line="113" selection-start-column="8" selection-end-line="113" selection-end-column="8" />
+              <folding>
+                <element signature="method#populateTheTablesWithSkills#0;class#HeroClassInformation#0" />
+                <element signature="method#populateTheTablesWithHPs#0;class#HeroClassInformation#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Bard/MisdirectedMark.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" selection-start-line="7" selection-end-line="20" selection-end-column="152" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Bard/ViciousMockery.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="77" lean-forward="true" selection-start-line="18" selection-start-column="77" selection-end-line="18" selection-end-column="77" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Bard/WarSongStrike.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="18" lean-forward="true" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Bard/GuidingStrike.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="155" selection-start-line="19" selection-start-column="155" selection-end-line="19" selection-end-column="155" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Avenger/BondOfPursuit.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" selection-start-line="7" selection-end-line="20" selection-end-column="4" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -251,7 +227,6 @@
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPower.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/RecuperatingStrike.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroClassInformation.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/HeroPower.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/BondOfPursuit.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/BondOfRetribution.java" />
@@ -262,6 +237,11 @@
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/PressingStrike.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/RecuperatingStrike.java" />
         <option value="$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java" />
+        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Bard/MisdirectedMark.java" />
+        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Bard/ViciousMockery.java" />
+        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Bard/WarSongStrike.java" />
+        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Bard/GuidingStrike.java" />
+        <option value="$PROJECT_DIR$/src/sample/HeroClassInformation.java" />
       </list>
     </option>
   </component>
@@ -324,6 +304,14 @@
               <item name="sample" type="462c0819:PsiDirectoryNode" />
               <item name="HeroPowers" type="462c0819:PsiDirectoryNode" />
               <item name="Barbarian" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="HeroPowers" type="462c0819:PsiDirectoryNode" />
+              <item name="Bard" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -397,7 +385,14 @@
       <option name="project" value="LOCAL" />
       <updated>1557126045714</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Character Creation - At Will Power Selection - Populated rules for 1st at will powers of Barbarian and Avenger, added comboBoxes and selections.">
+      <created>1557131965624</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1557131965624</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView">
@@ -413,7 +408,7 @@
     <frame x="1358" y="-290" width="1696" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20843521" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20843521" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -422,7 +417,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32976446" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32441112" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32441112" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39828694" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -445,7 +440,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Character Creation - removed unnecessary getters and setters, added armor class calculations." />
     <MESSAGE value="Character Creation - started powers selection, new class: HeroPower and beginning of the Character GUI refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="Character Creation - started powers selection, new class: HeroPower and beginning of the Character GUI refactoring" />
+    <MESSAGE value="Character Creation - At Will Power Selection - Populated rules for 1st at will powers of Barbarian and Avenger, added comboBoxes and selections." />
+    <option name="LAST_COMMIT_MESSAGE" value="Character Creation - At Will Power Selection - Populated rules for 1st at will powers of Barbarian and Avenger, added comboBoxes and selections." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
@@ -463,29 +459,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroClassInformation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="24" column="41" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
-          <folding>
-            <element signature="e#2147#2148#0" expanded="true" />
-            <element signature="e#2186#2187#0" expanded="true" />
-            <element signature="e#2264#2265#0" expanded="true" />
-            <element signature="e#2320#2321#0" expanded="true" />
-            <element signature="e#2381#2382#0" expanded="true" />
-            <element signature="e#2419#2420#0" expanded="true" />
-            <element signature="e#2607#2608#0" expanded="true" />
-            <element signature="e#2642#2643#0" expanded="true" />
-            <element signature="e#2712#2713#0" expanded="true" />
-            <element signature="e#2760#2761#0" expanded="true" />
-            <element signature="e#2829#2830#0" expanded="true" />
-            <element signature="e#2872#2873#0" expanded="true" />
-            <element signature="method#populateTheTablesWithSkills#0;class#HeroClassInformation#0" />
-            <element signature="method#populateTheTablesWithHPs#0;class#HeroClassInformation#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -559,30 +532,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Avenger/BondOfPursuit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Avenger/BondOfRetribution.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Avenger/RadiantVengeance.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -629,6 +582,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="344" column="27" lean-forward="true" selection-start-line="344" selection-start-column="27" selection-end-line="344" selection-end-column="27" />
+          <folding>
+            <element signature="e#3727#3728#0" expanded="true" />
+            <element signature="e#3774#3775#0" expanded="true" />
+            <element signature="e#20636#20637#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Avenger/RadiantVengeance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Avenger/OverwhelmingStrike.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -639,14 +614,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Avenger/BondOfPursuit.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="98" column="43" lean-forward="true" selection-start-line="98" selection-start-column="43" selection-end-line="98" selection-end-column="43" />
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="20" selection-end-column="4" />
           <folding>
-            <element signature="e#3727#3728#0" expanded="true" />
-            <element signature="e#3774#3775#0" expanded="true" />
-            <element signature="e#20221#20222#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Bard/ViciousMockery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="77" lean-forward="true" selection-start-line="18" selection-start-column="77" selection-end-line="18" selection-end-column="77" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Bard/WarSongStrike.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="18" lean-forward="true" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Bard/MisdirectedMark.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="20" selection-end-column="152" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Bard/GuidingStrike.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="155" selection-start-line="19" selection-start-column="155" selection-end-line="19" selection-end-column="155" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/HeroClassInformation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="113" column="8" selection-start-line="113" selection-start-column="8" selection-end-line="113" selection-end-column="8" />
+          <folding>
+            <element signature="method#populateTheTablesWithSkills#0;class#HeroClassInformation#0" />
+            <element signature="method#populateTheTablesWithHPs#0;class#HeroClassInformation#0" />
           </folding>
         </state>
       </provider>

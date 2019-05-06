@@ -7,6 +7,10 @@ import sample.HeroPowers.Avenger.RadiantVengeance;
 import sample.HeroPowers.Barbarian.DevastatingStrike;
 import sample.HeroPowers.Barbarian.HowlingStrike;
 import sample.HeroPowers.Barbarian.PressingStrike;
+import sample.HeroPowers.Bard.GuidingStrike;
+import sample.HeroPowers.Bard.MisdirectedMark;
+import sample.HeroPowers.Bard.ViciousMockery;
+import sample.HeroPowers.Bard.WarSongStrike;
 import sample.HeroPowers.HeroPower;
 import sample.HeroPowers.Barbarian.RecuperatingStrike;
 
@@ -90,7 +94,7 @@ public class HeroClassInformation {
 
     private void populateTheTablesWithAtWillPowers() {
         List<HeroPower> avenger = new ArrayList<>();
-        atWillPowersAtLevel1.put("Avenger", avenger);
+        atWillPowersAtLevel1.put(CharacterClasses.Avenger.toString(), avenger);
         avenger.add(new BondOfRetribution());
         avenger.add(new BondOfPursuit());
         avenger.add(new OverwhelmingStrike());
@@ -101,6 +105,13 @@ public class HeroClassInformation {
         barbarian.add(new PressingStrike());
         barbarian.add(new DevastatingStrike());
         barbarian.add(new HowlingStrike());
+        List<HeroPower> bard = new ArrayList<>();
+        atWillPowersAtLevel1.put(CharacterClasses.Bard.toString(), bard);
+        bard.add(new GuidingStrike());
+        bard.add(new MisdirectedMark());
+        bard.add(new ViciousMockery());
+        bard.add(new WarSongStrike());
+
     }
 
     private void populateTheTablesWithSkills() {

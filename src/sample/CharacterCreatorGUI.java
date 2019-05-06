@@ -1,9 +1,11 @@
 package sample;
 
+import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
@@ -357,6 +359,10 @@ public class CharacterCreatorGUI {
         atWill2Choice.setItems(atWill2Options);
         atWill1Choice.setDisable(false);
         atWill2Choice.setDisable(false);
+    }
+
+    private void displayThePowerPopup () {
+        //todo add a helper to power choice - when a mouse is dragged onto the power, then the power description is shown.
     }
 
     private void eventOnSelectHeroRace(String newValue) {
