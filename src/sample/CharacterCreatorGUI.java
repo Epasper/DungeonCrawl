@@ -1,13 +1,12 @@
 package sample;
 
-import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
+import sample.HeroPowers.HeroPower;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,6 +58,7 @@ public class CharacterCreatorGUI {
     private Text reflexSaveText = new Text("Reflex: \t\t\t" + reflex);
     private Text willSaveText = new Text("Will: \t\t\t\t" + will);
     private Text armorClassText = new Text("Armor Class: \t\t" + AC);
+    private TextField powerDescription = new TextField();
 
     public CharacterCreatorGUI() {
         initializeCharacterCreatorGUI();
@@ -113,6 +113,8 @@ public class CharacterCreatorGUI {
         middleBox.add(reflexSaveText, 0, 14);
         middleBox.add(willSaveText, 0, 15);
         middleBox.add(armorClassText, 0, 16);
+        powerDescription.setMinSize(400, 250);
+        middleBox.add(powerDescription, 0, 25);
     }
 
     private void addTheSkillList() {
@@ -370,8 +372,17 @@ public class CharacterCreatorGUI {
         atWill2Choice.setItems(atWill2Options);
         atWill1Choice.setDisable(false);
         atWill2Choice.setDisable(false);
+        //atWill1Choice.valueProperty().addListener((observable, oldValue, newValue) -> showThePowerDescription(heroClassInformation.getAtWillPowersAtLevel1().get(newValue)));
+        //atWill2Choice.valueProperty().addListener((observable, oldValue, newValue) -> showThePowerDescription(heroClassInformation.getAtWillPowersAtLevel1().get(newValue)));
         encounterChoice.setDisable(false);
         dailyChoice.setDisable(false);
+
+    }
+
+    //todo finish the skill description window after selection
+    private void showThePowerDescription(List<HeroPower> selectedPower) {
+
+
     }
 
     private void displayThePowerPopup() {
