@@ -11,6 +11,11 @@ import sample.HeroPowers.Bard.GuidingStrike;
 import sample.HeroPowers.Bard.MisdirectedMark;
 import sample.HeroPowers.Bard.ViciousMockery;
 import sample.HeroPowers.Bard.WarSongStrike;
+import sample.HeroPowers.Cleric.LanceOfFaith;
+import sample.HeroPowers.Cleric.PriestsShield;
+import sample.HeroPowers.Cleric.RighteousBrand;
+import sample.HeroPowers.Cleric.SacredFlame;
+import sample.HeroPowers.Druid.*;
 import sample.HeroPowers.HeroPower;
 import sample.HeroPowers.Barbarian.RecuperatingStrike;
 
@@ -111,7 +116,20 @@ public class HeroClassInformation {
         bard.add(new MisdirectedMark());
         bard.add(new ViciousMockery());
         bard.add(new WarSongStrike());
-
+        List<HeroPower> cleric = new ArrayList<>();
+        atWillPowersAtLevel1.put(CharacterClasses.Cleric.toString(), cleric);
+        cleric.add(new LanceOfFaith());
+        cleric.add(new PriestsShield());
+        cleric.add(new RighteousBrand());
+        cleric.add(new SacredFlame());
+        List<HeroPower> druid = new ArrayList<>();
+        atWillPowersAtLevel1.put(CharacterClasses.Druid.toString(), druid);
+        druid.add(new CallOfTheBeast());
+        druid.add(new ChillWind());
+        druid.add(new GraspingClaws());
+        druid.add(new Pounce());
+        druid.add(new SavageRend());
+        druid.add(new ThornWhip());
     }
 
     private void populateTheTablesWithSkills() {
