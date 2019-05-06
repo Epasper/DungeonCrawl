@@ -227,6 +227,8 @@ public class HeroClassInformation {
     }
 
     public HeroPower getHeroPowerByName(String className, String powerName) {
+
+        //todo nullpointer
         for (HeroPower currentPower : atWillPowersAtLevel1.get(className)) {
             if (powerName.equals(currentPower.getPowerName())) {
                 return currentPower;
