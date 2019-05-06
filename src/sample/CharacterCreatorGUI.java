@@ -41,65 +41,18 @@ public class CharacterCreatorGUI {
     private int fort = 0;
     private int reflex = 0;
     private int will = 0;
-    private Text skillPointsText = new Text(String.valueOf(getNumberOfAvailableSkillPoints()));
+    private int AC = 10;
+    private Text skillPointsText = new Text(String.valueOf(numberOfAvailableSkillPoints));
     private ListView<String> selectedSkillsListView = new ListView<>();
     private ListView<String> availableSkillsListView = new ListView<>();
-    private TextField pointsToSpend = new TextField(String.valueOf(getAvailableStatPoints()));
+    private TextField pointsToSpend = new TextField(String.valueOf(availableStatPoints));
     private ObservableList<String> availableSkills = FXCollections.observableArrayList();
     private ObservableList<String> selectedSkills = FXCollections.observableArrayList();
-    private Text maxHpText = new Text("Max HP: " + getMaxHP());
-    private Text fortitudeSaveText = new Text("Fortitude: " + getFort());
-    private Text reflexSaveText = new Text("Reflex: " + getReflex());
-    private Text willSaveText = new Text("Will: " + getWill());
-
-
-    public int getAvailableStatPoints() {
-        return availableStatPoints;
-    }
-
-    public void setAvailableStatPoints(int availableStatPoints) {
-        this.availableStatPoints = availableStatPoints;
-    }
-
-    public int getNumberOfAvailableSkillPoints() {
-        return numberOfAvailableSkillPoints;
-    }
-
-    public void setNumberOfAvailableSkillPoints(int numberOfAvailableSkillPoints) {
-        this.numberOfAvailableSkillPoints = numberOfAvailableSkillPoints;
-    }
-
-    public int getMaxHP() {
-        return maxHP;
-    }
-
-    public void setMaxHP(int maxHP) {
-        this.maxHP = maxHP;
-    }
-
-    public int getFort() {
-        return fort;
-    }
-
-    public void setFort(int fort) {
-        this.fort = fort;
-    }
-
-    public int getReflex() {
-        return reflex;
-    }
-
-    public void setReflex(int reflex) {
-        this.reflex = reflex;
-    }
-
-    public int getWill() {
-        return will;
-    }
-
-    public void setWill(int will) {
-        this.will = will;
-    }
+    private Text maxHpText = new Text("Max HP: \t\t\t" + maxHP);
+    private Text fortitudeSaveText = new Text("Fortitude: \t\t" + fort);
+    private Text reflexSaveText = new Text("Reflex: \t\t\t" + reflex);
+    private Text willSaveText = new Text("Will: \t\t\t\t" + will);
+    private Text armorClassText = new Text("Armor Class: \t\t" + AC);
 
     public CharacterCreatorGUI() {
         initializeCharacterCreatorGUI();
@@ -135,7 +88,7 @@ public class CharacterCreatorGUI {
         Strength, Constitution, Dexterity, Intelligence, Wisdom, Charisma
     }
 
-    //todo add the saving throws (Fortitude/Will/Reflex)
+    //todo saving throws are not working with negative values
     //todo add Armor Class and AC calculations
     //todo add starting equipment selection
     //todo add starting powers selection (daily/encounter/at-will)
@@ -149,6 +102,7 @@ public class CharacterCreatorGUI {
         middleBox.add(fortitudeSaveText, 0, 13);
         middleBox.add(reflexSaveText, 0, 14);
         middleBox.add(willSaveText, 0, 15);
+        middleBox.add(armorClassText, 0, 16);
     }
 
     private void addTheSkillList() {
@@ -160,12 +114,8 @@ public class CharacterCreatorGUI {
         }
         availableSkillsListView.setItems(availableSkills);
         availableSkillsListView.setMaxHeight(availableSkills.size() * 24);
-        availableSkillsListView.setOnMouseClicked(event -> {
-            eventOnSkillSelection();
-        });
-        selectedSkillsListView.setOnMouseClicked(event -> {
-            eventOnSkillDeselection();
-        });
+        availableSkillsListView.setOnMouseClicked(event -> eventOnSkillSelection());
+        selectedSkillsListView.setOnMouseClicked(event -> eventOnSkillDeselection());
         rightBox.getChildren().add(availableSkillPointsText);
         rightBox.getChildren().add(skillPointsText);
         rightBox.getChildren().add(skillListText);
@@ -185,9 +135,9 @@ public class CharacterCreatorGUI {
         System.out.println(selection);
         selectedSkillsListView.setMaxHeight(selectedSkills.size() * 24);
         availableSkillsListView.setMaxHeight(availableSkills.size() * 24);
-        setNumberOfAvailableSkillPoints(getNumberOfAvailableSkillPoints() - 1);
-        skillPointsText.setText(String.valueOf(getNumberOfAvailableSkillPoints()));
-        if (getNumberOfAvailableSkillPoints() == 0) {
+        numberOfAvailableSkillPoints = (numberOfAvailableSkillPoints - 1);
+        skillPointsText.setText(String.valueOf(numberOfAvailableSkillPoints));
+        if (numberOfAvailableSkillPoints == 0) {
             availableSkillsListView.setDisable(true);
         }
     }
@@ -201,8 +151,8 @@ public class CharacterCreatorGUI {
         System.out.println(selection);
         selectedSkillsListView.setMaxHeight(selectedSkills.size() * 24);
         availableSkillsListView.setMaxHeight(availableSkills.size() * 24);
-        setNumberOfAvailableSkillPoints(getNumberOfAvailableSkillPoints() + 1);
-        skillPointsText.setText(String.valueOf(getNumberOfAvailableSkillPoints()));
+        numberOfAvailableSkillPoints = (numberOfAvailableSkillPoints + 1);
+        skillPointsText.setText(String.valueOf(numberOfAvailableSkillPoints));
         availableSkillsListView.setDisable(false);
     }
 
@@ -239,7 +189,7 @@ public class CharacterCreatorGUI {
             racialBonusNumbers.get(getStatID(trimmedString)).setText("      ");
             System.out.println(trimmedString);
         }
-        String radioButtonString = null;
+        String radioButtonString;
         try {
             radioButtonString = newValue.toString();
             String trimmedString = radioButtonString.substring(radioButtonString.indexOf('\'')).replaceAll("\\W", "");
@@ -258,11 +208,11 @@ public class CharacterCreatorGUI {
 
             int a = classInfo.hitDiceAt1st.get(selectedClass);
             System.out.println(a);
-            setMaxHP(classInfo.hitDiceAt1st.get(selectedClass) + constitution);
-            maxHpText.setText("Max HP: " + String.valueOf(getMaxHP()));
+            maxHP = (classInfo.hitDiceAt1st.get(selectedClass) + constitution);
+            maxHpText.setText("Max HP: \t\t" + maxHP);
         } catch (NullPointerException e) {
-            setMaxHP(constitution);
-            maxHpText.setText("Max HP: " + String.valueOf(getMaxHP()));
+            maxHP = (constitution);
+            maxHpText.setText("Max HP: \t\t" + maxHP);
 
         }
     }
@@ -281,6 +231,7 @@ public class CharacterCreatorGUI {
             } else if (i < 4) {
                 if (currentSave > reflex) {
                     reflex = currentSave;
+                    AC = 10 + reflex;
                 }
             } else {
                 if (currentSave > will) {
@@ -288,9 +239,10 @@ public class CharacterCreatorGUI {
                 }
             }
         }
-        fortitudeSaveText.setText("Fortitude: " + getFort());
-        reflexSaveText.setText("Reflex: " + getReflex());
-        willSaveText.setText("Will: " + getWill());
+        fortitudeSaveText.setText("Fortitude: \t\t" + fort);
+        reflexSaveText.setText("Reflex: \t\t\t" + reflex);
+        willSaveText.setText("Will: \t\t\t\t" + will);
+        armorClassText.setText("Armor Class: \t\t" + AC);
     }
 
     private void prepareASingleAttribute(Stats currentStat) {
@@ -304,9 +256,7 @@ public class CharacterCreatorGUI {
 
     private void displayASingleAttribute(int i) {
         statsValueSpinners.get(i).getValueFactory().setValue(10);
-        statsValueSpinners.get(i).valueProperty().addListener((observable, oldValue, newValue) -> {
-            eventOnSpinnerChange(oldValue, newValue);
-        });
+        statsValueSpinners.get(i).valueProperty().addListener((observable, oldValue, newValue) -> eventOnSpinnerChange(oldValue, newValue));
         racialBonusRadioButtons.get(i).setToggleGroup(racialToggleGroup);
         racialBonusRadioButtons.get(i).setDisable(true);
         middleBox.add(statNames.get(i), 0, i + 2);
@@ -318,8 +268,8 @@ public class CharacterCreatorGUI {
     }
 
     private void eventOnSpinnerChange(Integer oldValue, Integer newValue) {
-        setAvailableStatPoints(getAvailableStatPoints() + calculateTotalPointsChange(oldValue, newValue));
-        pointsToSpend.setText(String.valueOf(getAvailableStatPoints()));
+        availableStatPoints = availableStatPoints + calculateTotalPointsChange(oldValue, newValue);
+        pointsToSpend.setText(String.valueOf(availableStatPoints));
         calculateAllFinalAbilityScores();
         updateMaxHP(selectedHeroClass);
         updateSavingThrows();
@@ -377,12 +327,8 @@ public class CharacterCreatorGUI {
         for (CharacterRaces currentRace : CharacterRaces.values()) {
             raceOptions.add(currentRace.toString());
         }
-        raceChoice.valueProperty().addListener((observable, oldValue, newValue) -> {
-            eventOnSelectHeroRace(newValue);
-        });
-        classChoice.valueProperty().addListener((observable, oldValue, newValue) -> {
-            eventOnSelectHeroClass(newValue);
-        });
+        raceChoice.valueProperty().addListener((observable, oldValue, newValue) -> eventOnSelectHeroRace(newValue));
+        classChoice.valueProperty().addListener((observable, oldValue, newValue) -> eventOnSelectHeroClass(newValue));
         classChoice.setItems(classOptions);
         raceChoice.setItems(raceOptions);
         middleBox.add(characterName, 0, 0, 10, 1);
@@ -408,8 +354,8 @@ public class CharacterCreatorGUI {
         availableSkills.addAll(heroClassInformation.availableSkills.get(newValue));
         availableSkillsListView.setMaxHeight(availableSkills.size() * 24);
         selectedSkillsListView.setMaxHeight(selectedSkills.size() * 24);
-        setNumberOfAvailableSkillPoints(heroClassInformation.classSkillPoints.get(newValue));
-        skillPointsText.setText(String.valueOf(getNumberOfAvailableSkillPoints()));
+        numberOfAvailableSkillPoints = (heroClassInformation.classSkillPoints.get(newValue));
+        skillPointsText.setText(String.valueOf(numberOfAvailableSkillPoints));
         availableSkillsListView.setDisable(false);
         updateMaxHP(newValue);
         selectedHeroClass = newValue;

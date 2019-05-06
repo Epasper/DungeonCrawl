@@ -5,9 +5,9 @@ import java.sql.*;
 
 public class SQLConnector {
 
-    static final String DB_URL = "jdbc:mysql://localhost:3306/mysql";
-    static final String USER = "root";
-    static final String PASS = "root";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/mysql?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    private static final String USER = "root";
+    private static final String PASS = "root";
 
     void startAConnection() {
 
@@ -17,7 +17,7 @@ public class SQLConnector {
             System.out.println("Connecting to database...");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
-            System.out.println("Creating database...");
+            System.out.println("Creating connection...");
             stmt = conn.createStatement();
 
             String sql = "select * from dungeon.heroes";
@@ -29,7 +29,7 @@ public class SQLConnector {
                 System.out.println(name + "\t" + heroclass +
                         "\t" + heroRace + "\t");
             }
-            System.out.println("Database created successfully...");
+            System.out.println("Database accessed successfully...");
 
         } catch (SQLException se) {
             se.printStackTrace();
