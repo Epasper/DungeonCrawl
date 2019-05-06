@@ -1,5 +1,15 @@
 package sample;
 
+import sample.HeroPowers.Avenger.BondOfPursuit;
+import sample.HeroPowers.Avenger.BondOfRetribution;
+import sample.HeroPowers.Avenger.OverwhelmingStrike;
+import sample.HeroPowers.Avenger.RadiantVengeance;
+import sample.HeroPowers.Barbarian.DevastatingStrike;
+import sample.HeroPowers.Barbarian.HowlingStrike;
+import sample.HeroPowers.Barbarian.PressingStrike;
+import sample.HeroPowers.HeroPower;
+import sample.HeroPowers.Barbarian.RecuperatingStrike;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +22,31 @@ public class HeroClassInformation {
     Map<String, Integer> hitDiceAt1st = new HashMap<>();
     Map<String, Integer> hitDicePerLevel = new HashMap<>();
     Map<String, List<String>> armorProficiencies = new HashMap<>();
-    Map<String, List<String>> atWillPowersAtLevel1 = new HashMap<>();
+    private Map<String, List<HeroPower>> atWillPowersAtLevel1 = new HashMap<>();
+
+    public enum ExpandedAction {FREE, MINOR, STANDARD}
+
+    public enum TypeOfPower {AT_WILL, ENCOUNTER, DAILY}
+
+    public enum CharacterSkills {
+        Acrobatics, Arcana, Athletics, Bluff, Diplomacy, Dungeoneering, Endurance, Heal, History, Insight, Intimidate, Nature, Perception, Religion, Stealth, Streetwise, Thievery
+    }
+
+    public enum CharacterClasses {
+        Avenger, Barbarian, Bard, Cleric, Druid, Fighter, Invoker, Paladin, Ranger, Rogue, Shaman, Sorcerer, Warden, Warlock, Warlord, Wizard
+    }
+
+    public enum CharacterRaces {
+        Deva, Dragonborn, Dwarf, Eladrin, Elf, Gnome, Goliath, Halfelf, Halforc, Halfling, Human, Shifter, Tiefling
+    }
+
+    public enum Attributes {
+        Strength, Constitution, Dexterity, Intelligence, Wisdom, Charisma
+    }
+
+    public enum Defenses {
+        AC, Fortitude, Reflex, Will
+    }
 
     //todo think about refactoring the Map onto something else, perhaps something DRY
 
@@ -22,19 +56,51 @@ public class HeroClassInformation {
         populateTheTablesWithAtWillPowers();
     }
 
+    public Map<String, Integer> getClassSkillPoints() {
+        return classSkillPoints;
+    }
+
+    public void setClassSkillPoints(Map<String, Integer> classSkillPoints) {
+        this.classSkillPoints = classSkillPoints;
+    }
+
+    public Map<String, List<String>> getAvailableSkills() {
+        return availableSkills;
+    }
+
+    public void setAvailableSkills(Map<String, List<String>> availableSkills) {
+        this.availableSkills = availableSkills;
+    }
+
+    public Map<String, Integer> getHitDiceAt1st() {
+        return hitDiceAt1st;
+    }
+
+    public void setHitDiceAt1st(Map<String, Integer> hitDiceAt1st) {
+        this.hitDiceAt1st = hitDiceAt1st;
+    }
+
+    public Map<String, List<HeroPower>> getAtWillPowersAtLevel1() {
+        return atWillPowersAtLevel1;
+    }
+
+    public void setAtWillPowersAtLevel1(Map<String, List<HeroPower>> atWillPowersAtLevel1) {
+        this.atWillPowersAtLevel1 = atWillPowersAtLevel1;
+    }
+
     private void populateTheTablesWithAtWillPowers() {
-        List<String> avenger = new ArrayList<>();
+        List<HeroPower> avenger = new ArrayList<>();
         atWillPowersAtLevel1.put("Avenger", avenger);
-        avenger.add("Bond of Pursuit");
-        avenger.add("Bond of Retribution");
-        avenger.add("Overwhelming Strike");
-        avenger.add("Radiant Vengeance");
-        List<String> barbarian = new ArrayList<>();
-        atWillPowersAtLevel1.put("Barbarian", barbarian);
-        avenger.add("Devastating strike");
-        avenger.add("Howling strike");
-        avenger.add("Pressing strike");
-        avenger.add("Recuperating strike");
+        avenger.add(new BondOfRetribution());
+        avenger.add(new BondOfPursuit());
+        avenger.add(new OverwhelmingStrike());
+        avenger.add(new RadiantVengeance());
+        List<HeroPower> barbarian = new ArrayList<>();
+        atWillPowersAtLevel1.put(CharacterClasses.Barbarian.toString(), barbarian);
+        barbarian.add(new RecuperatingStrike());
+        barbarian.add(new PressingStrike());
+        barbarian.add(new DevastatingStrike());
+        barbarian.add(new HowlingStrike());
     }
 
     private void populateTheTablesWithSkills() {

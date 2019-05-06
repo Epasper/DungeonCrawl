@@ -1,0 +1,23 @@
+package sample.HeroPowers.Avenger;
+
+import sample.HeroClassInformation;
+import sample.HeroPowers.HeroPower;
+
+public class RadiantVengeance extends HeroPower {
+    public RadiantVengeance() {
+        powerName = "Radiant Vengeance";
+        characterClass = HeroClassInformation.CharacterClasses.Avenger.toString();
+        typeOfPower = HeroClassInformation.TypeOfPower.AT_WILL.toString().replace('_', ' ').toLowerCase();
+        usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
+        powerLevel = 1;
+        range = 10;
+        numberOfTargets = "One target";
+        attributeUsed = HeroClassInformation.Attributes.Wisdom.toString();
+        defenseToBeChecked = HeroClassInformation.Defenses.Reflex.toString();
+        damageDiceDealt = 1;
+        damageModifier = HeroClassInformation.Attributes.Wisdom.toString();
+        isThisWeaponDamage = false;
+        damageDiceDealt = 8;
+        hitDescription = "1d8 + Wisdom modifier radiant damage, and you gain temporary hit points equal to your Wisdom modifier.";
+    }
+}

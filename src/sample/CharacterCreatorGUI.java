@@ -76,21 +76,6 @@ public class CharacterCreatorGUI {
         updateMaxHP(null);
     }
 
-    enum CharacterSkills {
-        Acrobatics, Arcana, Athletics, Bluff, Diplomacy, Dungeoneering, Endurance, Heal, History, Insight, Intimidate, Nature, Perception, Religion, Stealth, Streetwise, Thievery
-    }
-
-    enum CharacterClasses {
-        Avenger, Barbarian, Bard, Cleric, Druid, Fighter, Invoker, Paladin, Ranger, Rogue, Shaman, Sorcerer, Warden, Warlock, Warlord, Wizard
-    }
-
-    enum CharacterRaces {
-        Deva, Dragonborn, Dwarf, Eladrin, Elf, Gnome, Goliath, Halfelf, Halforc, Halfling, Human, Shifter, Tiefling
-    }
-
-    enum Stats {
-        Strength, Constitution, Dexterity, Intelligence, Wisdom, Charisma
-    }
 
     //todo add Armor Class and AC calculations
     //todo add starting equipment selection
@@ -101,6 +86,14 @@ public class CharacterCreatorGUI {
         Text breakLine = new Text("    ");
         middleBox.add(breakLine, 0, 10);
         middleBox.add(maxHpText, 0, 11);
+        atWill1Choice.setMinWidth(200);
+        atWill2Choice.setMinWidth(200);
+        atWill1Choice.setValue("Select 1st At Will Power");
+        atWill2Choice.setValue("Select 2nd At Will Power");
+        atWill1Choice.setDisable(true);
+        atWill2Choice.setDisable(true);
+        middleBox.add(atWill1Choice, 1, 11);
+        middleBox.add(atWill2Choice, 1, 12);
         Text savingText = new Text("Saving Throws:  ");
         middleBox.add(savingText, 0, 12);
         middleBox.add(fortitudeSaveText, 0, 13);
@@ -113,7 +106,7 @@ public class CharacterCreatorGUI {
         Text availableSkillPointsText = new Text("Number of available skill points: ");
         Text skillListText = new Text("List of Skills: ");
         Text selectedSkillsText = new Text("Trained skills: ");
-        for (CharacterSkills currentSkill : CharacterSkills.values()) {
+        for (HeroClassInformation.CharacterSkills currentSkill : HeroClassInformation.CharacterSkills.values()) {
             availableSkills.add(currentSkill.toString());
         }
         availableSkillsListView.setItems(availableSkills);
@@ -165,7 +158,7 @@ public class CharacterCreatorGUI {
         for (int i = 8; i < 19; i++) {
             statPointsOptions.add(i);
         }
-        for (Stats currentStat : Stats.values()) {
+        for (HeroClassInformation.Attributes currentStat : HeroClassInformation.Attributes.values()) {
             prepareASingleAttribute(currentStat);
         }
         for (int i = 0; i < 6; i++) {
@@ -252,7 +245,7 @@ public class CharacterCreatorGUI {
         armorClassText.setText("Armor Class: \t\t" + AC);
     }
 
-    private void prepareASingleAttribute(Stats currentStat) {
+    private void prepareASingleAttribute(HeroClassInformation.Attributes currentStat) {
         statNames.add(new Text("  " + currentStat.toString() + " "));
         statsValueSpinners.add(new Spinner<>(statPointsOptions));
         modifierNumbersTextList.add(new Text(" "));
@@ -331,10 +324,10 @@ public class CharacterCreatorGUI {
                 FXCollections.observableArrayList();
         ObservableList<String> raceOptions =
                 FXCollections.observableArrayList();
-        for (CharacterClasses currentClass : CharacterClasses.values()) {
+        for (HeroClassInformation.CharacterClasses currentClass : HeroClassInformation.CharacterClasses.values()) {
             classOptions.add(currentClass.toString());
         }
-        for (CharacterRaces currentRace : CharacterRaces.values()) {
+        for (HeroClassInformation.CharacterRaces currentRace : HeroClassInformation.CharacterRaces.values()) {
             raceOptions.add(currentRace.toString());
         }
         raceChoice.valueProperty().addListener((observable, oldValue, newValue) -> eventOnSelectHeroRace(newValue));
@@ -345,6 +338,25 @@ public class CharacterCreatorGUI {
         leftBox.getChildren().add(classChoice);
         leftBox.getChildren().add(raceChoice);
         leftBox.getChildren().add(returnToMainMenu);
+    }
+
+    private void addPowersToComboBoxes() {
+        ObservableList<String> atWill1Options =
+                FXCollections.observableArrayList();
+        ObservableList<String> atWill2Options =
+                FXCollections.observableArrayList();
+        HeroClassInformation heroClassInformation = new HeroClassInformation();
+        int numberOfAtWillPowers = heroClassInformation.getAtWillPowersAtLevel1().get(selectedHeroClass).size();
+        for (int i = 0; i < numberOfAtWillPowers; i++) {
+            atWill1Options.add(heroClassInformation.getAtWillPowersAtLevel1().get(selectedHeroClass).get(i).getPowerName());
+        }
+        for (int i = 0; i < numberOfAtWillPowers; i++) {
+            atWill2Options.add(heroClassInformation.getAtWillPowersAtLevel1().get(selectedHeroClass).get(i).getPowerName());
+        }
+        atWill1Choice.setItems(atWill1Options);
+        atWill2Choice.setItems(atWill2Options);
+        atWill1Choice.setDisable(false);
+        atWill2Choice.setDisable(false);
     }
 
     private void eventOnSelectHeroRace(String newValue) {
@@ -370,6 +382,7 @@ public class CharacterCreatorGUI {
         updateMaxHP(newValue);
         selectedHeroClass = newValue;
         updateSavingThrows();
+        addPowersToComboBoxes();
     }
 
     private void manageRacialStatBonuses(String raceName) {
@@ -438,7 +451,7 @@ public class CharacterCreatorGUI {
     }
 
     private int getStatID(String name) {
-        return Stats.valueOf(name).ordinal();
+        return HeroClassInformation.Attributes.valueOf(name).ordinal();
     }
 
     private void switchTheRace() {
