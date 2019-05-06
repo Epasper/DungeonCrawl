@@ -18,6 +18,7 @@ public abstract class HeroPower {
     protected int typeOfDamageDice;
     protected boolean bonusDamage;
     protected int typeOfBonusDamageDice;
+    protected String bonusDamageModifier;
 
     public String getPowerName() {
         return powerName;
