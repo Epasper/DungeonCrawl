@@ -12,7 +12,8 @@ public class SureStrike extends HeroPower {
         powerLevel = 1;
         range = 0;
         numberOfTargets = "One target";
-        attributeUsed = HeroClassInformation.Attributes.Strength.toString()+"+2";
+        attributeUsedToHit = HeroClassInformation.Attributes.Strength.toString();
+        bonusToHit = 2;
         defenseToBeChecked = HeroClassInformation.Defenses.AC.toString();
         damageDiceDealt = 1;
         damageModifier = "None";

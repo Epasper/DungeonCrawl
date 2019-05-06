@@ -1,12 +1,12 @@
-package sample.HeroPowers.Barbarian;
+package sample.HeroPowers.Paladin;
 
 import sample.HeroClassInformation;
 import sample.HeroPowers.HeroPower;
 
-public class HowlingStrike extends HeroPower {
-    public HowlingStrike() {
-        powerName = "Howling Strike";
-        characterClass = HeroClassInformation.CharacterClasses.Barbarian.toString();
+public class ValiantStrike extends HeroPower {
+    public ValiantStrike() {
+        powerName = "Valiant Strike";
+        characterClass = HeroClassInformation.CharacterClasses.Paladin.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.AT_WILL.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;
@@ -15,10 +15,9 @@ public class HowlingStrike extends HeroPower {
         attributeUsedToHit = HeroClassInformation.Attributes.Strength.toString();
         defenseToBeChecked = HeroClassInformation.Defenses.AC.toString();
         damageDiceDealt = 1;
+        bonusToHit = 0;
         damageModifier = HeroClassInformation.Attributes.Strength.toString();
         isThisWeaponDamage = true;
-        bonusDamage = true;
-        typeOfBonusDamageDice = 8;
-        hitDescription = "1 [W] + 1d6 + Strength modifier damage. When charging, you can use this power in place of a melee basic attack. If you are raging, you can move 2 extra squares as part of the charge.";
+        hitDescription = "1[W] + Strength modifier damage.";
     }
 }

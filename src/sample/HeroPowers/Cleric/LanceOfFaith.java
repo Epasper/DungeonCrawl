@@ -12,7 +12,7 @@ public class LanceOfFaith extends HeroPower {
         powerLevel = 1;
         range = 5;
         numberOfTargets = "One target";
-        attributeUsed = HeroClassInformation.Attributes.Wisdom.toString();
+        attributeUsedToHit = HeroClassInformation.Attributes.Wisdom.toString();
         defenseToBeChecked = HeroClassInformation.Defenses.Reflex.toString();
         damageDiceDealt = 1;
         damageModifier = HeroClassInformation.Attributes.Wisdom.toString();

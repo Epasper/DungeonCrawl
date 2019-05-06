@@ -16,8 +16,15 @@ import sample.HeroPowers.Cleric.PriestsShield;
 import sample.HeroPowers.Cleric.RighteousBrand;
 import sample.HeroPowers.Cleric.SacredFlame;
 import sample.HeroPowers.Druid.*;
+import sample.HeroPowers.Fighter.Cleave;
+import sample.HeroPowers.Fighter.ReapingStrike;
+import sample.HeroPowers.Fighter.SureStrike;
+import sample.HeroPowers.Fighter.TideOfIron;
 import sample.HeroPowers.HeroPower;
 import sample.HeroPowers.Barbarian.RecuperatingStrike;
+import sample.HeroPowers.Invoker.AvengingLight;
+import sample.HeroPowers.Invoker.DivineBolts;
+import sample.HeroPowers.Invoker.SunStrike;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -130,6 +137,18 @@ public class HeroClassInformation {
         druid.add(new Pounce());
         druid.add(new SavageRend());
         druid.add(new ThornWhip());
+        List<HeroPower> fighter = new ArrayList<>();
+        atWillPowersAtLevel1.put(CharacterClasses.Fighter.toString(), fighter);
+        fighter.add(new Cleave());
+        fighter.add(new ReapingStrike());
+        fighter.add(new SureStrike());
+        fighter.add(new TideOfIron());
+        List<HeroPower> invoker = new ArrayList<>();
+        atWillPowersAtLevel1.put(CharacterClasses.Invoker.toString(), invoker);
+        druid.add(new AvengingLight());
+        druid.add(new DivineBolts());
+        druid.add(new GraspingClaws());
+        druid.add(new SunStrike());
     }
 
     private void populateTheTablesWithSkills() {

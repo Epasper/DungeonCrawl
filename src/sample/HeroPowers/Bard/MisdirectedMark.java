@@ -12,7 +12,7 @@ public class MisdirectedMark extends HeroPower {
         powerLevel = 1;
         range = 10;
         numberOfTargets = "One target";
-        attributeUsed = HeroClassInformation.Attributes.Charisma.toString();
+        attributeUsedToHit = HeroClassInformation.Attributes.Charisma.toString();
         defenseToBeChecked = HeroClassInformation.Defenses.Reflex.toString();
         damageDiceDealt = 1;
         typeOfDamageDice = 8;

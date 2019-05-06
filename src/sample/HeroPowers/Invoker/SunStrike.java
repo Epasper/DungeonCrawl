@@ -11,8 +11,8 @@ public class SunStrike extends HeroPower {
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;
         range = 8;
-        numberOfTargets = "Burst 1";
-        attributeUsed = HeroClassInformation.Attributes.Wisdom.toString();
+        numberOfTargets = "One Target";
+        attributeUsedToHit = HeroClassInformation.Attributes.Wisdom.toString();
         defenseToBeChecked = HeroClassInformation.Defenses.Reflex.toString();
         damageDiceDealt = 1;
         typeOfDamageDice = 8;

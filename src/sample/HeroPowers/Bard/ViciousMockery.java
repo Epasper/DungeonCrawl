@@ -12,7 +12,7 @@ public class ViciousMockery extends HeroPower {
         powerLevel = 1;
         range = 10;
         numberOfTargets = "One target";
-        attributeUsed = HeroClassInformation.Attributes.Charisma.toString();
+        attributeUsedToHit = HeroClassInformation.Attributes.Charisma.toString();
         defenseToBeChecked = HeroClassInformation.Defenses.Will.toString();
         damageDiceDealt = 1;
         typeOfDamageDice = 6;

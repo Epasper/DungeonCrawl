@@ -12,7 +12,7 @@ public class GraspingShards extends HeroPower {
         powerLevel = 1;
         range = 10;
         numberOfTargets = "Burst 1";
-        attributeUsed = HeroClassInformation.Attributes.Wisdom.toString();
+        attributeUsedToHit = HeroClassInformation.Attributes.Wisdom.toString();
         defenseToBeChecked = HeroClassInformation.Defenses.Fortitude.toString();
         damageDiceDealt = 0;
         typeOfDamageDice = 0;

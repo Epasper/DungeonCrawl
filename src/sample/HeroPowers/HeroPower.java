@@ -9,7 +9,8 @@ public abstract class HeroPower {
     protected int powerLevel;
     protected int range; //for melee skills use range = 0
     protected String numberOfTargets;
-    protected String attributeUsed;
+    protected String attributeUsedToHit;
+    protected int bonusToHit;
     protected String defenseToBeChecked;
     protected String hitDescription;
     protected int damageDiceDealt;
@@ -76,12 +77,12 @@ public abstract class HeroPower {
         this.numberOfTargets = numberOfTargets;
     }
 
-    public String getAttributeUsed() {
-        return attributeUsed;
+    public String getAttributeUsedToHit() {
+        return attributeUsedToHit;
     }
 
-    public void setAttributeUsed(String attributeUsed) {
-        this.attributeUsed = attributeUsed;
+    public void setAttributeUsedToHit(String attributeUsedToHit) {
+        this.attributeUsedToHit = attributeUsedToHit;
     }
 
     public String getDefenseToBeChecked() {

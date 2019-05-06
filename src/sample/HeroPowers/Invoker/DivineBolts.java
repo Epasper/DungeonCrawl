@@ -12,7 +12,7 @@ public class DivineBolts extends HeroPower {
         powerLevel = 1;
         range = 10;
         numberOfTargets = "One or Two targets";
-        attributeUsed = HeroClassInformation.Attributes.Wisdom.toString();
+        attributeUsedToHit = HeroClassInformation.Attributes.Wisdom.toString();
         defenseToBeChecked = HeroClassInformation.Defenses.Reflex.toString();
         damageDiceDealt = 1;
         typeOfDamageDice = 6;

@@ -13,7 +13,7 @@ public class RecuperatingStrike extends HeroPower {
         powerLevel = 1;
         range = 0;
         numberOfTargets = "One target";
-        attributeUsed = HeroClassInformation.Attributes.Strength.toString();
+        attributeUsedToHit = HeroClassInformation.Attributes.Strength.toString();
         defenseToBeChecked = HeroClassInformation.Defenses.AC.toString();
         damageDiceDealt = 1;
         damageModifier = HeroClassInformation.Attributes.Strength.toString();

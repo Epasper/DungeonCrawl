@@ -12,7 +12,7 @@ public class Pounce extends HeroPower {
         powerLevel = 1;
         range = 0;
         numberOfTargets = "One target";
-        attributeUsed = HeroClassInformation.Attributes.Wisdom.toString();
+        attributeUsedToHit = HeroClassInformation.Attributes.Wisdom.toString();
         defenseToBeChecked = HeroClassInformation.Defenses.Reflex.toString();
         damageDiceDealt = 1;
         typeOfDamageDice = 8;
