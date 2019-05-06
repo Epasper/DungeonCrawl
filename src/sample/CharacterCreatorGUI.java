@@ -20,6 +20,10 @@ public class CharacterCreatorGUI {
     private GridPane middleBox = new GridPane();
     private VBox rightBox = new VBox();
     private ComboBox<String> classChoice = new ComboBox<>();
+    private ComboBox<String> atWill1Choice = new ComboBox<>();
+    private ComboBox<String> atWill2Choice = new ComboBox<>();
+    private ComboBox<String> encounterChoice = new ComboBox<>();
+    private ComboBox<String> dailyChoice = new ComboBox<>();
     private ComboBox<String> raceChoice = new ComboBox<>();
     private Button returnToMainMenu = new Button();
     private TextField characterName = new TextField();
@@ -88,10 +92,10 @@ public class CharacterCreatorGUI {
         Strength, Constitution, Dexterity, Intelligence, Wisdom, Charisma
     }
 
-    //todo saving throws are not working with negative values
     //todo add Armor Class and AC calculations
     //todo add starting equipment selection
     //todo add starting powers selection (daily/encounter/at-will)
+    //todo refactor code for single responsibility - put all logic to a separate class like in MVC model. GUI should only let the user see the results.
 
     private void addTheDerivedElements() {
         Text breakLine = new Text("    ");
@@ -218,12 +222,15 @@ public class CharacterCreatorGUI {
     }
 
     private void updateSavingThrows() {
-        fort = 0;
-        reflex = 0;
-        will = 0;
+        fort = -1;
+        reflex = -1;
+        will = -1;
         for (int i = 0; i < abilityIntegersArray.length; i++) {
             int currentStat = abilityIntegersArray[i];
             int currentSave = (currentStat - 10) / 2;
+            if (currentStat < 10) {
+                currentSave = -1;
+            }
             if (i < 2) {
                 if (currentSave > fort) {
                     fort = currentSave;
@@ -310,11 +317,14 @@ public class CharacterCreatorGUI {
             finalAbilityScores.get(i).setText("   " + textToBeSet);
             if (sum < 9) {
                 modifierNumbersTextList.get(i).setText("   " + ((sum - 10) / 2) + " ");
+            } else if (sum == 9) {
+                modifierNumbersTextList.get(i).setText("   " + ((sum - 11) / 2) + " ");
             } else {
                 modifierNumbersTextList.get(i).setText("  +" + ((sum - 10) / 2) + " ");
             }
         }
     }
+
 
     private void addElementsToPanes() {
         ObservableList<String> classOptions =

@@ -20,7 +20,6 @@ public class Main extends Application {
         Scene primaryScene = mainMenuGUI.aScene;
         primaryStage.setTitle("Dungeon");
         primaryStage.setScene(primaryScene);
-        //primaryStage.show();
     }
 
     public static Stage getPrimaryStage() {

@@ -2,21 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de97b43a-8902-45e2-a345-dc80bad4fa20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_16.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/java.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/java.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/HeroPower.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DungeonCrawl.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DungeonCrawl.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/CharacterCreatorGUI$CharacterClasses.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/CharacterCreatorGUI$CharacterClasses.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/CharacterCreatorGUI$CharacterRaces.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/CharacterCreatorGUI$CharacterRaces.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/CharacterCreatorGUI$CharacterSkills.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/CharacterCreatorGUI$CharacterSkills.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/CharacterCreatorGUI$Stats.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/CharacterCreatorGUI$Stats.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/CharacterCreatorGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/CharacterCreatorGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroClassInformation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroClassInformation.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/SQLConnector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/SQLConnector.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/HeroClassInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroClassInformation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/SQLConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/SQLConnector.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,8 +23,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+            <state relative-caret-position="273">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
+              <folding>
+                <element signature="e#757#758#0" expanded="true" />
+                <element signature="e#786#787#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -40,7 +37,7 @@
         <entry file="file://$PROJECT_DIR$/src/sample/SQLConnector.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
-              <caret line="9" column="38" lean-forward="true" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+              <caret line="9" column="35" lean-forward="true" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -48,8 +45,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="246" column="58" lean-forward="true" selection-start-line="246" selection-start-column="58" selection-end-line="246" selection-end-column="58" />
+            <state relative-caret-position="170">
+              <caret line="78" selection-start-line="78" selection-end-line="92" selection-end-column="5" />
+              <folding>
+                <element signature="e#3727#3728#0" expanded="true" />
+                <element signature="e#3774#3775#0" expanded="true" />
+                <element signature="e#19379#19380#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -57,13 +59,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/HeroClassInformation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
+            <state relative-caret-position="408">
+              <caret line="33" column="39" lean-forward="true" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/HeroPower.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -79,6 +97,7 @@
       <find>Max HP:</find>
       <find>fortitu</find>
       <find>fort</find>
+      <find>- 10</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -87,10 +106,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/sample/HeroClassInformation.java" />
-        <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/sample/SQLConnector.java" />
+        <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java" />
+        <option value="$PROJECT_DIR$/src/sample/HeroClassInformation.java" />
+        <option value="$PROJECT_DIR$/src/sample/HeroPower.java" />
       </list>
     </option>
   </component>
@@ -140,6 +160,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556895071376" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/mysql-connector-java-8.0.16.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -188,6 +209,14 @@
       <option name="presentableId" value="Default" />
       <updated>1556870921453</updated>
     </task>
+    <task id="LOCAL-00001" summary="Character Creation - removed unnecessary getters and setters, added armor class calculations.">
+      <created>1557122286542</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1557122286542</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TodoView">
@@ -213,10 +242,10 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32441112" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39828694" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32869378" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
@@ -232,32 +261,52 @@
       <window_info anchor="right" id="Maven" order="8" />
     </layout>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Character Creation - removed unnecessary getters and setters, added armor class calculations." />
+    <option name="LAST_COMMIT_MESSAGE" value="Character Creation - removed unnecessary getters and setters, added armor class calculations." />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroClassInformation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+        <state relative-caret-position="273">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="e#757#758#0" expanded="true" />
+            <element signature="e#786#787#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/SQLConnector.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="9" column="38" lean-forward="true" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+          <caret line="9" column="35" lean-forward="true" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/HeroClassInformation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="33" column="39" lean-forward="true" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/HeroPower.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="246" column="58" lean-forward="true" selection-start-line="246" selection-start-column="58" selection-end-line="246" selection-end-column="58" />
+        <state relative-caret-position="170">
+          <caret line="78" selection-start-line="78" selection-end-line="92" selection-end-column="5" />
+          <folding>
+            <element signature="e#3727#3728#0" expanded="true" />
+            <element signature="e#3774#3775#0" expanded="true" />
+            <element signature="e#19379#19380#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
