@@ -13,8 +13,6 @@ import javafx.stage.Stage;
 
 public class MainMenuGUI {
 
-    //todo create a Card Forge GUI and separate methods for skill card forging
-
     private ScrollPane mainMenuScrollPane = new ScrollPane();
     private BorderPane mainMenuBorderPane = new BorderPane();
     private HBox topBox = new HBox();

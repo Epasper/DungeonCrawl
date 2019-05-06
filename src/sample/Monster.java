@@ -77,6 +77,5 @@ public class Monster extends Creature {
     public double getSpeed() {
         return speed;
     }
-//todo clicking a monster button throws a NullPointer
 
 }

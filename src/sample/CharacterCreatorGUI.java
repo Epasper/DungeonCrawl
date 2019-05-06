@@ -81,7 +81,6 @@ public class CharacterCreatorGUI {
 
     //todo add Armor Class and AC calculations
     //todo add starting equipment selection
-    //todo add starting powers selection (daily/encounter/at-will)
     //todo refactor code for single responsibility - put all logic to a separate class like in MVC model. GUI should only let the user see the results.
 
     private void addTheDerivedElements() {
@@ -90,12 +89,24 @@ public class CharacterCreatorGUI {
         middleBox.add(maxHpText, 0, 11);
         atWill1Choice.setMinWidth(200);
         atWill2Choice.setMinWidth(200);
+        encounterChoice.setMinWidth(200);
+        dailyChoice.setMinWidth(200);
+        encounterChoice.setStyle("-fx-background-color: #ff6600;");
+        dailyChoice.setStyle("-fx-background-color: #9900ff;");
+        atWill1Choice.setStyle("-fx-background-color: #99ff99;");
+        atWill2Choice.setStyle("-fx-background-color: #99ff99;");
         atWill1Choice.setValue("Select 1st At Will Power");
         atWill2Choice.setValue("Select 2nd At Will Power");
+        encounterChoice.setValue("Select an Encounter Power");
+        dailyChoice.setValue("Select a Daily Power");
         atWill1Choice.setDisable(true);
         atWill2Choice.setDisable(true);
+        encounterChoice.setDisable(true);
+        dailyChoice.setDisable(true);
         middleBox.add(atWill1Choice, 1, 11);
         middleBox.add(atWill2Choice, 1, 12);
+        middleBox.add(encounterChoice, 3, 11);
+        middleBox.add(dailyChoice, 3, 12);
         Text savingText = new Text("Saving Throws:  ");
         middleBox.add(savingText, 0, 12);
         middleBox.add(fortitudeSaveText, 0, 13);
@@ -359,9 +370,11 @@ public class CharacterCreatorGUI {
         atWill2Choice.setItems(atWill2Options);
         atWill1Choice.setDisable(false);
         atWill2Choice.setDisable(false);
+        encounterChoice.setDisable(false);
+        dailyChoice.setDisable(false);
     }
 
-    private void displayThePowerPopup () {
+    private void displayThePowerPopup() {
         //todo add a helper to power choice - when a mouse is dragged onto the power, then the power description is shown.
     }
 

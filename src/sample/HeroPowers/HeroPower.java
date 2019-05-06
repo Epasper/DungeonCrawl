@@ -2,6 +2,10 @@ package sample.HeroPowers;
 
 public abstract class HeroPower {
 
+    //todo finish writing the at will powers
+    //todo write the encounter powers for level 1
+    //todo write the daily powers for level 1
+
     protected String powerName;
     protected String characterClass;
     protected String typeOfPower;

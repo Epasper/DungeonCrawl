@@ -48,11 +48,6 @@ public class Hero extends Creature {
     public double getSpeed() {
         return speed;
     }
-//todo create a hero deck class and hero card class
-
-    //todo diminish the amount of movement points with each step
-
-    //todo make an attack method
 
     void attackAMonster(Monster attackedMonster) {
         System.out.println("Hero: " + this.heroName + ", a " + this.heroClass + ", has attacked a(n) " + attackedMonster.monsterType + " monster");
