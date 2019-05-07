@@ -2,46 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de97b43a-8902-45e2-a345-dc80bad4fa20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/CarefulAttack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/HitAndRun.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/NimbleStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/TwinStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/DeftStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/PiercingStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/RiposteStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/SlyFlourish.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/DefendingStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/HauntingSpirits.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/ProtectingStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/StalkersStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/WatchersStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/WrathOfWinter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/AcidOrb.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/BurningSpray.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/ChaosBolt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/Dragonfrost.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/StormWalk.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warden/EarthShieldStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warden/StrengthOfStone.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warden/ThornStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warden/WeightOfTheEarth.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warlock/DireRadiance.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warlock/EldritchBlast.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warlock/Eyebite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warlock/HellishRebuke.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warlord/CommandersStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warlord/FuriousSmash.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warlord/VipersStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warlord/WolfsPackTactics.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/CloudOfDaggers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/MagicMissile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/RayOfFrost.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/ScorchingBurst.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/Thunderwave.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroClassInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroClassInformation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/HeroPower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/HeroPower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/MainMenuGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/MainMenuGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Styling/CharacterCreator.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Styling/CharacterCreator.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,69 +15,18 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-965172716">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.open.time.15" value="1" />
-          <entry key="project.opened" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="css" value="1" />
-          <entry key="fxml" value="1" />
-          <entry key="java" value="3" />
-          <entry key="xsl" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="CSS" value="1" />
-          <entry key="JAVA" value="3" />
-          <entry key="XML" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="css" value="18" />
-          <entry key="java" value="625" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="CSS" value="18" />
-          <entry key="JAVA" value="625" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="388" selection-start-line="388" selection-end-line="388" />
+            <state relative-caret-position="232">
+              <caret line="195" column="47" selection-start-line="195" selection-start-column="47" selection-end-line="195" selection-end-column="47" />
               <folding>
-                <element signature="e#22250#22251#0" expanded="true" />
-                <element signature="e#22328#22329#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#3163#3164#0" expanded="true" />
+                <element signature="e#3210#3211#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Styling/CharacterCreator.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
             </state>
           </provider>
         </entry>
@@ -120,10 +34,9 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/HeroClassInformation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="230" column="48" selection-start-line="230" selection-start-column="48" selection-end-line="230" selection-end-column="48" />
+            <state relative-caret-position="1159">
+              <caret line="134" column="46" lean-forward="true" selection-start-line="134" selection-start-column="46" selection-end-line="134" selection-end-column="46" />
               <folding>
-                <element signature="method#populateTheTablesWithAtWillPowers#0;class#HeroClassInformation#0" />
                 <element signature="method#populateTheTablesWithSkills#0;class#HeroClassInformation#0" />
                 <element signature="method#populateTheTablesWithHPs#0;class#HeroClassInformation#0" />
               </folding>
@@ -134,8 +47,44 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/HeroPower.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-683">
-              <caret line="27" column="42" lean-forward="true" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
+            <state relative-caret-position="68">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="227">
+              <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/MainMenuGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="218">
+              <caret line="31" column="15" selection-start-line="31" selection-start-column="15" selection-end-line="31" selection-end-column="75" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Styling/CharacterCreator.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="30" selection-start-line="30" selection-end-line="30" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-476">
+              <caret line="17" column="38" lean-forward="true" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -152,7 +101,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>eventonra</find>
       <find>eventOnRa</find>
       <find>eventOn</find>
       <find>characterName</find>
@@ -167,7 +115,22 @@
       <find>CharacterCla</find>
       <find>eventon</find>
       <find>atwi</find>
+      <find>sce</find>
+      <find>scen</find>
+      <find>setmin</find>
+      <find>color</find>
+      <find>tex</find>
+      <find>Saving</find>
+      <find>set</find>
       <find>setst</find>
+      <find>text</find>
+      <find>setsty</find>
+      <find>saving</find>
+      <find>available</find>
+      <find>points</find>
+      <find>currentT</find>
+      <find>Points</find>
+      <find>Points&quot;</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -182,8 +145,6 @@
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Paladin/HolyStrike.java" />
         <option value="$PROJECT_DIR$/src/sample/DungeonGUI.java" />
         <option value="$PROJECT_DIR$/src/sample/Hero.java" />
-        <option value="$PROJECT_DIR$/src/sample/Main.java" />
-        <option value="$PROJECT_DIR$/src/sample/MainMenuGUI.java" />
         <option value="$PROJECT_DIR$/src/sample/Monster.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/HitAndRun.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/NimbleStrike.java" />
@@ -192,7 +153,6 @@
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/TwinStrike.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/DeftStrike.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/PiercingStrike.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/HeroPower.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/SlyFlourish.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/ProtectingStrike.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/HauntingSpirits.java" />
@@ -225,6 +185,9 @@
         <option value="$PROJECT_DIR$/src/sample/HeroClassInformation.java" />
         <option value="$PROJECT_DIR$/src/sample/sample.fxml" />
         <option value="$PROJECT_DIR$/src/sample/CharacterCreator.css" />
+        <option value="$PROJECT_DIR$/src/sample/HeroPowers/HeroPower.java" />
+        <option value="$PROJECT_DIR$/src/sample/Main.java" />
+        <option value="$PROJECT_DIR$/src/sample/MainMenuGUI.java" />
         <option value="$PROJECT_DIR$/src/sample/Styling/CharacterCreator.css" />
         <option value="$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java" />
       </list>
@@ -247,12 +210,23 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
               <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
@@ -264,6 +238,13 @@
               <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="sample" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="HeroPowers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
@@ -277,7 +258,6 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -414,10 +394,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="1358" y="-290" width="1696" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21055438" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24816626" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -426,11 +406,40 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32976446" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.324295" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49938875" visible="true" weight="0.32334048" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39828694" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3286334" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49938875" weight="0.32762313" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50061125" side_tool="true" weight="0.32334048" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32869378" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Maven Projects" order="7" weight="0.32995737" />
+      <window_info anchor="right" id="Maven" order="8" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21088019" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32976446" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32441112" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39828694" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32869378" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
@@ -444,10 +453,7 @@
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="Maven Projects" order="7" weight="0.32995737" />
       <window_info anchor="right" id="Maven" order="8" />
-    </layout>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+    </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Character Creation - removed unnecessary getters and setters, added armor class calculations." />
@@ -461,20 +467,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Character Creation - Added Encounter and Daily Power selectors, changed styles by adding colors, changed &quot;todo&quot; lists" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Paladin/HolyStrike.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Paladin/BolsteringStrike.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="125" selection-start-line="7" selection-start-column="8" selection-end-line="19" selection-end-column="125" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Invoker/DivineBolts.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -489,24 +481,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="30" lean-forward="true" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Monster.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="341">
           <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/MainMenuGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
         </state>
       </provider>
     </entry>
@@ -779,50 +757,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/CharacterCreatorStyle.xsl">
+    <entry file="file://$PROJECT_DIR$/src/sample/CharacterCreatorStyle.xsl" />
+    <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="17" lean-forward="true" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        <state relative-caret-position="-476">
+          <caret line="17" column="38" lean-forward="true" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/HeroClassInformation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="230" column="48" selection-start-line="230" selection-start-column="48" selection-end-line="230" selection-end-column="48" />
+        <state relative-caret-position="1159">
+          <caret line="134" column="46" lean-forward="true" selection-start-line="134" selection-start-column="46" selection-end-line="134" selection-end-column="46" />
           <folding>
-            <element signature="method#populateTheTablesWithAtWillPowers#0;class#HeroClassInformation#0" />
             <element signature="method#populateTheTablesWithSkills#0;class#HeroClassInformation#0" />
             <element signature="method#populateTheTablesWithHPs#0;class#HeroClassInformation#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/HeroPower.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-683">
-          <caret line="27" column="42" lean-forward="true" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
+        <state relative-caret-position="227">
+          <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/HeroPower.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/text/Text.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="94" column="13" selection-start-line="94" selection-start-column="13" selection-end-line="94" selection-end-column="13" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Styling/CharacterCreator.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="510">
+          <caret line="30" selection-start-line="30" selection-end-line="30" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/MainMenuGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="31" column="15" selection-start-line="31" selection-start-column="15" selection-end-line="31" selection-end-column="75" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="388" selection-start-line="388" selection-end-line="388" />
+        <state relative-caret-position="232">
+          <caret line="195" column="47" selection-start-line="195" selection-start-column="47" selection-end-line="195" selection-end-column="47" />
           <folding>
-            <element signature="e#22250#22251#0" expanded="true" />
-            <element signature="e#22328#22329#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#3163#3164#0" expanded="true" />
+            <element signature="e#3210#3211#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -29,6 +29,7 @@ public class MainMenuGUI {
 
 
     private void buildTheMainMenu() {
+        aScene.getStylesheets().add("sample/Styling/CharacterCreator.css");
         aStage = Main.getPrimaryStage();
         mainMenuScrollPane.setContent(mainMenuBorderPane);
         mainMenuBorderPane.setTop(topBox);
@@ -38,7 +39,6 @@ public class MainMenuGUI {
         middlePane.setVgap(4);
         middlePane.setHgap(4);
         middlePane.setPrefWrapLength(170);
-        middlePane.setStyle("-fx-background-color: DAE6F3;");
         middlePane.getChildren().add(newDungeonButton);
         middlePane.getChildren().add(cardForgeGUIButton);
         newDungeonButton.setText("Generate a New Dungeon");

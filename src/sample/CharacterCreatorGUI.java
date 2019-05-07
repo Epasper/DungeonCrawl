@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import sample.HeroPowers.HeroPower;
 
@@ -94,10 +95,10 @@ public class CharacterCreatorGUI {
         atWill2Choice.setMinWidth(200);
         encounterChoice.setMinWidth(200);
         dailyChoice.setMinWidth(200);
-        encounterChoice.setStyle("-fx-background-color: #ff6600;");
-        dailyChoice.setStyle("-fx-background-color: #9900ff;");
-        atWill1Choice.setStyle("-fx-background-color: #99ff99;");
-        atWill2Choice.setStyle("-fx-background-color: #99ff99;");
+        encounterChoice.setStyle("-fx-background-color: #910000;");
+        dailyChoice.setStyle("-fx-background-color: #5c005e;");
+        atWill1Choice.setStyle("-fx-background-color: #007200;");
+        atWill2Choice.setStyle("-fx-background-color: #007200;");
         atWill1Choice.setValue("Select 1st At Will Power");
         atWill2Choice.setValue("Select 2nd At Will Power");
         encounterChoice.setValue("Select an Encounter Power");
@@ -111,19 +112,23 @@ public class CharacterCreatorGUI {
         middleBox.add(encounterChoice, 3, 11);
         middleBox.add(dailyChoice, 3, 12);
         Text savingText = new Text("Saving Throws:  ");
+        savingText.setFill(Color.WHITE);
         middleBox.add(savingText, 0, 12);
         middleBox.add(fortitudeSaveText, 0, 13);
         middleBox.add(reflexSaveText, 0, 14);
         middleBox.add(willSaveText, 0, 15);
         middleBox.add(armorClassText, 0, 16);
-        powerDescription.setMinSize(400, 250);
+        powerDescription.setMinSize(200, 250);
         middleBox.add(powerDescription, 0, 25);
     }
 
     private void addTheSkillList() {
         Text availableSkillPointsText = new Text("Number of available skill points: ");
+        availableSkillPointsText.setFill(Color.WHITE);
         Text skillListText = new Text("List of Skills: ");
+        skillListText.setFill(Color.WHITE);
         Text selectedSkillsText = new Text("Trained skills: ");
+        selectedSkillsText.setFill(Color.WHITE);
         for (HeroClassInformation.CharacterSkills currentSkill : HeroClassInformation.CharacterSkills.values()) {
             availableSkills.add(currentSkill.toString());
         }
@@ -188,6 +193,7 @@ public class CharacterCreatorGUI {
         modifierText.setText("  Ability  \n  Modifier: ");
         middleBox.add(modifierText, 5, 1);
         Text AvailablePointsText = new Text("  Available \n    Points");
+        AvailablePointsText.setFill(Color.WHITE);
         middleBox.add(AvailablePointsText, 0, 9);
         pointsToSpend.setDisable(true);
         middleBox.add(pointsToSpend, 1, 9);
@@ -264,12 +270,20 @@ public class CharacterCreatorGUI {
     }
 
     private void prepareASingleAttribute(HeroClassInformation.Attributes currentStat) {
-        statNames.add(new Text("  " + currentStat.toString() + " "));
+        Text abilityWord = new Text("  " + currentStat.toString() + " ");
+        abilityWord.setFill(Color.WHITE);
+        Text finalScore = new Text("  ");
+        finalScore.setFill(Color.WHITE);
+        Text finalModifier = new Text("  ");
+        finalModifier.setFill(Color.WHITE);
+        Text racialBonus = new Text("      ");
+        racialBonus.setFill(Color.WHITE);
+        statNames.add(abilityWord);
         statsValueSpinners.add(new Spinner<>(statPointsOptions));
-        modifierNumbersTextList.add(new Text(" "));
-        racialBonusNumbers.add(new Text("      "));
+        modifierNumbersTextList.add(finalModifier);
+        racialBonusNumbers.add(racialBonus);
         racialBonusRadioButtons.add(new RadioButton(currentStat.toString()));
-        finalAbilityScores.add(new Text(" "));
+        finalAbilityScores.add(finalScore);
     }
 
     private void displayASingleAttribute(int i) {
@@ -500,6 +514,15 @@ public class CharacterCreatorGUI {
     }
 
     private void setStyling() {
+        modifierText.setFill(Color.WHITE);
+        racialBonusText.setFill(Color.WHITE);
+        skillPointsText.setFill(Color.WHITE);
+        maxHpText.setFill(Color.WHITE);
+        fortitudeSaveText.setFill(Color.WHITE);
+        reflexSaveText.setFill(Color.WHITE);
+        willSaveText.setFill(Color.WHITE);
+        armorClassText.setFill(Color.WHITE);
+        finalScoreText.setFill(Color.WHITE);
         leftBox.setPadding(new Insets(5, 5, 5, 5));
         leftBox.setVgap(4);
         leftBox.setHgap(4);
@@ -507,7 +530,6 @@ public class CharacterCreatorGUI {
         characterName.setMinWidth(170);
         raceChoice.setMinWidth(150);
         classChoice.setMinWidth(150);
-        middleBox.setStyle("-fx-background-color: DAE6F3;");
         raceChoice.setPromptText("Choose your race");
         classChoice.setPromptText("Choose your class");
         characterName.setPromptText("Insert your character name");
