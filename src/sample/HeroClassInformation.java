@@ -226,6 +226,17 @@ public class HeroClassInformation {
         wizard.add(new Thunderwave());
     }
 
+    public HeroPower getHeroPowerByName(String className, String powerName) {
+
+        //todo nullpointer
+        for (HeroPower currentPower : atWillPowersAtLevel1.get(className)) {
+            if (powerName.equals(currentPower.getPowerName())) {
+                return currentPower;
+            }
+        }
+        return null;
+    }
+
     private void populateTheTablesWithSkills() {
         classSkillPoints.put("Avenger", 4);
         List<String> avenger = new ArrayList<>();

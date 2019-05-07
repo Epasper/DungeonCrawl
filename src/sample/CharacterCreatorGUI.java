@@ -58,7 +58,7 @@ public class CharacterCreatorGUI {
     private Text reflexSaveText = new Text("Reflex: \t\t\t" + reflex);
     private Text willSaveText = new Text("Will: \t\t\t\t" + will);
     private Text armorClassText = new Text("Armor Class: \t\t" + AC);
-    private TextField powerDescription = new TextField();
+    private TextArea powerDescription = new TextArea();
 
     public CharacterCreatorGUI() {
         initializeCharacterCreatorGUI();
@@ -67,6 +67,9 @@ public class CharacterCreatorGUI {
     //todo finishing the character creation should save it in a database.
 
     private void initializeCharacterCreatorGUI() {
+
+        //todo stylesheets to be added
+        characterCreatorOuterPane.getStylesheets().add("sample/Styling/CharacterCreator.css");
         manageThePanes();
         addElementsToPanes();
         setStyling();
@@ -372,17 +375,20 @@ public class CharacterCreatorGUI {
         atWill2Choice.setItems(atWill2Options);
         atWill1Choice.setDisable(false);
         atWill2Choice.setDisable(false);
-        //atWill1Choice.valueProperty().addListener((observable, oldValue, newValue) -> showThePowerDescription(heroClassInformation.getAtWillPowersAtLevel1().get(newValue)));
-        //atWill2Choice.valueProperty().addListener((observable, oldValue, newValue) -> showThePowerDescription(heroClassInformation.getAtWillPowersAtLevel1().get(newValue)));
+        atWill1Choice.valueProperty().addListener((observable, oldValue, newValue) -> showThePowerDescription(newValue));
+        atWill2Choice.valueProperty().addListener((observable, oldValue, newValue) -> showThePowerDescription(newValue));
         encounterChoice.setDisable(false);
         dailyChoice.setDisable(false);
 
     }
 
     //todo finish the skill description window after selection
-    private void showThePowerDescription(List<HeroPower> selectedPower) {
-
-
+    private void showThePowerDescription(String powerName) {
+        HeroClassInformation heroClassInformation = new HeroClassInformation();
+        HeroPower heroPower = heroClassInformation.getHeroPowerByName(selectedHeroClass, powerName);
+//        powerDescription.setDisable(true);
+        powerDescription.setWrapText(true);
+        powerDescription.setText("Preview of a recently selected power:  \n\n" + "Power Name:  \n" + heroPower.getPowerName() + "\n\n" + "Power Description:  \n" + heroPower.getHitDescription());
     }
 
     private void displayThePowerPopup() {

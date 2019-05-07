@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="de97b43a-8902-45e2-a345-dc80bad4fa20" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/CharacterCreatorGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/CharacterCreatorGUI.class" afterDir="false" />
@@ -9,6 +10,9 @@
       <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroClassInformation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroClassInformation.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/MainMenuGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/MainMenuGUI.class" afterDir="false" />
     </list>
+=======
+    <list default="true" id="c9d90e6c-3da6-404d-a0d8-2e5c7789c250" name="Default Changelist" comment="" />
+>>>>>>> 86301bfa4c5d45ec203570db64656a6d422b2ea7
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,9 +20,40 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-965172716">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="java" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="21" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="21" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="621">
@@ -37,123 +72,61 @@
                 <element signature="method#populateTheTablesWithSkills#0;class#HeroClassInformation#0" />
                 <element signature="method#populateTheTablesWithHPs#0;class#HeroClassInformation#0" />
               </folding>
+=======
+        <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/sample/HeroClassInformation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="248">
+              <caret line="233" column="36" lean-forward="true" selection-start-line="233" selection-start-column="36" selection-end-line="233" selection-end-column="36" />
+>>>>>>> 86301bfa4c5d45ec203570db64656a6d422b2ea7
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>eventonra</find>
-      <find>eventOnRa</find>
-      <find>eventOn</find>
-      <find>characterName</find>
-      <find>hp</find>
-      <find>updateMaxHP</find>
-      <find>spinn</find>
-      <find>will</find>
-      <find>Max HP:</find>
-      <find>fortitu</find>
-      <find>fort</find>
-      <find>- 10</find>
-      <find>CharacterCla</find>
-      <find>eventon</find>
-      <find>atwi</find>
-      <find>setst</find>
-    </findStrings>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Invoker/GraspingShards.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Invoker/SunStrike.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Paladin/BolsteringStrike.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Paladin/EnfeeblingStrike.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Fighter/SureStrike.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Paladin/ValiantStrike.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Paladin/HolyStrike.java" />
-        <option value="$PROJECT_DIR$/src/sample/DungeonGUI.java" />
-        <option value="$PROJECT_DIR$/src/sample/Hero.java" />
-        <option value="$PROJECT_DIR$/src/sample/Main.java" />
-        <option value="$PROJECT_DIR$/src/sample/MainMenuGUI.java" />
-        <option value="$PROJECT_DIR$/src/sample/Monster.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/HitAndRun.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/NimbleStrike.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/RiposteStrike.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/CarefulAttack.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/TwinStrike.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/DeftStrike.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/PiercingStrike.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/HeroPower.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/SlyFlourish.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/ProtectingStrike.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/HauntingSpirits.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/DefendingStrike.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/WrathOfWinter.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/WatchersStrike.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/StalkersStrike.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/AcidOrb.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/BurningSpray.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/ChaosBolt.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/Dragonfrost.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/StormWalk.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Warden/EarthShieldStrike.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Warden/StrengthOfStone.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Warden/ThornStrike.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Warden/WeightOfTheEarth.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Warlord/CommandersStrike.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Warlord/VipersStrike.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Warlord/WolfsPackTactics.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Warlock/HellishRebuke.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Warlock/Eyebite.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Warlock/EldritchBlast.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Warlock/DireRadiance.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Warlord/FuriousSmash.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/CloudOfDaggers.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/MagicMissile.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/RayOfFrost.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/Thunderwave.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/ScorchingBurst.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroClassInformation.java" />
-        <option value="$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java" />
       </list>
     </option>
   </component>
-  <component name="MavenProjectNavigator">
-    <treeState>
-      <expand />
-      <select />
-    </treeState>
-  </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1436" />
-    <option name="y" value="-290" />
-    <option name="width" value="1364" />
-    <option name="height" value="766" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
       <pane id="Scope" />
+=======
+      <pane id="PackagesPane" />
+>>>>>>> 86301bfa4c5d45ec203570db64656a6d422b2ea7
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
               <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
@@ -170,6 +143,7 @@
           <select />
         </subPane>
       </pane>
+<<<<<<< HEAD
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -178,19 +152,17 @@
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556895071376" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="full.screen.before.presentation.mode" value="false" />
+=======
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557162240468" />
+>>>>>>> 86301bfa4c5d45ec203570db64656a6d422b2ea7
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/mysql-connector-java-8.0.16.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="sample.HeroPowers.Wizard" />
-      <recent name="sample.HeroPowers.Warlord" />
-      <recent name="sample.HeroPowers.Warlock" />
-      <recent name="sample.HeroPowers.Warden" />
-      <recent name="sample.HeroPowers.Sorcerer" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -229,33 +201,13 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="de97b43a-8902-45e2-a345-dc80bad4fa20" name="Default Changelist" comment="" />
-      <created>1556870921453</created>
+      <changelist id="c9d90e6c-3da6-404d-a0d8-2e5c7789c250" name="Default Changelist" comment="" />
+      <created>1557162130880</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1556870921453</updated>
+      <updated>1557162130880</updated>
     </task>
-    <task id="LOCAL-00001" summary="Character Creation - removed unnecessary getters and setters, added armor class calculations.">
-      <created>1557122286542</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1557122286542</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Character Creation - started powers selection, new class: HeroPower and beginning of the Character GUI refactoring">
-      <created>1557126045714</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1557126045714</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Character Creation - At Will Power Selection - Populated rules for 1st at will powers of Barbarian and Avenger, added comboBoxes and selections.">
-      <created>1557131965624</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1557131965624</updated>
-    </task>
+<<<<<<< HEAD
     <task id="LOCAL-00004" summary="Character Creation - Added Bard At Will Powers">
       <created>1557133689175</created>
       <option name="number" value="00004" />
@@ -299,48 +251,50 @@
       <updated>1557147490099</updated>
     </task>
     <option name="localTasksCounter" value="10" />
+=======
+>>>>>>> 86301bfa4c5d45ec203570db64656a6d422b2ea7
     <servers />
   </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-  </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="-290" width="1696" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
+<<<<<<< HEAD
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21638142" />
+=======
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="UI Designer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+>>>>>>> 86301bfa4c5d45ec203570db64656a6d422b2ea7
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Find" order="1" weight="0.32976446" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32441112" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39828694" />
+=======
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.329718" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+>>>>>>> 86301bfa4c5d45ec203570db64656a6d422b2ea7
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32869378" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32869378" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Maven Projects" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info anchor="right" id="Maven Projects" order="7" weight="0.32995737" />
-      <window_info anchor="right" id="Maven" order="8" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21088019" />
@@ -372,6 +326,7 @@
       <window_info anchor="right" id="Maven" order="8" />
     </layout-to-restore>
   </component>
+<<<<<<< HEAD
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Character Creation - removed unnecessary getters and setters, added armor class calculations." />
     <MESSAGE value="Character Creation - started powers selection, new class: HeroPower and beginning of the Character GUI refactoring" />
@@ -383,369 +338,16 @@
     <MESSAGE value="Character Creation - Added Encounter and Daily Power selectors, changed styles by adding colors, changed &quot;todo&quot; lists" />
     <MESSAGE value="Character Creation - Added remaining at will powers" />
     <option name="LAST_COMMIT_MESSAGE" value="Character Creation - Added remaining at will powers" />
+=======
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+>>>>>>> 86301bfa4c5d45ec203570db64656a6d422b2ea7
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Invoker/SunStrike.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Fighter/SureStrike.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Paladin/ValiantStrike.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="65" selection-start-line="18" selection-start-column="65" selection-end-line="18" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Paladin/HolyStrike.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Paladin/BolsteringStrike.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="125" selection-start-line="7" selection-start-column="8" selection-end-line="19" selection-end-column="125" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Invoker/DivineBolts.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="67" selection-start-line="7" selection-start-column="8" selection-end-line="20" selection-end-column="67" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Hero.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="50" selection-start-line="50" selection-end-line="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="30" lean-forward="true" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Monster.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/MainMenuGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Invoker/AvengingLight.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/DungeonGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="370" column="37" lean-forward="true" selection-start-line="370" selection-start-column="37" selection-end-line="370" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Ranger/CarefulAttack.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Ranger/HitAndRun.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="19" column="58" selection-start-line="19" selection-start-column="58" selection-end-line="19" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Ranger/NimbleStrike.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="15" column="73" lean-forward="true" selection-start-line="15" selection-start-column="73" selection-end-line="15" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Ranger/TwinStrike.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Rogue/DeftStrike.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Rogue/PiercingStrike.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Rogue/RiposteStrike.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Rogue/SlyFlourish.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Shaman/ProtectingStrike.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" column="69" selection-start-line="8" selection-start-column="69" selection-end-line="8" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Shaman/DefendingStrike.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" column="69" selection-start-line="8" selection-start-column="69" selection-end-line="8" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Shaman/WatchersStrike.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="20" column="35" lean-forward="true" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Shaman/StalkersStrike.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/AcidOrb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Shaman/HauntingSpirits.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="20" column="19" lean-forward="true" selection-start-line="20" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Shaman/WrathOfWinter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/BurningSpray.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" column="28" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/ChaosBolt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/Dragonfrost.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" column="28" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/StormWalk.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/HeroPower.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="42" lean-forward="true" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Warlock/HellishRebuke.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" column="70" selection-start-line="8" selection-start-column="70" selection-end-line="8" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Warlock/Eyebite.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" column="70" selection-start-line="8" selection-start-column="70" selection-end-line="8" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Warlock/EldritchBlast.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" column="70" selection-start-line="8" selection-start-column="70" selection-end-line="8" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Warlock/DireRadiance.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" column="70" selection-start-line="8" selection-start-column="70" selection-end-line="8" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Warden/WeightOfTheEarth.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="19" column="118" selection-start-line="19" selection-start-column="118" selection-end-line="19" selection-end-column="118" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Warden/ThornStrike.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Warden/StrengthOfStone.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="20" column="31" lean-forward="true" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Warden/EarthShieldStrike.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="11" column="23" lean-forward="true" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Warlord/VipersStrike.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="19" column="59" selection-start-line="19" selection-start-column="59" selection-end-line="19" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Warlord/FuriousSmash.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" column="70" selection-start-line="8" selection-start-column="70" selection-end-line="8" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Warlord/CommandersStrike.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" column="70" selection-start-line="8" selection-start-column="70" selection-end-line="8" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Wizard/CloudOfDaggers.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
-          <caret line="21" column="312" selection-start-line="21" selection-start-column="312" selection-end-line="21" selection-end-column="312" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Wizard/MagicMissile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="22" column="1" lean-forward="true" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Wizard/RayOfFrost.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="11" column="23" lean-forward="true" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Wizard/Thunderwave.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="19" column="35" lean-forward="true" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Wizard/ScorchingBurst.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Warlord/WolfsPackTactics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -758,6 +360,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/HeroClassInformation.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="85">
           <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
           <folding>
@@ -765,6 +368,10 @@
             <element signature="method#populateTheTablesWithSkills#0;class#HeroClassInformation#0" />
             <element signature="method#populateTheTablesWithHPs#0;class#HeroClassInformation#0" />
           </folding>
+=======
+        <state relative-caret-position="248">
+          <caret line="233" column="36" lean-forward="true" selection-start-line="233" selection-start-column="36" selection-end-line="233" selection-end-column="36" />
+>>>>>>> 86301bfa4c5d45ec203570db64656a6d422b2ea7
         </state>
       </provider>
     </entry>
@@ -821,6 +428,19 @@
       <state key="ModuleStructureConfigurable.UI">
         <settings>
           <last-edited>DungeonCrawl</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
