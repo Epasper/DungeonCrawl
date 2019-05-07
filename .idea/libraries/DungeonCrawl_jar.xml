@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="DungeonCrawl_jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/DungeonCrawl_jar/DungeonCrawl_jar.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
