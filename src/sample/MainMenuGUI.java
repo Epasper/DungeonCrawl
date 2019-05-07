@@ -49,13 +49,10 @@ public class MainMenuGUI {
         aStage.show();
     }
 
-    private void getBackToMainMenu() {
-        aStage = Main.getPrimaryStage();
-        aStage.show();
-    }
 
     private void openDungeonGUI() {
         DungeonGUI dungeonGui = new DungeonGUI();
+        aScene.getStylesheets().add("sample/Styling/Caspian.css");
         aStage.close();
         aScene.setRoot(dungeonGui.mapScrollPane);
         aStage.setScene(aScene);
