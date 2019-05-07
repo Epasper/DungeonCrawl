@@ -3,22 +3,22 @@ package sample.HeroPowers.Druid;
 import sample.HeroClassInformation;
 import sample.HeroPowers.HeroPower;
 
-public class GraspingClaws extends HeroPower {
-    public GraspingClaws() {
-        powerName = "Grasping Claws";
+public class TwistingVines extends HeroPower {
+    public TwistingVines() {
+        powerName = "Twisting Vines";
         characterClass = HeroClassInformation.CharacterClasses.Druid.toString();
-        typeOfPower = HeroClassInformation.TypeOfPower.AT_WILL.toString().replace('_', ' ').toLowerCase();
+        typeOfPower = HeroClassInformation.TypeOfPower.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;
         range = 10;
-        numberOfTargets = "One target";
+        numberOfTargets = "Area Burst 1";
         attributeUsedToHit = HeroClassInformation.Attributes.Wisdom.toString();
         defenseToBeChecked = HeroClassInformation.Defenses.Reflex.toString();
         damageDiceDealt = 1;
         typeOfDamageDice = 8;
-        damageModifier = HeroClassInformation.Attributes.Wisdom.toString();
+        bonusDamageModifier = HeroClassInformation.Attributes.Wisdom.toString();
+        damageModifier = "None";
         isThisWeaponDamage = false;
-        isThisABeastFormAttack = true;
-        hitDescription = "1d8 + Wisdom modifier damage, and the target is slowed until the end of your next turn. Grasping claws can be used as a melee basic attack.";
+        hitDescription = "1d8 + Wisdom modifier damage. Each square adjacent to the target becomes difficult terrain until the end of the user's next turn.";
     }
 }

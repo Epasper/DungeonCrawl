@@ -3,22 +3,22 @@ package sample.HeroPowers.Druid;
 import sample.HeroClassInformation;
 import sample.HeroPowers.HeroPower;
 
-public class GraspingClaws extends HeroPower {
-    public GraspingClaws() {
-        powerName = "Grasping Claws";
+public class CullTheHerd extends HeroPower {
+    public CullTheHerd() {
+        powerName = "Cull the Herd";
         characterClass = HeroClassInformation.CharacterClasses.Druid.toString();
-        typeOfPower = HeroClassInformation.TypeOfPower.AT_WILL.toString().replace('_', ' ').toLowerCase();
+        typeOfPower = HeroClassInformation.TypeOfPower.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;
-        range = 10;
+        range = 5;
         numberOfTargets = "One target";
         attributeUsedToHit = HeroClassInformation.Attributes.Wisdom.toString();
-        defenseToBeChecked = HeroClassInformation.Defenses.Reflex.toString();
-        damageDiceDealt = 1;
+        defenseToBeChecked = HeroClassInformation.Defenses.Will.toString();
+        damageDiceDealt = 2;
         typeOfDamageDice = 8;
         damageModifier = HeroClassInformation.Attributes.Wisdom.toString();
         isThisWeaponDamage = false;
         isThisABeastFormAttack = true;
-        hitDescription = "1d8 + Wisdom modifier damage, and the target is slowed until the end of your next turn. Grasping claws can be used as a melee basic attack.";
+        hitDescription = "2d8 + Wisdom modifier psychic damage. The target is pulled 3 squares.";
     }
 }

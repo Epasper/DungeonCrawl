@@ -377,29 +377,38 @@ public class CharacterCreatorGUI {
                 FXCollections.observableArrayList();
         ObservableList<String> atWill2Options =
                 FXCollections.observableArrayList();
+        ObservableList<String> encounterOptions =
+                FXCollections.observableArrayList();
         HeroClassInformation heroClassInformation = new HeroClassInformation();
         int numberOfAtWillPowers = heroClassInformation.getAtWillPowersAtLevel1().get(selectedHeroClass).size();
+        int numberOfEncounterPowers = heroClassInformation.getEncounterPowersAtLevel1().get(selectedHeroClass).size();
         for (int i = 0; i < numberOfAtWillPowers; i++) {
             atWill1Options.add(heroClassInformation.getAtWillPowersAtLevel1().get(selectedHeroClass).get(i).getPowerName());
         }
         for (int i = 0; i < numberOfAtWillPowers; i++) {
             atWill2Options.add(heroClassInformation.getAtWillPowersAtLevel1().get(selectedHeroClass).get(i).getPowerName());
         }
+        for (int i = 0; i < numberOfEncounterPowers; i++) {
+            encounterOptions.add(heroClassInformation.getEncounterPowersAtLevel1().get(selectedHeroClass).get(i).getPowerName());
+        }
         atWill1Choice.setItems(atWill1Options);
         atWill2Choice.setItems(atWill2Options);
+        encounterChoice.setItems(encounterOptions);
         atWill1Choice.setDisable(false);
         atWill2Choice.setDisable(false);
-        atWill1Choice.valueProperty().addListener((observable, oldValue, newValue) -> showThePowerDescription(newValue));
-        atWill2Choice.valueProperty().addListener((observable, oldValue, newValue) -> showThePowerDescription(newValue));
+        encounterChoice.setDisable(false);
+        atWill1Choice.valueProperty().addListener((observable, oldValue, newValue) -> showThePowerDescription(newValue, "AtWill"));
+        atWill2Choice.valueProperty().addListener((observable, oldValue, newValue) -> showThePowerDescription(newValue, "AtWill"));
+        encounterChoice.valueProperty().addListener((observable, oldValue, newValue) -> showThePowerDescription(newValue, "Encounter"));
         encounterChoice.setDisable(false);
         dailyChoice.setDisable(false);
 
     }
 
     //todo finish the skill description window after selection
-    private void showThePowerDescription(String powerName) {
+    private void showThePowerDescription(String powerName, String typeOfPower) {
         HeroClassInformation heroClassInformation = new HeroClassInformation();
-        HeroPower heroPower = heroClassInformation.getHeroPowerByName(selectedHeroClass, powerName);
+        HeroPower heroPower = heroClassInformation.getHeroPowerByName(selectedHeroClass, powerName, typeOfPower);
 //        powerDescription.setDisable(true);
         powerDescription.setWrapText(true);
         powerDescription.setText("Preview of a recently selected power:  \n\n" + "Power Name:  \n" + heroPower.getPowerName() + "\n\n" + "Power Description:  \n" + heroPower.getHitDescription());

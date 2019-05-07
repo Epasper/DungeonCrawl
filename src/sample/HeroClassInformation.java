@@ -1,34 +1,14 @@
 package sample;
 
-import sample.HeroPowers.Avenger.BondOfPursuit;
-import sample.HeroPowers.Avenger.BondOfRetribution;
-import sample.HeroPowers.Avenger.OverwhelmingStrike;
-import sample.HeroPowers.Avenger.RadiantVengeance;
-import sample.HeroPowers.Barbarian.DevastatingStrike;
-import sample.HeroPowers.Barbarian.HowlingStrike;
-import sample.HeroPowers.Barbarian.PressingStrike;
-import sample.HeroPowers.Bard.GuidingStrike;
-import sample.HeroPowers.Bard.MisdirectedMark;
-import sample.HeroPowers.Bard.ViciousMockery;
-import sample.HeroPowers.Bard.WarSongStrike;
-import sample.HeroPowers.Cleric.LanceOfFaith;
-import sample.HeroPowers.Cleric.PriestsShield;
-import sample.HeroPowers.Cleric.RighteousBrand;
-import sample.HeroPowers.Cleric.SacredFlame;
+import sample.HeroPowers.Avenger.*;
+import sample.HeroPowers.Barbarian.*;
+import sample.HeroPowers.Bard.*;
+import sample.HeroPowers.Cleric.*;
 import sample.HeroPowers.Druid.*;
-import sample.HeroPowers.Fighter.Cleave;
-import sample.HeroPowers.Fighter.ReapingStrike;
-import sample.HeroPowers.Fighter.SureStrike;
-import sample.HeroPowers.Fighter.TideOfIron;
+import sample.HeroPowers.Fighter.*;
 import sample.HeroPowers.HeroPower;
-import sample.HeroPowers.Barbarian.RecuperatingStrike;
-import sample.HeroPowers.Invoker.AvengingLight;
-import sample.HeroPowers.Invoker.DivineBolts;
-import sample.HeroPowers.Invoker.SunStrike;
-import sample.HeroPowers.Paladin.BolsteringStrike;
-import sample.HeroPowers.Paladin.EnfeeblingStrike;
-import sample.HeroPowers.Paladin.HolyStrike;
-import sample.HeroPowers.Paladin.ValiantStrike;
+import sample.HeroPowers.Invoker.*;
+import sample.HeroPowers.Paladin.*;
 import sample.HeroPowers.Ranger.CarefulAttack;
 import sample.HeroPowers.Ranger.HitAndRun;
 import sample.HeroPowers.Ranger.NimbleStrike;
@@ -62,6 +42,15 @@ public class HeroClassInformation {
     Map<String, Integer> hitDicePerLevel = new HashMap<>();
     Map<String, List<String>> armorProficiencies = new HashMap<>();
     private Map<String, List<HeroPower>> atWillPowersAtLevel1 = new HashMap<>();
+    private Map<String, List<HeroPower>> encounterPowersAtLevel1 = new HashMap<>();
+
+    public Map<String, List<HeroPower>> getEncounterPowersAtLevel1() {
+        return encounterPowersAtLevel1;
+    }
+
+    public void setEncounterPowersAtLevel1(Map<String, List<HeroPower>> encounterPowersAtLevel1) {
+        this.encounterPowersAtLevel1 = encounterPowersAtLevel1;
+    }
 
     public enum ExpandedAction {FREE, MINOR, STANDARD}
 
@@ -93,6 +82,7 @@ public class HeroClassInformation {
         populateTheTablesWithHPs();
         populateTheTablesWithSkills();
         populateTheTablesWithAtWillPowers();
+        populateTheTablesWithEncounterPowers();
     }
 
     public Map<String, Integer> getClassSkillPoints() {
@@ -226,10 +216,118 @@ public class HeroClassInformation {
         wizard.add(new Thunderwave());
     }
 
-    public HeroPower getHeroPowerByName(String className, String powerName) {
-        for (HeroPower currentPower : atWillPowersAtLevel1.get(className)) {
-            if (powerName.equals(currentPower.getPowerName())) {
-                return currentPower;
+    private void populateTheTablesWithEncounterPowers() {
+        List<HeroPower> avenger = new ArrayList<>();
+        encounterPowersAtLevel1.put(CharacterClasses.Avenger.toString(), avenger);
+        avenger.add(new AngelicAlacrity());
+        avenger.add(new AvengingEcho());
+        avenger.add(new SharedMadness());
+        avenger.add(new WhirlwindCharge());
+        List<HeroPower> barbarian = new ArrayList<>();
+        encounterPowersAtLevel1.put(CharacterClasses.Barbarian.toString(), barbarian);
+        barbarian.add(new AvalancheStrike());
+        barbarian.add(new Bloodletting());
+        barbarian.add(new GreatCleave());
+        barbarian.add(new VaultOfTheFallen());
+        List<HeroPower> bard = new ArrayList<>();
+        encounterPowersAtLevel1.put(CharacterClasses.Bard.toString(), bard);
+        bard.add(new Blunder());
+        bard.add(new FastFriends());
+        bard.add(new InspiringRefrain());
+        bard.add(new ShoutOfTriumph());
+        List<HeroPower> cleric = new ArrayList<>();
+        encounterPowersAtLevel1.put(CharacterClasses.Cleric.toString(), cleric);
+        cleric.add(new CauseFear());
+        cleric.add(new DivineGlow());
+        cleric.add(new HealingStrike());
+        cleric.add(new WrathfulThunder());
+        List<HeroPower> druid = new ArrayList<>();
+        encounterPowersAtLevel1.put(CharacterClasses.Druid.toString(), druid);
+        druid.add(new CullTheHerd());
+        druid.add(new DartingBite());
+        druid.add(new FrostFlash());
+        druid.add(new TwistingVines());
+        List<HeroPower> fighter = new ArrayList<>();
+        encounterPowersAtLevel1.put(CharacterClasses.Fighter.toString(), fighter);
+        fighter.add(new CoveringAttack());
+        fighter.add(new PassingAttack());
+        fighter.add(new SpinningSweep());
+        fighter.add(new SteelSerpentStrike());
+        List<HeroPower> invoker = new ArrayList<>();
+        encounterPowersAtLevel1.put(CharacterClasses.Invoker.toString(), invoker);
+        invoker.add(new AstralTerror());
+        invoker.add(new BladeOfAstralFire());
+        invoker.add(new SpearOfTheInquisitor());
+        invoker.add(new ThunderOfJudgement());
+        List<HeroPower> paladin = new ArrayList<>();
+        encounterPowersAtLevel1.put(CharacterClasses.Paladin.toString(), paladin);
+        paladin.add(new FearsomeSmite());
+        paladin.add(new PiercingSmite());
+        paladin.add(new RadiantSmite());
+        paladin.add(new ShieldingSmite());
+        List<HeroPower> ranger = new ArrayList<>();
+        encounterPowersAtLevel1.put(CharacterClasses.Ranger.toString(), ranger);
+        ranger.add(new CarefulAttack());
+        ranger.add(new HitAndRun());
+        ranger.add(new NimbleStrike());
+        ranger.add(new TwinStrike());
+        List<HeroPower> rogue = new ArrayList<>();
+        encounterPowersAtLevel1.put(CharacterClasses.Rogue.toString(), rogue);
+        rogue.add(new DeftStrike());
+        rogue.add(new PiercingStrike());
+        rogue.add(new RiposteStrike());
+        rogue.add(new SlyFlourish());
+        List<HeroPower> shaman = new ArrayList<>();
+        encounterPowersAtLevel1.put(CharacterClasses.Shaman.toString(), shaman);
+        shaman.add(new DefendingStrike());
+        shaman.add(new HauntingSpirits());
+        shaman.add(new ProtectingStrike());
+        shaman.add(new StalkersStrike());
+        shaman.add(new WatchersStrike());
+        shaman.add(new WrathOfWinter());
+        List<HeroPower> sorcerer = new ArrayList<>();
+        encounterPowersAtLevel1.put(CharacterClasses.Sorcerer.toString(), sorcerer);
+        sorcerer.add(new AcidOrb());
+        sorcerer.add(new BurningSpray());
+        sorcerer.add(new ChaosBolt());
+        sorcerer.add(new Dragonfrost());
+        sorcerer.add(new StormWalk());
+        List<HeroPower> warlock = new ArrayList<>();
+        encounterPowersAtLevel1.put(CharacterClasses.Warlock.toString(), warlock);
+        warlock.add(new DireRadiance());
+        warlock.add(new EldritchBlast());
+        warlock.add(new Eyebite());
+        warlock.add(new HellishRebuke());
+        List<HeroPower> warlord = new ArrayList<>();
+        encounterPowersAtLevel1.put(CharacterClasses.Warlord.toString(), warlord);
+        warlord.add(new CommandersStrike());
+        warlord.add(new FuriousSmash());
+        warlord.add(new VipersStrike());
+        warlord.add(new WolfsPackTactics());
+        List<HeroPower> wizard = new ArrayList<>();
+        encounterPowersAtLevel1.put(CharacterClasses.Wizard.toString(), wizard);
+        wizard.add(new CloudOfDaggers());
+        wizard.add(new MagicMissile());
+        wizard.add(new RayOfFrost());
+        wizard.add(new ScorchingBurst());
+        wizard.add(new Thunderwave());
+    }
+
+    public HeroPower getHeroPowerByName(String className, String powerName, String typeOfPower) {
+
+        //todo NullPointer
+
+        if (typeOfPower.contains("Will")) {
+            for (HeroPower currentPower : atWillPowersAtLevel1.get(className)) {
+                if (powerName.equals(currentPower.getPowerName())) {
+                    return currentPower;
+                }
+            }
+        } else if (typeOfPower.contains("Encounter")) {
+            for (HeroPower currentPower : encounterPowersAtLevel1.get(className)) {
+                if (powerName.equals(currentPower.getPowerName())) {
+                    return currentPower;
+                }
             }
         }
         return null;

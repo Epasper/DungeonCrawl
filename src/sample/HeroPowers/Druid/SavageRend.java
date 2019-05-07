@@ -18,6 +18,7 @@ public class SavageRend extends HeroPower {
         typeOfDamageDice = 8;
         damageModifier = HeroClassInformation.Attributes.Wisdom.toString();
         isThisWeaponDamage = false;
+        isThisABeastFormAttack = true;
         hitDescription = "1d8 + Wisdom modifier damage, and you slide the target 1 square. Savage rend can be used as a melee basic attack.";
     }
 }

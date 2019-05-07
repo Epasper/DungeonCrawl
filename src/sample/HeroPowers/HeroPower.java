@@ -24,7 +24,10 @@ public abstract class HeroPower {
     protected int typeOfBonusDamageDice;
     protected String bonusDamageModifier;
     protected boolean canThisAttackAlsoBeRanged = false;
-    protected boolean isThisASpiritAttack;
+    protected boolean isThisASpiritAttack = false;
+    protected boolean isThisABeastFormAttack = false;
+    protected String secondAttributeUsed;
+    protected String powersAdditionalOptions;
 
     public String getPowerName() {
         return powerName;

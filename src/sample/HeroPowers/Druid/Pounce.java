@@ -18,6 +18,7 @@ public class Pounce extends HeroPower {
         typeOfDamageDice = 8;
         damageModifier = HeroClassInformation.Attributes.Wisdom.toString();
         isThisWeaponDamage = false;
+        isThisABeastFormAttack = true;
         hitDescription = "1d8 + Wisdom modifier damage. The target grants combat advantage to the next creature that attacks it before the end of your next turn. A character can use pounce instead of the melee basic attack or bull rush part of a charge action.";
     }
 }
