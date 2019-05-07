@@ -359,6 +359,8 @@ public class DungeonGUI {
 
     //todo change the range calculator so that the range is a circle, not a diamond.
     //todo add a visibility checker similar to the range checker, but straight and with a longer range
+    //todo add a console in the dungeon view to write output visible to players
+    //todo think about the power selection menu in the dungeon GUI
 
     private void checkTheAvailableDistance(Hero hero) {
         int YPos = hero.mapYPos;

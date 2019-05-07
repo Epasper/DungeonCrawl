@@ -2,46 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de97b43a-8902-45e2-a345-dc80bad4fa20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/AngelicAlacrity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/AvengingEcho.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/SharedMadness.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/WhirlwindCharge.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/AvalancheStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/Bloodletting.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/GreatCleave.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/VaultOfTheFallen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Bard/Blunder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Bard/FastFriends.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Bard/InspiringRefrain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Bard/ShoutOfTriumph.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Cleric/CauseFear.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Cleric/DivineGlow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Cleric/HealingStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Cleric/WrathfulThunder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/CullTheHerd.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/DartingBite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/FrostFlash.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/TwistingVines.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Fighter/CoveringAttack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Fighter/PassingAttack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Fighter/SpinningSweep.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Fighter/SteelSerpentStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Invoker/AstralTerror.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Invoker/BladeOfAstralFire.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Invoker/SpearOfTheInquisitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Invoker/ThunderOfJudgement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Paladin/FearsomeSmite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Paladin/PiercingSmite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Paladin/RadiantSmite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Paladin/ShieldingSmite.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/DireWolverineStrike.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/EvasiveStrike.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/FoxsCunning.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/TwoFangedStrike.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/CharacterCreatorGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/CharacterCreatorGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/DungeonGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/DungeonGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroClassInformation$Attributes.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroClassInformation$Attributes.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroClassInformation$CharacterClasses.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroClassInformation$CharacterClasses.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroClassInformation$CharacterRaces.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroClassInformation$CharacterRaces.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroClassInformation$CharacterSkills.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroClassInformation$CharacterSkills.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroClassInformation$Defenses.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroClassInformation$Defenses.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroClassInformation$ExpandedAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroClassInformation$ExpandedAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroClassInformation$TypeOfPower.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroClassInformation$TypeOfPower.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroClassInformation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroClassInformation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroPowers/Druid/GraspingClaws.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroPowers/Druid/GraspingClaws.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroPowers/Druid/Pounce.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroPowers/Druid/Pounce.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroPowers/Druid/SavageRend.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroPowers/Druid/SavageRend.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroPowers/HeroPower.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/HeroPowers/HeroPower.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/DungeonGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DungeonGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/HeroClassInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroClassInformation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/GraspingClaws.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/GraspingClaws.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/Pounce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/Pounce.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/SavageRend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/SavageRend.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/HeroPower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/HeroPower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Styling/Caspian.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Styling/Caspian.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -52,11 +34,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="408" column="80" lean-forward="true" selection-start-line="408" selection-start-column="80" selection-end-line="408" selection-end-column="80" />
+            <state relative-caret-position="252">
+              <caret line="123" lean-forward="true" selection-start-line="123" selection-end-line="123" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -65,10 +47,46 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Ranger/DireWolverineStrike.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="18" column="34" lean-forward="true" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Ranger/EvasiveStrike.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Ranger/FoxsCunning.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="16" column="28" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Ranger/TwoFangedStrike.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/HeroClassInformation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="315" column="84" selection-start-line="315" selection-start-column="84" selection-end-line="315" selection-end-column="84" />
+            <state relative-caret-position="177">
+              <caret line="51" column="63" lean-forward="true" selection-start-line="51" selection-start-column="63" selection-end-line="51" selection-end-column="63" />
               <folding>
                 <element signature="e#1869#1870#0" expanded="true" />
                 <element signature="e#1915#1916#0" expanded="true" />
@@ -76,6 +94,15 @@
                 <element signature="method#populateTheTablesWithSkills#0;class#HeroClassInformation#0" />
                 <element signature="method#populateTheTablesWithHPs#0;class#HeroClassInformation#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/DungeonGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="380">
+              <caret line="383" column="44" lean-forward="true" selection-start-line="383" selection-start-column="44" selection-end-line="383" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -107,7 +134,6 @@
       <find>atwi</find>
       <find>sce</find>
       <find>scen</find>
-      <find>setmin</find>
       <find>color</find>
       <find>tex</find>
       <find>Saving</find>
@@ -122,6 +148,7 @@
       <find>Points&quot;</find>
       <find>ca</find>
       <find>setst</find>
+      <find>setmin</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -130,11 +157,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/CloudOfDaggers.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/MagicMissile.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/RayOfFrost.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/Thunderwave.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/ScorchingBurst.java" />
         <option value="$PROJECT_DIR$/src/sample/sample.fxml" />
         <option value="$PROJECT_DIR$/src/sample/CharacterCreator.css" />
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
@@ -179,8 +201,13 @@
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Paladin/PiercingSmite.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Paladin/FearsomeSmite.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Paladin/ShieldingSmite.java" />
+        <option value="$PROJECT_DIR$/src/sample/DungeonGUI.java" />
         <option value="$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java" />
+        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/DireWolverineStrike.java" />
+        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/EvasiveStrike.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroClassInformation.java" />
+        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/FoxsCunning.java" />
+        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/TwoFangedStrike.java" />
       </list>
     </option>
   </component>
@@ -243,63 +270,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="sample" type="462c0819:PsiDirectoryNode" />
               <item name="HeroPowers" type="462c0819:PsiDirectoryNode" />
-              <item name="Avenger" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="sample" type="462c0819:PsiDirectoryNode" />
-              <item name="HeroPowers" type="462c0819:PsiDirectoryNode" />
-              <item name="Barbarian" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="sample" type="462c0819:PsiDirectoryNode" />
-              <item name="HeroPowers" type="462c0819:PsiDirectoryNode" />
-              <item name="Bard" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="sample" type="462c0819:PsiDirectoryNode" />
-              <item name="HeroPowers" type="462c0819:PsiDirectoryNode" />
-              <item name="Cleric" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="sample" type="462c0819:PsiDirectoryNode" />
-              <item name="HeroPowers" type="462c0819:PsiDirectoryNode" />
-              <item name="Druid" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="sample" type="462c0819:PsiDirectoryNode" />
-              <item name="HeroPowers" type="462c0819:PsiDirectoryNode" />
-              <item name="Fighter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="sample" type="462c0819:PsiDirectoryNode" />
-              <item name="HeroPowers" type="462c0819:PsiDirectoryNode" />
-              <item name="Invoker" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="sample" type="462c0819:PsiDirectoryNode" />
-              <item name="HeroPowers" type="462c0819:PsiDirectoryNode" />
-              <item name="Paladin" type="462c0819:PsiDirectoryNode" />
+              <item name="Ranger" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
@@ -329,11 +300,11 @@
       <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\Styling" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="sample.HeroPowers.Ranger" />
       <recent name="sample.HeroPowers.Paladin" />
       <recent name="sample.HeroPowers.Invoker" />
       <recent name="sample.HeroPowers.Fighter" />
       <recent name="sample.HeroPowers.Druid" />
-      <recent name="sample.HeroPowers.Cleric" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\epasp\DungeonCrawl\src\sample\Styling" />
@@ -453,7 +424,14 @@
       <option name="project" value="LOCAL" />
       <updated>1557217650839</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Character Creation - Added Half of Encounter Powers and the choice option.">
+      <created>1557224669767</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1557224669767</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView">
@@ -538,44 +516,10 @@
     <MESSAGE value="Character Creation - Added Encounter and Daily Power selectors, changed styles by adding colors, changed &quot;todo&quot; lists" />
     <MESSAGE value="Character Creation - Added a css styling to character creator. Time to remove it from Dungeon, as it screws the pather." />
     <MESSAGE value="Character Creation - Repaired the css of Dungeon" />
-    <option name="LAST_COMMIT_MESSAGE" value="Character Creation - Repaired the css of Dungeon" />
+    <MESSAGE value="Character Creation - Added Half of Encounter Powers and the choice option." />
+    <option name="LAST_COMMIT_MESSAGE" value="Character Creation - Added Half of Encounter Powers and the choice option." />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/sample/Styling/CharacterCreator.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="29" selection-start-line="29" selection-end-line="43" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/DungeonGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="429" column="58" selection-start-line="429" selection-start-column="58" selection-end-line="429" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/MainMenuGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Styling/Caspian.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="3831" column="40" lean-forward="true" selection-start-line="3831" selection-start-column="40" selection-end-line="3831" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Avenger/BondOfPursuit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Avenger/AvengingEcho.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -890,10 +834,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/DungeonGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="383" column="44" lean-forward="true" selection-start-line="383" selection-start-column="44" selection-end-line="383" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="123" lean-forward="true" selection-start-line="123" selection-end-line="123" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Ranger/DireWolverineStrike.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="18" column="34" lean-forward="true" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Ranger/EvasiveStrike.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/HeroClassInformation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="315" column="84" selection-start-line="315" selection-start-column="84" selection-end-line="315" selection-end-column="84" />
+        <state relative-caret-position="177">
+          <caret line="51" column="63" lean-forward="true" selection-start-line="51" selection-start-column="63" selection-end-line="51" selection-end-column="63" />
           <folding>
             <element signature="e#1869#1870#0" expanded="true" />
             <element signature="e#1915#1916#0" expanded="true" />
@@ -904,13 +879,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Ranger/FoxsCunning.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="408" column="80" lean-forward="true" selection-start-line="408" selection-start-column="80" selection-end-line="408" selection-end-column="80" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="255">
+          <caret line="16" column="28" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Ranger/TwoFangedStrike.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
         </state>
       </provider>
     </entry>

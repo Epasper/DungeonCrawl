@@ -118,8 +118,8 @@ public class CharacterCreatorGUI {
         middleBox.add(reflexSaveText, 0, 14);
         middleBox.add(willSaveText, 0, 15);
         middleBox.add(armorClassText, 0, 16);
-        powerDescription.setMinSize(200, 250);
-        middleBox.add(powerDescription, 0, 25);
+        powerDescription.setMinSize(120, 250);
+        middleBox.add(powerDescription, 0, 25, 10, 1);
     }
 
     private void addTheSkillList() {

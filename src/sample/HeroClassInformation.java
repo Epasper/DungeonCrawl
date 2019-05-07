@@ -9,10 +9,7 @@ import sample.HeroPowers.Fighter.*;
 import sample.HeroPowers.HeroPower;
 import sample.HeroPowers.Invoker.*;
 import sample.HeroPowers.Paladin.*;
-import sample.HeroPowers.Ranger.CarefulAttack;
-import sample.HeroPowers.Ranger.HitAndRun;
-import sample.HeroPowers.Ranger.NimbleStrike;
-import sample.HeroPowers.Ranger.TwinStrike;
+import sample.HeroPowers.Ranger.*;
 import sample.HeroPowers.Rogue.DeftStrike;
 import sample.HeroPowers.Rogue.PiercingStrike;
 import sample.HeroPowers.Rogue.RiposteStrike;
@@ -52,7 +49,7 @@ public class HeroClassInformation {
         this.encounterPowersAtLevel1 = encounterPowersAtLevel1;
     }
 
-    public enum ExpandedAction {FREE, MINOR, STANDARD}
+    public enum ExpandedAction {FREE, MINOR, STANDARD, REACTION}
 
     public enum TypeOfPower {AT_WILL, ENCOUNTER, DAILY}
 
@@ -267,10 +264,10 @@ public class HeroClassInformation {
         paladin.add(new ShieldingSmite());
         List<HeroPower> ranger = new ArrayList<>();
         encounterPowersAtLevel1.put(CharacterClasses.Ranger.toString(), ranger);
-        ranger.add(new CarefulAttack());
-        ranger.add(new HitAndRun());
-        ranger.add(new NimbleStrike());
-        ranger.add(new TwinStrike());
+        ranger.add(new DireWolverineStrike());
+        ranger.add(new EvasiveStrike());
+        ranger.add(new FoxsCunning());
+        ranger.add(new TwoFangedStrike());
         List<HeroPower> rogue = new ArrayList<>();
         encounterPowersAtLevel1.put(CharacterClasses.Rogue.toString(), rogue);
         rogue.add(new DeftStrike());
