@@ -28,7 +28,7 @@ public class HeroClassInformation {
     Map<String, List<String>> availableSkills = new HashMap<>();
     Map<String, Integer> hitDiceAt1st = new HashMap<>();
     Map<String, Integer> hitDicePerLevel = new HashMap<>();
-    Map<String, List<String>> armorProficiencies = new HashMap<>();
+    Map<CharacterSkills, Attributes> skillsAndCorrespondingAttributes = new HashMap<>();
     private Map<String, List<HeroPower>> atWillPowersAtLevel1 = new HashMap<>();
     private Map<String, List<HeroPower>> encounterPowersAtLevel1 = new HashMap<>();
 
@@ -71,6 +71,27 @@ public class HeroClassInformation {
         populateTheTablesWithSkills();
         populateTheTablesWithAtWillPowers();
         populateTheTablesWithEncounterPowers();
+        populateTheSkillsAndCorrespondingAttributes();
+    }
+
+    private void populateTheSkillsAndCorrespondingAttributes() {
+        skillsAndCorrespondingAttributes.put(CharacterSkills.Acrobatics, Attributes.Dexterity);
+        skillsAndCorrespondingAttributes.put(CharacterSkills.Arcana, Attributes.Intelligence);
+        skillsAndCorrespondingAttributes.put(CharacterSkills.Athletics, Attributes.Strength);
+        skillsAndCorrespondingAttributes.put(CharacterSkills.Bluff, Attributes.Charisma);
+        skillsAndCorrespondingAttributes.put(CharacterSkills.Diplomacy, Attributes.Charisma);
+        skillsAndCorrespondingAttributes.put(CharacterSkills.Dungeoneering, Attributes.Wisdom);
+        skillsAndCorrespondingAttributes.put(CharacterSkills.Endurance, Attributes.Constitution);
+        skillsAndCorrespondingAttributes.put(CharacterSkills.Heal, Attributes.Wisdom);
+        skillsAndCorrespondingAttributes.put(CharacterSkills.History, Attributes.Wisdom);
+        skillsAndCorrespondingAttributes.put(CharacterSkills.Insight, Attributes.Wisdom);
+        skillsAndCorrespondingAttributes.put(CharacterSkills.Intimidate, Attributes.Charisma);
+        skillsAndCorrespondingAttributes.put(CharacterSkills.Nature, Attributes.Wisdom);
+        skillsAndCorrespondingAttributes.put(CharacterSkills.Perception, Attributes.Wisdom);
+        skillsAndCorrespondingAttributes.put(CharacterSkills.Religion, Attributes.Wisdom);
+        skillsAndCorrespondingAttributes.put(CharacterSkills.Stealth, Attributes.Dexterity);
+        skillsAndCorrespondingAttributes.put(CharacterSkills.Streetwise, Attributes.Charisma);
+        skillsAndCorrespondingAttributes.put(CharacterSkills.Thievery, Attributes.Dexterity);
     }
 
     public Map<String, Integer> getClassSkillPoints() {
