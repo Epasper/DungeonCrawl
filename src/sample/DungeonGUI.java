@@ -173,7 +173,7 @@ public class DungeonGUI {
     private void updateMapGraphics(DungeonMap dungeonMap) {
         for (int i = 0; i < mapWidth; i++) {
             for (int j = 0; j < mapHeight; j++) {
-                int currentEntityID = dungeonMap.getMapTilesArray()[i][j].occupyingCreatureId;
+                int currentEntityID = dungeonMap.getMapTilesArray()[i][j].getOccupyingCreatureId();
                 String typeOfTile;
                 typeOfTile = dungeonMap.getMapTilesArray()[i][j].typeOfTile;
                 //debug mode only - make the whole dungeonMap visible:
@@ -222,7 +222,7 @@ public class DungeonGUI {
 
     private void eventOnHeroAttackingAMonster(int XPos, int YPos) {
         Hero hero = getHeroByID(getCurrentlyActiveHeroID(), heroList);
-        Monster monster = getMonsterByID(getDungeonMap().getMapTilesArray()[XPos][YPos].occupyingCreatureId, monsterList);
+        Monster monster = getMonsterByID(getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureId(), monsterList);
         hero.attackAMonster(monster);
     }
 
@@ -357,7 +357,6 @@ public class DungeonGUI {
         }
     }
 
-    //todo change the range calculator so that the range is a circle, not a diamond.
     //todo add a visibility checker similar to the range checker, but straight and with a longer range
     //todo add a console in the dungeon view to write output visible to players
     //todo think about the power selection menu in the dungeon GUI
@@ -368,48 +367,65 @@ public class DungeonGUI {
         double heroSteps = hero.getCurrentSpeed();
         double heroInteractionSteps;
         if (hero.getCurrentSpeed() > 0.9) {
-            heroInteractionSteps = 1;
+            heroInteractionSteps = 1.1;
         } else {
             heroInteractionSteps = 0;
         }
-        recursiveCheckDistance(YPos, XPos, heroSteps, "Walk Range");
-        recursiveCheckDistance(YPos, XPos, heroInteractionSteps, "Interaction Range");
+        recursiveCheckDistance("Start", YPos, XPos, heroSteps, "Walk Range");
+        recursiveCheckDistance("Start", YPos, XPos, heroInteractionSteps, "Interaction Range");
         System.out.println("X: " + XPos + " Y: " + YPos + " Speed: " + hero.speed);
     }
 
-    private void recursiveCheckDistance(int YPos, int XPos, double range, String reasonForChecking) {
-
-        int iterations = (int) range;
+    private void recursiveCheckDistance(String previousDirection, int YPos, int XPos, double range, String reasonForChecking) {
+        if (previousDirection.contains("North")) previousDirection = "North";
+        else if (previousDirection.contains("East")) previousDirection = "East";
+        else if (previousDirection.contains("West")) previousDirection = "West";
+        else if (previousDirection.contains("South")) previousDirection = "South";
         String currentTileTypeNorth = "North";
         String currentTileTypeEast = "East";
         String currentTileTypeWest = "West";
         String currentTileTypeSouth = "South";
         try {
             currentTileTypeNorth += dungeonMap.getMapTilesArray()[XPos][YPos + 1].typeOfTile;
+            if (dungeonMap.getMapTilesArray()[XPos][YPos + 1].getOccupyingCreatureId() > 0) {
+                currentTileTypeNorth += "Occupied";
+            }
         } catch (IndexOutOfBoundsException ignored) {
         }
         try {
             currentTileTypeEast += dungeonMap.getMapTilesArray()[XPos + 1][YPos].typeOfTile;
+            if (dungeonMap.getMapTilesArray()[XPos + 1][YPos].getOccupyingCreatureId() > 0) {
+                currentTileTypeEast += "Occupied";
+            }
         } catch (IndexOutOfBoundsException ignored) {
         }
         try {
             currentTileTypeWest += dungeonMap.getMapTilesArray()[XPos - 1][YPos].typeOfTile;
+            if (dungeonMap.getMapTilesArray()[XPos - 1][YPos].getOccupyingCreatureId() > 0) {
+                currentTileTypeWest += "Occupied";
+            }
         } catch (IndexOutOfBoundsException ignored) {
         }
         try {
             currentTileTypeSouth += dungeonMap.getMapTilesArray()[XPos][YPos - 1].typeOfTile;
+            if (dungeonMap.getMapTilesArray()[XPos][YPos - 1].getOccupyingCreatureId() > 0) {
+                currentTileTypeSouth += "Occupied";
+            }
         } catch (IndexOutOfBoundsException ignored) {
         }
-
-        if (iterations > 0) {
-            setDistanceOnSingleTile(currentTileTypeNorth, XPos, YPos, iterations, reasonForChecking);
-            setDistanceOnSingleTile(currentTileTypeEast, XPos, YPos, iterations, reasonForChecking);
-            setDistanceOnSingleTile(currentTileTypeWest, XPos, YPos, iterations, reasonForChecking);
-            setDistanceOnSingleTile(currentTileTypeSouth, XPos, YPos, iterations, reasonForChecking);
+        if (range > 0) {
+            setDistanceOnSingleTile(previousDirection, currentTileTypeNorth, XPos, YPos, range, reasonForChecking);
+            setDistanceOnSingleTile(previousDirection, currentTileTypeEast, XPos, YPos, range, reasonForChecking);
+            setDistanceOnSingleTile(previousDirection, currentTileTypeWest, XPos, YPos, range, reasonForChecking);
+            setDistanceOnSingleTile(previousDirection, currentTileTypeSouth, XPos, YPos, range, reasonForChecking);
         }
     }
 
-    private void setDistanceOnSingleTile(String currentDirection, int XPos, int YPos, double iterations, String reasonForChecking) {
+    //todo characters (both monsters and heroes) should be an impassable terrain. At the spawn and after moving, add impassable" property to the occupied tiles
+
+    private void setDistanceOnSingleTile(String previousDirection, String currentDirection, int XPos, int YPos, double iterations, String reasonForChecking) {
+        double stepDecrement;
+        stepDecrement = calculateTheStepDecrement(previousDirection, currentDirection);
         MapTile mapTile;
         Button gridButton;
         int temporaryX = XPos;
@@ -423,21 +439,17 @@ public class DungeonGUI {
         } else if (currentDirection.contains("South")) {
             temporaryY--;
         }
+        if (reasonForChecking.contains("Interact") && currentDirection.contains(previousDirection)) {
+            temporaryX = XPos;
+            temporaryY = YPos;
+        }
         mapTile = dungeonMap.getMapTilesArray()[temporaryX][temporaryY];
         gridButton = buttonGrid[temporaryX][temporaryY];
         if (currentDirection.contains("Room") || currentDirection.contains("Corridor") || currentDirection.contains("Opened")) {
-            mapTile.inWalkRange = true;
-            mapTile.visible = true;
-            if (reasonForChecking.contains("Walk")) {
-                gridButton.setStyle("-fx-color: #00ff00");
-            } else if (reasonForChecking.contains("Interact")) {
-                mapTile.withinInteractionRange = true;
-                gridButton.setStyle("-fx-color: #ffff00");
-                if (mapTile.getOccupyingCreatureId() > 100) {
-                    gridButton.setStyle("-fx-color: #ff0000");
-                }
+            if (!currentDirection.contains("Occupied") || (reasonForChecking.contains("Interaction"))) {
+                markTheTileAsAccessible(reasonForChecking, mapTile, gridButton);
+                recursiveCheckDistance(currentDirection, temporaryY, temporaryX, iterations - stepDecrement, reasonForChecking);
             }
-            recursiveCheckDistance(temporaryY, temporaryX, iterations - 1, reasonForChecking);
         } else if (currentDirection.contains("Wall")) {
             mapTile.visible = true;
         } else if (currentDirection.contains("Closed")) {
@@ -450,5 +462,35 @@ public class DungeonGUI {
         }
         getDungeonMap().getMapTilesArray()[temporaryX][temporaryY] = mapTile;
         buttonGrid[temporaryX][temporaryY] = gridButton;
+    }
+
+    private void markTheTileAsAccessible(String reasonForChecking, MapTile mapTile, Button gridButton) {
+        mapTile.visible = true;
+        mapTile.inWalkRange = true;
+        if (reasonForChecking.contains("Walk")) {
+            gridButton.setStyle("-fx-color: #00ff00");
+        } else if (reasonForChecking.contains("Interact")) {
+            mapTile.withinInteractionRange = true;
+            gridButton.setStyle("-fx-color: #ffff00");
+            if (mapTile.getOccupyingCreatureId() > 100) {
+                gridButton.setStyle("-fx-color: #ff0000");
+            }
+        }
+    }
+
+    private double calculateTheStepDecrement(String previousDirection, String currentDirection) {
+        double stepDecrement;
+        if ((previousDirection.contains("South") || previousDirection.contains("North"))
+                &&
+                (currentDirection.contains("West") || (currentDirection.contains("East")))) {
+            stepDecrement = 0.8;
+        } else if ((previousDirection.contains("West") || previousDirection.contains("East"))
+                &&
+                (currentDirection.contains("South") || (currentDirection.contains("North")))) {
+            stepDecrement = 0.8;
+        } else {
+            stepDecrement = 1;
+        }
+        return stepDecrement;
     }
 }

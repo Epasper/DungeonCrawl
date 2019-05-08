@@ -5,7 +5,7 @@ import java.util.Random;
 class MapTile {
 
     String typeOfTile;
-    int occupyingCreatureId = 0;
+    private int occupyingCreatureId = 0;
     boolean inWalkRange = false;
     boolean visible = false;
     boolean withinInteractionRange = false;

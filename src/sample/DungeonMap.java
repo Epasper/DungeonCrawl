@@ -40,17 +40,7 @@ class DungeonMap {
     }
 
     private boolean checkAroundForExistingRooms(int posX, int posY) {
-        boolean foundRoom = false;
-//        try {
-//            foundRoom = (mapTilesArray[posX - 1][posY].typeOfTile.equals("Room"));
-//        } catch (IndexOutOfBoundsException ignored) {
-//            foundRoom = true;
-//        }
-//        try {
-//            foundRoom = (mapTilesArray[posX][posY - 1].typeOfTile.equals("Room"));
-//        } catch (IndexOutOfBoundsException ignored) {
-//            foundRoom = true;
-//        }
+        boolean foundRoom;
         try {
             foundRoom = getMapTilesArray()[posX - 1][posY - 1].typeOfTile.equals("Room");
         } catch (IndexOutOfBoundsException ignored) {
@@ -306,8 +296,8 @@ class DungeonMap {
             currentMonsterXPos = randX.nextInt(room.roomWidth);
             currentMonsterYPos = randY.nextInt(room.roomHeight);
             Monster currentMonster = monsterList.get(i);
-            if (getMapTilesArray()[room.roomXPos + currentMonsterXPos][room.roomYPos + currentMonsterYPos].occupyingCreatureId == 0) {
-                getMapTilesArray()[room.roomXPos + currentMonsterXPos][room.roomYPos + currentMonsterYPos].occupyingCreatureId = currentMonster.ID;
+            if (getMapTilesArray()[room.roomXPos + currentMonsterXPos][room.roomYPos + currentMonsterYPos].getOccupyingCreatureId() == 0) {
+                getMapTilesArray()[room.roomXPos + currentMonsterXPos][room.roomYPos + currentMonsterYPos].setOccupyingCreatureId(currentMonster.ID);
                 currentMonster.mapXPos = room.roomXPos + currentMonsterXPos;
                 currentMonster.mapYPos = room.roomYPos + currentMonsterYPos;
                 System.out.println("Monster Class: " + currentMonster.monsterType + " X: " + currentMonster.mapXPos + " Y: " + currentMonster.mapYPos);
@@ -335,8 +325,8 @@ class DungeonMap {
             currentHeroXPos = randX.nextInt(room.roomWidth);
             currentHeroYPos = randY.nextInt(room.roomHeight);
             Hero currentHero = heroList.get(i);
-            if (getMapTilesArray()[room.roomXPos + currentHeroXPos][room.roomYPos + currentHeroYPos].occupyingCreatureId == 0) {
-                getMapTilesArray()[room.roomXPos + currentHeroXPos][room.roomYPos + currentHeroYPos].occupyingCreatureId = currentHero.ID;
+            if (getMapTilesArray()[room.roomXPos + currentHeroXPos][room.roomYPos + currentHeroYPos].getOccupyingCreatureId() == 0) {
+                getMapTilesArray()[room.roomXPos + currentHeroXPos][room.roomYPos + currentHeroYPos].setOccupyingCreatureId(currentHero.ID);
                 currentHero.mapXPos = room.roomXPos + currentHeroXPos;
                 currentHero.mapYPos = room.roomYPos + currentHeroYPos;
                 System.out.println("Hero Class: " + currentHero.heroClass + " X: " + currentHero.mapXPos + " Y: " + currentHero.mapYPos);
