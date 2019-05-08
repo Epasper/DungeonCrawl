@@ -411,7 +411,15 @@ public class CharacterCreatorGUI {
         HeroPower heroPower = heroClassInformation.getHeroPowerByName(selectedHeroClass, powerName, typeOfPower);
 //        powerDescription.setDisable(true);
         powerDescription.setWrapText(true);
-        powerDescription.setText("Preview of a recently selected power:  \n\n" + "Power Name:  \n" + heroPower.getPowerName() + "\n\n" + "Power Description:  \n" + heroPower.getHitDescription());
+        try {
+            powerDescription.setText("Preview of a recently selected power:  \n\n" + "Power Name:  \n" + heroPower.getPowerName() + "\n\n" + "Power Description:  \n" + heroPower.getHitDescription());
+        } catch (NullPointerException e) {
+            powerDescription.setText("No power selected");
+            atWill1Choice.setValue("Select 1st At Will Power");
+            atWill2Choice.setValue("Select 2nd At Will Power");
+            encounterChoice.setValue("Select an Encounter Power");
+            dailyChoice.setValue("Select a Daily Power");
+        }
     }
 
     private void displayThePowerPopup() {
@@ -532,7 +540,10 @@ public class CharacterCreatorGUI {
         willSaveText.setFill(Color.WHITE);
         armorClassText.setFill(Color.WHITE);
         finalScoreText.setFill(Color.WHITE);
-        leftBox.setPadding(new Insets(5, 5, 5, 5));
+        leftBox.setPadding(new Insets(20, 20, 20, 20));
+        middleBox.setPadding(new Insets(20, 20, 20, 20));
+        middleBox.setHgap(5);
+        middleBox.setVgap(5);
         leftBox.setVgap(4);
         leftBox.setHgap(4);
         leftBox.setPrefWrapLength(170);

@@ -302,18 +302,21 @@ public class HeroClassInformation {
 
         //todo NullPointer
 
-        if (typeOfPower.contains("Will")) {
-            for (HeroPower currentPower : atWillPowersAtLevel1.get(className)) {
-                if (powerName.equals(currentPower.getPowerName())) {
-                    return currentPower;
+        try {
+            if (typeOfPower.contains("Will")) {
+                for (HeroPower currentPower : atWillPowersAtLevel1.get(className)) {
+                    if (powerName.equals(currentPower.getPowerName())) {
+                        return currentPower;
+                    }
+                }
+            } else if (typeOfPower.contains("Encounter")) {
+                for (HeroPower currentPower : encounterPowersAtLevel1.get(className)) {
+                    if (powerName.equals(currentPower.getPowerName())) {
+                        return currentPower;
+                    }
                 }
             }
-        } else if (typeOfPower.contains("Encounter")) {
-            for (HeroPower currentPower : encounterPowersAtLevel1.get(className)) {
-                if (powerName.equals(currentPower.getPowerName())) {
-                    return currentPower;
-                }
-            }
+        } catch (NullPointerException ignored) {
         }
         return null;
     }
