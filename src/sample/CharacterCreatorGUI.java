@@ -12,6 +12,8 @@ import sample.HeroPowers.HeroPower;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Integer.valueOf;
+
 public class CharacterCreatorGUI {
     private MainMenuGUI mainMenuGUI = new MainMenuGUI();
     private String selectedHeroClass;
@@ -39,8 +41,8 @@ public class CharacterCreatorGUI {
     private List<Text> modifierNumbersTextList = new ArrayList<>();
     private ObservableList<Integer> statPointsOptions = FXCollections.observableArrayList();
     private Text finalScoreText = new Text("  Final  \n  Score  ");
-    private List<Text> finalAbilityScores = new ArrayList<>();
-    private int[] abilityIntegersArray = new int[6];
+    private List<Text> finalAttributeScoresTexts = new ArrayList<>();
+    private int[] finalAttributeIntegersArray = new int[6];
     private int availableStatPoints = 20;
     private int numberOfAvailableSkillPoints = 0;
     private int maxHP = 0;
@@ -122,7 +124,6 @@ public class CharacterCreatorGUI {
 
     private void addTheSkillList() {
         //todo add the skill calculations for all skills
-        HeroClassInformation heroClassInformation = new HeroClassInformation();
         Text availableSkillPointsText = new Text("Number of available skill points: ");
         availableSkillPointsText.setFill(Color.WHITE);
         Text skillListText = new Text("List of Skills that can be trained: ");
@@ -131,13 +132,7 @@ public class CharacterCreatorGUI {
         allSkillsListText.setFill(Color.WHITE);
         Text selectedSkillsText = new Text("Trained skills: ");
         selectedSkillsText.setFill(Color.WHITE);
-        for (HeroClassInformation.CharacterSkills currentSkill : HeroClassInformation.CharacterSkills.values()) {
-            availableSkills.add(currentSkill.toString());
-            String attribute = heroClassInformation.skillsAndCorrespondingAttributes.get(currentSkill).toString().substring(0, 3).toUpperCase();
-            StringBuilder skillName = uglyWorkaroundForSkillPointsFormatting(currentSkill);
-            System.out.println("||" + skillName + "||");
-            allSkills.add("[" + attribute + "]  \t" + skillName + "\t XX");
-        }
+        buildSkillBoxes(true);
         allSkillsListView.setItems(allSkills);
         allSkillsListView.setDisable(true);
         availableSkillsListView.setItems(availableSkills);
@@ -155,6 +150,25 @@ public class CharacterCreatorGUI {
         selectedSkillsListView.setMaxHeight(0);
         availableSkillsListView.setDisable(true);
         rightBox.getChildren().add(selectedSkillsListView);
+    }
+
+    private void buildSkillBoxes(boolean isThisTheFirstBuild) {
+        allSkills.clear();
+        HeroClassInformation heroClassInformation = new HeroClassInformation();
+        for (HeroClassInformation.CharacterSkills currentSkill : HeroClassInformation.CharacterSkills.values()) {
+            if (isThisTheFirstBuild) {
+                availableSkills.add(currentSkill.toString());
+            }
+            String attribute = heroClassInformation.skillsAndCorrespondingAttributes.get(currentSkill).toString();
+            String attributeAbbreviation = attribute.substring(0, 3).toUpperCase();
+            StringBuilder skillName = uglyWorkaroundForSkillPointsFormatting(currentSkill);
+            int skillValue = getFinalAbilityScoreByName(attribute);
+            int skillModifier = (skillValue - 10) / 2;
+            if (skillValue == 9) skillModifier = -1;
+            if (isThisTheFirstBuild) skillModifier = 0;
+            allSkills.add("[" + attributeAbbreviation + "]  \t" + skillName + "\t " + skillModifier);
+            allSkillsListView.setItems(allSkills);
+        }
     }
 
     private StringBuilder uglyWorkaroundForSkillPointsFormatting(HeroClassInformation.CharacterSkills currentSkill) {
@@ -197,6 +211,7 @@ public class CharacterCreatorGUI {
         if (numberOfAvailableSkillPoints == 0) {
             availableSkillsListView.setDisable(true);
         }
+        buildSkillBoxes(false);
     }
 
     private void eventOnSkillDeselection() {
@@ -211,6 +226,7 @@ public class CharacterCreatorGUI {
         numberOfAvailableSkillPoints = (numberOfAvailableSkillPoints + 1);
         skillPointsText.setText(String.valueOf(numberOfAvailableSkillPoints));
         availableSkillsListView.setDisable(false);
+        buildSkillBoxes(false);
     }
 
     private void addTheAttributeChoices() {
@@ -248,27 +264,24 @@ public class CharacterCreatorGUI {
     private void eventOnRadioButtonChange(Toggle oldValue, Toggle newValue) {
         if (oldValue != null) {
             String oldValueString = oldValue.toString();
-//            System.out.println("Old Value onRadio Change: " + oldValueString);
             String trimmedString = oldValueString.substring(oldValueString.indexOf('\'')).replaceAll("\\W", "");
             racialBonusNumbers.get(getStatID(trimmedString)).setText("      ");
-//            System.out.println("Old Value onRadio Change: - Trimmed: " + trimmedString);
         }
         String radioButtonString;
         try {
             radioButtonString = newValue.toString();
-//            System.out.println("New Value onRadio Change: " + radioButtonString);
             String trimmedString = radioButtonString.substring(radioButtonString.indexOf('\'')).replaceAll("\\W", "");
             racialBonusNumbers.get(getStatID(trimmedString)).setText(" +2 ");
-//            System.out.println("New Value onRadio Change - Trimmed: " + trimmedString);
         } catch (NullPointerException ignored) {
         }
         updateSavingThrows();
+        buildSkillBoxes(false);
     }
 
     private void updateMaxHP(String selectedClass) {
-        String constitutionString = finalAbilityScores.get(1).getText().replaceAll("[^\\d]", "");
+        String constitutionString = finalAttributeScoresTexts.get(1).getText().replaceAll("[^\\d]", "");
         System.out.println("Constitution: " + constitutionString);
-        int constitution = Integer.valueOf(constitutionString);
+        int constitution = valueOf(constitutionString);
         try {
             HeroClassInformation classInfo = new HeroClassInformation();
 
@@ -283,12 +296,14 @@ public class CharacterCreatorGUI {
         }
     }
 
+    //todo add class specializations as a bonus to saving throws
+
     private void updateSavingThrows() {
         fort = -1;
         reflex = -1;
         will = -1;
-        for (int i = 0; i < abilityIntegersArray.length; i++) {
-            int currentStat = abilityIntegersArray[i];
+        for (int i = 0; i < finalAttributeIntegersArray.length; i++) {
+            int currentStat = finalAttributeIntegersArray[i];
             int currentSave = (currentStat - 10) / 2;
             if (currentStat < 10) {
                 currentSave = -1;
@@ -328,7 +343,7 @@ public class CharacterCreatorGUI {
         modifierNumbersTextList.add(finalModifier);
         racialBonusNumbers.add(racialBonus);
         racialBonusRadioButtons.add(new RadioButton(currentStat.toString()));
-        finalAbilityScores.add(finalScore);
+        finalAttributeScoresTexts.add(finalScore);
     }
 
     private void displayASingleAttribute(int i) {
@@ -340,7 +355,7 @@ public class CharacterCreatorGUI {
         middleBox.add(statsValueSpinners.get(i), 1, i + 2);
         middleBox.add(racialBonusNumbers.get(i), 2, i + 2);
         middleBox.add(racialBonusRadioButtons.get(i), 3, i + 2);
-        middleBox.add(finalAbilityScores.get(i), 4, i + 2);
+        middleBox.add(finalAttributeScoresTexts.get(i), 4, i + 2);
         middleBox.add(modifierNumbersTextList.get(i), 5, i + 2);
     }
 
@@ -350,6 +365,7 @@ public class CharacterCreatorGUI {
         calculateAllFinalAbilityScores();
         updateMaxHP(selectedHeroClass);
         updateSavingThrows();
+        buildSkillBoxes(false);
     }
 
     private void manageThePanes() {
@@ -374,7 +390,7 @@ public class CharacterCreatorGUI {
 
 
     private void calculateAllFinalAbilityScores() {
-        for (int i = 0; i < finalAbilityScores.size(); i++) {
+        for (int i = 0; i < finalAttributeScoresTexts.size(); i++) {
             int bonusFromChoice = statsValueSpinners.get(i).getValue();
             String textToBeSet = racialBonusNumbers.get(i).getText().replaceAll("\\D", "");
             int racialBonus = 0;
@@ -382,9 +398,9 @@ public class CharacterCreatorGUI {
                 racialBonus = Integer.parseInt(textToBeSet);
             }
             int sum = racialBonus + bonusFromChoice;
-            abilityIntegersArray[i] = sum;
+            finalAttributeIntegersArray[i] = sum;
             textToBeSet = "" + sum;
-            finalAbilityScores.get(i).setText("   " + textToBeSet);
+            finalAttributeScoresTexts.get(i).setText("   " + textToBeSet);
             if (sum < 9) {
                 modifierNumbersTextList.get(i).setText("   " + ((sum - 10) / 2) + " ");
             } else if (sum == 9) {
@@ -467,6 +483,27 @@ public class CharacterCreatorGUI {
         }
     }
 
+    private int getFinalAbilityScoreByName(String name) {
+        {
+            switch (name) {
+                case "Strength":
+                    return finalAttributeIntegersArray[0];
+                case "Constitution":
+                    return finalAttributeIntegersArray[1];
+                case "Dexterity":
+                    return finalAttributeIntegersArray[2];
+                case "Intelligence":
+                    return finalAttributeIntegersArray[3];
+                case "Wisdom":
+                    return finalAttributeIntegersArray[4];
+                case "Charisma":
+                    return finalAttributeIntegersArray[5];
+            }
+        }
+        return 0;
+    }
+
+
     private void displayThePowerPopup() {
         //todo add a helper to power choice - when a mouse is dragged onto the power, then the power description is shown.
     }
@@ -478,6 +515,7 @@ public class CharacterCreatorGUI {
             racialBonusRadioButtons.get(i).setSelected(false);
         }
         updateSavingThrows();
+        buildSkillBoxes(false);
     }
 
     private void eventOnSelectHeroClass(String newValue) {
@@ -495,8 +533,10 @@ public class CharacterCreatorGUI {
         updateMaxHP(newValue);
         updateSavingThrows();
         addPowersToComboBoxes();
+        buildSkillBoxes(false);
     }
 
+    //todo move this method to HeroClassInformation
     private void manageRacialStatBonuses(String raceName) {
         switchTheRace();
         switch (raceName) {
