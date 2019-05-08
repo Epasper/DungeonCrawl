@@ -31,6 +31,7 @@ public class HeroClassInformation {
     Map<CharacterSkills, Attributes> skillsAndCorrespondingAttributes = new HashMap<>();
     private Map<String, List<HeroPower>> atWillPowersAtLevel1 = new HashMap<>();
     private Map<String, List<HeroPower>> encounterPowersAtLevel1 = new HashMap<>();
+    private Map<String, List<String>> classTraits = new HashMap<>();
 
     public Map<String, List<HeroPower>> getEncounterPowersAtLevel1() {
         return encounterPowersAtLevel1;
@@ -317,6 +318,73 @@ public class HeroClassInformation {
         wizard.add(new ForceOrb());
         wizard.add(new IcyTerrain());
         wizard.add(new RayOfEnfeeblement());
+    }
+
+    private void populateTheTablesWithTraits() {
+        List<String> avenger = new ArrayList<>();
+        classTraits.put(CharacterClasses.Avenger.toString(), avenger);
+        avenger.add("Censure of Pursuit");
+        avenger.add("Censure of Retribution");
+        List<String> barbarian = new ArrayList<>();
+        classTraits.put(CharacterClasses.Barbarian.toString(), barbarian);
+        barbarian.add("Rageblood Vigor");
+        barbarian.add("Thaneborn Triumph");
+        List<String> bard = new ArrayList<>();
+        classTraits.put(CharacterClasses.Bard.toString(), bard);
+        bard.add("Virtue of Cunning");
+        bard.add("Virtue of Valor");
+        List<String> cleric = new ArrayList<>();
+        classTraits.put(CharacterClasses.Cleric.toString(), cleric);
+        cleric.add("Death Domain");
+        cleric.add("Domination Domain");
+        cleric.add("Earth Domain");
+        cleric.add("Storm Domain");
+        cleric.add("Sun Domain");
+        List<String> druid = new ArrayList<>();
+        classTraits.put(CharacterClasses.Druid.toString(), druid);
+        druid.add("Primal Guardian");
+        druid.add("Primal Predator");
+        List<String> fighter = new ArrayList<>();
+        classTraits.put(CharacterClasses.Fighter.toString(), fighter);
+        fighter.add("Great Weapon Fighter");
+        fighter.add("Guardian Fighter");
+        List<String> invoker = new ArrayList<>();
+        classTraits.put(CharacterClasses.Invoker.toString(), invoker);
+        invoker.add("Covenant of Preservation");
+        invoker.add("Covenant of Wrath");
+        List<String> paladin = new ArrayList<>();
+        classTraits.put(CharacterClasses.Paladin.toString(), paladin);
+        paladin.add("Avenging Paladin");
+        paladin.add("Protecting Paladin");
+        List<String> ranger = new ArrayList<>();
+        classTraits.put(CharacterClasses.Ranger.toString(), ranger);
+        ranger.add("Archer Ranger");
+        ranger.add("Two-Blade Ranger");
+        List<String> rogue = new ArrayList<>();
+        classTraits.put(CharacterClasses.Rogue.toString(), rogue);
+        rogue.add("Brutal Scoundrel");
+        rogue.add("Artful Dodger");
+        List<String> shaman = new ArrayList<>();
+        classTraits.put(CharacterClasses.Shaman.toString(), shaman);
+        shaman.add("Protector Spirit");
+        shaman.add("Stalker Spirit");
+        List<String> sorcerer = new ArrayList<>();
+        classTraits.put(CharacterClasses.Sorcerer.toString(), sorcerer);
+        sorcerer.add("Cosmic Magic");
+        sorcerer.add("Dragon Magic");
+        sorcerer.add("Wild Magic");
+        List<String> warlock = new ArrayList<>();
+        classTraits.put(CharacterClasses.Warlock.toString(), warlock);
+        warlock.add("Fey Pact");
+        warlock.add("Star Pact");
+        List<String> warlord = new ArrayList<>();
+        classTraits.put(CharacterClasses.Warlord.toString(), warlord);
+        warlord.add("Inspiring Presence");
+        warlord.add("Tactical Presence");
+        List<String> wizard = new ArrayList<>();
+        classTraits.put(CharacterClasses.Wizard.toString(), wizard);
+        wizard.add("Arcanist");
+        wizard.add("Mage");
     }
 
     public HeroPower getHeroPowerByName(String className, String powerName, String typeOfPower) {

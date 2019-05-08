@@ -28,6 +28,7 @@ public class CharacterCreatorGUI {
     private ComboBox<String> atWill2Choice = new ComboBox<>();
     private ComboBox<String> encounterChoice = new ComboBox<>();
     private ComboBox<String> dailyChoice = new ComboBox<>();
+    private ComboBox<String> classTraitChoice = new ComboBox<>();
     private ComboBox<String> raceChoice = new ComboBox<>();
     private Button returnToMainMenu = new Button();
     private TextField characterName = new TextField();
@@ -94,6 +95,7 @@ public class CharacterCreatorGUI {
         atWill2Choice.setMinWidth(200);
         encounterChoice.setMinWidth(200);
         dailyChoice.setMinWidth(200);
+        classTraitChoice.setMinWidth(200);
         encounterChoice.setStyle("-fx-background-color: #910000;");
         dailyChoice.setStyle("-fx-background-color: #5c005e;");
         atWill1Choice.setStyle("-fx-background-color: #007200;");
@@ -106,10 +108,11 @@ public class CharacterCreatorGUI {
         atWill2Choice.setDisable(true);
         encounterChoice.setDisable(true);
         dailyChoice.setDisable(true);
-        middleBox.add(atWill1Choice, 1, 11);
-        middleBox.add(atWill2Choice, 1, 12);
-        middleBox.add(encounterChoice, 3, 11);
-        middleBox.add(dailyChoice, 3, 12);
+        middleBox.add(atWill1Choice, 2, 12);
+        middleBox.add(atWill2Choice, 2, 13);
+        middleBox.add(encounterChoice, 3, 12);
+        middleBox.add(dailyChoice, 3, 13);
+        middleBox.add(classTraitChoice, 2, 11);
         Text savingText = new Text("Saving Throws:  ");
         savingText.setFill(Color.WHITE);
         middleBox.add(savingText, 0, 12);
