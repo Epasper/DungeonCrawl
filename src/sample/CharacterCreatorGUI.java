@@ -83,7 +83,6 @@ public class CharacterCreatorGUI {
     }
 
 
-    //todo add Armor Class and AC calculations
     //todo add class traits selection
     //todo add shop with options to buy equipment. Starting gold is 100 GP
 
@@ -123,7 +122,6 @@ public class CharacterCreatorGUI {
     }
 
     private void addTheSkillList() {
-        //todo add the skill calculations for all skills
         Text availableSkillPointsText = new Text("Number of available skill points: ");
         availableSkillPointsText.setFill(Color.WHITE);
         Text skillListText = new Text("List of Skills that can be trained: ");
@@ -166,6 +164,11 @@ public class CharacterCreatorGUI {
             int skillModifier = (skillValue - 10) / 2;
             if (skillValue == 9) skillModifier = -1;
             if (isThisTheFirstBuild) skillModifier = 0;
+            for (String skill : selectedSkills) {
+                if (currentSkill.toString().equals(skill)) {
+                    skillModifier += 5;
+                }
+            }
             allSkills.add("[" + attributeAbbreviation + "]  \t" + skillName + "\t " + skillModifier);
             allSkillsListView.setItems(allSkills);
         }
@@ -466,11 +469,9 @@ public class CharacterCreatorGUI {
 
     }
 
-    //todo finish the skill description window after selection
     private void showThePowerDescription(String powerName, String typeOfPower) {
         HeroClassInformation heroClassInformation = new HeroClassInformation();
         HeroPower heroPower = heroClassInformation.getHeroPowerByName(selectedHeroClass, powerName, typeOfPower);
-//        powerDescription.setDisable(true);
         powerDescription.setWrapText(true);
         try {
             powerDescription.setText("Preview of a recently selected power:  \n\n" + "Power Name:  \n" + heroPower.getPowerName() + "\n\n" + "Power Description:  \n" + heroPower.getHitDescription());

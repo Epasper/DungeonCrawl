@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de97b43a-8902-45e2-a345-dc80bad4fa20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/sample/CharacterCreatorDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroClassInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroClassInformation.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,11 +44,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="533">
-              <caret line="148" column="54" lean-forward="true" selection-start-line="148" selection-start-column="54" selection-end-line="148" selection-end-column="54" />
+            <state relative-caret-position="371">
+              <caret line="172" column="13" selection-start-line="172" selection-start-column="13" selection-end-line="172" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#26302#26303#0" expanded="true" />
+                <element signature="e#27750#27751#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,7 +78,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>eventon</find>
       <find>atwi</find>
       <find>sce</find>
       <find>scen</find>
@@ -110,6 +107,7 @@
       <find>statnam</find>
       <find>statval</find>
       <find>skills</find>
+      <find>eventon</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -374,7 +372,21 @@
       <option name="project" value="LOCAL" />
       <updated>1557292857884</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Character Creation - added a list with all skills and their values. Values to be filled next">
+      <created>1557303805843</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1557303805843</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Character Creation - List of all skills now displays the skill values. Skill proficiencies to be added next.">
+      <created>1557308975610</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1557308975610</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TodoView">
@@ -388,6 +400,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-290" width="1696" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24816626" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -461,7 +474,9 @@
     <MESSAGE value="Character Creation - Added Half of Encounter Powers and the choice option." />
     <MESSAGE value="Character Creation - Added ranger Encounter Powers and remodelled the tooltip window" />
     <MESSAGE value="Character Creation - restyling the Character GUI -added bigger padding and improved readability." />
-    <option name="LAST_COMMIT_MESSAGE" value="Character Creation - restyling the Character GUI -added bigger padding and improved readability." />
+    <MESSAGE value="Character Creation - added a list with all skills and their values. Values to be filled next" />
+    <MESSAGE value="Character Creation - List of all skills now displays the skill values. Skill proficiencies to be added next." />
+    <option name="LAST_COMMIT_MESSAGE" value="Character Creation - List of all skills now displays the skill values. Skill proficiencies to be added next." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Paladin/RadiantSmite.java">
@@ -828,11 +843,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="148" column="54" lean-forward="true" selection-start-line="148" selection-start-column="54" selection-end-line="148" selection-end-column="54" />
+        <state relative-caret-position="371">
+          <caret line="172" column="13" selection-start-line="172" selection-start-column="13" selection-end-line="172" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#26302#26303#0" expanded="true" />
+            <element signature="e#27750#27751#0" expanded="true" />
           </folding>
         </state>
       </provider>
