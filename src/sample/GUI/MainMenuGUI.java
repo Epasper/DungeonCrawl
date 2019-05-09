@@ -12,6 +12,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import sample.Main;
 
+import java.sql.SQLException;
+
 public class MainMenuGUI {
 
     private ScrollPane mainMenuScrollPane = new ScrollPane();
@@ -29,7 +31,7 @@ public class MainMenuGUI {
     }
 
 
-    private void buildTheMainMenu() {
+    private void buildTheMainMenu()  {
         aScene.getStylesheets().add("sample/Styling/CharacterCreator.css");
         aStage = Main.getPrimaryStage();
         mainMenuScrollPane.setContent(mainMenuBorderPane);
@@ -43,24 +45,32 @@ public class MainMenuGUI {
         middlePane.getChildren().add(newDungeonButton);
         middlePane.getChildren().add(cardForgeGUIButton);
         newDungeonButton.setText("Generate a New Dungeon");
-        newDungeonButton.setOnAction(event -> openDungeonGUI());
+        newDungeonButton.setOnAction(event -> {
+            try {
+                openDungeonGUI();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
         cardForgeGUIButton.setText("Character Creator");
-        cardForgeGUIButton.setOnAction(event -> openCardForgeGUI());
+        cardForgeGUIButton.setOnAction(event -> openCharacterCreationGUI());
         aScene.setRoot(mainMenuScrollPane);
         aStage.show();
     }
 
 
-    private void openDungeonGUI() {
-        DungeonGUI dungeonGui = new DungeonGUI();
-        aScene.getStylesheets().add("sample/Styling/Caspian.css");
+    private void openDungeonGUI() throws SQLException {
+        PartySelectorGUI partySlectorGUI = new PartySelectorGUI();
+        //DungeonGUI dungeonGui = new DungeonGUI();
         aStage.close();
-        aScene.setRoot(dungeonGui.mapScrollPane);
+        aScene.setRoot(partySlectorGUI.partySelectorOuterPlane);
+        aScene.getStylesheets().add("sample/Styling/Caspian.css");
+        //aScene.setRoot(dungeonGui.mapScrollPane);
         aStage.setScene(aScene);
         aStage.show();
     }
 
-    private void openCardForgeGUI() {
+    private void openCharacterCreationGUI() {
         CharacterCreatorGUI characterCreatorGUI = new CharacterCreatorGUI();
         aStage.close();
         aScene.setRoot(characterCreatorGUI.characterCreatorOuterPane);

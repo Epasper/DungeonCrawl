@@ -6,10 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import sample.*;
-import sample.Model.DungeonMap;
-import sample.Model.Hero;
-import sample.Model.MapTile;
-import sample.Model.Monster;
+import sample.Model.*;
 
 import java.util.ArrayList;
 import java.util.List;

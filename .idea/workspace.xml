@@ -2,161 +2,84 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de97b43a-8902-45e2-a345-dc80bad4fa20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/sample/GUI/PartySlectorGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Room.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/GUI/PartySelectorGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/608dddd6-762b-44e4-a6da-b4e62e78a1e4_scaled.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/DoorHorizontal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/DoorVertical.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/Floor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallE.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallHoriz.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallN.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallNE.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallNW.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallS.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallSE.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallSW.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallVert.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallW.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/HeroPortraits/icon1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/HeroPortraits/icon2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/HeroPortraits/icon3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/HeroPortraits/icon4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/HeroPortraits/icon5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/HeroPortraits/icon6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/OpenedDoorHorizontal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/OpenedDoorVertical.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/fog.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/fogchess-Copy.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/icon1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/icon2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/icon3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/icon4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/icon5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/icon6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/monster1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/monster2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/monster3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/monster4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/monster5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/monster6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/wall.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/CharacterCreatorGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/CharacterCreatorGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/CharacterCreatorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/CharacterCreatorDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DTO/CharacterCreatorDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Model/Creature.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/DungeonGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/DungeonMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Model/DungeonMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/FakeDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/FakeDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Model/Hero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroClassInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/StaticRules/HeroClassInformation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/AngelicAlacrity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/AngelicAlacrity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/AvengingEcho.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/AvengingEcho.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/BondOfPursuit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/BondOfPursuit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/BondOfRetribution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/BondOfRetribution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/OverwhelmingStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/OverwhelmingStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/RadiantVengeance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/RadiantVengeance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/SharedMadness.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/SharedMadness.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/WhirlwindCharge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/WhirlwindCharge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/AvalancheStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/AvalancheStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/Bloodletting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/Bloodletting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/DevastatingStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/DevastatingStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/GreatCleave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/GreatCleave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/HowlingStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/HowlingStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/PressingStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/PressingStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/RecuperatingStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/RecuperatingStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/VaultOfTheFallen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Barbarian/VaultOfTheFallen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Bard/Blunder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Bard/Blunder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Bard/FastFriends.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Bard/FastFriends.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Bard/GuidingStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Bard/GuidingStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Bard/InspiringRefrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Bard/InspiringRefrain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Bard/MisdirectedMark.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Bard/MisdirectedMark.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Bard/ShoutOfTriumph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Bard/ShoutOfTriumph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Bard/ViciousMockery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Bard/ViciousMockery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Bard/WarSongStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Bard/WarSongStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Cleric/CauseFear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Cleric/CauseFear.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Cleric/DivineGlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Cleric/DivineGlow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Cleric/HealingStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Cleric/HealingStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Cleric/LanceOfFaith.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Cleric/LanceOfFaith.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Cleric/PriestsShield.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Cleric/PriestsShield.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Cleric/RighteousBrand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Cleric/RighteousBrand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Cleric/SacredFlame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Cleric/SacredFlame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Cleric/WrathfulThunder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Cleric/WrathfulThunder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/CallOfTheBeast.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/CallOfTheBeast.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/ChillWind.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/ChillWind.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/CullTheHerd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/CullTheHerd.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/DartingBite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/DartingBite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/FrostFlash.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/FrostFlash.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/GraspingClaws.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/GraspingClaws.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/Pounce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/Pounce.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/SavageRend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/SavageRend.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/StormSpike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/StormSpike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/ThornWhip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/ThornWhip.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/TwistingVines.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Druid/TwistingVines.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Fighter/Cleave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Fighter/Cleave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Fighter/CoveringAttack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Fighter/CoveringAttack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Fighter/PassingAttack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Fighter/PassingAttack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Fighter/ReapingStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Fighter/ReapingStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Fighter/SpinningSweep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Fighter/SpinningSweep.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Fighter/SteelSerpentStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Fighter/SteelSerpentStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Fighter/SureStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Fighter/SureStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Fighter/TideOfIron.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Fighter/TideOfIron.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Invoker/AstralTerror.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Invoker/AstralTerror.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Invoker/AvengingLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Invoker/AvengingLight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Invoker/BladeOfAstralFire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Invoker/BladeOfAstralFire.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Invoker/DivineBolts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Invoker/DivineBolts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Invoker/GraspingShards.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Invoker/GraspingShards.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Invoker/SpearOfTheInquisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Invoker/SpearOfTheInquisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Invoker/SunStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Invoker/SunStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Invoker/ThunderOfJudgement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Invoker/ThunderOfJudgement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Paladin/BolsteringStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Paladin/BolsteringStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Paladin/EnfeeblingStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Paladin/EnfeeblingStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Paladin/FearsomeSmite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Paladin/FearsomeSmite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Paladin/HolyStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Paladin/HolyStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Paladin/PiercingSmite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Paladin/PiercingSmite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Paladin/RadiantSmite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Paladin/RadiantSmite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Paladin/ShieldingSmite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Paladin/ShieldingSmite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Paladin/ValiantStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Paladin/ValiantStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/CarefulAttack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/CarefulAttack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/DireWolverineStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/DireWolverineStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/EvasiveStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/EvasiveStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/FoxsCunning.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/FoxsCunning.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/HitAndRun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/HitAndRun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/NimbleStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/NimbleStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/TwinStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/TwinStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/TwoFangedStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/TwoFangedStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/DazingStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/DazingStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/DeftStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/DeftStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/KingsCastle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/KingsCastle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/PiercingStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/PiercingStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/PositioningStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/PositioningStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/RiposteStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/RiposteStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/SlyFlourish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/SlyFlourish.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/TorturousStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/TorturousStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/CallToTheAncientDefender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/CallToTheAncientDefender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/DefendingStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/DefendingStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/HauntingSpirits.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/HauntingSpirits.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/ProtectingStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/ProtectingStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/StalkersStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/StalkersStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/ThunderBearsWarding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/ThunderBearsWarding.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/TwinPanthers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/TwinPanthers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/WatchersStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/WatchersStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/WrathOfWinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/WrathOfWinter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/AcidOrb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/AcidOrb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/BedevilingBurst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/BedevilingBurst.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/BurningSpray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/BurningSpray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/ChaosBolt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/ChaosBolt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/Dragonfrost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/Dragonfrost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/ExplosivePyre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/ExplosivePyre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/Frostbind.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/Frostbind.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/StormWalk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/StormWalk.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/TempestBreath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/TempestBreath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/ThunderSlam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/ThunderSlam.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Warden/EarthShieldStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warden/EarthShieldStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Warden/EarthSpikes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warden/EarthSpikes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Warden/HungryEarth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warden/HungryEarth.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Warden/StrengthOfStone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warden/StrengthOfStone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Warden/ThornStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warden/ThornStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Warden/ThunderRamAssault.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warden/ThunderRamAssault.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Warden/WeightOfTheEarth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warden/WeightOfTheEarth.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Warden/WildbloodFrenzy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warden/WildbloodFrenzy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Warlock/DiabolicGrasp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warlock/DiabolicGrasp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Warlock/DireRadiance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warlock/DireRadiance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Warlock/DreadfulWord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warlock/DreadfulWord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Warlock/EldritchBlast.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warlock/EldritchBlast.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Warlock/Eyebite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warlock/Eyebite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Warlock/HellishRebuke.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warlock/HellishRebuke.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Warlock/VampiricEmbrace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warlock/VampiricEmbrace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Warlock/Witchfire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warlock/Witchfire.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Warlord/CommandersStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warlord/CommandersStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Warlord/FuriousSmash.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warlord/FuriousSmash.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Warlord/GuardingAttack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warlord/GuardingAttack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Warlord/HammerAndAnvil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warlord/HammerAndAnvil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Warlord/LeafOnTheWind.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warlord/LeafOnTheWind.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Warlord/VipersStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warlord/VipersStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Warlord/WarlordsFavor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warlord/WarlordsFavor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Warlord/WolfsPackTactics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Warlord/WolfsPackTactics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/BurningHands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/BurningHands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/ChillStrike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/ChillStrike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/CloudOfDaggers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/CloudOfDaggers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/ForceOrb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/ForceOrb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/IcyTerrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/IcyTerrain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/MagicMissile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/MagicMissile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/RayOfEnfeeblement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/RayOfEnfeeblement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/RayOfFrost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/RayOfFrost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/ScorchingBurst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/ScorchingBurst.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/Thunderwave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/Thunderwave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/MainMenuGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/MainMenuGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/MapTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Model/MapTile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Model/Monster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Room.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/FakeDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Model/FakeDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/MainMenuGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/MainMenuGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/PartySlectorGUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/608dddd6-762b-44e4-a6da-b4e62e78a1e4_scaled.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/608dddd6-762b-44e4-a6da-b4e62e78a1e4_scaled.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/DoorHorizontal.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/DoorHorizontal.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/DoorVertical.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/DoorVertical.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/Floor.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/Floor.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/FloorWallE.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallE.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/FloorWallHoriz.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallHoriz.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/FloorWallN.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallN.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/FloorWallNE.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallNE.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/FloorWallNW.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallNW.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/FloorWallS.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallS.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/FloorWallSE.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallSE.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/FloorWallSW.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallSW.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/FloorWallVert.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallVert.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/FloorWallW.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallW.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/OpenedDoorHorizontal.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/OpenedDoorHorizontal.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/OpenedDoorVertical.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/OpenedDoorVertical.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/download.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/download.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/fog.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/fog.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/fogchess-Copy.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/fogchess-Copy.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/icon1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/icon1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/icon2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/icon2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/icon3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/icon3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/icon4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/icon4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/icon5.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/icon5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/icon6.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/icon6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/monster1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/monster1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/monster2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/monster2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/monster3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/monster3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/monster4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/monster4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/monster5.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/monster5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/monster6.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/monster6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Images/wall.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/wall.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Model/Hero.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -168,19 +91,12 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/StaticRules/HeroClassInformation.java">
+        <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+            <state relative-caret-position="102">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
               <folding>
-                <element signature="e#1344#1345#0" expanded="true" />
-                <element signature="e#1378#1379#0" expanded="true" />
-                <element signature="e#1451#1452#0" expanded="true" />
-                <element signature="e#1497#1498#0" expanded="true" />
-                <element signature="method#populateTheTablesWithAtWillPowers#0;class#HeroClassInformation#0" />
-                <element signature="method#getHeroPowerByName#0;class#HeroClassInformation#0" />
-                <element signature="method#populateTheTablesWithSkills#0;class#HeroClassInformation#0" />
-                <element signature="method#populateTheTablesWithHPs#0;class#HeroClassInformation#0" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -189,45 +105,40 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+            <state relative-caret-position="221">
+              <caret line="23" column="34" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/GUI/PartySlectorGUI.java">
+        <entry file="file://$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Model/MapTile.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+            <state relative-caret-position="109">
+              <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
               <folding>
-                <element signature="e#300#301#0" expanded="true" />
-                <element signature="e#333#334#0" expanded="true" />
-                <element signature="e#385#386#0" expanded="true" />
-                <element signature="e#429#430#0" expanded="true" />
-                <element signature="e#496#497#0" expanded="true" />
-                <element signature="e#558#559#0" expanded="true" />
-                <element signature="e#613#614#0" expanded="true" />
-                <element signature="e#659#660#0" expanded="true" />
-                <element signature="e#706#707#0" expanded="true" />
-                <element signature="e#744#745#0" expanded="true" />
-                <element signature="e#932#933#0" expanded="true" />
-                <element signature="e#974#975#0" expanded="true" />
-                <element signature="e#1012#1013#0" expanded="true" />
-                <element signature="e#1046#1047#0" expanded="true" />
-                <element signature="e#1080#1081#0" expanded="true" />
-                <element signature="e#1110#1111#0" expanded="true" />
-                <element signature="e#1159#1160#0" expanded="true" />
-                <element signature="e#1204#1205#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/GUI/MainMenuGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="25" column="47" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/GUI/PartySelectorGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="646">
+              <caret line="50" column="22" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -237,58 +148,69 @@
         <entry file="file://$PROJECT_DIR$/src/sample/Model/Monster.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+              <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Model/Room.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/DTO/CharacterCreatorDTO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="142">
+              <caret line="46" column="5" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1642#1643#0" expanded="true" />
+                <element signature="e#1674#1675#0" expanded="true" />
+                <element signature="e#1721#1722#0" expanded="true" />
+                <element signature="e#1763#1764#0" expanded="true" />
+                <element signature="e#1923#1924#0" expanded="true" />
+                <element signature="e#1955#1956#0" expanded="true" />
+                <element signature="e#2005#2006#0" expanded="true" />
+                <element signature="e#2047#2048#0" expanded="true" />
+                <element signature="e#2079#2080#0" expanded="true" />
+                <element signature="e#2107#2108#0" expanded="true" />
+                <element signature="e#2149#2150#0" expanded="true" />
+                <element signature="e#2183#2184#0" expanded="true" />
+                <element signature="e#2222#2223#0" expanded="true" />
+                <element signature="e#2257#2258#0" expanded="true" />
+                <element signature="e#2400#2401#0" expanded="true" />
+                <element signature="e#2435#2436#0" expanded="true" />
+                <element signature="e#2491#2492#0" expanded="true" />
+                <element signature="e#2539#2540#0" expanded="true" />
+                <element signature="e#2581#2582#0" expanded="true" />
+                <element signature="e#2619#2620#0" expanded="true" />
+                <element signature="e#2186#2187#0" expanded="true" />
+                <element signature="e#2220#2221#0" expanded="true" />
+                <element signature="e#3339#3340#0" expanded="true" />
+                <element signature="e#3381#3382#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/sample/Model/Room.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/FakeDatabase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="35" column="11" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Model/Hero.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="170">
+              <caret line="10" column="100" selection-start-line="10" selection-start-column="100" selection-end-line="10" selection-end-column="100" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Model/Creature.java">
+        <entry file="file://$PROJECT_DIR$/src/sample/Model/FakeDatabase.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Model/DungeonMap.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -343,17 +265,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Ranger/TwoFangedStrike.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/DazingStrike.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/KingsCastle.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/PositioningStrike.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Rogue/TorturousStrike.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/CallToTheAncientDefender.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/ThunderBearsWarding.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Shaman/TwinPanthers.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/BedevelingBurst.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/BedevilingBurst.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/ExplosivePyre.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/Frostbind.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/TempestBreath.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/ThunderSlam.java" />
@@ -377,12 +288,10 @@
         <option value="$PROJECT_DIR$/src/sample/CharacterCreatorController.java" />
         <option value="$PROJECT_DIR$/src/sample/CharacterCreatorDTO.java" />
         <option value="$PROJECT_DIR$/src/sample/SQLConnector.java" />
-        <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroClassInformation.java" />
         <option value="$PROJECT_DIR$/src/sample/MainMenuGUI.java" />
         <option value="$PROJECT_DIR$/src/sample/CharacterCreatorDAO.java" />
-        <option value="$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java" />
         <option value="$PROJECT_DIR$/src/sample/DungeonGUI.java" />
         <option value="$PROJECT_DIR$/src/sample/DungeonMap.java" />
         <option value="$PROJECT_DIR$/src/sample/FakeDatabase.java" />
@@ -394,6 +303,19 @@
         <option value="$PROJECT_DIR$/src/sample/Monster.java" />
         <option value="$PROJECT_DIR$/src/sample/Room.java" />
         <option value="$PROJECT_DIR$/src/sample/Model/DungeonMap.java" />
+        <option value="$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java" />
+        <option value="$PROJECT_DIR$/src/sample/Main.java" />
+        <option value="$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java" />
+        <option value="$PROJECT_DIR$/src/sample/Model/MapTile.java" />
+        <option value="$PROJECT_DIR$/src/sample/Model/Monster.java" />
+        <option value="$PROJECT_DIR$/src/sample/Model/Room.java" />
+        <option value="$PROJECT_DIR$/src/sample/DTO/CharacterCreatorDTO.java" />
+        <option value="$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java" />
+        <option value="$PROJECT_DIR$/src/sample/GUI/MainMenuGUI.java" />
+        <option value="$PROJECT_DIR$/src/sample/GUI/PartySlectorGUI.java" />
+        <option value="$PROJECT_DIR$/src/sample/GUI/PartySelectorGUI.java" />
+        <option value="$PROJECT_DIR$/src/sample/Model/FakeDatabase.java" />
+        <option value="$PROJECT_DIR$/src/sample/Model/Hero.java" />
       </list>
     </option>
   </component>
@@ -433,6 +355,41 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="sample" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="DAO" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="DTO" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="GUI" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="StaticRules" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -444,13 +401,14 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557159992450" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/mysql-connector-java-8.0.16.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/sample/Model" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\Model" />
       <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\Styling" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -669,7 +627,21 @@
       <option name="project" value="LOCAL" />
       <updated>1557404013019</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Refactoring - new packages, change of access to fields and changed files' placement">
+      <created>1557405055390</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1557405055390</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Refactoring - cleaned a lot of access issues and unnecessary declarations">
+      <created>1557405828385</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1557405828385</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TodoView">
@@ -685,7 +657,7 @@
     <frame x="1358" y="-290" width="1696" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2512225" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2512225" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -698,7 +670,7 @@
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49633253" weight="0.39828694" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.76589245" weight="0.32762313" />
+      <window_info active="true" anchor="bottom" id="TODO" order="6" sideWeight="0.76589245" visible="true" weight="0.32762313" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.45110023" side_tool="true" weight="0.21413276" />
       <window_info anchor="bottom" id="Version Control" order="9" />
@@ -767,7 +739,9 @@
     <MESSAGE value="Character Creator - added an SQL method that returns all hero names." />
     <MESSAGE value="Character Creator - begun adding portrait selection" />
     <MESSAGE value="Character Creator - Added portrait selection" />
-    <option name="LAST_COMMIT_MESSAGE" value="Character Creator - Added portrait selection" />
+    <MESSAGE value="Refactoring - new packages, change of access to fields and changed files' placement" />
+    <MESSAGE value="Refactoring - cleaned a lot of access issues and unnecessary declarations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring - cleaned a lot of access issues and unnecessary declarations" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Shaman/DefendingStrike.java">
@@ -1015,206 +989,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="18" column="73" selection-start-line="18" selection-start-column="73" selection-end-line="18" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#27617#27618#0" expanded="true" />
-            <element signature="e#27695#27696#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/DTO/CharacterCreatorDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
-          <folding>
-            <element signature="e#815#816#0" expanded="true" />
-            <element signature="e#846#847#0" expanded="true" />
-            <element signature="e#894#895#0" expanded="true" />
-            <element signature="e#934#935#0" expanded="true" />
-            <element signature="e#642#643#0" expanded="true" />
-            <element signature="e#673#674#0" expanded="true" />
-            <element signature="e#721#722#0" expanded="true" />
-            <element signature="e#761#762#0" expanded="true" />
-            <element signature="e#797#798#0" expanded="true" />
-            <element signature="e#829#830#0" expanded="true" />
-            <element signature="e#879#880#0" expanded="true" />
-            <element signature="e#921#922#0" expanded="true" />
-            <element signature="e#954#955#0" expanded="true" />
-            <element signature="e#986#987#0" expanded="true" />
-            <element signature="e#1033#1034#0" expanded="true" />
-            <element signature="e#1075#1076#0" expanded="true" />
-            <element signature="e#1111#1112#0" expanded="true" />
-            <element signature="e#1146#1147#0" expanded="true" />
-            <element signature="e#1199#1200#0" expanded="true" />
-            <element signature="e#1247#1248#0" expanded="true" />
-            <element signature="e#1283#1284#0" expanded="true" />
-            <element signature="e#1315#1316#0" expanded="true" />
-            <element signature="e#1365#1366#0" expanded="true" />
-            <element signature="e#1407#1408#0" expanded="true" />
-            <element signature="e#1439#1440#0" expanded="true" />
-            <element signature="e#1467#1468#0" expanded="true" />
-            <element signature="e#1509#1510#0" expanded="true" />
-            <element signature="e#1543#1544#0" expanded="true" />
-            <element signature="e#1582#1583#0" expanded="true" />
-            <element signature="e#1617#1618#0" expanded="true" />
-            <element signature="e#1673#1674#0" expanded="true" />
-            <element signature="e#1721#1722#0" expanded="true" />
-            <element signature="e#1760#1761#0" expanded="true" />
-            <element signature="e#1795#1796#0" expanded="true" />
-            <element signature="e#1851#1852#0" expanded="true" />
-            <element signature="e#1899#1900#0" expanded="true" />
-            <element signature="e#1941#1942#0" expanded="true" />
-            <element signature="e#1979#1980#0" expanded="true" />
-            <element signature="e#2041#2042#0" expanded="true" />
-            <element signature="e#2095#2096#0" expanded="true" />
-            <element signature="e#2133#2134#0" expanded="true" />
-            <element signature="e#2167#2168#0" expanded="true" />
-            <element signature="e#2221#2222#0" expanded="true" />
-            <element signature="e#2267#2268#0" expanded="true" />
-            <element signature="e#2299#2300#0" expanded="true" />
-            <element signature="e#2330#2331#0" expanded="true" />
-            <element signature="e#2375#2376#0" expanded="true" />
-            <element signature="e#2415#2416#0" expanded="true" />
-            <element signature="e#2451#2452#0" expanded="true" />
-            <element signature="e#2486#2487#0" expanded="true" />
-            <element signature="e#2539#2540#0" expanded="true" />
-            <element signature="e#2587#2588#0" expanded="true" />
-            <element signature="e#2620#2621#0" expanded="true" />
-            <element signature="e#2652#2653#0" expanded="true" />
-            <element signature="e#2699#2700#0" expanded="true" />
-            <element signature="e#2741#2742#0" expanded="true" />
-            <element signature="e#2777#2778#0" expanded="true" />
-            <element signature="e#2812#2813#0" expanded="true" />
-            <element signature="e#2865#2866#0" expanded="true" />
-            <element signature="e#2913#2914#0" expanded="true" />
-            <element signature="e#2943#2944#0" expanded="true" />
-            <element signature="e#2972#2973#0" expanded="true" />
-            <element signature="e#3013#3014#0" expanded="true" />
-            <element signature="e#3049#3050#0" expanded="true" />
-            <element signature="e#3081#3082#0" expanded="true" />
-            <element signature="e#3112#3113#0" expanded="true" />
-            <element signature="e#3157#3158#0" expanded="true" />
-            <element signature="e#3197#3198#0" expanded="true" />
-            <element signature="e#3230#3231#0" expanded="true" />
-            <element signature="e#3262#3263#0" expanded="true" />
-            <element signature="e#3309#3310#0" expanded="true" />
-            <element signature="e#3351#3352#0" expanded="true" />
-            <element signature="e#3381#3382#0" expanded="true" />
-            <element signature="e#3410#3411#0" expanded="true" />
-            <element signature="e#3451#3452#0" expanded="true" />
-            <element signature="e#3487#3488#0" expanded="true" />
-            <element signature="e#3515#3516#0" expanded="true" />
-            <element signature="e#3542#3543#0" expanded="true" />
-            <element signature="e#3579#3580#0" expanded="true" />
-            <element signature="e#3611#3612#0" expanded="true" />
-            <element signature="e#3645#3646#0" expanded="true" />
-            <element signature="e#3678#3679#0" expanded="true" />
-            <element signature="e#3727#3728#0" expanded="true" />
-            <element signature="e#3766#3767#0" expanded="true" />
-            <element signature="e#3796#3797#0" expanded="true" />
-            <element signature="e#3825#3826#0" expanded="true" />
-            <element signature="e#3866#3867#0" expanded="true" />
-            <element signature="e#3897#3898#0" expanded="true" />
-            <element signature="e#3930#3931#0" expanded="true" />
-            <element signature="e#3962#3963#0" expanded="true" />
-            <element signature="e#4009#4010#0" expanded="true" />
-            <element signature="e#4046#4047#0" expanded="true" />
-            <element signature="e#4075#4076#0" expanded="true" />
-            <element signature="e#4103#4104#0" expanded="true" />
-            <element signature="e#4142#4143#0" expanded="true" />
-            <element signature="e#4171#4172#0" expanded="true" />
-            <element signature="e#4204#4205#0" expanded="true" />
-            <element signature="e#4236#4237#0" expanded="true" />
-            <element signature="e#4283#4284#0" expanded="true" />
-            <element signature="e#4320#4321#0" expanded="true" />
-            <element signature="e#4357#4358#0" expanded="true" />
-            <element signature="e#4393#4394#0" expanded="true" />
-            <element signature="e#4448#4449#0" expanded="true" />
-            <element signature="e#4493#4494#0" expanded="true" />
-            <element signature="e#4526#4527#0" expanded="true" />
-            <element signature="e#4558#4559#0" expanded="true" />
-            <element signature="e#4605#4606#0" expanded="true" />
-            <element signature="e#4642#4643#0" expanded="true" />
-            <element signature="e#4670#4671#0" expanded="true" />
-            <element signature="e#4697#4698#0" expanded="true" />
-            <element signature="e#4734#4735#0" expanded="true" />
-            <element signature="e#4761#4762#0" expanded="true" />
-            <element signature="e#4792#4793#0" expanded="true" />
-            <element signature="e#4822#4823#0" expanded="true" />
-            <element signature="e#4865#4866#0" expanded="true" />
-            <element signature="e#4898#4899#0" expanded="true" />
-            <element signature="e#4929#4930#0" expanded="true" />
-            <element signature="e#4959#4960#0" expanded="true" />
-            <element signature="e#5002#5003#0" expanded="true" />
-            <element signature="e#5035#5036#0" expanded="true" />
-            <element signature="e#5069#5070#0" expanded="true" />
-            <element signature="e#5102#5103#0" expanded="true" />
-            <element signature="e#5151#5152#0" expanded="true" />
-            <element signature="e#5190#5191#0" expanded="true" />
-            <element signature="e#5220#5221#0" expanded="true" />
-            <element signature="e#5249#5250#0" expanded="true" />
-            <element signature="e#5290#5291#0" expanded="true" />
-            <element signature="e#5321#5322#0" expanded="true" />
-            <element signature="e#5355#5356#0" expanded="true" />
-            <element signature="e#5388#5389#0" expanded="true" />
-            <element signature="e#5437#5438#0" expanded="true" />
-            <element signature="e#5476#5477#0" expanded="true" />
-            <element signature="e#5508#5509#0" expanded="true" />
-            <element signature="e#5539#5540#0" expanded="true" />
-            <element signature="e#5584#5585#0" expanded="true" />
-            <element signature="e#5619#5620#0" expanded="true" />
-            <element signature="e#5650#5651#0" expanded="true" />
-            <element signature="e#5680#5681#0" expanded="true" />
-            <element signature="e#5723#5724#0" expanded="true" />
-            <element signature="e#5756#5757#0" expanded="true" />
-            <element signature="e#5790#5791#0" expanded="true" />
-            <element signature="e#5823#5824#0" expanded="true" />
-            <element signature="e#5872#5873#0" expanded="true" />
-            <element signature="e#5911#5912#0" expanded="true" />
-            <element signature="e#5943#5944#0" expanded="true" />
-            <element signature="e#5974#5975#0" expanded="true" />
-            <element signature="e#6019#6020#0" expanded="true" />
-            <element signature="e#6054#6055#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/GUI/MainMenuGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/GUI/PartySlectorGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/StaticRules/HeroClassInformation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1232,24 +1006,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/FakeDatabase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="35" column="11" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1267,20 +1027,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Model/Hero.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Model/MapTile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        <state relative-caret-position="347">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
           <folding>
             <element signature="e#300#301#0" expanded="true" />
             <element signature="e#333#334#0" expanded="true" />
@@ -1288,16 +1038,10 @@
             <element signature="e#429#430#0" expanded="true" />
             <element signature="e#496#497#0" expanded="true" />
             <element signature="e#558#559#0" expanded="true" />
-            <element signature="e#613#614#0" expanded="true" />
-            <element signature="e#659#660#0" expanded="true" />
-            <element signature="e#706#707#0" expanded="true" />
-            <element signature="e#744#745#0" expanded="true" />
             <element signature="e#932#933#0" expanded="true" />
             <element signature="e#974#975#0" expanded="true" />
             <element signature="e#1012#1013#0" expanded="true" />
             <element signature="e#1046#1047#0" expanded="true" />
-            <element signature="e#1080#1081#0" expanded="true" />
-            <element signature="e#1110#1111#0" expanded="true" />
             <element signature="e#1159#1160#0" expanded="true" />
             <element signature="e#1204#1205#0" expanded="true" />
           </folding>
@@ -1307,17 +1051,115 @@
     <entry file="file://$PROJECT_DIR$/src/sample/Model/Monster.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Model/Room.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/DTO/CharacterCreatorDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="46" column="5" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+          <folding>
+            <element signature="e#1642#1643#0" expanded="true" />
+            <element signature="e#1674#1675#0" expanded="true" />
+            <element signature="e#1721#1722#0" expanded="true" />
+            <element signature="e#1763#1764#0" expanded="true" />
+            <element signature="e#1923#1924#0" expanded="true" />
+            <element signature="e#1955#1956#0" expanded="true" />
+            <element signature="e#2005#2006#0" expanded="true" />
+            <element signature="e#2047#2048#0" expanded="true" />
+            <element signature="e#2079#2080#0" expanded="true" />
+            <element signature="e#2107#2108#0" expanded="true" />
+            <element signature="e#2149#2150#0" expanded="true" />
+            <element signature="e#2183#2184#0" expanded="true" />
+            <element signature="e#2222#2223#0" expanded="true" />
+            <element signature="e#2257#2258#0" expanded="true" />
+            <element signature="e#2400#2401#0" expanded="true" />
+            <element signature="e#2435#2436#0" expanded="true" />
+            <element signature="e#2491#2492#0" expanded="true" />
+            <element signature="e#2539#2540#0" expanded="true" />
+            <element signature="e#2581#2582#0" expanded="true" />
+            <element signature="e#2619#2620#0" expanded="true" />
+            <element signature="e#2186#2187#0" expanded="true" />
+            <element signature="e#2220#2221#0" expanded="true" />
+            <element signature="e#3339#3340#0" expanded="true" />
+            <element signature="e#3381#3382#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="41" lean-forward="true" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Model/Room.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="109">
+          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/MainMenuGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="25" column="47" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/PartySelectorGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="50" column="22" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="23" column="34" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Model/FakeDatabase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Model/Hero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="100" selection-start-line="10" selection-start-column="100" selection-end-line="10" selection-end-column="100" />
         </state>
       </provider>
     </entry>

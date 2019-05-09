@@ -27,10 +27,10 @@ import java.util.List;
 
 import static java.lang.Integer.valueOf;
 
-public class CharacterCreatorGUI {
+class CharacterCreatorGUI {
     private MainMenuGUI mainMenuGUI = new MainMenuGUI();
     private String selectedHeroClass;
-    public ScrollPane characterCreatorOuterPane = new ScrollPane();
+    ScrollPane characterCreatorOuterPane = new ScrollPane();
     private BorderPane characterCreatorInnerPane = new BorderPane();
     private HBox topBox = new HBox();
     private FlowPane leftBox = new FlowPane();
@@ -83,7 +83,7 @@ public class CharacterCreatorGUI {
     private Text armorClassText = new Text("Armor Class: \t\t" + AC);
     private TextArea powerDescription = new TextArea();
 
-    public CharacterCreatorGUI() {
+    CharacterCreatorGUI() {
         initializeCharacterCreatorGUI();
     }
 

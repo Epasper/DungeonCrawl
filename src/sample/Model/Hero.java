@@ -7,6 +7,9 @@ public class Hero extends Creature {
     private int hitPoints;
     private int someResource;
     private String imagePath;
+
+    //todo fix the issue with image path; probably path have to be set for absolute path, not local.
+
     public Image heroImage = new Image(getClass().getResourceAsStream("Images\\icon1.png"));
 
     public void setHitPoints(int hitPoints) {
@@ -41,9 +44,6 @@ public class Hero extends Creature {
         return imagePath;
     }
 
-    public Image getHeroImage() {
-        return heroImage;
-    }
 
     public double getSpeed() {
         return speed;
