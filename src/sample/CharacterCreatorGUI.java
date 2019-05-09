@@ -34,6 +34,7 @@ public class CharacterCreatorGUI {
     private Button returnToMainMenu = new Button();
     private Button saveTheCharacter = new Button();
     private Button loadACharacterFromDatabase = new Button();
+    private Button addACharacterPortrait = new Button();
     private TextField characterName = new TextField();
     private final ToggleGroup racialToggleGroup = new ToggleGroup();
     private List<RadioButton> racialBonusRadioButtons = new ArrayList<>();
@@ -100,13 +101,18 @@ public class CharacterCreatorGUI {
                 e.printStackTrace();
             }
         }));
+        addACharacterPortrait.setOnAction((event -> choosePortrait()));
+
 
         updateMaxHP(null);
 
     }
 
+    private void choosePortrait () {
 
-    private void eventOnLoadCharacters () throws SQLException {
+    }
+
+    private void eventOnLoadCharacters() throws SQLException {
         CharacterCreatorDAO dao = new CharacterCreatorDAO();
         List<String> list = dao.getAllHeroNames();
         for (int i = 0; i < list.size(); i++) {
@@ -515,6 +521,7 @@ public class CharacterCreatorGUI {
         leftBox.getChildren().add(raceChoice);
         leftBox.getChildren().add(saveTheCharacter);
         leftBox.getChildren().add(loadACharacterFromDatabase);
+        leftBox.getChildren().add(addACharacterPortrait);
         leftBox.getChildren().add(returnToMainMenu);
 
     }
@@ -732,6 +739,7 @@ public class CharacterCreatorGUI {
         returnToMainMenu.setText("Return to Main Menu");
         saveTheCharacter.setText("Save this Character");
         loadACharacterFromDatabase.setText("Load a Character");
+        addACharacterPortrait.setText("Add a Portrait");
         returnToMainMenu.setMinWidth(150);
         saveTheCharacter.setMinWidth(150);
         loadACharacterFromDatabase.setMinWidth(150);

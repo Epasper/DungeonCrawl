@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="de97b43a-8902-45e2-a345-dc80bad4fa20" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/CharacterCreatorGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DungeonCrawl/sample/CharacterCreatorGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/CharacterCreatorDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/CharacterCreatorDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Creature.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Hero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/SQLConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/CharacterCreatorDAO.java" afterDir="false" />
-    </list>
+    <list default="true" id="de97b43a-8902-45e2-a345-dc80bad4fa20" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,7 +59,7 @@
         <entry file="file://$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="228">
-              <caret line="88" column="16" selection-start-line="88" selection-start-column="16" selection-end-line="88" selection-end-column="16" />
+              <caret line="108" column="17" selection-start-line="108" selection-start-column="17" selection-end-line="108" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#27617#27618#0" expanded="true" />
@@ -81,8 +72,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/CharacterCreatorDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="64" column="49" lean-forward="true" selection-start-line="64" selection-start-column="49" selection-end-line="64" selection-end-column="49" />
+            <state relative-caret-position="374">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -630,7 +624,21 @@
       <option name="project" value="LOCAL" />
       <updated>1557379832568</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Character Creator - added DAOs and DTOs, Characters are now save-able in the database.">
+      <created>1557395723637</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1557395723637</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Character Creator - added an SQL method that returns all hero names.">
+      <created>1557398245003</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1557398245003</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TodoView">
@@ -724,7 +732,9 @@
     <MESSAGE value="Dungeon - repaired the diamond range issue, collision with the monsters is now detectable, interaction with monsters is now again possible" />
     <MESSAGE value="Character Creator - Class Features put into Class Info" />
     <MESSAGE value="Character Creator - Class Traits are now selectable." />
-    <option name="LAST_COMMIT_MESSAGE" value="Character Creator - Class Traits are now selectable." />
+    <MESSAGE value="Character Creator - added DAOs and DTOs, Characters are now save-able in the database." />
+    <MESSAGE value="Character Creator - added an SQL method that returns all hero names." />
+    <option name="LAST_COMMIT_MESSAGE" value="Character Creator - added an SQL method that returns all hero names." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Rogue/DazingStrike.java">
@@ -1249,7 +1259,7 @@
     <entry file="file://$PROJECT_DIR$/src/sample/CharacterCreatorGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
-          <caret line="88" column="16" selection-start-line="88" selection-start-column="16" selection-end-line="88" selection-end-column="16" />
+          <caret line="108" column="17" selection-start-line="108" selection-start-column="17" selection-end-line="108" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#27617#27618#0" expanded="true" />
@@ -1260,8 +1270,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/CharacterCreatorDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="64" column="49" lean-forward="true" selection-start-line="64" selection-start-column="49" selection-end-line="64" selection-end-column="49" />
+        <state relative-caret-position="374">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
