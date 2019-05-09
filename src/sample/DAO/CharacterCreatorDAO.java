@@ -1,4 +1,6 @@
-package sample;
+package sample.DAO;
+
+import sample.DTO.CharacterCreatorDTO;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -105,7 +107,7 @@ public class CharacterCreatorDAO {
         System.out.println("Character has successfully been added to the database");
     }
 
-    void connectWithDatabase(String sql) {
+    public void connectWithDatabase(String sql) {
 
 
         try {

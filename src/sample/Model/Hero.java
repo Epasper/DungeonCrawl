@@ -1,4 +1,4 @@
-package sample;
+package sample.Model;
 
 import javafx.scene.image.Image;
 
@@ -7,7 +7,7 @@ public class Hero extends Creature {
     private int hitPoints;
     private int someResource;
     private String imagePath;
-    Image heroImage = new Image(getClass().getResourceAsStream("Images\\icon1.png"));
+    public Image heroImage = new Image(getClass().getResourceAsStream("Images\\icon1.png"));
 
     public void setHitPoints(int hitPoints) {
         this.hitPoints = hitPoints;
@@ -49,7 +49,7 @@ public class Hero extends Creature {
         return speed;
     }
 
-    void attackAMonster(Monster attackedMonster) {
+    public void attackAMonster(Monster attackedMonster) {
         System.out.println("Hero: " + this.heroName + ", a " + this.heroClass + ", has attacked a(n) " + attackedMonster.monsterType + " monster");
     }
 

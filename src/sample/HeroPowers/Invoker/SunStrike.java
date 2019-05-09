@@ -1,6 +1,6 @@
 package sample.HeroPowers.Invoker;
 
-import sample.HeroClassInformation;
+import sample.StaticRules.HeroClassInformation;
 import sample.HeroPowers.HeroPower;
 
 public class SunStrike extends HeroPower {

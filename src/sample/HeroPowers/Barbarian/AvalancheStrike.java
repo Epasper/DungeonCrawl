@@ -1,6 +1,6 @@
 package sample.HeroPowers.Barbarian;
 
-import sample.HeroClassInformation;
+import sample.StaticRules.HeroClassInformation;
 import sample.HeroPowers.HeroPower;
 
 public class AvalancheStrike extends HeroPower {

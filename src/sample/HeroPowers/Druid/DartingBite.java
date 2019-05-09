@@ -1,6 +1,6 @@
 package sample.HeroPowers.Druid;
 
-import sample.HeroClassInformation;
+import sample.StaticRules.HeroClassInformation;
 import sample.HeroPowers.HeroPower;
 
 public class DartingBite extends HeroPower {

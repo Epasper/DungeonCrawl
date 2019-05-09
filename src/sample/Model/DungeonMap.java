@@ -1,9 +1,9 @@
-package sample;
+package sample.Model;
 
 import java.util.List;
 import java.util.Random;
 
-class DungeonMap {
+public class DungeonMap {
     private int corridorMaxLength = 8;
     private int numberOfTilesY = 40;
     private int numberOfTilesX = 40;
@@ -23,7 +23,7 @@ class DungeonMap {
         }
     }
 
-    void drawAMap() {
+    public void drawAMap() {
         seedAMap();
         trimAllInvalidCorridors();
         checkTheBlankTilesForWalls();
@@ -307,7 +307,7 @@ class DungeonMap {
         }
     }
 
-    void clearMapReachableProperties(DungeonMap dungeonMap) {
+    public void clearMapReachableProperties(DungeonMap dungeonMap) {
         for (int i = 0; i < numberOfTilesX; i++) {
             for (int j = 0; j < numberOfTilesY; j++) {
                 dungeonMap.getMapTilesArray()[i][j].inWalkRange = false;

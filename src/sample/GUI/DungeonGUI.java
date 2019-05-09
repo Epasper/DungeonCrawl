@@ -1,10 +1,15 @@
-package sample;
+package sample.GUI;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import sample.*;
+import sample.Model.DungeonMap;
+import sample.Model.Hero;
+import sample.Model.MapTile;
+import sample.Model.Monster;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +23,7 @@ public class DungeonGUI {
     private int mapHeight = 40;
     private Button[][] buttonGrid = new Button[mapWidth][mapHeight];
     private GridPane mapGridPane = new GridPane();
-    ScrollPane mapScrollPane = new ScrollPane();
+    public ScrollPane mapScrollPane = new ScrollPane();
     private Image wallImage = new Image(getClass().getResourceAsStream("Images\\wall.png"));
     private Image floorImage = new Image(getClass().getResourceAsStream("Images\\floor.png"));
     private Image fogImage = new Image(getClass().getResourceAsStream("Images\\fog.png"));

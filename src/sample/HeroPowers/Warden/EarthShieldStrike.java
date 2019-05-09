@@ -1,6 +1,6 @@
 package sample.HeroPowers.Warden;
 
-import sample.HeroClassInformation;
+import sample.StaticRules.HeroClassInformation;
 import sample.HeroPowers.HeroPower;
 
 public class EarthShieldStrike extends HeroPower {

@@ -1,6 +1,6 @@
 package sample.HeroPowers.Avenger;
 
-import sample.HeroClassInformation;
+import sample.StaticRules.HeroClassInformation;
 import sample.HeroPowers.HeroPower;
 
 public class RadiantVengeance extends HeroPower {

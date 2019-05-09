@@ -1,6 +1,6 @@
 package sample.HeroPowers.Ranger;
 
-import sample.HeroClassInformation;
+import sample.StaticRules.HeroClassInformation;
 import sample.HeroPowers.HeroPower;
 
 public class FoxsCunning extends HeroPower {

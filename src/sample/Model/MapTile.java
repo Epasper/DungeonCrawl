@@ -1,14 +1,14 @@
-package sample;
+package sample.Model;
 
 import java.util.Random;
 
-class MapTile {
+public class MapTile {
 
-    String typeOfTile;
+    public String typeOfTile;
     private int occupyingCreatureId = 0;
-    boolean inWalkRange = false;
-    boolean visible = false;
-    boolean withinInteractionRange = false;
+    public boolean inWalkRange = false;
+    public boolean visible = false;
+    public boolean withinInteractionRange = false;
 
     public String getTypeOfTile() {
         return typeOfTile;
@@ -50,7 +50,7 @@ class MapTile {
         return withinInteractionRange;
     }
 
-    void rollForTypeOfTile(boolean skipToRoom, boolean skipToNonRoom, boolean skipTheCorridor) {
+    public void rollForTypeOfTile(boolean skipToRoom, boolean skipToNonRoom, boolean skipTheCorridor) {
         Random random = new Random();
         int seed = random.nextInt(100);
 

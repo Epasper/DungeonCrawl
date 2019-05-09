@@ -1,4 +1,4 @@
-package sample;
+package sample.GUI;
 
 import javafx.geometry.Insets;
 import javafx.scene.Group;
@@ -10,6 +10,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import sample.Main;
 
 public class MainMenuGUI {
 
@@ -20,8 +21,8 @@ public class MainMenuGUI {
     private FlowPane middlePane = new FlowPane();
     private Button newDungeonButton = new Button();
     private Button cardForgeGUIButton = new Button();
-    Scene aScene = new Scene(new Group());
-    Stage aStage = new Stage();
+    public Scene aScene = new Scene(new Group());
+    public Stage aStage = new Stage();
 
     public MainMenuGUI() {
         buildTheMainMenu();

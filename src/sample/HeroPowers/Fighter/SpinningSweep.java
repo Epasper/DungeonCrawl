@@ -1,6 +1,6 @@
 package sample.HeroPowers.Fighter;
 
-import sample.HeroClassInformation;
+import sample.StaticRules.HeroClassInformation;
 import sample.HeroPowers.HeroPower;
 
 public class SpinningSweep extends HeroPower {

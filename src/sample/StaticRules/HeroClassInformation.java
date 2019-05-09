@@ -1,4 +1,4 @@
-package sample;
+package sample.StaticRules;
 
 import sample.HeroPowers.Avenger.*;
 import sample.HeroPowers.Barbarian.*;
@@ -24,11 +24,11 @@ import java.util.Map;
 
 public class HeroClassInformation {
 
-    Map<String, Integer> classSkillPoints = new HashMap<>();
-    Map<String, List<String>> availableSkills = new HashMap<>();
-    Map<String, Integer> hitDiceAt1st = new HashMap<>();
+    public Map<String, Integer> classSkillPoints = new HashMap<>();
+    public Map<String, List<String>> availableSkills = new HashMap<>();
+    public Map<String, Integer> hitDiceAt1st = new HashMap<>();
     Map<String, Integer> hitDicePerLevel = new HashMap<>();
-    Map<CharacterSkills, Attributes> skillsAndCorrespondingAttributes = new HashMap<>();
+    public Map<CharacterSkills, Attributes> skillsAndCorrespondingAttributes = new HashMap<>();
     private Map<String, List<HeroPower>> atWillPowersAtLevel1 = new HashMap<>();
     private Map<String, List<HeroPower>> encounterPowersAtLevel1 = new HashMap<>();
     private Map<String, List<String>> classTraits = new HashMap<>();

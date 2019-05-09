@@ -1,6 +1,6 @@
 package sample.HeroPowers.Rogue;
 
-import sample.HeroClassInformation;
+import sample.StaticRules.HeroClassInformation;
 import sample.HeroPowers.HeroPower;
 
 public class DazingStrike extends HeroPower {

@@ -1,45 +1,30 @@
-package sample;
+package sample.Model;
 
 import javafx.scene.image.Image;
+import sample.Model.Creature;
 
-public class Creature {
+public class Monster extends Creature {
     String heroName;
-    int ID;
-    int mapXPos;
-    int mapYPos;
-    String heroClass;
-    private int hitPoints;
-    private int someResource;
+    int monsterID; //Greater than 100 for identification purposes
+    //int mapXPos;
+    //int mapYPos;
+    public String monsterType;
+    int hitPoints;
+    int someResource;
     private String imagePath;
+    public Image monsterImage = new Image(getClass().getResourceAsStream("Images\\icon1.png"));
     double speed = 6;
-    private double currentSpeed = speed;
 
     public void setHeroName(String heroName) {
         this.heroName = heroName;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setMonsterID(int monsterID) {
+        this.monsterID = monsterID;
     }
 
-    public void setMapXPos(int mapXPos) {
-        this.mapXPos = mapXPos;
-    }
-
-    public void setMapYPos(int mapYPos) {
-        this.mapYPos = mapYPos;
-    }
-
-    public double getCurrentSpeed() {
-        return currentSpeed;
-    }
-
-    public void setCurrentSpeed(double currentSpeed) {
-        this.currentSpeed = currentSpeed;
-    }
-
-    public void setHeroClass(String heroClass) {
-        this.heroClass = heroClass;
+    public void setMonsterType(String monsterType) {
+        this.monsterType = monsterType;
     }
 
     public void setHitPoints(int hitPoints) {
@@ -54,6 +39,10 @@ public class Creature {
         this.imagePath = imagePath;
     }
 
+    public void setMonsterImage(Image monsterImage) {
+        this.monsterImage = monsterImage;
+    }
+
     public void setSpeed(double speed) {
         this.speed = speed;
     }
@@ -62,20 +51,12 @@ public class Creature {
         return heroName;
     }
 
-    public int getID() {
-        return ID;
+    public int getMonsterID() {
+        return monsterID;
     }
 
-    public int getMapXPos() {
-        return mapXPos;
-    }
-
-    public int getMapYPos() {
-        return mapYPos;
-    }
-
-    public String getHeroClass() {
-        return heroClass;
+    public String getMonsterType() {
+        return monsterType;
     }
 
     public int getHitPoints() {
@@ -90,7 +71,12 @@ public class Creature {
         return imagePath;
     }
 
+    public Image getMonsterImage() {
+        return monsterImage;
+    }
+
     public double getSpeed() {
         return speed;
     }
+
 }

@@ -1,6 +1,6 @@
 package sample.HeroPowers.Sorcerer;
 
-import sample.HeroClassInformation;
+import sample.StaticRules.HeroClassInformation;
 import sample.HeroPowers.HeroPower;
 
 public class StormWalk extends HeroPower {

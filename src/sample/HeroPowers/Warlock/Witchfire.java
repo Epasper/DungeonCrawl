@@ -1,6 +1,6 @@
 package sample.HeroPowers.Warlock;
 
-import sample.HeroClassInformation;
+import sample.StaticRules.HeroClassInformation;
 import sample.HeroPowers.HeroPower;
 
 public class Witchfire extends HeroPower {

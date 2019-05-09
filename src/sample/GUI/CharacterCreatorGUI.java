@@ -1,4 +1,4 @@
-package sample;
+package sample.GUI;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,7 +14,11 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
+import sample.*;
+import sample.DAO.CharacterCreatorDAO;
+import sample.DTO.CharacterCreatorDTO;
 import sample.HeroPowers.HeroPower;
+import sample.StaticRules.HeroClassInformation;
 
 import java.io.File;
 import java.sql.SQLException;
@@ -26,7 +30,7 @@ import static java.lang.Integer.valueOf;
 public class CharacterCreatorGUI {
     private MainMenuGUI mainMenuGUI = new MainMenuGUI();
     private String selectedHeroClass;
-    ScrollPane characterCreatorOuterPane = new ScrollPane();
+    public ScrollPane characterCreatorOuterPane = new ScrollPane();
     private BorderPane characterCreatorInnerPane = new BorderPane();
     private HBox topBox = new HBox();
     private FlowPane leftBox = new FlowPane();

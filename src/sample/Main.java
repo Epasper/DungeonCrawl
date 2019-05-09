@@ -3,6 +3,8 @@ package sample;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sample.DAO.CharacterCreatorDAO;
+import sample.GUI.MainMenuGUI;
 
 import java.sql.SQLException;
 

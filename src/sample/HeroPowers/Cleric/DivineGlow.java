@@ -1,6 +1,6 @@
 package sample.HeroPowers.Cleric;
 
-import sample.HeroClassInformation;
+import sample.StaticRules.HeroClassInformation;
 import sample.HeroPowers.HeroPower;
 
 public class DivineGlow extends HeroPower {

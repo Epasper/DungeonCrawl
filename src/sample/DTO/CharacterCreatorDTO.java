@@ -1,4 +1,4 @@
-package sample;
+package sample.DTO;
 
 
 public class CharacterCreatorDTO {

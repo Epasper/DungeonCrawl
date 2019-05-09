@@ -1,6 +1,8 @@
 package sample;
 
 import javafx.scene.image.Image;
+import sample.Model.Hero;
+import sample.Model.Monster;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,10 +32,10 @@ public class FakeDatabase {
     private Image monster4img = new Image(getClass().getResourceAsStream("Images\\monster4.png"));
     private Image monster5img = new Image(getClass().getResourceAsStream("Images\\monster5.png"));
     private Image monster6img = new Image(getClass().getResourceAsStream("Images\\monster6.png"));
-    List<Hero> listOfHeroes = new ArrayList<>();
-    List<Monster> listOfMonsters = new ArrayList<>();
+    public List<Hero> listOfHeroes = new ArrayList<>();
+    public List<Monster> listOfMonsters = new ArrayList<>();
 
-    void populateDatabaseWithHeroes() {
+    public void populateDatabaseWithHeroes() {
         hero1.heroName = "Hadrim";
         hero2.heroName = "Gvydor";
         hero3.heroName = "Tyr";
@@ -67,7 +69,7 @@ public class FakeDatabase {
     }
 
 
-    void populateDatabaseWithMonsters() {
+    public void populateDatabaseWithMonsters() {
         monster1.monsterType = "Lizardman";
         monster2.monsterType = "Orc";
         monster3.monsterType = "Ratfolk";

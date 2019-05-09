@@ -1,6 +1,6 @@
 package sample.HeroPowers.Warlord;
 
-import sample.HeroClassInformation;
+import sample.StaticRules.HeroClassInformation;
 import sample.HeroPowers.HeroPower;
 
 public class LeafOnTheWind extends HeroPower {

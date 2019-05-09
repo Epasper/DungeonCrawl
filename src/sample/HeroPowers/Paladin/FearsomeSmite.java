@@ -1,6 +1,6 @@
 package sample.HeroPowers.Paladin;
 
-import sample.HeroClassInformation;
+import sample.StaticRules.HeroClassInformation;
 import sample.HeroPowers.HeroPower;
 
 public class FearsomeSmite extends HeroPower {
