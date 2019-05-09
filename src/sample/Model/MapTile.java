@@ -22,18 +22,6 @@ public class MapTile {
         this.occupyingCreatureId = occupyingCreatureId;
     }
 
-    public void setInWalkRange(boolean inWalkRange) {
-        this.inWalkRange = inWalkRange;
-    }
-
-    public void setVisible(boolean visible) {
-        this.visible = visible;
-    }
-
-    public void setWithinInteractionRange(boolean withinInteractionRange) {
-        this.withinInteractionRange = withinInteractionRange;
-    }
-
     public int getOccupyingCreatureId() {
         return occupyingCreatureId;
     }
@@ -42,15 +30,11 @@ public class MapTile {
         return inWalkRange;
     }
 
-    public boolean isVisible() {
-        return visible;
-    }
-
     public boolean isWithinInteractionRange() {
         return withinInteractionRange;
     }
 
-    public void rollForTypeOfTile(boolean skipToRoom, boolean skipToNonRoom, boolean skipTheCorridor) {
+    void rollForTypeOfTile(boolean skipToRoom, boolean skipToNonRoom, boolean skipTheCorridor) {
         Random random = new Random();
         int seed = random.nextInt(100);
 

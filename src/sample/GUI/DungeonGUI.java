@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class DungeonGUI {
+class DungeonGUI {
 
     //todo Create a pane on top of the dungeonMap grid, that will show the available cards.
     private MainMenuGUI mainMenuGUI = new MainMenuGUI();
@@ -23,7 +23,7 @@ public class DungeonGUI {
     private int mapHeight = 40;
     private Button[][] buttonGrid = new Button[mapWidth][mapHeight];
     private GridPane mapGridPane = new GridPane();
-    public ScrollPane mapScrollPane = new ScrollPane();
+    ScrollPane mapScrollPane = new ScrollPane();
     private Image wallImage = new Image(getClass().getResourceAsStream("Images\\wall.png"));
     private Image floorImage = new Image(getClass().getResourceAsStream("Images\\floor.png"));
     private Image fogImage = new Image(getClass().getResourceAsStream("Images\\fog.png"));
@@ -49,23 +49,12 @@ public class DungeonGUI {
     private boolean hasTheCharacterBeenSelected = false;
     private int numberOfHeroesThatFinishedMovement;
 
-    public int getNumberOfHeroesThatFinishedMovement() {
-        return numberOfHeroesThatFinishedMovement;
-    }
-
-    public void setNumberOfHeroesThatFinishedMovement(int numberOfHeroesThatFinishedMovement) {
-        this.numberOfHeroesThatFinishedMovement = numberOfHeroesThatFinishedMovement;
-    }
 
     private DungeonMap getDungeonMap() {
         return dungeonMap;
     }
 
-    public void setDungeonMap(DungeonMap dungeonMap) {
-        this.dungeonMap = dungeonMap;
-    }
-
-    public int getCurrentlyActiveHeroID() {
+    private int getCurrentlyActiveHeroID() {
         return currentlyActiveHeroID;
     }
 
@@ -81,7 +70,7 @@ public class DungeonGUI {
         this.hasTheCharacterBeenSelected = hasTheCharacterBeenSelected;
     }
 
-    public DungeonGUI() {
+    DungeonGUI() {
         mapScrollPane.setContent(mapGridPane);
         Button returnToMainMenu = new Button();
         returnToMainMenu.setText("Return to Main Menu");
@@ -311,17 +300,8 @@ public class DungeonGUI {
                 aButton.setGraphic(new ImageView(wallEastImage));
                 break;
             case "Room":
-                aButton.setStyle("-fx-color: #000000");
-                aButton.setGraphic(new ImageView(floorImage));
-                break;
             case "Corridor":
-                aButton.setStyle("-fx-color: #000000");
-                aButton.setGraphic(new ImageView(floorImage));
-                break;
             case "CorridorVertical":
-                aButton.setStyle("-fx-color: #000000");
-                aButton.setGraphic(new ImageView(floorImage));
-                break;
             case "CorridorHorizontal":
                 aButton.setStyle("-fx-color: #000000");
                 aButton.setGraphic(new ImageView(floorImage));

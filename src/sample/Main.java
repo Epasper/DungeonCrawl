@@ -3,20 +3,15 @@ package sample;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import sample.DAO.CharacterCreatorDAO;
 import sample.GUI.MainMenuGUI;
-
-import java.sql.SQLException;
 
 public class Main extends Application {
 
     private static Stage pStage;
 
     @Override
-    public void start(Stage primaryStage) throws SQLException {
+    public void start(Stage primaryStage) {
         //debug SQL connection
-        CharacterCreatorDAO sqlConnector = new CharacterCreatorDAO();
-        sqlConnector.connectWithDatabase("select * from dungeon.heroes");
         setPrimaryStage(primaryStage);
         MainMenuGUI mainMenuGUI = new MainMenuGUI();
         primaryStage.setWidth(500);

@@ -13,15 +13,14 @@ public class CharacterCreatorDAO {
     private static final String USER = "root";
     private static final String PASS = "root";
 
-    Connection conn;
-    Statement stmt;
-    PreparedStatement pst;
+    private Connection conn;
+    private PreparedStatement pst;
 
     public CharacterCreatorDAO() throws SQLException {
         System.out.println("Connecting to database...");
         conn = DriverManager.getConnection(DB_URL, USER, PASS);
         System.out.println("Creating connection...");
-        stmt = conn.createStatement();
+        conn.createStatement();
 
     }
 
@@ -106,42 +105,5 @@ public class CharacterCreatorDAO {
         pst.executeUpdate();
         System.out.println("Character has successfully been added to the database");
     }
-
-    public void connectWithDatabase(String sql) {
-
-
-        try {
-
-
-            //String sql = "select * from dungeon.heroes";
-            ResultSet rs = stmt.executeQuery(sql);
-//            while (rs.next()) {
-//                String name = rs.getString("HERO_NAME");
-//                String heroclass = rs.getString("HERO_CLASS");
-//                String heroRace = rs.getString("HERO_RACE");
-//                System.out.println(name + "\t" + heroclass +
-//                        "\t" + heroRace + "\t");
-//            }
-            System.out.println("Database accessed successfully...");
-
-        } catch (SQLException se) {
-            se.printStackTrace();
-        } finally {
-            try {
-                if (stmt != null)
-                    stmt.close();
-            } catch (SQLException ignored) {
-            }
-            try {
-                if (conn != null)
-                    conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
-            }
-        }
-        System.out.println("Goodbye!");
-
-    }
-
 
 }

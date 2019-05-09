@@ -1,30 +1,18 @@
 package sample.Model;
 
 import javafx.scene.image.Image;
-import sample.Model.Creature;
 
 public class Monster extends Creature {
-    String heroName;
-    int monsterID; //Greater than 100 for identification purposes
-    //int mapXPos;
-    //int mapYPos;
+    private String heroName;
     public String monsterType;
-    int hitPoints;
-    int someResource;
+    private int hitPoints;
+    private int someResource;
     private String imagePath;
     public Image monsterImage = new Image(getClass().getResourceAsStream("Images\\icon1.png"));
-    double speed = 6;
+    private double speed = 6;
 
     public void setHeroName(String heroName) {
         this.heroName = heroName;
-    }
-
-    public void setMonsterID(int monsterID) {
-        this.monsterID = monsterID;
-    }
-
-    public void setMonsterType(String monsterType) {
-        this.monsterType = monsterType;
     }
 
     public void setHitPoints(int hitPoints) {
@@ -39,24 +27,12 @@ public class Monster extends Creature {
         this.imagePath = imagePath;
     }
 
-    public void setMonsterImage(Image monsterImage) {
-        this.monsterImage = monsterImage;
-    }
-
     public void setSpeed(double speed) {
         this.speed = speed;
     }
 
     public String getHeroName() {
         return heroName;
-    }
-
-    public int getMonsterID() {
-        return monsterID;
-    }
-
-    public String getMonsterType() {
-        return monsterType;
     }
 
     public int getHitPoints() {
@@ -69,10 +45,6 @@ public class Monster extends Creature {
 
     public String getImagePath() {
         return imagePath;
-    }
-
-    public Image getMonsterImage() {
-        return monsterImage;
     }
 
     public double getSpeed() {
