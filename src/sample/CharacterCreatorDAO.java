@@ -1,6 +1,8 @@
 package sample;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class CharacterCreatorDAO {
@@ -21,7 +23,21 @@ public class CharacterCreatorDAO {
 
     }
 
-    public void addAHero (CharacterCreatorDTO heroToBeAdded) throws SQLException {
+    public List<String> getAllHeroNames() throws SQLException {
+        List<String> namesToBeReturned = new ArrayList<>();
+        String sql = "SELECT" +
+                "    `heroes`.`hero_name`" +
+                "FROM `dungeon`.`heroes`;";
+        pst = conn.prepareStatement(sql);
+        ResultSet results = pst.executeQuery();
+        while (results.next()) {
+            String name = results.getString("hero_name");
+            namesToBeReturned.add(name);
+        }
+        return namesToBeReturned;
+    }
+
+    public void addAHero(CharacterCreatorDTO heroToBeAdded) throws SQLException {
         String sql = "INSERT INTO dungeon.heroes(" +
                 "hero_name," +
                 "hero_class," +
@@ -93,7 +109,6 @@ public class CharacterCreatorDAO {
 
 
         try {
-
 
 
             //String sql = "select * from dungeon.heroes";

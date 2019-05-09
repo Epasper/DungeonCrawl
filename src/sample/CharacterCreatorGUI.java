@@ -92,10 +92,30 @@ public class CharacterCreatorGUI {
                 e.printStackTrace();
             }
         }));
+        loadACharacterFromDatabase.setOnAction((event -> {
+            try {
+                eventOnLoadCharacters();
+            } catch (SQLException e) {
+                System.out.println("Connection to the database could not be established.");
+                e.printStackTrace();
+            }
+        }));
+
         updateMaxHP(null);
+
+    }
+
+
+    private void eventOnLoadCharacters () throws SQLException {
+        CharacterCreatorDAO dao = new CharacterCreatorDAO();
+        List<String> list = dao.getAllHeroNames();
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i));
+        }
     }
 
     //todo validate all required fields
+
 
     private void saveTheCharacterToDatabase() throws SQLException {
         CharacterCreatorDTO characterCreatorDTO = new CharacterCreatorDTO();
