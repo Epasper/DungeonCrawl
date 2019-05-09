@@ -8,8 +8,8 @@ public class Creature {
     int mapXPos;
     int mapYPos;
     String heroClass;
-    int hitPoints;
-    int someResource;
+    private int hitPoints;
+    private int someResource;
     private String imagePath;
     double speed = 6;
     private double currentSpeed = speed;

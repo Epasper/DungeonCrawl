@@ -9,6 +9,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import sample.HeroPowers.HeroPower;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +32,8 @@ public class CharacterCreatorGUI {
     private ComboBox<String> classTraitChoice = new ComboBox<>();
     private ComboBox<String> raceChoice = new ComboBox<>();
     private Button returnToMainMenu = new Button();
+    private Button saveTheCharacter = new Button();
+    private Button loadACharacterFromDatabase = new Button();
     private TextField characterName = new TextField();
     private final ToggleGroup racialToggleGroup = new ToggleGroup();
     private List<RadioButton> racialBonusRadioButtons = new ArrayList<>();
@@ -44,6 +47,7 @@ public class CharacterCreatorGUI {
     private Text finalScoreText = new Text("  Final  \n  Score  ");
     private List<Text> finalAttributeScoresTexts = new ArrayList<>();
     private int[] finalAttributeIntegersArray = new int[6];
+    private int[] finalSkillPointsArray = new int[17];
     private int availableStatPoints = 20;
     private int numberOfAvailableSkillPoints = 0;
     private int maxHP = 0;
@@ -80,9 +84,59 @@ public class CharacterCreatorGUI {
         calculateAllFinalAbilityScores();
         addTheDerivedElements();
         returnToMainMenu.setOnAction(event -> returnToMainMenu());
+        saveTheCharacter.setOnAction((event -> {
+            try {
+                saveTheCharacterToDatabase();
+            } catch (SQLException e) {
+                System.out.println("Connection to the database could not be established.");
+                e.printStackTrace();
+            }
+        }));
         updateMaxHP(null);
     }
 
+    //todo validate all required fields
+
+    private void saveTheCharacterToDatabase() throws SQLException {
+        CharacterCreatorDTO characterCreatorDTO = new CharacterCreatorDTO();
+        characterCreatorDTO.setHeroName(characterName.getText());
+        characterCreatorDTO.setHeroClass(classChoice.getValue());
+        characterCreatorDTO.setHeroRace(raceChoice.getValue());
+        characterCreatorDTO.setStrength(finalAttributeIntegersArray[0]);
+        characterCreatorDTO.setConstitution(finalAttributeIntegersArray[1]);
+        characterCreatorDTO.setDexterity(finalAttributeIntegersArray[2]);
+        characterCreatorDTO.setIntelligence(finalAttributeIntegersArray[3]);
+        characterCreatorDTO.setWisdom(finalAttributeIntegersArray[4]);
+        characterCreatorDTO.setCharisma(finalAttributeIntegersArray[5]);
+        characterCreatorDTO.setFortitude(fort);
+        characterCreatorDTO.setReflex(reflex);
+        characterCreatorDTO.setWill(will);
+        characterCreatorDTO.setHitPoints(maxHP);
+        characterCreatorDTO.setGold(100);
+        characterCreatorDTO.setAtWillPower1(atWill1Choice.getValue());
+        characterCreatorDTO.setAtWillPower2(atWill2Choice.getValue());
+        characterCreatorDTO.setEncounterPower1(encounterChoice.getValue());
+        characterCreatorDTO.setDailyPower1(dailyChoice.getValue());
+        characterCreatorDTO.setAcrobatics(finalSkillPointsArray[0]);
+        characterCreatorDTO.setArcana(finalSkillPointsArray[1]);
+        characterCreatorDTO.setAthletics(finalSkillPointsArray[2]);
+        characterCreatorDTO.setBluff(finalSkillPointsArray[3]);
+        characterCreatorDTO.setDiplomacy(finalSkillPointsArray[4]);
+        characterCreatorDTO.setDungeoneering(finalSkillPointsArray[5]);
+        characterCreatorDTO.setEndurance(finalSkillPointsArray[6]);
+        characterCreatorDTO.setHeal(finalSkillPointsArray[7]);
+        characterCreatorDTO.setHistory(finalSkillPointsArray[8]);
+        characterCreatorDTO.setInsight(finalSkillPointsArray[9]);
+        characterCreatorDTO.setIntimidate(finalSkillPointsArray[10]);
+        characterCreatorDTO.setNature(finalSkillPointsArray[11]);
+        characterCreatorDTO.setPerception(finalSkillPointsArray[12]);
+        characterCreatorDTO.setReligion(finalSkillPointsArray[13]);
+        characterCreatorDTO.setStealth(finalSkillPointsArray[14]);
+        characterCreatorDTO.setStreetwise(finalSkillPointsArray[15]);
+        characterCreatorDTO.setThievery(finalSkillPointsArray[16]);
+        CharacterCreatorDAO characterCreatorDAO = new CharacterCreatorDAO();
+        characterCreatorDAO.addAHero(characterCreatorDTO);
+    }
 
     //todo add class traits selection
     //todo add shop with options to buy equipment. Starting gold is 100 GP
@@ -156,6 +210,7 @@ public class CharacterCreatorGUI {
     private void buildSkillBoxes(boolean isThisTheFirstBuild) {
         allSkills.clear();
         HeroClassInformation heroClassInformation = new HeroClassInformation();
+        int i = 0;
         for (HeroClassInformation.CharacterSkills currentSkill : HeroClassInformation.CharacterSkills.values()) {
             if (isThisTheFirstBuild) {
                 availableSkills.add(currentSkill.toString());
@@ -174,6 +229,8 @@ public class CharacterCreatorGUI {
             }
             allSkills.add("[" + attributeAbbreviation + "]  \t" + skillName + "\t " + skillModifier);
             allSkillsListView.setItems(allSkills);
+            finalSkillPointsArray[i] = skillModifier;
+            i++;
         }
     }
 
@@ -436,7 +493,10 @@ public class CharacterCreatorGUI {
         middleBox.add(characterName, 0, 0, 10, 1);
         leftBox.getChildren().add(classChoice);
         leftBox.getChildren().add(raceChoice);
+        leftBox.getChildren().add(saveTheCharacter);
+        leftBox.getChildren().add(loadACharacterFromDatabase);
         leftBox.getChildren().add(returnToMainMenu);
+
     }
 
     private void addPowersToComboBoxes() {
@@ -650,6 +710,11 @@ public class CharacterCreatorGUI {
         classChoice.setPromptText("Choose your class");
         characterName.setPromptText("Insert your character name");
         returnToMainMenu.setText("Return to Main Menu");
+        saveTheCharacter.setText("Save this Character");
+        loadACharacterFromDatabase.setText("Load a Character");
+        returnToMainMenu.setMinWidth(150);
+        saveTheCharacter.setMinWidth(150);
+        loadACharacterFromDatabase.setMinWidth(150);
     }
 
     private void returnToMainMenu() {

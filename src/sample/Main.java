@@ -4,15 +4,17 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.sql.SQLException;
+
 public class Main extends Application {
 
     private static Stage pStage;
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws SQLException {
         //debug SQL connection
-        SQLConnector sqlConnector = new SQLConnector();
-        sqlConnector.startAConnection();
+        CharacterCreatorDAO sqlConnector = new CharacterCreatorDAO();
+        sqlConnector.connectWithDatabase("select * from dungeon.heroes");
         setPrimaryStage(primaryStage);
         MainMenuGUI mainMenuGUI = new MainMenuGUI();
         primaryStage.setWidth(500);

@@ -4,8 +4,8 @@ import javafx.scene.image.Image;
 
 public class Hero extends Creature {
 
-    int hitPoints;
-    int someResource;
+    private int hitPoints;
+    private int someResource;
     private String imagePath;
     Image heroImage = new Image(getClass().getResourceAsStream("Images\\icon1.png"));
 
