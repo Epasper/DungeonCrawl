@@ -446,9 +446,12 @@ public class CharacterCreatorGUI {
                 FXCollections.observableArrayList();
         ObservableList<String> encounterOptions =
                 FXCollections.observableArrayList();
+        ObservableList<String> classTraitOptions =
+                FXCollections.observableArrayList();
         HeroClassInformation heroClassInformation = new HeroClassInformation();
         int numberOfAtWillPowers = heroClassInformation.getAtWillPowersAtLevel1().get(selectedHeroClass).size();
         int numberOfEncounterPowers = heroClassInformation.getEncounterPowersAtLevel1().get(selectedHeroClass).size();
+        int numberOfClassTraits = heroClassInformation.getClassTraits().get(selectedHeroClass).size();
         for (int i = 0; i < numberOfAtWillPowers; i++) {
             atWill1Options.add(heroClassInformation.getAtWillPowersAtLevel1().get(selectedHeroClass).get(i).getPowerName());
         }
@@ -458,9 +461,13 @@ public class CharacterCreatorGUI {
         for (int i = 0; i < numberOfEncounterPowers; i++) {
             encounterOptions.add(heroClassInformation.getEncounterPowersAtLevel1().get(selectedHeroClass).get(i).getPowerName());
         }
+        for (int i = 0; i < numberOfClassTraits; i++) {
+            classTraitOptions.add(heroClassInformation.getClassTraits().get(selectedHeroClass).get(i));
+        }
         atWill1Choice.setItems(atWill1Options);
         atWill2Choice.setItems(atWill2Options);
         encounterChoice.setItems(encounterOptions);
+        classTraitChoice.setItems(classTraitOptions);
         atWill1Choice.setDisable(false);
         atWill2Choice.setDisable(false);
         encounterChoice.setDisable(false);

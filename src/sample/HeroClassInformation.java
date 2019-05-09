@@ -33,6 +33,14 @@ public class HeroClassInformation {
     private Map<String, List<HeroPower>> encounterPowersAtLevel1 = new HashMap<>();
     private Map<String, List<String>> classTraits = new HashMap<>();
 
+    public Map<String, List<String>> getClassTraits() {
+        return classTraits;
+    }
+
+    public void setClassTraits(Map<String, List<String>> classTraits) {
+        this.classTraits = classTraits;
+    }
+
     public Map<String, List<HeroPower>> getEncounterPowersAtLevel1() {
         return encounterPowersAtLevel1;
     }
@@ -73,6 +81,7 @@ public class HeroClassInformation {
         populateTheTablesWithAtWillPowers();
         populateTheTablesWithEncounterPowers();
         populateTheSkillsAndCorrespondingAttributes();
+        populateTheTablesWithTraits();
     }
 
     private void populateTheSkillsAndCorrespondingAttributes() {
@@ -319,6 +328,8 @@ public class HeroClassInformation {
         wizard.add(new IcyTerrain());
         wizard.add(new RayOfEnfeeblement());
     }
+
+
 
     private void populateTheTablesWithTraits() {
         List<String> avenger = new ArrayList<>();
