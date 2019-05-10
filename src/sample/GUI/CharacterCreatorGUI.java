@@ -137,6 +137,8 @@ class CharacterCreatorGUI {
         List<Image> listOfIcons = getAllIcons();
         Stage aStage = new Stage();
         Scene aScene = new Scene(new Group());
+        aStage.setTitle("Select a Character Icon");
+        aScene.getStylesheets().add("sample/Styling/CharacterCreator.css");
         for (int i = 0; i < listOfIcons.size(); i++) {
             ImageView imageView = new ImageView();
             Button aButton = new Button();
@@ -156,24 +158,6 @@ class CharacterCreatorGUI {
         aScene.setRoot(hBox);
         aStage.setScene(aScene);
         aStage.show();
-
-//        FileChooser fileChooser = new FileChooser();
-//        fileChooser.setTitle("Choose a character portrait: ");
-//        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PNG Image Files (*.png)", "*.png");
-//        fileChooser.setSelectedExtensionFilter(extFilter);
-//        String userDirectoryString = System.getProperty("user.home") + "\\IdeaProjects\\DungeonCrawl\\src\\sample\\Images\\HeroPortraits";
-//        File userDirectory = new File(userDirectoryString);
-//        if (!userDirectory.canRead()) {
-//            userDirectory = new File("c:/");
-//        }
-//        fileChooser.setInitialDirectory(userDirectory);
-//        File chosenFile = fileChooser.showOpenDialog(null);
-//        String path = chosenFile.getPath();
-//        System.out.println(path);
-//        Image hero1img = new Image(chosenFile.toURI().toString());
-//        ImageView heroImageView = new ImageView(hero1img);
-//        leftBox.getChildren().remove(5, 6);
-//        leftBox.getChildren().add(heroImageView);
     }
 
     //todo add a DRY method that converts a result set into an image view
