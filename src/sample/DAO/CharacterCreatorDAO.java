@@ -76,7 +76,7 @@ public class CharacterCreatorDAO {
         return numberOfHeroes;
     }
 
-    public Hero convertDtoToHero (CharacterCreatorDTO dto) {
+    public Hero convertDtoToHero(CharacterCreatorDTO dto) {
         Hero hero = new Hero();
         hero.setID(dto.getHeroID());
         hero.setHeroName(dto.getHeroName());
@@ -175,6 +175,7 @@ public class CharacterCreatorDAO {
                 "reflex," +
                 "will," +
                 "gold," +
+                "icon_id," +
                 "sk_acrobatics," +
                 "sk_arcana," +
                 "sk_athletics," +
@@ -192,7 +193,7 @@ public class CharacterCreatorDAO {
                 "sk_stealth," +
                 "sk_streetwise," +
                 "sk_thievery)VALUES" +
-                "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+                "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
         pst = conn.prepareStatement(sql);
         pst.setString(1, heroToBeAdded.getHeroName());
         pst.setString(2, heroToBeAdded.getHeroClass());
@@ -207,23 +208,24 @@ public class CharacterCreatorDAO {
         pst.setInt(11, heroToBeAdded.getReflex());
         pst.setInt(12, heroToBeAdded.getWill());
         pst.setInt(13, heroToBeAdded.getGold());
-        pst.setInt(14, heroToBeAdded.getAcrobatics());
-        pst.setInt(15, heroToBeAdded.getArcana());
-        pst.setInt(16, heroToBeAdded.getAthletics());
-        pst.setInt(17, heroToBeAdded.getBluff());
-        pst.setInt(18, heroToBeAdded.getDiplomacy());
-        pst.setInt(19, heroToBeAdded.getDungeoneering());
-        pst.setInt(20, heroToBeAdded.getEndurance());
-        pst.setInt(21, heroToBeAdded.getHeal());
-        pst.setInt(22, heroToBeAdded.getHistory());
-        pst.setInt(23, heroToBeAdded.getInsight());
-        pst.setInt(24, heroToBeAdded.getIntimidate());
-        pst.setInt(25, heroToBeAdded.getNature());
-        pst.setInt(26, heroToBeAdded.getPerception());
-        pst.setInt(27, heroToBeAdded.getReligion());
-        pst.setInt(28, heroToBeAdded.getStealth());
-        pst.setInt(29, heroToBeAdded.getStreetwise());
-        pst.setInt(30, heroToBeAdded.getThievery());
+        pst.setInt(14, heroToBeAdded.getHeroIconId());
+        pst.setInt(15, heroToBeAdded.getAcrobatics());
+        pst.setInt(16, heroToBeAdded.getArcana());
+        pst.setInt(17, heroToBeAdded.getAthletics());
+        pst.setInt(18, heroToBeAdded.getBluff());
+        pst.setInt(19, heroToBeAdded.getDiplomacy());
+        pst.setInt(20, heroToBeAdded.getDungeoneering());
+        pst.setInt(21, heroToBeAdded.getEndurance());
+        pst.setInt(22, heroToBeAdded.getHeal());
+        pst.setInt(23, heroToBeAdded.getHistory());
+        pst.setInt(24, heroToBeAdded.getInsight());
+        pst.setInt(25, heroToBeAdded.getIntimidate());
+        pst.setInt(26, heroToBeAdded.getNature());
+        pst.setInt(27, heroToBeAdded.getPerception());
+        pst.setInt(28, heroToBeAdded.getReligion());
+        pst.setInt(29, heroToBeAdded.getStealth());
+        pst.setInt(30, heroToBeAdded.getStreetwise());
+        pst.setInt(31, heroToBeAdded.getThievery());
         pst.executeUpdate();
         System.out.println("Character has successfully been added to the database");
     }
