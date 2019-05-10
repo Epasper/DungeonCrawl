@@ -23,7 +23,15 @@ public class CharacterCreatorDAO {
         conn.createStatement();
     }
 
-
+    public ResultSet getAllHeroIcons() throws SQLException {
+        String sql = "SELECT `heroicons`.`id_hero_icons`,`heroicons`.`hero_icon`FROM `dungeon`.`heroicons`;";
+        pst = conn.prepareStatement(sql);
+        ResultSet resultSet = pst.executeQuery() ;
+//        while (resultSet.next()) {
+//            System.out.println(resultSet.getString("hero_icon"));
+//        }
+        return resultSet;
+    }
 
     public List<String> getAllHeroNames() throws SQLException {
         List<String> namesToBeReturned = new ArrayList<>();

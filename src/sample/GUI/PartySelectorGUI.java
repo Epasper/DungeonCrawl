@@ -17,9 +17,9 @@ import java.util.List;
 public class PartySelectorGUI {
     ScrollPane partySelectorOuterPlane = new ScrollPane();
     private FlowPane innerPane = new FlowPane();
-    Button startADungeonButton = new Button("Start an Adventure! ");
-    Stage aStage = new Stage();
-    Scene aScene = new Scene(new Group());
+    private Button startADungeonButton = new Button("Start an Adventure! ");
+    private Stage aStage = new Stage();
+    private Scene aScene = new Scene(new Group());
 
     public PartySelectorGUI() throws SQLException {
         fillThePanesWithPartyMembers();

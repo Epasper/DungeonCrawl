@@ -2,7 +2,10 @@ package sample.GUI;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Insets;
+import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -13,14 +16,19 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import sample.*;
 import sample.DAO.CharacterCreatorDAO;
 import sample.DTO.CharacterCreatorDTO;
 import sample.HeroPowers.HeroPower;
 import sample.StaticRules.HeroClassInformation;
 
-import java.io.File;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Blob;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -113,31 +121,70 @@ class CharacterCreatorGUI {
                 e.printStackTrace();
             }
         }));
-        addACharacterPortrait.setOnAction((event -> choosePortrait()));
+        addACharacterPortrait.setOnAction((event -> {
+            try {
+                choosePortrait();
+            } catch (IOException | SQLException e) {
+                e.printStackTrace();
+            }
+        }));
 
 
         updateMaxHP(null);
 
     }
 
-    private void choosePortrait() {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Choose a character portrait: ");
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PNG Image Files (*.png)", "*.png");
-        fileChooser.setSelectedExtensionFilter(extFilter);
-        String userDirectoryString = System.getProperty("user.home") + "\\IdeaProjects\\DungeonCrawl\\src\\sample\\Images\\HeroPortraits";
-        File userDirectory = new File(userDirectoryString);
-        if (!userDirectory.canRead()) {
-            userDirectory = new File("c:/");
+    private void choosePortrait() throws SQLException, IOException {
+        HBox hBox = new HBox();
+        List<Image> listOfIcons = getAllIcons();
+        for (Image currentImage : listOfIcons) {
+            ImageView imageView = new ImageView();
+            Button aButton = new Button();
+            imageView.setImage(currentImage);
+            aButton.setGraphic(imageView);
+            hBox.getChildren().add(aButton);
         }
-        fileChooser.setInitialDirectory(userDirectory);
-        File chosenFile = fileChooser.showOpenDialog(null);
-        String path = chosenFile.getPath();
-        System.out.println(path);
-        Image hero1img = new Image(chosenFile.toURI().toString());
-        ImageView heroImageView = new ImageView(hero1img);
-        leftBox.getChildren().remove(5, 6);
-        leftBox.getChildren().add(heroImageView);
+        Stage aStage = new Stage();
+        Scene aScene = new Scene(new Group());
+        aScene.getStylesheets().add("sample/Styling/Caspian.css");
+        aScene.setRoot(hBox);
+        aStage.setScene(aScene);
+        aStage.show();
+
+//        FileChooser fileChooser = new FileChooser();
+//        fileChooser.setTitle("Choose a character portrait: ");
+//        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PNG Image Files (*.png)", "*.png");
+//        fileChooser.setSelectedExtensionFilter(extFilter);
+//        String userDirectoryString = System.getProperty("user.home") + "\\IdeaProjects\\DungeonCrawl\\src\\sample\\Images\\HeroPortraits";
+//        File userDirectory = new File(userDirectoryString);
+//        if (!userDirectory.canRead()) {
+//            userDirectory = new File("c:/");
+//        }
+//        fileChooser.setInitialDirectory(userDirectory);
+//        File chosenFile = fileChooser.showOpenDialog(null);
+//        String path = chosenFile.getPath();
+//        System.out.println(path);
+//        Image hero1img = new Image(chosenFile.toURI().toString());
+//        ImageView heroImageView = new ImageView(hero1img);
+//        leftBox.getChildren().remove(5, 6);
+//        leftBox.getChildren().add(heroImageView);
+    }
+
+    private List<Image> getAllIcons() throws SQLException, IOException {
+        CharacterCreatorDAO dao = new CharacterCreatorDAO();
+        ResultSet rs = dao.getAllHeroIcons();
+        ImageView imageView = new ImageView();
+        List<Image> allIcons = new ArrayList<>();
+        while (rs.next()) {
+            Blob blob = rs.getBlob("hero_icon");
+            InputStream in = blob.getBinaryStream();
+            BufferedImage bufferedImage = ImageIO.read(in);
+            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+            imageView.setImage(image);
+            allIcons.add(image);
+            System.out.println("Reached the Inner Loop ");
+        }
+        return allIcons;
     }
 
     private void eventOnLoadCharacters() throws SQLException {
