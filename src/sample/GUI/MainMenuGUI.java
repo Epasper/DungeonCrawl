@@ -58,12 +58,11 @@ public class MainMenuGUI {
         aStage.show();
     }
 
-
     private void openDungeonGUI() throws SQLException {
-        PartySelectorGUI partySlectorGUI = new PartySelectorGUI();
+        PartySelectorGUI partySelectorGUI = new PartySelectorGUI();
         //DungeonGUI dungeonGui = new DungeonGUI();
         aStage.close();
-        aScene.setRoot(partySlectorGUI.partySelectorOuterPlane);
+        aScene.setRoot(partySelectorGUI.partySelectorOuterPlane);
         aScene.getStylesheets().add("sample/Styling/Caspian.css");
         //aScene.setRoot(dungeonGui.mapScrollPane);
         aStage.setScene(aScene);

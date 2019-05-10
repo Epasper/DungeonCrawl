@@ -52,6 +52,69 @@ public class CharacterCreatorDAO {
         return namesToBeReturned;
     }
 
+    public int getNumberOfHeroes() throws SQLException {
+        String sql = "SELECT COUNT(*) from dungeon.heroes;";
+        int numberOfHeroes = 0;
+        pst = conn.prepareStatement(sql);
+        ResultSet rs = pst.executeQuery();
+        if (rs.next()) {
+            numberOfHeroes = rs.getInt("COUNT(*)");
+        }
+        return numberOfHeroes;
+    }
+
+    public CharacterCreatorDTO getAHeroByID(int ID) throws SQLException {
+        CharacterCreatorDTO dto = new CharacterCreatorDTO();
+        String sql = "SELECT * FROM dungeon.heroes WHERE idheroes = ?;";
+        pst = conn.prepareStatement(sql);
+        pst.setInt(1, ID);
+        ResultSet rs = pst.executeQuery();
+        while (rs.next()) {
+            dto.setHeroName(rs.getString("hero_name"));
+            dto.setHeroClass(rs.getString("hero_class"));
+            dto.setHeroRace(rs.getString("hero_race"));
+            dto.setStrength(rs.getInt("strength"));
+            dto.setConstitution(rs.getInt("constitution"));
+            dto.setDexterity(rs.getInt("dexterity"));
+            dto.setIntelligence(rs.getInt("intelligence"));
+            dto.setWisdom(rs.getInt("wisdom"));
+            dto.setCharisma(rs.getInt("charisma"));
+            dto.setFortitude(rs.getInt("fortitude"));
+            dto.setReflex(rs.getInt("reflex"));
+            dto.setWill(rs.getInt("will"));
+            //todo add setters for skills
+        }
+        return dto;
+    }
+
+    public List<CharacterCreatorDTO> getAllHeroes() throws SQLException {
+        List<CharacterCreatorDTO> list = new ArrayList<>();
+        String sql = "SELECT * FROM dungeon.heroes";
+        pst = conn.prepareStatement(sql);
+        ResultSet rs = pst.executeQuery();
+        while (rs.next()) {
+            CharacterCreatorDTO dto = new CharacterCreatorDTO();
+            dto.setHeroName(rs.getString("hero_name"));
+            dto.setHeroClass(rs.getString("hero_class"));
+            dto.setHeroRace(rs.getString("hero_race"));
+            dto.setStrength(rs.getInt("strength"));
+            dto.setConstitution(rs.getInt("constitution"));
+            dto.setDexterity(rs.getInt("dexterity"));
+            dto.setIntelligence(rs.getInt("intelligence"));
+            dto.setWisdom(rs.getInt("wisdom"));
+            dto.setCharisma(rs.getInt("charisma"));
+            dto.setFortitude(rs.getInt("fortitude"));
+            dto.setReflex(rs.getInt("reflex"));
+            dto.setWill(rs.getInt("will"));
+            list.add(dto);
+            //todo add setters for skills
+        }
+        for (CharacterCreatorDTO a : list) {
+            System.out.println("HERO" + a.getHeroName() + "COPIED FROM DATABASE");
+        }
+        return list;
+    }
+
     public void addAHero(CharacterCreatorDTO heroToBeAdded) throws SQLException {
         String sql = "INSERT INTO dungeon.heroes(" +
                 "hero_name," +
