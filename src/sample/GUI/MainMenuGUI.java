@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import sample.Main;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class MainMenuGUI {
@@ -48,7 +49,7 @@ public class MainMenuGUI {
         newDungeonButton.setOnAction(event -> {
             try {
                 openDungeonGUI();
-            } catch (SQLException e) {
+            } catch (SQLException | IOException e) {
                 e.printStackTrace();
             }
         });
@@ -58,7 +59,7 @@ public class MainMenuGUI {
         aStage.show();
     }
 
-    private void openDungeonGUI() throws SQLException {
+    private void openDungeonGUI() throws SQLException, IOException {
         PartySelectorGUI partySelectorGUI = new PartySelectorGUI();
         //DungeonGUI dungeonGui = new DungeonGUI();
         aStage.close();

@@ -15,6 +15,7 @@ public class CharacterCreatorDTO {
     private String atWillPower2;
     private String encounterPower1;
     private String dailyPower1;
+    private int heroIconId;
     private int strength;
     private int constitution;
     private int dexterity;
@@ -41,6 +42,14 @@ public class CharacterCreatorDTO {
     private int Stealth;
     private int Streetwise;
     private int Thievery;
+
+    public int getHeroIconId() {
+        return heroIconId;
+    }
+
+    public void setHeroIconId(int heroIconId) {
+        this.heroIconId = heroIconId;
+    }
 
     public String getHeroRace() {
         return heroRace;

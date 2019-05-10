@@ -7,11 +7,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import sample.DAO.CharacterCreatorDAO;
 import sample.DTO.CharacterCreatorDTO;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -22,12 +25,12 @@ public class PartySelectorGUI {
     private Stage aStage = new Stage();
     private Scene aScene = new Scene(new Group());
 
-    public PartySelectorGUI() throws SQLException {
+    public PartySelectorGUI() throws SQLException, IOException {
         fillThePanesWithPartyMembers();
 
     }
 
-    private void fillThePanesWithPartyMembers() throws SQLException {
+    private void fillThePanesWithPartyMembers() throws SQLException, IOException {
         ObservableList<String> heroNames =
                 FXCollections.observableArrayList();
         partySelectorOuterPlane.getStylesheets().add("sample/Styling/CharacterCreator.css");
@@ -40,7 +43,10 @@ public class PartySelectorGUI {
         for (int i = 0; i < listOfAllHeroes.size(); i++) {
             CheckBox currentCheckBox = new CheckBox();
             CharacterCreatorDTO characterCreatorDTO = listOfAllHeroes.get(i);
-            currentCheckBox.setText(characterCreatorDTO.getHeroName());
+            Image heroImage = characterCreatorDAO.getHeroIconByID(characterCreatorDTO.getHeroIconId());
+            ImageView heroImageView = new ImageView(heroImage);
+            currentCheckBox.setGraphic(heroImageView);
+            currentCheckBox.setText(characterCreatorDTO.getHeroName() + ", a brave " + characterCreatorDTO.getHeroRace() + " " + characterCreatorDTO.getHeroClass());
             System.out.println("CURRENTLY ADDING:  " + characterCreatorDTO.getHeroName());
             innerPane.add(currentCheckBox, 0, i + 1);
         }

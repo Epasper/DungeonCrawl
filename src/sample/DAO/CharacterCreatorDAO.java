@@ -1,7 +1,13 @@
 package sample.DAO;
 
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.Image;
 import sample.DTO.CharacterCreatorDTO;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,12 +29,18 @@ public class CharacterCreatorDAO {
         conn.createStatement();
     }
 
-    public ResultSet getHeroIconByID(int id) throws SQLException {
+    public Image getHeroIconByID(int id) throws SQLException, IOException {
         String sql = "SELECT heroicons.id_hero_icons, heroicons.hero_icon FROM dungeon.heroicons WHERE (id_hero_icons=?);";
         pst = conn.prepareStatement(sql);
         pst.setInt(1, id);
         ResultSet rs = pst.executeQuery();
-        return rs;
+        if (rs.next()) {
+            Blob blob = rs.getBlob("hero_icon");
+            InputStream in = blob.getBinaryStream();
+            BufferedImage bufferedImage = ImageIO.read(in);
+            return SwingFXUtils.toFXImage(bufferedImage, null);
+        }
+        return null;
     }
 
     public ResultSet getAllHeroIcons() throws SQLException {
@@ -106,6 +118,7 @@ public class CharacterCreatorDAO {
             dto.setFortitude(rs.getInt("fortitude"));
             dto.setReflex(rs.getInt("reflex"));
             dto.setWill(rs.getInt("will"));
+            dto.setHeroIconId(rs.getInt("icon_id"));
             list.add(dto);
             //todo add setters for skills
         }

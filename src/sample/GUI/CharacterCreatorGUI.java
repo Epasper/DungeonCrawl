@@ -167,17 +167,12 @@ class CharacterCreatorGUI {
         CharacterCreatorDAO dao = new CharacterCreatorDAO();
         dao.getHeroIconByID(id);
         System.out.println("CURRENT ID: " + id);
-        ResultSet rs = dao.getHeroIconByID(id);
-        while (rs.next()) {
-            Blob blob = rs.getBlob("hero_icon");
-            InputStream in = blob.getBinaryStream();
-            BufferedImage bufferedImage = ImageIO.read(in);
-            Image hero1img = SwingFXUtils.toFXImage(bufferedImage, null);
-            ImageView heroImageView = new ImageView(hero1img);
-            leftBox.getChildren().remove(5, 6);
-            leftBox.getChildren().add(heroImageView);
-        }
+        Image hero1img = dao.getHeroIconByID(id);
+        ImageView heroImageView = new ImageView(hero1img);
+        leftBox.getChildren().remove(5, 6);
+        leftBox.getChildren().add(heroImageView);
     }
+
 
     private List<Image> getAllIcons() throws SQLException, IOException {
         CharacterCreatorDAO dao = new CharacterCreatorDAO();
