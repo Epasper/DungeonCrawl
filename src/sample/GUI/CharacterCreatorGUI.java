@@ -128,8 +128,6 @@ class CharacterCreatorGUI {
                 e.printStackTrace();
             }
         }));
-
-
         updateMaxHP(null);
 
     }
@@ -137,16 +135,24 @@ class CharacterCreatorGUI {
     private void choosePortrait() throws SQLException, IOException {
         HBox hBox = new HBox();
         List<Image> listOfIcons = getAllIcons();
-        for (Image currentImage : listOfIcons) {
-            ImageView imageView = new ImageView();
-            Button aButton = new Button();
-            imageView.setImage(currentImage);
-            aButton.setGraphic(imageView);
-            hBox.getChildren().add(aButton);
-        }
         Stage aStage = new Stage();
         Scene aScene = new Scene(new Group());
-        aScene.getStylesheets().add("sample/Styling/Caspian.css");
+        for (int i = 0; i < listOfIcons.size(); i++) {
+            ImageView imageView = new ImageView();
+            Button aButton = new Button();
+            aButton.setId(String.valueOf(i + 1));
+            imageView.setImage(listOfIcons.get(i));
+            aButton.setGraphic(imageView);
+            hBox.getChildren().add(aButton);
+            aButton.setOnAction(event -> {
+                try {
+                    updateThePortrait(aButton.getId());
+                } catch (SQLException | IOException e) {
+                    e.printStackTrace();
+                }
+                aStage.close();
+            });
+        }
         aScene.setRoot(hBox);
         aStage.setScene(aScene);
         aStage.show();
@@ -168,6 +174,25 @@ class CharacterCreatorGUI {
 //        ImageView heroImageView = new ImageView(hero1img);
 //        leftBox.getChildren().remove(5, 6);
 //        leftBox.getChildren().add(heroImageView);
+    }
+
+    //todo add a DRY method that converts a result set into an image view
+
+    private void updateThePortrait(String portraitId) throws SQLException, IOException {
+        int id = Integer.valueOf(portraitId);
+        CharacterCreatorDAO dao = new CharacterCreatorDAO();
+        dao.getHeroIconByID(id);
+        System.out.println("CURRENT ID: " + id);
+        ResultSet rs = dao.getHeroIconByID(id);
+        while (rs.next()) {
+            Blob blob = rs.getBlob("hero_icon");
+            InputStream in = blob.getBinaryStream();
+            BufferedImage bufferedImage = ImageIO.read(in);
+            Image hero1img = SwingFXUtils.toFXImage(bufferedImage, null);
+            ImageView heroImageView = new ImageView(hero1img);
+            leftBox.getChildren().remove(5, 6);
+            leftBox.getChildren().add(heroImageView);
+        }
     }
 
     private List<Image> getAllIcons() throws SQLException, IOException {

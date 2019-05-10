@@ -23,14 +23,19 @@ public class CharacterCreatorDAO {
         conn.createStatement();
     }
 
+    public ResultSet getHeroIconByID(int id) throws SQLException {
+        String sql = "SELECT heroicons.id_hero_icons, heroicons.hero_icon FROM dungeon.heroicons WHERE (id_hero_icons=?);";
+        pst = conn.prepareStatement(sql);
+        pst.setInt(1, id);
+        ResultSet rs = pst.executeQuery();
+        return rs;
+    }
+
     public ResultSet getAllHeroIcons() throws SQLException {
         String sql = "SELECT `heroicons`.`id_hero_icons`,`heroicons`.`hero_icon`FROM `dungeon`.`heroicons`;";
         pst = conn.prepareStatement(sql);
-        ResultSet resultSet = pst.executeQuery() ;
-//        while (resultSet.next()) {
-//            System.out.println(resultSet.getString("hero_icon"));
-//        }
-        return resultSet;
+        ResultSet rs = pst.executeQuery();
+        return rs;
     }
 
     public List<String> getAllHeroNames() throws SQLException {
