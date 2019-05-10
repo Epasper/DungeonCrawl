@@ -21,8 +21,9 @@ public class CharacterCreatorDAO {
         conn = DriverManager.getConnection(DB_URL, USER, PASS);
         System.out.println("Creating connection...");
         conn.createStatement();
-
     }
+
+
 
     public List<String> getAllHeroNames() throws SQLException {
         List<String> namesToBeReturned = new ArrayList<>();

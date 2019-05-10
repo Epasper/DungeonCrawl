@@ -2,84 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de97b43a-8902-45e2-a345-dc80bad4fa20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/sample/GUI/PartySelectorGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/608dddd6-762b-44e4-a6da-b4e62e78a1e4_scaled.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/DoorHorizontal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/DoorVertical.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/Floor.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallE.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallHoriz.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallN.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallNE.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallNW.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallS.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallSE.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallSW.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallVert.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallW.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/HeroPortraits/icon1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/HeroPortraits/icon2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/HeroPortraits/icon3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/HeroPortraits/icon4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/HeroPortraits/icon5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/HeroPortraits/icon6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/OpenedDoorHorizontal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/OpenedDoorVertical.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/fog.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/fogchess-Copy.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/icon1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/icon2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/icon3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/icon4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/icon5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/icon6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/monster1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/monster2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/monster3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/monster4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/monster5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/monster6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Model/Images/wall.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/DAO/PutBLOBIntoDB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/FakeDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Model/FakeDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/MainMenuGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/MainMenuGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/PartySlectorGUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/608dddd6-762b-44e4-a6da-b4e62e78a1e4_scaled.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/608dddd6-762b-44e4-a6da-b4e62e78a1e4_scaled.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/DoorHorizontal.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/DoorHorizontal.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/DoorVertical.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/DoorVertical.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/Floor.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/Floor.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/FloorWallE.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/FloorWallHoriz.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallHoriz.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/FloorWallN.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallN.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/FloorWallNE.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallNE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/FloorWallNW.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallNW.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/FloorWallS.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallS.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/FloorWallSE.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallSE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/FloorWallSW.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallSW.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/FloorWallVert.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallVert.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/FloorWallW.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallW.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/OpenedDoorHorizontal.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/OpenedDoorHorizontal.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/OpenedDoorVertical.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/OpenedDoorVertical.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/download.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/download.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/fog.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/fog.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/fogchess-Copy.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/fogchess-Copy.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/icon1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/icon1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/icon2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/icon2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/icon3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/icon3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/icon4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/icon4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/icon5.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/icon5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/icon6.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/icon6.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/monster1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/monster1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/monster2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/monster2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/monster3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/monster3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/monster4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/monster4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/monster5.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/monster5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/monster6.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/monster6.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Images/wall.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/wall.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Model/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Model/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -93,8 +19,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="374">
+              <caret line="22" column="27" lean-forward="true" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -103,19 +29,24 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
+        <entry file="file://$PROJECT_DIR$/src/sample/StaticRules/HeroClassInformation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="23" column="34" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
+            <state relative-caret-position="328">
+              <caret line="401" lean-forward="true" selection-start-line="401" selection-end-line="401" />
+              <folding>
+                <element signature="method#populateTheTablesWithAtWillPowers#0;class#HeroClassInformation#0" />
+                <element signature="method#populateTheTablesWithSkills#0;class#HeroClassInformation#0" />
+                <element signature="method#populateTheTablesWithHPs#0;class#HeroClassInformation#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java">
+        <entry file="file://$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
+            <state relative-caret-position="85">
+              <caret line="11" column="173" lean-forward="true" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="173" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -123,11 +54,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/GUI/MainMenuGUI.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/sample/DAO/PutBLOBIntoDB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="25" column="47" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="47" />
+            <state relative-caret-position="244">
+              <caret line="15" column="74" selection-start-line="15" selection-start-column="74" selection-end-line="15" selection-end-column="74" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -140,15 +74,6 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Model/Monster.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -188,8 +113,6 @@
                 <element signature="e#2539#2540#0" expanded="true" />
                 <element signature="e#2581#2582#0" expanded="true" />
                 <element signature="e#2619#2620#0" expanded="true" />
-                <element signature="e#2186#2187#0" expanded="true" />
-                <element signature="e#2220#2221#0" expanded="true" />
                 <element signature="e#3339#3340#0" expanded="true" />
                 <element signature="e#3381#3382#0" expanded="true" />
               </folding>
@@ -197,7 +120,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Model/Hero.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
@@ -265,9 +188,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/Frostbind.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/TempestBreath.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/ThunderSlam.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Warden/WildbloodFrenzy.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Warden/ThunderRamAssault.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Warden/HungryEarth.java" />
@@ -303,8 +223,6 @@
         <option value="$PROJECT_DIR$/src/sample/Monster.java" />
         <option value="$PROJECT_DIR$/src/sample/Room.java" />
         <option value="$PROJECT_DIR$/src/sample/Model/DungeonMap.java" />
-        <option value="$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java" />
-        <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java" />
         <option value="$PROJECT_DIR$/src/sample/Model/MapTile.java" />
         <option value="$PROJECT_DIR$/src/sample/Model/Monster.java" />
@@ -316,6 +234,11 @@
         <option value="$PROJECT_DIR$/src/sample/GUI/PartySelectorGUI.java" />
         <option value="$PROJECT_DIR$/src/sample/Model/FakeDatabase.java" />
         <option value="$PROJECT_DIR$/src/sample/Model/Hero.java" />
+        <option value="$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java" />
+        <option value="$PROJECT_DIR$/src/sample/GUI/Test.form" />
+        <option value="$PROJECT_DIR$/src/sample/DAO/CreateDatabaseTables.java" />
+        <option value="$PROJECT_DIR$/src/sample/Main.java" />
+        <option value="$PROJECT_DIR$/src/sample/DAO/PutBLOBIntoDB.java" />
       </list>
     </option>
   </component>
@@ -336,6 +259,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -394,7 +318,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -641,7 +564,14 @@
       <option name="project" value="LOCAL" />
       <updated>1557405828385</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Added a party selector to the dungeon GUI">
+      <created>1557408046102</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1557408046102</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TodoView">
@@ -657,7 +587,7 @@
     <frame x="1358" y="-290" width="1696" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2512225" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25427872" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -666,11 +596,11 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32976446" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.54889977" weight="0.21413276" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.54889977" visible="true" weight="0.21413276" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49633253" weight="0.39828694" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="TODO" order="6" sideWeight="0.76589245" visible="true" weight="0.32762313" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.76589245" weight="0.32762313" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.45110023" side_tool="true" weight="0.21413276" />
       <window_info anchor="bottom" id="Version Control" order="9" />
@@ -716,7 +646,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Character Creation - removed unnecessary getters and setters, added armor class calculations." />
     <MESSAGE value="Character Creation - started powers selection, new class: HeroPower and beginning of the Character GUI refactoring" />
     <MESSAGE value="Character Creation - At Will Power Selection - Populated rules for 1st at will powers of Barbarian and Avenger, added comboBoxes and selections." />
     <MESSAGE value="Character Creation - Added Bard At Will Powers" />
@@ -741,23 +670,10 @@
     <MESSAGE value="Character Creator - Added portrait selection" />
     <MESSAGE value="Refactoring - new packages, change of access to fields and changed files' placement" />
     <MESSAGE value="Refactoring - cleaned a lot of access issues and unnecessary declarations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactoring - cleaned a lot of access issues and unnecessary declarations" />
+    <MESSAGE value="Added a party selector to the dungeon GUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a party selector to the dungeon GUI" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Shaman/DefendingStrike.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Rogue/TorturousStrike.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Shaman/WrathOfWinter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -982,37 +898,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/StaticRules/HeroClassInformation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-          <folding>
-            <element signature="e#1344#1345#0" expanded="true" />
-            <element signature="e#1378#1379#0" expanded="true" />
-            <element signature="e#1451#1452#0" expanded="true" />
-            <element signature="e#1497#1498#0" expanded="true" />
-            <element signature="method#populateTheTablesWithAtWillPowers#0;class#HeroClassInformation#0" />
-            <element signature="method#getHeroPowerByName#0;class#HeroClassInformation#0" />
-            <element signature="method#populateTheTablesWithSkills#0;class#HeroClassInformation#0" />
-            <element signature="method#populateTheTablesWithHPs#0;class#HeroClassInformation#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Controller.java" />
     <entry file="file://$PROJECT_DIR$/src/sample/Model/Creature.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1055,10 +941,86 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="23" column="34" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/MainMenuGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="25" column="47" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/PartySelectorGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="50" column="22" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Model/Room.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Model/Hero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="100" selection-start-line="10" selection-start-column="100" selection-end-line="10" selection-end-column="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Model/FakeDatabase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/StaticRules/HeroClassInformation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="401" lean-forward="true" selection-start-line="401" selection-end-line="401" />
+          <folding>
+            <element signature="method#populateTheTablesWithAtWillPowers#0;class#HeroClassInformation#0" />
+            <element signature="method#populateTheTablesWithSkills#0;class#HeroClassInformation#0" />
+            <element signature="method#populateTheTablesWithHPs#0;class#HeroClassInformation#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/Test.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/Test.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="27" lean-forward="true" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1087,8 +1049,6 @@
             <element signature="e#2539#2540#0" expanded="true" />
             <element signature="e#2581#2582#0" expanded="true" />
             <element signature="e#2619#2620#0" expanded="true" />
-            <element signature="e#2186#2187#0" expanded="true" />
-            <element signature="e#2220#2221#0" expanded="true" />
             <element signature="e#3339#3340#0" expanded="true" />
             <element signature="e#3381#3382#0" expanded="true" />
           </folding>
@@ -1097,69 +1057,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="41" lean-forward="true" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
+        <state relative-caret-position="85">
+          <caret line="11" column="173" lean-forward="true" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="173" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/DAO/PutBLOBIntoDB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
+        <state relative-caret-position="244">
+          <caret line="15" column="74" selection-start-line="15" selection-start-column="74" selection-end-line="15" selection-end-column="74" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/GUI/MainMenuGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="25" column="47" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/GUI/PartySelectorGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="50" column="22" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="23" column="34" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Model/FakeDatabase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Model/Hero.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="100" selection-start-line="10" selection-start-column="100" selection-end-line="10" selection-end-column="100" />
         </state>
       </provider>
     </entry>
