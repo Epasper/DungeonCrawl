@@ -54,12 +54,6 @@ public class FakeDatabase {
         hero4.ID = 4;
         hero5.ID = 5;
         hero6.ID = 6;
-        hero1.heroImage = hero1img;
-        hero2.heroImage = hero2img;
-        hero3.heroImage = hero3img;
-        hero4.heroImage = hero4img;
-        hero5.heroImage = hero5img;
-        hero6.heroImage = hero6img;
         listOfHeroes.add(hero1);
         listOfHeroes.add(hero2);
         listOfHeroes.add(hero3);

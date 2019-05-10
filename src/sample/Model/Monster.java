@@ -19,8 +19,8 @@ public class Monster extends Creature {
         this.hitPoints = hitPoints;
     }
 
-    public void setSomeResource(int someResource) {
-        this.someResource = someResource;
+    public void setGold(int gold) {
+        this.someResource = gold;
     }
 
     public void setImagePath(String imagePath) {
@@ -39,7 +39,7 @@ public class Monster extends Creature {
         return hitPoints;
     }
 
-    public int getSomeResource() {
+    public int getGold() {
         return someResource;
     }
 

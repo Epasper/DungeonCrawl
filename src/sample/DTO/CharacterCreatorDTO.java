@@ -1,15 +1,17 @@
 package sample.DTO;
 
 
+import javafx.scene.image.Image;
+
 public class CharacterCreatorDTO {
 
     //todo finishing the character creation should save it in a database.
+    private int heroID;
     private String heroName;
     private String heroClass;
     private String heroRace;
     private int hitPoints;
     private int gold;
-    private String imagePath;
     private double speed = 6;
     private String atWillPower1;
     private String atWillPower2;
@@ -42,6 +44,23 @@ public class CharacterCreatorDTO {
     private int Stealth;
     private int Streetwise;
     private int Thievery;
+    private Image heroImage;
+
+    public Image getHeroImage() {
+        return heroImage;
+    }
+
+    public void setHeroImage(Image heroImage) {
+        this.heroImage = heroImage;
+    }
+
+    public int getHeroID() {
+        return heroID;
+    }
+
+    public void setHeroID(int heroID) {
+        this.heroID = heroID;
+    }
 
     public int getHeroIconId() {
         return heroIconId;
@@ -89,14 +108,6 @@ public class CharacterCreatorDTO {
 
     public void setGold(int gold) {
         this.gold = gold;
-    }
-
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
     }
 
     public double getSpeed() {

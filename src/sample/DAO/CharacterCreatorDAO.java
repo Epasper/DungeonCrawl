@@ -3,6 +3,7 @@ package sample.DAO;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import sample.DTO.CharacterCreatorDTO;
+import sample.Model.Hero;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -75,37 +76,68 @@ public class CharacterCreatorDAO {
         return numberOfHeroes;
     }
 
-    public CharacterCreatorDTO getAHeroByID(int ID) throws SQLException {
-        CharacterCreatorDTO dto = new CharacterCreatorDTO();
+    public Hero convertDtoToHero (CharacterCreatorDTO dto) {
+        Hero hero = new Hero();
+        hero.setID(dto.getHeroID());
+        hero.setHeroName(dto.getHeroName());
+        hero.setHeroClass(dto.getHeroClass());
+        hero.setHeroRace(dto.getHeroRace());
+        hero.setHitPoints(dto.getHitPoints());
+        hero.setGold(dto.getGold());
+        hero.setHeroIconId(dto.getHeroIconId());
+        hero.setStrength(dto.getStrength());
+        hero.setConstitution(dto.getConstitution());
+        hero.setDexterity(dto.getDexterity());
+        hero.setIntelligence(dto.getIntelligence());
+        hero.setWisdom(dto.getWisdom());
+        hero.setCharisma(dto.getCharisma());
+        hero.setReflex(dto.getReflex());
+        hero.setFortitude(dto.getFortitude());
+        hero.setWill(dto.getWill());
+        return hero;
+    }
+
+    public Hero getAHeroByID(int ID) throws SQLException, IOException {
+        Hero hero = new Hero();
+        System.out.println("----->" + ID);
         String sql = "SELECT * FROM dungeon.heroes WHERE idheroes = ?;";
         pst = conn.prepareStatement(sql);
         pst.setInt(1, ID);
         ResultSet rs = pst.executeQuery();
+        String a = "a";
+        String b = "B";
         while (rs.next()) {
-            dto.setHeroName(rs.getString("hero_name"));
-            dto.setHeroClass(rs.getString("hero_class"));
-            dto.setHeroRace(rs.getString("hero_race"));
-            dto.setStrength(rs.getInt("strength"));
-            dto.setConstitution(rs.getInt("constitution"));
-            dto.setDexterity(rs.getInt("dexterity"));
-            dto.setIntelligence(rs.getInt("intelligence"));
-            dto.setWisdom(rs.getInt("wisdom"));
-            dto.setCharisma(rs.getInt("charisma"));
-            dto.setFortitude(rs.getInt("fortitude"));
-            dto.setReflex(rs.getInt("reflex"));
-            dto.setWill(rs.getInt("will"));
+            a = rs.getString("hero_name");
+            b = rs.getString("icon_id");
+            hero.setHeroImage(getHeroIconByID(rs.getInt("icon_id")));
+            hero.setID(rs.getInt("idheroes"));
+            hero.setHeroName(rs.getString("hero_name"));
+            hero.setHeroClass(rs.getString("hero_class"));
+            hero.setHeroRace(rs.getString("hero_race"));
+            hero.setStrength(rs.getInt("strength"));
+            hero.setConstitution(rs.getInt("constitution"));
+            hero.setDexterity(rs.getInt("dexterity"));
+            hero.setIntelligence(rs.getInt("intelligence"));
+            hero.setWisdom(rs.getInt("wisdom"));
+            hero.setCharisma(rs.getInt("charisma"));
+            hero.setFortitude(rs.getInt("fortitude"));
+            hero.setReflex(rs.getInt("reflex"));
+            hero.setWill(rs.getInt("will"));
             //todo add setters for skills
         }
-        return dto;
+        System.out.println(hero.getHeroName() + "|||" + a + "Icon number: " + b);
+        return hero;
     }
 
-    public List<CharacterCreatorDTO> getAllHeroes() throws SQLException {
+    public List<CharacterCreatorDTO> getAllHeroes() throws SQLException, IOException {
         List<CharacterCreatorDTO> list = new ArrayList<>();
         String sql = "SELECT * FROM dungeon.heroes";
         pst = conn.prepareStatement(sql);
         ResultSet rs = pst.executeQuery();
         while (rs.next()) {
             CharacterCreatorDTO dto = new CharacterCreatorDTO();
+            dto.setHeroImage(getHeroIconByID(rs.getInt("icon_id")));
+            dto.setHeroID(rs.getInt("idheroes"));
             dto.setHeroName(rs.getString("hero_name"));
             dto.setHeroClass(rs.getString("hero_class"));
             dto.setHeroRace(rs.getString("hero_race"));
@@ -128,7 +160,7 @@ public class CharacterCreatorDAO {
         return list;
     }
 
-    public void addAHero(CharacterCreatorDTO heroToBeAdded) throws SQLException {
+    public void addAHeroToDatabase(CharacterCreatorDTO heroToBeAdded) throws SQLException {
         String sql = "INSERT INTO dungeon.heroes(" +
                 "hero_name," +
                 "hero_class," +

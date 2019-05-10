@@ -173,7 +173,6 @@ class CharacterCreatorGUI {
         leftBox.getChildren().add(heroImageView);
     }
 
-
     private List<Image> getAllIcons() throws SQLException, IOException {
         CharacterCreatorDAO dao = new CharacterCreatorDAO();
         ResultSet rs = dao.getAllHeroIcons();
@@ -240,7 +239,7 @@ class CharacterCreatorGUI {
         characterCreatorDTO.setStreetwise(finalSkillPointsArray[15]);
         characterCreatorDTO.setThievery(finalSkillPointsArray[16]);
         CharacterCreatorDAO characterCreatorDAO = new CharacterCreatorDAO();
-        characterCreatorDAO.addAHero(characterCreatorDTO);
+        characterCreatorDAO.addAHeroToDatabase(characterCreatorDTO);
     }
 
     //todo add class traits selection

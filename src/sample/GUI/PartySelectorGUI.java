@@ -13,9 +13,11 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import sample.DAO.CharacterCreatorDAO;
 import sample.DTO.CharacterCreatorDTO;
+import sample.Model.Hero;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PartySelectorGUI {
@@ -24,6 +26,10 @@ public class PartySelectorGUI {
     private Button startADungeonButton = new Button("Start an Adventure! ");
     private Stage aStage = new Stage();
     private Scene aScene = new Scene(new Group());
+    private List<CheckBox> listOfCheckBoxes = new ArrayList<>();
+    private List<Hero> listOfSelectedHeroes = new ArrayList<>();
+    private CharacterCreatorDAO characterCreatorDAO = new CharacterCreatorDAO();
+
 
     public PartySelectorGUI() throws SQLException, IOException {
         fillThePanesWithPartyMembers();
@@ -34,10 +40,15 @@ public class PartySelectorGUI {
         ObservableList<String> heroNames =
                 FXCollections.observableArrayList();
         partySelectorOuterPlane.getStylesheets().add("sample/Styling/CharacterCreator.css");
-        CharacterCreatorDAO characterCreatorDAO = new CharacterCreatorDAO();
         List<String> heroNameList = characterCreatorDAO.getAllHeroNames();
         heroNames.addAll(heroNameList);
-        startADungeonButton.setOnAction(event -> openDungeonGui());
+        startADungeonButton.setOnAction(event -> {
+            try {
+                openDungeonGui();
+            } catch (SQLException | IOException e) {
+                e.printStackTrace();
+            }
+        });
         innerPane.getChildren().add(startADungeonButton);
         List<CharacterCreatorDTO> listOfAllHeroes = characterCreatorDAO.getAllHeroes();
         for (int i = 0; i < listOfAllHeroes.size(); i++) {
@@ -46,14 +57,24 @@ public class PartySelectorGUI {
             Image heroImage = characterCreatorDAO.getHeroIconByID(characterCreatorDTO.getHeroIconId());
             ImageView heroImageView = new ImageView(heroImage);
             currentCheckBox.setGraphic(heroImageView);
+            System.out.println("SETTER FOR ID: -->"+ characterCreatorDTO.getHeroID());
+            currentCheckBox.setId(String.valueOf(characterCreatorDTO.getHeroID()));
             currentCheckBox.setText(characterCreatorDTO.getHeroName() + ", a brave " + characterCreatorDTO.getHeroRace() + " " + characterCreatorDTO.getHeroClass());
             System.out.println("CURRENTLY ADDING:  " + characterCreatorDTO.getHeroName());
+            listOfCheckBoxes.add(currentCheckBox);
             innerPane.add(currentCheckBox, 0, i + 1);
         }
         partySelectorOuterPlane.setContent(innerPane);
     }
 
-    private void openDungeonGui() {
+    private void openDungeonGui() throws SQLException, IOException {
+        listOfSelectedHeroes.clear();
+        for (CheckBox currentCheckBox : listOfCheckBoxes) {
+            int id = Integer.valueOf(currentCheckBox.getId());
+            Hero newHero = characterCreatorDAO.getAHeroByID(id);
+            System.out.println("Hero: " + newHero.getHeroName() + " will be fighting in this dungeon.");
+            listOfSelectedHeroes.add(newHero);
+        }
         DungeonGUI dungeonGui = new DungeonGUI();
         aStage.close();
         aScene.getStylesheets().add("sample/Styling/Caspian.css");

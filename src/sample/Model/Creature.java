@@ -1,18 +1,24 @@
 package sample.Model;
 
-import javafx.scene.image.Image;
-
 public class Creature {
     public String heroName;
     public int ID;
     public int mapXPos;
     public int mapYPos;
     public String heroClass;
+    public String heroRace;
     private int hitPoints;
     private int someResource;
-    private String imagePath;
     public double speed = 6;
     private double currentSpeed = speed;
+
+    public String getHeroRace() {
+        return heroRace;
+    }
+
+    public void setHeroRace(String heroRace) {
+        this.heroRace = heroRace;
+    }
 
     public void setHeroName(String heroName) {
         this.heroName = heroName;
@@ -46,12 +52,8 @@ public class Creature {
         this.hitPoints = hitPoints;
     }
 
-    public void setSomeResource(int someResource) {
-        this.someResource = someResource;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
+    public void setGold(int gold) {
+        this.someResource = gold;
     }
 
     public void setSpeed(double speed) {
@@ -82,12 +84,8 @@ public class Creature {
         return hitPoints;
     }
 
-    public int getSomeResource() {
+    public int getGold() {
         return someResource;
-    }
-
-    public String getImagePath() {
-        return imagePath;
     }
 
     public double getSpeed() {
