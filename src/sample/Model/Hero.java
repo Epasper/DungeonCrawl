@@ -1,9 +1,13 @@
 package sample.Model;
 
 import javafx.scene.image.Image;
+import sample.DAO.CharacterCreatorDAO;
+
+import java.sql.SQLException;
 
 public class Hero extends Creature {
 
+    private CharacterCreatorDAO characterCreatorDAO = new CharacterCreatorDAO();
     private int hitPoints;
     private int gold;
     private int heroIconId;
@@ -33,6 +37,11 @@ public class Hero extends Creature {
     private int Stealth;
     private int Streetwise;
     private int Thievery;
+    private Image heroIcon = new Image(getClass().getResourceAsStream("Images\\icon1.png"));
+
+    public Hero() throws SQLException {
+    }
+
 
     public int getHeroIconId() {
         return heroIconId;
@@ -249,11 +258,9 @@ public class Hero extends Creature {
     public void setThievery(int thievery) {
         Thievery = thievery;
     }
-
-    public Image getHeroImage() {
-        return heroImage;
+    public Image getHeroIcon() {
+        return heroIcon;
     }
-    public Image heroImage = new Image(getClass().getResourceAsStream("Images\\icon1.png"));
 
     public void setHitPoints(int hitPoints) {
         this.hitPoints = hitPoints;
@@ -264,8 +271,8 @@ public class Hero extends Creature {
     }
 
 
-    public void setHeroImage(Image heroImage) {
-        this.heroImage = heroImage;
+    public void setHeroIcon(Image heroIcon) {
+        this.heroIcon = heroIcon;
     }
 
     public void setSpeed(double speed) {

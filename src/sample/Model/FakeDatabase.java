@@ -4,36 +4,28 @@ import javafx.scene.image.Image;
 import sample.Model.Hero;
 import sample.Model.Monster;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FakeDatabase {
-    private Hero hero1 = new Hero();
-    private Hero hero2 = new Hero();
-    private Hero hero3 = new Hero();
-    private Hero hero4 = new Hero();
-    private Hero hero5 = new Hero();
-    private Hero hero6 = new Hero();
     private Monster monster1 = new Monster();
     private Monster monster2 = new Monster();
     private Monster monster3 = new Monster();
     private Monster monster4 = new Monster();
     private Monster monster5 = new Monster();
     private Monster monster6 = new Monster();
-    private Image hero1img = new Image(getClass().getResourceAsStream("Images\\icon1.png"));
-    private Image hero2img = new Image(getClass().getResourceAsStream("Images\\icon2.png"));
-    private Image hero3img = new Image(getClass().getResourceAsStream("Images\\icon3.png"));
-    private Image hero4img = new Image(getClass().getResourceAsStream("Images\\icon4.png"));
-    private Image hero5img = new Image(getClass().getResourceAsStream("Images\\icon5.png"));
-    private Image hero6img = new Image(getClass().getResourceAsStream("Images\\icon6.png"));
     private Image monster1img = new Image(getClass().getResourceAsStream("Images\\monster1.png"));
     private Image monster2img = new Image(getClass().getResourceAsStream("Images\\monster2.png"));
     private Image monster3img = new Image(getClass().getResourceAsStream("Images\\monster3.png"));
     private Image monster4img = new Image(getClass().getResourceAsStream("Images\\monster4.png"));
     private Image monster5img = new Image(getClass().getResourceAsStream("Images\\monster5.png"));
     private Image monster6img = new Image(getClass().getResourceAsStream("Images\\monster6.png"));
-    public List<Hero> listOfHeroes = new ArrayList<>();
     public List<Monster> listOfMonsters = new ArrayList<>();
+
+    public FakeDatabase() {
+    }
 
 //    public void populateDatabaseWithHeroes() {
 //        hero1.heroName = "Hadrim";

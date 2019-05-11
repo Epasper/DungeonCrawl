@@ -76,7 +76,7 @@ public class CharacterCreatorDAO {
         return numberOfHeroes;
     }
 
-    public Hero convertDtoToHero(CharacterCreatorDTO dto) {
+    public Hero convertDtoToHero(CharacterCreatorDTO dto) throws IOException, SQLException {
         Hero hero = new Hero();
         hero.setID(dto.getHeroID());
         hero.setHeroName(dto.getHeroName());
@@ -109,7 +109,7 @@ public class CharacterCreatorDAO {
         while (rs.next()) {
             a = rs.getString("hero_name");
             b = rs.getString("icon_id");
-            hero.setHeroImage(getHeroIconByID(rs.getInt("icon_id")));
+            hero.setHeroIcon(getHeroIconByID(rs.getInt("icon_id")));
             hero.setID(rs.getInt("idheroes"));
             hero.setHeroName(rs.getString("hero_name"));
             hero.setHeroClass(rs.getString("hero_class"));

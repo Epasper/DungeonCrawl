@@ -21,11 +21,7 @@ public class DungeonMap {
     }
 
     public DungeonMap(List<Monster> monsterList) {
-        //this.heroList = heroList;
         this.monsterList = monsterList;
-//        for (Hero hero : heroList) {
-//            System.out.println("Hero ID: " + hero.ID + " Class: " + hero.heroClass);
-//        }
         for (Monster monster : monsterList) {
             System.out.println("Monster ID: " + monster.ID + " Class: " + monster.monsterType);
         }
@@ -329,11 +325,12 @@ public class DungeonMap {
         int currentHeroXPos;
         Random randY = new Random();
         int currentHeroYPos;
-        System.out.println("Number of heroes upon spawning: "+heroList.size());
+        System.out.println("Number of heroes upon spawning: " + heroList.size());
         for (int i = 0; i < heroList.size(); i++) {
             currentHeroXPos = randX.nextInt(room.roomWidth);
             currentHeroYPos = randY.nextInt(room.roomHeight);
             Hero currentHero = heroList.get(i);
+            System.out.println("Name of current spawning hero: " + heroList.get(i).getHeroName());
             if (getMapTilesArray()[room.roomXPos + currentHeroXPos][room.roomYPos + currentHeroYPos].getOccupyingCreatureId() == 0) {
                 getMapTilesArray()[room.roomXPos + currentHeroXPos][room.roomYPos + currentHeroYPos].setOccupyingCreatureId(currentHero.ID);
                 currentHero.mapXPos = room.roomXPos + currentHeroXPos;

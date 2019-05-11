@@ -8,6 +8,8 @@ import javafx.scene.layout.GridPane;
 import sample.*;
 import sample.Model.*;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -38,7 +40,7 @@ class DungeonGUI {
     private Image doorHorizontal = new Image(getClass().getResourceAsStream("Images\\DoorHorizontal.png"));
     private Image openedDoorVertical = new Image(getClass().getResourceAsStream("Images\\OpenedDoorVertical.png"));
     private Image openedDoorHorizontal = new Image(getClass().getResourceAsStream("Images\\OpenedDoorHorizontal.png"));
-    List<Hero> heroList = new ArrayList<>();
+    private List<Hero> heroList = new ArrayList<>();
     private List<Monster> monsterList = new ArrayList<>();
     private FakeDatabase database = new FakeDatabase();
     private DungeonMap dungeonMap = new DungeonMap(generateAMonsterList(createAnIDList()));
@@ -46,6 +48,13 @@ class DungeonGUI {
     private boolean hasTheCharacterBeenSelected = false;
     private int numberOfHeroesThatFinishedMovement;
 
+    public List<Hero> getHeroList() {
+        return heroList;
+    }
+
+    public void setHeroList(List<Hero> heroList) {
+        this.heroList = heroList;
+    }
 
     private DungeonMap getDungeonMap() {
         return dungeonMap;
@@ -67,7 +76,8 @@ class DungeonGUI {
         this.hasTheCharacterBeenSelected = hasTheCharacterBeenSelected;
     }
 
-    DungeonGUI(List<Hero> heroList) {
+    DungeonGUI(List<Hero> heroList) throws IOException, SQLException {
+        this.heroList = heroList;
         mapScrollPane.setContent(mapGridPane);
         Button returnToMainMenu = new Button();
         returnToMainMenu.setText("Return to Main Menu");
@@ -127,7 +137,7 @@ class DungeonGUI {
         return listOfHeroIDS;
     }
 
-    private Hero getHeroByID(int ID, List<Hero> listOfHeroes) {
+    private Hero getHeroByID(int ID, List<Hero> listOfHeroes) throws SQLException {
         Hero heroNotFound = new Hero();
         for (Hero aHero : listOfHeroes) {
             if (aHero.ID == ID) {
@@ -147,7 +157,7 @@ class DungeonGUI {
         return monsterNotFound;
     }
 
-    private void updateGUIAccordingToMap(DungeonMap dungeonMap) {
+    private void updateGUIAccordingToMap(DungeonMap dungeonMap) throws IOException, SQLException {
         for (int i = 0; i < mapWidth; i++) {
             for (int j = 0; j < mapHeight; j++) {
                 Button aButton = new Button();
@@ -155,14 +165,20 @@ class DungeonGUI {
                 buttonGrid[i][j] = aButton;
                 int finalJ = j;
                 int finalI = i;
-                aButton.setOnAction(actionEvent -> buttonEvent(aButton, finalI, finalJ));
+                aButton.setOnAction(actionEvent -> {
+                    try {
+                        buttonEvent(aButton, finalI, finalJ);
+                    } catch (IOException | SQLException e) {
+                        e.printStackTrace();
+                    }
+                });
                 mapGridPane.add(aButton, j, i);
             }
         }
         updateMapGraphics(dungeonMap);
     }
 
-    private void updateMapGraphics(DungeonMap dungeonMap) {
+    private void updateMapGraphics(DungeonMap dungeonMap) throws IOException, SQLException {
         for (int i = 0; i < mapWidth; i++) {
             for (int j = 0; j < mapHeight; j++) {
                 int currentEntityID = dungeonMap.getMapTilesArray()[i][j].getOccupyingCreatureId();
@@ -181,7 +197,7 @@ class DungeonGUI {
         }
     }
 
-    private void buttonEvent(Button aButton, int XPos, int YPos) {
+    private void buttonEvent(Button aButton, int XPos, int YPos) throws IOException, SQLException {
         String currentTypeOfTile = getDungeonMap().getMapTilesArray()[XPos][YPos].getTypeOfTile();
         int currentHeroID = getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureId();
         boolean isTheTileInteractive = getDungeonMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange();
@@ -212,25 +228,26 @@ class DungeonGUI {
         System.out.println("Stage is closing");
     }
 
-    private void eventOnHeroAttackingAMonster(int XPos, int YPos) {
+    private void eventOnHeroAttackingAMonster(int XPos, int YPos) throws IOException, SQLException {
         Hero hero = getHeroByID(getCurrentlyActiveHeroID(), heroList);
         Monster monster = getMonsterByID(getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureId(), monsterList);
         hero.attackAMonster(monster);
     }
 
-    private void eventOnReachableTileClick() {
+    private void eventOnReachableTileClick() throws IOException, SQLException {
         getDungeonMap().clearMapReachableProperties(getDungeonMap());
         updateMapGraphics(getDungeonMap());
         setHasTheCharacterBeenSelected(false);
     }
 
-    private void eventOnHeroClick(int currentHeroID) {
+    private void eventOnHeroClick(int currentHeroID) throws SQLException {
         checkTheAvailableDistance(getHeroByID(currentHeroID, heroList));
+        System.out.println("Clicked the ID " + currentHeroID + " hero.");
         setCurrentlyActiveHeroID(currentHeroID);
         setHasTheCharacterBeenSelected(true);
     }
 
-    private void eventOnHeroMovement(Button aButton, int XPos, int YPos) {
+    private void eventOnHeroMovement(Button aButton, int XPos, int YPos) throws IOException, SQLException {
         Hero hero = getHeroByID(getCurrentlyActiveHeroID(), heroList);
         getDungeonMap().getMapTilesArray()[hero.mapXPos][hero.mapYPos].setOccupyingCreatureId(0);
         getDungeonMap().getMapTilesArray()[XPos][YPos].setOccupyingCreatureId(getCurrentlyActiveHeroID());
@@ -239,7 +256,7 @@ class DungeonGUI {
         hero.setCurrentSpeed(hero.getCurrentSpeed() - (deltaX + deltaY));
         hero.setMapXPos(XPos);
         hero.setMapYPos(YPos);
-        aButton.setGraphic(new ImageView(hero.heroImage));
+        aButton.setGraphic(new ImageView(hero.getHeroIcon()));
         if (hero.getCurrentSpeed() < 1) {
             numberOfHeroesThatFinishedMovement++;
             System.out.println(hero.heroName + " has finished moving. " + numberOfHeroesThatFinishedMovement + " heroes had already finished moving");
@@ -254,9 +271,9 @@ class DungeonGUI {
     }
 
 
-    private void applyEntityIconToAButton(int heroID, Button aButton) {
+    private void applyEntityIconToAButton(int heroID, Button aButton) throws IOException, SQLException {
         if (heroID < 100) {
-            aButton.setGraphic(new ImageView(getHeroByID(heroID, heroList).heroImage));
+            aButton.setGraphic(new ImageView(getHeroByID(heroID, heroList).getHeroIcon()));
         } else {
             aButton.setGraphic(new ImageView(getMonsterByID(heroID, monsterList).monsterImage));
         }
@@ -426,6 +443,8 @@ class DungeonGUI {
             temporaryX = XPos;
             temporaryY = YPos;
         }
+        System.out.println("TEMP--X: " + temporaryX);
+        System.out.println("TEMP--Y: " + temporaryY);
         mapTile = dungeonMap.getMapTilesArray()[temporaryX][temporaryY];
         gridButton = buttonGrid[temporaryX][temporaryY];
         if (currentDirection.contains("Room") || currentDirection.contains("Corridor") || currentDirection.contains("Opened")) {
