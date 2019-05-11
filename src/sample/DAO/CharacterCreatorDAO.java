@@ -99,7 +99,7 @@ public class CharacterCreatorDAO {
 
     public Hero getAHeroByID(int ID) throws SQLException, IOException {
         Hero hero = new Hero();
-        System.out.println("----->" + ID);
+        System.out.println("-----> Hero ID From DAO" + ID);
         String sql = "SELECT * FROM dungeon.heroes WHERE idheroes = ?;";
         pst = conn.prepareStatement(sql);
         pst.setInt(1, ID);
@@ -125,7 +125,7 @@ public class CharacterCreatorDAO {
             hero.setWill(rs.getInt("will"));
             //todo add setters for skills
         }
-        System.out.println(hero.getHeroName() + "|||" + a + "Icon number: " + b);
+        System.out.println(hero.getHeroName() + "|||" + a + " Icon number: " + b);
         return hero;
     }
 

@@ -12,14 +12,22 @@ public class DungeonMap {
     private List<Hero> heroList;
     private List<Monster> monsterList;
 
-    public DungeonMap(List<Hero> heroList, List<Monster> monsterList) {
+    public List<Hero> getHeroList() {
+        return heroList;
+    }
+
+    public void setHeroList(List<Hero> heroList) {
         this.heroList = heroList;
+    }
+
+    public DungeonMap(List<Monster> monsterList) {
+        //this.heroList = heroList;
         this.monsterList = monsterList;
-        for (Hero hero : heroList) {
-            System.out.println("ID: " + hero.ID + " Class: " + hero.heroClass);
-        }
+//        for (Hero hero : heroList) {
+//            System.out.println("Hero ID: " + hero.ID + " Class: " + hero.heroClass);
+//        }
         for (Monster monster : monsterList) {
-            System.out.println("ID: " + monster.ID + " Class: " + monster.monsterType);
+            System.out.println("Monster ID: " + monster.ID + " Class: " + monster.monsterType);
         }
     }
 
@@ -321,6 +329,7 @@ public class DungeonMap {
         int currentHeroXPos;
         Random randY = new Random();
         int currentHeroYPos;
+        System.out.println("Number of heroes upon spawning: "+heroList.size());
         for (int i = 0; i < heroList.size(); i++) {
             currentHeroXPos = randX.nextInt(room.roomWidth);
             currentHeroYPos = randY.nextInt(room.roomHeight);

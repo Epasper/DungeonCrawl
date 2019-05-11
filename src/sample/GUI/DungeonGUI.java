@@ -38,10 +38,10 @@ class DungeonGUI {
     private Image doorHorizontal = new Image(getClass().getResourceAsStream("Images\\DoorHorizontal.png"));
     private Image openedDoorVertical = new Image(getClass().getResourceAsStream("Images\\OpenedDoorVertical.png"));
     private Image openedDoorHorizontal = new Image(getClass().getResourceAsStream("Images\\OpenedDoorHorizontal.png"));
-    private List<Hero> heroList = new ArrayList<>();
+    List<Hero> heroList = new ArrayList<>();
     private List<Monster> monsterList = new ArrayList<>();
     private FakeDatabase database = new FakeDatabase();
-    private DungeonMap dungeonMap = new DungeonMap(generateAHeroList(createAnIDList()), generateAMonsterList(createAnIDList()));
+    private DungeonMap dungeonMap = new DungeonMap(generateAMonsterList(createAnIDList()));
     private int currentlyActiveHeroID;
     private boolean hasTheCharacterBeenSelected = false;
     private int numberOfHeroesThatFinishedMovement;
@@ -67,29 +67,30 @@ class DungeonGUI {
         this.hasTheCharacterBeenSelected = hasTheCharacterBeenSelected;
     }
 
-    DungeonGUI() {
+    DungeonGUI(List<Hero> heroList) {
         mapScrollPane.setContent(mapGridPane);
         Button returnToMainMenu = new Button();
         returnToMainMenu.setText("Return to Main Menu");
         mapGridPane.add(returnToMainMenu, 0, mapHeight + 1, 3, 3);
         returnToMainMenu.setOnAction(event -> returnToMainMenu());
+        dungeonMap.setHeroList(heroList);
         getDungeonMap().drawAMap();
         updateGUIAccordingToMap(getDungeonMap());
     }
 
     //todo create a database and relink these to it
 
-    private List<Hero> generateAHeroList(List<Integer> heroIdList) {
-        database.populateDatabaseWithHeroes();
-        for (Integer heroID : heroIdList) {
-            for (Hero hero : database.listOfHeroes) {
-                if (hero.ID == heroID) {
-                    heroList.add(hero);
-                }
-            }
-        }
-        return heroList;
-    }
+//    private List<Hero> generateAHeroList(List<Integer> heroIdList) {
+//        database.populateDatabaseWithHeroes();
+//        for (Integer heroID : heroIdList) {
+//            for (Hero hero : database.listOfHeroes) {
+//                if (hero.ID == heroID) {
+//                    heroList.add(hero);
+//                }
+//            }
+//        }
+//        return heroList;
+//    }
 
     private List<Monster> generateAMonsterList(List<Integer> monsterIDList) {
         database.populateDatabaseWithMonsters();

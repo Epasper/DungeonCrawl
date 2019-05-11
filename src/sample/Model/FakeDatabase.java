@@ -35,32 +35,32 @@ public class FakeDatabase {
     public List<Hero> listOfHeroes = new ArrayList<>();
     public List<Monster> listOfMonsters = new ArrayList<>();
 
-    public void populateDatabaseWithHeroes() {
-        hero1.heroName = "Hadrim";
-        hero2.heroName = "Gvydor";
-        hero3.heroName = "Tyr";
-        hero4.heroName = "Ravenlyss";
-        hero5.heroName = "Lavinia";
-        hero6.heroName = "Bianka";
-        hero1.heroClass = "Paladin";
-        hero2.heroClass = "Cleric";
-        hero3.heroClass = "Warrior";
-        hero4.heroClass = "Rogue";
-        hero5.heroClass = "Wizard";
-        hero6.heroClass = "Barbarian";
-        hero1.ID = 1;
-        hero2.ID = 2;
-        hero3.ID = 3;
-        hero4.ID = 4;
-        hero5.ID = 5;
-        hero6.ID = 6;
-        listOfHeroes.add(hero1);
-        listOfHeroes.add(hero2);
-        listOfHeroes.add(hero3);
-        listOfHeroes.add(hero4);
-        listOfHeroes.add(hero5);
-        listOfHeroes.add(hero6);
-    }
+//    public void populateDatabaseWithHeroes() {
+//        hero1.heroName = "Hadrim";
+//        hero2.heroName = "Gvydor";
+//        hero3.heroName = "Tyr";
+//        hero4.heroName = "Ravenlyss";
+//        hero5.heroName = "Lavinia";
+//        hero6.heroName = "Bianka";
+//        hero1.heroClass = "Paladin";
+//        hero2.heroClass = "Cleric";
+//        hero3.heroClass = "Warrior";
+//        hero4.heroClass = "Rogue";
+//        hero5.heroClass = "Wizard";
+//        hero6.heroClass = "Barbarian";
+//        hero1.ID = 1;
+//        hero2.ID = 2;
+//        hero3.ID = 3;
+//        hero4.ID = 4;
+//        hero5.ID = 5;
+//        hero6.ID = 6;
+//        listOfHeroes.add(hero1);
+//        listOfHeroes.add(hero2);
+//        listOfHeroes.add(hero3);
+//        listOfHeroes.add(hero4);
+//        listOfHeroes.add(hero5);
+//        listOfHeroes.add(hero6);
+//    }
 
 
     public void populateDatabaseWithMonsters() {
