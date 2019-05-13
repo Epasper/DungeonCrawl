@@ -472,7 +472,7 @@ class CharacterCreatorGUI {
             racialBonusNumbers.get(getStatID(trimmedString)).setText(" +2 ");
         } catch (NullPointerException ignored) {
         }
-        updateSavingThrows();
+        updateDefenses();
         buildSkillBoxes(false);
     }
 
@@ -496,7 +496,7 @@ class CharacterCreatorGUI {
 
     //todo add class specializations as a bonus to saving throws
 
-    private void updateSavingThrows() {
+    private void updateDefenses() {
         fort = -1;
         reflex = -1;
         will = -1;
@@ -518,6 +518,24 @@ class CharacterCreatorGUI {
             } else {
                 if (currentSave > will) {
                     will = currentSave;
+                }
+            }
+        }
+        HeroClassInformation heroClassInformation = new HeroClassInformation();
+        List<String> classBonuses = heroClassInformation.manageClassDefenceBonuses(selectedHeroClass);
+        for (String currentBonus : classBonuses) {
+            switch (currentBonus) {
+                case "Fortitude": {
+                    fort++;
+                    break;
+                }
+                case "Reflex": {
+                    reflex++;
+                    break;
+                }
+                case "Will": {
+                    will++;
+                    break;
                 }
             }
         }
@@ -562,7 +580,7 @@ class CharacterCreatorGUI {
         pointsToSpend.setText(String.valueOf(availableAttributePoints));
         calculateAllFinalAbilityScores();
         updateMaxHP(selectedHeroClass);
-        updateSavingThrows();
+        updateDefenses();
         buildSkillBoxes(false);
     }
 
@@ -722,7 +740,7 @@ class CharacterCreatorGUI {
         for (int i = 0; i < 6; i++) {
             racialBonusRadioButtons.get(i).setSelected(false);
         }
-        updateSavingThrows();
+        updateDefenses();
         buildSkillBoxes(false);
     }
 
@@ -739,12 +757,11 @@ class CharacterCreatorGUI {
         availableSkillsListView.setDisable(false);
         selectedHeroClass = newValue;
         updateMaxHP(newValue);
-        updateSavingThrows();
+        updateDefenses();
         addPowersToComboBoxes();
         buildSkillBoxes(false);
     }
 
-    //todo move this method to HeroClassInformation
     private void manageRacialStatBonuses(String raceName) {
         HeroClassInformation heroClassInformation = new HeroClassInformation();
         if (raceName.equals("Human")) {

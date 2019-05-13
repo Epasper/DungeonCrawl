@@ -330,7 +330,6 @@ public class HeroClassInformation {
     }
 
 
-
     private void populateTheTablesWithTraits() {
         List<String> avenger = new ArrayList<>();
         classTraits.put(CharacterClasses.Avenger.toString(), avenger);
@@ -468,9 +467,61 @@ public class HeroClassInformation {
                 racialBonuses.add("Intelligence");
                 break;
             }
-        } return racialBonuses;
+        }
+        return racialBonuses;
     }
 
+    public List<String> manageClassDefenceBonuses(String className) {
+        List<String> listOfBonuses = new ArrayList<>();
+        switch (className) {
+            case "Avenger":
+            case "Invoker":
+            case "Paladin": {
+                listOfBonuses.add(Defenses.Fortitude.toString());
+                listOfBonuses.add(Defenses.Reflex.toString());
+                listOfBonuses.add(Defenses.Will.toString());
+                break;
+            }
+            case "Barbarian":
+            case "Fighter": {
+                listOfBonuses.add(Defenses.Fortitude.toString());
+                listOfBonuses.add(Defenses.Fortitude.toString());
+                break;
+            }
+            case "Bard":
+            case "Druid":
+            case "Warlock": {
+                listOfBonuses.add(Defenses.Reflex.toString());
+                listOfBonuses.add(Defenses.Will.toString());
+                break;
+            }
+            case "Cleric":
+            case "Sorcerer":
+            case "Wizard": {
+                listOfBonuses.add(Defenses.Will.toString());
+                listOfBonuses.add(Defenses.Will.toString());
+                break;
+            }
+            case "Ranger": {
+                listOfBonuses.add(Defenses.Fortitude.toString());
+                listOfBonuses.add(Defenses.Reflex.toString());
+                break;
+            }
+            case "Rogue": {
+                listOfBonuses.add(Defenses.Reflex.toString());
+                listOfBonuses.add(Defenses.Reflex.toString());
+                break;
+            }
+            case "Shaman":
+            case "Warden":
+            case "Warlord": {
+                listOfBonuses.add(Defenses.Fortitude.toString());
+                listOfBonuses.add(Defenses.Will.toString());
+                break;
+            }
+        }
+        return listOfBonuses;
+    }
 
     public HeroPower getHeroPowerByName(String className, String powerName, String typeOfPower) {
 
