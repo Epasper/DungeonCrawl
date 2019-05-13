@@ -3,7 +3,9 @@ package sample.DAO;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import sample.DTO.CharacterCreatorDTO;
+import sample.HeroPowers.HeroPower;
 import sample.Model.Hero;
+import sample.StaticRules.HeroClassInformation;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -76,29 +78,9 @@ public class CharacterCreatorDAO {
         return numberOfHeroes;
     }
 
-    public Hero convertDtoToHero(CharacterCreatorDTO dto) throws IOException, SQLException {
-        Hero hero = new Hero();
-        hero.setID(dto.getHeroID());
-        hero.setHeroName(dto.getHeroName());
-        hero.setHeroClass(dto.getHeroClass());
-        hero.setHeroRace(dto.getHeroRace());
-        hero.setHitPoints(dto.getHitPoints());
-        hero.setGold(dto.getGold());
-        hero.setHeroIconId(dto.getHeroIconId());
-        hero.setStrength(dto.getStrength());
-        hero.setConstitution(dto.getConstitution());
-        hero.setDexterity(dto.getDexterity());
-        hero.setIntelligence(dto.getIntelligence());
-        hero.setWisdom(dto.getWisdom());
-        hero.setCharisma(dto.getCharisma());
-        hero.setReflex(dto.getReflex());
-        hero.setFortitude(dto.getFortitude());
-        hero.setWill(dto.getWill());
-        return hero;
-    }
-
     public Hero getAHeroByID(int ID) throws SQLException, IOException {
         Hero hero = new Hero();
+        HeroClassInformation heroClassInformation = new HeroClassInformation();
         System.out.println("-----> Hero ID From DAO" + ID);
         String sql = "SELECT * FROM dungeon.heroes WHERE idheroes = ?;";
         pst = conn.prepareStatement(sql);
@@ -106,13 +88,15 @@ public class CharacterCreatorDAO {
         ResultSet rs = pst.executeQuery();
         String a = "a";
         String b = "B";
+        //todo think about DRY here
         while (rs.next()) {
             a = rs.getString("hero_name");
             b = rs.getString("icon_id");
             hero.setHeroIcon(getHeroIconByID(rs.getInt("icon_id")));
             hero.setID(rs.getInt("idheroes"));
             hero.setHeroName(rs.getString("hero_name"));
-            hero.setHeroClass(rs.getString("hero_class"));
+            String heroClass = rs.getString("hero_class");
+            hero.setHeroClass(heroClass);
             hero.setHeroRace(rs.getString("hero_race"));
             hero.setStrength(rs.getInt("strength"));
             hero.setConstitution(rs.getInt("constitution"));
@@ -120,29 +104,68 @@ public class CharacterCreatorDAO {
             hero.setIntelligence(rs.getInt("intelligence"));
             hero.setWisdom(rs.getInt("wisdom"));
             hero.setCharisma(rs.getInt("charisma"));
-            hero.setFortitude(rs.getInt("fortitude"));
-            hero.setReflex(rs.getInt("reflex"));
-            hero.setWill(rs.getInt("will"));
-            hero.setAcrobatics(rs.getInt("sk_acrobatics"));
-            hero.setArcana(rs.getInt("sk_arcana"));
-            hero.setAthletics(rs.getInt("sk_athletics"));
-            hero.setBluff(rs.getInt("sk_bluff"));
-            hero.setDiplomacy(rs.getInt("sk_diplomacy"));
-            hero.setDungeoneering(rs.getInt("sk_dungeoneering"));
-            hero.setEndurance(rs.getInt("sk_endurance"));
-            hero.setHeal(rs.getInt("sk_heal"));
-            hero.setHistory(rs.getInt("sk_history"));
-            hero.setInsight(rs.getInt("sk_insight"));
-            hero.setIntimidate(rs.getInt("sk_intimidate"));
-            hero.setNature(rs.getInt("sk_nature"));
-            hero.setPerception(rs.getInt("sk_perception"));
-            hero.setReligion(rs.getInt("sk_religion"));
-            hero.setStealth(rs.getInt("sk_stealth"));
-            hero.setStreetwise(rs.getInt("sk_streetwise"));
-            hero.setThievery(rs.getInt("sk_thievery"));
+            manageHeroDefenses(hero, rs);
+            manageHeroSkills(hero, rs);
+            manageHeroPowers(hero, heroClassInformation, rs, heroClass);
         }
         System.out.println(hero.getHeroName() + "|||" + a + " Icon number: " + b);
         return hero;
+    }
+
+    private void manageHeroDefenses(Hero hero, ResultSet rs) throws SQLException {
+        hero.setFortitude(rs.getInt("fortitude"));
+        hero.setReflex(rs.getInt("reflex"));
+        hero.setWill(rs.getInt("will"));
+    }
+
+    private void manageHeroSkills(Hero hero, ResultSet rs) throws SQLException {
+        hero.setAcrobatics(rs.getInt("sk_acrobatics"));
+        hero.setArcana(rs.getInt("sk_arcana"));
+        hero.setAthletics(rs.getInt("sk_athletics"));
+        hero.setBluff(rs.getInt("sk_bluff"));
+        hero.setDiplomacy(rs.getInt("sk_diplomacy"));
+        hero.setDungeoneering(rs.getInt("sk_dungeoneering"));
+        hero.setEndurance(rs.getInt("sk_endurance"));
+        hero.setHeal(rs.getInt("sk_heal"));
+        hero.setHistory(rs.getInt("sk_history"));
+        hero.setInsight(rs.getInt("sk_insight"));
+        hero.setIntimidate(rs.getInt("sk_intimidate"));
+        hero.setNature(rs.getInt("sk_nature"));
+        hero.setPerception(rs.getInt("sk_perception"));
+        hero.setReligion(rs.getInt("sk_religion"));
+        hero.setStealth(rs.getInt("sk_stealth"));
+        hero.setStreetwise(rs.getInt("sk_streetwise"));
+        hero.setThievery(rs.getInt("sk_thievery"));
+    }
+
+    private void manageHeroPowers(Hero hero, HeroClassInformation heroClassInformation, ResultSet rs, String heroClass) throws SQLException {
+        String allAtWillPowers = rs.getString("powers_at_will");
+        String allEncounterPowers = rs.getString("powers_encounter");
+        String allDailyPowers = rs.getString("powers_daily");
+        List<HeroPower> allAtWillPowersForHero = heroClassInformation.getAtWillPowersAtLevel1().get(heroClass);
+        List<HeroPower> validAtWillPowersForHero = new ArrayList<>();
+        for (HeroPower currentPower : allAtWillPowersForHero) {
+            if (allAtWillPowers.contains(currentPower.getPowerName())) {
+                validAtWillPowersForHero.add(currentPower);
+            }
+        }
+        hero.setAtWillPowers(validAtWillPowersForHero);
+        List<HeroPower> allEncounterPowersForHero = heroClassInformation.getEncounterPowersAtLevel1().get(heroClass);
+        List<HeroPower> validEncounterPowersForHero = new ArrayList<>();
+        for (HeroPower currentPower : allEncounterPowersForHero) {
+            if (allEncounterPowers.contains(currentPower.getPowerName())) {
+                validEncounterPowersForHero.add(currentPower);
+            }
+        }
+        hero.setEncounterPowers(validEncounterPowersForHero);
+        List<HeroPower> allDailyPowersForHero = heroClassInformation.getDailyPowersAtLevel1().get(heroClass);
+        List<HeroPower> validDailyPowersForHero = new ArrayList<>();
+        for (HeroPower currentPower : allDailyPowersForHero) {
+            if (allDailyPowers.contains(currentPower.getPowerName())) {
+                validDailyPowersForHero.add(currentPower);
+            }
+        }
+        hero.setDailyPowers(validDailyPowersForHero);
     }
 
     public List<CharacterCreatorDTO> getAllHeroes() throws SQLException, IOException {
@@ -184,6 +207,14 @@ public class CharacterCreatorDAO {
             dto.setStealth(rs.getInt("sk_stealth"));
             dto.setStreetwise(rs.getInt("sk_streetwise"));
             dto.setThievery(rs.getInt("sk_thievery"));
+            //todo write a separate method that accepts a full string from sql, and changes it to list of Strings
+            String allAtWillPowers = rs.getString("powers_at_will");
+            dto.setAtWillPower1(allAtWillPowers.substring(0, allAtWillPowers.indexOf("_") - 1));
+            dto.setAtWillPower2(allAtWillPowers.substring(allAtWillPowers.lastIndexOf("_") + 1));
+            String allEncounterPowers = rs.getString("powers_encounter");
+            dto.setEncounterPower1(allEncounterPowers.substring(0, allEncounterPowers.indexOf("_") - 1));
+            String allDailyPowers = rs.getString("powers_daily");
+            dto.setDailyPower1(allDailyPowers.substring(0, allDailyPowers.indexOf("_") - 1));
             list.add(dto);
         }
         for (CharacterCreatorDTO a : list) {
