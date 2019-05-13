@@ -4,6 +4,7 @@
     <list default="true" id="de97b43a-8902-45e2-a345-dc80bad4fa20" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +18,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="277" column="35" lean-forward="true" selection-start-line="277" selection-start-column="35" selection-end-line="277" selection-end-column="35" />
+            <state relative-caret-position="249">
+              <caret line="99" column="33" lean-forward="true" selection-start-line="99" selection-start-column="33" selection-end-line="99" selection-end-column="94" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#37220#37221#0" expanded="true" />
@@ -27,11 +28,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="211" column="43" selection-start-line="211" selection-start-column="43" selection-end-line="211" selection-end-column="43" />
+            <state relative-caret-position="484">
+              <caret line="226" column="52" lean-forward="true" selection-start-line="226" selection-start-column="52" selection-end-line="226" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -113,11 +114,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="243" column="37" lean-forward="true" selection-start-line="243" selection-start-column="37" selection-end-line="243" selection-end-column="37" />
+            <state relative-caret-position="215">
+              <caret line="85" column="54" lean-forward="true" selection-start-line="85" selection-start-column="54" selection-end-line="85" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -165,12 +166,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>heroi</find>
-      <find>SETTER FOR ID</find>
-      <find>imagevi</find>
-      <find>imag</find>
-      <find>image</find>
-      <find>setgra</find>
       <find>Class:</find>
       <find>----</find>
       <find>fighting</find>
@@ -195,6 +190,12 @@
       <find>icon</find>
       <find>dail</find>
       <find>selected</find>
+      <find>setsty</find>
+      <find>eventonh</find>
+      <find>VBox.setV</find>
+      <find>vbox</find>
+      <find>setstyle</find>
+      <find>css</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -221,7 +222,6 @@
         <option value="$PROJECT_DIR$/src/sample/Model/FakeDatabase.java" />
         <option value="$PROJECT_DIR$/src/sample/Model/DungeonMap.java" />
         <option value="$PROJECT_DIR$/src/sample/GUI/PartySelectorGUI.java" />
-        <option value="$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/AngelicAlacrity.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/AvengingEcho.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/BondOfPursuit.java" />
@@ -254,6 +254,7 @@
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/sample/DTO/CharacterCreatorDTO.java" />
         <option value="$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java" />
+        <option value="$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java" />
       </list>
     </option>
   </component>
@@ -333,6 +334,13 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="sample" type="462c0819:PsiDirectoryNode" />
               <item name="StaticRules" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="Styling" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -734,7 +742,14 @@
       <option name="project" value="LOCAL" />
       <updated>1557747911085</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Character Creator - hero powers are now being selected at character selection">
+      <created>1557750884695</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1557750884695</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TodoView">
@@ -809,7 +824,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Character Creator - begun adding portrait selection" />
     <MESSAGE value="Character Creator - Added portrait selection" />
     <MESSAGE value="Refactoring - new packages, change of access to fields and changed files' placement" />
     <MESSAGE value="Refactoring - cleaned a lot of access issues and unnecessary declarations" />
@@ -834,7 +848,8 @@
     <MESSAGE value="Character Creator - selection of Daily Powers" />
     <MESSAGE value="Character Creator - validation of power selection added" />
     <MESSAGE value="Character Creator - hero powers are now being added to database upon hero creation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Character Creator - hero powers are now being added to database upon hero creation" />
+    <MESSAGE value="Character Creator - hero powers are now being selected at character selection" />
+    <option name="LAST_COMMIT_MESSAGE" value="Character Creator - hero powers are now being selected at character selection" />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/sql/Blob.java">
@@ -1145,27 +1160,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="243" column="37" lean-forward="true" selection-start-line="243" selection-start-column="37" selection-end-line="243" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="277" column="35" lean-forward="true" selection-start-line="277" selection-start-column="35" selection-end-line="277" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#37220#37221#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
@@ -1249,8 +1243,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="211" column="43" selection-start-line="211" selection-start-column="43" selection-end-line="211" selection-end-column="43" />
+        <state relative-caret-position="484">
+          <caret line="226" column="52" lean-forward="true" selection-start-line="226" selection-start-column="52" selection-end-line="226" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="99" column="33" lean-forward="true" selection-start-line="99" selection-start-column="33" selection-end-line="99" selection-end-column="94" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#37220#37221#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="85" column="54" lean-forward="true" selection-start-line="85" selection-start-column="54" selection-end-line="85" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

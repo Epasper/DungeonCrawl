@@ -7,7 +7,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import sample.*;
+import sample.HeroPowers.HeroPower;
 import sample.Model.*;
 
 import java.io.IOException;
@@ -82,10 +84,8 @@ class DungeonGUI {
 
     DungeonGUI(List<Hero> heroList) throws IOException, SQLException {
         this.heroList = heroList;
-        Button fakeButton = new Button();
-        fakeButton.setMinSize(80,40);
-        skillsVBox.getChildren().add(fakeButton);
-        skillsVBox.setVisible(false);
+        skillsVBox.setStyle("-fx-background-color:grey;");
+        skillsVBox.setMinSize(200, 40);
         mapOuterPane.setCenter(mapScrollPane);
         mapOuterPane.setRight(skillsVBox);
         mapScrollPane.setContent(mapGridPane);
@@ -98,19 +98,26 @@ class DungeonGUI {
         updateGUIAccordingToMap(getDungeonMap());
     }
 
-    //todo create a database and relink these to it
-
-//    private List<Hero> generateAHeroList(List<Integer> heroIdList) {
-//        database.populateDatabaseWithHeroes();
-//        for (Integer heroID : heroIdList) {
-//            for (Hero hero : database.listOfHeroes) {
-//                if (hero.ID == heroID) {
-//                    heroList.add(hero);
-//                }
-//            }
-//        }
-//        return heroList;
-//    }
+    void updateButtonsWithHeroSkillNames(Hero currentHero) {
+        for (HeroPower currentPower : currentHero.getAtWillPowers()) {
+            Button powerButton = new Button(currentPower.getPowerName());
+            powerButton.setStyle("-fx-background-color: #007200;");
+            powerButton.setTextFill(Color.WHITE);
+            skillsVBox.getChildren().add(powerButton);
+        }
+        for (HeroPower currentPower : currentHero.getEncounterPowers()) {
+            Button powerButton = new Button(currentPower.getPowerName());
+            powerButton.setStyle("-fx-background-color: #910000;");
+            powerButton.setTextFill(Color.WHITE);
+            skillsVBox.getChildren().add(powerButton);
+        }
+        for (HeroPower currentPower : currentHero.getDailyPowers()) {
+            Button powerButton = new Button(currentPower.getPowerName());
+            powerButton.setStyle("-fx-background-color: #5c005e;");
+            powerButton.setTextFill(Color.WHITE);
+            skillsVBox.getChildren().add(powerButton);
+        }
+    }
 
     private List<Monster> generateAMonsterList(List<Integer> monsterIDList) {
         database.populateDatabaseWithMonsters();
@@ -147,7 +154,7 @@ class DungeonGUI {
         return listOfHeroIDS;
     }
 
-    private Hero getHeroByID(int ID, List<Hero> listOfHeroes) throws SQLException {
+    private Hero getHeroByID(int ID, List<Hero> listOfHeroes) {
         Hero heroNotFound = new Hero();
         for (Hero aHero : listOfHeroes) {
             if (aHero.ID == ID) {
@@ -238,7 +245,7 @@ class DungeonGUI {
         System.out.println("Stage is closing");
     }
 
-    private void eventOnHeroAttackingAMonster(int XPos, int YPos) throws SQLException {
+    private void eventOnHeroAttackingAMonster(int XPos, int YPos) {
         Hero hero = getHeroByID(getCurrentlyActiveHeroID(), heroList);
         Monster monster = getMonsterByID(getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureId(), monsterList);
         hero.attackAMonster(monster);
@@ -248,17 +255,18 @@ class DungeonGUI {
         getDungeonMap().clearMapReachableProperties(getDungeonMap());
         updateMapGraphics(getDungeonMap());
         setHasTheCharacterBeenSelected(false);
-        skillsVBox.setVisible(false);
+        skillsVBox.getChildren().clear();
     }
 
-    private void eventOnHeroClick(int currentHeroID) throws SQLException {
+    private void eventOnHeroClick(int currentHeroID) {
         checkTheAvailableDistance(getHeroByID(currentHeroID, heroList));
         System.out.println("Clicked the ID " + currentHeroID + " hero.");
         setCurrentlyActiveHeroID(currentHeroID);
         setHasTheCharacterBeenSelected(true);
+        updateButtonsWithHeroSkillNames(getHeroByID(currentHeroID, heroList));
     }
 
-    private void eventOnHeroMovement(Button aButton, int XPos, int YPos) throws SQLException {
+    private void eventOnHeroMovement(Button aButton, int XPos, int YPos) {
         Hero hero = getHeroByID(getCurrentlyActiveHeroID(), heroList);
         getDungeonMap().getMapTilesArray()[hero.mapXPos][hero.mapYPos].setOccupyingCreatureId(0);
         getDungeonMap().getMapTilesArray()[XPos][YPos].setOccupyingCreatureId(getCurrentlyActiveHeroID());
