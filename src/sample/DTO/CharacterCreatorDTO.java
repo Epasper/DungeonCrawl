@@ -5,7 +5,6 @@ import javafx.scene.image.Image;
 
 public class CharacterCreatorDTO {
 
-    //todo finishing the character creation should save it in a database.
     private int heroID;
     private String heroName;
     private String heroClass;

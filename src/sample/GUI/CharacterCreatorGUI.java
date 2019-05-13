@@ -161,12 +161,9 @@ class CharacterCreatorGUI {
         aStage.show();
     }
 
-    //todo add a DRY method that converts a result set into an image view
-
     private void updateThePortrait(String portraitId) throws SQLException, IOException {
         int id = Integer.valueOf(portraitId);
         CharacterCreatorDAO dao = new CharacterCreatorDAO();
-        dao.getHeroIconByID(id);
         System.out.println("CURRENT ID: " + id);
         Image hero1img = dao.getHeroIconByID(id);
         iconID = id;
@@ -202,9 +199,6 @@ class CharacterCreatorGUI {
             System.out.println(s);
         }
     }
-
-    //todo validate all required fields
-
     //todo influence of class onto the character's saving throws
     private void saveTheCharacterToDatabase() throws SQLException {
         CharacterCreatorDTO characterCreatorDTO = new CharacterCreatorDTO();

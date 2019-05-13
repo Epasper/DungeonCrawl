@@ -123,7 +123,23 @@ public class CharacterCreatorDAO {
             hero.setFortitude(rs.getInt("fortitude"));
             hero.setReflex(rs.getInt("reflex"));
             hero.setWill(rs.getInt("will"));
-            //todo add setters for skills
+            hero.setAcrobatics(rs.getInt("sk_acrobatics"));
+            hero.setArcana(rs.getInt("sk_arcana"));
+            hero.setAthletics(rs.getInt("sk_athletics"));
+            hero.setBluff(rs.getInt("sk_bluff"));
+            hero.setDiplomacy(rs.getInt("sk_diplomacy"));
+            hero.setDungeoneering(rs.getInt("sk_dungeoneering"));
+            hero.setEndurance(rs.getInt("sk_endurance"));
+            hero.setHeal(rs.getInt("sk_heal"));
+            hero.setHistory(rs.getInt("sk_history"));
+            hero.setInsight(rs.getInt("sk_insight"));
+            hero.setIntimidate(rs.getInt("sk_intimidate"));
+            hero.setNature(rs.getInt("sk_nature"));
+            hero.setPerception(rs.getInt("sk_perception"));
+            hero.setReligion(rs.getInt("sk_religion"));
+            hero.setStealth(rs.getInt("sk_stealth"));
+            hero.setStreetwise(rs.getInt("sk_streetwise"));
+            hero.setThievery(rs.getInt("sk_thievery"));
         }
         System.out.println(hero.getHeroName() + "|||" + a + " Icon number: " + b);
         return hero;
@@ -151,8 +167,24 @@ public class CharacterCreatorDAO {
             dto.setReflex(rs.getInt("reflex"));
             dto.setWill(rs.getInt("will"));
             dto.setHeroIconId(rs.getInt("icon_id"));
+            dto.setAcrobatics(rs.getInt("sk_acrobatics"));
+            dto.setArcana(rs.getInt("sk_arcana"));
+            dto.setAthletics(rs.getInt("sk_athletics"));
+            dto.setBluff(rs.getInt("sk_bluff"));
+            dto.setDiplomacy(rs.getInt("sk_diplomacy"));
+            dto.setDungeoneering(rs.getInt("sk_dungeoneering"));
+            dto.setEndurance(rs.getInt("sk_endurance"));
+            dto.setHeal(rs.getInt("sk_heal"));
+            dto.setHistory(rs.getInt("sk_history"));
+            dto.setInsight(rs.getInt("sk_insight"));
+            dto.setIntimidate(rs.getInt("sk_intimidate"));
+            dto.setNature(rs.getInt("sk_nature"));
+            dto.setPerception(rs.getInt("sk_perception"));
+            dto.setReligion(rs.getInt("sk_religion"));
+            dto.setStealth(rs.getInt("sk_stealth"));
+            dto.setStreetwise(rs.getInt("sk_streetwise"));
+            dto.setThievery(rs.getInt("sk_thievery"));
             list.add(dto);
-            //todo add setters for skills
         }
         for (CharacterCreatorDTO a : list) {
             System.out.println("HERO" + a.getHeroName() + "COPIED FROM DATABASE");
