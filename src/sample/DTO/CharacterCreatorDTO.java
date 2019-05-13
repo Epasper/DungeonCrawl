@@ -16,6 +16,9 @@ public class CharacterCreatorDTO {
     private String atWillPower2;
     private String encounterPower1;
     private String dailyPower1;
+    private String allAtWillPowers;
+    private String allEncounterPowers;
+    private String allDailyPowers;
     private int heroIconId = 0;
     private int strength;
     private int constitution;
@@ -44,6 +47,30 @@ public class CharacterCreatorDTO {
     private int Streetwise;
     private int Thievery;
     private Image heroImage;
+
+    public String getAllAtWillPowers() {
+        return allAtWillPowers;
+    }
+
+    public void setAllAtWillPowers(String allAtWillPowers) {
+        this.allAtWillPowers = allAtWillPowers;
+    }
+
+    public String getAllEncounterPowers() {
+        return allEncounterPowers;
+    }
+
+    public void setAllEncounterPowers(String allEncounterPowers) {
+        this.allEncounterPowers = allEncounterPowers;
+    }
+
+    public String getAllDailyPowers() {
+        return allDailyPowers;
+    }
+
+    public void setAllDailyPowers(String allDailyPowers) {
+        this.allDailyPowers = allDailyPowers;
+    }
 
     public Image getHeroImage() {
         return heroImage;

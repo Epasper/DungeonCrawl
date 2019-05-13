@@ -13,9 +13,9 @@ public class PutBLOBIntoDB {
         Connection conn = getConnection();
         Statement st = conn.createStatement();
 
-        PreparedStatement ps = conn.prepareStatement("INSERT INTO dungeon.heroicons VALUES(6,?)");
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO dungeon.heroicons VALUES(15,?)");
 
-        File file = new File("C:\\Users\\A753403\\IdeaProjects\\DungeonCrawl\\src\\sample\\GUI\\Images\\icon6.png");
+        File file = new File("C:\\Users\\A753403\\IdeaProjects\\DungeonCrawl\\src\\sample\\GUI\\Images\\icon15.png");
         FileInputStream fis = new FileInputStream(file);
         ps.setBinaryStream(1, fis, (int) file.length());
         ps.execute();

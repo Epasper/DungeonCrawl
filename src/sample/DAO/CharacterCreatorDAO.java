@@ -224,8 +224,12 @@ public class CharacterCreatorDAO {
                 "sk_religion," +
                 "sk_stealth," +
                 "sk_streetwise," +
-                "sk_thievery)VALUES" +
-                "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+                "sk_thievery," +
+                "powers_at_will," +
+                "powers_encounter," +
+                "powers_daily)" +
+                "VALUES" +
+                "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
         pst = conn.prepareStatement(sql);
         pst.setString(1, heroToBeAdded.getHeroName());
         pst.setString(2, heroToBeAdded.getHeroClass());
@@ -258,6 +262,9 @@ public class CharacterCreatorDAO {
         pst.setInt(29, heroToBeAdded.getStealth());
         pst.setInt(30, heroToBeAdded.getStreetwise());
         pst.setInt(31, heroToBeAdded.getThievery());
+        pst.setString(32, heroToBeAdded.getAtWillPower1() + "___" + heroToBeAdded.getAtWillPower2());
+        pst.setString(33, heroToBeAdded.getEncounterPower1() + "___");
+        pst.setString(34, heroToBeAdded.getDailyPower1() + "___");
         pst.executeUpdate();
         System.out.println("Character has successfully been added to the database");
     }
