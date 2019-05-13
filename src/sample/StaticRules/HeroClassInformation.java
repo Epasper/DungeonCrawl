@@ -30,8 +30,44 @@ public class HeroClassInformation {
     Map<String, Integer> hitDicePerLevel = new HashMap<>();
     public Map<CharacterSkills, Attributes> skillsAndCorrespondingAttributes = new HashMap<>();
     private Map<String, List<HeroPower>> atWillPowersAtLevel1 = new HashMap<>();
+    private Map<String, List<HeroPower>> atWillPowers = new HashMap<>();
     private Map<String, List<HeroPower>> encounterPowersAtLevel1 = new HashMap<>();
+    private Map<String, List<HeroPower>> encounterPowers = new HashMap<>();
+    private Map<String, List<HeroPower>> dailyPowersAtLevel1 = new HashMap<>();
+    private Map<String, List<HeroPower>> dailyPowers = new HashMap<>();
     private Map<String, List<String>> classTraits = new HashMap<>();
+
+    public Map<String, List<HeroPower>> getDailyPowersAtLevel1() {
+        return dailyPowersAtLevel1;
+    }
+
+    public void setDailyPowersAtLevel1(Map<String, List<HeroPower>> dailyPowersAtLevel1) {
+        this.dailyPowersAtLevel1 = dailyPowersAtLevel1;
+    }
+
+    public Map<String, List<HeroPower>> getDailyPowers() {
+        return dailyPowers;
+    }
+
+    public void setDailyPowers(Map<String, List<HeroPower>> dailyPowers) {
+        this.dailyPowers = dailyPowers;
+    }
+
+    public Map<String, List<HeroPower>> getAtWillPowers() {
+        return atWillPowers;
+    }
+
+    public void setAtWillPowers(Map<String, List<HeroPower>> atWillPowers) {
+        this.atWillPowers = atWillPowers;
+    }
+
+    public Map<String, List<HeroPower>> getEncounterPowers() {
+        return encounterPowers;
+    }
+
+    public void setEncounterPowers(Map<String, List<HeroPower>> encounterPowers) {
+        this.encounterPowers = encounterPowers;
+    }
 
     public Map<String, List<String>> getClassTraits() {
         return classTraits;
@@ -82,6 +118,7 @@ public class HeroClassInformation {
         populateTheTablesWithEncounterPowers();
         populateTheSkillsAndCorrespondingAttributes();
         populateTheTablesWithTraits();
+        populateTheTablesWithDailyPowers();
     }
 
     private void populateTheSkillsAndCorrespondingAttributes() {
@@ -248,6 +285,100 @@ public class HeroClassInformation {
         barbarian.add(new Bloodletting());
         barbarian.add(new GreatCleave());
         barbarian.add(new VaultOfTheFallen());
+        List<HeroPower> bard = new ArrayList<>();
+        encounterPowersAtLevel1.put(CharacterClasses.Bard.toString(), bard);
+        bard.add(new Blunder());
+        bard.add(new FastFriends());
+        bard.add(new InspiringRefrain());
+        bard.add(new ShoutOfTriumph());
+        List<HeroPower> cleric = new ArrayList<>();
+        encounterPowersAtLevel1.put(CharacterClasses.Cleric.toString(), cleric);
+        cleric.add(new CauseFear());
+        cleric.add(new DivineGlow());
+        cleric.add(new HealingStrike());
+        cleric.add(new WrathfulThunder());
+        List<HeroPower> druid = new ArrayList<>();
+        encounterPowersAtLevel1.put(CharacterClasses.Druid.toString(), druid);
+        druid.add(new CullTheHerd());
+        druid.add(new DartingBite());
+        druid.add(new FrostFlash());
+        druid.add(new TwistingVines());
+        List<HeroPower> fighter = new ArrayList<>();
+        encounterPowersAtLevel1.put(CharacterClasses.Fighter.toString(), fighter);
+        fighter.add(new CoveringAttack());
+        fighter.add(new PassingAttack());
+        fighter.add(new SpinningSweep());
+        fighter.add(new SteelSerpentStrike());
+        List<HeroPower> invoker = new ArrayList<>();
+        encounterPowersAtLevel1.put(CharacterClasses.Invoker.toString(), invoker);
+        invoker.add(new AstralTerror());
+        invoker.add(new BladeOfAstralFire());
+        invoker.add(new SpearOfTheInquisitor());
+        invoker.add(new ThunderOfJudgement());
+        List<HeroPower> paladin = new ArrayList<>();
+        encounterPowersAtLevel1.put(CharacterClasses.Paladin.toString(), paladin);
+        paladin.add(new FearsomeSmite());
+        paladin.add(new PiercingSmite());
+        paladin.add(new RadiantSmite());
+        paladin.add(new ShieldingSmite());
+        List<HeroPower> ranger = new ArrayList<>();
+        encounterPowersAtLevel1.put(CharacterClasses.Ranger.toString(), ranger);
+        ranger.add(new DireWolverineStrike());
+        ranger.add(new EvasiveStrike());
+        ranger.add(new FoxsCunning());
+        ranger.add(new TwoFangedStrike());
+        List<HeroPower> rogue = new ArrayList<>();
+        encounterPowersAtLevel1.put(CharacterClasses.Rogue.toString(), rogue);
+        rogue.add(new DazingStrike());
+        rogue.add(new KingsCastle());
+        rogue.add(new PositioningStrike());
+        rogue.add(new TorturousStrike());
+        List<HeroPower> shaman = new ArrayList<>();
+        encounterPowersAtLevel1.put(CharacterClasses.Shaman.toString(), shaman);
+        shaman.add(new CallToTheAncientDefender());
+        shaman.add(new ThunderBearsWarding());
+        shaman.add(new TwinPanthers());
+        List<HeroPower> sorcerer = new ArrayList<>();
+        encounterPowersAtLevel1.put(CharacterClasses.Sorcerer.toString(), sorcerer);
+        sorcerer.add(new BedevilingBurst());
+        sorcerer.add(new ExplosivePyre());
+        sorcerer.add(new Frostbind());
+        sorcerer.add(new TempestBreath());
+        sorcerer.add(new ThunderSlam());
+        List<HeroPower> warlock = new ArrayList<>();
+        encounterPowersAtLevel1.put(CharacterClasses.Warlock.toString(), warlock);
+        warlock.add(new DiabolicGrasp());
+        warlock.add(new DreadfulWord());
+        warlock.add(new VampiricEmbrace());
+        warlock.add(new Witchfire());
+        List<HeroPower> warlord = new ArrayList<>();
+        encounterPowersAtLevel1.put(CharacterClasses.Warlord.toString(), warlord);
+        warlord.add(new GuardingAttack());
+        warlord.add(new HammerAndAnvil());
+        warlord.add(new LeafOnTheWind());
+        warlord.add(new WarlordsFavor());
+        List<HeroPower> wizard = new ArrayList<>();
+        encounterPowersAtLevel1.put(CharacterClasses.Wizard.toString(), wizard);
+        wizard.add(new BurningHands());
+        wizard.add(new ChillStrike());
+        wizard.add(new ForceOrb());
+        wizard.add(new IcyTerrain());
+        wizard.add(new RayOfEnfeeblement());
+    }
+
+    private void populateTheTablesWithDailyPowers() {
+        List<HeroPower> avenger = new ArrayList<>();
+        dailyPowersAtLevel1.put(CharacterClasses.Avenger.toString(), avenger);
+        avenger.add(new AspectOfMight());
+        avenger.add(new OathOfTheFinalDuel());
+        avenger.add(new RenewingStrike());
+        avenger.add(new TempleOfLight());
+        List<HeroPower> barbarian = new ArrayList<>();
+        encounterPowersAtLevel1.put(CharacterClasses.Barbarian.toString(), barbarian);
+        barbarian.add(new BloodhuntRage());
+        barbarian.add(new MacetailsRage());
+        barbarian.add(new RageDrakesFrenzy());
+        barbarian.add(new SwiftPantherRage());
         List<HeroPower> bard = new ArrayList<>();
         encounterPowersAtLevel1.put(CharacterClasses.Bard.toString(), bard);
         bard.add(new Blunder());

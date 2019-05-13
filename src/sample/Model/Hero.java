@@ -1,14 +1,17 @@
 package sample.Model;
 
 import javafx.scene.image.Image;
-import sample.DAO.CharacterCreatorDAO;
-
-import java.sql.SQLException;
+import sample.HeroPowers.HeroPower;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Hero extends Creature {
 
-    private CharacterCreatorDAO characterCreatorDAO = new CharacterCreatorDAO();
-    private int hitPoints;
+    private int heroLevel;
+    private int heroExperience;
+    private List<HeroPower> atWillPowers = new ArrayList<>();
+    private List<HeroPower> encounterPowers = new ArrayList<>();
+    private List<HeroPower> dailyPowers = new ArrayList<>();
     private int gold;
     private int heroIconId;
     private int strength;
@@ -39,9 +42,48 @@ public class Hero extends Creature {
     private int Thievery;
     private Image heroIcon = new Image(getClass().getResourceAsStream("Images\\icon1.png"));
 
-    public Hero() throws SQLException {
+    public Hero() {
     }
 
+    public int getHeroLevel() {
+        return heroLevel;
+    }
+
+    public void setHeroLevel(int heroLevel) {
+        this.heroLevel = heroLevel;
+    }
+
+    public int getHeroExperience() {
+        return heroExperience;
+    }
+
+    public void setHeroExperience(int heroExperience) {
+        this.heroExperience = heroExperience;
+    }
+
+    public List<HeroPower> getAtWillPowers() {
+        return atWillPowers;
+    }
+
+    public void setAtWillPowers(List<HeroPower> atWillPowers) {
+        this.atWillPowers = atWillPowers;
+    }
+
+    public List<HeroPower> getEncounterPowers() {
+        return encounterPowers;
+    }
+
+    public void setEncounterPowers(List<HeroPower> encounterPowers) {
+        this.encounterPowers = encounterPowers;
+    }
+
+    public List<HeroPower> getDailyPowers() {
+        return dailyPowers;
+    }
+
+    public void setDailyPowers(List<HeroPower> dailyPowers) {
+        this.dailyPowers = dailyPowers;
+    }
 
     public int getHeroIconId() {
         return heroIconId;
@@ -262,9 +304,6 @@ public class Hero extends Creature {
         return heroIcon;
     }
 
-    public void setHitPoints(int hitPoints) {
-        this.hitPoints = hitPoints;
-    }
 
     public void setGold(int gold) {
         this.gold = gold;
@@ -279,9 +318,6 @@ public class Hero extends Creature {
         this.speed = speed;
     }
 
-    public int getHitPoints() {
-        return hitPoints;
-    }
 
     public int getGold() {
         return gold;
