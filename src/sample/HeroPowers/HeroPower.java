@@ -2,7 +2,7 @@ package sample.HeroPowers;
 
 public abstract class HeroPower {
 
-    //todo write the daily powers for level 1
+    //todo write the daily powers for level 1. Last updated: Cleric
 
     protected String powerName;
     protected String characterClass;

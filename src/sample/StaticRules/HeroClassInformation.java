@@ -671,6 +671,12 @@ public class HeroClassInformation {
                         return currentPower;
                     }
                 }
+            } else if (typeOfPower.contains("Daily")) {
+                for (HeroPower currentPower : dailyPowersAtLevel1.get(className)) {
+                    if (powerName.equals(currentPower.getPowerName())) {
+                        return currentPower;
+                    }
+                }
             }
         } catch (NullPointerException ignored) {
         }

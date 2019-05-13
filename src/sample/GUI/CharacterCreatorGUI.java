@@ -656,11 +656,14 @@ class CharacterCreatorGUI {
                 FXCollections.observableArrayList();
         ObservableList<String> encounterOptions =
                 FXCollections.observableArrayList();
+        ObservableList<String> dailyOptions =
+                FXCollections.observableArrayList();
         ObservableList<String> classTraitOptions =
                 FXCollections.observableArrayList();
         HeroClassInformation heroClassInformation = new HeroClassInformation();
         int numberOfAtWillPowers = heroClassInformation.getAtWillPowersAtLevel1().get(selectedHeroClass).size();
         int numberOfEncounterPowers = heroClassInformation.getEncounterPowersAtLevel1().get(selectedHeroClass).size();
+        int numberOfDailyPowers = heroClassInformation.getEncounterPowersAtLevel1().get(selectedHeroClass).size();
         int numberOfClassTraits = heroClassInformation.getClassTraits().get(selectedHeroClass).size();
         for (int i = 0; i < numberOfAtWillPowers; i++) {
             atWill1Options.add(heroClassInformation.getAtWillPowersAtLevel1().get(selectedHeroClass).get(i).getPowerName());
@@ -671,22 +674,25 @@ class CharacterCreatorGUI {
         for (int i = 0; i < numberOfEncounterPowers; i++) {
             encounterOptions.add(heroClassInformation.getEncounterPowersAtLevel1().get(selectedHeroClass).get(i).getPowerName());
         }
+        for (int i = 0; i < numberOfDailyPowers; i++) {
+            dailyOptions.add(heroClassInformation.getDailyPowersAtLevel1().get(selectedHeroClass).get(i).getPowerName());
+        }
         for (int i = 0; i < numberOfClassTraits; i++) {
             classTraitOptions.add(heroClassInformation.getClassTraits().get(selectedHeroClass).get(i));
         }
         atWill1Choice.setItems(atWill1Options);
         atWill2Choice.setItems(atWill2Options);
         encounterChoice.setItems(encounterOptions);
+        dailyChoice.setItems(dailyOptions);
         classTraitChoice.setItems(classTraitOptions);
         atWill1Choice.setDisable(false);
         atWill2Choice.setDisable(false);
         encounterChoice.setDisable(false);
+        dailyChoice.setDisable(false);
         atWill1Choice.valueProperty().addListener((observable, oldValue, newValue) -> showThePowerDescription(newValue, "AtWill"));
         atWill2Choice.valueProperty().addListener((observable, oldValue, newValue) -> showThePowerDescription(newValue, "AtWill"));
         encounterChoice.valueProperty().addListener((observable, oldValue, newValue) -> showThePowerDescription(newValue, "Encounter"));
-        encounterChoice.setDisable(false);
-        dailyChoice.setDisable(false);
-
+        dailyChoice.valueProperty().addListener((observable, oldValue, newValue) -> showThePowerDescription(newValue, "Daily"));
     }
 
     private void showThePowerDescription(String powerName, String typeOfPower) {
