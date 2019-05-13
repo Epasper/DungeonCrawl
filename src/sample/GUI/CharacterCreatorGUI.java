@@ -269,10 +269,17 @@ class CharacterCreatorGUI {
             listOfErrorMessages.add("Some of your attributes are too high. The number of attribute points has to be 0 for the character to be finished.");
         if (characterCreatorDTO.getHeroIconId() == 0)
             listOfErrorMessages.add("Select your character's portrait.");
+        if ((characterCreatorDTO.getAtWillPower1().contains("Select")) || (characterCreatorDTO.getAtWillPower2().contains("Select")))
+            listOfErrorMessages.add("Select an at will power.");
+        if (characterCreatorDTO.getEncounterPower1().contains("Select"))
+            listOfErrorMessages.add("Select an encounter power.");
+        if (characterCreatorDTO.getDailyPower1().contains("Select"))
+            listOfErrorMessages.add("Select a daily power.");
         return listOfErrorMessages;
     }
 
-    //todo add shop with options to buy equipment. Starting gold is 100 GP
+
+//todo add shop with options to buy equipment. Starting gold is 100 GP
 
     private void addTheDerivedElements() {
         Text breakLine = new Text("    ");

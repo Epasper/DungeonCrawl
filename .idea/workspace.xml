@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de97b43a-8902-45e2-a345-dc80bad4fa20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Bard/EchoesOfTheGuardian.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Bard/SlayersSong.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Bard/StirringShout.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Bard/VerseOfTriumph.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Cleric/AvengingFlame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Cleric/BeaconOfHope.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Cleric/CascadeOfLight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Cleric/GuardianOfFaith.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/StaticRules/HeroClassInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/StaticRules/HeroClassInformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,38 +14,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Bard/StirringShout.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Bard/VerseOfTriumph.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Cleric/RighteousBrand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Cleric/SacredFlame.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            <state relative-caret-position="466">
+              <caret line="280" lean-forward="true" selection-start-line="280" selection-end-line="280" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#37385#37386#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -72,6 +41,19 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
               <caret line="9" column="60" selection-start-line="9" selection-start-column="60" selection-end-line="9" selection-end-column="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/DTO/CharacterCreatorDTO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="120" column="20" lean-forward="true" selection-start-line="120" selection-start-column="20" selection-end-line="120" selection-end-column="20" />
+              <folding>
+                <element signature="e#2531#2532#0" expanded="true" />
+                <element signature="e#2566#2567#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -103,11 +85,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="243" column="37" lean-forward="true" selection-start-line="243" selection-start-column="37" selection-end-line="243" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/StaticRules/HeroClassInformation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="392" column="42" lean-forward="true" selection-start-line="392" selection-start-column="42" selection-end-line="392" selection-end-column="42" />
+            <state relative-caret-position="1130">
+              <caret line="658" column="26" lean-forward="true" selection-start-line="658" selection-start-column="26" selection-end-line="658" selection-end-column="26" />
               <folding>
                 <element signature="e#1696#1697#0" expanded="true" />
                 <element signature="e#1738#1739#0" expanded="true" />
@@ -116,6 +110,15 @@
                 <element signature="e#2062#2063#0" expanded="true" />
                 <element signature="e#2108#2109#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/HeroPower.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="36" lean-forward="true" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -132,8 +135,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>updat</find>
-      <find>start</find>
       <find>heroi</find>
       <find>SETTER FOR ID</find>
       <find>imagevi</find>
@@ -162,6 +163,8 @@
       <find>eventon</find>
       <find>save</find>
       <find>icon</find>
+      <find>dail</find>
+      <find>selected</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -191,7 +194,6 @@
         <option value="$PROJECT_DIR$/src/sample/Model/DungeonMap.java" />
         <option value="$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java" />
         <option value="$PROJECT_DIR$/src/sample/DTO/CharacterCreatorDTO.java" />
-        <option value="$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java" />
         <option value="$PROJECT_DIR$/src/sample/GUI/PartySelectorGUI.java" />
         <option value="$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/AngelicAlacrity.java" />
@@ -202,7 +204,6 @@
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/RadiantVengeance.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/SharedMadness.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/WhirlwindCharge.java" />
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/HeroPower.java" />
         <option value="$PROJECT_DIR$/src/sample/Model/Hero.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/AspectOfMight.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Avenger/OathOfTheFinalDuel.java" />
@@ -220,7 +221,9 @@
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Cleric/BeaconOfHope.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Cleric/CascadeOfLight.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Cleric/GuardianOfFaith.java" />
+        <option value="$PROJECT_DIR$/src/sample/HeroPowers/HeroPower.java" />
         <option value="$PROJECT_DIR$/src/sample/StaticRules/HeroClassInformation.java" />
+        <option value="$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java" />
       </list>
     </option>
   </component>
@@ -286,22 +289,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="sample" type="462c0819:PsiDirectoryNode" />
               <item name="HeroPowers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="sample" type="462c0819:PsiDirectoryNode" />
-              <item name="HeroPowers" type="462c0819:PsiDirectoryNode" />
-              <item name="Bard" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="sample" type="462c0819:PsiDirectoryNode" />
-              <item name="HeroPowers" type="462c0819:PsiDirectoryNode" />
-              <item name="Cleric" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
@@ -689,7 +676,21 @@
       <option name="project" value="LOCAL" />
       <updated>1557742373639</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Character Creator - added Daily Powers for Bard and Cleric">
+      <created>1557743300294</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1557743300294</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Character Creator - selection of Daily Powers">
+      <created>1557743942642</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1557743942642</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TodoView">
@@ -705,7 +706,7 @@
     <frame x="1358" y="-290" width="1696" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2176039" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2176039" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -714,7 +715,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32976446" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.54889977" visible="true" weight="0.2130621" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.54889977" visible="true" weight="0.2130621" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49633253" weight="0.3961456" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -764,8 +765,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Character Creator - Class Features put into Class Info" />
-    <MESSAGE value="Character Creator - Class Traits are now selectable." />
     <MESSAGE value="Character Creator - added DAOs and DTOs, Characters are now save-able in the database." />
     <MESSAGE value="Character Creator - added an SQL method that returns all hero names." />
     <MESSAGE value="Character Creator - begun adding portrait selection" />
@@ -789,7 +788,9 @@
     <MESSAGE value="Character Creator - added class selection influence to the defence bonuses" />
     <MESSAGE value="Dungeon GUI - added a placeholder for skill buttons" />
     <MESSAGE value="Character Creator - added Daily Powers for Avenger and Barbarian" />
-    <option name="LAST_COMMIT_MESSAGE" value="Character Creator - added Daily Powers for Avenger and Barbarian" />
+    <MESSAGE value="Character Creator - added Daily Powers for Bard and Cleric" />
+    <MESSAGE value="Character Creator - selection of Daily Powers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Character Creator - selection of Daily Powers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -897,46 +898,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="243" column="37" lean-forward="true" selection-start-line="243" selection-start-column="37" selection-end-line="243" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2988#2989#0" expanded="true" />
-            <element signature="e#3019#3020#0" expanded="true" />
-            <element signature="e#3071#3072#0" expanded="true" />
-            <element signature="e#3111#3112#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/DTO/CharacterCreatorDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-238">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#1261#1262#0" expanded="true" />
-            <element signature="e#1293#1294#0" expanded="true" />
-            <element signature="e#1342#1343#0" expanded="true" />
-            <element signature="e#1384#1385#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="219" column="37" lean-forward="true" selection-start-line="219" selection-start-column="37" selection-end-line="219" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4374#4375#0" expanded="true" />
-            <element signature="e#4421#4422#0" expanded="true" />
-            <element signature="e#36222#36223#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Model/Creature.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
@@ -976,13 +937,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="6" column="30" lean-forward="true" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/HeroPower.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="34" lean-forward="true" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -1219,10 +1173,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/HeroPower.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="36" lean-forward="true" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/StaticRules/HeroClassInformation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="392" column="42" lean-forward="true" selection-start-line="392" selection-start-column="42" selection-end-line="392" selection-end-column="42" />
+        <state relative-caret-position="1130">
+          <caret line="658" column="26" lean-forward="true" selection-start-line="658" selection-start-column="26" selection-end-line="658" selection-end-column="26" />
           <folding>
             <element signature="e#1696#1697#0" expanded="true" />
             <element signature="e#1738#1739#0" expanded="true" />
@@ -1230,6 +1191,38 @@
             <element signature="e#1986#1987#0" expanded="true" />
             <element signature="e#2062#2063#0" expanded="true" />
             <element signature="e#2108#2109#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="243" column="37" lean-forward="true" selection-start-line="243" selection-start-column="37" selection-end-line="243" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/DTO/CharacterCreatorDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="120" column="20" lean-forward="true" selection-start-line="120" selection-start-column="20" selection-end-line="120" selection-end-column="20" />
+          <folding>
+            <element signature="e#2531#2532#0" expanded="true" />
+            <element signature="e#2566#2567#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="280" lean-forward="true" selection-start-line="280" selection-end-line="280" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#37385#37386#0" expanded="true" />
           </folding>
         </state>
       </provider>
