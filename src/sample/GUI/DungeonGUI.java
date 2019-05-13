@@ -4,7 +4,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import sample.*;
 import sample.Model.*;
 
@@ -16,13 +18,15 @@ import java.util.Random;
 
 class DungeonGUI {
 
-    //todo Create a pane on top of the dungeonMap grid, that will show the available cards.
+    //todo Create a pane on top of the dungeonMap grid, that will show the available skills.
     private MainMenuGUI mainMenuGUI = new MainMenuGUI();
     private int mapWidth = 40;
     private int mapHeight = 40;
     private Button[][] buttonGrid = new Button[mapWidth][mapHeight];
     private GridPane mapGridPane = new GridPane();
-    ScrollPane mapScrollPane = new ScrollPane();
+    private VBox skillsVBox = new VBox();
+    BorderPane mapOuterPane = new BorderPane();
+    private ScrollPane mapScrollPane = new ScrollPane();
     private Image wallImage = new Image(getClass().getResourceAsStream("Images\\wall.png"));
     private Image floorImage = new Image(getClass().getResourceAsStream("Images\\floor.png"));
     private Image fogImage = new Image(getClass().getResourceAsStream("Images\\fog.png"));
@@ -78,6 +82,12 @@ class DungeonGUI {
 
     DungeonGUI(List<Hero> heroList) throws IOException, SQLException {
         this.heroList = heroList;
+        Button fakeButton = new Button();
+        fakeButton.setMinSize(80,40);
+        skillsVBox.getChildren().add(fakeButton);
+        skillsVBox.setVisible(false);
+        mapOuterPane.setCenter(mapScrollPane);
+        mapOuterPane.setRight(skillsVBox);
         mapScrollPane.setContent(mapGridPane);
         Button returnToMainMenu = new Button();
         returnToMainMenu.setText("Return to Main Menu");
@@ -228,7 +238,7 @@ class DungeonGUI {
         System.out.println("Stage is closing");
     }
 
-    private void eventOnHeroAttackingAMonster(int XPos, int YPos) throws IOException, SQLException {
+    private void eventOnHeroAttackingAMonster(int XPos, int YPos) throws SQLException {
         Hero hero = getHeroByID(getCurrentlyActiveHeroID(), heroList);
         Monster monster = getMonsterByID(getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureId(), monsterList);
         hero.attackAMonster(monster);
@@ -238,6 +248,7 @@ class DungeonGUI {
         getDungeonMap().clearMapReachableProperties(getDungeonMap());
         updateMapGraphics(getDungeonMap());
         setHasTheCharacterBeenSelected(false);
+        skillsVBox.setVisible(false);
     }
 
     private void eventOnHeroClick(int currentHeroID) throws SQLException {
@@ -247,7 +258,7 @@ class DungeonGUI {
         setHasTheCharacterBeenSelected(true);
     }
 
-    private void eventOnHeroMovement(Button aButton, int XPos, int YPos) throws IOException, SQLException {
+    private void eventOnHeroMovement(Button aButton, int XPos, int YPos) throws SQLException {
         Hero hero = getHeroByID(getCurrentlyActiveHeroID(), heroList);
         getDungeonMap().getMapTilesArray()[hero.mapXPos][hero.mapYPos].setOccupyingCreatureId(0);
         getDungeonMap().getMapTilesArray()[XPos][YPos].setOccupyingCreatureId(getCurrentlyActiveHeroID());

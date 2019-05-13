@@ -81,7 +81,7 @@ public class PartySelectorGUI {
         DungeonGUI dungeonGui = new DungeonGUI(listOfSelectedHeroes);
         aStage.close();
         aScene.getStylesheets().add("sample/Styling/Caspian.css");
-        aScene.setRoot(dungeonGui.mapScrollPane);
+        aScene.setRoot(dungeonGui.mapOuterPane);
         aStage.setScene(aScene);
         aStage.show();
     }

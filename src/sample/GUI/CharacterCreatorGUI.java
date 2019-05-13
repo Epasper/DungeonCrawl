@@ -200,7 +200,6 @@ class CharacterCreatorGUI {
         }
     }
 
-    //todo influence of class onto the character's saving throws
     private void saveTheCharacterToDatabase() throws SQLException {
         CharacterCreatorDTO characterCreatorDTO = new CharacterCreatorDTO();
         characterCreatorDTO.setHeroName(characterName.getText());
@@ -273,7 +272,6 @@ class CharacterCreatorGUI {
         return listOfErrorMessages;
     }
 
-    //todo add class traits selection
     //todo add shop with options to buy equipment. Starting gold is 100 GP
 
     private void addTheDerivedElements() {
@@ -493,8 +491,6 @@ class CharacterCreatorGUI {
 
         }
     }
-
-    //todo add class specializations as a bonus to saving throws
 
     private void updateDefenses() {
         fort = -1;
