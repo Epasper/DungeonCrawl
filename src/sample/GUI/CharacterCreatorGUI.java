@@ -69,7 +69,7 @@ class CharacterCreatorGUI {
     private List<Text> finalAttributeScoresTexts = new ArrayList<>();
     private int[] finalAttributeIntegersArray = new int[6];
     private int[] finalSkillPointsArray = new int[17];
-    private int availableStatPoints = 20;
+    private int availableAttributePoints = 20;
     private int numberOfAvailableSkillPoints = 0;
     private int maxHP = 0;
     private int fort = 0;
@@ -80,7 +80,7 @@ class CharacterCreatorGUI {
     private ListView<String> allSkillsListView = new ListView<>();
     private ListView<String> selectedSkillsListView = new ListView<>();
     private ListView<String> availableSkillsListView = new ListView<>();
-    private TextField pointsToSpend = new TextField(String.valueOf(availableStatPoints));
+    private TextField pointsToSpend = new TextField(String.valueOf(availableAttributePoints));
     private ObservableList<String> allSkills = FXCollections.observableArrayList();
     private ObservableList<String> availableSkills = FXCollections.observableArrayList();
     private ObservableList<String> selectedSkills = FXCollections.observableArrayList();
@@ -90,6 +90,7 @@ class CharacterCreatorGUI {
     private Text willSaveText = new Text("Will: \t\t\t\t" + will);
     private Text armorClassText = new Text("Armor Class: \t\t" + AC);
     private TextArea powerDescription = new TextArea();
+    private int iconID;
 
     CharacterCreatorGUI() {
         initializeCharacterCreatorGUI();
@@ -168,9 +169,13 @@ class CharacterCreatorGUI {
         dao.getHeroIconByID(id);
         System.out.println("CURRENT ID: " + id);
         Image hero1img = dao.getHeroIconByID(id);
+        iconID = id;
         ImageView heroImageView = new ImageView(hero1img);
-        leftBox.getChildren().remove(5, 6);
-        leftBox.getChildren().add(heroImageView);
+        try {
+            leftBox.getChildren().remove(6);
+        } catch (IndexOutOfBoundsException ignored) {
+        }
+        leftBox.getChildren().add(6, heroImageView);
     }
 
     private List<Image> getAllIcons() throws SQLException, IOException {
@@ -185,22 +190,22 @@ class CharacterCreatorGUI {
             Image image = SwingFXUtils.toFXImage(bufferedImage, null);
             imageView.setImage(image);
             allIcons.add(image);
-            System.out.println("Reached the Inner Loop ");
         }
         return allIcons;
     }
 
+    //todo loading a (level1?) character from database
     private void eventOnLoadCharacters() throws SQLException {
         CharacterCreatorDAO dao = new CharacterCreatorDAO();
         List<String> list = dao.getAllHeroNames();
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
+        for (String s : list) {
+            System.out.println(s);
         }
     }
 
     //todo validate all required fields
 
-
+    //todo influence of class onto the character's saving throws
     private void saveTheCharacterToDatabase() throws SQLException {
         CharacterCreatorDTO characterCreatorDTO = new CharacterCreatorDTO();
         characterCreatorDTO.setHeroName(characterName.getText());
@@ -217,6 +222,7 @@ class CharacterCreatorGUI {
         characterCreatorDTO.setWill(will);
         characterCreatorDTO.setHitPoints(maxHP);
         characterCreatorDTO.setGold(100);
+        characterCreatorDTO.setHeroIconId(iconID);
         characterCreatorDTO.setAtWillPower1(atWill1Choice.getValue());
         characterCreatorDTO.setAtWillPower2(atWill2Choice.getValue());
         characterCreatorDTO.setEncounterPower1(encounterChoice.getValue());
@@ -238,8 +244,38 @@ class CharacterCreatorGUI {
         characterCreatorDTO.setStealth(finalSkillPointsArray[14]);
         characterCreatorDTO.setStreetwise(finalSkillPointsArray[15]);
         characterCreatorDTO.setThievery(finalSkillPointsArray[16]);
-        CharacterCreatorDAO characterCreatorDAO = new CharacterCreatorDAO();
-        characterCreatorDAO.addAHeroToDatabase(characterCreatorDTO);
+        List<String> errors = validateTheCharacterFields(characterCreatorDTO);
+        if (errors.size() == 0) {
+            CharacterCreatorDAO characterCreatorDAO = new CharacterCreatorDAO();
+            characterCreatorDAO.addAHeroToDatabase(characterCreatorDTO);
+        } else {
+            StringBuilder errorBuilder = new StringBuilder();
+            errorBuilder.append("Character cannot be created. Check the information below for details: \n");
+            for (String currentError : errors) {
+                errorBuilder.append(currentError).append("\n");
+                powerDescription.clear();
+                powerDescription.setText(errorBuilder.toString());
+            }
+        }
+    }
+
+    private List<String> validateTheCharacterFields(CharacterCreatorDTO characterCreatorDTO) {
+        List<String> listOfErrorMessages = new ArrayList<>();
+        if (characterCreatorDTO.getHeroName().isEmpty())
+            listOfErrorMessages.add("Write a name for your character.");
+        if (characterCreatorDTO.getHeroClass() == null) {
+            listOfErrorMessages.add("Select your character's class.");
+        }
+        if (characterCreatorDTO.getHeroRace() == null) {
+            listOfErrorMessages.add("Select your character's race.");
+        }
+        if (availableAttributePoints > 0)
+            listOfErrorMessages.add("You still have some attribute points left. Increase some attributes.");
+        if (availableAttributePoints < 0)
+            listOfErrorMessages.add("Some of your attributes are too high. The number of attribute points has to be 0 for the character to be finished.");
+        if (characterCreatorDTO.getHeroIconId() == 0)
+            listOfErrorMessages.add("Select your character's portrait.");
+        return listOfErrorMessages;
     }
 
     //todo add class traits selection
@@ -527,8 +563,8 @@ class CharacterCreatorGUI {
     }
 
     private void eventOnSpinnerChange(Integer oldValue, Integer newValue) {
-        availableStatPoints = availableStatPoints + calculateTotalPointsChange(oldValue, newValue);
-        pointsToSpend.setText(String.valueOf(availableStatPoints));
+        availableAttributePoints = availableAttributePoints + calculateTotalPointsChange(oldValue, newValue);
+        pointsToSpend.setText(String.valueOf(availableAttributePoints));
         calculateAllFinalAbilityScores();
         updateMaxHP(selectedHeroClass);
         updateSavingThrows();

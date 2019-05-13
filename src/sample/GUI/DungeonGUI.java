@@ -443,8 +443,6 @@ class DungeonGUI {
             temporaryX = XPos;
             temporaryY = YPos;
         }
-        System.out.println("TEMP--X: " + temporaryX);
-        System.out.println("TEMP--Y: " + temporaryY);
         mapTile = dungeonMap.getMapTilesArray()[temporaryX][temporaryY];
         gridButton = buttonGrid[temporaryX][temporaryY];
         if (currentDirection.contains("Room") || currentDirection.contains("Corridor") || currentDirection.contains("Opened")) {

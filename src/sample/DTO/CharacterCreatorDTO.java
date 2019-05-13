@@ -17,7 +17,7 @@ public class CharacterCreatorDTO {
     private String atWillPower2;
     private String encounterPower1;
     private String dailyPower1;
-    private int heroIconId;
+    private int heroIconId = 0;
     private int strength;
     private int constitution;
     private int dexterity;
