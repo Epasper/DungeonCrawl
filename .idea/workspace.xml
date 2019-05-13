@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="de97b43a-8902-45e2-a345-dc80bad4fa20" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/DTO/CharacterCreatorDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DTO/CharacterCreatorDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/StaticRules/HeroClassInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/StaticRules/HeroClassInformation.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,25 +16,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Model/DungeonMap.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5508">
-              <caret line="329" column="60" selection-start-line="329" selection-start-column="60" selection-end-line="329" selection-end-column="60" />
-              <folding>
-                <element signature="e#460#461#0" expanded="true" />
-                <element signature="e#491#492#0" expanded="true" />
-                <element signature="e#543#544#0" expanded="true" />
-                <element signature="e#583#584#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
+            <state relative-caret-position="229">
+              <caret line="154" column="29" selection-start-line="154" selection-start-column="29" selection-end-line="154" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -56,16 +40,30 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="168" column="10" selection-start-line="168" selection-start-column="10" selection-end-line="168" selection-end-column="10" />
+            <state relative-caret-position="306">
+              <caret line="758" column="95" selection-start-line="758" selection-start-column="95" selection-end-line="758" selection-end-column="95" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4374#4375#0" expanded="true" />
                 <element signature="e#4421#4422#0" expanded="true" />
-                <element signature="e#37265#37266#0" expanded="true" />
+                <element signature="e#35848#35849#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/sample/StaticRules/HeroClassInformation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="274">
+              <caret line="413" column="22" lean-forward="true" selection-start-line="413" selection-start-column="22" selection-end-line="413" selection-end-column="22" />
+              <folding>
+                <element signature="method#populateTheTablesWithAtWillPowers#0;class#HeroClassInformation#0" />
+                <element signature="method#populateTheTablesWithSkills#0;class#HeroClassInformation#0" />
+                <element signature="method#populateTheTablesWithHPs#0;class#HeroClassInformation#0" />
               </folding>
             </state>
           </provider>
@@ -155,8 +153,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>load</find>
-      <find>Image</find>
       <find>imagev</find>
       <find>filec</find>
       <find>updat</find>
@@ -185,6 +181,8 @@
       <find>powerDescription</find>
       <find>valida</find>
       <find>icon</find>
+      <find>raceupda</find>
+      <find>eventon</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -193,7 +191,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/sample/HeroPowers/Warden/WildbloodFrenzy.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Warden/ThunderRamAssault.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Warden/HungryEarth.java" />
         <option value="$PROJECT_DIR$/src/sample/HeroPowers/Warden/EarthSpikes.java" />
@@ -243,6 +240,7 @@
         <option value="$PROJECT_DIR$/src/sample/Model/Hero.java" />
         <option value="$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java" />
         <option value="$PROJECT_DIR$/src/sample/DTO/CharacterCreatorDTO.java" />
+        <option value="$PROJECT_DIR$/src/sample/StaticRules/HeroClassInformation.java" />
         <option value="$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java" />
       </list>
     </option>
@@ -309,6 +307,13 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="sample" type="462c0819:PsiDirectoryNode" />
               <item name="Model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="StaticRules" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -647,7 +652,14 @@
       <option name="project" value="LOCAL" />
       <updated>1557728177295</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Character selector - added field setters for skills in the character creation process.">
+      <created>1557729057597</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1557729057597</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TodoView">
@@ -663,7 +675,7 @@
     <frame x="1358" y="-290" width="1696" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2176039" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2176039" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -676,7 +688,7 @@
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49633253" weight="0.3961456" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="TODO" order="6" sideWeight="0.76589245" visible="true" weight="0.32762313" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.76589245" visible="true" weight="0.32762313" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.45110023" side_tool="true" weight="0.21413276" />
       <window_info anchor="bottom" id="Version Control" order="9" />
@@ -722,7 +734,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Character Creation - restyling the Character GUI -added bigger padding and improved readability." />
     <MESSAGE value="Character Creation - added a list with all skills and their values. Values to be filled next" />
     <MESSAGE value="Character Creation - List of all skills now displays the skill values. Skill proficiencies to be added next." />
     <MESSAGE value="Character Creation - Skill Proficiencies selection now adds 5 points to the selected skill." />
@@ -747,7 +758,8 @@
     <MESSAGE value="Dungeon Map - heroes from selector are now passed into map when created" />
     <MESSAGE value="Dungeon Map - heroes now have correct icons" />
     <MESSAGE value="Character selector - validation of the completeness of fields in character selection." />
-    <option name="LAST_COMMIT_MESSAGE" value="Character selector - validation of the completeness of fields in character selection." />
+    <MESSAGE value="Character selector - added field setters for skills in the character creation process." />
+    <option name="LAST_COMMIT_MESSAGE" value="Character selector - added field setters for skills in the character creation process." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1040,18 +1052,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/StaticRules/HeroClassInformation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3808">
-          <caret line="401" lean-forward="true" selection-start-line="401" selection-end-line="401" />
-          <folding>
-            <element signature="method#populateTheTablesWithAtWillPowers#0;class#HeroClassInformation#0" />
-            <element signature="method#populateTheTablesWithSkills#0;class#HeroClassInformation#0" />
-            <element signature="method#populateTheTablesWithHPs#0;class#HeroClassInformation#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/Node.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="236">
@@ -1156,8 +1156,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
+        <state relative-caret-position="229">
+          <caret line="154" column="29" selection-start-line="154" selection-start-column="29" selection-end-line="154" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1166,13 +1166,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="168" column="10" selection-start-line="168" selection-start-column="10" selection-end-line="168" selection-end-column="10" />
+        <state relative-caret-position="306">
+          <caret line="758" column="95" selection-start-line="758" selection-start-column="95" selection-end-line="758" selection-end-column="95" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4374#4375#0" expanded="true" />
             <element signature="e#4421#4422#0" expanded="true" />
-            <element signature="e#37265#37266#0" expanded="true" />
+            <element signature="e#35848#35849#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/StaticRules/HeroClassInformation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="413" column="22" lean-forward="true" selection-start-line="413" selection-start-column="22" selection-end-line="413" selection-end-column="22" />
+          <folding>
+            <element signature="method#populateTheTablesWithAtWillPowers#0;class#HeroClassInformation#0" />
+            <element signature="method#populateTheTablesWithSkills#0;class#HeroClassInformation#0" />
+            <element signature="method#populateTheTablesWithHPs#0;class#HeroClassInformation#0" />
           </folding>
         </state>
       </provider>

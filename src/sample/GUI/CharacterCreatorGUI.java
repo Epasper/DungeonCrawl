@@ -199,6 +199,7 @@ class CharacterCreatorGUI {
             System.out.println(s);
         }
     }
+
     //todo influence of class onto the character's saving throws
     private void saveTheCharacterToDatabase() throws SQLException {
         CharacterCreatorDTO characterCreatorDTO = new CharacterCreatorDTO();
@@ -620,8 +621,8 @@ class CharacterCreatorGUI {
         for (HeroClassInformation.CharacterRaces currentRace : HeroClassInformation.CharacterRaces.values()) {
             raceOptions.add(currentRace.toString());
         }
-        raceChoice.valueProperty().addListener((observable, oldValue, newValue) -> eventOnSelectHeroRace(newValue));
-        classChoice.valueProperty().addListener((observable, oldValue, newValue) -> eventOnSelectHeroClass(newValue));
+        raceChoice.valueProperty().addListener((observable, oldValue, newValue) -> eventOnRaceSelection(newValue));
+        classChoice.valueProperty().addListener((observable, oldValue, newValue) -> eventOnClassSelection(newValue));
         classChoice.setItems(classOptions);
         raceChoice.setItems(raceOptions);
         middleBox.add(characterName, 0, 0, 10, 1);
@@ -714,7 +715,8 @@ class CharacterCreatorGUI {
         //todo add a helper to power choice - when a mouse is dragged onto the power, then the power description is shown.
     }
 
-    private void eventOnSelectHeroRace(String newValue) {
+    private void eventOnRaceSelection(String newValue) {
+        manageRadioButtonsAfterSwitchingTheRace();
         manageRacialStatBonuses(newValue);
         calculateAllFinalAbilityScores();
         for (int i = 0; i < 6; i++) {
@@ -724,7 +726,7 @@ class CharacterCreatorGUI {
         buildSkillBoxes(false);
     }
 
-    private void eventOnSelectHeroClass(String newValue) {
+    private void eventOnClassSelection(String newValue) {
         HeroClassInformation heroClassInformation = new HeroClassInformation();
         System.out.println(newValue);
         availableSkills.clear();
@@ -744,61 +746,17 @@ class CharacterCreatorGUI {
 
     //todo move this method to HeroClassInformation
     private void manageRacialStatBonuses(String raceName) {
-        switchTheRace();
-        switch (raceName) {
-            case "Deva": {
-                applyStatBonuses("Charisma", "Intelligence", "Wisdom");
-                break;
-            }
-            case "Dragonborn": {
-                applyStatBonuses("Charisma", "Strength", "Constitution");
-                break;
-            }
-            case "Dwarf": {
-                applyStatBonuses("Constitution", "Strength", "Wisdom");
-                break;
-            }
-            case "Eladrin":
-            case "Gnome": {
-                applyStatBonuses("Intelligence", "Dexterity", "Charisma");
-                break;
-            }
-            case "Elf": {
-                applyStatBonuses("Dexterity", "Intelligence", "Wisdom");
-                break;
-            }
-            case "Goliath": {
-                applyStatBonuses("Strength", "Constitution", "Wisdom");
-                break;
-            }
-            case "Halfelf": {
-                applyStatBonuses("Constitution", "Wisdom", "Charisma");
-                break;
-            }
-            case "Halforc": {
-                applyStatBonuses("Dexterity", "Strength", "Constitution");
-                break;
-            }
-            case "Halfling": {
-                applyStatBonuses("Dexterity", "Charisma", "Constitution");
-                break;
-            }
-            case "Shifter": {
-                applyStatBonuses("Wisdom", "Strength", "Dexterity");
-                break;
-            }
-            case "Tiefling": {
-                applyStatBonuses("Charisma", "Constitution", "Intelligence");
-                break;
-            }
-            case "Human": {
-                racialBonusRadioButtons.get(getStatID("Strength")).setDisable(false);
-                racialBonusRadioButtons.get(getStatID("Constitution")).setDisable(false);
-                racialBonusRadioButtons.get(getStatID("Dexterity")).setDisable(false);
-                racialBonusRadioButtons.get(getStatID("Intelligence")).setDisable(false);
-                racialBonusRadioButtons.get(getStatID("Wisdom")).setDisable(false);
-                racialBonusRadioButtons.get(getStatID("Charisma")).setDisable(false);
-            }
+        HeroClassInformation heroClassInformation = new HeroClassInformation();
+        if (raceName.equals("Human")) {
+            racialBonusRadioButtons.get(getStatID("Strength")).setDisable(false);
+            racialBonusRadioButtons.get(getStatID("Constitution")).setDisable(false);
+            racialBonusRadioButtons.get(getStatID("Dexterity")).setDisable(false);
+            racialBonusRadioButtons.get(getStatID("Intelligence")).setDisable(false);
+            racialBonusRadioButtons.get(getStatID("Wisdom")).setDisable(false);
+            racialBonusRadioButtons.get(getStatID("Charisma")).setDisable(false);
+        } else {
+            List<String> listOfBonuses = heroClassInformation.manageRacialStatBonuses(raceName);
+            applyStatBonuses(listOfBonuses.get(0), listOfBonuses.get(1), listOfBonuses.get(2));
         }
     }
 
@@ -812,7 +770,7 @@ class CharacterCreatorGUI {
         return HeroClassInformation.Attributes.valueOf(name).ordinal();
     }
 
-    private void switchTheRace() {
+    private void manageRadioButtonsAfterSwitchingTheRace() {
         for (RadioButton racialBonusesRadioButton : racialBonusRadioButtons) {
             racialBonusesRadioButton.setDisable(true);
         }

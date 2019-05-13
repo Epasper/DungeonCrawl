@@ -398,6 +398,80 @@ public class HeroClassInformation {
         wizard.add("Mage");
     }
 
+    public List<String> manageRacialStatBonuses(String raceName) {
+        List<String> racialBonuses = new ArrayList<>();
+        switch (raceName) {
+            case "Deva": {
+                racialBonuses.add("Charisma");
+                racialBonuses.add("Intelligence");
+                racialBonuses.add("Wisdom");
+                break;
+            }
+            case "Dragonborn": {
+                racialBonuses.add("Charisma");
+                racialBonuses.add("Strength");
+                racialBonuses.add("Constitution");
+                break;
+            }
+            case "Dwarf": {
+                racialBonuses.add("Constitution");
+                racialBonuses.add("Strength");
+                racialBonuses.add("Wisdom");
+                break;
+            }
+            case "Eladrin":
+            case "Gnome": {
+                racialBonuses.add("Intelligence");
+                racialBonuses.add("Dexterity");
+                racialBonuses.add("Charisma");
+                break;
+            }
+            case "Elf": {
+                racialBonuses.add("Dexterity");
+                racialBonuses.add("Intelligence");
+                racialBonuses.add("Wisdom");
+                break;
+            }
+            case "Goliath": {
+                racialBonuses.add("Strength");
+                racialBonuses.add("Constitution");
+                racialBonuses.add("Wisdom");
+                break;
+            }
+            case "Halfelf": {
+                racialBonuses.add("Constitution");
+                racialBonuses.add("Wisdom");
+                racialBonuses.add("Charisma");
+                break;
+            }
+            case "Halforc": {
+                racialBonuses.add("Dexterity");
+                racialBonuses.add("Strength");
+                racialBonuses.add("Constitution");
+                break;
+            }
+            case "Halfling": {
+                racialBonuses.add("Dexterity");
+                racialBonuses.add("Charisma");
+                racialBonuses.add("Constitution");
+                break;
+            }
+            case "Shifter": {
+                racialBonuses.add("Wisdom");
+                racialBonuses.add("Strength");
+                racialBonuses.add("Dexterity");
+                break;
+            }
+            case "Tiefling": {
+                racialBonuses.add("Charisma");
+                racialBonuses.add("Constitution");
+                racialBonuses.add("Intelligence");
+                break;
+            }
+        } return racialBonuses;
+    }
+
+
     public HeroPower getHeroPowerByName(String className, String powerName, String typeOfPower) {
 
         //todo NullPointer
