@@ -43,7 +43,7 @@ public class EncounterCalculator {
         List<Monster> listOfPossibleMonsters = getTheListOfPossibleMonsters();
         System.out.println("Total encounter XP for this room: " + inputXP + "(Adjusted Party Level: " +
                 encounterLevel +
-                " , number of heroes: " +
+                ", number of heroes: " +
                 heroList.size() +
                 ")");
         while (inputXP > 0) {

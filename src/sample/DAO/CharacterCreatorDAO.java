@@ -211,7 +211,6 @@ public class CharacterCreatorDAO {
             dto.setStealth(rs.getInt("sk_stealth"));
             dto.setStreetwise(rs.getInt("sk_streetwise"));
             dto.setThievery(rs.getInt("sk_thievery"));
-            //todo write a separate method that accepts a full string from sql, and changes it to list of Strings (check if it's necessary)
             String allAtWillPowers = rs.getString("powers_at_will");
             dto.setAtWillPower1(allAtWillPowers.substring(0, allAtWillPowers.indexOf("_") - 1));
             dto.setAtWillPower2(allAtWillPowers.substring(allAtWillPowers.lastIndexOf("_") + 1));

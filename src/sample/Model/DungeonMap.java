@@ -114,7 +114,7 @@ public class DungeonMap {
     private void seedASingleRoomTile(int initialXPos, int initialYPos, int i, int j) {
         try {
             if (isThisTheFirstSpawningRoom) {
-                getMapTilesArray()[initialXPos + i][initialYPos + j].visible = true;
+                getMapTilesArray()[initialXPos + i][initialYPos + j].alreadyDiscovered = true;
             }
             getMapTilesArray()[initialXPos + i][initialYPos + j].typeOfTile = "Room";
         } catch (IndexOutOfBoundsException ignored) {
@@ -450,7 +450,4 @@ public class DungeonMap {
         return mapTilesArray;
     }
 
-    public void setMapTilesArray(MapTile[][] mapTilesArray) {
-        this.mapTilesArray = mapTilesArray;
-    }
 }

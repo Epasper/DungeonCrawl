@@ -21,7 +21,6 @@ import java.util.Random;
 
 class DungeonGUI {
 
-    //todo Create a pane on top of the dungeonMap grid, that will show the available skills.
     private MainMenuGUI mainMenuGUI = new MainMenuGUI();
     private int mapWidth = 40;
     private int mapHeight = 40;
@@ -184,13 +183,13 @@ class DungeonGUI {
                 int currentEntityID = dungeonMap.getMapTilesArray()[i][j].getOccupyingCreatureId();
                 String typeOfTile;
                 typeOfTile = dungeonMap.getMapTilesArray()[i][j].typeOfTile;
-                //debug mode only - make the whole dungeonMap visible:
-                dungeonMap.getMapTilesArray()[i][j].visible = true;
+                //debug mode only - make the whole dungeonMap alreadyDiscovered:
+                dungeonMap.getMapTilesArray()[i][j].alreadyDiscovered = true;
                 applyATileImageToAButton(typeOfTile, buttonGrid[i][j]);
                 if (currentEntityID > 0) {
                     applyEntityIconToAButton(currentEntityID, buttonGrid[i][j]);
                 }
-                if (!dungeonMap.getMapTilesArray()[i][j].visible) {
+                if (!dungeonMap.getMapTilesArray()[i][j].alreadyDiscovered) {
                     applyATileImageToAButton("Fog", buttonGrid[i][j]);
                 }
             }
@@ -369,8 +368,21 @@ class DungeonGUI {
     }
 
     //todo add a visibility checker similar to the range checker, but straight and with a longer range
-    //todo add a console in the dungeon view to write output visible to players
+    //todo add a console in the dungeon view to write output alreadyDiscovered to players
     //todo think about the power selection menu in the dungeon GUI
+
+    private void checkTheLineOfSight(Hero hero) {
+        boolean alreadyInvisible = false;
+        boolean alreadyCovered = false;
+        int YPos = hero.getMapYPos();
+        int XPos = hero.getMapXPos();
+        int sightRange = 10;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+
+            }
+        }
+    }
 
     private void checkTheAvailableDistance(Hero hero) {
         int YPos = hero.getMapYPos();
@@ -462,9 +474,9 @@ class DungeonGUI {
                 recursiveCheckDistance(currentDirection, temporaryY, temporaryX, iterations - stepDecrement, reasonForChecking);
             }
         } else if (currentDirection.contains("Wall")) {
-            mapTile.visible = true;
+            mapTile.alreadyDiscovered = true;
         } else if (currentDirection.contains("Closed")) {
-            mapTile.visible = true;
+            mapTile.alreadyDiscovered = true;
             mapTile.inWalkRange = true;
             gridButton.setStyle("-fx-color: #333399");
             if (reasonForChecking.contains("Interact")) {
@@ -476,7 +488,7 @@ class DungeonGUI {
     }
 
     private void markTheTileAsAccessible(String reasonForChecking, MapTile mapTile, Button gridButton) {
-        mapTile.visible = true;
+        mapTile.alreadyDiscovered = true;
         mapTile.inWalkRange = true;
         if (reasonForChecking.contains("Walk")) {
             gridButton.setStyle("-fx-color: #00ff00");

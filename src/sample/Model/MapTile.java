@@ -7,8 +7,10 @@ public class MapTile {
     public String typeOfTile;
     private int occupyingCreatureId = 0;
     public boolean inWalkRange = false;
-    public boolean visible = false;
+    public boolean alreadyDiscovered = false;
     public boolean withinInteractionRange = false;
+    public boolean currentlyInvisible = false;
+    public boolean currentlyBehindCover = false;
 
     public String getTypeOfTile() {
         return typeOfTile;
