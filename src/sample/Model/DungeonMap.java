@@ -294,11 +294,15 @@ public class DungeonMap {
         int currentMonsterYPos;
         //todo make encounter difficulty selection possible
         EncounterCalculator encounterCalculator = new EncounterCalculator();
-//        System.out.println("HERO LIST FOR MONSTER CALCULATIONS: ");
-//        for (Hero hero : heroList) {
-//            System.out.println(hero.getMonsterName() + " Hero Level: " + hero.getHeroLevel());
-//        }
+        System.out.println("HERO LIST FOR MONSTER CALCULATIONS: ");
+        for (Hero hero : heroList) {
+            System.out.println(hero.getMonsterName() + " Hero Level: " + hero.getHeroLevel());
+        }
         List<Monster> monsterList = encounterCalculator.getTheListOfMonsters(heroList, "Hard");
+        System.out.println("MONSTER LIST FOR MONSTER CALCULATIONS: ");
+        for (Monster hero : monsterList) {
+            System.out.println(hero.getMonsterName() + " Hero Experience: " + hero.getXpValue());
+        }
         for (int i = 0; i < monsterList.size(); i++) {
             currentMonsterXPos = randX.nextInt(room.roomWidth);
             currentMonsterYPos = randY.nextInt(room.roomHeight);

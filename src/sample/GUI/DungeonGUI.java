@@ -47,11 +47,12 @@ class DungeonGUI {
     private Image openedDoorVertical = new Image(getClass().getResourceAsStream("Images\\OpenedDoorVertical.png"));
     private Image openedDoorHorizontal = new Image(getClass().getResourceAsStream("Images\\OpenedDoorHorizontal.png"));
     private List<Hero> heroList;
-    private List<Monster> monsterList = new ArrayList<>();
+    //private List<Monster> monsterList = new ArrayList<>();
     private DungeonMap dungeonMap = new DungeonMap(heroList);
     private int currentlyActiveHeroID;
     private boolean hasTheCharacterBeenSelected = false;
     private int numberOfHeroesThatFinishedMovement;
+
     private DungeonMap getDungeonMap() {
         return dungeonMap;
     }
@@ -229,6 +230,8 @@ class DungeonGUI {
 
     private void eventOnHeroAttackingAMonster(int XPos, int YPos) {
         Hero hero = getHeroByID(getCurrentlyActiveHeroID(), heroList);
+        EncounterCalculator encounterCalculator = new EncounterCalculator();
+        List<Monster> monsterList = encounterCalculator.getTheListOfPossibleMonsters();
         Monster monster = getMonsterByID(getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureId(), monsterList);
         hero.attackAMonster(monster);
     }
@@ -272,11 +275,18 @@ class DungeonGUI {
     }
 
 
-    private void applyEntityIconToAButton(int heroID, Button aButton) throws IOException, SQLException {
+    private void applyEntityIconToAButton(int heroID, Button aButton) {
+        EncounterCalculator encounterCalculator = new EncounterCalculator();
+        List<Monster> monsterList = encounterCalculator.getTheListOfPossibleMonsters();
+        System.out.println("Iterating through current monsters: ");
+        for (Monster monster : monsterList) {
+            System.out.println("Current monster: " + monster.getMonsterName());
+        }
         if (heroID < 100) {
             aButton.setGraphic(new ImageView(getHeroByID(heroID, heroList).getHeroIcon()));
         } else {
             aButton.setGraphic(new ImageView(getMonsterByID(heroID, monsterList).getMonsterImage()));
+            System.out.println("CHECKING FOR MONSTER IMAGE:  " + getMonsterByID(heroID, monsterList).getMonsterImage());
         }
     }
 
