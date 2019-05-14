@@ -49,7 +49,7 @@ class DungeonGUI {
     private List<Hero> heroList;
     private List<Monster> monsterList = new ArrayList<>();
     private FakeDatabase database = new FakeDatabase();
-    private DungeonMap dungeonMap = new DungeonMap(generateAMonsterList(createAnIDList()));
+    private DungeonMap dungeonMap = new DungeonMap(heroList);
     private int currentlyActiveHeroID;
     private boolean hasTheCharacterBeenSelected = false;
     private int numberOfHeroesThatFinishedMovement;
@@ -121,18 +121,6 @@ class DungeonGUI {
             powerButton.setTextFill(Color.WHITE);
             skillsVBox.getChildren().add(powerButton);
         }
-    }
-
-    private List<Monster> generateAMonsterList(List<Integer> monsterIDList) {
-        database.populateDatabaseWithMonsters();
-        for (Integer monsterID : monsterIDList) {
-            for (Monster monster : database.listOfMonsters) {
-                if (monster.getID() == monsterID + 100) {
-                    monsterList.add(monster);
-                }
-            }
-        }
-        return monsterList;
     }
 
     private List<Integer> createAnIDList() {

@@ -7,7 +7,7 @@ public class Monster extends Creature {
     private String monsterName;
     private String monsterType;
     //todo remove all icons from HDD after reconnecting things to SQL
-    private Image monsterImage = new Image(getClass().getResourceAsStream("Images\\monster1.png"));
+    private Image monsterImage;
     private int xpValue;
     private int initiativeBonus;
     private String attack1Name;

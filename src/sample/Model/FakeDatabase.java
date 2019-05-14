@@ -18,7 +18,7 @@ public class FakeDatabase {
     private Image monster4img = new Image(getClass().getResourceAsStream("Images\\monster4.png"));
     private Image monster5img = new Image(getClass().getResourceAsStream("Images\\monster5.png"));
     private Image monster6img = new Image(getClass().getResourceAsStream("Images\\monster6.png"));
-    public List<Monster> listOfMonsters = new ArrayList<>();
+    //public List<Monster> listOfMonsters = new ArrayList<>();
 
     public FakeDatabase() {
     }
@@ -70,11 +70,11 @@ public class FakeDatabase {
         monster4.setMonsterImage(monster4img);
         monster5.setMonsterImage(monster5img);
         monster6.setMonsterImage(monster6img);
-        listOfMonsters.add(monster1);
-        listOfMonsters.add(monster2);
-        listOfMonsters.add(monster3);
-        listOfMonsters.add(monster4);
-        listOfMonsters.add(monster5);
-        listOfMonsters.add(monster6);
+//        listOfMonsters.add(monster1);
+//        listOfMonsters.add(monster2);
+//        listOfMonsters.add(monster3);
+//        listOfMonsters.add(monster4);
+//        listOfMonsters.add(monster5);
+//        listOfMonsters.add(monster6);
     }
 }

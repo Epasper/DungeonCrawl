@@ -10,7 +10,6 @@ public class DungeonMap {
     private MapTile[][] mapTilesArray = new MapTile[numberOfTilesX][numberOfTilesY];
     private boolean isThisTheFirstSpawningRoom = true;
     private List<Hero> heroList;
-    private List<Monster> monsterList;
 
     public List<Hero> getHeroList() {
         return heroList;
@@ -20,11 +19,8 @@ public class DungeonMap {
         this.heroList = heroList;
     }
 
-    public DungeonMap(List<Monster> monsterList) {
-        this.monsterList = monsterList;
-        for (Monster monster : monsterList) {
-            System.out.println("Monster ID: " + monster.getID() + " Class: " + monster.getMonsterType());
-        }
+    public DungeonMap(List<Hero> heroList) {
+        this.heroList = heroList;
     }
 
     public void drawAMap() {
@@ -296,6 +292,9 @@ public class DungeonMap {
         int currentMonsterXPos;
         Random randY = new Random();
         int currentMonsterYPos;
+        //todo make encounter difficulty selection possible
+        EncounterCalculator encounterCalculator = new EncounterCalculator();
+        List<Monster> monsterList = encounterCalculator.getTheListOfMonsters(heroList, "Hard");
         for (int i = 0; i < monsterList.size(); i++) {
             currentMonsterXPos = randX.nextInt(room.roomWidth);
             currentMonsterYPos = randY.nextInt(room.roomHeight);

@@ -9,6 +9,7 @@ public class CharacterCreatorDTO {
     private String heroName;
     private String heroClass;
     private String heroRace;
+    private int heroLevel;
     private int hitPoints;
     private int gold;
     private double speed = 6;
@@ -48,6 +49,14 @@ public class CharacterCreatorDTO {
     private int Streetwise;
     private int Thievery;
     private Image heroImage;
+
+    public int getHeroLevel() {
+        return heroLevel;
+    }
+
+    public void setHeroLevel(int heroLevel) {
+        this.heroLevel = heroLevel;
+    }
 
     public String getAllAtWillPowers() {
         return allAtWillPowers;

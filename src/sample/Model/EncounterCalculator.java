@@ -10,16 +10,13 @@ import java.util.Random;
 
 public class EncounterCalculator {
 
-    private int inputXP;
-    private int encounterLevel;
     private List<Monster> listOfPossibleMonsters = new ArrayList<>();
     private List<Monster> listOfChosenMonsters = new ArrayList<>();
 
-    public EncounterCalculator(List<Hero> heroList, String difficulty) {
-        getTheListOfMonsters(heroList, difficulty);
+    public EncounterCalculator() {
     }
 
-    private List<Monster> getTheListOfMonsters(List<Hero> heroList, String difficulty) {
+    public List<Monster> getTheListOfMonsters(List<Hero> heroList, String difficulty) {
         int encounterLevel = calculateMediumPartyLevel(heroList);
         if (difficulty.equals("Hard")) encounterLevel = +3;
         if (difficulty.equals("Medium")) encounterLevel = +2;
@@ -34,6 +31,7 @@ public class EncounterCalculator {
             int i = random.nextInt(listOfPossibleMonsters.size());
             listOfChosenMonsters.add(listOfPossibleMonsters.get(i));
             inputXP = -listOfPossibleMonsters.get(i).getXpValue();
+            System.out.println("Input Xp after putting a monster: " + inputXP);
         }
         return listOfChosenMonsters;
     }

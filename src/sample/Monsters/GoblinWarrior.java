@@ -13,7 +13,7 @@ public class GoblinWarrior extends Monster {
         this.setWill(12);
         this.setMonsterName("Goblin Warrior");
         this.setMonsterType("Humanoid");
-        this.setMonsterImage(new Image(getClass().getResourceAsStream("Images\\GoblinWarrior.png")));
+        this.setMonsterImage(new Image(getClass().getResourceAsStream("MonsterImages\\GoblinWarrior.png")));
         this.setXpValue(100);
         this.setInitiativeBonus(5);
         this.setAttack1Name("Spear");
