@@ -1,7 +1,5 @@
 package sample.Model;
 
-import sample.Monsters.Monster;
-
 import java.util.List;
 import java.util.Random;
 
@@ -25,7 +23,7 @@ public class DungeonMap {
     public DungeonMap(List<Monster> monsterList) {
         this.monsterList = monsterList;
         for (Monster monster : monsterList) {
-            System.out.println("Monster ID: " + monster.getID() + " Class: " + monster.monsterType);
+            System.out.println("Monster ID: " + monster.getID() + " Class: " + monster.getMonsterType());
         }
     }
 
@@ -306,7 +304,7 @@ public class DungeonMap {
                 getMapTilesArray()[room.roomXPos + currentMonsterXPos][room.roomYPos + currentMonsterYPos].setOccupyingCreatureId(currentMonster.getID());
                 currentMonster.setMapXPos(room.roomXPos + currentMonsterXPos);
                 currentMonster.setMapYPos(room.roomYPos + currentMonsterYPos);
-                System.out.println("Monster Class: " + currentMonster.monsterType + " X: " + currentMonster.getMapXPos() + " Y: " + currentMonster.getMapYPos());
+                System.out.println("Monster Class: " + currentMonster.getMonsterType() + " X: " + currentMonster.getMapXPos() + " Y: " + currentMonster.getMapYPos());
             } else {
                 i--;
             }

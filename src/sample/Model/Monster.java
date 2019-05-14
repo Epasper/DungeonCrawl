@@ -1,4 +1,4 @@
-package sample.Monsters;
+package sample.Model;
 
 import javafx.scene.image.Image;
 import sample.Model.Creature;
@@ -6,7 +6,8 @@ import sample.Model.Creature;
 public class Monster extends Creature {
     private String monsterName;
     private String monsterType;
-    private Image monsterImage = new Image(getClass().getResourceAsStream("Images\\icon1.png"));
+    //todo remove all icons from HDD after reconnecting things to SQL
+    private Image monsterImage = new Image(getClass().getResourceAsStream("Images\\monster1.png"));
     private int xpValue;
     private int initiativeBonus;
     private String attack1Name;

@@ -1,7 +1,6 @@
 package sample.Model;
 
 import javafx.scene.image.Image;
-import sample.Monsters.Monster;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,24 +52,24 @@ public class FakeDatabase {
 
 
     public void populateDatabaseWithMonsters() {
-        monster1.monsterType = "Lizardman";
-        monster2.monsterType = "Orc";
-        monster3.monsterType = "Ratfolk";
-        monster4.monsterType = "Rat";
-        monster5.monsterType = "Zombie";
-        monster6.monsterType = "Rat Monk";
+        monster1.setMonsterType("Lizardman");
+        monster2.setMonsterType("Orc");
+        monster3.setMonsterType("Ratfolk");
+        monster4.setMonsterType("Rat");
+        monster5.setMonsterType("Zombie");
+        monster6.setMonsterType("Rat Monk");
         monster1.setID(101);
-        monster1.setID(102);
-        monster1.setID(103);
-        monster1.setID(104);
-        monster1.setID(105);
-        monster1.setID(106);
-        monster1.monsterImage = monster1img;
-        monster2.monsterImage = monster2img;
-        monster3.monsterImage = monster3img;
-        monster4.monsterImage = monster4img;
-        monster5.monsterImage = monster5img;
-        monster6.monsterImage = monster6img;
+        monster2.setID(102);
+        monster3.setID(103);
+        monster4.setID(104);
+        monster5.setID(105);
+        monster6.setID(106);
+        monster1.setMonsterImage(monster1img);
+        monster2.setMonsterImage(monster2img);
+        monster3.setMonsterImage(monster3img);
+        monster4.setMonsterImage(monster4img);
+        monster5.setMonsterImage(monster5img);
+        monster6.setMonsterImage(monster6img);
         listOfMonsters.add(monster1);
         listOfMonsters.add(monster2);
         listOfMonsters.add(monster3);

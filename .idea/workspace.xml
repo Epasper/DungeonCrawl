@@ -3,9 +3,37 @@
   <component name="ChangeListManager">
     <list default="true" id="de97b43a-8902-45e2-a345-dc80bad4fa20" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/DTO/CharacterCreatorDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DTO/CharacterCreatorDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Model/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Model/Creature.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/DungeonMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Model/DungeonMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/FakeDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Model/FakeDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Model/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/Images/608dddd6-762b-44e4-a6da-b4e62e78a1e4_scaled.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/Images/DoorHorizontal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/Images/DoorVertical.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/Images/Floor.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallE.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallHoriz.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallN.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallNE.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallNW.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallS.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallSE.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallSW.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallVert.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/Images/FloorWallW.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/Images/HeroPortraits/icon1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Model/icon1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/Images/HeroPortraits/icon2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/Images/HeroPortraits/icon3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/Images/HeroPortraits/icon4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/Images/HeroPortraits/icon5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/Images/HeroPortraits/icon6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/Images/OpenedDoorHorizontal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/Images/OpenedDoorVertical.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/Images/download.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/Images/fog.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/Images/fogchess-Copy.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/Images/wall.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Monsters/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Model/Monster.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,35 +44,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="571">
-              <caret line="305" column="1" lean-forward="true" selection-start-line="305" selection-start-column="1" selection-end-line="305" selection-end-column="1" />
+            <state relative-caret-position="945">
+              <caret line="90" column="35" selection-start-line="90" selection-start-column="35" selection-end-line="90" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Model/Hero.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1374#1375#0" expanded="true" />
-                <element signature="e#1406#1407#0" expanded="true" />
-                <element signature="e#1470#1471#0" expanded="true" />
-                <element signature="e#1512#1513#0" expanded="true" />
-                <element signature="e#1547#1548#0" expanded="true" />
-                <element signature="e#1578#1579#0" expanded="true" />
-                <element signature="e#1626#1627#0" expanded="true" />
-                <element signature="e#1666#1667#0" expanded="true" />
-                <element signature="e#1763#1764#0" expanded="true" />
-                <element signature="e#1811#1812#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -54,7 +60,7 @@
         <entry file="file://$PROJECT_DIR$/src/sample/GUI/PartySelectorGUI.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="236">
-              <caret line="53" column="72" selection-start-line="53" selection-start-column="72" selection-end-line="53" selection-end-column="72" />
+              <caret line="52" column="72" selection-start-line="52" selection-start-column="72" selection-end-line="52" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -65,10 +71,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="166" column="28" lean-forward="true" selection-start-line="166" selection-start-column="28" selection-end-line="166" selection-end-column="28" />
+            <state relative-caret-position="425">
+              <caret line="70" column="5" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#3203#3204#0" expanded="true" />
+                <element signature="e#3234#3235#0" expanded="true" />
+                <element signature="e#3286#3287#0" expanded="true" />
+                <element signature="e#3326#3327#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -96,15 +106,6 @@
                 <element signature="e#1814#1815#0" expanded="true" />
                 <element signature="e#1866#1867#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Model/Monster.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="29" lean-forward="true" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -138,10 +139,41 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Model/Hero.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1928">
+              <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1374#1375#0" expanded="true" />
+                <element signature="e#1406#1407#0" expanded="true" />
+                <element signature="e#1470#1471#0" expanded="true" />
+                <element signature="e#1512#1513#0" expanded="true" />
+                <element signature="e#1547#1548#0" expanded="true" />
+                <element signature="e#1578#1579#0" expanded="true" />
+                <element signature="e#1626#1627#0" expanded="true" />
+                <element signature="e#1666#1667#0" expanded="true" />
+                <element signature="e#1763#1764#0" expanded="true" />
+                <element signature="e#1811#1812#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Model/Monster.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="9" column="83" selection-start-line="9" selection-start-column="83" selection-end-line="9" selection-end-column="83" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Model/DungeonMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="337" column="78" selection-start-line="337" selection-start-column="78" selection-end-line="337" selection-end-column="78" />
+            <state relative-caret-position="193">
+              <caret line="25" column="103" selection-start-line="25" selection-start-column="103" selection-end-line="25" selection-end-column="103" />
               <folding>
                 <element signature="e#460#461#0" expanded="true" />
                 <element signature="e#491#492#0" expanded="true" />
@@ -152,20 +184,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Model/FakeDatabase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="69" column="28" selection-start-line="69" selection-start-column="28" selection-end-line="69" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/HeroPower.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
+            <state relative-caret-position="408">
+              <caret line="27" column="36" lean-forward="true" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -220,7 +243,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/sample/FakeDatabase.java" />
         <option value="$PROJECT_DIR$/src/sample/Hero.java" />
         <option value="$PROJECT_DIR$/src/sample/Controller.java" />
         <option value="$PROJECT_DIR$/src/sample/Creature.java" />
@@ -228,7 +250,6 @@
         <option value="$PROJECT_DIR$/src/sample/Monster.java" />
         <option value="$PROJECT_DIR$/src/sample/Room.java" />
         <option value="$PROJECT_DIR$/src/sample/Model/MapTile.java" />
-        <option value="$PROJECT_DIR$/src/sample/Model/Monster.java" />
         <option value="$PROJECT_DIR$/src/sample/Model/Room.java" />
         <option value="$PROJECT_DIR$/src/sample/GUI/PartySlectorGUI.java" />
         <option value="$PROJECT_DIR$/src/sample/GUI/Test.form" />
@@ -264,13 +285,15 @@
         <option value="$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java" />
         <option value="$PROJECT_DIR$/src/sample/DAO/PutBLOBIntoDB.java" />
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
-        <option value="$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java" />
-        <option value="$PROJECT_DIR$/src/sample/Model/FakeDatabase.java" />
-        <option value="$PROJECT_DIR$/src/sample/Model/DungeonMap.java" />
-        <option value="$PROJECT_DIR$/src/sample/Model/Hero.java" />
         <option value="$PROJECT_DIR$/src/sample/Model/Creature.java" />
         <option value="$PROJECT_DIR$/src/sample/DTO/CharacterCreatorDTO.java" />
         <option value="$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java" />
+        <option value="$PROJECT_DIR$/src/sample/Model/DungeonMap.java" />
+        <option value="$PROJECT_DIR$/src/sample/Monsters/Monster.java" />
+        <option value="$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java" />
+        <option value="$PROJECT_DIR$/src/sample/Model/Hero.java" />
+        <option value="$PROJECT_DIR$/src/sample/Model/Monster.java" />
+        <option value="$PROJECT_DIR$/src/sample/Model/FakeDatabase.java" />
       </list>
     </option>
   </component>
@@ -321,13 +344,6 @@
               <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="sample" type="462c0819:PsiDirectoryNode" />
-              <item name="DTO" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="sample" type="462c0819:PsiDirectoryNode" />
               <item name="GUI" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -335,7 +351,8 @@
               <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="sample" type="462c0819:PsiDirectoryNode" />
-              <item name="HeroPowers" type="462c0819:PsiDirectoryNode" />
+              <item name="GUI" type="462c0819:PsiDirectoryNode" />
+              <item name="Images" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
@@ -343,6 +360,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="sample" type="462c0819:PsiDirectoryNode" />
               <item name="Model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
+              <item name="Images" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
@@ -377,9 +402,12 @@
     <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\epasp\DungeonCrawl\src\sample\Styling" />
-      <recent name="C:\Users\epasp\DungeonCrawl\src\sample" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\Model" />
+      <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\Model\Images" />
+      <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\Monsters\Images" />
+      <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\Monsters" />
+      <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\Styling" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="sample.HeroPowers.Cleric" />
@@ -388,9 +416,11 @@
       <recent name="sample.HeroPowers.Avenger" />
       <recent name="sample" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\Monsters" />
       <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\Model" />
-      <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\Styling" />
+      <recent name="C:\Users\epasp\DungeonCrawl\src\sample\Styling" />
+      <recent name="C:\Users\epasp\DungeonCrawl\src\sample" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -435,20 +465,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1556870921453</updated>
-    </task>
-    <task id="LOCAL-00001" summary="Character Creation - removed unnecessary getters and setters, added armor class calculations.">
-      <created>1557122286542</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1557122286542</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Character Creation - started powers selection, new class: HeroPower and beginning of the Character GUI refactoring">
-      <created>1557126045714</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1557126045714</updated>
     </task>
     <task id="LOCAL-00003" summary="Character Creation - At Will Power Selection - Populated rules for 1st at will powers of Barbarian and Avenger, added comboBoxes and selections.">
       <created>1557131965624</created>
@@ -779,7 +795,21 @@
       <option name="project" value="LOCAL" />
       <updated>1557812047135</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Model - added ac to fields and to SQL communication">
+      <created>1557812388477</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1557812388477</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Monster - added fields to monsters, added &quot;monsters&quot; package, refactored fields, added getters and setters, corrected some inheritance errors">
+      <created>1557813165239</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1557813165239</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TodoView">
@@ -795,7 +825,7 @@
     <frame x="1358" y="-290" width="1696" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2200489" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2200489" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -804,7 +834,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32976446" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.54889977" visible="true" weight="0.2130621" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.54889977" visible="true" weight="0.2130621" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49633253" weight="0.3961456" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -854,8 +884,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactoring - cleaned a lot of access issues and unnecessary declarations" />
-    <MESSAGE value="Added a party selector to the dungeon GUI" />
     <MESSAGE value="Blob putter added, blobs added to MySQL." />
     <MESSAGE value="Portrait Selector now lets you only choose images from database." />
     <MESSAGE value="Character Creator - choosing a portrait now redirects into SQL instead of FileChooser" />
@@ -879,20 +907,11 @@
     <MESSAGE value="Character Creator - hero powers are now being selected at character selection" />
     <MESSAGE value="Dungeon GUI - hero powers are now being displayed on the side bar upon clicking the hero icon." />
     <MESSAGE value="Model - refactoring fields and managing inheritance in Hero, Monster and Creature classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Model - refactoring fields and managing inheritance in Hero, Monster and Creature classes" />
+    <MESSAGE value="Model - added ac to fields and to SQL communication" />
+    <MESSAGE value="Monster - added fields to monsters, added &quot;monsters&quot; package, refactored fields, added getters and setters, corrected some inheritance errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="Monster - added fields to monsters, added &quot;monsters&quot; package, refactored fields, added getters and setters, corrected some inheritance errors" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/Node.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="979" column="24" selection-start-line="979" selection-start-column="24" selection-end-line="979" selection-end-column="24" />
-          <folding>
-            <element signature="e#42567#42568#0" expanded="true" />
-            <element signature="e#42618#42619#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Styling/CharacterCreator.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1122">
@@ -1208,64 +1227,41 @@
     <entry file="file://$PROJECT_DIR$/src/sample/GUI/PartySelectorGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="236">
-          <caret line="53" column="72" selection-start-line="53" selection-start-column="72" selection-end-line="53" selection-end-column="72" />
+          <caret line="52" column="72" selection-start-line="52" selection-start-column="72" selection-end-line="52" selection-end-column="72" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Model/Monster.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/DTO/CharacterCreatorDTO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="29" lean-forward="true" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Model/FakeDatabase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="69" column="28" selection-start-line="69" selection-start-column="28" selection-end-line="69" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Model/DungeonMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="337" column="78" selection-start-line="337" selection-start-column="78" selection-end-line="337" selection-end-column="78" />
+        <state relative-caret-position="653">
+          <caret line="55" column="24" selection-start-line="55" selection-start-column="24" selection-end-line="55" selection-end-column="24" />
           <folding>
-            <element signature="e#460#461#0" expanded="true" />
-            <element signature="e#491#492#0" expanded="true" />
-            <element signature="e#543#544#0" expanded="true" />
-            <element signature="e#583#584#0" expanded="true" />
+            <element signature="e#1308#1309#0" expanded="true" />
+            <element signature="e#1346#1347#0" expanded="true" />
+            <element signature="e#1417#1418#0" expanded="true" />
+            <element signature="e#1450#1451#0" expanded="true" />
+            <element signature="e#1478#1479#0" expanded="true" />
+            <element signature="e#1408#1409#0" expanded="true" />
+            <element signature="e#1462#1463#0" expanded="true" />
+            <element signature="e#1507#1508#0" expanded="true" />
+            <element signature="e#1548#1549#0" expanded="true" />
+            <element signature="e#1616#1617#0" expanded="true" />
+            <element signature="e#1676#1677#0" expanded="true" />
+            <element signature="e#1717#1718#0" expanded="true" />
+            <element signature="e#1754#1755#0" expanded="true" />
+            <element signature="e#1814#1815#0" expanded="true" />
+            <element signature="e#1866#1867#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Model/Hero.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1374#1375#0" expanded="true" />
-            <element signature="e#1406#1407#0" expanded="true" />
-            <element signature="e#1470#1471#0" expanded="true" />
-            <element signature="e#1512#1513#0" expanded="true" />
-            <element signature="e#1547#1548#0" expanded="true" />
-            <element signature="e#1578#1579#0" expanded="true" />
-            <element signature="e#1626#1627#0" expanded="true" />
-            <element signature="e#1666#1667#0" expanded="true" />
-            <element signature="e#1763#1764#0" expanded="true" />
-            <element signature="e#1811#1812#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="166" column="28" lean-forward="true" selection-start-line="166" selection-start-column="28" selection-end-line="166" selection-end-column="28" />
+        <state relative-caret-position="945">
+          <caret line="90" column="35" selection-start-line="90" selection-start-column="35" selection-end-line="90" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1298,37 +1294,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/DTO/CharacterCreatorDTO.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/Model/DungeonMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="653">
-          <caret line="55" column="24" selection-start-line="55" selection-start-column="24" selection-end-line="55" selection-end-column="24" />
+        <state relative-caret-position="193">
+          <caret line="25" column="103" selection-start-line="25" selection-start-column="103" selection-end-line="25" selection-end-column="103" />
           <folding>
-            <element signature="e#1308#1309#0" expanded="true" />
-            <element signature="e#1346#1347#0" expanded="true" />
-            <element signature="e#1417#1418#0" expanded="true" />
-            <element signature="e#1450#1451#0" expanded="true" />
-            <element signature="e#1478#1479#0" expanded="true" />
-            <element signature="e#1408#1409#0" expanded="true" />
-            <element signature="e#1462#1463#0" expanded="true" />
-            <element signature="e#1507#1508#0" expanded="true" />
-            <element signature="e#1548#1549#0" expanded="true" />
-            <element signature="e#1616#1617#0" expanded="true" />
-            <element signature="e#1676#1677#0" expanded="true" />
-            <element signature="e#1717#1718#0" expanded="true" />
-            <element signature="e#1754#1755#0" expanded="true" />
-            <element signature="e#1814#1815#0" expanded="true" />
-            <element signature="e#1866#1867#0" expanded="true" />
+            <element signature="e#460#461#0" expanded="true" />
+            <element signature="e#491#492#0" expanded="true" />
+            <element signature="e#543#544#0" expanded="true" />
+            <element signature="e#583#584#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/Model/Images/monster1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="571">
-          <caret line="305" column="1" lean-forward="true" selection-start-line="305" selection-start-column="1" selection-end-line="305" selection-end-column="1" />
+        <state relative-caret-position="425">
+          <caret line="70" column="5" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#3203#3204#0" expanded="true" />
+            <element signature="e#3234#3235#0" expanded="true" />
+            <element signature="e#3286#3287#0" expanded="true" />
+            <element signature="e#3326#3327#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Model/Hero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1928">
+          <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1374#1375#0" expanded="true" />
+            <element signature="e#1406#1407#0" expanded="true" />
+            <element signature="e#1470#1471#0" expanded="true" />
+            <element signature="e#1512#1513#0" expanded="true" />
+            <element signature="e#1547#1548#0" expanded="true" />
+            <element signature="e#1578#1579#0" expanded="true" />
+            <element signature="e#1626#1627#0" expanded="true" />
+            <element signature="e#1666#1667#0" expanded="true" />
+            <element signature="e#1763#1764#0" expanded="true" />
+            <element signature="e#1811#1812#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Model/Monster.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" column="83" selection-start-line="9" selection-start-column="83" selection-end-line="9" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Model/FakeDatabase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="27" column="36" lean-forward="true" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
         </state>
       </provider>
     </entry>

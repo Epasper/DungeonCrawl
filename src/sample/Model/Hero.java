@@ -2,7 +2,6 @@ package sample.Model;
 
 import javafx.scene.image.Image;
 import sample.HeroPowers.HeroPower;
-import sample.Monsters.Monster;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +40,8 @@ public class Hero extends Creature {
     private int Stealth;
     private int Streetwise;
     private int Thievery;
-    private Image heroIcon = new Image(getClass().getResourceAsStream("Images\\icon1.png"));
+    //todo remove all icons from HDD after reconnecting things to SQL
+    private Image heroIcon = new Image(getClass().getResourceAsStream("icon1.png"));
 
     public Hero() {
     }
@@ -315,7 +315,7 @@ public class Hero extends Creature {
 
 
     public void attackAMonster(Monster attackedMonster) {
-        System.out.println("Hero: " + this.heroName + ", a " + this.heroClass + ", has attacked a(n) " + attackedMonster.monsterType + " monster");
+        System.out.println("Hero: " + this.heroName + ", a " + this.heroClass + ", has attacked a(n) " + attackedMonster.getMonsterType() + " monster");
     }
 
 }

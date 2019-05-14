@@ -11,7 +11,7 @@ import javafx.scene.paint.Color;
 import sample.*;
 import sample.HeroPowers.HeroPower;
 import sample.Model.*;
-import sample.Monsters.Monster;
+import sample.Model.Monster;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -46,7 +46,7 @@ class DungeonGUI {
     private Image doorHorizontal = new Image(getClass().getResourceAsStream("Images\\DoorHorizontal.png"));
     private Image openedDoorVertical = new Image(getClass().getResourceAsStream("Images\\OpenedDoorVertical.png"));
     private Image openedDoorHorizontal = new Image(getClass().getResourceAsStream("Images\\OpenedDoorHorizontal.png"));
-    private List<Hero> heroList = new ArrayList<>();
+    private List<Hero> heroList;
     private List<Monster> monsterList = new ArrayList<>();
     private FakeDatabase database = new FakeDatabase();
     private DungeonMap dungeonMap = new DungeonMap(generateAMonsterList(createAnIDList()));
@@ -298,7 +298,7 @@ class DungeonGUI {
         if (heroID < 100) {
             aButton.setGraphic(new ImageView(getHeroByID(heroID, heroList).getHeroIcon()));
         } else {
-            aButton.setGraphic(new ImageView(getMonsterByID(heroID, monsterList).monsterImage));
+            aButton.setGraphic(new ImageView(getMonsterByID(heroID, monsterList).getMonsterImage()));
         }
     }
 
