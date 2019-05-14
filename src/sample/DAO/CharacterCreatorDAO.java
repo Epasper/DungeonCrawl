@@ -113,6 +113,7 @@ public class CharacterCreatorDAO {
     }
 
     private void manageHeroDefenses(Hero hero, ResultSet rs) throws SQLException {
+        hero.setAC(rs.getInt("ac"));
         hero.setFortitude(rs.getInt("fortitude"));
         hero.setReflex(rs.getInt("reflex"));
         hero.setWill(rs.getInt("will"));
@@ -186,6 +187,7 @@ public class CharacterCreatorDAO {
             dto.setIntelligence(rs.getInt("intelligence"));
             dto.setWisdom(rs.getInt("wisdom"));
             dto.setCharisma(rs.getInt("charisma"));
+            dto.setAC(rs.getInt("ac"));
             dto.setFortitude(rs.getInt("fortitude"));
             dto.setReflex(rs.getInt("reflex"));
             dto.setWill(rs.getInt("will"));
@@ -234,6 +236,7 @@ public class CharacterCreatorDAO {
                 "intelligence," +
                 "wisdom," +
                 "charisma," +
+                "ac," +
                 "fortitude," +
                 "reflex," +
                 "will," +
@@ -260,7 +263,7 @@ public class CharacterCreatorDAO {
                 "powers_encounter," +
                 "powers_daily)" +
                 "VALUES" +
-                "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+                "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
         pst = conn.prepareStatement(sql);
         pst.setString(1, heroToBeAdded.getHeroName());
         pst.setString(2, heroToBeAdded.getHeroClass());
@@ -271,31 +274,32 @@ public class CharacterCreatorDAO {
         pst.setInt(7, heroToBeAdded.getIntelligence());
         pst.setInt(8, heroToBeAdded.getWisdom());
         pst.setInt(9, heroToBeAdded.getCharisma());
-        pst.setInt(10, heroToBeAdded.getFortitude());
-        pst.setInt(11, heroToBeAdded.getReflex());
-        pst.setInt(12, heroToBeAdded.getWill());
-        pst.setInt(13, heroToBeAdded.getGold());
-        pst.setInt(14, heroToBeAdded.getHeroIconId());
-        pst.setInt(15, heroToBeAdded.getAcrobatics());
-        pst.setInt(16, heroToBeAdded.getArcana());
-        pst.setInt(17, heroToBeAdded.getAthletics());
-        pst.setInt(18, heroToBeAdded.getBluff());
-        pst.setInt(19, heroToBeAdded.getDiplomacy());
-        pst.setInt(20, heroToBeAdded.getDungeoneering());
-        pst.setInt(21, heroToBeAdded.getEndurance());
-        pst.setInt(22, heroToBeAdded.getHeal());
-        pst.setInt(23, heroToBeAdded.getHistory());
-        pst.setInt(24, heroToBeAdded.getInsight());
-        pst.setInt(25, heroToBeAdded.getIntimidate());
-        pst.setInt(26, heroToBeAdded.getNature());
-        pst.setInt(27, heroToBeAdded.getPerception());
-        pst.setInt(28, heroToBeAdded.getReligion());
-        pst.setInt(29, heroToBeAdded.getStealth());
-        pst.setInt(30, heroToBeAdded.getStreetwise());
-        pst.setInt(31, heroToBeAdded.getThievery());
-        pst.setString(32, heroToBeAdded.getAtWillPower1() + "___" + heroToBeAdded.getAtWillPower2());
-        pst.setString(33, heroToBeAdded.getEncounterPower1() + "___");
-        pst.setString(34, heroToBeAdded.getDailyPower1() + "___");
+        pst.setInt(10, heroToBeAdded.getCharisma());
+        pst.setInt(11, heroToBeAdded.getFortitude());
+        pst.setInt(12, heroToBeAdded.getReflex());
+        pst.setInt(13, heroToBeAdded.getWill());
+        pst.setInt(14, heroToBeAdded.getGold());
+        pst.setInt(15, heroToBeAdded.getHeroIconId());
+        pst.setInt(16, heroToBeAdded.getAcrobatics());
+        pst.setInt(17, heroToBeAdded.getArcana());
+        pst.setInt(18, heroToBeAdded.getAthletics());
+        pst.setInt(19, heroToBeAdded.getBluff());
+        pst.setInt(20, heroToBeAdded.getDiplomacy());
+        pst.setInt(21, heroToBeAdded.getDungeoneering());
+        pst.setInt(22, heroToBeAdded.getEndurance());
+        pst.setInt(23, heroToBeAdded.getHeal());
+        pst.setInt(24, heroToBeAdded.getHistory());
+        pst.setInt(25, heroToBeAdded.getInsight());
+        pst.setInt(26, heroToBeAdded.getIntimidate());
+        pst.setInt(27, heroToBeAdded.getNature());
+        pst.setInt(28, heroToBeAdded.getPerception());
+        pst.setInt(29, heroToBeAdded.getReligion());
+        pst.setInt(30, heroToBeAdded.getStealth());
+        pst.setInt(31, heroToBeAdded.getStreetwise());
+        pst.setInt(32, heroToBeAdded.getThievery());
+        pst.setString(33, heroToBeAdded.getAtWillPower1() + "___" + heroToBeAdded.getAtWillPower2());
+        pst.setString(34, heroToBeAdded.getEncounterPower1() + "___");
+        pst.setString(35, heroToBeAdded.getDailyPower1() + "___");
         pst.executeUpdate();
         System.out.println("Character has successfully been added to the database");
     }

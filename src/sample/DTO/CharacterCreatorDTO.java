@@ -26,6 +26,7 @@ public class CharacterCreatorDTO {
     private int intelligence;
     private int wisdom;
     private int charisma;
+    private int AC;
     private int fortitude;
     private int reflex;
     private int will;
@@ -50,6 +51,14 @@ public class CharacterCreatorDTO {
 
     public String getAllAtWillPowers() {
         return allAtWillPowers;
+    }
+
+    public int getAC() {
+        return AC;
+    }
+
+    public void setAC(int AC) {
+        this.AC = AC;
     }
 
     public void setAllAtWillPowers(String allAtWillPowers) {

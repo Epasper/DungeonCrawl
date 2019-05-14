@@ -17,6 +17,14 @@ public class Creature {
         return fortitude;
     }
 
+    public int getAC() {
+        return AC;
+    }
+
+    public void setAC(int AC) {
+        this.AC = AC;
+    }
+
     public void setFortitude(int fortitude) {
         this.fortitude = fortitude;
     }
