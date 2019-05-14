@@ -12,6 +12,22 @@ public class MapTile {
     public boolean currentlyInvisible = false;
     public boolean currentlyBehindCover = false;
 
+    public boolean isCurrentlyInvisible() {
+        return currentlyInvisible;
+    }
+
+    public void setCurrentlyInvisible(boolean currentlyInvisible) {
+        this.currentlyInvisible = currentlyInvisible;
+    }
+
+    public boolean isCurrentlyBehindCover() {
+        return currentlyBehindCover;
+    }
+
+    public void setCurrentlyBehindCover(boolean currentlyBehindCover) {
+        this.currentlyBehindCover = currentlyBehindCover;
+    }
+
     public String getTypeOfTile() {
         return typeOfTile;
     }

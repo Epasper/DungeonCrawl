@@ -244,6 +244,7 @@ class DungeonGUI {
 
     private void eventOnHeroClick(int currentHeroID) {
         checkTheAvailableDistance(getHeroByID(currentHeroID, heroList));
+        checkTheLineOfSight(getHeroByID(currentHeroID, heroList));
         System.out.println("Clicked the ID " + currentHeroID + " hero.");
         setCurrentlyActiveHeroID(currentHeroID);
         setHasTheCharacterBeenSelected(true);
@@ -372,14 +373,38 @@ class DungeonGUI {
     //todo think about the power selection menu in the dungeon GUI
 
     private void checkTheLineOfSight(Hero hero) {
-        boolean alreadyInvisible = false;
-        boolean alreadyCovered = false;
         int YPos = hero.getMapYPos();
         int XPos = hero.getMapXPos();
         int sightRange = 10;
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-
+        checkTheSightForOneDirection(YPos, XPos, 1, 1);
+        checkTheSightForOneDirection(YPos, XPos, 1, -1);
+        checkTheSightForOneDirection(YPos, XPos, -1, 1);
+        checkTheSightForOneDirection(YPos, XPos, -1, -1);
+    }
+//todo repair the sight check (sth went wrong with identifying the occupied property)
+    private void checkTheSightForOneDirection(int YPos, int XPos, int dir1, int dir2) {
+        for (int i = 1; i < 3; i++) {
+            for (int j = 1; j < 3; j++) {
+                System.out.println("checked Tile >>" + i * dir1 + ">>" + j * dir2);
+                MapTile currentMapTile = dungeonMap.getMapTilesArray()[XPos + i * dir1][YPos + j * dir2];
+                currentMapTile.setCurrentlyBehindCover(false);
+                currentMapTile.setCurrentlyInvisible(false);
+                boolean mapTileIsOccupied = currentMapTile.getOccupyingCreatureId() > 0;
+                if (!currentMapTile.isCurrentlyBehindCover() || !currentMapTile.isCurrentlyInvisible()) {
+                    if (!currentMapTile.typeOfTile.contains("Room") && !currentMapTile.typeOfTile.contains("Opened") && mapTileIsOccupied) {
+                        System.out.println("--->" + currentMapTile.typeOfTile + "<--->" + i + "<--->" + j);
+                        for (int k = 0; k < 2; k += i) {
+                            for (int l = 0; l < 2; l += j) {
+                                dungeonMap.getMapTilesArray()[XPos + i * dir1 + k][YPos + j * dir2 + l].setCurrentlyInvisible(true);
+                                buttonGrid[XPos + i * dir1 + k][YPos + j * dir2 + l].setStyle("-fx-color: #993d00");
+                                dungeonMap.getMapTilesArray()[XPos + i * dir1 + k][YPos + j * dir2 + l + dir2].setCurrentlyBehindCover(true);
+                                buttonGrid[XPos + i * dir1 + k][YPos + j * dir2 + l + dir2].setStyle("-fx-color: #ff6600");
+                                dungeonMap.getMapTilesArray()[XPos + i * dir1 + k + dir1][YPos + j * dir2 + l].setCurrentlyBehindCover(true);
+                                buttonGrid[XPos + i * dir1 + k + dir1][YPos + j * dir2 + l].setStyle("-fx-color: #ff6600");
+                            }
+                        }
+                    }
+                }
             }
         }
     }
