@@ -1,5 +1,7 @@
 package sample.Model;
 
+import sample.Monsters.Monster;
+
 import java.util.List;
 import java.util.Random;
 
@@ -330,7 +332,7 @@ public class DungeonMap {
             currentHeroXPos = randX.nextInt(room.roomWidth);
             currentHeroYPos = randY.nextInt(room.roomHeight);
             Hero currentHero = heroList.get(i);
-            System.out.println("Name of current spawning hero: " + heroList.get(i).getHeroName());
+            System.out.println("Name of current spawning hero: " + heroList.get(i).getMonsterName());
             if (getMapTilesArray()[room.roomXPos + currentHeroXPos][room.roomYPos + currentHeroYPos].getOccupyingCreatureId() == 0) {
                 getMapTilesArray()[room.roomXPos + currentHeroXPos][room.roomYPos + currentHeroYPos].setOccupyingCreatureId(currentHero.getID());
                 currentHero.setMapXPos(room.roomXPos + currentHeroXPos);

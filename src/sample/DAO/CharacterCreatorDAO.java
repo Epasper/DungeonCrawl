@@ -94,7 +94,7 @@ public class CharacterCreatorDAO {
             b = rs.getString("icon_id");
             hero.setHeroIcon(getHeroIconByID(rs.getInt("icon_id")));
             hero.setID(rs.getInt("idheroes"));
-            hero.setHeroName(rs.getString("hero_name"));
+            hero.setMonsterName(rs.getString("hero_name"));
             String heroClass = rs.getString("hero_class");
             hero.setHeroClass(heroClass);
             hero.setHeroRace(rs.getString("hero_race"));
@@ -108,7 +108,7 @@ public class CharacterCreatorDAO {
             manageHeroSkills(hero, rs);
             manageHeroPowers(hero, heroClassInformation, rs, heroClass);
         }
-        System.out.println(hero.getHeroName() + "|||" + a + " Icon number: " + b);
+        System.out.println(hero.getMonsterName() + "|||" + a + " Icon number: " + b);
         return hero;
     }
 

@@ -1,11 +1,8 @@
 package sample.Model;
 
 import javafx.scene.image.Image;
-import sample.Model.Hero;
-import sample.Model.Monster;
+import sample.Monsters.Monster;
 
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 

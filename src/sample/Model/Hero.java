@@ -2,6 +2,7 @@ package sample.Model;
 
 import javafx.scene.image.Image;
 import sample.HeroPowers.HeroPower;
+import sample.Monsters.Monster;
 
 import java.util.ArrayList;
 import java.util.List;

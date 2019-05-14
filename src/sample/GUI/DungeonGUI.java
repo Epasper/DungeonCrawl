@@ -11,6 +11,7 @@ import javafx.scene.paint.Color;
 import sample.*;
 import sample.HeroPowers.HeroPower;
 import sample.Model.*;
+import sample.Monsters.Monster;
 
 import java.io.IOException;
 import java.sql.SQLException;

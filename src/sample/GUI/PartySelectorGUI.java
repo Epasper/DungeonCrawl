@@ -13,7 +13,6 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import sample.DAO.CharacterCreatorDAO;
 import sample.DTO.CharacterCreatorDTO;
-import sample.Model.DungeonMap;
 import sample.Model.Hero;
 
 import java.io.IOException;
@@ -74,7 +73,7 @@ public class PartySelectorGUI {
             if (currentCheckBox.isSelected()) {
                 int id = Integer.valueOf(currentCheckBox.getId());
                 Hero newHero = characterCreatorDAO.getAHeroByID(id);
-                System.out.println("Hero: " + newHero.getHeroName() + " will be fighting in this dungeon.");
+                System.out.println("Hero: " + newHero.getMonsterName() + " will be fighting in this dungeon.");
                 listOfSelectedHeroes.add(newHero);
             }
         }

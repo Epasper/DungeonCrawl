@@ -45,8 +45,8 @@ public class Creature {
         this.will = will;
     }
 
-    public void setHeroName(String heroName) {
-        this.heroName = heroName;
+    public void setMonsterName(String monsterName) {
+        this.heroName = monsterName;
     }
 
     public void setID(int ID) {
@@ -77,7 +77,7 @@ public class Creature {
         this.speed = speed;
     }
 
-    public String getHeroName() {
+    public String getMonsterName() {
         return heroName;
     }
 
