@@ -268,7 +268,7 @@ public class Monster extends Creature {
         this.attack3DefenseToBeChecked = attack3DefenseToBeChecked;
     }
 
-    public void setMonsterName(String monsterName) {
+    public void setHeroName(String monsterName) {
         this.monsterName = monsterName;
     }
 

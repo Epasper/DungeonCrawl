@@ -94,7 +94,7 @@ public class CharacterCreatorDAO {
             b = rs.getString("icon_id");
             hero.setHeroIcon(getHeroIconByID(rs.getInt("icon_id")));
             hero.setID(rs.getInt("idheroes"));
-            hero.setMonsterName(rs.getString("hero_name"));
+            hero.setHeroName(rs.getString("hero_name"));
             String heroClass = rs.getString("hero_class");
             hero.setHeroClass(heroClass);
             hero.setHeroRace(rs.getString("hero_race"));
@@ -266,7 +266,7 @@ public class CharacterCreatorDAO {
                 "powers_encounter," +
                 "powers_daily)" +
                 "VALUES" +
-                "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+                "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
         pst = conn.prepareStatement(sql);
         pst.setString(1, heroToBeAdded.getHeroName());
         pst.setString(2, heroToBeAdded.getHeroClass());

@@ -6,12 +6,13 @@ import sample.Model.Monster;
 public class GoblinSkullcleaver extends Monster {
 
     public GoblinSkullcleaver() {
+        this.setID(102);
         this.setHitPoints(53);
         this.setAC(16);
         this.setFortitude(15);
         this.setReflex(14);
         this.setWill(12);
-        this.setMonsterName("Goblin Skullcleaver");
+        this.setHeroName("Goblin Skullcleaver");
         this.setMonsterType("Humanoid");
         this.setMonsterImage(new Image(getClass().getResourceAsStream("MonsterImages\\GoblinSkullcleaver.png")));
         this.setXpValue(150);

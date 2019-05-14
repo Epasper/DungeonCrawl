@@ -17,6 +17,7 @@ public class EncounterCalculator {
     }
 
     public List<Monster> getTheListOfMonsters(List<Hero> heroList, String difficulty) {
+        System.out.println("CALCULATING ENCOUNTER");
         int encounterLevel = calculateMediumPartyLevel(heroList);
         if (difficulty.equals("Hard")) encounterLevel = +3;
         if (difficulty.equals("Medium")) encounterLevel = +2;
@@ -26,11 +27,13 @@ public class EncounterCalculator {
         listOfPossibleMonsters.add(new GoblinWarrior());
         listOfPossibleMonsters.add(new GoblinSharpshooter());
         listOfPossibleMonsters.add(new GoblinSkullcleaver());
-        while (inputXP < 0) {
+        System.out.println("Total encounter XP for this room: " + inputXP);
+        while (inputXP > 0) {
             Random random = new Random();
             int i = random.nextInt(listOfPossibleMonsters.size());
             listOfChosenMonsters.add(listOfPossibleMonsters.get(i));
             inputXP = -listOfPossibleMonsters.get(i).getXpValue();
+            System.out.println("Added a monster: " + listOfChosenMonsters.get(listOfChosenMonsters.size() - 1).getMonsterName());
             System.out.println("Input Xp after putting a monster: " + inputXP);
         }
         return listOfChosenMonsters;

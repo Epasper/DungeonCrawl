@@ -45,7 +45,7 @@ public class Creature {
         this.will = will;
     }
 
-    public void setMonsterName(String monsterName) {
+    public void setHeroName(String monsterName) {
         this.heroName = monsterName;
     }
 

@@ -48,20 +48,10 @@ class DungeonGUI {
     private Image openedDoorHorizontal = new Image(getClass().getResourceAsStream("Images\\OpenedDoorHorizontal.png"));
     private List<Hero> heroList;
     private List<Monster> monsterList = new ArrayList<>();
-    private FakeDatabase database = new FakeDatabase();
     private DungeonMap dungeonMap = new DungeonMap(heroList);
     private int currentlyActiveHeroID;
     private boolean hasTheCharacterBeenSelected = false;
     private int numberOfHeroesThatFinishedMovement;
-
-    public List<Hero> getHeroList() {
-        return heroList;
-    }
-
-    public void setHeroList(List<Hero> heroList) {
-        this.heroList = heroList;
-    }
-
     private DungeonMap getDungeonMap() {
         return dungeonMap;
     }
