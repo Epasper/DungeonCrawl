@@ -28,7 +28,6 @@ class DungeonGUI {
     private GridPane mapGridPane = new GridPane();
     private VBox skillsVBox = new VBox();
     BorderPane mapOuterPane = new BorderPane();
-    private ScrollPane mapScrollPane = new ScrollPane();
     private Image wallImage = new Image(getClass().getResourceAsStream("Images\\wall.png"));
     private Image floorImage = new Image(getClass().getResourceAsStream("Images\\floor.png"));
     private Image fogImage = new Image(getClass().getResourceAsStream("Images\\fog.png"));
@@ -86,6 +85,7 @@ class DungeonGUI {
         this.heroList = heroList;
         skillsVBox.setStyle("-fx-background-color:grey;");
         skillsVBox.setMinSize(200, 40);
+        ScrollPane mapScrollPane = new ScrollPane();
         mapOuterPane.setCenter(mapScrollPane);
         mapOuterPane.setRight(skillsVBox);
         mapScrollPane.setContent(mapGridPane);
@@ -98,21 +98,24 @@ class DungeonGUI {
         updateGUIAccordingToMap(getDungeonMap());
     }
 
-    void updateButtonsWithHeroSkillNames(Hero currentHero) {
+    private void updateButtonsWithHeroSkillNames(Hero currentHero) {
         for (HeroPower currentPower : currentHero.getAtWillPowers()) {
             Button powerButton = new Button(currentPower.getPowerName());
+            powerButton.setMinWidth(130);
             powerButton.setStyle("-fx-background-color: #007200;");
             powerButton.setTextFill(Color.WHITE);
             skillsVBox.getChildren().add(powerButton);
         }
         for (HeroPower currentPower : currentHero.getEncounterPowers()) {
             Button powerButton = new Button(currentPower.getPowerName());
+            powerButton.setMinWidth(130);
             powerButton.setStyle("-fx-background-color: #910000;");
             powerButton.setTextFill(Color.WHITE);
             skillsVBox.getChildren().add(powerButton);
         }
         for (HeroPower currentPower : currentHero.getDailyPowers()) {
             Button powerButton = new Button(currentPower.getPowerName());
+            powerButton.setMinWidth(130);
             powerButton.setStyle("-fx-background-color: #5c005e;");
             powerButton.setTextFill(Color.WHITE);
             skillsVBox.getChildren().add(powerButton);
@@ -123,7 +126,7 @@ class DungeonGUI {
         database.populateDatabaseWithMonsters();
         for (Integer monsterID : monsterIDList) {
             for (Monster monster : database.listOfMonsters) {
-                if (monster.ID == monsterID + 100) {
+                if (monster.getID() == monsterID + 100) {
                     monsterList.add(monster);
                 }
             }
@@ -157,7 +160,7 @@ class DungeonGUI {
     private Hero getHeroByID(int ID, List<Hero> listOfHeroes) {
         Hero heroNotFound = new Hero();
         for (Hero aHero : listOfHeroes) {
-            if (aHero.ID == ID) {
+            if (aHero.getID() == ID) {
                 return aHero;
             }
         }
@@ -167,7 +170,7 @@ class DungeonGUI {
     private Monster getMonsterByID(int ID, List<Monster> listOfMonsters) {
         Monster monsterNotFound = new Monster();
         for (Monster aMonster : listOfMonsters) {
-            if (aMonster.ID == ID) {
+            if (aMonster.getID() == ID) {
                 return aMonster;
             }
         }
@@ -268,7 +271,7 @@ class DungeonGUI {
 
     private void eventOnHeroMovement(Button aButton, int XPos, int YPos) {
         Hero hero = getHeroByID(getCurrentlyActiveHeroID(), heroList);
-        getDungeonMap().getMapTilesArray()[hero.mapXPos][hero.mapYPos].setOccupyingCreatureId(0);
+        getDungeonMap().getMapTilesArray()[hero.getMapXPos()][hero.getMapYPos()].setOccupyingCreatureId(0);
         getDungeonMap().getMapTilesArray()[XPos][YPos].setOccupyingCreatureId(getCurrentlyActiveHeroID());
         int deltaX = Math.abs(hero.getMapXPos() - XPos);
         int deltaY = Math.abs(hero.getMapYPos() - YPos);
@@ -381,8 +384,8 @@ class DungeonGUI {
     //todo think about the power selection menu in the dungeon GUI
 
     private void checkTheAvailableDistance(Hero hero) {
-        int YPos = hero.mapYPos;
-        int XPos = hero.mapXPos;
+        int YPos = hero.getMapYPos();
+        int XPos = hero.getMapXPos();
         double heroSteps = hero.getCurrentSpeed();
         double heroInteractionSteps;
         if (hero.getCurrentSpeed() > 0.9) {
@@ -392,7 +395,7 @@ class DungeonGUI {
         }
         recursiveCheckDistance("Start", YPos, XPos, heroSteps, "Walk Range");
         recursiveCheckDistance("Start", YPos, XPos, heroInteractionSteps, "Interaction Range");
-        System.out.println("X: " + XPos + " Y: " + YPos + " Speed: " + hero.speed);
+        System.out.println("X: " + XPos + " Y: " + YPos + " Speed: " + hero.getSpeed());
     }
 
     private void recursiveCheckDistance(String previousDirection, int YPos, int XPos, double range, String reasonForChecking) {

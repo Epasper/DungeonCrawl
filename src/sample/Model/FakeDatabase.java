@@ -62,12 +62,12 @@ public class FakeDatabase {
         monster4.monsterType = "Rat";
         monster5.monsterType = "Zombie";
         monster6.monsterType = "Rat Monk";
-        monster1.ID = 101;
-        monster2.ID = 102;
-        monster3.ID = 103;
-        monster4.ID = 104;
-        monster5.ID = 105;
-        monster6.ID = 106;
+        monster1.setID(101);
+        monster1.setID(102);
+        monster1.setID(103);
+        monster1.setID(104);
+        monster1.setID(105);
+        monster1.setID(106);
         monster1.monsterImage = monster1img;
         monster2.monsterImage = monster2img;
         monster3.monsterImage = monster3img;

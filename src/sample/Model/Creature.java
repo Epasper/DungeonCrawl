@@ -2,22 +2,39 @@ package sample.Model;
 
 public class Creature {
     public String heroName;
-    public int ID;
-    public int mapXPos;
-    public int mapYPos;
-    public String heroClass;
-    public String heroRace;
+    private int ID;
+    private int mapXPos;
+    private int mapYPos;
     private int hitPoints;
-    private int someResource;
-    public double speed = 6;
+    private double speed = 6;
     private double currentSpeed = speed;
+    private int fortitude;
+    private int reflex;
+    private int will;
+    private int AC;
 
-    public String getHeroRace() {
-        return heroRace;
+    public int getFortitude() {
+        return fortitude;
     }
 
-    public void setHeroRace(String heroRace) {
-        this.heroRace = heroRace;
+    public void setFortitude(int fortitude) {
+        this.fortitude = fortitude;
+    }
+
+    public int getReflex() {
+        return reflex;
+    }
+
+    public void setReflex(int reflex) {
+        this.reflex = reflex;
+    }
+
+    public int getWill() {
+        return will;
+    }
+
+    public void setWill(int will) {
+        this.will = will;
     }
 
     public void setHeroName(String heroName) {
@@ -44,16 +61,8 @@ public class Creature {
         this.currentSpeed = currentSpeed;
     }
 
-    public void setHeroClass(String heroClass) {
-        this.heroClass = heroClass;
-    }
-
     public void setHitPoints(int hitPoints) {
         this.hitPoints = hitPoints;
-    }
-
-    public void setGold(int gold) {
-        this.someResource = gold;
     }
 
     public void setSpeed(double speed) {
@@ -76,16 +85,8 @@ public class Creature {
         return mapYPos;
     }
 
-    public String getHeroClass() {
-        return heroClass;
-    }
-
     public int getHitPoints() {
         return hitPoints;
-    }
-
-    public int getGold() {
-        return someResource;
     }
 
     public double getSpeed() {

@@ -2,11 +2,14 @@ package sample.Model;
 
 import javafx.scene.image.Image;
 import sample.HeroPowers.HeroPower;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Hero extends Creature {
 
+    private String heroClass;
+    private String heroRace;
     private int heroLevel;
     private int heroExperience;
     private List<HeroPower> atWillPowers = new ArrayList<>();
@@ -20,9 +23,6 @@ public class Hero extends Creature {
     private int intelligence;
     private int wisdom;
     private int charisma;
-    private int fortitude;
-    private int reflex;
-    private int will;
     private int Acrobatics;
     private int Arcana;
     private int Athletics;
@@ -43,6 +43,22 @@ public class Hero extends Creature {
     private Image heroIcon = new Image(getClass().getResourceAsStream("Images\\icon1.png"));
 
     public Hero() {
+    }
+
+    public String getHeroClass() {
+        return heroClass;
+    }
+
+    public void setHeroClass(String heroClass) {
+        this.heroClass = heroClass;
+    }
+
+    public String getHeroRace() {
+        return heroRace;
+    }
+
+    public void setHeroRace(String heroRace) {
+        this.heroRace = heroRace;
     }
 
     public int getHeroLevel() {
@@ -139,30 +155,6 @@ public class Hero extends Creature {
 
     public void setCharisma(int charisma) {
         this.charisma = charisma;
-    }
-
-    public int getFortitude() {
-        return fortitude;
-    }
-
-    public void setFortitude(int fortitude) {
-        this.fortitude = fortitude;
-    }
-
-    public int getReflex() {
-        return reflex;
-    }
-
-    public void setReflex(int reflex) {
-        this.reflex = reflex;
-    }
-
-    public int getWill() {
-        return will;
-    }
-
-    public void setWill(int will) {
-        this.will = will;
     }
 
     public int getAcrobatics() {
@@ -300,6 +292,7 @@ public class Hero extends Creature {
     public void setThievery(int thievery) {
         Thievery = thievery;
     }
+
     public Image getHeroIcon() {
         return heroIcon;
     }
@@ -314,18 +307,11 @@ public class Hero extends Creature {
         this.heroIcon = heroIcon;
     }
 
-    public void setSpeed(double speed) {
-        this.speed = speed;
-    }
-
 
     public int getGold() {
         return gold;
     }
 
-    public double getSpeed() {
-        return speed;
-    }
 
     public void attackAMonster(Monster attackedMonster) {
         System.out.println("Hero: " + this.heroName + ", a " + this.heroClass + ", has attacked a(n) " + attackedMonster.monsterType + " monster");
