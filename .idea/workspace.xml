@@ -88,8 +88,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-77">
-              <caret line="424" column="108" selection-start-line="424" selection-start-column="108" selection-end-line="424" selection-end-column="108" />
+            <state relative-caret-position="68">
+              <caret line="400" column="51" selection-start-line="400" selection-start-column="51" selection-end-line="400" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -429,20 +429,6 @@
       <option name="presentableId" value="Default" />
       <updated>1556870921453</updated>
     </task>
-    <task id="LOCAL-00011" summary="Character Creation - Added Half of Encounter Powers and the choice option.">
-      <created>1557224669767</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1557224669767</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Character Creation - Added ranger Encounter Powers and remodelled the tooltip window">
-      <created>1557225746849</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1557225746849</updated>
-    </task>
     <task id="LOCAL-00013" summary="Character Creation - restyling the Character GUI -added bigger padding and improved readability.">
       <created>1557292857884</created>
       <option name="number" value="00013" />
@@ -772,7 +758,21 @@
       <option name="project" value="LOCAL" />
       <updated>1557835532958</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Dungeon GUI - visibility checker even closer to finishing, but it appeared to be tougher than expected.">
+      <created>1557907078023</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1557907078023</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Dungeon GUI - visibility checker working, but not for all sides yet">
+      <created>1557911896356</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1557911896356</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TodoView">
@@ -847,8 +847,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Dungeon Map - heroes from selector are now passed into map when created" />
-    <MESSAGE value="Dungeon Map - heroes now have correct icons" />
     <MESSAGE value="Character selector - validation of the completeness of fields in character selection." />
     <MESSAGE value="Character selector - added field setters for skills in the character creation process." />
     <MESSAGE value="Character selector - Refactored hero bonuses to attributes into HeroClassInformation" />
@@ -872,7 +870,9 @@
     <MESSAGE value="Encounter calculator finished; for levels &gt; 5 the calculator will have to be adjusted." />
     <MESSAGE value="Dungeon GUI - started the visibility / cover checker for encounters" />
     <MESSAGE value="Dungeon GUI - visibility checker almost finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dungeon GUI - visibility checker almost finished" />
+    <MESSAGE value="Dungeon GUI - visibility checker even closer to finishing, but it appeared to be tougher than expected." />
+    <MESSAGE value="Dungeon GUI - visibility checker working, but not for all sides yet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dungeon GUI - visibility checker working, but not for all sides yet" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Avenger/AspectOfMight.java">
@@ -1293,8 +1293,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-77">
-          <caret line="424" column="108" selection-start-line="424" selection-start-column="108" selection-end-line="424" selection-end-column="108" />
+        <state relative-caret-position="68">
+          <caret line="400" column="51" selection-start-line="400" selection-start-column="51" selection-end-line="400" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
