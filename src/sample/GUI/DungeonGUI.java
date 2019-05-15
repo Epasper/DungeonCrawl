@@ -96,6 +96,8 @@ class DungeonGUI {
             powerButton.setStyle("-fx-background-color: #007200;");
             powerButton.setTextFill(Color.WHITE);
             skillsVBox.getChildren().add(powerButton);
+            powerButton.setOnAction(event -> checkTheLineOfSight(currentHero));
+
         }
         for (HeroPower currentPower : currentHero.getEncounterPowers()) {
             Button powerButton = new Button(currentPower.getPowerName());
@@ -103,6 +105,7 @@ class DungeonGUI {
             powerButton.setStyle("-fx-background-color: #910000;");
             powerButton.setTextFill(Color.WHITE);
             skillsVBox.getChildren().add(powerButton);
+            powerButton.setOnAction(event -> checkTheLineOfSight(currentHero));
         }
         for (HeroPower currentPower : currentHero.getDailyPowers()) {
             Button powerButton = new Button(currentPower.getPowerName());
@@ -110,6 +113,7 @@ class DungeonGUI {
             powerButton.setStyle("-fx-background-color: #5c005e;");
             powerButton.setTextFill(Color.WHITE);
             skillsVBox.getChildren().add(powerButton);
+            powerButton.setOnAction(event -> checkTheLineOfSight(currentHero));
         }
     }
 
@@ -244,7 +248,6 @@ class DungeonGUI {
 
     private void eventOnHeroClick(int currentHeroID) {
         checkTheAvailableDistance(getHeroByID(currentHeroID, heroList));
-        checkTheLineOfSight(getHeroByID(currentHeroID, heroList));
         System.out.println("Clicked the ID " + currentHeroID + " hero.");
         setCurrentlyActiveHeroID(currentHeroID);
         setHasTheCharacterBeenSelected(true);

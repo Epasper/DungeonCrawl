@@ -88,8 +88,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="400" column="51" selection-start-line="400" selection-start-column="51" selection-end-line="400" selection-end-column="51" />
+            <state relative-caret-position="334">
+              <caret line="101" column="73" lean-forward="true" selection-start-line="101" selection-start-column="73" selection-end-line="101" selection-end-column="73" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -429,13 +429,6 @@
       <option name="presentableId" value="Default" />
       <updated>1556870921453</updated>
     </task>
-    <task id="LOCAL-00013" summary="Character Creation - restyling the Character GUI -added bigger padding and improved readability.">
-      <created>1557292857884</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1557292857884</updated>
-    </task>
     <task id="LOCAL-00014" summary="Character Creation - added a list with all skills and their values. Values to be filled next">
       <created>1557303805843</created>
       <option name="number" value="00014" />
@@ -772,7 +765,14 @@
       <option name="project" value="LOCAL" />
       <updated>1557911896356</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Dungeon GUI - visibility checker working. Time to apply it to attack button">
+      <created>1557916063047</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1557916063047</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TodoView">
@@ -847,7 +847,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Character selector - validation of the completeness of fields in character selection." />
     <MESSAGE value="Character selector - added field setters for skills in the character creation process." />
     <MESSAGE value="Character selector - Refactored hero bonuses to attributes into HeroClassInformation" />
     <MESSAGE value="Character Creator - added class selection influence to the defence bonuses" />
@@ -872,7 +871,8 @@
     <MESSAGE value="Dungeon GUI - visibility checker almost finished" />
     <MESSAGE value="Dungeon GUI - visibility checker even closer to finishing, but it appeared to be tougher than expected." />
     <MESSAGE value="Dungeon GUI - visibility checker working, but not for all sides yet" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dungeon GUI - visibility checker working, but not for all sides yet" />
+    <MESSAGE value="Dungeon GUI - visibility checker working. Time to apply it to attack button" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dungeon GUI - visibility checker working. Time to apply it to attack button" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Avenger/AspectOfMight.java">
@@ -1293,8 +1293,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="400" column="51" selection-start-line="400" selection-start-column="51" selection-end-line="400" selection-end-column="51" />
+        <state relative-caret-position="334">
+          <caret line="101" column="73" lean-forward="true" selection-start-line="101" selection-start-column="73" selection-end-line="101" selection-end-column="73" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
