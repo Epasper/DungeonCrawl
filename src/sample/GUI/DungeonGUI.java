@@ -72,7 +72,7 @@ class DungeonGUI {
         this.hasTheCharacterBeenSelected = hasTheCharacterBeenSelected;
     }
 
-    DungeonGUI(List<Hero> heroList) throws IOException, SQLException {
+    DungeonGUI(List<Hero> heroList) {
         this.heroList = heroList;
         skillsVBox.setStyle("-fx-background-color:grey;");
         skillsVBox.setMinSize(200, 40);
@@ -117,29 +117,6 @@ class DungeonGUI {
         }
     }
 
-    private List<Integer> createAnIDList() {
-        List<Integer> listOfHeroIDS = new ArrayList<>();
-        List<Integer> possibleIDS = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            possibleIDS.add(i);
-        }
-        Random random = new Random();
-        int x;
-        x = random.nextInt(possibleIDS.size());
-        int randomID1 = possibleIDS.get(x);
-        possibleIDS.remove(x);
-        x = random.nextInt(possibleIDS.size());
-        int randomID2 = possibleIDS.get(x);
-        possibleIDS.remove(x);
-        x = random.nextInt(possibleIDS.size());
-        int randomID3 = possibleIDS.get(x);
-        possibleIDS.remove(x);
-        listOfHeroIDS.add(randomID1 + 1);
-        listOfHeroIDS.add(randomID2 + 1);
-        listOfHeroIDS.add(randomID3 + 1);
-        return listOfHeroIDS;
-    }
-
     private Hero getHeroByID(int ID, List<Hero> listOfHeroes) {
         Hero heroNotFound = new Hero();
         for (Hero aHero : listOfHeroes) {
@@ -160,7 +137,7 @@ class DungeonGUI {
         return monsterNotFound;
     }
 
-    private void updateGUIAccordingToMap(DungeonMap dungeonMap) throws IOException, SQLException {
+    private void updateGUIAccordingToMap(DungeonMap dungeonMap) {
         for (int i = 0; i < mapWidth; i++) {
             for (int j = 0; j < mapHeight; j++) {
                 Button aButton = new Button();
@@ -168,20 +145,14 @@ class DungeonGUI {
                 buttonGrid[i][j] = aButton;
                 int finalJ = j;
                 int finalI = i;
-                aButton.setOnAction(actionEvent -> {
-                    try {
-                        buttonEvent(aButton, finalI, finalJ);
-                    } catch (IOException | SQLException e) {
-                        e.printStackTrace();
-                    }
-                });
+                aButton.setOnAction(actionEvent -> buttonEvent(aButton, finalI, finalJ));
                 mapGridPane.add(aButton, j, i);
             }
         }
         updateMapGraphics(dungeonMap);
     }
 
-    private void updateMapGraphics(DungeonMap dungeonMap) throws IOException, SQLException {
+    private void updateMapGraphics(DungeonMap dungeonMap) {
         for (int i = 0; i < mapWidth; i++) {
             for (int j = 0; j < mapHeight; j++) {
                 int currentEntityID = dungeonMap.getMapTilesArray()[i][j].getOccupyingCreatureId();
@@ -200,7 +171,7 @@ class DungeonGUI {
         }
     }
 
-    private void buttonEvent(Button aButton, int XPos, int YPos) throws IOException, SQLException {
+    private void buttonEvent(Button aButton, int XPos, int YPos) {
         String currentTypeOfTile = getDungeonMap().getMapTilesArray()[XPos][YPos].getTypeOfTile();
         int currentHeroID = getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureId();
         boolean isTheTileInteractive = getDungeonMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange();
@@ -239,7 +210,7 @@ class DungeonGUI {
         hero.attackAMonster(monster);
     }
 
-    private void eventOnReachableTileClick() throws IOException, SQLException {
+    private void eventOnReachableTileClick() {
         getDungeonMap().clearMapReachableProperties(getDungeonMap());
         updateMapGraphics(getDungeonMap());
         setHasTheCharacterBeenSelected(false);
@@ -281,15 +252,10 @@ class DungeonGUI {
     private void applyEntityIconToAButton(int heroID, Button aButton) {
         EncounterCalculator encounterCalculator = new EncounterCalculator();
         List<Monster> monsterList = encounterCalculator.getTheListOfPossibleMonsters();
-        //System.out.println("Iterating through current monsters: ");
-        for (Monster monster : monsterList) {
-            //System.out.println("Current monster: " + monster.getMonsterName());
-        }
         if (heroID < 100) {
             aButton.setGraphic(new ImageView(getHeroByID(heroID, heroList).getHeroIcon()));
         } else {
             aButton.setGraphic(new ImageView(getMonsterByID(heroID, monsterList).getMonsterImage()));
-            //System.out.println("CHECKING FOR MONSTER IMAGE:  " + getMonsterByID(heroID, monsterList).getMonsterImage());
         }
     }
 
@@ -393,7 +359,7 @@ class DungeonGUI {
                     boolean mapTileIsOccupied = currentMapTile.getOccupyingCreatureId() > 0;
                     if (!currentMapTile.isCurrentlyBehindCover() || !currentMapTile.isCurrentlyInvisible()) {
                         if (mapTileIsOccupied) {
-                            for (int k = 0; k < 4; k++) {
+                            for (int k = 0; k < 5; k++) {
                                 int deltaX = i + 1;
                                 int deltaY = j + 1;
                                 double skewingCoefficient;
@@ -401,13 +367,12 @@ class DungeonGUI {
                                 System.out.println("DeltaX: " + deltaX + " DeltaY: " + deltaY);
                                 int valueX = currentXPos + (i * k * dir1);
                                 int valueY = currentYPos + (j * k * dir2);
-                                markTileAsUnreachable(currentMapTile, valueX, valueY);
+                                markTileAsUnreachable(valueX, valueY);
                                 while (deltaY > 1 || deltaX > 1) {
                                     int modifiedValueX = valueX + dir1;
                                     int modifiedValueY = valueY + dir2;
                                     if (skewingCoefficient == 1) {
-                                        markTileAsUnreachable(currentMapTile, modifiedValueX, modifiedValueY);
-//                                                System.out.println("Marking Tile: XPos = " + modifiedValueX + " YPos = " + modifiedValueY + " Skewing Coefficient = " + skewingCoefficient);
+                                        markTileAsUnreachable(modifiedValueX, modifiedValueY);
                                         deltaY--;
                                         deltaX--;
                                         valueX += dir1;
@@ -416,14 +381,12 @@ class DungeonGUI {
                                             skewingCoefficient = deltaX / deltaY;
                                         }
                                     } else if (skewingCoefficient > 1) {
-                                        markTileAsUnreachable(currentMapTile, modifiedValueX, valueY);
-//                                                System.out.println("Marking Tile: XPos = " + modifiedValueX + " YPos = " + valueY + " Skewing Coefficient = " + skewingCoefficient)                                                ;
+                                        markTileAsUnreachable(modifiedValueX, valueY);
                                         deltaX--;
                                         valueX += dir1;
                                         skewingCoefficient = deltaX / deltaY;
                                     } else if (skewingCoefficient < 1) {
-                                        markTileAsUnreachable(currentMapTile, valueX, modifiedValueY);
-//                                                System.out.println("Marking Tile: XPos = " + valueX + " YPos = " + modifiedValueY + " Skewing Coefficient = " + skewingCoefficient);
+                                        markTileAsUnreachable(valueX, modifiedValueY);
                                         deltaY--;
                                         valueY += dir2;
                                         if (deltaY > 0) {
@@ -440,7 +403,7 @@ class DungeonGUI {
         }
     }
 
-    private void markTileAsUnreachable(MapTile currentMapTile, int valueX, int modifiedValueY) {
+    private void markTileAsUnreachable(int valueX, int modifiedValueY) {
         dungeonMap.getMapTilesArray()[valueX][modifiedValueY].setCurrentlyInvisible(true);
         buttonGrid[valueX][modifiedValueY].setStyle("-fx-color: #ff6600");
 
