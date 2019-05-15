@@ -4,7 +4,6 @@
     <list default="true" id="de97b43a-8902-45e2-a345-dc80bad4fa20" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Model/MapTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Model/MapTile.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,7 +20,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
+            <state relative-caret-position="4182">
               <caret line="281" column="2" selection-start-line="281" selection-start-column="2" selection-end-line="281" selection-end-column="2" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -35,7 +34,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
+            <state relative-caret-position="3400">
               <caret line="213" selection-start-line="213" selection-end-line="213" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -47,7 +46,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Monsters/GoblinWarrior.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
+            <state relative-caret-position="255">
               <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -59,12 +58,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Model/EncounterCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="48" column="29" lean-forward="true" selection-start-line="48" selection-start-column="29" selection-end-line="48" selection-end-column="29" />
+            <state relative-caret-position="680">
+              <caret line="48" column="29" selection-start-line="48" selection-start-column="29" selection-end-line="48" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#703#704#0" expanded="true" />
-                <element signature="e#746#747#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -74,7 +71,7 @@
         <entry file="file://$PROJECT_DIR$/src/sample/Monsters/GoblinSharpshooter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
-              <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+              <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -91,8 +88,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="385" column="37" lean-forward="true" selection-start-line="385" selection-start-column="37" selection-end-line="385" selection-end-column="37" />
+            <state relative-caret-position="-77">
+              <caret line="424" column="108" selection-start-line="424" selection-start-column="108" selection-end-line="424" selection-end-column="108" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -119,8 +116,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Model/Monster.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="9" column="25" lean-forward="true" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+            <state relative-caret-position="136">
+              <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
               <folding>
                 <element signature="e#2375#2376#0" expanded="true" />
                 <element signature="e#2410#2411#0" expanded="true" />
@@ -132,15 +129,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Model/DungeonMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="14">
+            <state relative-caret-position="1972">
               <caret line="123" column="20" selection-start-line="123" selection-start-column="20" selection-end-line="123" selection-end-column="20" />
               <folding>
-                <element signature="e#460#461#0" expanded="true" />
-                <element signature="e#491#492#0" expanded="true" />
-                <element signature="e#543#544#0" expanded="true" />
-                <element signature="e#583#584#0" expanded="true" />
                 <element signature="e#590#591#0" expanded="true" />
                 <element signature="e#630#631#0" expanded="true" />
+                <element signature="e#18643#18644#0" expanded="true" />
                 <element signature="e#18679#18680#0" expanded="true" />
               </folding>
             </state>
@@ -268,6 +262,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -355,7 +350,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -434,13 +428,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1556870921453</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Character Creation - Repaired the css of Dungeon">
-      <created>1557217650839</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1557217650839</updated>
     </task>
     <task id="LOCAL-00011" summary="Character Creation - Added Half of Encounter Powers and the choice option.">
       <created>1557224669767</created>
@@ -778,7 +765,14 @@
       <option name="project" value="LOCAL" />
       <updated>1557828650138</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Dungeon GUI - visibility checker almost finished">
+      <created>1557835532957</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1557835532958</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TodoView">
@@ -794,7 +788,7 @@
     <frame x="1358" y="-290" width="1696" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49892932" visible="true" weight="0.2200489" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49892932" visible="true" weight="0.22249389" />
       <window_info id="Structure" order="1" sideWeight="0.5010707" side_tool="true" weight="0.2200489" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -853,7 +847,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Repairs to the SQL that creates characters (hero icon added)" />
     <MESSAGE value="Dungeon Map - heroes from selector are now passed into map when created" />
     <MESSAGE value="Dungeon Map - heroes now have correct icons" />
     <MESSAGE value="Character selector - validation of the completeness of fields in character selection." />
@@ -878,7 +871,8 @@
     <MESSAGE value="Field &quot;ID&quot; is now being set during monster creation" />
     <MESSAGE value="Encounter calculator finished; for levels &gt; 5 the calculator will have to be adjusted." />
     <MESSAGE value="Dungeon GUI - started the visibility / cover checker for encounters" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dungeon GUI - started the visibility / cover checker for encounters" />
+    <MESSAGE value="Dungeon GUI - visibility checker almost finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dungeon GUI - visibility checker almost finished" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/Avenger/AspectOfMight.java">
@@ -1202,61 +1196,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Model/FakeDatabase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="50" column="7" selection-start-line="50" selection-start-column="7" selection-end-line="50" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Monsters/GoblinSharpshooter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Monsters/GoblinSkullcleaver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Model/Monster.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="9" column="25" lean-forward="true" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
-          <folding>
-            <element signature="e#2375#2376#0" expanded="true" />
-            <element signature="e#2410#2411#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Monsters/GoblinWarrior.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="213" selection-start-line="213" selection-end-line="213" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Model/FakeDatabase.java" />
     <entry file="file://$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
+        <state relative-caret-position="4182">
           <caret line="281" column="2" selection-start-line="281" selection-start-column="2" selection-end-line="281" selection-end-column="2" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1266,31 +1209,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Model/EncounterCalculator.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="48" column="29" lean-forward="true" selection-start-line="48" selection-start-column="29" selection-end-line="48" selection-end-column="29" />
+        <state relative-caret-position="3400">
+          <caret line="213" selection-start-line="213" selection-end-line="213" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#703#704#0" expanded="true" />
-            <element signature="e#746#747#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Model/DungeonMap.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/Monsters/GoblinWarrior.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14">
-          <caret line="123" column="20" selection-start-line="123" selection-start-column="20" selection-end-line="123" selection-end-column="20" />
+        <state relative-caret-position="255">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
           <folding>
-            <element signature="e#460#461#0" expanded="true" />
-            <element signature="e#491#492#0" expanded="true" />
-            <element signature="e#543#544#0" expanded="true" />
-            <element signature="e#583#584#0" expanded="true" />
-            <element signature="e#590#591#0" expanded="true" />
-            <element signature="e#630#631#0" expanded="true" />
-            <element signature="e#18679#18680#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Model/EncounterCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="48" column="29" selection-start-line="48" selection-start-column="29" selection-end-line="48" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Monsters/GoblinSharpshooter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Monsters/GoblinSkullcleaver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -1308,10 +1267,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Model/Monster.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+          <folding>
+            <element signature="e#2375#2376#0" expanded="true" />
+            <element signature="e#2410#2411#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Model/DungeonMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1972">
+          <caret line="123" column="20" selection-start-line="123" selection-start-column="20" selection-end-line="123" selection-end-column="20" />
+          <folding>
+            <element signature="e#590#591#0" expanded="true" />
+            <element signature="e#630#631#0" expanded="true" />
+            <element signature="e#18643#18644#0" expanded="true" />
+            <element signature="e#18679#18680#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="385" column="37" lean-forward="true" selection-start-line="385" selection-start-column="37" selection-end-line="385" selection-end-column="37" />
+        <state relative-caret-position="-77">
+          <caret line="424" column="108" selection-start-line="424" selection-start-column="108" selection-end-line="424" selection-end-column="108" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

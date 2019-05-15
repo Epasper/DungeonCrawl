@@ -278,15 +278,15 @@ class DungeonGUI {
     private void applyEntityIconToAButton(int heroID, Button aButton) {
         EncounterCalculator encounterCalculator = new EncounterCalculator();
         List<Monster> monsterList = encounterCalculator.getTheListOfPossibleMonsters();
-        System.out.println("Iterating through current monsters: ");
+        //System.out.println("Iterating through current monsters: ");
         for (Monster monster : monsterList) {
-            System.out.println("Current monster: " + monster.getMonsterName());
+            //System.out.println("Current monster: " + monster.getMonsterName());
         }
         if (heroID < 100) {
             aButton.setGraphic(new ImageView(getHeroByID(heroID, heroList).getHeroIcon()));
         } else {
             aButton.setGraphic(new ImageView(getMonsterByID(heroID, monsterList).getMonsterImage()));
-            System.out.println("CHECKING FOR MONSTER IMAGE:  " + getMonsterByID(heroID, monsterList).getMonsterImage());
+            //System.out.println("CHECKING FOR MONSTER IMAGE:  " + getMonsterByID(heroID, monsterList).getMonsterImage());
         }
     }
 
@@ -381,29 +381,81 @@ class DungeonGUI {
         checkTheSightForOneDirection(YPos, XPos, -1, 1);
         checkTheSightForOneDirection(YPos, XPos, -1, -1);
     }
-//todo repair the sight check (sth went wrong with identifying the occupied property)
+
+    //todo repair the sight check (sth went wrong with identifying the occupied property)
     private void checkTheSightForOneDirection(int YPos, int XPos, int dir1, int dir2) {
-        for (int i = 1; i < 3; i++) {
-            for (int j = 1; j < 3; j++) {
-                System.out.println("checked Tile >>" + i * dir1 + ">>" + j * dir2);
-                MapTile currentMapTile = dungeonMap.getMapTilesArray()[XPos + i * dir1][YPos + j * dir2];
-                currentMapTile.setCurrentlyBehindCover(false);
-                currentMapTile.setCurrentlyInvisible(false);
-                boolean mapTileIsOccupied = currentMapTile.getOccupyingCreatureId() > 0;
-                if (!currentMapTile.isCurrentlyBehindCover() || !currentMapTile.isCurrentlyInvisible()) {
-                    if (!currentMapTile.typeOfTile.contains("Room") && !currentMapTile.typeOfTile.contains("Opened") && mapTileIsOccupied) {
-                        System.out.println("--->" + currentMapTile.typeOfTile + "<--->" + i + "<--->" + j);
-                        for (int k = 0; k < 2; k += i) {
-                            for (int l = 0; l < 2; l += j) {
-                                dungeonMap.getMapTilesArray()[XPos + i * dir1 + k][YPos + j * dir2 + l].setCurrentlyInvisible(true);
-                                buttonGrid[XPos + i * dir1 + k][YPos + j * dir2 + l].setStyle("-fx-color: #993d00");
-                                dungeonMap.getMapTilesArray()[XPos + i * dir1 + k][YPos + j * dir2 + l + dir2].setCurrentlyBehindCover(true);
-                                buttonGrid[XPos + i * dir1 + k][YPos + j * dir2 + l + dir2].setStyle("-fx-color: #ff6600");
-                                dungeonMap.getMapTilesArray()[XPos + i * dir1 + k + dir1][YPos + j * dir2 + l].setCurrentlyBehindCover(true);
-                                buttonGrid[XPos + i * dir1 + k + dir1][YPos + j * dir2 + l].setStyle("-fx-color: #ff6600");
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (i == 0 && j == 0) continue;
+                try {
+                    System.out.println("checked Tile >>" + i * dir1 + ">>" + j * dir2);
+                    int currentXPos = XPos + i * dir1;
+                    int currentYPos = YPos + j * dir2;
+                    MapTile currentMapTile = dungeonMap.getMapTilesArray()[currentXPos][currentYPos];
+//                    currentMapTile.setCurrentlyBehindCover(false);
+//                    currentMapTile.setCurrentlyInvisible(false);
+                    boolean mapTileIsOccupied = currentMapTile.getOccupyingCreatureId() > 0;
+                    if (mapTileIsOccupied) System.out.println("FOUND A CHARACTER");
+                    if (!currentMapTile.isCurrentlyBehindCover() || !currentMapTile.isCurrentlyInvisible()) {
+                        if (//!currentMapTile.typeOfTile.contains("Room") && !currentMapTile.typeOfTile.contains("Opened") &&
+                                mapTileIsOccupied) {
+                            //System.out.println("--->" + currentMapTile.typeOfTile + "<--->" + i + "<--->" + j);
+                            for (int k = 0; k < 4; k++) {
+                                for (int l = 0; l < 4; l++) {
+//                                    dungeonMap.getMapTilesArray()[currentXPos + i][currentYPos + j + dir2].setCurrentlyBehindCover(true);
+//                                    buttonGrid[currentXPos + i][currentYPos + j + dir2].setStyle("-fx-color: #ff6600");
+//                                    dungeonMap.getMapTilesArray()[currentXPos + i + dir1][currentYPos + j].setCurrentlyBehindCover(true);
+//                                    buttonGrid[currentXPos + i + dir1][currentYPos + j].setStyle("-fx-color: #ff6600");
+                                    int deltaX = i + 1;
+                                    int deltaY = j + 1;
+//                                    dungeonMap.getMapTilesArray()[currentXPos + i][currentYPos + j].setCurrentlyInvisible(true);
+//                                    buttonGrid[currentXPos + i][currentYPos + j].setStyle("-fx-color: #993d00");
+                                    boolean isDeltaXBigger = (deltaX > deltaY);
+                                    boolean areDeltasEqual = (deltaX == deltaY);
+                                    double skewingCoefficient;
+                                    if (isDeltaXBigger) {
+                                        skewingCoefficient = deltaX / deltaY;
+                                    } else if (areDeltasEqual) {
+                                        skewingCoefficient = 1;
+                                    } else {
+                                        skewingCoefficient = deltaY / deltaX;
+                                    }
+                                    if (k == l) {
+                                        dungeonMap.getMapTilesArray()[currentXPos + (i * k * dir1)][currentYPos + (j * l * dir2)].setCurrentlyInvisible(true);
+                                        buttonGrid[currentXPos + (i * k * dir1)][currentYPos + (j * l * dir2)].setStyle("-fx-color: #993d00");
+                                    }
+/*                                    while (deltaX > -1 && deltaY > -1) {
+                                        for (int m = 0; m < skewingCoefficient; m++) {
+                                            if (deltaX > deltaY) {
+                                                dungeonMap.getMapTilesArray()[currentXPos + i - m * dir1][currentYPos + j].setCurrentlyInvisible(true);
+                                                buttonGrid[currentXPos + i - m * dir1][currentYPos + j].setStyle("-fx-color: #993d00");
+                                                deltaX--;
+                                            } else if (deltaY > deltaX) {
+                                                dungeonMap.getMapTilesArray()[currentXPos + i][currentYPos + j - m * dir2].setCurrentlyInvisible(true);
+                                                buttonGrid[currentXPos + i][currentYPos + j - m * dir2].setStyle("-fx-color: #993d00");
+                                                deltaY--;
+                                            }
+                                        }
+                                        if (deltaX > deltaY) {
+                                            dungeonMap.getMapTilesArray()[currentXPos + i][currentYPos + j - dir2].setCurrentlyInvisible(true);
+                                            buttonGrid[currentXPos + i][currentYPos + j - dir2].setStyle("-fx-color: #993d00");
+                                            deltaY--;
+                                        } else if (deltaY > deltaX) {
+                                            dungeonMap.getMapTilesArray()[currentXPos + i - dir1][currentYPos + j].setCurrentlyInvisible(true);
+                                            buttonGrid[currentXPos + i - dir1][currentYPos + j].setStyle("-fx-color: #993d00");
+                                            deltaX--;
+                                        } else {
+                                            dungeonMap.getMapTilesArray()[currentXPos + i - dir1][currentYPos + j - dir2].setCurrentlyInvisible(true);
+                                            buttonGrid[currentXPos + i - dir1][currentYPos + j - dir2].setStyle("-fx-color: #993d00");
+                                            deltaX--;
+                                            deltaY--;
+                                        }
+                                    }*/
+                                }
                             }
                         }
                     }
+                } catch (IndexOutOfBoundsException ignored) {
                 }
             }
         }
