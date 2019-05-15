@@ -410,19 +410,51 @@ class DungeonGUI {
                                     int deltaY = j + 1;
 //                                    dungeonMap.getMapTilesArray()[currentXPos + i][currentYPos + j].setCurrentlyInvisible(true);
 //                                    buttonGrid[currentXPos + i][currentYPos + j].setStyle("-fx-color: #993d00");
-                                    boolean isDeltaXBigger = (deltaX > deltaY);
-                                    boolean areDeltasEqual = (deltaX == deltaY);
+//                                    boolean isDeltaXBigger = (deltaX > deltaY);
+//                                    boolean areDeltasEqual = (deltaX == deltaY);
                                     double skewingCoefficient;
-                                    if (isDeltaXBigger) {
-                                        skewingCoefficient = deltaX / deltaY;
-                                    } else if (areDeltasEqual) {
-                                        skewingCoefficient = 1;
-                                    } else {
-                                        skewingCoefficient = deltaY / deltaX;
-                                    }
+//                                    if (isDeltaXBigger) {
+//                                        skewingCoefficient = deltaX / deltaY;
+//                                    } else if (areDeltasEqual) {
+//                                        skewingCoefficient = 1;
+//                                    } else {
+                                    skewingCoefficient = deltaX / deltaY;
+
                                     if (k == l) {
+                                        System.out.println("DeltaX: " + deltaX + " DeltaY: " + deltaY);
                                         dungeonMap.getMapTilesArray()[currentXPos + (i * k * dir1)][currentYPos + (j * l * dir2)].setCurrentlyInvisible(true);
                                         buttonGrid[currentXPos + (i * k * dir1)][currentYPos + (j * l * dir2)].setStyle("-fx-color: #993d00");
+                                        int ValueX = currentXPos + (i * k * dir1);
+                                        int ValueY = currentYPos + (j * l * dir2);
+                                        while (deltaY > 0 && deltaX > 0) {
+                                            int ModifiedValueX = ValueX + dir1;
+                                            int ModifiedValueY = ValueY + dir2;
+                                            if (skewingCoefficient == 1) {
+                                                dungeonMap.getMapTilesArray()[ModifiedValueX][ModifiedValueY].setCurrentlyInvisible(true);
+                                                buttonGrid[ModifiedValueX][ModifiedValueY].setStyle("-fx-color: #ff6600");
+                                                deltaY--;
+                                                deltaX--;
+                                                ValueX++;
+                                                ValueY++;
+                                                if (deltaY > 0) {
+                                                    skewingCoefficient = deltaX / deltaY;
+                                                }
+                                            } else if (skewingCoefficient > 1) {
+                                                dungeonMap.getMapTilesArray()[ModifiedValueX][ValueY].setCurrentlyInvisible(true);
+                                                buttonGrid[ModifiedValueX][ValueY].setStyle("-fx-color: #ff6600");
+                                                deltaX--;
+                                                ValueX++;
+                                                skewingCoefficient = deltaX / deltaY;
+                                            } else if (skewingCoefficient < 1) {
+                                                dungeonMap.getMapTilesArray()[ValueX][ModifiedValueY].setCurrentlyInvisible(true);
+                                                buttonGrid[ValueX][ModifiedValueY].setStyle("-fx-color: #ff6600");
+                                                deltaY--;
+                                                ValueY++;
+                                                if (deltaY > 0) {
+                                                    skewingCoefficient = deltaX / deltaY;
+                                                }
+                                            }
+                                        }
                                     }
 /*                                    while (deltaX > -1 && deltaY > -1) {
                                         for (int m = 0; m < skewingCoefficient; m++) {
