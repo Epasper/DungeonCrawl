@@ -371,21 +371,17 @@ class DungeonGUI {
         }
     }
 
-    //todo add a visibility checker similar to the range checker, but straight and with a longer range
-    //todo add a console in the dungeon view to write output alreadyDiscovered to players
-    //todo think about the power selection menu in the dungeon GUI
-
+    //todo add a console in the dungeon view to write output already discovered to players
+//todo visibility checker hat to stop on walls
     private void checkTheLineOfSight(Hero hero) {
         int YPos = hero.getMapYPos();
         int XPos = hero.getMapXPos();
-        int sightRange = 10;
         checkTheSightForOneDirection(YPos, XPos, 1, 1);
         checkTheSightForOneDirection(YPos, XPos, 1, -1);
         checkTheSightForOneDirection(YPos, XPos, -1, 1);
         checkTheSightForOneDirection(YPos, XPos, -1, -1);
     }
 
-    //todo repair the sight check (sth went wrong with identifying the occupied property)
     private void checkTheSightForOneDirection(int YPos, int XPos, int dir1, int dir2) {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
@@ -396,8 +392,7 @@ class DungeonGUI {
                     MapTile currentMapTile = dungeonMap.getMapTilesArray()[currentXPos][currentYPos];
                     boolean mapTileIsOccupied = currentMapTile.getOccupyingCreatureId() > 0;
                     if (!currentMapTile.isCurrentlyBehindCover() || !currentMapTile.isCurrentlyInvisible()) {
-                        if (//!currentMapTile.typeOfTile.contains("Room") && !currentMapTile.typeOfTile.contains("Opened") &&
-                                mapTileIsOccupied) {
+                        if (mapTileIsOccupied) {
                             for (int k = 0; k < 4; k++) {
                                 int deltaX = i + 1;
                                 int deltaY = j + 1;
@@ -406,15 +401,12 @@ class DungeonGUI {
                                 System.out.println("DeltaX: " + deltaX + " DeltaY: " + deltaY);
                                 int valueX = currentXPos + (i * k * dir1);
                                 int valueY = currentYPos + (j * k * dir2);
-                                dungeonMap.getMapTilesArray()[valueX][valueX].setCurrentlyInvisible(true);
-//                                        System.out.println("Marking Blocked Tile: XPos = " + valueX + " YPos = " + valueX + " Skewing Coefficient = " + skewingCoefficient);
-                                buttonGrid[valueX][valueY].setStyle("-fx-color: #993d00");
+                                markTileAsUnreachable(currentMapTile, valueX, valueY);
                                 while (deltaY > 1 || deltaX > 1) {
                                     int modifiedValueX = valueX + dir1;
                                     int modifiedValueY = valueY + dir2;
                                     if (skewingCoefficient == 1) {
-                                        dungeonMap.getMapTilesArray()[modifiedValueX][modifiedValueY].setCurrentlyInvisible(true);
-                                        buttonGrid[modifiedValueX][modifiedValueY].setStyle("-fx-color: #ff6600");
+                                        markTileAsUnreachable(currentMapTile, modifiedValueX, modifiedValueY);
 //                                                System.out.println("Marking Tile: XPos = " + modifiedValueX + " YPos = " + modifiedValueY + " Skewing Coefficient = " + skewingCoefficient);
                                         deltaY--;
                                         deltaX--;
@@ -424,15 +416,13 @@ class DungeonGUI {
                                             skewingCoefficient = deltaX / deltaY;
                                         }
                                     } else if (skewingCoefficient > 1) {
-                                        dungeonMap.getMapTilesArray()[modifiedValueX][valueY].setCurrentlyInvisible(true);
-                                        buttonGrid[modifiedValueX][valueY].setStyle("-fx-color: #ff6600");
+                                        markTileAsUnreachable(currentMapTile, modifiedValueX, valueY);
 //                                                System.out.println("Marking Tile: XPos = " + modifiedValueX + " YPos = " + valueY + " Skewing Coefficient = " + skewingCoefficient)                                                ;
                                         deltaX--;
                                         valueX += dir1;
                                         skewingCoefficient = deltaX / deltaY;
                                     } else if (skewingCoefficient < 1) {
-                                        dungeonMap.getMapTilesArray()[valueX][modifiedValueY].setCurrentlyInvisible(true);
-                                        buttonGrid[valueX][modifiedValueY].setStyle("-fx-color: #ff6600");
+                                        markTileAsUnreachable(currentMapTile, valueX, modifiedValueY);
 //                                                System.out.println("Marking Tile: XPos = " + valueX + " YPos = " + modifiedValueY + " Skewing Coefficient = " + skewingCoefficient);
                                         deltaY--;
                                         valueY += dir2;
@@ -449,6 +439,13 @@ class DungeonGUI {
             }
         }
     }
+
+    private void markTileAsUnreachable(MapTile currentMapTile, int valueX, int modifiedValueY) {
+        dungeonMap.getMapTilesArray()[valueX][modifiedValueY].setCurrentlyInvisible(true);
+        buttonGrid[valueX][modifiedValueY].setStyle("-fx-color: #ff6600");
+
+    }
+
 
     private void checkTheAvailableDistance(Hero hero) {
         int YPos = hero.getMapYPos();
