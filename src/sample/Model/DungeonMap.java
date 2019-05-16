@@ -285,8 +285,6 @@ public class DungeonMap {
 
     //todo check if it's possible to unite hero and monster spawn methods according to DRY
 
-    //todo make a proper encounter generator so that monster spawning is not fake
-
     private void spawnMonstersInARoom(Room room) {
         Random randX = new Random();
         int currentMonsterXPos;
@@ -350,7 +348,6 @@ public class DungeonMap {
     }
 
     //todo cleanup the east-south mess in arrays
-    //todo include corridors and thin walls in the map drawing procedure
 
     private void checkTheBlankTilesForWalls() {
         for (int i = 0; i < numberOfTilesX; i++) {

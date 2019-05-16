@@ -19,6 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static java.lang.Math.max;
+import static java.lang.Math.round;
+
 class DungeonGUI {
 
     private MainMenuGUI mainMenuGUI = new MainMenuGUI();
@@ -136,6 +139,8 @@ class DungeonGUI {
         }
         return monsterNotFound;
     }
+
+    //todo think about disassembling this class to smaller classes for better unit testing
 
     private void updateGUIAccordingToMap(DungeonMap dungeonMap) {
         for (int i = 0; i < mapWidth; i++) {
@@ -338,7 +343,7 @@ class DungeonGUI {
     }
 
     //todo add a console in the dungeon view to write output already discovered to players
-//todo visibility checker hat to stop on walls
+    //todo visibility checker hat to stop on walls
     private void checkTheLineOfSight(Hero hero) {
         int YPos = hero.getMapYPos();
         int XPos = hero.getMapXPos();
@@ -348,7 +353,7 @@ class DungeonGUI {
         checkTheSightForOneDirection(YPos, XPos, -1, -1);
     }
 
-    private void checkTheSightForOneDirection(int YPos, int XPos, int dir1, int dir2) {
+    void checkTheSightForOneDirection(int YPos, int XPos, int dir1, int dir2) {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 if (i == 0 && j == 0) continue;
@@ -368,10 +373,13 @@ class DungeonGUI {
                                 int valueX = currentXPos + (i * k * dir1);
                                 int valueY = currentYPos + (j * k * dir2);
                                 markTileAsUnreachable(valueX, valueY);
+                                //todo there has to be an easier way
                                 while (deltaY > 1 || deltaX > 1) {
+                                    if (deltaX == 1) skewingCoefficient = 0.1;
+                                    if (deltaY == 1) skewingCoefficient = 10;
                                     int modifiedValueX = valueX + dir1;
                                     int modifiedValueY = valueY + dir2;
-                                    if (skewingCoefficient == 1) {
+                                    if (skewingCoefficient <= 5 && skewingCoefficient >= 0.2) {
                                         markTileAsUnreachable(modifiedValueX, modifiedValueY);
                                         deltaY--;
                                         deltaX--;
@@ -380,12 +388,12 @@ class DungeonGUI {
                                         if (deltaY > 0) {
                                             skewingCoefficient = deltaX / deltaY;
                                         }
-                                    } else if (skewingCoefficient > 1) {
+                                    } else if (skewingCoefficient > 5) {
                                         markTileAsUnreachable(modifiedValueX, valueY);
                                         deltaX--;
                                         valueX += dir1;
                                         skewingCoefficient = deltaX / deltaY;
-                                    } else if (skewingCoefficient < 1) {
+                                    } else if (skewingCoefficient < 0.2) {
                                         markTileAsUnreachable(valueX, modifiedValueY);
                                         deltaY--;
                                         valueY += dir2;
@@ -469,8 +477,6 @@ class DungeonGUI {
             setDistanceOnSingleTile(previousDirection, currentTileTypeSouth, XPos, YPos, range, reasonForChecking);
         }
     }
-
-    //todo characters (both monsters and heroes) should be an impassable terrain. At the spawn and after moving, add impassable" property to the occupied tiles
 
     private void setDistanceOnSingleTile(String previousDirection, String currentDirection, int XPos, int YPos, double iterations, String reasonForChecking) {
         double stepDecrement;
