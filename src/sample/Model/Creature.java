@@ -21,6 +21,10 @@ public class Creature {
         return AC;
     }
 
+    public String getHeroName() {
+        return heroName;
+    }
+
     public void setAC(int AC) {
         this.AC = AC;
     }

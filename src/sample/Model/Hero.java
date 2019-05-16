@@ -313,7 +313,7 @@ public class Hero extends Creature {
         return gold;
     }
 
-
+//todo add a proper attack method.
     public void attackAMonster(Monster attackedMonster) {
         System.out.println("Hero: " + this.heroName + ", a " + this.heroClass + ", has attacked a(n) " + attackedMonster.getMonsterType() + " monster");
     }

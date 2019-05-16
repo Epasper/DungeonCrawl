@@ -1,13 +1,18 @@
 package sample.GUI;
 
+import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.stage.Screen;
+import org.junit.jupiter.api.Test;
 import sample.*;
 import sample.HeroPowers.HeroPower;
 import sample.Model.*;
@@ -31,6 +36,9 @@ class DungeonGUI {
     private GridPane mapGridPane = new GridPane();
     private VBox skillsVBox = new VBox();
     BorderPane mapOuterPane = new BorderPane();
+    private Text dungeonConsoleText = new Text();
+    HBox consoleButtons = new HBox();
+    GridPane completeConsole = new GridPane();
     private Image wallImage = new Image(getClass().getResourceAsStream("Images\\wall.png"));
     private Image floorImage = new Image(getClass().getResourceAsStream("Images\\floor.png"));
     private Image fogImage = new Image(getClass().getResourceAsStream("Images\\fog.png"));
@@ -49,11 +57,12 @@ class DungeonGUI {
     private Image openedDoorVertical = new Image(getClass().getResourceAsStream("Images\\OpenedDoorVertical.png"));
     private Image openedDoorHorizontal = new Image(getClass().getResourceAsStream("Images\\OpenedDoorHorizontal.png"));
     private List<Hero> heroList;
-    //private List<Monster> monsterList = new ArrayList<>();
     private DungeonMap dungeonMap = new DungeonMap(heroList);
     private int currentlyActiveHeroID;
     private boolean hasTheCharacterBeenSelected = false;
     private int numberOfHeroesThatFinishedMovement;
+    private ScrollPane dungeonConsole = new ScrollPane();
+
 
     private DungeonMap getDungeonMap() {
         return dungeonMap;
@@ -79,9 +88,26 @@ class DungeonGUI {
         this.heroList = heroList;
         skillsVBox.setStyle("-fx-background-color:grey;");
         skillsVBox.setMinSize(200, 40);
+        for (int i = 0; i < 8; i++) {
+            Button dummyButton = new Button("Button " + i);
+            dummyButton.setMinSize(50, 50);
+            consoleButtons.getChildren().add(dummyButton);
+        }
+        completeConsole.add(dungeonConsole, 0, 0);
+        completeConsole.add(consoleButtons, 0, 1);
+        Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+        completeConsole.setMinHeight(120);
+        completeConsole.setMinHeight(120);
+        dungeonConsole.setPrefWidth(primaryScreenBounds.getWidth());
+        dungeonConsole.setMinHeight(60);
+        dungeonConsole.setMaxHeight(60);
+        dungeonConsole.setFitToWidth(false);
+        //todo rewrite dummy buttons with real ones
+        dungeonConsole.setContent(dungeonConsoleText);
         ScrollPane mapScrollPane = new ScrollPane();
         mapOuterPane.setCenter(mapScrollPane);
         mapOuterPane.setRight(skillsVBox);
+        mapOuterPane.setBottom(completeConsole);
         mapScrollPane.setContent(mapGridPane);
         Button returnToMainMenu = new Button();
         returnToMainMenu.setText("Return to Main Menu");
@@ -90,6 +116,11 @@ class DungeonGUI {
         dungeonMap.setHeroList(heroList);
         getDungeonMap().drawAMap();
         updateGUIAccordingToMap(getDungeonMap());
+    }
+
+    private void updateTheDungeonConsole(String messageToUpdate) {
+        dungeonConsoleText.setText(dungeonConsoleText.getText() + "\n" + messageToUpdate);
+        dungeonConsole.setVvalue(1.0);
     }
 
     private void updateButtonsWithHeroSkillNames(Hero currentHero) {
@@ -228,6 +259,7 @@ class DungeonGUI {
         setCurrentlyActiveHeroID(currentHeroID);
         setHasTheCharacterBeenSelected(true);
         updateButtonsWithHeroSkillNames(getHeroByID(currentHeroID, heroList));
+        updateTheDungeonConsole("You have selected " + getHeroByID(currentHeroID, heroList).getHeroName());
     }
 
     private void eventOnHeroMovement(Button aButton, int XPos, int YPos) {
