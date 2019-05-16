@@ -37,8 +37,8 @@ class DungeonGUI {
     private VBox skillsVBox = new VBox();
     BorderPane mapOuterPane = new BorderPane();
     private Text dungeonConsoleText = new Text();
-    HBox consoleButtons = new HBox();
-    GridPane completeConsole = new GridPane();
+    private HBox consoleButtons = new HBox();
+    private GridPane completeConsole = new GridPane();
     private Image wallImage = new Image(getClass().getResourceAsStream("Images\\wall.png"));
     private Image floorImage = new Image(getClass().getResourceAsStream("Images\\floor.png"));
     private Image fogImage = new Image(getClass().getResourceAsStream("Images\\fog.png"));
@@ -86,6 +86,23 @@ class DungeonGUI {
 
     DungeonGUI(List<Hero> heroList) {
         this.heroList = heroList;
+        manageTheConsoleAdding();
+        //todo rewrite dummy buttons with real ones
+        dungeonConsole.setContent(dungeonConsoleText);
+        ScrollPane mapScrollPane = new ScrollPane();
+        mapOuterPane.setCenter(mapScrollPane);
+        mapOuterPane.setRight(skillsVBox);
+        mapScrollPane.setContent(mapGridPane);
+        Button returnToMainMenu = new Button();
+        returnToMainMenu.setText("Return to Main Menu");
+        mapGridPane.add(returnToMainMenu, 0, mapHeight + 1, 3, 3);
+        returnToMainMenu.setOnAction(event -> returnToMainMenu());
+        dungeonMap.setHeroList(heroList);
+        getDungeonMap().drawAMap();
+        updateGUIAccordingToMap(getDungeonMap());
+    }
+
+    private void manageTheConsoleAdding() {
         skillsVBox.setStyle("-fx-background-color:grey;");
         skillsVBox.setMinSize(200, 40);
         for (int i = 0; i < 8; i++) {
@@ -102,20 +119,7 @@ class DungeonGUI {
         dungeonConsole.setMinHeight(60);
         dungeonConsole.setMaxHeight(60);
         dungeonConsole.setFitToWidth(false);
-        //todo rewrite dummy buttons with real ones
-        dungeonConsole.setContent(dungeonConsoleText);
-        ScrollPane mapScrollPane = new ScrollPane();
-        mapOuterPane.setCenter(mapScrollPane);
-        mapOuterPane.setRight(skillsVBox);
         mapOuterPane.setBottom(completeConsole);
-        mapScrollPane.setContent(mapGridPane);
-        Button returnToMainMenu = new Button();
-        returnToMainMenu.setText("Return to Main Menu");
-        mapGridPane.add(returnToMainMenu, 0, mapHeight + 1, 3, 3);
-        returnToMainMenu.setOnAction(event -> returnToMainMenu());
-        dungeonMap.setHeroList(heroList);
-        getDungeonMap().drawAMap();
-        updateGUIAccordingToMap(getDungeonMap());
     }
 
     private void updateTheDungeonConsole(String messageToUpdate) {

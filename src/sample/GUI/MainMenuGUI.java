@@ -5,6 +5,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
@@ -32,7 +33,7 @@ public class MainMenuGUI {
     }
 
 
-    private void buildTheMainMenu()  {
+    private void buildTheMainMenu() {
         aScene.getStylesheets().add("sample/Styling/CharacterCreator.css");
         aStage = Main.getPrimaryStage();
         mainMenuScrollPane.setContent(mainMenuBorderPane);
@@ -45,6 +46,7 @@ public class MainMenuGUI {
         middlePane.setPrefWrapLength(170);
         middlePane.getChildren().add(newDungeonButton);
         middlePane.getChildren().add(cardForgeGUIButton);
+        aStage.getIcons().add(new Image("sample/GUI/Images/MainMenuIcon.jpg"));
         newDungeonButton.setText("Generate a New Dungeon");
         newDungeonButton.setOnAction(event -> {
             try {
@@ -65,6 +67,7 @@ public class MainMenuGUI {
         aStage.close();
         aScene.setRoot(partySelectorGUI.partySelectorOuterPlane);
         aScene.getStylesheets().add("sample/Styling/Caspian.css");
+        aStage.setMaximized(true);
         //aScene.setRoot(dungeonGui.mapScrollPane);
         aStage.setScene(aScene);
         aStage.show();
@@ -73,7 +76,10 @@ public class MainMenuGUI {
     private void openCharacterCreationGUI() {
         CharacterCreatorGUI characterCreatorGUI = new CharacterCreatorGUI();
         aStage.close();
+        aStage.getIcons().clear();
+        aStage.getIcons().add(new Image("sample/GUI/Images/CharacterCreatorIcon.jpg"));
         aScene.setRoot(characterCreatorGUI.characterCreatorOuterPane);
+        aStage.setMaximized(true);
         aStage.setScene(aScene);
         aStage.show();
     }
