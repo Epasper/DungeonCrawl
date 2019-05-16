@@ -12,17 +12,14 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
-import org.junit.jupiter.api.Test;
 import sample.*;
 import sample.HeroPowers.HeroPower;
 import sample.Model.*;
 import sample.Model.Monster;
 
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.Map;
 
 import static java.lang.Math.max;
 import static java.lang.Math.round;
@@ -34,7 +31,7 @@ class DungeonGUI {
     private int mapHeight = 40;
     private Button[][] buttonGrid = new Button[mapWidth][mapHeight];
     private GridPane mapGridPane = new GridPane();
-    private VBox skillsVBox = new VBox();
+    private VBox powersVBox = new VBox();
     BorderPane mapOuterPane = new BorderPane();
     private Text dungeonConsoleText = new Text();
     private HBox consoleButtons = new HBox();
@@ -62,7 +59,7 @@ class DungeonGUI {
     private boolean hasTheCharacterBeenSelected = false;
     private int numberOfHeroesThatFinishedMovement;
     private ScrollPane dungeonConsole = new ScrollPane();
-
+    private List<HeroPower> currentPower = new ArrayList<>();
 
     private DungeonMap getDungeonMap() {
         return dungeonMap;
@@ -91,7 +88,7 @@ class DungeonGUI {
         dungeonConsole.setContent(dungeonConsoleText);
         ScrollPane mapScrollPane = new ScrollPane();
         mapOuterPane.setCenter(mapScrollPane);
-        mapOuterPane.setRight(skillsVBox);
+        mapOuterPane.setRight(powersVBox);
         mapScrollPane.setContent(mapGridPane);
         Button returnToMainMenu = new Button();
         returnToMainMenu.setText("Return to Main Menu");
@@ -103,8 +100,8 @@ class DungeonGUI {
     }
 
     private void manageTheConsoleAdding() {
-        skillsVBox.setStyle("-fx-background-color:grey;");
-        skillsVBox.setMinSize(200, 40);
+        powersVBox.setStyle("-fx-background-color:grey;");
+        powersVBox.setMinSize(200, 40);
         for (int i = 0; i < 8; i++) {
             Button dummyButton = new Button("Button " + i);
             dummyButton.setMinSize(50, 50);
@@ -133,8 +130,8 @@ class DungeonGUI {
             powerButton.setMinWidth(130);
             powerButton.setStyle("-fx-background-color: #007200;");
             powerButton.setTextFill(Color.WHITE);
-            skillsVBox.getChildren().add(powerButton);
-            powerButton.setOnAction(event -> checkTheLineOfSight(currentHero));
+            powersVBox.getChildren().add(powerButton);
+            powerButton.setOnAction(event -> eventOnPowerSelect(currentHero, currentPower));
 
         }
         for (HeroPower currentPower : currentHero.getEncounterPowers()) {
@@ -142,16 +139,16 @@ class DungeonGUI {
             powerButton.setMinWidth(130);
             powerButton.setStyle("-fx-background-color: #910000;");
             powerButton.setTextFill(Color.WHITE);
-            skillsVBox.getChildren().add(powerButton);
-            powerButton.setOnAction(event -> checkTheLineOfSight(currentHero));
+            powersVBox.getChildren().add(powerButton);
+            powerButton.setOnAction(event -> eventOnPowerSelect(currentHero, currentPower));
         }
         for (HeroPower currentPower : currentHero.getDailyPowers()) {
             Button powerButton = new Button(currentPower.getPowerName());
             powerButton.setMinWidth(130);
             powerButton.setStyle("-fx-background-color: #5c005e;");
             powerButton.setTextFill(Color.WHITE);
-            skillsVBox.getChildren().add(powerButton);
-            powerButton.setOnAction(event -> checkTheLineOfSight(currentHero));
+            powersVBox.getChildren().add(powerButton);
+            powerButton.setOnAction(event -> eventOnPowerSelect(currentHero, currentPower));
         }
     }
 
@@ -231,7 +228,7 @@ class DungeonGUI {
             getDungeonMap().clearMapReachableProperties(getDungeonMap());
         }
         if (currentHeroID > 100 && isTheTileInteractive) {
-            eventOnHeroAttackingAMonster(XPos, YPos);
+            eventOnHeroAttackingAMonster(XPos, YPos, currentPower.get(currentPower.size() - 1));
         }
     }
 
@@ -242,19 +239,25 @@ class DungeonGUI {
         System.out.println("Stage is closing");
     }
 
-    private void eventOnHeroAttackingAMonster(int XPos, int YPos) {
+    private void eventOnHeroAttackingAMonster(int XPos, int YPos, HeroPower attackingPower) {
         Hero hero = getHeroByID(getCurrentlyActiveHeroID(), heroList);
         EncounterCalculator encounterCalculator = new EncounterCalculator();
         List<Monster> monsterList = encounterCalculator.getTheListOfPossibleMonsters();
         Monster monster = getMonsterByID(getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureId(), monsterList);
-        hero.attackAMonster(monster);
+        Map attackResults = hero.attackAMonster(monster, attackingPower);
+        updateTheDungeonConsole("You have attacked a " + monster.getMonsterName()
+                + "  with " + attackingPower.getPowerName() + "\n" +
+                "Your current " + attackingPower.getAttributeUsedToHit() + " bonus equals to " +
+                hero.getHeroAttributesMap().get(attackingPower.getAttributeUsedToHit().toLowerCase()) + "\n" +
+                "The dice roll equals " + attackResults.get("Dice Roll")
+        );
     }
 
     private void eventOnReachableTileClick() {
         getDungeonMap().clearMapReachableProperties(getDungeonMap());
         updateMapGraphics(getDungeonMap());
         setHasTheCharacterBeenSelected(false);
-        skillsVBox.getChildren().clear();
+        powersVBox.getChildren().clear();
     }
 
     private void eventOnHeroClick(int currentHeroID) {
@@ -287,6 +290,12 @@ class DungeonGUI {
                 numberOfHeroesThatFinishedMovement = 0;
             }
         }
+    }
+
+    private void eventOnPowerSelect(Hero currentHero, HeroPower selectedPower) {
+        currentPower.clear();
+        currentPower.add(selectedPower);
+        checkTheLineOfSight(currentHero);
     }
 
 
@@ -389,7 +398,7 @@ class DungeonGUI {
         checkTheSightForOneDirection(YPos, XPos, -1, -1);
     }
 
-    void checkTheSightForOneDirection(int YPos, int XPos, int dir1, int dir2) {
+    private void checkTheSightForOneDirection(int YPos, int XPos, int dir1, int dir2) {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 if (i == 0 && j == 0) continue;

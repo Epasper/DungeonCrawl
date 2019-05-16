@@ -1,5 +1,8 @@
 package sample.Model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Creature {
     public String heroName;
     private int ID;
@@ -12,6 +15,22 @@ public class Creature {
     private int reflex;
     private int will;
     private int AC;
+    private Map<String, Integer> defensesMap = new HashMap<>();
+
+    public Creature() {
+        defensesMap.put("ac", AC);
+        defensesMap.put("reflex", reflex);
+        defensesMap.put("fortitude", fortitude);
+        defensesMap.put("will", will);
+    }
+
+    public Map<String, Integer> getDefensesMap() {
+        return defensesMap;
+    }
+
+    public void setDefensesMap(Map<String, Integer> defensesMap) {
+        this.defensesMap = defensesMap;
+    }
 
     public int getFortitude() {
         return fortitude;

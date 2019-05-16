@@ -3,8 +3,7 @@ package sample.Model;
 import javafx.scene.image.Image;
 import sample.HeroPowers.HeroPower;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Hero extends Creature {
 
@@ -40,10 +39,28 @@ public class Hero extends Creature {
     private int Stealth;
     private int Streetwise;
     private int Thievery;
+    private Map<String, Integer> heroAttributesMap;
+
     //todo remove all icons from HDD after reconnecting things to SQL
     private Image heroIcon = new Image(getClass().getResourceAsStream("icon1.png"));
 
     public Hero() {
+        Map<String, Integer> heroAttributesMap = new HashMap<>();
+        heroAttributesMap.put("strength", strength);
+        heroAttributesMap.put("constitution", constitution);
+        heroAttributesMap.put("dexterity", dexterity);
+        heroAttributesMap.put("intelligence", intelligence);
+        heroAttributesMap.put("wisdom", wisdom);
+        heroAttributesMap.put("charisma", charisma);
+        this.heroAttributesMap = heroAttributesMap;
+    }
+
+    public Map<String, Integer> getHeroAttributesMap() {
+        return heroAttributesMap;
+    }
+
+    public void setHeroAttributesMap(Map<String, Integer> heroAttributesMap) {
+        this.heroAttributesMap = heroAttributesMap;
     }
 
     public String getHeroClass() {
@@ -313,9 +330,20 @@ public class Hero extends Creature {
         return gold;
     }
 
-//todo add a proper attack method.
-    public void attackAMonster(Monster attackedMonster) {
-        System.out.println("Hero: " + this.heroName + ", a " + this.heroClass + ", has attacked a(n) " + attackedMonster.getMonsterType() + " monster");
+    //todo add a proper attack method.
+    public Map attackAMonster(Monster attackedMonster, HeroPower powerUsedForAttacking) {
+        Map<String, Integer> valuesToBeReturned = new HashMap<>();
+        String usedAttribute = powerUsedForAttacking.getAttributeUsedToHit();
+        heroAttributesMap.forEach((k, v) -> System.out.println("Hero Attribute: " + k + " Value: " + v));
+        System.out.println(usedAttribute);
+        int attributeBonus = (heroAttributesMap.get(usedAttribute.toLowerCase()) - 10) / 2;
+        String attackedDefense = powerUsedForAttacking.getDefenseToBeChecked().toLowerCase();
+        int defenseValue = attackedMonster.getDefensesMap().get(attackedDefense);
+        Random random = new Random();
+        int diceRoll = random.nextInt(20);
+        valuesToBeReturned.put("Attribute Bonus", attributeBonus);
+        valuesToBeReturned.put("Defense Value", defenseValue);
+        valuesToBeReturned.put("Dice Roll", diceRoll);
+        return valuesToBeReturned;
     }
-
 }
