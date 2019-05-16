@@ -52,6 +52,10 @@ public class EncounterCalculator {
             listOfChosenMonsters.add(listOfPossibleMonsters.get(i));
             inputXP -= listOfPossibleMonsters.get(i).getXpValue();
             System.out.println("Added a monster: " + listOfChosenMonsters.get(listOfChosenMonsters.size() - 1).getMonsterName());
+            System.out.println("Monster Fields: " +
+                    listOfChosenMonsters.get(listOfChosenMonsters.size() - 1).getReflex() +
+                    listOfChosenMonsters.get(listOfChosenMonsters.size() - 1).getFortitude() +
+                    listOfChosenMonsters.get(listOfChosenMonsters.size() - 1).getWill());
             System.out.println("Input Xp after putting a monster: " + inputXP);
         }
         return listOfChosenMonsters;

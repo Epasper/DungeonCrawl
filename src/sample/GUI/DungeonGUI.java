@@ -20,6 +20,7 @@ import sample.Model.Monster;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import static java.lang.Math.max;
 import static java.lang.Math.round;
@@ -245,12 +246,55 @@ class DungeonGUI {
         List<Monster> monsterList = encounterCalculator.getTheListOfPossibleMonsters();
         Monster monster = getMonsterByID(getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureId(), monsterList);
         Map attackResults = hero.attackAMonster(monster, attackingPower);
-        updateTheDungeonConsole("You have attacked a " + monster.getMonsterName()
-                + "  with " + attackingPower.getPowerName() + "\n" +
-                "Your current " + attackingPower.getAttributeUsedToHit() + " bonus equals to " +
-                hero.getHeroAttributesMap().get(attackingPower.getAttributeUsedToHit().toLowerCase()) + "\n" +
-                "The dice roll equals " + attackResults.get("Dice Roll")
-        );
+        updateTheDungeonConsole("You have attacked a " +
+                monster.getMonsterName()
+                + " with "
+                + attackingPower.getPowerName()
+                + " attack \n"
+                + "Your current "
+                + attackingPower.getAttributeUsedToHit()
+                + " bonus equals to "
+                + attackResults.get("Attribute Bonus")
+                + "\n"
+                + "The dice roll: "
+                + attackResults.get("Dice Roll")
+                + " plus the modifier of "
+                + attackResults.get("Attribute Bonus")
+                + " equals "
+                + ((int) attackResults.get("Attribute Bonus")
+                + (int) attackResults.get("Dice Roll"))
+                + " against "
+                + monster.getMonsterName()
+                + "'s "
+                + attackingPower.getDefenseToBeChecked()
+                + " of "
+                + monster.getDefensesMap().get(attackingPower.getDefenseToBeChecked().toLowerCase()));
+        if (((int) attackResults.get("Attribute Bonus") + (int) attackResults.get("Dice Roll")) >
+                monster.getDefensesMap().get(attackingPower.getDefenseToBeChecked().toLowerCase())) {
+            updateTheDungeonConsole("It's a hit! Roll for damage: "
+                    + attackingPower.getDamageDiceDealt()
+                    + "k"
+                    + attackingPower.getTypeOfDamageDice());
+            Random random = new Random(attackingPower.getTypeOfDamageDice());
+            StringBuilder diceDealt = new StringBuilder();
+            int allDamage = 0;
+            for (int i = 0; i < attackingPower.getDamageDiceDealt(); i++) {
+                int damageRoll = random.nextInt();
+                diceDealt.append(" ").append(damageRoll).append(" ");
+                allDamage += damageRoll;
+            }
+            int bonusDamage = hero.getHeroAttributesMap().get(attackingPower.getDamageModifier().toLowerCase());
+            allDamage += bonusDamage;
+            updateTheDungeonConsole("Result of damage dice rolls: "
+                    + diceDealt
+                    + ". Bonus damage equal to your "
+                    + attackingPower.getDamageModifier()
+                    + " -- "
+                    + hero.getHeroAttributesMap().get(attackingPower.getDamageModifier().toLowerCase()));
+            updateTheDungeonConsole("You've dealt " + allDamage + " damage");
+        } else {
+            updateTheDungeonConsole("Your attack has missed.");
+        }
     }
 
     private void eventOnReachableTileClick() {

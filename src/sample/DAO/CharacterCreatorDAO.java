@@ -109,6 +109,7 @@ public class CharacterCreatorDAO {
             manageHeroSkills(hero, rs);
             manageHeroPowers(hero, heroClassInformation, rs, heroClass);
         }
+        hero.updateTheAttributesMap();
         System.out.println(hero.getMonsterName() + "|||" + a + " Icon number: " + b);
         return hero;
     }

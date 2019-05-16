@@ -33,6 +33,7 @@ public class GoblinSharpshooter extends Monster {
                 "and misses, it is still considered to be hiding.");
         this.setPassive1Description("The goblin sharpshooter deals an extra 1d6 damage against any\n" +
                 "target it has combat advantage against.");
+        super.updateTheDefensesMap();
     }
 
 }

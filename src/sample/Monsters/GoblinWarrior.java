@@ -35,6 +35,7 @@ public class GoblinWarrior extends Monster {
         this.setPassive1Description("The goblin warrior can move up to half its speed; at any point\n" +
                 "during that movement, it makes one ranged attack without\n" +
                 "provoking an opportunity attack.");
+        super.updateTheDefensesMap();
     }
 
 }

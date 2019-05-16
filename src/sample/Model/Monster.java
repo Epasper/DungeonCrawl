@@ -36,6 +36,9 @@ public class Monster extends Creature {
     private String passive2Description;
     private String passive3Description;
 
+    public Monster() {
+    }
+
     public String getLoreDescription() {
         return loreDescription;
     }

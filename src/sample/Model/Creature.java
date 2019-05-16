@@ -15,9 +15,12 @@ public class Creature {
     private int reflex;
     private int will;
     private int AC;
-    private Map<String, Integer> defensesMap = new HashMap<>();
+    Map<String, Integer> defensesMap = new HashMap<>();
 
     public Creature() {
+    }
+
+    public void updateTheDefensesMap() {
         defensesMap.put("ac", AC);
         defensesMap.put("reflex", reflex);
         defensesMap.put("fortitude", fortitude);

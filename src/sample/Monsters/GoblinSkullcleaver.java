@@ -23,6 +23,7 @@ public class GoblinSkullcleaver extends Monster {
         this.setAttack1DamageDiceAmount(1);
         this.setAttack1DamageBonus(5);
         this.setAttack1DefenseToBeChecked("AC");
+        super.updateTheDefensesMap();
     }
 
 }

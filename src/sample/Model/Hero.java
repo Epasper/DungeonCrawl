@@ -45,6 +45,9 @@ public class Hero extends Creature {
     private Image heroIcon = new Image(getClass().getResourceAsStream("icon1.png"));
 
     public Hero() {
+    }
+
+    public void updateTheAttributesMap() {
         Map<String, Integer> heroAttributesMap = new HashMap<>();
         heroAttributesMap.put("strength", strength);
         heroAttributesMap.put("constitution", constitution);
