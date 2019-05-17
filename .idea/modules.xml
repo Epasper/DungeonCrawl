@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DungeonCrawl.iml" filepath="$PROJECT_DIR$/DungeonCrawl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DungeonCrawl1.0/DungeonCrawl1.0.iml" filepath="$PROJECT_DIR$/DungeonCrawl1.0/DungeonCrawl1.0.iml" />
     </modules>
   </component>
 </project>

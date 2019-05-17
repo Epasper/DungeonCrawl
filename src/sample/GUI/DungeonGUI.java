@@ -22,9 +22,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import static java.lang.Math.max;
-import static java.lang.Math.round;
-
 class DungeonGUI {
 
     private MainMenuGUI mainMenuGUI = new MainMenuGUI();
@@ -273,13 +270,15 @@ class DungeonGUI {
                 monster.getDefensesMap().get(attackingPower.getDefenseToBeChecked().toLowerCase())) {
             updateTheDungeonConsole("It's a hit! Roll for damage: "
                     + attackingPower.getDamageDiceDealt()
-                    + "k"
+                    + "d"
                     + attackingPower.getTypeOfDamageDice());
-            Random random = new Random(attackingPower.getTypeOfDamageDice());
             StringBuilder diceDealt = new StringBuilder();
             int allDamage = 0;
+            Random random = new Random();
+
             for (int i = 0; i < attackingPower.getDamageDiceDealt(); i++) {
-                int damageRoll = random.nextInt();
+                int damageRoll = random.nextInt(attackingPower.getTypeOfDamageDice());
+                System.out.println("--->" + damageRoll);
                 diceDealt.append(" ").append(damageRoll).append(" ");
                 allDamage += damageRoll;
             }
@@ -289,14 +288,14 @@ class DungeonGUI {
                     + diceDealt
                     + ". Bonus damage equal to your "
                     + attackingPower.getDamageModifier()
-                    + " -- "
-                    + hero.getHeroAttributesMap().get(attackingPower.getDamageModifier().toLowerCase()));
+                    + ": "
+                    + attackResults.get("Attribute Bonus"));
             updateTheDungeonConsole("You've dealt " + allDamage + " damage");
         } else {
             updateTheDungeonConsole("Your attack has missed.");
         }
     }
-
+//todo repair the damage dice - setters? (these come as 0)
     private void eventOnReachableTileClick() {
         getDungeonMap().clearMapReachableProperties(getDungeonMap());
         updateMapGraphics(getDungeonMap());
