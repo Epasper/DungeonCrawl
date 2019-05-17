@@ -20,6 +20,15 @@ public abstract class Item {
     protected int numberOfDamageDiceDealt;
     protected int typeOfDamageDice;
     protected boolean isThisItemConsumable = false;
+    protected int bonusToAC;
+
+    public int getBonusToAC() {
+        return bonusToAC;
+    }
+
+    public void setBonusToAC(int bonusToAC) {
+        this.bonusToAC = bonusToAC;
+    }
 
     public int getWeight() {
         return weight;

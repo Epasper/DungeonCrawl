@@ -653,7 +653,6 @@ class CharacterCreatorGUI {
         leftBox.getChildren().add(loadACharacterFromDatabase);
         leftBox.getChildren().add(addACharacterPortrait);
         leftBox.getChildren().add(returnToMainMenu);
-
     }
 
     private void addPowersToComboBoxes() {

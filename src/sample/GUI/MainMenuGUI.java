@@ -86,7 +86,7 @@ public class MainMenuGUI {
     private void openItemShop() throws SQLException, IOException {
         ItemShopGUI itemShopGUI = new ItemShopGUI();
         aStage.close();
-        aScene.setRoot(itemShopGUI.itemShopOuterPlane);
+        aScene.setRoot(itemShopGUI.itemShopOuterPane);
         aScene.getStylesheets().add("sample/Styling/Caspian.css");
         aStage.setMaximized(true);
         aStage.setScene(aScene);
