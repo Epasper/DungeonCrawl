@@ -2,6 +2,7 @@ package sample.GUI;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -9,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import sample.DAO.CharacterCreatorDAO;
 import sample.DTO.CharacterCreatorDTO;
@@ -35,11 +37,11 @@ public class ItemShopGUI {
     private Hero currentlySelectedHero = new Hero();
     private Accordion itemTypesAccordion = new Accordion();
 
-
     public ItemShopGUI() throws SQLException, IOException {
         itemShopOuterPane.setStyle("-fx-background-color:grey;");
         fillTheHeroesPanes();
         addWeaponList();
+        addArmorList();
         addReturnToMainMenu();
     }
 
@@ -52,6 +54,8 @@ public class ItemShopGUI {
         List<CharacterCreatorDTO> listOfAllHeroes = characterCreatorDAO.getAllHeroes();
         for (int i = 0; i < listOfAllHeroes.size(); i++) {
             Button currentButton = new Button();
+            currentButton.setMinWidth(350);
+            currentButton.setStyle("-fx-alignment: center-left;");
             CharacterCreatorDTO characterCreatorDTO = listOfAllHeroes.get(i);
             Image heroImage = characterCreatorDAO.getHeroIconByID(characterCreatorDTO.getHeroIconId());
             ImageView heroImageView = new ImageView(heroImage);
@@ -85,6 +89,21 @@ public class ItemShopGUI {
         weaponsListView.getItems().addAll(weaponNames);
         weaponsTitledPane.setContent(weaponsListView);
         itemTypesAccordion.getPanes().add(weaponsTitledPane);
+        itemShopOuterPane.setLeft(itemTypesAccordion);
+    }
+
+    private void addArmorList() {
+        itemShopOuterPane.getStylesheets().add("sample/Styling/CharacterCreator.css");
+        TitledPane armorsTitledPane = new TitledPane("Armors", new Label("Show available armors"));
+        ObservableList<String> armorNames =
+                FXCollections.observableArrayList();
+        ListView<String> armorsListView = new ListView<>();
+        for (Map.Entry<String, Item> entry : itemInformation.armorsList.entrySet()) {
+            armorNames.add(entry.getValue().getItemName());
+        }
+        armorsListView.getItems().addAll(armorNames);
+        armorsTitledPane.setContent(armorsListView);
+        itemTypesAccordion.getPanes().add(armorsTitledPane);
         itemShopOuterPane.setLeft(itemTypesAccordion);
     }
 
