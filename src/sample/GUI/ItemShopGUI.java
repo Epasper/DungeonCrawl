@@ -43,6 +43,7 @@ public class ItemShopGUI {
         addWeaponList();
         addArmorList();
         addReturnToMainMenu();
+        addImplementList();
     }
 
     private void fillTheHeroesPanes() throws SQLException, IOException {
@@ -68,6 +69,7 @@ public class ItemShopGUI {
             heroSelectionPane.add(currentButton, 0, i + 1);
         }
         itemShopOuterPane.setRight(heroSelectionPane);
+        itemShopOuterPane.setLeft(itemTypesAccordion);
     }
 
     private void addReturnToMainMenu() {
@@ -89,7 +91,20 @@ public class ItemShopGUI {
         weaponsListView.getItems().addAll(weaponNames);
         weaponsTitledPane.setContent(weaponsListView);
         itemTypesAccordion.getPanes().add(weaponsTitledPane);
-        itemShopOuterPane.setLeft(itemTypesAccordion);
+    }
+
+    private void addImplementList() {
+        itemShopOuterPane.getStylesheets().add("sample/Styling/CharacterCreator.css");
+        TitledPane implementsTitledPane = new TitledPane("Implements", new Label("Show available implements"));
+        ObservableList<String> implementNames =
+                FXCollections.observableArrayList();
+        ListView<String> implementsListView = new ListView<>();
+        for (Map.Entry<String, Item> entry : itemInformation.implementsList.entrySet()) {
+            implementNames.add(entry.getValue().getItemName());
+        }
+        implementsListView.getItems().addAll(implementNames);
+        implementsTitledPane.setContent(implementsListView);
+        itemTypesAccordion.getPanes().add(implementsTitledPane);
     }
 
     private void addArmorList() {
@@ -104,7 +119,6 @@ public class ItemShopGUI {
         armorsListView.getItems().addAll(armorNames);
         armorsTitledPane.setContent(armorsListView);
         itemTypesAccordion.getPanes().add(armorsTitledPane);
-        itemShopOuterPane.setLeft(itemTypesAccordion);
     }
 
     private void returnToMainMenu() {

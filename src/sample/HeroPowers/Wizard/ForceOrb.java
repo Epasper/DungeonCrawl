@@ -5,7 +5,7 @@ import sample.HeroPowers.HeroPower;
 
 public class ForceOrb extends HeroPower {
     public ForceOrb() {
-        powerName = "Force Orb";
+        powerName = "Force CrystalOrb";
         characterClass = HeroClassInformation.CharacterClasses.Wizard.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();

@@ -5,7 +5,7 @@ import sample.HeroPowers.HeroPower;
 
 public class AcidOrb extends HeroPower {
     public AcidOrb() {
-        powerName = "Acid Orb";
+        powerName = "Acid CrystalOrb";
         characterClass = HeroClassInformation.CharacterClasses.Sorcerer.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.AT_WILL.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();

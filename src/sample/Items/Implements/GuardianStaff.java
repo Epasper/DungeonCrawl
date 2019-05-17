@@ -2,17 +2,17 @@ package sample.Items.Implements;
 
 import sample.Items.Item;
 
-public class Rod extends Item {
-    public Rod() {
-        itemName = "Ashen Rod";
+public class GuardianStaff extends Item {
+    public GuardianStaff() {
+        itemName = "Guardian Staff";
         itemType = "Implement";
         itemSlot = "Hand";
-        properties = "Unerring";
+        properties = "Shielding";
         itemLevel = 1;
-        price = 22;
+        price = 13;
         range = 0;
         bonusToHit = 0;
         bonusToDamage = 0;
-        weight = 2;
+        weight = 4;
     }
 }

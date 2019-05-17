@@ -2,8 +2,8 @@ package sample.Items.Implements;
 
 import sample.Items.Item;
 
-public class Wand extends Item {
-    public Wand() {
+public class DragontoothWand extends Item {
+    public DragontoothWand() {
         itemName = "Dragontooth Wand";
         itemType = "Implement";
         itemSlot = "Hand";

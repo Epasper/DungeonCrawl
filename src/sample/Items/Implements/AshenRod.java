@@ -2,17 +2,17 @@ package sample.Items.Implements;
 
 import sample.Items.Item;
 
-public class HolySymbol extends Item {
-    public HolySymbol() {
-        itemName = "Accurate Holy Symbol";
+public class AshenRod extends Item {
+    public AshenRod() {
+        itemName = "Ashen Rod";
         itemType = "Implement";
         itemSlot = "Hand";
-        properties = "Accurate";
+        properties = "Unerring";
         itemLevel = 1;
-        price = 25;
+        price = 22;
         range = 0;
         bonusToHit = 0;
         bonusToDamage = 0;
-        weight = 1;
+        weight = 2;
     }
 }

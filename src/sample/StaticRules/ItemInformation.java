@@ -1,6 +1,7 @@
 package sample.StaticRules;
 
 import sample.Items.Armor.*;
+import sample.Items.Implements.*;
 import sample.Items.Item;
 import sample.Items.Weapons.*;
 
@@ -11,11 +12,24 @@ public class ItemInformation {
 
     public Map<String, Item> weaponsList = new HashMap<>();
     public Map<String, Item> armorsList = new HashMap<>();
+    public Map<String, Item> implementsList = new HashMap<>();
 
 
     public ItemInformation() {
         populateTheTablesWithWeapons();
         populateTheTablesWithArmor();
+        populateTheTablesWithImplements();
+    }
+
+    private void populateTheTablesWithImplements() {
+        implementsList.put("Accurate Holy Symbol", new AccurateHolySymbol());
+        implementsList.put("Ashen Rod", new AshenRod());
+        implementsList.put("Crystal Orb", new CrystalOrb());
+        implementsList.put("Dragontooth Wand", new DragontoothWand());
+        implementsList.put("Forbidden Tome", new ForbiddenTome());
+        implementsList.put("Guardian Staff", new GuardianStaff());
+        implementsList.put("Icicle Totem", new IcicleTotem());
+
     }
 
     private void populateTheTablesWithArmor() {
