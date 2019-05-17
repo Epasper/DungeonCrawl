@@ -24,7 +24,8 @@ public class MainMenuGUI {
     private VBox leftBox = new VBox();
     private FlowPane middlePane = new FlowPane();
     private Button newDungeonButton = new Button();
-    private Button cardForgeGUIButton = new Button();
+    private Button characterCreatorGUIButton = new Button();
+    private Button itemShopButton = new Button();
     public Scene aScene = new Scene(new Group());
     public Stage aStage = new Stage();
 
@@ -45,7 +46,8 @@ public class MainMenuGUI {
         middlePane.setHgap(4);
         middlePane.setPrefWrapLength(170);
         middlePane.getChildren().add(newDungeonButton);
-        middlePane.getChildren().add(cardForgeGUIButton);
+        middlePane.getChildren().add(characterCreatorGUIButton);
+        middlePane.getChildren().add(itemShopButton);
         aStage.getIcons().add(new Image("sample/GUI/Images/MainMenuIcon.jpg"));
         newDungeonButton.setText("Generate a New Dungeon");
         newDungeonButton.setOnAction(event -> {
@@ -55,8 +57,16 @@ public class MainMenuGUI {
                 e.printStackTrace();
             }
         });
-        cardForgeGUIButton.setText("Character Creator");
-        cardForgeGUIButton.setOnAction(event -> openCharacterCreationGUI());
+        characterCreatorGUIButton.setText("Character Creator");
+        characterCreatorGUIButton.setOnAction(event -> openCharacterCreationGUI());
+        itemShopButton.setText("Item Shop");
+        itemShopButton.setOnAction(event -> {
+            try {
+                openItemShop();
+            } catch (SQLException | IOException e) {
+                e.printStackTrace();
+            }
+        });
         aScene.setRoot(mainMenuScrollPane);
         aStage.show();
     }
@@ -69,6 +79,16 @@ public class MainMenuGUI {
         aScene.getStylesheets().add("sample/Styling/Caspian.css");
         aStage.setMaximized(true);
         //aScene.setRoot(dungeonGui.mapScrollPane);
+        aStage.setScene(aScene);
+        aStage.show();
+    }
+
+    private void openItemShop() throws SQLException, IOException {
+        ItemShopGUI itemShopGUI = new ItemShopGUI();
+        aStage.close();
+        aScene.setRoot(itemShopGUI.itemShopOuterPlane);
+        aScene.getStylesheets().add("sample/Styling/Caspian.css");
+        aStage.setMaximized(true);
         aStage.setScene(aScene);
         aStage.show();
     }
