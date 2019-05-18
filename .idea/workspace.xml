@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de97b43a-8902-45e2-a345-dc80bad4fa20" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/ItemShopGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/ItemShopGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/AcidOrb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Sorcerer/AcidOrb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/ForceOrb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HeroPowers/Wizard/ForceOrb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Items/Implements/HolySymbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Items/Implements/AccurateHolySymbol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Items/Implements/Orb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Items/Implements/CrystalOrb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Items/Implements/Rod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Items/Implements/AshenRod.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Items/Implements/Staff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Items/Implements/GuardianStaff.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Items/Implements/Tome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Items/Implements/ForbiddenTome.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Items/Implements/Totem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Items/Implements/IcicleTotem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Items/Implements/Wand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Items/Implements/DragontoothWand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/StaticRules/ItemInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/StaticRules/ItemInformation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Model/PathFinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/DungeonCrawl1.0/target/" />
@@ -27,29 +19,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/sample/GUI/ItemShopGUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="15" column="38" lean-forward="true" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Items/Implements/AccurateHolySymbol.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Items/Implements/CrystalOrb.java">
+        <entry file="file://$PROJECT_DIR$/src/sample/DTO/ItemShopDTO.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
-              <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Model/PathFinder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-38" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="308" column="107" selection-start-line="308" selection-start-column="107" selection-end-line="308" selection-end-column="107" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3308#3309#0" expanded="true" />
+                <element signature="e#3341#3342#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -103,7 +98,7 @@
         <entry file="file://$PROJECT_DIR$/src/sample/Items/Armor/PlateArmor.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="14" column="20" lean-forward="true" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+              <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -111,8 +106,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/StaticRules/ItemInformation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="10" column="30" lean-forward="true" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+            <state relative-caret-position="68">
+              <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -133,10 +128,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>raceupda</find>
-      <find>eventoncl</find>
-      <find>save</find>
-      <find>icon</find>
       <find>dail</find>
       <find>selected</find>
       <find>eventonh</find>
@@ -163,6 +154,10 @@
       <find>eventon</find>
       <find>monst</find>
       <find>mainm</find>
+      <find>range</find>
+      <find>dungeonMap</find>
+      <find>buttong</find>
+      <find>getdung</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -171,9 +166,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/sample/DTO/CharacterCreatorDTO.java" />
-        <option value="$PROJECT_DIR$/src/sample/Model/FakeDatabase.java" />
-        <option value="$PROJECT_DIR$/src/sample/Model/MapTile.java" />
         <option value="$PROJECT_DIR$/src/sample/Model/DungeonMap.java" />
         <option value="$PROJECT_DIR$/src/sample/GUI/DungeonGUITest.java" />
         <option value="$PROJECT_DIR$/src/sample/GUI/PartySelectorGUI.java" />
@@ -186,7 +178,6 @@
         <option value="$PROJECT_DIR$/src/sample/Monsters/GoblinSkullcleaver.java" />
         <option value="$PROJECT_DIR$/src/sample/Monsters/GoblinWarrior.java" />
         <option value="$PROJECT_DIR$/DungeonCrawl1.0/pom.xml" />
-        <option value="$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java" />
         <option value="$PROJECT_DIR$/src/sample/DTO/ItemDTO.java" />
         <option value="$PROJECT_DIR$/src/sample/Items/HeroPower.java" />
         <option value="$PROJECT_DIR$/src/sample/Items/Weapons/Longsword.java" />
@@ -222,6 +213,10 @@
         <option value="$PROJECT_DIR$/src/sample/Items/Implements/Wand.java" />
         <option value="$PROJECT_DIR$/src/sample/StaticRules/ItemInformation.java" />
         <option value="$PROJECT_DIR$/src/sample/GUI/ItemShopGUI.java" />
+        <option value="$PROJECT_DIR$/src/sample/DAO/ItemShopDAO.java" />
+        <option value="$PROJECT_DIR$/src/sample/DTO/ItemShopDTO.java" />
+        <option value="$PROJECT_DIR$/src/sample/Model/PathFinder.java" />
+        <option value="$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java" />
       </list>
     </option>
   </component>
@@ -232,17 +227,16 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1358" />
-    <option name="y" value="-290" />
-    <option name="width" value="1696" />
-    <option name="height" value="1066" />
+    <option name="x" value="170" />
+    <option name="y" value="92" />
+    <option name="width" value="1026" />
+    <option name="height" value="554" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -292,38 +286,7 @@
               <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="sample" type="462c0819:PsiDirectoryNode" />
-              <item name="HeroPowers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="sample" type="462c0819:PsiDirectoryNode" />
-              <item name="Items" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="sample" type="462c0819:PsiDirectoryNode" />
-              <item name="Items" type="462c0819:PsiDirectoryNode" />
-              <item name="Armor" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="sample" type="462c0819:PsiDirectoryNode" />
-              <item name="Items" type="462c0819:PsiDirectoryNode" />
-              <item name="Implements" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="sample" type="462c0819:PsiDirectoryNode" />
-              <item name="Items" type="462c0819:PsiDirectoryNode" />
-              <item name="Weapons" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
@@ -343,6 +306,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -446,20 +410,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1556870921453</updated>
-    </task>
-    <task id="LOCAL-00026" summary="Added a party selector to the dungeon GUI">
-      <created>1557408046102</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1557408046102</updated>
-    </task>
-    <task id="LOCAL-00027" summary="Blob putter added, blobs added to MySQL.">
-      <created>1557469002471</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1557469002471</updated>
     </task>
     <task id="LOCAL-00028" summary="Portrait Selector now lets you only choose images from database.">
       <created>1557477092606</created>
@@ -790,7 +740,21 @@
       <option name="project" value="LOCAL" />
       <updated>1558095500213</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="Renamed Implements, added them to the view">
+      <created>1558096422417</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1558096422417</updated>
+    </task>
+    <task id="LOCAL-00076" summary="Added DTO and DAO empty files for future item transactions">
+      <created>1558096712628</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1558096712628</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -808,10 +772,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="-290" width="1696" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49892932" visible="true" weight="0.23716381" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49892932" visible="true" weight="0.24054463" />
       <window_info id="Structure" order="1" sideWeight="0.5010707" side_tool="true" weight="0.2200489" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -870,8 +834,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Monster - added fields to monsters, added &quot;monsters&quot; package, refactored fields, added getters and setters, corrected some inheritance errors" />
-    <MESSAGE value="Corrected setters and getters for inaccessible fields, corrected the images that were not working properly." />
     <MESSAGE value="Monsters - added base stats for goblins, added encounter calculator class." />
     <MESSAGE value="EncounterCalculator - added the calculations for getting a monster list" />
     <MESSAGE value="Added &quot;Hero Level&quot; field to database, added monsters from calculator to the map." />
@@ -895,35 +857,11 @@
     <MESSAGE value="Weapon Shop GUI started" />
     <MESSAGE value="Added armor classes" />
     <MESSAGE value="Added Implements" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Implements" />
+    <MESSAGE value="Renamed Implements, added them to the view" />
+    <MESSAGE value="Added DTO and DAO empty files for future item transactions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added DTO and DAO empty files for future item transactions" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/sample/Model/MapTile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="43" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
-          <folding>
-            <element signature="e#461#462#0" expanded="true" />
-            <element signature="e#530#531#0" expanded="true" />
-            <element signature="e#590#591#0" expanded="true" />
-            <element signature="e#637#638#0" expanded="true" />
-            <element signature="e#680#681#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Model/DungeonMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5814">
-          <caret line="349" column="6" selection-start-line="349" selection-start-column="6" selection-end-line="349" selection-end-column="6" />
-          <folding>
-            <element signature="e#590#591#0" expanded="true" />
-            <element signature="e#630#631#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUITest.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/Node.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -1133,13 +1071,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/DTO/ItemDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/DTO/ItemDTO.java" />
     <entry file="file://$PROJECT_DIR$/src/sample/HeroPowers/HeroPower.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -1291,16 +1223,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="100" column="19" lean-forward="true" selection-start-line="100" selection-start-column="19" selection-end-line="100" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
@@ -1381,6 +1303,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/ItemShopGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="98" column="47" selection-start-line="98" selection-start-column="47" selection-end-line="98" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/DAO/ItemShopDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Items/Implements/AshenRod.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -1419,24 +1358,41 @@
     <entry file="file://$PROJECT_DIR$/src/sample/Items/Armor/PlateArmor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="14" column="20" lean-forward="true" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+          <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/StaticRules/ItemInformation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10" column="30" lean-forward="true" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+        <state relative-caret-position="68">
+          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/GUI/ItemShopGUI.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/DTO/ItemShopDTO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="15" column="38" lean-forward="true" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Model/PathFinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-38" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="308" column="107" selection-start-line="308" selection-start-column="107" selection-end-line="308" selection-end-column="107" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3308#3309#0" expanded="true" />
+            <element signature="e#3341#3342#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
