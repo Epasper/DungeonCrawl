@@ -26,8 +26,7 @@ public class ItemShopDAO {
         System.out.println("Creating connection...");
         conn.createStatement();
     }
-
-
+    
     public void putItemDtoToDatabase(ItemShopDTO itemShopDTO, Hero hero) throws SQLException {
         String sql = "UPDATE dungeon.hero_equipment SET " +
                 "hero_id=?," +

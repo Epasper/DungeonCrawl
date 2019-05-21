@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import sample.DAO.CharacterCreatorDAO;
@@ -28,6 +29,7 @@ import java.util.Map;
 public class ItemShopGUI {
     BorderPane itemShopOuterPane = new BorderPane();
     private GridPane heroSelectionPane = new GridPane();
+    private GridPane currentChoicesGridPane = new GridPane();
     private Stage aStage = new Stage();
     private Scene aScene = new Scene(new Group());
     private List<Button> listOfHeroButtons = new ArrayList<>();
@@ -55,6 +57,14 @@ public class ItemShopGUI {
         List<CharacterCreatorDTO> listOfAllHeroes = characterCreatorDAO.getAllHeroes();
         for (int i = 0; i < listOfAllHeroes.size(); i++) {
             Button currentButton = new Button();
+            int finalI = i;
+            currentButton.setOnAction(actionEvent -> {
+                try {
+                    eventOnHeroClick(finalI);
+                } catch (SQLException | IOException e) {
+                    e.printStackTrace();
+                }
+            });
             currentButton.setMinWidth(350);
             currentButton.setStyle("-fx-alignment: center-left;");
             CharacterCreatorDTO characterCreatorDTO = listOfAllHeroes.get(i);
@@ -69,7 +79,20 @@ public class ItemShopGUI {
             heroSelectionPane.add(currentButton, 0, i + 1);
         }
         itemShopOuterPane.setRight(heroSelectionPane);
+        itemShopOuterPane.setCenter(currentChoicesGridPane);
         itemShopOuterPane.setLeft(itemTypesAccordion);
+    }
+
+    //todo getters for hero portraits seem to be wring.
+    //todo fill all fields in the middle pane.
+    //todo middle pane is not clearing properly upon changing selection.
+    private void eventOnHeroClick(int heroID) throws SQLException, IOException {
+        currentChoicesGridPane.getChildren().removeAll();
+        CharacterCreatorDAO characterCreatorDAO = new CharacterCreatorDAO();
+        currentlySelectedHero = characterCreatorDAO.getAHeroByID(heroID);
+        Text heroNameText = new Text();
+        heroNameText.setText(currentlySelectedHero.getHeroName());
+        currentChoicesGridPane.add(heroNameText, 0, 0);
     }
 
     private void addReturnToMainMenu() {
