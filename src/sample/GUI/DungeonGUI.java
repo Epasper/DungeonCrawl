@@ -151,23 +151,23 @@ class DungeonGUI {
     }
 
     private Hero getHeroByID(int ID, List<Hero> listOfHeroes) {
-        Hero heroNotFound = new Hero();
+        Hero returnedHero = new Hero();
         for (Hero aHero : listOfHeroes) {
             if (aHero.getID() == ID) {
                 return aHero;
             }
         }
-        return heroNotFound;
+        return returnedHero;
     }
 
     private Monster getMonsterByID(int ID, List<Monster> listOfMonsters) {
-        Monster monsterNotFound = new Monster();
+        Monster returnedMonster = new Monster();
         for (Monster aMonster : listOfMonsters) {
             if (aMonster.getID() == ID) {
                 return aMonster;
             }
         }
-        return monsterNotFound;
+        return returnedMonster;
     }
 
     //todo think about disassembling this class to smaller classes for better unit testing
@@ -243,6 +243,42 @@ class DungeonGUI {
         List<Monster> monsterList = encounterCalculator.getTheListOfPossibleMonsters();
         Monster monster = getMonsterByID(getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureId(), monsterList);
         Map attackResults = hero.attackAMonster(monster, attackingPower);
+        displayAttackMessage(attackingPower, monster, attackResults);
+        if (((int) attackResults.get("Attribute Bonus") + (int) attackResults.get("Dice Roll")) >
+                monster.getDefensesMap().get(attackingPower.getDefenseToBeChecked().toLowerCase())) {
+            triggerOnHit(attackingPower, hero, attackResults);
+        } else {
+            updateTheDungeonConsole("Your attack has missed.");
+        }
+    }
+
+    private void triggerOnHit(HeroPower attackingPower, Hero hero, Map attackResults) {
+        updateTheDungeonConsole("It's a hit! Roll for damage: "
+                + attackingPower.getDamageDiceDealt()
+                + "d"
+                + attackingPower.getTypeOfDamageDice());
+        StringBuilder diceDealt = new StringBuilder();
+        int allDamage = 0;
+        Random random = new Random();
+
+        for (int i = 0; i < attackingPower.getDamageDiceDealt(); i++) {
+            int damageRoll = random.nextInt(attackingPower.getTypeOfDamageDice());
+            System.out.println("--->" + damageRoll);
+            diceDealt.append(" ").append(damageRoll).append(" ");
+            allDamage += damageRoll;
+        }
+        int bonusDamage = hero.getHeroAttributesMap().get(attackingPower.getDamageModifier().toLowerCase());
+        allDamage += bonusDamage;
+        updateTheDungeonConsole("Result of damage dice rolls: "
+                + diceDealt
+                + ". Bonus damage equal to your "
+                + attackingPower.getDamageModifier()
+                + ": "
+                + attackResults.get("Attribute Bonus"));
+        updateTheDungeonConsole("You've dealt " + allDamage + " damage");
+    }
+
+    private void displayAttackMessage(HeroPower attackingPower, Monster monster, Map attackResults) {
         updateTheDungeonConsole("You have attacked a " +
                 monster.getMonsterName()
                 + " with "
@@ -266,37 +302,9 @@ class DungeonGUI {
                 + attackingPower.getDefenseToBeChecked()
                 + " of "
                 + monster.getDefensesMap().get(attackingPower.getDefenseToBeChecked().toLowerCase()));
-        if (((int) attackResults.get("Attribute Bonus") + (int) attackResults.get("Dice Roll")) >
-                monster.getDefensesMap().get(attackingPower.getDefenseToBeChecked().toLowerCase())) {
-            updateTheDungeonConsole("It's a hit! Roll for damage: "
-                    + attackingPower.getDamageDiceDealt()
-                    + "d"
-                    + attackingPower.getTypeOfDamageDice());
-            StringBuilder diceDealt = new StringBuilder();
-            int allDamage = 0;
-            Random random = new Random();
-
-            for (int i = 0; i < attackingPower.getDamageDiceDealt(); i++) {
-                int damageRoll = random.nextInt(attackingPower.getTypeOfDamageDice());
-                System.out.println("--->" + damageRoll);
-                diceDealt.append(" ").append(damageRoll).append(" ");
-                allDamage += damageRoll;
-            }
-            int bonusDamage = hero.getHeroAttributesMap().get(attackingPower.getDamageModifier().toLowerCase());
-            allDamage += bonusDamage;
-            updateTheDungeonConsole("Result of damage dice rolls: "
-                    + diceDealt
-                    + ". Bonus damage equal to your "
-                    + attackingPower.getDamageModifier()
-                    + ": "
-                    + attackResults.get("Attribute Bonus"));
-            updateTheDungeonConsole("You've dealt " + allDamage + " damage");
-        } else {
-            updateTheDungeonConsole("Your attack has missed.");
-        }
     }
 
-    //todo repair the damage dice - setters? (these come as 0)
+    //todo repair the damage dice - allow buying weapons and default the non-weapon damage to 1d4
     private void eventOnReachableTileClick() {
         getDungeonMap().clearMapReachableProperties(getDungeonMap());
         updateMapGraphics(getDungeonMap());
@@ -338,9 +346,10 @@ class DungeonGUI {
     }
 
     private void eventOnPowerSelect(Hero currentHero, HeroPower selectedPower) {
+        PathFinder pathFinder = new PathFinder();
         currentPower.clear();
         currentPower.add(selectedPower);
-        checkTheLineOfSight(currentHero);
+        pathFinder.checkTheLineOfSight(dungeonMap, buttonGrid, currentHero);
     }
 
 
@@ -428,84 +437,12 @@ class DungeonGUI {
                 aButton.setStyle("-fx-color: #000033");
                 aButton.setGraphic(new ImageView(openedDoorVertical));
                 break;
-
         }
     }
 
     //todo add a console in the dungeon view to write output already discovered to players
-    //todo visibility checker hat to stop on walls
-    private void checkTheLineOfSight(Hero hero) {
-        int YPos = hero.getMapYPos();
-        int XPos = hero.getMapXPos();
-        checkTheSightForOneDirection(YPos, XPos, 1, 1);
-        checkTheSightForOneDirection(YPos, XPos, 1, -1);
-        checkTheSightForOneDirection(YPos, XPos, -1, 1);
-        checkTheSightForOneDirection(YPos, XPos, -1, -1);
-    }
+    //todo visibility checker has to stop on walls
 
-    private void checkTheSightForOneDirection(int YPos, int XPos, int dir1, int dir2) {
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                if (i == 0 && j == 0) continue;
-                try {
-                    int currentXPos = XPos + i * dir1;
-                    int currentYPos = YPos + j * dir2;
-                    MapTile currentMapTile = dungeonMap.getMapTilesArray()[currentXPos][currentYPos];
-                    boolean mapTileIsOccupied = currentMapTile.getOccupyingCreatureId() > 0;
-                    if (!currentMapTile.isCurrentlyBehindCover() || !currentMapTile.isCurrentlyInvisible()) {
-                        if (mapTileIsOccupied) {
-                            for (int k = 0; k < 5; k++) {
-                                int deltaX = i + 1;
-                                int deltaY = j + 1;
-                                double skewingCoefficient;
-                                skewingCoefficient = deltaX / deltaY;
-                                System.out.println("DeltaX: " + deltaX + " DeltaY: " + deltaY);
-                                int valueX = currentXPos + (i * k * dir1);
-                                int valueY = currentYPos + (j * k * dir2);
-                                markTileAsUnreachable(valueX, valueY);
-                                //todo there has to be an easier way
-                                while (deltaY > 1 || deltaX > 1) {
-                                    if (deltaX == 1) skewingCoefficient = 0.1;
-                                    if (deltaY == 1) skewingCoefficient = 10;
-                                    int modifiedValueX = valueX + dir1;
-                                    int modifiedValueY = valueY + dir2;
-                                    if (skewingCoefficient <= 5 && skewingCoefficient >= 0.2) {
-                                        markTileAsUnreachable(modifiedValueX, modifiedValueY);
-                                        deltaY--;
-                                        deltaX--;
-                                        valueX += dir1;
-                                        valueY += dir2;
-                                        if (deltaY > 0) {
-                                            skewingCoefficient = deltaX / deltaY;
-                                        }
-                                    } else if (skewingCoefficient > 5) {
-                                        markTileAsUnreachable(modifiedValueX, valueY);
-                                        deltaX--;
-                                        valueX += dir1;
-                                        skewingCoefficient = deltaX / deltaY;
-                                    } else if (skewingCoefficient < 0.2) {
-                                        markTileAsUnreachable(valueX, modifiedValueY);
-                                        deltaY--;
-                                        valueY += dir2;
-                                        if (deltaY > 0) {
-                                            skewingCoefficient = deltaX / deltaY;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                } catch (IndexOutOfBoundsException ignored) {
-                }
-            }
-        }
-    }
-
-    private void markTileAsUnreachable(int valueX, int modifiedValueY) {
-        dungeonMap.getMapTilesArray()[valueX][modifiedValueY].setCurrentlyInvisible(true);
-        buttonGrid[valueX][modifiedValueY].setStyle("-fx-color: #ff6600");
-
-    }
 
 
 }

@@ -135,4 +135,77 @@ public class PathFinder {
         return stepDecrement;
     }
 
+    public void checkTheLineOfSight(DungeonMap dungeonMap, Button[][] buttonGrid, Hero hero) {
+        int YPos = hero.getMapYPos();
+        int XPos = hero.getMapXPos();
+        checkTheSightForOneDirection(dungeonMap, buttonGrid, YPos, XPos, 1, 1);
+        checkTheSightForOneDirection(dungeonMap, buttonGrid, YPos, XPos, 1, -1);
+        checkTheSightForOneDirection(dungeonMap, buttonGrid, YPos, XPos, -1, 1);
+        checkTheSightForOneDirection(dungeonMap, buttonGrid, YPos, XPos, -1, -1);
+    }
+
+    private void checkTheSightForOneDirection(DungeonMap dungeonMap, Button[][] buttonGrid, int YPos, int XPos, int dir1, int dir2) {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (i == 0 && j == 0) continue;
+                try {
+                    int currentXPos = XPos + i * dir1;
+                    int currentYPos = YPos + j * dir2;
+                    MapTile currentMapTile = dungeonMap.getMapTilesArray()[currentXPos][currentYPos];
+                    boolean mapTileIsOccupied = currentMapTile.getOccupyingCreatureId() > 0;
+                    if (!currentMapTile.isCurrentlyBehindCover() || !currentMapTile.isCurrentlyInvisible()) {
+                        if (mapTileIsOccupied) {
+                            for (int k = 0; k < 5; k++) {
+                                int deltaX = i + 1;
+                                int deltaY = j + 1;
+                                double skewingCoefficient;
+                                skewingCoefficient = deltaX / deltaY;
+                                System.out.println("DeltaX: " + deltaX + " DeltaY: " + deltaY);
+                                int valueX = currentXPos + (i * k * dir1);
+                                int valueY = currentYPos + (j * k * dir2);
+                                markTileAsUnreachable(dungeonMap, buttonGrid, valueX, valueY);
+                                //todo there has to be an easier way
+                                while (deltaY > 1 || deltaX > 1) {
+                                    if (deltaX == 1) skewingCoefficient = 0.1;
+                                    if (deltaY == 1) skewingCoefficient = 10;
+                                    int modifiedValueX = valueX + dir1;
+                                    int modifiedValueY = valueY + dir2;
+                                    if (skewingCoefficient <= 5 && skewingCoefficient >= 0.2) {
+                                        markTileAsUnreachable(dungeonMap, buttonGrid, modifiedValueX, modifiedValueY);
+                                        deltaY--;
+                                        deltaX--;
+                                        valueX += dir1;
+                                        valueY += dir2;
+                                        if (deltaY > 0) {
+                                            skewingCoefficient = deltaX / deltaY;
+                                        }
+                                    } else if (skewingCoefficient > 5) {
+                                        markTileAsUnreachable(dungeonMap, buttonGrid, modifiedValueX, valueY);
+                                        deltaX--;
+                                        valueX += dir1;
+                                        skewingCoefficient = deltaX / deltaY;
+                                    } else if (skewingCoefficient < 0.2) {
+                                        markTileAsUnreachable(dungeonMap, buttonGrid, valueX, modifiedValueY);
+                                        deltaY--;
+                                        valueY += dir2;
+                                        if (deltaY > 0) {
+                                            skewingCoefficient = deltaX / deltaY;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } catch (IndexOutOfBoundsException ignored) {
+                }
+            }
+        }
+    }
+
+    private void markTileAsUnreachable(DungeonMap dungeonMap, Button[][] buttonGrid, int valueX, int valueY) {
+        dungeonMap.getMapTilesArray()[valueX][valueY].setCurrentlyInvisible(true);
+        buttonGrid[valueX][valueY].setStyle("-fx-color: #ff6600");
+
+    }
+
 }
