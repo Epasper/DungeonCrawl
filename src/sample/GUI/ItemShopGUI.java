@@ -14,7 +14,9 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import sample.DAO.CharacterCreatorDAO;
+import sample.DAO.ItemShopDAO;
 import sample.DTO.CharacterCreatorDTO;
+import sample.DTO.ItemShopDTO;
 import sample.Items.Item;
 import sample.Main;
 import sample.Model.Hero;
@@ -57,7 +59,7 @@ public class ItemShopGUI {
         List<CharacterCreatorDTO> listOfAllHeroes = characterCreatorDAO.getAllHeroes();
         for (int i = 0; i < listOfAllHeroes.size(); i++) {
             Button currentButton = new Button();
-            int finalI = i;
+            int finalI = i + 1;
             currentButton.setOnAction(actionEvent -> {
                 try {
                     eventOnHeroClick(finalI);
@@ -88,11 +90,19 @@ public class ItemShopGUI {
     //todo middle pane is not clearing properly upon changing selection.
     private void eventOnHeroClick(int heroID) throws SQLException, IOException {
         currentChoicesGridPane.getChildren().removeAll();
+        ItemShopDAO itemShopDAO = new ItemShopDAO();
+        Map<String, Item> heroEquipmentMap = itemShopDAO.getHeroEquipmentByHeroID(heroID);
         CharacterCreatorDAO characterCreatorDAO = new CharacterCreatorDAO();
         currentlySelectedHero = characterCreatorDAO.getAHeroByID(heroID);
-        Text heroNameText = new Text();
-        heroNameText.setText(currentlySelectedHero.getHeroName());
-        currentChoicesGridPane.add(heroNameText, 0, 0);
+        TextArea heroStatsText = new TextArea();
+        heroStatsText.setText(currentlySelectedHero.getHeroName() + "\n");
+        heroEquipmentMap.forEach((k, v) -> {
+            if (v != null) {
+                heroStatsText.setText(heroStatsText.getText() + k + ": " + v.getItemName() + " \n");
+            }
+        });
+        heroStatsText.setText(heroStatsText.getText() + "Remaining Gold: " + currentlySelectedHero.getGold());
+        currentChoicesGridPane.add(heroStatsText, 0, 0);
     }
 
     private void addReturnToMainMenu() {

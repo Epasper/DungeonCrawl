@@ -90,10 +90,10 @@ public class ItemShopDAO {
         System.out.println("Character has successfully been added to the database");
     }
 
-    public Map getHeroEquipmentByHeroID(int heroId) throws SQLException {
+    public Map<String, Item> getHeroEquipmentByHeroID(int heroId) throws SQLException {
         ItemInformation itemInformation = new ItemInformation();
         Map<String, Item> mapToBeReturned = new HashMap<>();
-        String sql = "SELECT * FROM hero_equipment WHERE (hero_id=?);";
+        String sql = "SELECT * FROM dungeon.hero_equipment WHERE (hero_id=?);";
         pst = conn.prepareStatement(sql);
         pst.setInt(1, heroId);
         ResultSet rs = pst.executeQuery();
