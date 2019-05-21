@@ -191,7 +191,7 @@ class CharacterCreatorGUI {
         return allIcons;
     }
 
-    //todo loading a (level1?) character from database
+    //todo remove the load a character button
     private void eventOnLoadCharacters() throws SQLException {
         CharacterCreatorDAO dao = new CharacterCreatorDAO();
         List<String> list = dao.getAllHeroNames();
@@ -277,9 +277,6 @@ class CharacterCreatorGUI {
             listOfErrorMessages.add("Select a daily power.");
         return listOfErrorMessages;
     }
-
-
-//todo add shop with options to buy equipment. Starting gold is 100 GP
 
     private void addTheDerivedElements() {
         Text breakLine = new Text("    ");

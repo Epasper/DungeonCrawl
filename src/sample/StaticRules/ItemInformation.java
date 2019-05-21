@@ -6,6 +6,7 @@ import sample.Items.Item;
 import sample.Items.Weapons.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ItemInformation {
@@ -13,12 +14,13 @@ public class ItemInformation {
     public Map<String, Item> weaponsList = new HashMap<>();
     public Map<String, Item> armorsList = new HashMap<>();
     public Map<String, Item> implementsList = new HashMap<>();
-
+    public Map<String, Item> allItemsList = new HashMap<>();
 
     public ItemInformation() {
         populateTheTablesWithWeapons();
         populateTheTablesWithArmor();
         populateTheTablesWithImplements();
+        populateAllItemsList();
     }
 
     private void populateTheTablesWithImplements() {
@@ -29,7 +31,6 @@ public class ItemInformation {
         implementsList.put("Forbidden Tome", new ForbiddenTome());
         implementsList.put("Guardian Staff", new GuardianStaff());
         implementsList.put("Icicle Totem", new IcicleTotem());
-
     }
 
     private void populateTheTablesWithArmor() {
@@ -38,7 +39,6 @@ public class ItemInformation {
         armorsList.put("Leather Armor", new LeatherArmor());
         armorsList.put("Plate Armor", new PlateArmor());
         armorsList.put("Scale Armor", new ScaleArmor());
-
     }
 
     private void populateTheTablesWithWeapons() {
@@ -51,6 +51,11 @@ public class ItemInformation {
         weaponsList.put("Handaxe", new Handaxe());
         weaponsList.put("Khopesh", new Khopesh());
         weaponsList.put("Longsword", new Longsword());
+    }
 
+    private void populateAllItemsList() {
+        weaponsList.forEach((k, v) -> allItemsList.put(k, v));
+        armorsList.forEach((k, v) -> allItemsList.put(k, v));
+        implementsList.forEach((k, v) -> allItemsList.put(k, v));
     }
 }
