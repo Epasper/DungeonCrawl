@@ -46,7 +46,7 @@ public class ItemInformation {
         weaponsList.put("Broadsword", new Broadsword());
         weaponsList.put("Falchion", new Falchion());
         weaponsList.put("Flail", new Flail());
-        weaponsList.put("Greataxe", new Battleaxe());
+        weaponsList.put("Greataxe", new Greataxe());
         weaponsList.put("Greatsword", new Greatsword());
         weaponsList.put("Handaxe", new Handaxe());
         weaponsList.put("Khopesh", new Khopesh());

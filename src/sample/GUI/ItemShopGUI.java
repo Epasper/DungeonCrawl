@@ -1,5 +1,7 @@
 package sample.GUI;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
@@ -40,6 +42,7 @@ public class ItemShopGUI {
     private ItemInformation itemInformation = new ItemInformation();
     private Hero currentlySelectedHero = new Hero();
     private Accordion itemTypesAccordion = new Accordion();
+    TextArea itemStatsTextArea = new TextArea();
 
     public ItemShopGUI() throws SQLException, IOException {
         itemShopOuterPane.setStyle("-fx-background-color:grey;");
@@ -80,14 +83,14 @@ public class ItemShopGUI {
             listOfHeroButtons.add(currentButton);
             heroSelectionPane.add(currentButton, 0, i + 1);
         }
+        currentChoicesGridPane.add(itemStatsTextArea, 0, 1);
         itemShopOuterPane.setRight(heroSelectionPane);
         itemShopOuterPane.setCenter(currentChoicesGridPane);
         itemShopOuterPane.setLeft(itemTypesAccordion);
     }
 
-    //todo getters for hero portraits seem to be wring.
     //todo fill all fields in the middle pane.
-    //todo middle pane is not clearing properly upon changing selection.
+
     private void eventOnHeroClick(int heroID) throws SQLException, IOException {
         currentChoicesGridPane.getChildren().removeAll();
         ItemShopDAO itemShopDAO = new ItemShopDAO();
@@ -113,6 +116,7 @@ public class ItemShopGUI {
     }
 
     private void addWeaponList() {
+        ItemInformation itemInformation = new ItemInformation();
         itemShopOuterPane.getStylesheets().add("sample/Styling/CharacterCreator.css");
         TitledPane weaponsTitledPane = new TitledPane("Weapons", new Label("Show available weapons"));
         ObservableList<String> weaponNames =
@@ -123,6 +127,15 @@ public class ItemShopGUI {
         }
         weaponsListView.getItems().addAll(weaponNames);
         weaponsTitledPane.setContent(weaponsListView);
+        weaponsListView.setOnMouseClicked(event -> {
+            String selection = weaponsListView.getSelectionModel().getSelectedItems().toString().replaceAll("[^a-zA-Z]", "");
+            System.out.println(selection);
+            String weaponName = itemInformation.weaponsList.get(selection).getItemName();
+            int weaponPrice = itemInformation.weaponsList.get(selection).getPrice();
+            int weaponDamage = itemInformation.weaponsList.get(selection).getTypeOfDamageDice();
+            int proficiencyBonus = itemInformation.weaponsList.get(selection).getProficiencyBonus();
+            itemStatsTextArea.setText(weaponName + " " + weaponPrice + " " + weaponDamage + " " + proficiencyBonus);
+        });
         itemTypesAccordion.getPanes().add(weaponsTitledPane);
     }
 
