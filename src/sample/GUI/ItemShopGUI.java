@@ -1,20 +1,12 @@
 package sample.GUI;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.geometry.Pos;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
-import javafx.stage.Stage;
 import sample.DAO.CharacterCreatorDAO;
 import sample.DAO.ItemShopDAO;
 import sample.DTO.CharacterCreatorDTO;
@@ -27,6 +19,7 @@ import sample.StaticRules.ItemInformation;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -34,15 +27,17 @@ public class ItemShopGUI {
     BorderPane itemShopOuterPane = new BorderPane();
     private GridPane heroSelectionPane = new GridPane();
     private GridPane currentChoicesGridPane = new GridPane();
-    private Stage aStage = new Stage();
-    private Scene aScene = new Scene(new Group());
     private List<Button> listOfHeroButtons = new ArrayList<>();
     private CharacterCreatorDAO characterCreatorDAO = new CharacterCreatorDAO();
     private MainMenuGUI mainMenuGUI = new MainMenuGUI();
     private ItemInformation itemInformation = new ItemInformation();
     private Hero currentlySelectedHero = new Hero();
     private Accordion itemTypesAccordion = new Accordion();
-    TextArea itemStatsTextArea = new TextArea();
+    private TextArea itemStatsTextArea = new TextArea();
+    private Map<String, Item> currentHeroEquipmentMap = new HashMap<>();
+    private Button buyThisItemButton = new Button("Buy this Item");
+    private Item currentItem = new Item();
+
 
     public ItemShopGUI() throws SQLException, IOException {
         itemShopOuterPane.setStyle("-fx-background-color:grey;");
@@ -87,6 +82,33 @@ public class ItemShopGUI {
         itemShopOuterPane.setRight(heroSelectionPane);
         itemShopOuterPane.setCenter(currentChoicesGridPane);
         itemShopOuterPane.setLeft(itemTypesAccordion);
+        buyThisItemButton.setOnAction(event -> {
+            try {
+                buyThisItem();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+        currentChoicesGridPane.add(buyThisItemButton,0,2);
+    }
+
+    //todo add hero equipment table upon creating a new hero
+    //todo remove all current heroes and add new heroes with character creator tool.
+
+    private void buyThisItem() throws SQLException {
+        ItemShopDTO itemShopDTO = new ItemShopDTO(currentlySelectedHero.getID());
+        ItemShopDAO itemShopDAO = new ItemShopDAO();
+        CharacterCreatorDAO characterCreatorDAO = new CharacterCreatorDAO();
+        for (int i = 1; i < 20; i++) {
+            String currentBackpackSlot = "Backpack Slot " + i + " Item";
+            if (currentHeroEquipmentMap.get(currentBackpackSlot) != null){
+                currentHeroEquipmentMap.put(currentBackpackSlot, currentItem);
+                itemShopDTO.setMapOfItems(currentHeroEquipmentMap);
+                characterCreatorDAO.updateHeroGold(currentlySelectedHero,-(currentItem.getPrice()));
+                currentlySelectedHero.setGold(currentlySelectedHero.getGold() - currentItem.getPrice());
+                itemShopDAO.putItemDtoToDatabase(itemShopDTO, currentlySelectedHero);
+            }
+        }
     }
 
     //todo fill all fields in the middle pane.
@@ -94,12 +116,12 @@ public class ItemShopGUI {
     private void eventOnHeroClick(int heroID) throws SQLException, IOException {
         currentChoicesGridPane.getChildren().removeAll();
         ItemShopDAO itemShopDAO = new ItemShopDAO();
-        Map<String, Item> heroEquipmentMap = itemShopDAO.getHeroEquipmentByHeroID(heroID);
+        currentHeroEquipmentMap = itemShopDAO.getHeroEquipmentByHeroID(heroID);
         CharacterCreatorDAO characterCreatorDAO = new CharacterCreatorDAO();
         currentlySelectedHero = characterCreatorDAO.getAHeroByID(heroID);
         TextArea heroStatsText = new TextArea();
         heroStatsText.setText(currentlySelectedHero.getHeroName() + "\n");
-        heroEquipmentMap.forEach((k, v) -> {
+        currentHeroEquipmentMap.forEach((k, v) -> {
             if (v != null) {
                 heroStatsText.setText(heroStatsText.getText() + k + ": " + v.getItemName() + " \n");
             }
@@ -130,14 +152,30 @@ public class ItemShopGUI {
         weaponsListView.setOnMouseClicked(event -> {
             String selection = weaponsListView.getSelectionModel().getSelectedItems().toString().replaceAll("[^a-zA-Z]", "");
             System.out.println(selection);
-            String weaponName = itemInformation.weaponsList.get(selection).getItemName();
-            int weaponPrice = itemInformation.weaponsList.get(selection).getPrice();
-            int weaponDamage = itemInformation.weaponsList.get(selection).getTypeOfDamageDice();
-            int proficiencyBonus = itemInformation.weaponsList.get(selection).getProficiencyBonus();
-            itemStatsTextArea.setText(weaponName + " " + weaponPrice + " " + weaponDamage + " " + proficiencyBonus);
+            currentItem = itemInformation.weaponsList.get(selection);
+            String weaponName = currentItem.getItemName();
+            int weaponPrice = currentItem.getPrice();
+            int weaponDamage = currentItem.getTypeOfDamageDice();
+            int numberOfDice = currentItem.getNumberOfDamageDiceDealt();
+            int weight = currentItem.getWeight();
+            int proficiencyBonus = currentItem.getProficiencyBonus();
+            itemStatsTextArea.setText("Selected: "
+                    + weaponName
+                    + "\nItem price: "
+                    + weaponPrice
+                    + "\nWeapon damage: "
+                    + numberOfDice
+                    + "d"
+                    + weaponDamage
+                    + "\nProficiency bonus:  "
+                    + proficiencyBonus
+                    + "\nWeight: "
+                    + weight);
         });
         itemTypesAccordion.getPanes().add(weaponsTitledPane);
     }
+
+    //todo add weapon proficiencies to heroclassinformation and to character creator. getters for shop would also be nice.
 
     private void addImplementList() {
         itemShopOuterPane.getStylesheets().add("sample/Styling/CharacterCreator.css");
@@ -150,6 +188,20 @@ public class ItemShopGUI {
         }
         implementsListView.getItems().addAll(implementNames);
         implementsTitledPane.setContent(implementsListView);
+        implementsListView.setOnMouseClicked(event -> {
+            String selection = implementsListView.getSelectionModel().getSelectedItems().toString().replaceAll("[^a-z A-Z]", "");
+            System.out.println(selection);
+            currentItem = itemInformation.implementsList.get(selection);
+            String implementName = currentItem.getItemName();
+            int price = currentItem.getPrice();
+            int weight = currentItem.getWeight();
+            itemStatsTextArea.setText("Selected: "
+                    + implementName
+                    + "\nItem price: "
+                    + price
+                    + "\nWeight: "
+                    + weight);
+        });
         itemTypesAccordion.getPanes().add(implementsTitledPane);
     }
 
@@ -164,6 +216,23 @@ public class ItemShopGUI {
         }
         armorsListView.getItems().addAll(armorNames);
         armorsTitledPane.setContent(armorsListView);
+        armorsListView.setOnMouseClicked(event -> {
+            String selection = armorsListView.getSelectionModel().getSelectedItems().toString().replaceAll("[^a-z A-Z]", "");
+            System.out.println(selection);
+            currentItem = itemInformation.armorsList.get(selection);
+            String armorName = currentItem.getItemName();
+            int armorPrice = currentItem.getPrice();
+            int acBonus = currentItem.getBonusToAC();
+            int weight = currentItem.getWeight();
+            itemStatsTextArea.setText("Selected: "
+                    + armorName
+                    + "\nItem price: "
+                    + armorPrice
+                    + "\nAC Bonus: "
+                    + acBonus
+                    + "\nWeight: "
+                    + weight);
+        });
         itemTypesAccordion.getPanes().add(armorsTitledPane);
     }
 

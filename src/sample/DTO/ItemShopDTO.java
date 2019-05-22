@@ -13,8 +13,9 @@ public class ItemShopDTO {
     private static List<String> listOfItemNames;
     private int heroID;
 
-    public ItemShopDTO(Map<String, Item> mapOfItems, int heroID) {
-        listOfItemNames.add("Right Hand Slot Item");
+
+    public ItemShopDTO(int heroID) {
+       /* listOfItemNames.add("Right Hand Slot Item");
         listOfItemNames.add("Left Hand Slot Item");
         listOfItemNames.add("Torso Slot Item");
         listOfItemNames.add("Head Slot Item");
@@ -39,14 +40,17 @@ public class ItemShopDTO {
         listOfItemNames.add("Backpack Slot 17 Item");
         listOfItemNames.add("Backpack Slot 18 Item");
         listOfItemNames.add("Backpack Slot 19 Item");
-        listOfItemNames.add("Backpack Slot 20 Item");
-        this.mapOfItems = mapOfItems;
+        listOfItemNames.add("Backpack Slot 20 Item");*/
         this.heroID = heroID;
     }
 
     public Map<String, Item> getMapOfItems() {
 
         return mapOfItems;
+    }
+
+    public void setMapOfItems(Map<String, Item> mapOfItems) {
+        this.mapOfItems = mapOfItems;
     }
 
     public Item getItemBySlotName(String slotName) {

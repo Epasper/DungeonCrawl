@@ -1,6 +1,6 @@
 package sample.Items;
 
-public abstract class Item {
+public class Item {
 
     //todo write the daily powers for level 1. Last updated: Cleric
 

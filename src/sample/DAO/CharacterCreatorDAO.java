@@ -227,6 +227,17 @@ public class CharacterCreatorDAO {
         return list;
     }
 
+    public void updateHeroGold(Hero hero, int goldDifference) throws SQLException {
+        String sql = "UPDATE dungeon.hero SET " +
+                "gold=?," +
+                "WHERE (`idheroes`=?)";
+        pst = conn.prepareStatement(sql);
+        pst.setInt(1, hero.getGold() + goldDifference);
+        pst.setInt(2, hero.getID());
+        pst.executeUpdate();
+        System.out.println("Character's gold amount has successfully been modified");
+    }
+
     public void addAHeroToDatabase(CharacterCreatorDTO heroToBeAdded) throws SQLException {
         String sql = "INSERT INTO dungeon.heroes(" +
                 "hero_name," +
