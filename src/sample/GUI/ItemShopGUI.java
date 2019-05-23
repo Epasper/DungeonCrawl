@@ -101,12 +101,15 @@ public class ItemShopGUI {
         CharacterCreatorDAO characterCreatorDAO = new CharacterCreatorDAO();
         for (int i = 1; i < 20; i++) {
             String currentBackpackSlot = "Backpack Slot " + i + " Item";
-            if (currentHeroEquipmentMap.get(currentBackpackSlot) != null){
+            System.out.println(currentBackpackSlot);
+            if (currentHeroEquipmentMap.get(currentBackpackSlot) == null){
+                System.out.println("Entered the backpack");
                 currentHeroEquipmentMap.put(currentBackpackSlot, currentItem);
                 itemShopDTO.setMapOfItems(currentHeroEquipmentMap);
                 characterCreatorDAO.updateHeroGold(currentlySelectedHero,-(currentItem.getPrice()));
                 currentlySelectedHero.setGold(currentlySelectedHero.getGold() - currentItem.getPrice());
-                itemShopDAO.putItemDtoToDatabase(itemShopDTO, currentlySelectedHero);
+                itemShopDAO.putItemDtoToDatabase(itemShopDTO, currentlySelectedHero, currentBackpackSlot);
+                break;
             }
         }
     }

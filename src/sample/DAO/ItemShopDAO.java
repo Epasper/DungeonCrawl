@@ -26,66 +26,94 @@ public class ItemShopDAO {
         System.out.println("Creating connection...");
         conn.createStatement();
     }
-    
-    public void putItemDtoToDatabase(ItemShopDTO itemShopDTO, Hero hero) throws SQLException {
-        String sql = "UPDATE dungeon.hero_equipment SET " +
-                "hero_id=?," +
-                "right_hand_slot=?," +
-                "left_hand_slot=?," +
-                "head_slot=?," +
-                "torso_slot=?," +
-                "feet_slot=?," +
-                "arms_slot=?," +
-                "backpack1=?," +
-                "backpack2=?," +
-                "backpack3=?," +
-                "backpack4=?," +
-                "backpack5=?," +
-                "backpack6=?," +
-                "backpack7=?," +
-                "backpack8=?," +
-                "backpack9=?," +
-                "backpack10=?," +
-                "backpack11=?," +
-                "backpack12=?," +
-                "backpack13=?," +
-                "backpack14=?," +
-                "backpack15=?," +
-                "backpack16=?," +
-                "backpack17=?," +
-                "backpack18=?," +
-                "backpack19=?," +
-                "backpack20=?," +
+
+    public void putItemDtoToDatabase(ItemShopDTO itemShopDTO, Hero hero, String slotToBeFilled) throws SQLException {
+        String slotSQLAdapter = null;
+        switch (slotToBeFilled) {
+            case "Right Hand Slot Item":
+                slotSQLAdapter = "right_hand_slot=?";
+                break;
+            case "Left Hand Slot Item":
+                slotSQLAdapter = "left_hand_slot=?";
+                break;
+            case "Torso Slot Item":
+                slotSQLAdapter = "torso_slot=?";
+                break;
+            case "Head Slot Item":
+                slotSQLAdapter = "head_slot=?";
+                break;
+            case "Feet Slot Item":
+                slotSQLAdapter = "feet_slot=?";
+                break;
+            case "Arms Slot Item":
+                slotSQLAdapter = "arms_slot=?";
+                break;
+            case "Backpack Slot 1 Item":
+                slotSQLAdapter = "backpack1=?";
+                break;
+            case "Backpack Slot 2 Item":
+                slotSQLAdapter = "backpack2=?";
+                break;
+            case "Backpack Slot 3 Item":
+                slotSQLAdapter = "backpack3=?";
+                break;
+            case "Backpack Slot 4 Item":
+                slotSQLAdapter = "backpack4=?";
+                break;
+            case "Backpack Slot 5 Item":
+                slotSQLAdapter = "backpack5=?";
+                break;
+            case "Backpack Slot 6 Item":
+                slotSQLAdapter = "backpack6=?";
+                break;
+            case "Backpack Slot 7 Item":
+                slotSQLAdapter = "backpack7=?";
+                break;
+            case "Backpack Slot 8 Item":
+                slotSQLAdapter = "backpack8=?";
+                break;
+            case "Backpack Slot 9 Item":
+                slotSQLAdapter = "backpack9=?";
+                break;
+            case "Backpack Slot 10 Item":
+                slotSQLAdapter = "backpack10=?";
+                break;
+            case "Backpack Slot 11 Item":
+                slotSQLAdapter = "backpack11=?";
+                break;
+            case "Backpack Slot 12 Item":
+                slotSQLAdapter = "backpack12=?";
+                break;
+            case "Backpack Slot 13 Item":
+                slotSQLAdapter = "backpack13=?";
+                break;
+            case "Backpack Slot 14 Item":
+                slotSQLAdapter = "backpack14=?";
+                break;
+            case "Backpack Slot 15 Item":
+                slotSQLAdapter = "backpack15=?";
+                break;
+            case "Backpack Slot 16 Item":
+                slotSQLAdapter = "backpack16=?";
+                break;
+            case "Backpack Slot 17 Item":
+                slotSQLAdapter = "backpack17=?";
+                break;
+            case "Backpack Slot 18 Item":
+                slotSQLAdapter = "backpack18=?";
+                break;
+            case "Backpack Slot 19 Item":
+                slotSQLAdapter = "backpack19=?";
+                break;
+            case "Backpack Slot 20 Item":
+                slotSQLAdapter = "backpack20=?";
+                break;
+        }
+        String sql = "UPDATE dungeon.hero_equipment SET " + slotSQLAdapter +
                 "WHERE (`idhero_equipment`=?)";
         pst = conn.prepareStatement(sql);
-        pst.setInt(1, hero.getID());
-        pst.setString(2, itemShopDTO.getMapOfItems().get("Right Hand Slot Item").getItemName());
-        pst.setString(3, itemShopDTO.getMapOfItems().get("Left Hand Slot Item").getItemName());
-        pst.setString(4, itemShopDTO.getMapOfItems().get("Torso Slot Item").getItemName());
-        pst.setString(5, itemShopDTO.getMapOfItems().get("Head Slot Item").getItemName());
-        pst.setString(6, itemShopDTO.getMapOfItems().get("Feet Slot Item").getItemName());
-        pst.setString(7, itemShopDTO.getMapOfItems().get("Arms Slot Item").getItemName());
-        pst.setString(8, itemShopDTO.getMapOfItems().get("Backpack Slot 1 Item").getItemName());
-        pst.setString(9, itemShopDTO.getMapOfItems().get("Backpack Slot 2 Item").getItemName());
-        pst.setString(10, itemShopDTO.getMapOfItems().get("Backpack Slot 3 Item").getItemName());
-        pst.setString(11, itemShopDTO.getMapOfItems().get("Backpack Slot 4 Item").getItemName());
-        pst.setString(12, itemShopDTO.getMapOfItems().get("Backpack Slot 5 Item").getItemName());
-        pst.setString(13, itemShopDTO.getMapOfItems().get("Backpack Slot 6 Item").getItemName());
-        pst.setString(14, itemShopDTO.getMapOfItems().get("Backpack Slot 7 Item").getItemName());
-        pst.setString(15, itemShopDTO.getMapOfItems().get("Backpack Slot 8 Item").getItemName());
-        pst.setString(16, itemShopDTO.getMapOfItems().get("Backpack Slot 9 Item").getItemName());
-        pst.setString(17, itemShopDTO.getMapOfItems().get("Backpack Slot 10 Item").getItemName());
-        pst.setString(18, itemShopDTO.getMapOfItems().get("Backpack Slot 11 Item").getItemName());
-        pst.setString(19, itemShopDTO.getMapOfItems().get("Backpack Slot 12 Item").getItemName());
-        pst.setString(20, itemShopDTO.getMapOfItems().get("Backpack Slot 13 Item").getItemName());
-        pst.setString(21, itemShopDTO.getMapOfItems().get("Backpack Slot 14 Item").getItemName());
-        pst.setString(22, itemShopDTO.getMapOfItems().get("Backpack Slot 15 Item").getItemName());
-        pst.setString(23, itemShopDTO.getMapOfItems().get("Backpack Slot 16 Item").getItemName());
-        pst.setString(24, itemShopDTO.getMapOfItems().get("Backpack Slot 17 Item").getItemName());
-        pst.setString(25, itemShopDTO.getMapOfItems().get("Backpack Slot 18 Item").getItemName());
-        pst.setString(26, itemShopDTO.getMapOfItems().get("Backpack Slot 19 Item").getItemName());
-        pst.setString(27, itemShopDTO.getMapOfItems().get("Backpack Slot 20 Item").getItemName());
-        pst.setInt(27, hero.getID());
+        pst.setString(1, itemShopDTO.getMapOfItems().get(slotToBeFilled).getItemName());
+        pst.setInt(2, hero.getID());
         pst.executeUpdate();
         System.out.println("Character has successfully been added to the database");
     }
@@ -93,7 +121,7 @@ public class ItemShopDAO {
     public Map<String, Item> getHeroEquipmentByHeroID(int heroId) throws SQLException {
         ItemInformation itemInformation = new ItemInformation();
         Map<String, Item> mapToBeReturned = new HashMap<>();
-        String sql = "SELECT * FROM dungeon.hero_equipment WHERE (hero_id=?);";
+        String sql = "SELECT * FROM dungeon.hero_equipment WHERE (idhero_equipment=?);";
         pst = conn.prepareStatement(sql);
         pst.setInt(1, heroId);
         ResultSet rs = pst.executeQuery();

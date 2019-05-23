@@ -105,6 +105,7 @@ public class CharacterCreatorDAO {
             hero.setIntelligence(rs.getInt("intelligence"));
             hero.setWisdom(rs.getInt("wisdom"));
             hero.setCharisma(rs.getInt("charisma"));
+            hero.setGold(rs.getInt("gold"));
             manageHeroDefenses(hero, rs);
             manageHeroSkills(hero, rs);
             manageHeroPowers(hero, heroClassInformation, rs, heroClass);
@@ -228,12 +229,13 @@ public class CharacterCreatorDAO {
     }
 
     public void updateHeroGold(Hero hero, int goldDifference) throws SQLException {
-        String sql = "UPDATE dungeon.hero SET " +
-                "gold=?," +
+        String sql = "UPDATE dungeon.heroes SET " +
+                "gold=? " +
                 "WHERE (`idheroes`=?)";
         pst = conn.prepareStatement(sql);
         pst.setInt(1, hero.getGold() + goldDifference);
         pst.setInt(2, hero.getID());
+        System.out.println(sql);
         pst.executeUpdate();
         System.out.println("Character's gold amount has successfully been modified");
     }
@@ -316,7 +318,13 @@ public class CharacterCreatorDAO {
         pst.setString(35, heroToBeAdded.getEncounterPower1() + "___");
         pst.setString(36, heroToBeAdded.getDailyPower1() + "___");
         pst.executeUpdate();
+        addHeroEquipmentTable(heroToBeAdded);
         System.out.println("Character has successfully been added to the database");
     }
 
+    public void addHeroEquipmentTable(CharacterCreatorDTO heroToBeAdded) throws SQLException {
+        String sql = "INSERT INTO `dungeon`.`hero_equipment` (`right_hand_slot`) VALUES ('null');";
+        pst = conn.prepareStatement(sql);
+        pst.executeUpdate();
+    }
 }
