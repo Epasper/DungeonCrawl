@@ -131,6 +131,8 @@ class DungeonGUI {
         equipmentButton.setGraphic(eqIconView);
         return equipmentButton;
     }
+    //todo add the equipment view
+    //todo add the character's sheet view
 
     private void showCurrentCharactersEquipment(int currentlyActiveHeroID) {
         Hero currentHero = getHeroByID(currentlyActiveHeroID, heroList);
