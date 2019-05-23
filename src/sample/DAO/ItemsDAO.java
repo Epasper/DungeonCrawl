@@ -1,8 +1,7 @@
 package sample.DAO;
 
 
-import sample.DTO.CharacterCreatorDTO;
-import sample.DTO.ItemShopDTO;
+import sample.DTO.ItemsDTO;
 import sample.Items.Item;
 import sample.Model.Hero;
 import sample.StaticRules.ItemInformation;
@@ -11,7 +10,7 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ItemShopDAO {
+public class ItemsDAO {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/mysql?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private static final String USER = "root";
     private static final String PASS = "root";
@@ -20,14 +19,14 @@ public class ItemShopDAO {
     private PreparedStatement pst;
 
 
-    public ItemShopDAO() throws SQLException {
+    public ItemsDAO() throws SQLException {
         System.out.println("Connecting to database...");
         conn = DriverManager.getConnection(DB_URL, USER, PASS);
         System.out.println("Creating connection...");
         conn.createStatement();
     }
 
-    public void putItemDtoToDatabase(ItemShopDTO itemShopDTO, Hero hero, String slotToBeFilled) throws SQLException {
+    public void putItemDtoToDatabase(ItemsDTO itemShopDTO, Hero hero, String slotToBeFilled) throws SQLException {
         String slotSQLAdapter = null;
         switch (slotToBeFilled) {
             case "Right Hand Slot Item":

@@ -8,9 +8,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import sample.DAO.CharacterCreatorDAO;
-import sample.DAO.ItemShopDAO;
+import sample.DAO.ItemsDAO;
 import sample.DTO.CharacterCreatorDTO;
-import sample.DTO.ItemShopDTO;
+import sample.DTO.ItemsDTO;
 import sample.Items.Item;
 import sample.Main;
 import sample.Model.Hero;
@@ -93,8 +93,8 @@ public class ItemShopGUI {
     }
 
     private void buyThisItem() throws SQLException {
-        ItemShopDTO itemShopDTO = new ItemShopDTO(currentlySelectedHero.getID());
-        ItemShopDAO itemShopDAO = new ItemShopDAO();
+        ItemsDTO itemShopDTO = new ItemsDTO(currentlySelectedHero.getID());
+        ItemsDAO itemShopDAO = new ItemsDAO();
         CharacterCreatorDAO characterCreatorDAO = new CharacterCreatorDAO();
         for (int i = 1; i < 20; i++) {
             String currentBackpackSlot = "Backpack Slot " + i + " Item";
@@ -113,7 +113,7 @@ public class ItemShopGUI {
 
     private void eventOnHeroClick(int heroID) throws SQLException, IOException {
         currentChoicesGridPane.getChildren().removeAll();
-        ItemShopDAO itemShopDAO = new ItemShopDAO();
+        ItemsDAO itemShopDAO = new ItemsDAO();
         currentHeroEquipmentMap = itemShopDAO.getHeroEquipmentByHeroID(heroID);
         CharacterCreatorDAO characterCreatorDAO = new CharacterCreatorDAO();
         currentlySelectedHero = characterCreatorDAO.getAHeroByID(heroID);

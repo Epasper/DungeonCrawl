@@ -2,6 +2,7 @@ package sample.Model;
 
 import javafx.scene.image.Image;
 import sample.HeroPowers.HeroPower;
+import sample.Items.Item;
 
 import java.util.*;
 
@@ -40,6 +41,15 @@ public class Hero extends Creature {
     private int Streetwise;
     private int Thievery;
     private Map<String, Integer> heroAttributesMap;
+    private Map<String, Item> heroEquipment;
+
+    public Map<String, Item> getHeroEquipment() {
+        return heroEquipment;
+    }
+
+    public void setHeroEquipment(Map<String, Item> heroEquipment) {
+        this.heroEquipment = heroEquipment;
+    }
 
     //todo remove all icons from HDD after reconnecting things to SQL
     private Image heroIcon = new Image(getClass().getResourceAsStream("icon1.png"));

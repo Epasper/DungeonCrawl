@@ -16,10 +16,10 @@ public class Item {
     protected int proficiencyBonus;
     protected int bonusToDamage;
     protected int weight;
-    protected String itemDescription;
+    private String itemDescription;
     protected int numberOfDamageDiceDealt;
     protected int typeOfDamageDice;
-    protected boolean isThisItemConsumable = false;
+    private boolean isThisItemConsumable = false;
     protected int bonusToAC;
 
     public int getBonusToAC() {

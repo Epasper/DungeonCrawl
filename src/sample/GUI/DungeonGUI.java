@@ -1,5 +1,7 @@
 package sample.GUI;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -100,6 +102,8 @@ class DungeonGUI {
     private void manageTheConsoleAdding() {
         powersVBox.setStyle("-fx-background-color:grey;");
         powersVBox.setMinSize(200, 40);
+        Button equipmentButton = addViewEquipmentButton();
+        consoleButtons.getChildren().add(equipmentButton);
         for (int i = 0; i < 8; i++) {
             Button dummyButton = new Button("Button " + i);
             dummyButton.setMinSize(50, 50);
@@ -115,6 +119,22 @@ class DungeonGUI {
         dungeonConsole.setMaxHeight(60);
         dungeonConsole.setFitToWidth(false);
         mapOuterPane.setBottom(completeConsole);
+    }
+
+    private Button addViewEquipmentButton() {
+        Button equipmentButton = new Button();
+        equipmentButton.setOnAction(event -> {
+            showCurrentCharactersEquipment(getCurrentlyActiveHeroID());
+        });
+        Image eqIcon = new Image(getClass().getResourceAsStream("Images/Equipment.jpg"));
+        ImageView eqIconView = new ImageView(eqIcon);
+        equipmentButton.setGraphic(eqIconView);
+        return equipmentButton;
+    }
+
+    private void showCurrentCharactersEquipment(int currentlyActiveHeroID) {
+        Hero currentHero = getHeroByID(currentlyActiveHeroID, heroList);
+
     }
 
     private void updateTheDungeonConsole(String messageToUpdate) {
@@ -441,7 +461,6 @@ class DungeonGUI {
 
     //todo add a console in the dungeon view to write output already discovered to players
     //todo visibility checker has to stop on walls
-
 
 
 }

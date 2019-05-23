@@ -7,14 +7,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ItemShopDTO {
+public class ItemsDTO {
 
     private Map<String, Item> mapOfItems;
     private static List<String> listOfItemNames;
     private int heroID;
 
 
-    public ItemShopDTO(int heroID) {
+    public ItemsDTO(int heroID) {
        /* listOfItemNames.add("Right Hand Slot Item");
         listOfItemNames.add("Left Hand Slot Item");
         listOfItemNames.add("Torso Slot Item");
