@@ -88,7 +88,6 @@ public class CharacterCreatorDAO {
         ResultSet rs = pst.executeQuery();
         String a = "a";
         String b = "B";
-        //todo think about DRY here
         while (rs.next()) {
             a = rs.getString("hero_name");
             b = rs.getString("icon_id");

@@ -92,9 +92,6 @@ public class ItemShopGUI {
         currentChoicesGridPane.add(buyThisItemButton,0,2);
     }
 
-    //todo add hero equipment table upon creating a new hero
-    //todo remove all current heroes and add new heroes with character creator tool.
-
     private void buyThisItem() throws SQLException {
         ItemShopDTO itemShopDTO = new ItemShopDTO(currentlySelectedHero.getID());
         ItemShopDAO itemShopDAO = new ItemShopDAO();
@@ -113,8 +110,6 @@ public class ItemShopGUI {
             }
         }
     }
-
-    //todo fill all fields in the middle pane.
 
     private void eventOnHeroClick(int heroID) throws SQLException, IOException {
         currentChoicesGridPane.getChildren().removeAll();

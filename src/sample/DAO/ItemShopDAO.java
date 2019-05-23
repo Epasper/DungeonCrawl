@@ -155,5 +155,4 @@ public class ItemShopDAO {
         }
         return mapToBeReturned;
     }
-    //todo add DAO for shop transactions
 }

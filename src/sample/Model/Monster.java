@@ -6,7 +6,6 @@ import sample.Model.Creature;
 public class Monster extends Creature {
     private String monsterName;
     private String monsterType;
-    //todo remove all icons from HDD after reconnecting things to SQL
     private Image monsterImage;
     private int xpValue;
     private int initiativeBonus;

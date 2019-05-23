@@ -109,8 +109,6 @@ public class HeroClassInformation {
         AC, Fortitude, Reflex, Will
     }
 
-    //todo think about refactoring the Map onto something else, perhaps something DRY
-
     public HeroClassInformation() {
         populateTheTablesWithHPs();
         populateTheTablesWithSkills();
@@ -655,8 +653,6 @@ public class HeroClassInformation {
     }
 
     public HeroPower getHeroPowerByName(String className, String powerName, String typeOfPower) {
-
-        //todo NullPointer
 
         try {
             if (typeOfPower.contains("Will")) {

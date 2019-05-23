@@ -333,7 +333,6 @@ public class Hero extends Creature {
         return gold;
     }
 
-    //todo add a proper attack method.
     public Map attackAMonster(Monster attackedMonster, HeroPower powerUsedForAttacking) {
         Map<String, Integer> valuesToBeReturned = new HashMap<>();
         String usedAttribute = powerUsedForAttacking.getAttributeUsedToHit();

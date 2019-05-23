@@ -170,8 +170,6 @@ class DungeonGUI {
         return returnedMonster;
     }
 
-    //todo think about disassembling this class to smaller classes for better unit testing
-
     private void updateGUIAccordingToMap(DungeonMap dungeonMap) {
         for (int i = 0; i < mapWidth; i++) {
             for (int j = 0; j < mapHeight; j++) {
@@ -186,6 +184,7 @@ class DungeonGUI {
         }
         updateMapGraphics(dungeonMap);
     }
+    //todo add an "Equipment management" window in Dungeon GUI
 
     private void updateMapGraphics(DungeonMap dungeonMap) {
         for (int i = 0; i < mapWidth; i++) {

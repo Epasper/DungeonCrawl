@@ -53,7 +53,6 @@ class CharacterCreatorGUI {
     private ComboBox<String> raceChoice = new ComboBox<>();
     private Button returnToMainMenu = new Button();
     private Button saveTheCharacter = new Button();
-    private Button loadACharacterFromDatabase = new Button();
     private Button addACharacterPortrait = new Button();
     private TextField characterName = new TextField();
     private final ToggleGroup racialToggleGroup = new ToggleGroup();
@@ -114,14 +113,7 @@ class CharacterCreatorGUI {
                 e.printStackTrace();
             }
         }));
-        loadACharacterFromDatabase.setOnAction((event -> {
-            try {
-                eventOnLoadCharacters();
-            } catch (SQLException e) {
-                System.out.println("Connection to the database could not be established.");
-                e.printStackTrace();
-            }
-        }));
+
         addACharacterPortrait.setOnAction((event -> {
             try {
                 choosePortrait();
@@ -189,15 +181,6 @@ class CharacterCreatorGUI {
             allIcons.add(image);
         }
         return allIcons;
-    }
-
-    //todo remove the load a character button
-    private void eventOnLoadCharacters() throws SQLException {
-        CharacterCreatorDAO dao = new CharacterCreatorDAO();
-        List<String> list = dao.getAllHeroNames();
-        for (String s : list) {
-            System.out.println(s);
-        }
     }
 
     private void saveTheCharacterToDatabase() throws SQLException {
@@ -647,7 +630,6 @@ class CharacterCreatorGUI {
         leftBox.getChildren().add(classChoice);
         leftBox.getChildren().add(raceChoice);
         leftBox.getChildren().add(saveTheCharacter);
-        leftBox.getChildren().add(loadACharacterFromDatabase);
         leftBox.getChildren().add(addACharacterPortrait);
         leftBox.getChildren().add(returnToMainMenu);
     }
@@ -826,11 +808,9 @@ class CharacterCreatorGUI {
         characterName.setPromptText("Insert your character name");
         returnToMainMenu.setText("Return to Main Menu");
         saveTheCharacter.setText("Save this Character");
-        loadACharacterFromDatabase.setText("Load a Character");
         addACharacterPortrait.setText("Add a Portrait");
         returnToMainMenu.setMinWidth(150);
         saveTheCharacter.setMinWidth(150);
-        loadACharacterFromDatabase.setMinWidth(150);
         addACharacterPortrait.setMinWidth(150);
     }
 
