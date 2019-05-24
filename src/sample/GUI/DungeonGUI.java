@@ -15,10 +15,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import sample.*;
+import sample.DAO.ItemsDAO;
 import sample.HeroPowers.HeroPower;
 import sample.Model.*;
 import sample.Model.Monster;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -124,7 +127,11 @@ class DungeonGUI {
     private Button addViewEquipmentButton() {
         Button equipmentButton = new Button();
         equipmentButton.setOnAction(event -> {
-            showCurrentCharactersEquipment(getCurrentlyActiveHeroID());
+            try {
+                showCurrentCharactersEquipment(getCurrentlyActiveHeroID());
+            } catch (IOException | SQLException e) {
+                e.printStackTrace();
+            }
         });
         Image eqIcon = new Image(getClass().getResourceAsStream("Images/Equipment.jpg"));
         ImageView eqIconView = new ImageView(eqIcon);
@@ -134,9 +141,14 @@ class DungeonGUI {
     //todo add the equipment view
     //todo add the character's sheet view
 
-    private void showCurrentCharactersEquipment(int currentlyActiveHeroID) {
+    private void showCurrentCharactersEquipment(int currentlyActiveHeroID) throws IOException, SQLException {
         Hero currentHero = getHeroByID(currentlyActiveHeroID, heroList);
-
+        ItemsDAO itemsDAO = new ItemsDAO();
+        currentHero.setHeroEquipment(itemsDAO.getHeroEquipmentByHeroID(currentHero.getID()));
+        EquipmentGUI equipmentGUI = new EquipmentGUI(currentHero);
+        equipmentGUI.aStage = Main.getPrimaryStage();
+        equipmentGUI.aStage.setScene(equipmentGUI.aScene);
+        equipmentGUI.aStage.show();
     }
 
     private void updateTheDungeonConsole(String messageToUpdate) {

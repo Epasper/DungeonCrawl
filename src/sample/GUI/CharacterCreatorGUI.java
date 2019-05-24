@@ -161,10 +161,10 @@ class CharacterCreatorGUI {
         iconID = id;
         ImageView heroImageView = new ImageView(hero1img);
         try {
-            leftBox.getChildren().remove(6);
+            leftBox.getChildren().remove(5);
         } catch (IndexOutOfBoundsException ignored) {
         }
-        leftBox.getChildren().add(6, heroImageView);
+        leftBox.getChildren().add(5, heroImageView);
     }
 
     private List<Image> getAllIcons() throws SQLException, IOException {

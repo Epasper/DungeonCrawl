@@ -26,6 +26,7 @@ public class MainMenuGUI {
     private Button newDungeonButton = new Button();
     private Button characterCreatorGUIButton = new Button();
     private Button itemShopButton = new Button();
+    private Button manageEquipmentButton = new Button("Manage Hero Equipment");
     public Scene aScene = new Scene(new Group());
     public Stage aStage = new Stage();
 
@@ -48,6 +49,7 @@ public class MainMenuGUI {
         middlePane.getChildren().add(newDungeonButton);
         middlePane.getChildren().add(characterCreatorGUIButton);
         middlePane.getChildren().add(itemShopButton);
+        middlePane.getChildren().add(manageEquipmentButton);
         aStage.getIcons().add(new Image("sample/GUI/Images/MainMenuIcon.jpg"));
         newDungeonButton.setText("Generate a New Dungeon");
         newDungeonButton.setOnAction(event -> {
@@ -56,6 +58,10 @@ public class MainMenuGUI {
             } catch (SQLException | IOException e) {
                 e.printStackTrace();
             }
+        });
+        //todo add hero selector to manage equipment properly
+        manageEquipmentButton.setOnAction(event -> {
+
         });
         characterCreatorGUIButton.setText("Character Creator");
         characterCreatorGUIButton.setOnAction(event -> openCharacterCreationGUI());

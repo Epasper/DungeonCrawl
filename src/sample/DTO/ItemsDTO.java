@@ -10,12 +10,12 @@ import java.util.Map;
 public class ItemsDTO {
 
     private Map<String, Item> mapOfItems;
-    private static List<String> listOfItemNames;
+    private List<String> listOfItemNames = new ArrayList<>();
     private int heroID;
 
 
     public ItemsDTO(int heroID) {
-       /* listOfItemNames.add("Right Hand Slot Item");
+        listOfItemNames.add("Right Hand Slot Item");
         listOfItemNames.add("Left Hand Slot Item");
         listOfItemNames.add("Torso Slot Item");
         listOfItemNames.add("Head Slot Item");
@@ -40,8 +40,16 @@ public class ItemsDTO {
         listOfItemNames.add("Backpack Slot 17 Item");
         listOfItemNames.add("Backpack Slot 18 Item");
         listOfItemNames.add("Backpack Slot 19 Item");
-        listOfItemNames.add("Backpack Slot 20 Item");*/
+        listOfItemNames.add("Backpack Slot 20 Item");
         this.heroID = heroID;
+    }
+
+    public List<String> getListOfItemNames() {
+        return listOfItemNames;
+    }
+
+    public void setListOfItemNames(List<String> listOfItemNames) {
+        this.listOfItemNames = listOfItemNames;
     }
 
     public Map<String, Item> getMapOfItems() {
