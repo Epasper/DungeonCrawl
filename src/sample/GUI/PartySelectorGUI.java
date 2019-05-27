@@ -34,7 +34,6 @@ public class PartySelectorGUI {
 
     public PartySelectorGUI() throws SQLException, IOException {
         fillThePanesWithPartyMembers();
-
     }
 
     private void fillThePanesWithPartyMembers() throws SQLException, IOException {

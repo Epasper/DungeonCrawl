@@ -61,7 +61,21 @@ public class MainMenuGUI {
         });
         //todo add hero selector to manage equipment properly
         manageEquipmentButton.setOnAction(event -> {
-
+            PartySelectorGUI partySelectorGUI = null;
+            try {
+                partySelectorGUI = new PartySelectorGUI();
+            } catch (SQLException | IOException e) {
+                e.printStackTrace();
+            }
+            //DungeonGUI dungeonGui = new DungeonGUI();
+            aStage.close();
+            assert partySelectorGUI != null;
+            aScene.setRoot(partySelectorGUI.partySelectorOuterPlane);
+            aScene.getStylesheets().add("sample/Styling/Caspian.css");
+            aStage.setMaximized(true);
+            //aScene.setRoot(dungeonGui.mapScrollPane);
+            aStage.setScene(aScene);
+            aStage.show();
         });
         characterCreatorGUIButton.setText("Character Creator");
         characterCreatorGUIButton.setOnAction(event -> openCharacterCreationGUI());

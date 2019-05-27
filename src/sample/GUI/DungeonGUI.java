@@ -34,7 +34,8 @@ class DungeonGUI {
     private int mapHeight = 40;
     private Button[][] buttonGrid = new Button[mapWidth][mapHeight];
     private GridPane mapGridPane = new GridPane();
-    private VBox powersVBox = new VBox();
+    private HBox powersHBox = new HBox();
+    private VBox portraitsVBox = new VBox();
     BorderPane mapOuterPane = new BorderPane();
     private Text dungeonConsoleText = new Text();
     private HBox consoleButtons = new HBox();
@@ -91,7 +92,7 @@ class DungeonGUI {
         dungeonConsole.setContent(dungeonConsoleText);
         ScrollPane mapScrollPane = new ScrollPane();
         mapOuterPane.setCenter(mapScrollPane);
-        mapOuterPane.setRight(powersVBox);
+        //mapOuterPane.setRight(powersHBox);
         mapScrollPane.setContent(mapGridPane);
         Button returnToMainMenu = new Button();
         returnToMainMenu.setText("Return to Main Menu");
@@ -103,8 +104,8 @@ class DungeonGUI {
     }
 
     private void manageTheConsoleAdding() {
-        powersVBox.setStyle("-fx-background-color:grey;");
-        powersVBox.setMinSize(200, 40);
+        powersHBox.setStyle("-fx-background-color:grey;");
+        powersHBox.setMinSize(200, 40);
         Button equipmentButton = addViewEquipmentButton();
         consoleButtons.getChildren().add(equipmentButton);
         for (int i = 0; i < 8; i++) {
@@ -112,6 +113,13 @@ class DungeonGUI {
             dummyButton.setMinSize(50, 50);
             consoleButtons.getChildren().add(dummyButton);
         }
+        for (Hero hero : heroList) {
+            Button heroButton = new Button();
+            heroButton.setGraphic(new ImageView(hero.getHeroIcon()));
+            heroButton.setOnAction(event -> buttonEvent(heroButton, hero.getMapXPos(), hero.getMapYPos()));
+            portraitsVBox.getChildren().add(heroButton);
+        }
+        mapOuterPane.setRight(portraitsVBox);
         completeConsole.add(dungeonConsole, 0, 0);
         completeConsole.add(consoleButtons, 0, 1);
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
@@ -121,6 +129,7 @@ class DungeonGUI {
         dungeonConsole.setMinHeight(60);
         dungeonConsole.setMaxHeight(60);
         dungeonConsole.setFitToWidth(false);
+        completeConsole.add(powersHBox, 0, 2);
         mapOuterPane.setBottom(completeConsole);
     }
 
@@ -162,7 +171,7 @@ class DungeonGUI {
             powerButton.setMinWidth(130);
             powerButton.setStyle("-fx-background-color: #007200;");
             powerButton.setTextFill(Color.WHITE);
-            powersVBox.getChildren().add(powerButton);
+            powersHBox.getChildren().add(powerButton);
             powerButton.setOnAction(event -> eventOnPowerSelect(currentHero, currentPower));
 
         }
@@ -171,7 +180,7 @@ class DungeonGUI {
             powerButton.setMinWidth(130);
             powerButton.setStyle("-fx-background-color: #910000;");
             powerButton.setTextFill(Color.WHITE);
-            powersVBox.getChildren().add(powerButton);
+            powersHBox.getChildren().add(powerButton);
             powerButton.setOnAction(event -> eventOnPowerSelect(currentHero, currentPower));
         }
         for (HeroPower currentPower : currentHero.getDailyPowers()) {
@@ -179,7 +188,7 @@ class DungeonGUI {
             powerButton.setMinWidth(130);
             powerButton.setStyle("-fx-background-color: #5c005e;");
             powerButton.setTextFill(Color.WHITE);
-            powersVBox.getChildren().add(powerButton);
+            powersHBox.getChildren().add(powerButton);
             powerButton.setOnAction(event -> eventOnPowerSelect(currentHero, currentPower));
         }
     }
@@ -342,7 +351,7 @@ class DungeonGUI {
         getDungeonMap().clearMapReachableProperties(getDungeonMap());
         updateMapGraphics(getDungeonMap());
         setHasTheCharacterBeenSelected(false);
-        powersVBox.getChildren().clear();
+        powersHBox.getChildren().clear();
     }
 
     private void eventOnHeroClick(int currentHeroID) {
