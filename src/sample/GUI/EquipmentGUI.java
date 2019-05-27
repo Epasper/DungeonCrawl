@@ -30,21 +30,26 @@ public class EquipmentGUI {
     private CharacterCreatorDAO characterCreatorDAO = new CharacterCreatorDAO();
     private Hero currentHero;
 
-    public EquipmentGUI(Hero currentHero) throws SQLException, IOException {
-        this.currentHero = currentHero;
-        setANewScene();
-        displayAChosenHeroEquipment();
+    public EquipmentGUI() throws SQLException, IOException {
     }
 
-    private void setANewScene() {
+    public List<Hero> getListOfSelectedHeroes() {
+        return listOfSelectedHeroes;
     }
 
-    private void displayAChosenHeroEquipment() throws SQLException, IOException {
+    public void setListOfSelectedHeroes(List<Hero> listOfSelectedHeroes) {
+        this.listOfSelectedHeroes = listOfSelectedHeroes;
+    }
+
+    //todo hero ID 0 is only being read - find out why
+    //todo right panel buttons should switch the displayed character
+
+    public GridPane displayAChosenHeroEquipment(Hero chosenHero) throws SQLException, IOException {
         CharacterCreatorDAO characterCreatorDAO = new CharacterCreatorDAO();
 
         partySelectorOuterPlane.getStylesheets().add("sample/Styling/CharacterCreator.css");
-        Map<String, Item> heroEquipmentMap = currentHero.getHeroEquipment();
-        ItemsDTO itemsDTO = new ItemsDTO(currentHero.getID());
+        Map<String, Item> heroEquipmentMap = chosenHero.getHeroEquipment();
+        ItemsDTO itemsDTO = new ItemsDTO(chosenHero.getID());
         List<String> slotNames = itemsDTO.getListOfItemNames();
         for (int i = 0; i < slotNames.size(); i++) {
             String filledSlot;
@@ -58,9 +63,10 @@ public class EquipmentGUI {
             );
             innerPane.add(itemText, 0, i + 1);
         }
-        characterIcon.setGraphic(new ImageView(characterCreatorDAO.getHeroIconByID(currentHero.getID())));
+        characterIcon.setGraphic(new ImageView(characterCreatorDAO.getHeroIconByID(chosenHero.getID())));
         innerPane.add(characterIcon, 0, 0);
         aScene.setRoot(innerPane);
+        return innerPane;
     }
 
 

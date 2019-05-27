@@ -36,9 +36,9 @@ class DungeonGUI {
     private GridPane mapGridPane = new GridPane();
     private HBox powersHBox = new HBox();
     private VBox portraitsVBox = new VBox();
+    private VBox consoleButtons = new VBox();
     BorderPane mapOuterPane = new BorderPane();
     private Text dungeonConsoleText = new Text();
-    private HBox consoleButtons = new HBox();
     private GridPane completeConsole = new GridPane();
     private Image wallImage = new Image(getClass().getResourceAsStream("Images\\wall.png"));
     private Image floorImage = new Image(getClass().getResourceAsStream("Images\\floor.png"));
@@ -64,6 +64,7 @@ class DungeonGUI {
     private int numberOfHeroesThatFinishedMovement;
     private ScrollPane dungeonConsole = new ScrollPane();
     private List<HeroPower> currentPower = new ArrayList<>();
+    private ScrollPane mapScrollPane = new ScrollPane();
 
     private DungeonMap getDungeonMap() {
         return dungeonMap;
@@ -90,7 +91,6 @@ class DungeonGUI {
         manageTheConsoleAdding();
         //todo rewrite dummy buttons with real ones
         dungeonConsole.setContent(dungeonConsoleText);
-        ScrollPane mapScrollPane = new ScrollPane();
         mapOuterPane.setCenter(mapScrollPane);
         //mapOuterPane.setRight(powersHBox);
         mapScrollPane.setContent(mapGridPane);
@@ -107,6 +107,10 @@ class DungeonGUI {
         powersHBox.setStyle("-fx-background-color:grey;");
         powersHBox.setMinSize(200, 40);
         Button equipmentButton = addViewEquipmentButton();
+        Button viewDungeon = new Button();
+        viewDungeon.setOnAction(event -> mapOuterPane.setCenter(mapScrollPane));
+        viewDungeon.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images/DungeonView.jpg"))));
+        consoleButtons.getChildren().add(viewDungeon);
         consoleButtons.getChildren().add(equipmentButton);
         for (int i = 0; i < 8; i++) {
             Button dummyButton = new Button("Button " + i);
@@ -121,7 +125,7 @@ class DungeonGUI {
         }
         mapOuterPane.setRight(portraitsVBox);
         completeConsole.add(dungeonConsole, 0, 0);
-        completeConsole.add(consoleButtons, 0, 1);
+        mapOuterPane.setLeft(consoleButtons);
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
         completeConsole.setMinHeight(120);
         completeConsole.setMinHeight(120);
@@ -132,6 +136,9 @@ class DungeonGUI {
         completeConsole.add(powersHBox, 0, 2);
         mapOuterPane.setBottom(completeConsole);
     }
+
+    //todo the left and right panes have to be constant between Dungeon GUI, eq selector and character sheet.
+    //todo the left and right panes have to read the stylesheets correctly.
 
     private Button addViewEquipmentButton() {
         Button equipmentButton = new Button();
@@ -154,10 +161,11 @@ class DungeonGUI {
         Hero currentHero = getHeroByID(currentlyActiveHeroID, heroList);
         ItemsDAO itemsDAO = new ItemsDAO();
         currentHero.setHeroEquipment(itemsDAO.getHeroEquipmentByHeroID(currentHero.getID()));
-        EquipmentGUI equipmentGUI = new EquipmentGUI(currentHero);
-        equipmentGUI.aStage = Main.getPrimaryStage();
-        equipmentGUI.aStage.setScene(equipmentGUI.aScene);
-        equipmentGUI.aStage.show();
+        EquipmentGUI equipmentGUI = new EquipmentGUI();
+        mapOuterPane.setCenter(equipmentGUI.displayAChosenHeroEquipment(currentHero));
+//        equipmentGUI.aStage = Main.getPrimaryStage();
+//        equipmentGUI.aStage.setScene(equipmentGUI.aScene);
+//        equipmentGUI.aStage.show();
     }
 
     private void updateTheDungeonConsole(String messageToUpdate) {
