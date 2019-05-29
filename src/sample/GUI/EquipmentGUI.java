@@ -65,7 +65,7 @@ public class EquipmentGUI {
                 filledSlot = " ";
             }
             equipmentLabels.put(slotNames.get(i), new Label());
-            equipmentLabels.get(slotNames.get(i)).setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\EmptyEquipmentSlot.jpg"))));
+            equipmentLabels.get(slotNames.get(i)).setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\EmptyEquipmentSlot.jpg"))));
             Text itemText = new Text(slotNames.get(i) + ": " +
                     filledSlot
             );
@@ -76,24 +76,27 @@ public class EquipmentGUI {
         characterIcon.setGraphic(new ImageView(characterCreatorDAO.getHeroIconByID(chosenHero.getHeroIconId())));
         innerPane.add(characterIcon, 0, 0);
         innerPane.setPadding(new Insets(10, 10, 10, 10));
-        innerPane.setBackground(new Background(new BackgroundImage(new Image(getClass().getResourceAsStream("Images\\Background.jpg")), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
+        innerPane.setBackground(new Background(new BackgroundImage(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\Background.jpg")), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
         aScene.setRoot(innerPane);
         return innerPane;
     }
 
     private void manageEquipmentSlotsPositions() {
-        innerPane.add(equipmentLabels.get("Head Slot Item"), 4, 0);
-        equipmentLabels.get("Head Slot Item").setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\HeadSlot.jpg"))));
-        innerPane.add(equipmentLabels.get("Right Hand Slot Item"), 3, 1);
-        equipmentLabels.get("Arms Slot Item").setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\ArmsSlot.jpg"))));
-        innerPane.add(equipmentLabels.get("Left Hand Slot Item"), 5, 1);
-        equipmentLabels.get("Right Hand Slot Item").setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\RightHandSlot.jpg"))));
-        innerPane.add(equipmentLabels.get("Arms Slot Item"), 4, 1);
-        equipmentLabels.get("Left Hand Slot Item").setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\LeftHandSlot.jpg"))));
-        innerPane.add(equipmentLabels.get("Torso Slot Item"), 4, 2);
-        equipmentLabels.get("Torso Slot Item").setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\TorsoSlot.jpg"))));
-        innerPane.add(equipmentLabels.get("Feet Slot Item"), 4, 3);
-        equipmentLabels.get("Feet Slot Item").setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\FeetSlot.jpg"))));
+        Label silhouetteLabel = new Label();
+        silhouetteLabel.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\Silhouette.png"))));
+        innerPane.add(silhouetteLabel, 4, 1, 2,3);
+        equipmentLabels.get("Head Slot Item").setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\HeadSlot.jpg"))));
+        innerPane.add(equipmentLabels.get("Head Slot Item"), 6, 1 );
+        equipmentLabels.get("Right Hand Slot Item").setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\RightHandSlot.jpg"))));
+        innerPane.add(equipmentLabels.get("Right Hand Slot Item"), 3, 2);
+        equipmentLabels.get("Left Hand Slot Item").setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\LeftHandSlot.jpg"))));
+        innerPane.add(equipmentLabels.get("Left Hand Slot Item"), 6, 2);
+        equipmentLabels.get("Arms Slot Item").setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\ArmsSlot.jpg"))));
+        innerPane.add(equipmentLabels.get("Arms Slot Item"), 3, 1);
+        equipmentLabels.get("Torso Slot Item").setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\TorsoSlot.jpg"))));
+        innerPane.add(equipmentLabels.get("Torso Slot Item"), 6, 3);
+        equipmentLabels.get("Feet Slot Item").setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\FeetSlot.jpg"))));
+        innerPane.add(equipmentLabels.get("Feet Slot Item"), 3, 3);
         for (int i = 0; i < 2; i++) {
             for (int j = 1; j < 10; j++) {
                 String slotNumber = "Backpack Slot " + (i * 10 + j) + " Item";

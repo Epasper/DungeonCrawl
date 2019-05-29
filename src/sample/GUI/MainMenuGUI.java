@@ -50,7 +50,7 @@ public class MainMenuGUI {
         middlePane.getChildren().add(characterCreatorGUIButton);
         middlePane.getChildren().add(itemShopButton);
         middlePane.getChildren().add(manageEquipmentButton);
-        aStage.getIcons().add(new Image("sample/GUI/Images/MainMenuIcon.jpg"));
+        aStage.getIcons().add(new Image("sample/GUI/Images/WindowsIcons/MainMenuIcon.jpg"));
         newDungeonButton.setText("Generate a New Dungeon");
         newDungeonButton.setOnAction(event -> {
             try {
@@ -117,7 +117,7 @@ public class MainMenuGUI {
         CharacterCreatorGUI characterCreatorGUI = new CharacterCreatorGUI();
         aStage.close();
         aStage.getIcons().clear();
-        aStage.getIcons().add(new Image("sample/GUI/Images/CharacterCreatorIcon.jpg"));
+        aStage.getIcons().add(new Image("sample/GUI/Images/WindowsIcons/CharacterCreatorIcon.jpg"));
         aScene.setRoot(characterCreatorGUI.characterCreatorOuterPane);
         aStage.setMaximized(true);
         aStage.setScene(aScene);

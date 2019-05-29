@@ -5,17 +5,64 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de97b43a-8902-45e2-a345-dc80bad4fa20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/sample/GUI/Images/ArmsSlot.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/GUI/Images/Background.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/GUI/Images/EmptyEquipmentSlot.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/GUI/Images/FeetSlot.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/GUI/Images/HeadSlot.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/GUI/Images/LeftHandSlot.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/GUI/Images/RightHandSlot.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/GUI/Images/TorsoSlot.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/Silhouette.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/GUI/EquipmentGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/EquipmentGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/608dddd6-762b-44e4-a6da-b4e62e78a1e4_scaled.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/ArmsSlot.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/ArmsSlot.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/Background.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/Background.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/CharacterCreatorIcon.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/WindowsIcons/CharacterCreatorIcon.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/DoorHorizontal.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/DoorHorizontal.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/DoorVertical.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/DoorVertical.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/EmptyEquipmentSlot.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/EmptyEquipmentSlot.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/FeetSlot.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/FeetSlot.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/Floor.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/Floor.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallE.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/FloorWallE.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallHoriz.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/FloorWallHoriz.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallN.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/FloorWallN.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallNE.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/FloorWallNE.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallNW.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/FloorWallNW.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallS.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/FloorWallS.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallSE.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/FloorWallSE.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallSW.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/FloorWallSW.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallVert.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/FloorWallVert.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallW.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/FloorWallW.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/HeadSlot.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/HeadSlot.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/LeftHandSlot.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/LeftHandSlot.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/MainMenuIcon.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/WindowsIcons/MainMenuIcon.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/OpenedDoorHorizontal.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/OpenedDoorHorizontal.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/OpenedDoorVertical.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/OpenedDoorVertical.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/RightHandSlot.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/RightHandSlot.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/TorsoSlot.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/TorsoSlot.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/download.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/dungeonIcon.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/WindowsIcons/dungeonIcon.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/fog.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/fog.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/fogchess-Copy.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/monster1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/Monsters/monster1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/monster2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/Monsters/monster2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/monster3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/Monsters/monster3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/monster4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/Monsters/monster4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/monster5.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/Monsters/monster5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/monster6.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/Monsters/monster6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/wall.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/wall.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/MainMenuGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/MainMenuGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/PartySelectorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/PartySelectorGUI.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/DungeonCrawl1.0/target/" />
@@ -30,11 +77,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/sample/GUI/EquipmentGUI.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/GUI/CharacterSheetGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="71" column="48" lean-forward="true" selection-start-line="71" selection-start-column="48" selection-end-line="71" selection-end-column="48" />
+            <state relative-caret-position="34">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="362">
+              <caret line="58" column="104" selection-start-line="58" selection-start-column="104" selection-end-line="58" selection-end-column="104" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -42,29 +98,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/layout/BackgroundImage.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/sample/GUI/EquipmentGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="112" column="39" lean-forward="true" selection-start-line="112" selection-start-column="39" selection-end-line="112" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/layout/BackgroundPosition.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/GUI/MainMenuGUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="833">
-              <caret line="65" column="58" selection-start-line="65" selection-start-column="58" selection-end-line="65" selection-end-column="58" />
+            <state relative-caret-position="626">
+              <caret line="110" column="1" lean-forward="true" selection-start-line="110" selection-start-column="1" selection-end-line="110" selection-end-column="1" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -100,11 +141,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5134">
-              <caret line="337" column="67" selection-start-line="337" selection-start-column="67" selection-end-line="337" selection-end-column="67" />
+            <state relative-caret-position="226">
+              <caret line="248" column="41" lean-forward="true" selection-start-line="248" selection-start-column="41" selection-end-line="248" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/DAO/PutBLOBIntoDB.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
             </state>
           </provider>
         </entry>
@@ -133,8 +183,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Model/EncounterCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="41" column="71" lean-forward="true" selection-start-line="41" selection-start-column="71" selection-end-line="41" selection-end-column="71" />
+            <state relative-caret-position="561">
+              <caret line="41" column="71" selection-start-line="41" selection-start-column="71" selection-end-line="41" selection-end-column="71" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -241,8 +291,8 @@
         <option value="$PROJECT_DIR$/src/sample/DTO/ItemsDTO.java" />
         <option value="$PROJECT_DIR$/src/sample/GUI/MainMenuGUI.java" />
         <option value="$PROJECT_DIR$/src/sample/GUI/PartySelectorGUI.java" />
-        <option value="$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java" />
         <option value="$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java" />
+        <option value="$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java" />
         <option value="$PROJECT_DIR$/src/sample/GUI/EquipmentGUI.java" />
       </list>
     </option>
@@ -254,8 +304,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1666" />
-    <option name="y" value="-32" />
+    <option name="x" value="1735" />
+    <option name="y" value="-290" />
     <option name="width" value="1026" />
     <option name="height" value="554" />
   </component>
@@ -264,6 +314,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -303,6 +354,13 @@
               <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="DAO" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
               <item name="GUI" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -313,12 +371,49 @@
               <item name="GUI" type="462c0819:PsiDirectoryNode" />
               <item name="Images" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="GUI" type="462c0819:PsiDirectoryNode" />
+              <item name="Images" type="462c0819:PsiDirectoryNode" />
+              <item name="Monsters" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="Items" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="Monsters" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="Monsters" type="462c0819:PsiDirectoryNode" />
+              <item name="MonsterImages" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -343,6 +438,16 @@
     <key name="CreateTestDialog.RecentsKey">
       <recent name="sample.GUI" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\GUI\Images\EquipmentGUI" />
+      <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\GUI\Images\MapElements" />
+      <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\GUI\Images\WindowsIcons" />
+      <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\GUI\Images\Monsters" />
+      <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\Monsters\MonsterImages" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="sample.Items.Implements" />
       <recent name="sample.Items.Armor" />
@@ -356,16 +461,6 @@
       <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\Monsters\Images" />
       <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\Monsters" />
       <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\Styling" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\Monsters\MonsterImages" />
-      <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\Monsters" />
-      <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\Model" />
-      <recent name="C:\Users\epasp\DungeonCrawl\src\sample\Styling" />
-      <recent name="C:\Users\epasp\DungeonCrawl\src\sample" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -421,13 +516,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1556870921453</updated>
-    </task>
-    <task id="LOCAL-00043" summary="Character Creator - added Daily Powers for Bard and Cleric">
-      <created>1557743300294</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1557743300294</updated>
     </task>
     <task id="LOCAL-00044" summary="Character Creator - selection of Daily Powers">
       <created>1557743942642</created>
@@ -765,7 +853,14 @@
       <option name="project" value="LOCAL" />
       <updated>1558944891539</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="Dungeon GUI - added background to equipment view, added slots for equipment items.">
+      <created>1559026213253</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1559026213254</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -784,9 +879,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-290" width="1696" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49892932" visible="true" weight="0.12897311" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49892932" visible="true" weight="0.10696822" />
       <window_info id="Structure" order="1" sideWeight="0.5010707" side_tool="true" weight="0.2200489" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -795,7 +889,7 @@
       <window_info id="Favorites" order="6" sideWeight="0.5010707" side_tool="true" weight="0.2200489" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32976446" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.54889977" visible="true" weight="0.20449679" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.54889977" visible="true" weight="0.1359743" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49633253" weight="0.3961456" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -845,7 +939,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Dungeon GUI - Added console to the view. Added some basic comments to the console." />
     <MESSAGE value="Dungeon GUI - Added icons to the scenes" />
     <MESSAGE value="Dungeon GUI - Begun the application of attacks into the board" />
     <MESSAGE value="Dungeon GUI - Attacks are updated, but damage is still not working" />
@@ -870,72 +963,10 @@
     <MESSAGE value="Added list of items and beginning of hero equipment selection screen" />
     <MESSAGE value="Dungeon GUI - changed the GUI so that it looks more similar to BG" />
     <MESSAGE value="Dungeon GUI - added &quot;view map&quot; button, switching between map and equipment now possible, viewing equipment still has bugs." />
-    <option name="LAST_COMMIT_MESSAGE" value="Dungeon GUI - added &quot;view map&quot; button, switching between map and equipment now possible, viewing equipment still has bugs." />
+    <MESSAGE value="Dungeon GUI - added background to equipment view, added slots for equipment items." />
+    <option name="LAST_COMMIT_MESSAGE" value="Dungeon GUI - added background to equipment view, added slots for equipment items." />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/control/Label.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="71" column="11" selection-start-line="71" selection-start-column="11" selection-end-line="71" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Items/Armor/LeatherArmor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="27" lean-forward="true" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Items/Armor/HideArmor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Items/Armor/Chainmail.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Items/Armor/ScaleArmor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Items/Implements/AccurateHolySymbol.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Items/Implements/CrystalOrb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Items/Implements/AshenRod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Items/Implements/GuardianStaff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Items/Implements/ForbiddenTome.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1204,13 +1235,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/GUI/CharacterSheetGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/StaticRules/ItemInformation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="850">
@@ -1283,20 +1307,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/layout/Background.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="42" column="92" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="92" />
+        <state relative-caret-position="231">
+          <caret line="218" column="52" selection-start-line="218" selection-start-column="52" selection-end-line="218" selection-end-column="52" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#8334#8335#0" expanded="true" />
+            <element signature="e#8367#8368#0" expanded="true" />
+            <element signature="e#8944#8945#0" expanded="true" />
+            <element signature="e#8978#8979#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/layout/BackgroundRepeat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="31" column="12" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/layout/BackgroundImage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1496">
+          <caret line="112" column="39" selection-start-line="112" selection-start-column="39" selection-end-line="112" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/layout/BackgroundPosition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/GUI/MainMenuGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="65" column="58" selection-start-line="65" selection-start-column="58" selection-end-line="65" selection-end-column="58" />
+        <state relative-caret-position="1904">
+          <caret line="128" selection-start-line="128" selection-end-line="128" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/CharacterSheetGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1324,16 +1379,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5134">
-          <caret line="337" column="67" selection-start-line="337" selection-start-column="67" selection-end-line="337" selection-end-column="67" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/DTO/ItemsDTO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
@@ -1353,52 +1398,69 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Model/EncounterCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="41" column="71" lean-forward="true" selection-start-line="41" selection-start-column="71" selection-end-line="41" selection-end-column="71" />
+        <state relative-caret-position="561">
+          <caret line="41" column="71" selection-start-line="41" selection-start-column="71" selection-end-line="41" selection-end-column="71" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/layout/Background.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="218" column="52" selection-start-line="218" selection-start-column="52" selection-end-line="218" selection-end-column="52" />
+        <state relative-caret-position="226">
+          <caret line="248" column="41" lean-forward="true" selection-start-line="248" selection-start-column="41" selection-end-line="248" selection-end-column="41" />
           <folding>
-            <element signature="e#8334#8335#0" expanded="true" />
-            <element signature="e#8367#8368#0" expanded="true" />
-            <element signature="e#8944#8945#0" expanded="true" />
-            <element signature="e#8978#8979#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/layout/BackgroundRepeat.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/Images/download.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/Images/608dddd6-762b-44e4-a6da-b4e62e78a1e4_scaled.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/Images/500_F_216671168_YkPCleU1ohvvVQXMJZf7GAkxyHDbFVde.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/Images/WindowsIcons/dungeonIcon.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/Images/WindowsIcons/MainMenuIcon.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/Images/Equipment.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/Images/WindowsIcons/CharacterCreatorIcon.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/Images/DungeonView.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/DAO/PutBLOBIntoDB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="31" column="12" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
+        <state relative-caret-position="510">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/layout/BackgroundPosition.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/layout/BackgroundImage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="112" column="39" lean-forward="true" selection-start-line="112" selection-start-column="39" selection-end-line="112" selection-end-column="39" />
+        <state relative-caret-position="362">
+          <caret line="58" column="104" selection-start-line="58" selection-start-column="104" selection-end-line="58" selection-end-column="104" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/GUI/EquipmentGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="71" column="48" lean-forward="true" selection-start-line="71" selection-start-column="48" selection-end-line="71" selection-end-column="48" />
+        <state relative-caret-position="626">
+          <caret line="110" column="1" lean-forward="true" selection-start-line="110" selection-start-column="1" selection-end-line="110" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
