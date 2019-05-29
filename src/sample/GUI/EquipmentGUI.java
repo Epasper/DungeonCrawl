@@ -1,5 +1,6 @@
 package sample.GUI;
 
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -7,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseDragEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -57,25 +59,21 @@ public class EquipmentGUI {
         ItemsDTO itemsDTO = new ItemsDTO(chosenHero.getID());
         System.out.println("Chosen hero: " + chosenHero.getHeroName());
         List<String> slotNames = itemsDTO.getListOfItemNames();
-        for (int i = 0; i < slotNames.size(); i++) {
+        for (String slotName : slotNames) {
             String filledSlot;
             Label currentLabel = new Label();
-            equipmentLabels.put(slotNames.get(i), currentLabel);
+            equipmentLabels.put(slotName, currentLabel);
             try {
-                filledSlot = heroEquipmentMap.get(slotNames.get(i)).getItemName();
-                Image itemImage = heroEquipmentMap.get(slotNames.get(i)).getItemImage();
+                filledSlot = heroEquipmentMap.get(slotName).getItemName();
+                Image itemImage = heroEquipmentMap.get(slotName).getItemImage();
                 System.out.println("FOUND AND ITEM: " + filledSlot);
-                equipmentLabels.get(slotNames.get(i)).setGraphic(new ImageView(itemImage));
+                equipmentLabels.get(slotName).setGraphic(new ImageView(itemImage));
+                equipmentLabels.get(slotName).setOnMouseEntered(event -> viewItemDetails(heroEquipmentMap.get(slotName)));
             } catch (NullPointerException e) {
                 filledSlot = " ";
-                equipmentLabels.get(slotNames.get(i)).setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\EmptyEquipmentSlot.jpg"))));
+                equipmentLabels.get(slotName).setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\EmptyEquipmentSlot.jpg"))));
             }
-            currentLabel.setPadding(new Insets(5));
-            Text itemText = new Text(slotNames.get(i) + ": " +
-                    filledSlot
-            );
-            //innerPane.add(itemText, 0, i + 1);
-            //innerPane.add(equipmentLabels.get(slotNames.get(i)), 1, i + 1);
+
         }
         manageEquipmentSlotsPositions();
         characterIcon.setGraphic(new ImageView(characterCreatorDAO.getHeroIconByID(chosenHero.getHeroIconId())));
@@ -86,13 +84,44 @@ public class EquipmentGUI {
         return innerPane;
     }
 
+    private void viewItemDetails(Item currentItem) {
+        System.out.println("DRAG MOUSE DETECTED");
+        VBox itemDetails = new VBox();
+        Label currentLabel = new Label();
+        currentLabel.setPadding(new Insets(5));
+        Text itemText1 = new Text();
+        itemText1.setText(currentItem.getItemName());
+        itemDetails.getChildren().add(itemText1);
+        Text itemText2 = new Text();
+        itemText2.setText("Item Group: " + currentItem.getItemGroup());
+        itemDetails.getChildren().add(itemText2);
+        Text itemText3 = new Text();
+        itemText3.setText("Item Type: " + currentItem.getItemType());
+        itemDetails.getChildren().add(itemText3);
+        Text itemText4 = new Text();
+        itemText4.setText("Price: " + currentItem.getPrice());
+        itemDetails.getChildren().add(itemText4);
+        Text itemText5 = new Text();
+        itemText5.setText("Item Level: " + currentItem.getItemLevel());
+        itemDetails.getChildren().add(itemText5);
+        Text itemText6 = new Text();
+        itemText6.setText("Weight: " + currentItem.getWeight());
+        itemDetails.getChildren().add(itemText6);
+        //innerPane.add(equipmentLabels.get(slotNames.get(i)), 1, i + 1);
+        Stage detailsStage = new Stage();
+        Scene itemDetailsScene = new Scene(itemDetails);
+        detailsStage.setScene(itemDetailsScene);
+        detailsStage.show();
+
+    }
+
     private void manageEquipmentSlotsPositions() {
         Label silhouetteLabel = new Label();
         silhouetteLabel.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\Silhouette.png"))));
         silhouetteLabel.setPadding(new Insets(5));
-        innerPane.add(silhouetteLabel, 4, 1, 2,3);
+        innerPane.add(silhouetteLabel, 4, 1, 2, 3);
         equipmentLabels.get("Head Slot Item").setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\HeadSlot.jpg"))));
-        innerPane.add(equipmentLabels.get("Head Slot Item"), 6, 1 );
+        innerPane.add(equipmentLabels.get("Head Slot Item"), 6, 1);
         equipmentLabels.get("Right Hand Slot Item").setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\RightHandSlot.jpg"))));
         innerPane.add(equipmentLabels.get("Right Hand Slot Item"), 3, 2);
         equipmentLabels.get("Left Hand Slot Item").setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\LeftHandSlot.jpg"))));
