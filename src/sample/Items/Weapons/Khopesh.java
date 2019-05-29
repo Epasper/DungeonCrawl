@@ -1,22 +1,24 @@
 package sample.Items.Weapons;
 
+import javafx.scene.image.Image;
 import sample.Items.Item;
 
 public class Khopesh extends Item {
     public Khopesh() {
-        itemName = "Khopesh";
-        itemType = "Military Melee Weapon";
-        itemSlot = "Hand";
-        properties = "Brutal 1, Versatile";
-        itemGroup = "Axe, Heavy Blade";
-        itemLevel = 1;
-        price = 20;
-        range = 0;
-        bonusToHit = 0;
-        proficiencyBonus = 2;
-        bonusToDamage = 0;
-        numberOfDamageDiceDealt = 1;
-        typeOfDamageDice = 8;
-        weight = 8;
+        this.setItemName("Khopesh");
+        this.setItemType("Military Melee Weapon");
+        this.setItemSlot("Hand");
+        this.setProperties("Brutal 1, Versatile");
+        this.setItemGroup("Axe, Heavy Blade");
+        this.setItemLevel(1);
+        this.setPrice(20);
+        this.setRange(0);
+        this.setBonusToHit(0);
+        this.setProficiencyBonus(2);
+        this.setBonusToDamage(0);
+        this.setNumberOfDamageDiceDealt(1);
+        this.setTypeOfDamageDice(8);
+        this.setWeight(8);
+        setItemImage(new Image(getClass().getResourceAsStream("WeaponImages\\Sword.png")));
     }
 }

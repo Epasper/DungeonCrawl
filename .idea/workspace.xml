@@ -1,68 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/sample/GUI/EquipmentGUI.java" line="76" />
+    <bookmark url="file://$PROJECT_DIR$/src/sample/GUI/EquipmentGUI.java" line="81" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de97b43a-8902-45e2-a345-dc80bad4fa20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/Silhouette.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Items/Armor/ArmorImages/LeatherArmor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Items/Weapons/WeaponImages/Axe.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Items/Weapons/WeaponImages/Battleaxe.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Items/Weapons/WeaponImages/Broadsword.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Items/Weapons/WeaponImages/Dagger.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Items/Weapons/WeaponImages/Flail.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Items/Weapons/WeaponImages/Greataxe.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Items/Weapons/WeaponImages/Greatsword.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Items/Weapons/WeaponImages/Khopesh.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Items/Weapons/WeaponImages/Sword.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/GUI/EquipmentGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/EquipmentGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/608dddd6-762b-44e4-a6da-b4e62e78a1e4_scaled.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/ArmsSlot.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/ArmsSlot.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/Background.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/Background.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/CharacterCreatorIcon.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/WindowsIcons/CharacterCreatorIcon.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/DoorHorizontal.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/DoorHorizontal.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/DoorVertical.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/DoorVertical.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/EmptyEquipmentSlot.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/EmptyEquipmentSlot.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/FeetSlot.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/FeetSlot.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/Floor.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/Floor.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallE.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/FloorWallE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallHoriz.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/FloorWallHoriz.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallN.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/FloorWallN.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallNE.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/FloorWallNE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallNW.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/FloorWallNW.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallS.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/FloorWallS.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallSE.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/FloorWallSE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallSW.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/FloorWallSW.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallVert.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/FloorWallVert.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/FloorWallW.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/FloorWallW.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/HeadSlot.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/HeadSlot.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/LeftHandSlot.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/LeftHandSlot.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/MainMenuIcon.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/WindowsIcons/MainMenuIcon.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/OpenedDoorHorizontal.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/OpenedDoorHorizontal.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/OpenedDoorVertical.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/OpenedDoorVertical.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/RightHandSlot.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/RightHandSlot.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/TorsoSlot.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/TorsoSlot.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/download.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/dungeonIcon.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/WindowsIcons/dungeonIcon.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/fog.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/fog.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/fogchess-Copy.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon14.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon15.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/icon9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/monster1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/Monsters/monster1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/monster2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/Monsters/monster2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/monster3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/Monsters/monster3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/monster4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/Monsters/monster4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/monster5.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/Monsters/monster5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/monster6.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/Monsters/monster6.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/wall.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/MapElements/wall.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/MainMenuGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/MainMenuGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/PartySelectorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/PartySelectorGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/ArmsSlot.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/ArmsSlot.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/EmptyEquipmentSlot.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/EmptyEquipmentSlot.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/FeetSlot.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/FeetSlot.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/HeadSlot.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/HeadSlot.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/LeftHandSlot.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/LeftHandSlot.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/RightHandSlot.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/RightHandSlot.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/Silhouette.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/Silhouette.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/TorsoSlot.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/Images/EquipmentGUI/TorsoSlot.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/monster1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/monster2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/monster3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/monster4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/monster5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GUI/Images/monster6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Items/Armor/LeatherArmor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Items/Armor/LeatherArmor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Items/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Items/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Items/Weapons/Battleaxe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Items/Weapons/Battleaxe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Items/Weapons/Broadsword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Items/Weapons/Broadsword.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Items/Weapons/Flail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Items/Weapons/Flail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Items/Weapons/Greataxe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Items/Weapons/Greataxe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Items/Weapons/Greatsword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Items/Weapons/Greatsword.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Items/Weapons/Handaxe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Items/Weapons/Handaxe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Items/Weapons/Khopesh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Items/Weapons/Khopesh.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Items/Weapons/Longsword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Items/Weapons/Longsword.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/DungeonCrawl1.0/target/" />
@@ -78,19 +56,106 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/GUI/CharacterSheetGUI.java">
+        <entry file="file://$PROJECT_DIR$/src/sample/Items/Weapons/Longsword.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            <state relative-caret-position="119">
+              <caret line="7" selection-start-line="7" selection-end-line="21" selection-end-column="91" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
+        <entry file="file://$PROJECT_DIR$/src/sample/Items/Weapons/Khopesh.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="58" column="104" selection-start-line="58" selection-start-column="104" selection-end-line="58" selection-end-column="104" />
+            <state relative-caret-position="119">
+              <caret line="7" selection-start-line="7" selection-end-line="21" selection-end-column="91" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Items/Weapons/Handaxe.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" selection-start-line="7" selection-end-line="21" selection-end-column="89" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Items/Weapons/Greatsword.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" selection-start-line="7" selection-end-line="20" selection-end-column="96" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Items/Weapons/Greataxe.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" selection-start-line="7" selection-end-line="21" selection-end-column="94" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Items/Weapons/Broadsword.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" selection-start-line="7" selection-end-line="21" selection-end-column="96" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Items/Weapons/Battleaxe.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="36" lean-forward="true" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/GUI/EquipmentGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="151">
+              <caret line="61" column="45" lean-forward="true" selection-start-line="61" selection-start-column="45" selection-end-line="61" selection-end-column="45" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Items/Weapons/Flail.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -99,92 +164,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/sample/GUI/EquipmentGUI.java">
+        <entry file="file://$PROJECT_DIR$/src/sample/Items/Armor/LeatherArmor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="626">
-              <caret line="110" column="1" lean-forward="true" selection-start-line="110" selection-start-column="1" selection-end-line="110" selection-end-column="1" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Model/Hero.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1632">
-              <caret line="134" column="18" selection-start-line="134" selection-start-column="18" selection-end-line="134" selection-end-column="18" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1287#1288#0" expanded="true" />
-                <element signature="e#1323#1324#0" expanded="true" />
-                <element signature="e#1392#1393#0" expanded="true" />
-                <element signature="e#1442#1443#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/GUI/PartySelectorGUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="35" column="39" selection-start-line="35" selection-start-column="39" selection-end-line="35" selection-end-column="39" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="248" column="41" lean-forward="true" selection-start-line="248" selection-start-column="41" selection-end-line="248" selection-end-column="41" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/DAO/PutBLOBIntoDB.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/DTO/ItemsDTO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="30" column="52" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Model/Creature.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Model/EncounterCalculator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="41" column="71" selection-start-line="41" selection-start-column="71" selection-end-line="41" selection-end-column="71" />
+            <state relative-caret-position="204">
+              <caret line="12" column="29" lean-forward="true" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -249,17 +232,8 @@
         <option value="$PROJECT_DIR$/DungeonCrawl1.0/pom.xml" />
         <option value="$PROJECT_DIR$/src/sample/DTO/ItemDTO.java" />
         <option value="$PROJECT_DIR$/src/sample/Items/HeroPower.java" />
-        <option value="$PROJECT_DIR$/src/sample/Items/Weapons/Longsword.java" />
-        <option value="$PROJECT_DIR$/src/sample/Items/Weapons/Battleaxe.java" />
-        <option value="$PROJECT_DIR$/src/sample/Items/Weapons/Broadsword.java" />
-        <option value="$PROJECT_DIR$/src/sample/Items/Weapons/Flail.java" />
-        <option value="$PROJECT_DIR$/src/sample/Items/Weapons/Handaxe.java" />
-        <option value="$PROJECT_DIR$/src/sample/Items/Weapons/Khopesh.java" />
         <option value="$PROJECT_DIR$/src/sample/Items/Weapons/Falchion.java" />
-        <option value="$PROJECT_DIR$/src/sample/Items/Weapons/Greataxe.java" />
-        <option value="$PROJECT_DIR$/src/sample/Items/Weapons/Greatsword.java" />
         <option value="$PROJECT_DIR$/src/sample/StaticRules/ItemShopInformation.java" />
-        <option value="$PROJECT_DIR$/src/sample/Items/Armor/LeatherArmor.java" />
         <option value="$PROJECT_DIR$/src/sample/Items/Armor/HideArmor.java" />
         <option value="$PROJECT_DIR$/src/sample/Items/Armor/Chainmail.java" />
         <option value="$PROJECT_DIR$/src/sample/Items/Armor/ScaleArmor.java" />
@@ -284,7 +258,6 @@
         <option value="$PROJECT_DIR$/src/sample/Model/DungeonMap.java" />
         <option value="$PROJECT_DIR$/src/sample/Model/Monster.java" />
         <option value="$PROJECT_DIR$/src/sample/StaticRules/HeroClassInformation.java" />
-        <option value="$PROJECT_DIR$/src/sample/Items/Item.java" />
         <option value="$PROJECT_DIR$/src/sample/Model/Hero.java" />
         <option value="$PROJECT_DIR$/src/sample/DAO/ItemsDAO.java" />
         <option value="$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java" />
@@ -293,7 +266,17 @@
         <option value="$PROJECT_DIR$/src/sample/GUI/PartySelectorGUI.java" />
         <option value="$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java" />
         <option value="$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java" />
+        <option value="$PROJECT_DIR$/src/sample/Items/Item.java" />
+        <option value="$PROJECT_DIR$/src/sample/Items/Weapons/Longsword.java" />
+        <option value="$PROJECT_DIR$/src/sample/Items/Weapons/Khopesh.java" />
+        <option value="$PROJECT_DIR$/src/sample/Items/Weapons/Handaxe.java" />
+        <option value="$PROJECT_DIR$/src/sample/Items/Weapons/Greatsword.java" />
+        <option value="$PROJECT_DIR$/src/sample/Items/Weapons/Greataxe.java" />
+        <option value="$PROJECT_DIR$/src/sample/Items/Weapons/Broadsword.java" />
+        <option value="$PROJECT_DIR$/src/sample/Items/Weapons/Battleaxe.java" />
         <option value="$PROJECT_DIR$/src/sample/GUI/EquipmentGUI.java" />
+        <option value="$PROJECT_DIR$/src/sample/Items/Weapons/Flail.java" />
+        <option value="$PROJECT_DIR$/src/sample/Items/Armor/LeatherArmor.java" />
       </list>
     </option>
   </component>
@@ -304,8 +287,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1735" />
-    <option name="y" value="-290" />
+    <option name="x" value="1693" />
+    <option name="y" value="-34" />
     <option name="width" value="1026" />
     <option name="height" value="554" />
   </component>
@@ -376,9 +359,7 @@
               <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="sample" type="462c0819:PsiDirectoryNode" />
-              <item name="GUI" type="462c0819:PsiDirectoryNode" />
-              <item name="Images" type="462c0819:PsiDirectoryNode" />
-              <item name="Monsters" type="462c0819:PsiDirectoryNode" />
+              <item name="Items" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
@@ -386,6 +367,33 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="sample" type="462c0819:PsiDirectoryNode" />
               <item name="Items" type="462c0819:PsiDirectoryNode" />
+              <item name="Armor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="Items" type="462c0819:PsiDirectoryNode" />
+              <item name="Armor" type="462c0819:PsiDirectoryNode" />
+              <item name="ArmorImages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="Items" type="462c0819:PsiDirectoryNode" />
+              <item name="Weapons" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="Items" type="462c0819:PsiDirectoryNode" />
+              <item name="Weapons" type="462c0819:PsiDirectoryNode" />
+              <item name="WeaponImages" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
@@ -516,13 +524,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1556870921453</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Character Creator - selection of Daily Powers">
-      <created>1557743942642</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1557743942642</updated>
     </task>
     <task id="LOCAL-00045" summary="Character Creator - validation of power selection added">
       <created>1557746252768</created>
@@ -860,7 +861,14 @@
       <option name="project" value="LOCAL" />
       <updated>1559026213254</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="Dungeon GUI - added minor changes to Equipment GUI, new packages added for images">
+      <created>1559111530213</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1559111530213</updated>
+    </task>
+    <option name="localTasksCounter" value="94" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -879,6 +887,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-290" width="1696" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49892932" visible="true" weight="0.10696822" />
       <window_info id="Structure" order="1" sideWeight="0.5010707" side_tool="true" weight="0.2200489" />
@@ -939,7 +948,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Dungeon GUI - Added icons to the scenes" />
     <MESSAGE value="Dungeon GUI - Begun the application of attacks into the board" />
     <MESSAGE value="Dungeon GUI - Attacks are updated, but damage is still not working" />
     <MESSAGE value="Added Maven to the project" />
@@ -964,44 +972,10 @@
     <MESSAGE value="Dungeon GUI - changed the GUI so that it looks more similar to BG" />
     <MESSAGE value="Dungeon GUI - added &quot;view map&quot; button, switching between map and equipment now possible, viewing equipment still has bugs." />
     <MESSAGE value="Dungeon GUI - added background to equipment view, added slots for equipment items." />
-    <option name="LAST_COMMIT_MESSAGE" value="Dungeon GUI - added background to equipment view, added slots for equipment items." />
+    <MESSAGE value="Dungeon GUI - added minor changes to Equipment GUI, new packages added for images" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dungeon GUI - added minor changes to Equipment GUI, new packages added for images" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/sample/Items/Implements/ForbiddenTome.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Items/Implements/IcicleTotem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Items/Implements/DragontoothWand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Items/Armor/PlateArmor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="617" column="17" selection-start-line="617" selection-start-column="17" selection-end-line="617" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/function/BiConsumer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="237">
@@ -1009,66 +983,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Items/Weapons/Handaxe.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="16" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Items/Weapons/Khopesh.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="29" lean-forward="true" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Items/Weapons/Greatsword.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="31" lean-forward="true" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Items/Weapons/Battleaxe.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Items/Weapons/Broadsword.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Items/Weapons/Falchion.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Items/Weapons/Flail.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Items/Weapons/Greataxe.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="20" lean-forward="true" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Items/Weapons/Longsword.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -1272,17 +1190,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Items/Item.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="96" column="18" selection-start-line="96" selection-start-column="18" selection-end-line="96" selection-end-column="18" />
-          <folding>
-            <element signature="e#2229#2230#0" expanded="true" />
-            <element signature="e#2260#2261#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/DTO/CharacterCreatorDTO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1457,10 +1364,145 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/layout/Region.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="558" column="22" selection-start-line="558" selection-start-column="22" selection-end-line="558" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Monsters/GoblinWarrior.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Items/Item.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1120">
+          <caret line="112" column="13" selection-start-line="112" selection-start-column="13" selection-end-line="112" selection-end-column="13" />
+          <folding>
+            <element signature="e#800#801#0" expanded="true" />
+            <element signature="e#832#833#0" expanded="true" />
+            <element signature="e#881#882#0" expanded="true" />
+            <element signature="e#923#924#0" expanded="true" />
+            <element signature="e#2229#2230#0" expanded="true" />
+            <element signature="e#2260#2261#0" expanded="true" />
+            <element signature="e#2308#2309#0" expanded="true" />
+            <element signature="e#2348#2349#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Monsters/GoblinSharpshooter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="16" column="111" lean-forward="true" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="111" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Items/Weapons/Longsword.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="21" selection-end-column="91" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Items/Weapons/Khopesh.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="21" selection-end-column="91" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Items/Weapons/Handaxe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="21" selection-end-column="89" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Items/Weapons/Greatsword.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="20" selection-end-column="96" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Items/Weapons/Broadsword.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="21" selection-end-column="96" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Items/Weapons/Battleaxe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="36" lean-forward="true" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/image/Image.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="618" column="11" selection-start-line="618" selection-start-column="11" selection-end-line="618" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/GUI/EquipmentGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="626">
-          <caret line="110" column="1" lean-forward="true" selection-start-line="110" selection-start-column="1" selection-end-line="110" selection-end-column="1" />
+        <state relative-caret-position="151">
+          <caret line="61" column="45" lean-forward="true" selection-start-line="61" selection-start-column="45" selection-end-line="61" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Items/Weapons/Greataxe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="21" selection-end-column="94" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Items/Weapons/Flail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Items/Armor/LeatherArmor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="29" lean-forward="true" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

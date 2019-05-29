@@ -1,21 +1,23 @@
 package sample.Items.Weapons;
 
+import javafx.scene.image.Image;
 import sample.Items.Item;
 
 public class Greatsword extends Item {
     public Greatsword() {
-        itemName = "Greatsword";
-        itemType = "Military Melee Weapon";
-        itemSlot = "Two Hands";
-        itemGroup = "Heavy Blade";
-        itemLevel = 1;
-        price = 30;
-        range = 0;
-        bonusToHit = 0;
-        proficiencyBonus = 3;
-        bonusToDamage = 0;
-        numberOfDamageDiceDealt = 1;
-        typeOfDamageDice = 10;
-        weight = 8;
+        this.setItemName("Greatsword");
+        this.setItemType("Military Melee Weapon");
+        this.setItemSlot("Two Hands");
+        this.setItemGroup("Heavy Blade");
+        this.setItemLevel(1);
+        this.setPrice(30);
+        this.setRange(0);
+        this.setBonusToHit(0);
+        this.setProficiencyBonus(3);
+        this.setBonusToDamage(0);
+        this.setNumberOfDamageDiceDealt(1);
+        this.setTypeOfDamageDice(10);
+        this.setWeight(8);
+        setItemImage(new Image(getClass().getResourceAsStream("WeaponImages\\Greatsword.png")));
     }
 }

@@ -1,22 +1,24 @@
 package sample.Items.Weapons;
 
+import javafx.scene.image.Image;
 import sample.Items.Item;
 
 public class Flail extends Item {
     public Flail() {
-        itemName = "Flail";
-        itemType = "Military Melee Weapon";
-        itemSlot = "Hand";
-        properties = "Versatile";
-        itemGroup = "Flail";
-        itemLevel = 1;
-        price = 10;
-        range = 0;
-        bonusToHit = 0;
-        proficiencyBonus = 2;
-        bonusToDamage = 0;
-        numberOfDamageDiceDealt = 1;
-        typeOfDamageDice = 10;
-        weight=5;
+        this.setItemName("Flail");
+        this.setItemType("Military Melee Weapon");
+        this.setItemSlot("Hand");
+        this.setProperties("Versatile");
+        this.setItemGroup("Flail");
+        this.setItemLevel(1);
+        this.setPrice(10);
+        this.setRange(0);
+        this.setBonusToHit(0);
+        this.setProficiencyBonus(2);
+        this.setBonusToDamage(0);
+        this.setNumberOfDamageDiceDealt(1);
+        this.setTypeOfDamageDice(10);
+        this.setWeight(5);
+        setItemImage(new Image(getClass().getResourceAsStream("WeaponImages\\Flail.png")));
     }
 }

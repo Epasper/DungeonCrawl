@@ -1,5 +1,7 @@
 package sample.Items;
 
+import javafx.scene.image.Image;
+
 public class Item {
 
     //todo write the daily powers for level 1. Last updated: Cleric
@@ -21,6 +23,15 @@ public class Item {
     protected int typeOfDamageDice;
     private boolean isThisItemConsumable = false;
     protected int bonusToAC;
+    protected Image itemImage;
+
+    public Image getItemImage() {
+        return itemImage;
+    }
+
+    public void setItemImage(Image itemImage) {
+        this.itemImage = itemImage;
+    }
 
     public int getBonusToAC() {
         return bonusToAC;

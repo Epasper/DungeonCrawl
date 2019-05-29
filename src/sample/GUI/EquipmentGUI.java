@@ -59,13 +59,18 @@ public class EquipmentGUI {
         List<String> slotNames = itemsDTO.getListOfItemNames();
         for (int i = 0; i < slotNames.size(); i++) {
             String filledSlot;
+            Label currentLabel = new Label();
+            equipmentLabels.put(slotNames.get(i), currentLabel);
             try {
                 filledSlot = heroEquipmentMap.get(slotNames.get(i)).getItemName();
+                Image itemImage = heroEquipmentMap.get(slotNames.get(i)).getItemImage();
+                System.out.println("FOUND AND ITEM: " + filledSlot);
+                equipmentLabels.get(slotNames.get(i)).setGraphic(new ImageView(itemImage));
             } catch (NullPointerException e) {
                 filledSlot = " ";
+                equipmentLabels.get(slotNames.get(i)).setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\EmptyEquipmentSlot.jpg"))));
             }
-            equipmentLabels.put(slotNames.get(i), new Label());
-            equipmentLabels.get(slotNames.get(i)).setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\EmptyEquipmentSlot.jpg"))));
+            currentLabel.setPadding(new Insets(5));
             Text itemText = new Text(slotNames.get(i) + ": " +
                     filledSlot
             );
@@ -84,6 +89,7 @@ public class EquipmentGUI {
     private void manageEquipmentSlotsPositions() {
         Label silhouetteLabel = new Label();
         silhouetteLabel.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\Silhouette.png"))));
+        silhouetteLabel.setPadding(new Insets(5));
         innerPane.add(silhouetteLabel, 4, 1, 2,3);
         equipmentLabels.get("Head Slot Item").setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\HeadSlot.jpg"))));
         innerPane.add(equipmentLabels.get("Head Slot Item"), 6, 1 );
