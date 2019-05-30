@@ -105,7 +105,7 @@ public class ItemShopGUI {
                 itemShopDTO.setMapOfItems(currentHeroEquipmentMap);
                 characterCreatorDAO.updateHeroGold(currentlySelectedHero,-(currentItem.getPrice()));
                 currentlySelectedHero.setGold(currentlySelectedHero.getGold() - currentItem.getPrice());
-                itemShopDAO.putItemDtoToDatabase(itemShopDTO, currentlySelectedHero, currentBackpackSlot);
+                itemShopDAO.putItemIntoSlotInDatabase(itemShopDTO, currentlySelectedHero, currentBackpackSlot);
                 break;
             }
         }

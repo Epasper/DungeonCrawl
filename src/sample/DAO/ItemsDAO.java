@@ -26,7 +26,98 @@ public class ItemsDAO {
         conn.createStatement();
     }
 
-    public void putItemDtoToDatabase(ItemsDTO itemShopDTO, Hero hero, String slotToBeFilled) throws SQLException {
+    public void removeItemFromSlotInDatabase(Hero hero, String slotToBeRemoved) throws SQLException {
+        String slotSQLAdapter = null;
+        switch (slotToBeRemoved) {
+            case "Right Hand Slot Item":
+                slotSQLAdapter = "right_hand_slot=null";
+                break;
+            case "Left Hand Slot Item":
+                slotSQLAdapter = "left_hand_slot=null";
+                break;
+            case "Torso Slot Item":
+                slotSQLAdapter = "torso_slot=null";
+                break;
+            case "Head Slot Item":
+                slotSQLAdapter = "head_slot=null";
+                break;
+            case "Feet Slot Item":
+                slotSQLAdapter = "feet_slot=null";
+                break;
+            case "Arms Slot Item":
+                slotSQLAdapter = "arms_slot=null";
+                break;
+            case "Backpack Slot 1 Item":
+                slotSQLAdapter = "backpack1=null";
+                break;
+            case "Backpack Slot 2 Item":
+                slotSQLAdapter = "backpack2=null";
+                break;
+            case "Backpack Slot 3 Item":
+                slotSQLAdapter = "backpack3=null";
+                break;
+            case "Backpack Slot 4 Item":
+                slotSQLAdapter = "backpack4=null";
+                break;
+            case "Backpack Slot 5 Item":
+                slotSQLAdapter = "backpack5=null";
+                break;
+            case "Backpack Slot 6 Item":
+                slotSQLAdapter = "backpack6=null";
+                break;
+            case "Backpack Slot 7 Item":
+                slotSQLAdapter = "backpack7=null";
+                break;
+            case "Backpack Slot 8 Item":
+                slotSQLAdapter = "backpack8=null";
+                break;
+            case "Backpack Slot 9 Item":
+                slotSQLAdapter = "backpack9=null";
+                break;
+            case "Backpack Slot 10 Item":
+                slotSQLAdapter = "backpack10=null";
+                break;
+            case "Backpack Slot 11 Item":
+                slotSQLAdapter = "backpack11=null";
+                break;
+            case "Backpack Slot 12 Item":
+                slotSQLAdapter = "backpack12=null";
+                break;
+            case "Backpack Slot 13 Item":
+                slotSQLAdapter = "backpack13=null";
+                break;
+            case "Backpack Slot 14 Item":
+                slotSQLAdapter = "backpack14=null";
+                break;
+            case "Backpack Slot 15 Item":
+                slotSQLAdapter = "backpack15=null";
+                break;
+            case "Backpack Slot 16 Item":
+                slotSQLAdapter = "backpack16=null";
+                break;
+            case "Backpack Slot 17 Item":
+                slotSQLAdapter = "backpack17=null";
+                break;
+            case "Backpack Slot 18 Item":
+                slotSQLAdapter = "backpack18=null";
+                break;
+            case "Backpack Slot 19 Item":
+                slotSQLAdapter = "backpack19=null";
+                break;
+            case "Backpack Slot 20 Item":
+                slotSQLAdapter = "backpack20=null";
+                break;
+        }
+        String sql = "UPDATE dungeon.hero_equipment SET " + slotSQLAdapter +
+                " WHERE (`idhero_equipment`=?)";
+        pst = conn.prepareStatement(sql);
+        //pst.setString(1, itemShopDTO.getMapOfItems().get(slotToBeRemoved).getItemName());
+        pst.setInt(1, hero.getID());
+        pst.executeUpdate();
+        System.out.println("Character has successfully been added to the database");
+    }
+
+    public void putItemIntoSlotInDatabase(ItemsDTO itemShopDTO, Hero hero, String slotToBeFilled) throws SQLException {
         String slotSQLAdapter = null;
         switch (slotToBeFilled) {
             case "Right Hand Slot Item":

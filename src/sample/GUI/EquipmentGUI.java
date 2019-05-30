@@ -41,6 +41,7 @@ public class EquipmentGUI {
     private List<Label> listOfAllLabels = new ArrayList<>();
     private Map<String, Item> heroEquipmentMap;
     private ItemsDTO itemsDTO;
+    private String currentSlotBeingDraggedOver;
 
 
     EquipmentGUI() throws SQLException {
@@ -58,6 +59,8 @@ public class EquipmentGUI {
     //todo right panel buttons should switch the displayed character
 
     public GridPane displayAChosenHeroEquipment(Hero chosenHero) throws SQLException, IOException {
+        innerPane.getChildren().removeAll();
+        characterIcon.setGraphic(null);
         CharacterCreatorDAO characterCreatorDAO = new CharacterCreatorDAO();
         this.currentHero = chosenHero;
         partySelectorOuterPlane.getStylesheets().add("sample/Styling/CharacterCreator.css");
@@ -82,7 +85,7 @@ public class EquipmentGUI {
             }
             String finalFilledSlot = filledSlot;
             currentLabel.setOnDragDetected(event -> eventOnDragDetected(slotName, currentLabel, finalFilledSlot, event));
-            currentLabel.setOnDragEntered(event -> eventOnDragEnter(slotName, event));
+            currentLabel.setOnDragEntered(event -> eventOnDragEnter(slotName, currentLabel, event));
             currentLabel.setOnDragOver(this::eventOnDragOver);
             currentLabel.setOnDragDropped(this::eventOnDragDropped);
             currentLabel.setOnDragDone(event -> eventOnDragDone(slotName, event));
@@ -91,20 +94,23 @@ public class EquipmentGUI {
         this.itemsDTO = itemsDTO;
         manageEquipmentSlotsPositions();
         characterIcon.setGraphic(new ImageView(characterCreatorDAO.getHeroIconByID(chosenHero.getHeroIconId())));
-        innerPane.add(characterIcon, 0, 0);
+        try {
+            innerPane.add(characterIcon, 0, 0);
+        } catch (IllegalArgumentException ignored) {
+        }
         innerPane.setPadding(new Insets(10, 10, 10, 10));
         innerPane.setBackground(new Background(new BackgroundImage(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\Background.jpg")), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
         aScene.setRoot(innerPane);
         return innerPane;
     }
 
+    //todo reverse the item putting when the slot is already occupied
+
     private void eventOnDragDetected(String slotName, Label currentLabel, String finalFilledSlot, MouseEvent event) {
         System.out.println("Dragging Detected");
         System.out.println("Slot Name: " + slotName);
         System.out.println("Item Name: " + finalFilledSlot);
-        //this.draggedItem = heroEquipmentMap.get((equipmentLabels.get(slotName).getText()));
         Dragboard dragboard = currentLabel.startDragAndDrop(TransferMode.ANY);
-        /* put a string on dragboard */
         ClipboardContent content = new ClipboardContent();
         ImageView currentImageView = (ImageView) currentLabel.getGraphic();
         Image currentImage = currentImageView.getImage();
@@ -116,9 +122,10 @@ public class EquipmentGUI {
         event.consume();
     }
 
-    private void eventOnDragEnter(String slotName, DragEvent event) {
+    private void eventOnDragEnter(String slotName, Label currentLabel, DragEvent event) {
         event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
         System.out.println("Drag Entered detected on: " + slotName);
+        currentSlotBeingDraggedOver = currentLabel.getText();
         event.consume();
     }
 
@@ -134,17 +141,8 @@ public class EquipmentGUI {
     }
 
     private void eventOnDragDropped(DragEvent event) {
-        /* data dropped */
         System.out.println("onDragDropped");
-        /* if there is a string data on dragboard, read it and use it */
-/*                    if (db.hasString()) {
-                    currentLabel.setText(db.getString());
-                    success = true;
-                }*/
-        /* let the source know whether the string was successfully
-         * transferred and used */
         event.setDropCompleted(true);
-
         event.consume();
     }
 
@@ -152,10 +150,10 @@ public class EquipmentGUI {
         System.out.println("Dropping Done");
         Dragboard dragboard = event.getDragboard();
         String sourceSlotName = dragboard.getString();
-        String targetSlotName = slotName;
+        String targetSlotName = currentSlotBeingDraggedOver;
         Item currentItem = heroEquipmentMap.get(sourceSlotName);
         heroEquipmentMap.remove(sourceSlotName);
-        heroEquipmentMap.put(slotName, currentItem);
+        heroEquipmentMap.put(targetSlotName, currentItem);
         itemsDTO.setMapOfItems(heroEquipmentMap);
         //todo SQL connection is now done two times. Updating an item on DragAndDrop should only make one DB connection. Add a new method in the DAO.
         try {
@@ -163,12 +161,29 @@ public class EquipmentGUI {
             System.out.println("Source slot name: " + sourceSlotName);
             System.out.println("Target slot name: " + targetSlotName);
             System.out.println("Item Name: " + currentItem.getItemName());
-            itemsDAO.putItemDtoToDatabase(itemsDTO, currentHero, sourceSlotName);
-            itemsDAO.putItemDtoToDatabase(itemsDTO, currentHero, slotName);
+            itemsDAO.removeItemFromSlotInDatabase(currentHero, sourceSlotName);
+            itemsDAO.putItemIntoSlotInDatabase(itemsDTO, currentHero, targetSlotName);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         event.consume();
+        //updateTheGUI();
+        //todo clear the grid pane before refreshing it to avoid IllegalArgumentExceptions
+        try {
+            innerPane = displayAChosenHeroEquipment(currentHero);
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void updateTheGUI() {
+        equipmentLabels.forEach((k, v) -> {
+            try {
+                v.setGraphic(new ImageView(heroEquipmentMap.get(k).getItemImage()));
+            } catch (NullPointerException e) {
+                v.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\EmptyEquipmentSlot.jpg"))));
+            }
+        });
     }
 
     private void viewItemDetails(Item currentItem) {
@@ -197,11 +212,6 @@ public class EquipmentGUI {
         itemDetails.getChildren().add(itemText6);
         Point mouseLocation = MouseInfo.getPointerInfo().getLocation();
         equipInfoPopup.getContent().add(itemDetails);
-        //innerPane.add(equipmentLabels.get(slotNames.get(i)), 1, i + 1);
-        /*Stage detailsStage = new Stage();
-        Scene itemDetailsScene = new Scene(itemDetails);
-        detailsStage.setScene(itemDetailsScene);
-        detailsStage.show();*/
         equipInfoPopup.show(Main.getPrimaryStage(), mouseLocation.getX(), mouseLocation.getY());
     }
 
@@ -210,18 +220,12 @@ public class EquipmentGUI {
         silhouetteLabel.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\Silhouette.png"))));
         silhouetteLabel.setPadding(new Insets(5));
         innerPane.add(silhouetteLabel, 4, 1, 3, 3);
-        equipmentLabels.get("Head Slot Item").setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\HeadSlot.jpg"))));
-        innerPane.add(equipmentLabels.get("Head Slot Item"), 6, 1);
-        equipmentLabels.get("Right Hand Slot Item").setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\RightHandSlot.jpg"))));
-        innerPane.add(equipmentLabels.get("Right Hand Slot Item"), 3, 2);
-        equipmentLabels.get("Left Hand Slot Item").setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\LeftHandSlot.jpg"))));
-        innerPane.add(equipmentLabels.get("Left Hand Slot Item"), 6, 2);
-        equipmentLabels.get("Arms Slot Item").setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\ArmsSlot.jpg"))));
-        innerPane.add(equipmentLabels.get("Arms Slot Item"), 3, 1);
-        equipmentLabels.get("Torso Slot Item").setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\TorsoSlot.jpg"))));
-        innerPane.add(equipmentLabels.get("Torso Slot Item"), 6, 3);
-        equipmentLabels.get("Feet Slot Item").setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\FeetSlot.jpg"))));
-        innerPane.add(equipmentLabels.get("Feet Slot Item"), 3, 3);
+        manageBodySlotImage("Head Slot Item", "Images\\EquipmentGUI\\HeadSlot.jpg", 6, 1);
+        manageBodySlotImage("Right Hand Slot Item", "Images\\EquipmentGUI\\RightHandSlot.jpg", 3, 2);
+        manageBodySlotImage("Left Hand Slot Item", "Images\\EquipmentGUI\\LeftHandSlot.jpg", 6, 2);
+        manageBodySlotImage("Arms Slot Item", "Images\\EquipmentGUI\\ArmsSlot.jpg", 3, 1);
+        manageBodySlotImage("Torso Slot Item", "Images\\EquipmentGUI\\TorsoSlot.jpg", 6, 3);
+        manageBodySlotImage("Feet Slot Item", "Images\\EquipmentGUI\\FeetSlot.jpg", 3, 3);
         for (int i = 0; i < 2; i++) {
             for (int j = 1; j < 10; j++) {
                 String slotNumber = "Backpack Slot " + (i * 10 + j) + " Item";
@@ -230,6 +234,15 @@ public class EquipmentGUI {
             }
         }
 
+    }
+
+    private void manageBodySlotImage(String slotName, String defaultImagePath, int gridColumnPos, int gridRowPos) {
+        if (heroEquipmentMap.get(slotName) != null) {
+            equipmentLabels.get(slotName).setGraphic(new ImageView(heroEquipmentMap.get(slotName).getItemImage()));
+        } else {
+            equipmentLabels.get(slotName).setGraphic(new ImageView(new Image(getClass().getResourceAsStream(defaultImagePath))));
+        }
+        innerPane.add(equipmentLabels.get(slotName), gridColumnPos, gridRowPos);
     }
 
 
