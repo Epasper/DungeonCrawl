@@ -1,6 +1,5 @@
 package sample.GUI;
 
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -10,11 +9,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Popup;
-import javafx.stage.Stage;
 import sample.DAO.CharacterCreatorDAO;
+import sample.DAO.ItemsDAO;
 import sample.DTO.ItemsDTO;
 import sample.Items.Item;
 import sample.Main;
@@ -40,8 +38,12 @@ public class EquipmentGUI {
     private Hero currentHero;
     private Map<String, Label> equipmentLabels = new HashMap<>();
     private Item draggedItem = new Item();
+    private List<Label> listOfAllLabels = new ArrayList<>();
+    private Map<String, Item> heroEquipmentMap;
+    private ItemsDTO itemsDTO;
 
-    public EquipmentGUI() throws SQLException, IOException {
+
+    EquipmentGUI() throws SQLException {
     }
 
     public List<Hero> getListOfSelectedHeroes() {
@@ -57,15 +59,15 @@ public class EquipmentGUI {
 
     public GridPane displayAChosenHeroEquipment(Hero chosenHero) throws SQLException, IOException {
         CharacterCreatorDAO characterCreatorDAO = new CharacterCreatorDAO();
-
+        this.currentHero = chosenHero;
         partySelectorOuterPlane.getStylesheets().add("sample/Styling/CharacterCreator.css");
-        Map<String, Item> heroEquipmentMap = chosenHero.getHeroEquipment();
-        ItemsDTO itemsDTO = new ItemsDTO(chosenHero.getID());
+        Map<String, Item> heroEquipmentMap = currentHero.getHeroEquipment();
+        ItemsDTO itemsDTO = new ItemsDTO(currentHero.getID());
         System.out.println("Chosen hero: " + chosenHero.getHeroName());
         List<String> slotNames = itemsDTO.getListOfItemNames();
         for (String slotName : slotNames) {
             String filledSlot;
-            Label currentLabel = new Label();
+            Label currentLabel = new Label(slotName);
             equipmentLabels.put(slotName, currentLabel);
             try {
                 filledSlot = heroEquipmentMap.get(slotName).getItemName();
@@ -75,36 +77,18 @@ public class EquipmentGUI {
                 currentLabel.setOnMouseEntered(event -> viewItemDetails(heroEquipmentMap.get(slotName)));
                 currentLabel.setOnMouseExited(event -> equipInfoPopup.hide());
             } catch (NullPointerException e) {
-                filledSlot = " ";
+                filledSlot = "Empty";
                 currentLabel.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\EmptyEquipmentSlot.jpg"))));
             }
-            currentLabel.setOnDragDetected(event -> {
-                System.out.println("Dragging Detected");
-                this.draggedItem = heroEquipmentMap.get((equipmentLabels.get(slotName).getText()));
-                Dragboard db = currentLabel.startDragAndDrop(TransferMode.ANY);
-                /* put a string on dragboard */
-                ClipboardContent content = new ClipboardContent();
-                ImageView currentImageView = (ImageView) currentLabel.getGraphic();
-                Image currentImage = currentImageView.getImage();
-                content.putImage(currentImage);
-                db.setContent(content);
-
-                event.consume();
-            });
-            currentLabel.setOnDragEntered(event -> {
-                System.out.println("Drag Entered detected");
-            });
-            currentLabel.setOnDragOver(event -> {
-                System.out.println("Drag Over detected");
-            });
-
-            currentLabel.setOnDragDropped(event -> {
-                System.out.println("Dropping Detected");
-            });
-            currentLabel.setOnDragDone(event -> {
-                System.out.println("Dropping Done");
-            });
+            String finalFilledSlot = filledSlot;
+            currentLabel.setOnDragDetected(event -> eventOnDragDetected(slotName, currentLabel, finalFilledSlot, event));
+            currentLabel.setOnDragEntered(event -> eventOnDragEnter(slotName, event));
+            currentLabel.setOnDragOver(this::eventOnDragOver);
+            currentLabel.setOnDragDropped(this::eventOnDragDropped);
+            currentLabel.setOnDragDone(event -> eventOnDragDone(slotName, event));
         }
+        this.heroEquipmentMap = heroEquipmentMap;
+        this.itemsDTO = itemsDTO;
         manageEquipmentSlotsPositions();
         characterIcon.setGraphic(new ImageView(characterCreatorDAO.getHeroIconByID(chosenHero.getHeroIconId())));
         innerPane.add(characterIcon, 0, 0);
@@ -114,8 +98,77 @@ public class EquipmentGUI {
         return innerPane;
     }
 
-    private void dragCurrentItem(Item currentItem) {
+    private void eventOnDragDetected(String slotName, Label currentLabel, String finalFilledSlot, MouseEvent event) {
+        System.out.println("Dragging Detected");
+        System.out.println("Slot Name: " + slotName);
+        System.out.println("Item Name: " + finalFilledSlot);
+        //this.draggedItem = heroEquipmentMap.get((equipmentLabels.get(slotName).getText()));
+        Dragboard dragboard = currentLabel.startDragAndDrop(TransferMode.ANY);
+        /* put a string on dragboard */
+        ClipboardContent content = new ClipboardContent();
+        ImageView currentImageView = (ImageView) currentLabel.getGraphic();
+        Image currentImage = currentImageView.getImage();
+        content.putImage(currentImage);
+        if (!finalFilledSlot.contains("Empty")) {
+            content.putString(slotName);
+        }
+        dragboard.setContent(content);
+        event.consume();
+    }
 
+    private void eventOnDragEnter(String slotName, DragEvent event) {
+        event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+        System.out.println("Drag Entered detected on: " + slotName);
+        event.consume();
+    }
+
+    private void eventOnDragOver(DragEvent event) {
+        System.out.println("onDragOver");
+
+        if (event.getGestureSource() != event.getGestureTarget() &&
+                event.getDragboard().hasString()) {
+            event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+        }
+
+        event.consume();
+    }
+
+    private void eventOnDragDropped(DragEvent event) {
+        /* data dropped */
+        System.out.println("onDragDropped");
+        /* if there is a string data on dragboard, read it and use it */
+/*                    if (db.hasString()) {
+                    currentLabel.setText(db.getString());
+                    success = true;
+                }*/
+        /* let the source know whether the string was successfully
+         * transferred and used */
+        event.setDropCompleted(true);
+
+        event.consume();
+    }
+
+    private void eventOnDragDone(String slotName, DragEvent event) {
+        System.out.println("Dropping Done");
+        Dragboard dragboard = event.getDragboard();
+        String sourceSlotName = dragboard.getString();
+        String targetSlotName = slotName;
+        Item currentItem = heroEquipmentMap.get(sourceSlotName);
+        heroEquipmentMap.remove(sourceSlotName);
+        heroEquipmentMap.put(slotName, currentItem);
+        itemsDTO.setMapOfItems(heroEquipmentMap);
+        //todo SQL connection is now done two times. Updating an item on DragAndDrop should only make one DB connection. Add a new method in the DAO.
+        try {
+            ItemsDAO itemsDAO = new ItemsDAO();
+            System.out.println("Source slot name: " + sourceSlotName);
+            System.out.println("Target slot name: " + targetSlotName);
+            System.out.println("Item Name: " + currentItem.getItemName());
+            itemsDAO.putItemDtoToDatabase(itemsDTO, currentHero, sourceSlotName);
+            itemsDAO.putItemDtoToDatabase(itemsDTO, currentHero, slotName);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        event.consume();
     }
 
     private void viewItemDetails(Item currentItem) {
