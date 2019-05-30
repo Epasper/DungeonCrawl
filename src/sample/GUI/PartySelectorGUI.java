@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import sample.DAO.CharacterCreatorDAO;
 import sample.DAO.ItemsDAO;
 import sample.DTO.CharacterCreatorDTO;
+import sample.Main;
 import sample.Model.Hero;
 
 import java.io.IOException;
@@ -25,7 +26,7 @@ public class PartySelectorGUI {
     ScrollPane partySelectorOuterPlane = new ScrollPane();
     private GridPane innerPane = new GridPane();
     private Button startADungeonButton = new Button("Start an Adventure! ");
-    private Stage aStage = new Stage();
+    private Stage aStage = Main.getPrimaryStage();
     private Scene aScene = new Scene(new Group());
     private List<CheckBox> listOfCheckBoxes = new ArrayList<>();
     private List<Hero> listOfSelectedHeroes = new ArrayList<>();
@@ -82,6 +83,7 @@ public class PartySelectorGUI {
         DungeonGUI dungeonGui = new DungeonGUI(listOfSelectedHeroes);
         aStage.close();
         aScene.getStylesheets().add("sample/Styling/Caspian.css");
+        aStage.setTitle("Dungeon");
         aScene.setRoot(dungeonGui.mapOuterPane);
         aStage.getIcons().add(new Image("sample/GUI/Images/WindowsIcons/dungeonIcon.jpg"));
         aStage.setMaximized(true);
