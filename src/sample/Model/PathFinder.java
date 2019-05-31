@@ -164,7 +164,7 @@ public class PathFinder {
                                 int valueX = currentXPos + (i * k * dir1);
                                 int valueY = currentYPos + (j * k * dir2);
                                 markTileAsUnreachable(dungeonMap, buttonGrid, valueX, valueY);
-                                //todo there has to be an easier way
+                                //todo implement the logic from algorithm.java
                                 while (deltaY > 1 || deltaX > 1) {
                                     if (deltaX == 1) skewingCoefficient = 0.1;
                                     if (deltaY == 1) skewingCoefficient = 10;

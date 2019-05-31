@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/sample/GUI/EquipmentGUI.java" line="93" />
+    <bookmark url="file://$PROJECT_DIR$/src/sample/GUI/EquipmentGUI.java" line="96" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de97b43a-8902-45e2-a345-dc80bad4fa20" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GUI/EquipmentGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GUI/EquipmentGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Model/PathFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Model/PathFinder.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/DungeonCrawl1.0/target/" />
@@ -21,14 +21,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/GUI/EquipmentGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="90" column="33" selection-start-line="90" selection-start-column="33" selection-end-line="90" selection-end-column="33" />
+            <state relative-caret-position="201">
+              <caret line="102" column="13" selection-start-line="102" selection-start-column="13" selection-end-line="102" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Model/DungeonMap.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="80">
+              <caret line="290" column="10" selection-start-line="290" selection-start-column="10" selection-end-line="290" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -36,8 +45,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="146" column="16" selection-start-line="146" selection-start-column="16" selection-end-line="146" selection-end-column="16" />
+            <state relative-caret-position="113">
+              <caret line="398" column="13" lean-forward="true" selection-start-line="398" selection-start-column="13" selection-end-line="398" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -46,10 +55,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/algorithm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="11" column="53" lean-forward="true" selection-start-line="11" selection-start-column="53" selection-end-line="11" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/sample/Model/PathFinder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="123">
+              <caret line="166" column="34" selection-start-line="166" selection-start-column="34" selection-end-line="166" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Model/Hero.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="43" column="36" selection-start-line="43" selection-start-column="36" selection-end-line="43" selection-end-column="36" />
+            <state relative-caret-position="184">
+              <caret line="53" column="6" selection-start-line="53" selection-start-column="6" selection-end-line="53" selection-end-column="6" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1287#1288#0" expanded="true" />
@@ -62,36 +89,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/DAO/ItemsDAO.java">
+        <entry file="file://$PROJECT_DIR$/src/sample/Model/EncounterCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1307">
-              <caret line="122" column="88" lean-forward="true" selection-start-line="122" selection-start-column="88" selection-end-line="122" selection-end-column="88" />
+            <state relative-caret-position="131">
+              <caret line="41" column="10" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/HelloDragAndDrop.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-646">
-              <caret line="46" column="10" lean-forward="true" selection-start-line="46" selection-start-column="10" selection-end-line="46" selection-end-column="10" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#4414#4415#0" expanded="true" />
-                <element signature="e#4454#4455#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sq.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="42" column="43" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -99,7 +103,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/stage/PopupWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="56">
+            <state relative-caret-position="4131">
               <caret line="346" column="16" selection-start-line="346" selection-start-column="16" selection-end-line="346" selection-end-column="16" />
             </state>
           </provider>
@@ -108,7 +112,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/GUI/PartySelectorGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-193">
+            <state relative-caret-position="425">
               <caret line="45" column="23" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -120,7 +124,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Items/Armor/Chainmail.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
+            <state relative-caret-position="323">
               <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -142,7 +146,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>observa</find>
       <find>listener</find>
       <find>Map</find>
       <find>heroequi</find>
@@ -172,6 +175,7 @@
       <find>Hero</find>
       <find>Label</find>
       <find>heroeq</find>
+      <find>done</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -180,7 +184,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/DungeonCrawl1.0/pom.xml" />
         <option value="$PROJECT_DIR$/src/sample/DTO/ItemDTO.java" />
         <option value="$PROJECT_DIR$/src/sample/Items/HeroPower.java" />
         <option value="$PROJECT_DIR$/src/sample/Items/Weapons/Falchion.java" />
@@ -199,7 +202,6 @@
         <option value="$PROJECT_DIR$/src/sample/Items/Implements/Tome.java" />
         <option value="$PROJECT_DIR$/src/sample/Items/Implements/Totem.java" />
         <option value="$PROJECT_DIR$/src/sample/Items/Implements/Wand.java" />
-        <option value="$PROJECT_DIR$/src/sample/Model/PathFinder.java" />
         <option value="$PROJECT_DIR$/src/sample/StaticRules/ItemInformation.java" />
         <option value="$PROJECT_DIR$/src/sample/GUI/ItemShopGUI.java" />
         <option value="$PROJECT_DIR$/src/sample/DAO/ItemShopDAO.java" />
@@ -208,7 +210,6 @@
         <option value="$PROJECT_DIR$/src/sample/Model/Monster.java" />
         <option value="$PROJECT_DIR$/src/sample/StaticRules/HeroClassInformation.java" />
         <option value="$PROJECT_DIR$/src/sample/Model/Hero.java" />
-        <option value="$PROJECT_DIR$/src/sample/DAO/ItemsDAO.java" />
         <option value="$PROJECT_DIR$/src/sample/GUI/CharacterCreatorGUI.java" />
         <option value="$PROJECT_DIR$/src/sample/DTO/ItemsDTO.java" />
         <option value="$PROJECT_DIR$/src/sample/GUI/MainMenuGUI.java" />
@@ -230,7 +231,10 @@
         <option value="$PROJECT_DIR$/src/hellodraganddrop.java" />
         <option value="$PROJECT_DIR$/src/sq.java" />
         <option value="$PROJECT_DIR$/src/HelloDragAndDrop.java" />
+        <option value="$PROJECT_DIR$/src/sample/DAO/ItemsDAO.java" />
         <option value="$PROJECT_DIR$/src/sample/GUI/EquipmentGUI.java" />
+        <option value="$PROJECT_DIR$/src/algorithm.java" />
+        <option value="$PROJECT_DIR$/src/sample/Model/PathFinder.java" />
       </list>
     </option>
   </component>
@@ -241,8 +245,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1693" />
-    <option name="y" value="-34" />
+    <option name="x" value="170" />
+    <option name="y" value="92" />
     <option name="width" value="1026" />
     <option name="height" value="554" />
   </component>
@@ -251,6 +255,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -273,11 +278,37 @@
               <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="GUI" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="StaticRules" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -303,22 +334,12 @@
     <key name="CreateTestDialog.RecentsKey">
       <recent name="sample.GUI" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\GUI\Images\EquipmentGUI" />
-      <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\GUI\Images\MapElements" />
-      <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\GUI\Images\WindowsIcons" />
-      <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\GUI\Images\Monsters" />
-      <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\Monsters\MonsterImages" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
       <recent name="sample.Items.Implements" />
       <recent name="sample.Items.Armor" />
       <recent name="sample.GUI" />
       <recent name="sample.Items.Weapons" />
-      <recent name="sample.Items" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\Model" />
@@ -326,6 +347,16 @@
       <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\Monsters\Images" />
       <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\Monsters" />
       <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\Styling" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\GUI\Images\EquipmentGUI" />
+      <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\GUI\Images\MapElements" />
+      <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\GUI\Images\WindowsIcons" />
+      <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\GUI\Images\Monsters" />
+      <recent name="C:\Users\A753403\IdeaProjects\DungeonCrawl\src\sample\Monsters\MonsterImages" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -340,7 +371,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.algorithm">
     <configuration name="HelloDragAndDrop" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="HelloDragAndDrop" />
       <module name="DungeonCrawl" />
@@ -357,6 +388,13 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="algorithm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="algorithm" />
+      <module name="DungeonCrawl" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -380,6 +418,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.algorithm" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.HelloDragAndDrop" />
         <item itemvalue="Application.sq" />
@@ -397,20 +436,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1556870921453</updated>
-    </task>
-    <task id="LOCAL-00048" summary="Dungeon GUI - hero powers are now being displayed on the side bar upon clicking the hero icon.">
-      <created>1557752652477</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1557752652477</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Model - refactoring fields and managing inheritance in Hero, Monster and Creature classes">
-      <created>1557812047135</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1557812047135</updated>
     </task>
     <task id="LOCAL-00050" summary="Model - added ac to fields and to SQL communication">
       <created>1557812388477</created>
@@ -741,7 +766,21 @@
       <option name="project" value="LOCAL" />
       <updated>1559200260987</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="Equipment GUI - Dropping an equipment onto new slot does not update it. Have to repair">
+      <created>1559218111083</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1559218111083</updated>
+    </task>
+    <task id="LOCAL-00098" summary="Equipment GUI - Dragging and Dropping the Items works">
+      <created>1559221471239</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1559221471239</updated>
+    </task>
+    <option name="localTasksCounter" value="99" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -759,10 +798,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="-290" width="1696" height="1066" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49892932" visible="true" weight="0.10819071" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49892932" visible="true" weight="0.11119516" />
       <window_info id="Structure" order="1" sideWeight="0.5010707" side_tool="true" weight="0.2200489" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -771,11 +809,11 @@
       <window_info id="Favorites" order="6" sideWeight="0.5010707" side_tool="true" weight="0.2200489" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32976446" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.54889977" visible="true" weight="0.1359743" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49633253" weight="0.3961456" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.54889977" weight="0.30546623" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49633253" weight="0.3954984" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.76589245" weight="0.32676348" />
+      <window_info active="true" anchor="bottom" id="TODO" order="6" sideWeight="0.76589245" visible="true" weight="0.32636657" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.21520342" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.45110023" side_tool="true" weight="0.21413276" />
       <window_info anchor="bottom" id="Version Control" order="9" />
@@ -821,8 +859,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Weapons - added some simple weapon choices, weapon abstract class and fields." />
-    <MESSAGE value="Weapon Shop GUI started" />
     <MESSAGE value="Added armor classes" />
     <MESSAGE value="Added Implements" />
     <MESSAGE value="Renamed Implements, added them to the view" />
@@ -846,60 +882,11 @@
     <MESSAGE value="Equipment GUI - new images added, some items refactored to use getters and setters, equipment view remodelled, equipment now views item images." />
     <MESSAGE value="Equipment GUI - details of the item dragged on are being displayed, but on a new scene. Will have to improve it in the future." />
     <MESSAGE value="Equipment GUI - Popup window updated on mouse enter. DragAndDrop in equipment started." />
-    <option name="LAST_COMMIT_MESSAGE" value="Equipment GUI - Popup window updated on mouse enter. DragAndDrop in equipment started." />
+    <MESSAGE value="Equipment GUI - Dropping an equipment onto new slot does not update it. Have to repair" />
+    <MESSAGE value="Equipment GUI - Dragging and Dropping the Items works" />
+    <option name="LAST_COMMIT_MESSAGE" value="Equipment GUI - Dragging and Dropping the Items works" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/sample/StaticRules/HeroClassInformation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2977">
-          <caret line="604" selection-start-line="604" selection-end-line="604" />
-          <folding>
-            <element signature="e#1696#1697#0" expanded="true" />
-            <element signature="e#1738#1739#0" expanded="true" />
-            <element signature="e#1952#1953#0" expanded="true" />
-            <element signature="e#1986#1987#0" expanded="true" />
-            <element signature="e#2062#2063#0" expanded="true" />
-            <element signature="e#2108#2109#0" expanded="true" />
-            <element signature="e#2169#2170#0" expanded="true" />
-            <element signature="e#2204#2205#0" expanded="true" />
-            <element signature="e#2282#2283#0" expanded="true" />
-            <element signature="e#2330#2331#0" expanded="true" />
-            <element signature="e#2394#2395#0" expanded="true" />
-            <element signature="e#2432#2433#0" expanded="true" />
-            <element signature="e#2627#2628#0" expanded="true" />
-            <element signature="e#2661#2662#0" expanded="true" />
-            <element signature="e#2734#2735#0" expanded="true" />
-            <element signature="e#2780#2781#0" expanded="true" />
-            <element signature="e#2852#2853#0" expanded="true" />
-            <element signature="e#2898#2899#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/DTO/CharacterCreatorDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/control/Button.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="59" column="13" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/DAO/CharacterCreatorDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="94" column="27" selection-start-line="94" selection-start-column="27" selection-end-line="94" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/layout/Background.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
@@ -962,16 +949,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Model/EncounterCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="41" column="71" selection-start-line="41" selection-start-column="71" selection-end-line="41" selection-end-column="71" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1155,33 +1132,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Items/Armor/Chainmail.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/GUI/PartySelectorGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-193">
-          <caret line="45" column="23" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/stage/PopupWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="346" column="16" selection-start-line="346" selection-start-column="16" selection-end-line="346" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/input/ClipboardContent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -1200,31 +1150,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Model/Hero.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="43" column="36" selection-start-line="43" selection-start-column="36" selection-end-line="43" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1287#1288#0" expanded="true" />
-            <element signature="e#1323#1324#0" expanded="true" />
-            <element signature="e#1392#1393#0" expanded="true" />
-            <element signature="e#1442#1443#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/input/DragEvent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="591" column="24" selection-start-line="591" selection-start-column="24" selection-end-line="591" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sq.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="42" column="43" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -1235,10 +1164,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/input/Clipboard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3587">
+          <caret line="251" column="24" selection-start-line="251" selection-start-column="24" selection-end-line="251" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/DAO/ItemsDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1307">
-          <caret line="122" column="88" lean-forward="true" selection-start-line="122" selection-start-column="88" selection-end-line="122" selection-end-column="88" />
+        <state relative-caret-position="1972">
+          <caret line="123" column="53" selection-start-line="123" selection-start-column="53" selection-end-line="123" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1247,20 +1183,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HelloDragAndDrop.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-646">
-          <caret line="46" column="10" lean-forward="true" selection-start-line="46" selection-start-column="10" selection-end-line="46" selection-end-column="10" />
+        <state relative-caret-position="629">
+          <caret line="46" column="10" selection-start-line="46" selection-start-column="10" selection-end-line="46" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4414#4415#0" expanded="true" />
-            <element signature="e#4454#4455#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
+    <entry file="file://$PROJECT_DIR$/src/sq.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="146" column="16" selection-start-line="146" selection-start-column="16" selection-end-line="146" selection-end-column="16" />
+        <state relative-caret-position="714">
+          <caret line="42" column="43" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/stage/PopupWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4131">
+          <caret line="346" column="16" selection-start-line="346" selection-start-column="16" selection-end-line="346" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/PartySelectorGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="45" column="23" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Items/Armor/Chainmail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1269,11 +1227,66 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/GUI/EquipmentGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="90" column="33" selection-start-line="90" selection-start-column="33" selection-end-line="90" selection-end-column="33" />
+        <state relative-caret-position="201">
+          <caret line="102" column="13" selection-start-line="102" selection-start-column="13" selection-end-line="102" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Model/DungeonMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="290" column="10" selection-start-line="290" selection-start-column="10" selection-end-line="290" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Model/Hero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="53" column="6" selection-start-line="53" selection-start-column="6" selection-end-line="53" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1287#1288#0" expanded="true" />
+            <element signature="e#1323#1324#0" expanded="true" />
+            <element signature="e#1392#1393#0" expanded="true" />
+            <element signature="e#1442#1443#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Model/EncounterCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="41" column="10" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="11" column="53" lean-forward="true" selection-start-line="11" selection-start-column="53" selection-end-line="11" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/GUI/DungeonGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="398" column="13" lean-forward="true" selection-start-line="398" selection-start-column="13" selection-end-line="398" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Model/PathFinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="166" column="34" selection-start-line="166" selection-start-column="34" selection-end-line="166" selection-end-column="34" />
         </state>
       </provider>
     </entry>
