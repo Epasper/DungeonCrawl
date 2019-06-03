@@ -55,7 +55,6 @@ public class EquipmentGUI {
         this.listOfSelectedHeroes = listOfSelectedHeroes;
     }
 
-    //todo hero ID 0 is only being read - find out why
     //todo right panel buttons should switch the displayed character
 
     public GridPane displayAChosenHeroEquipment(Hero chosenHero) throws SQLException, IOException {
@@ -105,6 +104,8 @@ public class EquipmentGUI {
     }
 
     //todo reverse the item putting when the slot is already occupied
+
+    //todo a method that identifies a flanking position.
 
     private void eventOnDragDetected(String slotName, Label currentLabel, String finalFilledSlot, MouseEvent event) {
         System.out.println("Dragging Detected");

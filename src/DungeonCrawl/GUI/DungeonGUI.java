@@ -1,5 +1,6 @@
 package DungeonCrawl.GUI;
 
+import javafx.collections.ObservableList;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -65,6 +66,7 @@ class DungeonGUI {
     private ScrollPane mapScrollPane = new ScrollPane();
     private EncounterCalculator encounterCalculator = new EncounterCalculator();
     private List<Monster> monsterList = encounterCalculator.getTheListOfPossibleMonsters();
+    private List <Button> listOfHeroButtons = new ArrayList<>();
 
 
     private DungeonMap getDungeonMap() {
@@ -90,10 +92,8 @@ class DungeonGUI {
     DungeonGUI(List<Hero> heroList) {
         this.heroList = heroList;
         manageTheConsoleAdding();
-        //todo rewrite dummy buttons with real ones
         dungeonConsole.setContent(dungeonConsoleText);
         mapOuterPane.setCenter(mapScrollPane);
-        //mapOuterPane.setRight(powersHBox);
         mapScrollPane.setContent(mapGridPane);
         Button returnToMainMenu = new Button();
         returnToMainMenu.setText("Return to Main Menu");
@@ -104,26 +104,36 @@ class DungeonGUI {
         updateGUIAccordingToMap(getDungeonMap());
     }
 
+    //todo lock the possibility of attacking when no power is selected.
+
+    /*todo add messages to console:
+     CURRENTLY SELECTED POWER:
+    ...
+     */
+
+    //todo in future, change the portraits, so that each hero has a bigger portrait on the right and small icon on the field.
+
+    //todo add an initiative tracker for all heroes and monsters (over the console?).
+
+    //todo Add HPBars to portraits
+
     private void manageTheConsoleAdding() {
         powersHBox.setStyle("-fx-background-color:grey;");
         powersHBox.setMinSize(200, 40);
         Button equipmentButton = addViewEquipmentButton();
         Button viewDungeon = new Button();
-        viewDungeon.setOnAction(event -> mapOuterPane.setCenter(mapScrollPane));
+        viewDungeon.setOnAction(event -> viewMapEvent());
         viewDungeon.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images/DungeonView.jpg"))));
         consoleButtons.getChildren().add(viewDungeon);
         consoleButtons.getChildren().add(equipmentButton);
-        for (int i = 0; i < 8; i++) {
-            Button dummyButton = new Button("Button " + i);
-            dummyButton.setMinSize(50, 50);
-            consoleButtons.getChildren().add(dummyButton);
-        }
         for (Hero hero : heroList) {
             Button heroButton = new Button();
+            heroButton.setId(String.valueOf(hero.getID()));
             heroButton.setGraphic(new ImageView(hero.getHeroIcon()));
             heroButton.setOnAction(event -> buttonEvent(heroButton, hero.getMapXPos(), hero.getMapYPos()));
-            portraitsVBox.getChildren().add(heroButton);
+            listOfHeroButtons.add(heroButton);
         }
+        portraitsVBox.getChildren().addAll(listOfHeroButtons);
         mapOuterPane.setRight(portraitsVBox);
         completeConsole.add(dungeonConsole, 0, 0);
         mapOuterPane.setLeft(consoleButtons);
@@ -138,6 +148,15 @@ class DungeonGUI {
         mapOuterPane.setBottom(completeConsole);
     }
 
+    private void viewMapEvent() {
+        mapOuterPane.setCenter(mapScrollPane);
+        for (Button heroButton: listOfHeroButtons) {
+            int thisButtonID = Integer.valueOf(heroButton.getId());
+            Hero currentHero = getHeroByID(thisButtonID, heroList);
+            heroButton.setOnAction(event -> buttonEvent(heroButton, currentHero.getMapXPos(), currentHero.getMapYPos()));
+        }
+    }
+
     //todo the left and right panes have to read the stylesheets correctly.
 
     private Button addViewEquipmentButton() {
@@ -147,6 +166,17 @@ class DungeonGUI {
                 showCurrentCharactersEquipment(getCurrentlyActiveHeroID());
             } catch (IOException | SQLException e) {
                 e.printStackTrace();
+            } finally {
+                for (Button heroButton : listOfHeroButtons) {
+                    heroButton.setOnAction(innerEvent -> {
+                        try {
+                            int heroId = Integer.valueOf(heroButton.getId());
+                            showCurrentCharactersEquipment(heroId);
+                        } catch (IOException | SQLException e) {
+                            e.printStackTrace();
+                        }
+                    });
+                }
             }
         });
         Image eqIcon = new Image(getClass().getResourceAsStream("Images/Equipment.jpg"));
@@ -308,10 +338,9 @@ class DungeonGUI {
         System.out.println("DEBUG: " + monster.getCurrentHitPoints() + " HP");
         System.out.println("DEBUG: " + monster.getID() + " ID");
         if (monster.getCurrentHitPoints() < 1) {
-            updateTheDungeonConsole("The attacked monster - "+ monster.getMonsterName() + " - has fallen!");
-        }
-        else if (monster.getCurrentHitPoints()*2 < monster.getHitPoints()){
-            updateTheDungeonConsole("The attacked monster - "+ monster.getMonsterName() + " - is now bloodied.");
+            updateTheDungeonConsole("The attacked monster - " + monster.getMonsterName() + " - has fallen!");
+        } else if (monster.getCurrentHitPoints() * 2 < monster.getHitPoints()) {
+            updateTheDungeonConsole("The attacked monster - " + monster.getMonsterName() + " - is now bloodied.");
         }
     }
 
@@ -382,7 +411,6 @@ class DungeonGUI {
                 + monster.getDefensesMap().get(attackingPower.getDefenseToBeChecked().toLowerCase()));
     }
 
-    //todo repair the damage dice - allow buying weapons and default the non-weapon damage to 1d4
     private void eventOnReachableTileClick() {
         getDungeonMap().clearMapReachableProperties(getDungeonMap());
         updateMapGraphics(getDungeonMap());
@@ -432,7 +460,6 @@ class DungeonGUI {
 
 
     private void applyEntityIconToAButton(int heroID, Button aButton) {
-        EncounterCalculator encounterCalculator = new EncounterCalculator();
         if (heroID < 100) {
             aButton.setGraphic(new ImageView(getHeroByID(heroID, heroList).getHeroIcon()));
         } else {
@@ -517,7 +544,7 @@ class DungeonGUI {
         }
     }
 
-    //todo add a console in the dungeon view to write output already discovered to players
+    //todo add a button to console that could extend its view range or minimize it.
     //todo visibility checker has to stop on walls
 
 
