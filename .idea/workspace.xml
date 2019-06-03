@@ -5,112 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de97b43a-8902-45e2-a345-dc80bad4fa20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Avenger/AngelicAlacrity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Avenger/AspectOfMight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Avenger/AvengingEcho.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Avenger/BondOfPursuit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Avenger/BondOfRetribution.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Avenger/OathOfTheFinalDuel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Avenger/OverwhelmingStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Avenger/RadiantVengeance.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Avenger/RenewingStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Avenger/SharedMadness.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Avenger/TempleOfLight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Avenger/WhirlwindCharge.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Barbarian/AvalancheStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Barbarian/BloodhuntRage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Barbarian/Bloodletting.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Barbarian/DevastatingStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Barbarian/GreatCleave.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Barbarian/HowlingStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Barbarian/MacetailsRage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Barbarian/PressingStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Barbarian/RageDrakesFrenzy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Barbarian/RecuperatingStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Barbarian/SwiftPantherRage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Barbarian/VaultOfTheFallen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Fighter/Cleave.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Fighter/CoveringAttack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Fighter/PassingAttack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Fighter/ReapingStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Fighter/SpinningSweep.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Fighter/SteelSerpentStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Fighter/SureStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Fighter/TideOfIron.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/HeroPower.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Invoker/AstralTerror.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Invoker/AvengingLight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Invoker/BladeOfAstralFire.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Invoker/DivineBolts.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Invoker/GraspingShards.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Invoker/SpearOfTheInquisitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Invoker/SunStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Invoker/ThunderOfJudgement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Paladin/BolsteringStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Paladin/EnfeeblingStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Paladin/FearsomeSmite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Paladin/HolyStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Paladin/PiercingSmite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Paladin/RadiantSmite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Paladin/ShieldingSmite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Paladin/ValiantStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Shaman/CallToTheAncientDefender.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Shaman/DefendingStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Shaman/HauntingSpirits.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Shaman/ProtectingStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Shaman/StalkersStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Shaman/ThunderBearsWarding.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Shaman/WatchersStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Shaman/WrathOfWinter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Sorcerer/AcidOrb.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Sorcerer/BedevilingBurst.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Sorcerer/BurningSpray.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Sorcerer/ChaosBolt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Sorcerer/Dragonfrost.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Sorcerer/ExplosivePyre.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Sorcerer/Frostbind.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Sorcerer/StormWalk.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Sorcerer/TempestBreath.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Sorcerer/ThunderSlam.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Warden/EarthShieldStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Warden/EarthSpikes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Warden/HungryEarth.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Warden/StrengthOfStone.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Warden/ThornStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Warden/ThunderRamAssault.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Warden/WeightOfTheEarth.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Warden/WildbloodFrenzy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Warlock/DiabolicGrasp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Warlock/DireRadiance.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Warlock/DreadfulWord.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Warlock/EldritchBlast.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Warlock/Eyebite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Warlock/HellishRebuke.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Warlock/VampiricEmbrace.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Warlock/Witchfire.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Warlord/CommandersStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Warlord/FuriousSmash.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Warlord/GuardingAttack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Warlord/HammerAndAnvil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Warlord/LeafOnTheWind.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Warlord/VipersStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Warlord/WarlordsFavor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Warlord/WolfsPackTactics.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Wizard/BurningHands.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Wizard/ChillStrike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Wizard/CloudOfDaggers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Wizard/ForceOrb.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Wizard/IcyTerrain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Wizard/MagicMissile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Wizard/RayOfEnfeeblement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Wizard/RayOfFrost.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Wizard/ScorchingBurst.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Wizard/Thunderwave.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/Model/Monster.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/StaticRules/HeroClassInformation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/StaticRules/ItemInformation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/sample.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/GUI/CharacterCreatorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/GUI/CharacterCreatorGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/GUI/DungeonGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/GUI/DungeonGUI.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/DungeonCrawl1.0/target/" />
@@ -125,38 +22,80 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/DungeonMap.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4811">
-              <caret line="290" column="10" selection-start-line="290" selection-start-column="10" selection-end-line="290" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/DungeonGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="422" column="63" lean-forward="true" selection-start-line="422" selection-start-column="63" selection-end-line="422" selection-end-column="63" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Avenger/AngelicAlacrity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="16" column="28" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+            <state relative-caret-position="-150">
+              <caret line="323" column="40" selection-start-line="323" selection-start-column="40" selection-end-line="323" selection-end-column="40" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/algorithm.java">
+        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/Hero.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="53" selection-start-line="11" selection-start-column="53" selection-end-line="11" selection-end-column="53" />
+            <state relative-caret-position="3081">
+              <caret line="358" column="22" selection-start-line="358" selection-start-column="22" selection-end-line="358" selection-end-column="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/CharacterCreatorGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1982">
+              <caret line="697" lean-forward="true" selection-start-line="697" selection-end-line="697" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/ItemShopGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2618">
+              <caret line="175" column="6" selection-start-line="175" selection-start-column="6" selection-end-line="175" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Fighter/TideOfIron.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/HeroPower.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Warden/EarthShieldStrike.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/StaticRules/HeroClassInformation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="10268">
+              <caret line="654" column="94" selection-start-line="654" selection-start-column="40" selection-end-line="654" selection-end-column="94" />
             </state>
           </provider>
         </entry>
@@ -166,55 +105,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="408">
               <caret line="24" column="80" selection-start-line="24" selection-start-column="80" selection-end-line="24" selection-end-column="80" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/Hero.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="53" column="6" selection-start-line="53" selection-start-column="6" selection-end-line="53" selection-end-column="6" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1287#1288#0" expanded="true" />
-                <element signature="e#1323#1324#0" expanded="true" />
-                <element signature="e#1392#1393#0" expanded="true" />
-                <element signature="e#1442#1443#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/EncounterCalculator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="41" column="10" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="10" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/stage/PopupWindow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4131">
-              <caret line="346" column="16" selection-start-line="346" selection-start-column="16" selection-end-line="346" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/PartySelectorGUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="45" column="23" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -244,10 +134,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Map</find>
-      <find>heroequi</find>
-      <find>backp</find>
-      <find>remaini</find>
       <find>buythis</find>
       <find>console</find>
       <find>styles</find>
@@ -274,6 +160,10 @@
       <find>heroeq</find>
       <find>done</find>
       <find>find</find>
+      <find>info</find>
+      <find>power</find>
+      <find>cellfactory</find>
+      <find>entered</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -282,9 +172,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/sample/Items/HeroPower.java" />
-        <option value="$PROJECT_DIR$/src/sample/Items/Weapons/Falchion.java" />
-        <option value="$PROJECT_DIR$/src/sample/StaticRules/ItemShopInformation.java" />
         <option value="$PROJECT_DIR$/src/sample/Items/Armor/HideArmor.java" />
         <option value="$PROJECT_DIR$/src/sample/Items/Armor/ScaleArmor.java" />
         <option value="$PROJECT_DIR$/src/sample/Items/Armor/Staff.java" />
@@ -333,6 +220,9 @@
         <option value="$PROJECT_DIR$/src/algorithm.java" />
         <option value="$PROJECT_DIR$/src/sample/Model/PathFinder.java" />
         <option value="$PROJECT_DIR$/src/DungeonCrawl/Model/PathFinder.java" />
+        <option value="$PROJECT_DIR$/src/DungeonCrawl/GUI/CharacterCreatorGUI.java" />
+        <option value="$PROJECT_DIR$/src/DungeonCrawl/Model/Hero.java" />
+        <option value="$PROJECT_DIR$/src/DungeonCrawl/GUI/DungeonGUI.java" />
       </list>
     </option>
   </component>
@@ -353,7 +243,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -370,11 +259,6 @@
             <path>
               <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
               <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -382,6 +266,20 @@
               <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="DAO" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="DTO" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
@@ -403,23 +301,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
               <item name="HeroPowers" type="462c0819:PsiDirectoryNode" />
-              <item name="Avenger" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="HeroPowers" type="462c0819:PsiDirectoryNode" />
-              <item name="Barbarian" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="HeroPowers" type="462c0819:PsiDirectoryNode" />
-              <item name="Bard" type="462c0819:PsiDirectoryNode" />
+              <item name="Fighter" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
@@ -428,61 +310,6 @@
               <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
               <item name="HeroPowers" type="462c0819:PsiDirectoryNode" />
               <item name="Warden" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="HeroPowers" type="462c0819:PsiDirectoryNode" />
-              <item name="Warlock" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="HeroPowers" type="462c0819:PsiDirectoryNode" />
-              <item name="Warlord" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="HeroPowers" type="462c0819:PsiDirectoryNode" />
-              <item name="Wizard" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="Items" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="Items" type="462c0819:PsiDirectoryNode" />
-              <item name="Armor" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="Items" type="462c0819:PsiDirectoryNode" />
-              <item name="Implements" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
-              <item name="Items" type="462c0819:PsiDirectoryNode" />
-              <item name="Weapons" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
@@ -513,10 +340,18 @@
               <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
               <item name="StaticRules" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="Styling" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -643,13 +478,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1556870921453</updated>
-    </task>
-    <task id="LOCAL-00052" summary="Corrected setters and getters for inaccessible fields, corrected the images that were not working properly.">
-      <created>1557815122666</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1557815122666</updated>
     </task>
     <task id="LOCAL-00053" summary="Monsters - added base stats for goblins, added encounter calculator class.">
       <created>1557819109082</created>
@@ -987,7 +815,14 @@
       <option name="project" value="LOCAL" />
       <updated>1559538564118</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="Added some files after main package name changing">
+      <created>1559538747509</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1559538747509</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1001,13 +836,15 @@
     </todo-panel>
     <todo-panel id="all">
       <are-packages-shown value="true" />
+      <flatten-packages value="true" />
       <is-autoscroll-to-source value="true" />
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-290" width="1696" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49892932" visible="true" weight="0.112469435" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49892932" visible="true" weight="0.116136916" />
       <window_info id="Structure" order="1" sideWeight="0.5010707" side_tool="true" weight="0.2200489" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -1016,8 +853,8 @@
       <window_info id="Favorites" order="6" sideWeight="0.5010707" side_tool="true" weight="0.2200489" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32976446" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.54889977" visible="true" weight="0.30513918" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49633253" weight="0.3954984" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.54889977" visible="true" weight="0.30513918" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49633253" weight="0.39507493" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.76589245" weight="0.3254818" />
@@ -1066,7 +903,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Renamed Implements, added them to the view" />
     <MESSAGE value="Added DTO and DAO empty files for future item transactions" />
     <MESSAGE value="Refactored range calculator into PathFinder class (extracted from DungeonGUI)." />
     <MESSAGE value="Refactored visibility checker into PathFinder class (extracted from DungeonGUI)." />
@@ -1091,68 +927,14 @@
     <MESSAGE value="Equipment GUI - Dragging and Dropping the Items works" />
     <MESSAGE value="Equipment GUI - Upgraded shadow casting algorithm. Has to implement it to Pathfinder.java" />
     <MESSAGE value="Equipment GUI - Changed the main package name" />
-    <option name="LAST_COMMIT_MESSAGE" value="Equipment GUI - Changed the main package name" />
+    <MESSAGE value="Added some files after main package name changing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some files after main package name changing" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/layout/BackgroundRepeat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="31" column="12" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/layout/BackgroundImage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1496">
-          <caret line="112" column="39" selection-start-line="112" selection-start-column="39" selection-end-line="112" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/layout/BackgroundPosition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/MainMenuGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1904">
-          <caret line="128" selection-start-line="128" selection-end-line="128" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/CharacterSheetGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/DTO/ItemsDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="30" column="52" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/Creature.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/CharacterCreatorGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="248" column="41" lean-forward="true" selection-start-line="248" selection-start-column="41" selection-end-line="248" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1385,23 +1167,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sq.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="42" column="43" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/EquipmentGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1292">
-          <caret line="102" column="13" selection-start-line="102" selection-start-column="13" selection-end-line="102" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sq.java" />
     <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/DungeonMap.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4811">
@@ -1413,20 +1179,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="53" selection-start-line="11" selection-start-column="53" selection-end-line="11" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/Hero.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="53" column="6" selection-start-line="53" selection-start-column="6" selection-end-line="53" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1287#1288#0" expanded="true" />
-            <element signature="e#1323#1324#0" expanded="true" />
-            <element signature="e#1392#1393#0" expanded="true" />
-            <element signature="e#1442#1443#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1457,13 +1209,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Items/Armor/Chainmail.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/control/Cell.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
+        <state relative-caret-position="514">
+          <caret line="668" column="19" selection-start-line="668" selection-start-column="19" selection-end-line="668" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/EquipmentGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="35" selection-start-line="35" selection-end-line="35" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Avenger/AngelicAlacrity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/ItemShopGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2618">
+          <caret line="175" column="6" selection-start-line="175" selection-start-column="6" selection-end-line="175" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Fighter/TideOfIron.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/HeroPower.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Warden/EarthShieldStrike.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/StaticRules/HeroClassInformation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10268">
+          <caret line="654" column="94" selection-start-line="654" selection-start-column="40" selection-end-line="654" selection-end-column="94" />
         </state>
       </provider>
     </entry>
@@ -1474,17 +1275,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/DungeonGUI.java">
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Items/Armor/Chainmail.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="422" column="63" lean-forward="true" selection-start-line="422" selection-start-column="63" selection-end-line="422" selection-end-column="63" />
+        <state relative-caret-position="306">
+          <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Avenger/AngelicAlacrity.java">
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/CharacterCreatorGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" column="28" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+        <state relative-caret-position="-1982">
+          <caret line="697" lean-forward="true" selection-start-line="697" selection-end-line="697" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/Hero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3081">
+          <caret line="358" column="22" selection-start-line="358" selection-start-column="22" selection-end-line="358" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/DungeonGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-150">
+          <caret line="323" column="40" selection-start-line="323" selection-start-column="40" selection-end-line="323" selection-end-column="40" />
         </state>
       </provider>
     </entry>

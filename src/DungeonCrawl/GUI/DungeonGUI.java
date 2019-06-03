@@ -135,7 +135,6 @@ class DungeonGUI {
         mapOuterPane.setBottom(completeConsole);
     }
 
-    //todo the left and right panes have to be constant between Dungeon GUI, eq selector and character sheet.
     //todo the left and right panes have to read the stylesheets correctly.
 
     private Button addViewEquipmentButton() {
@@ -152,7 +151,7 @@ class DungeonGUI {
         equipmentButton.setGraphic(eqIconView);
         return equipmentButton;
     }
-    //todo add the equipment view
+
     //todo add the character's sheet view
 
     private void showCurrentCharactersEquipment(int currentlyActiveHeroID) throws IOException, SQLException {
@@ -233,7 +232,6 @@ class DungeonGUI {
         }
         updateMapGraphics(dungeonMap);
     }
-    //todo add an "Equipment management" window in Dungeon GUI
 
     private void updateMapGraphics(DungeonMap dungeonMap) {
         for (int i = 0; i < mapWidth; i++) {
@@ -301,16 +299,30 @@ class DungeonGUI {
     }
 
     private void triggerOnHit(HeroPower attackingPower, Hero hero, Map attackResults) {
+        int weaponDamage;
+        int numberOfDice;
+        if (attackingPower.isThisWeaponDamage()) {
+            try {
+                weaponDamage = hero.getHeroEquipment().get("Right Hand Slot").getTypeOfDamageDice();
+                numberOfDice = hero.getHeroEquipment().get("Right Hand Slot").getNumberOfDamageDiceDealt();
+            } catch (NullPointerException e) {
+                weaponDamage = 4;
+                numberOfDice = 1;
+            }
+        } else {
+            weaponDamage = attackingPower.getTypeOfDamageDice();
+            numberOfDice = attackingPower.getDamageDiceDealt();
+        }
         updateTheDungeonConsole("It's a hit! Roll for damage: "
-                + attackingPower.getDamageDiceDealt()
+                + numberOfDice
                 + "d"
-                + attackingPower.getTypeOfDamageDice());
+                + weaponDamage);
         StringBuilder diceDealt = new StringBuilder();
         int allDamage = 0;
         Random random = new Random();
 
-        for (int i = 0; i < attackingPower.getDamageDiceDealt(); i++) {
-            int damageRoll = random.nextInt(attackingPower.getTypeOfDamageDice());
+        for (int i = 0; i < numberOfDice; i++) {
+            int damageRoll = random.nextInt(weaponDamage);
             System.out.println("--->" + damageRoll);
             diceDealt.append(" ").append(damageRoll).append(" ");
             allDamage += damageRoll;

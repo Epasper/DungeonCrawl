@@ -8,6 +8,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -16,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 import DungeonCrawl.*;
 import DungeonCrawl.DAO.CharacterCreatorDAO;
@@ -24,6 +26,7 @@ import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.StaticRules.HeroClassInformation;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
@@ -90,6 +93,7 @@ class CharacterCreatorGUI {
     private Text armorClassText = new Text("Armor Class: \t\t" + AC);
     private TextArea powerDescription = new TextArea();
     private int iconID;
+    Popup equipInfoPopup = new Popup();
 
     CharacterCreatorGUI() {
         initializeCharacterCreatorGUI();
@@ -645,6 +649,11 @@ class CharacterCreatorGUI {
                 FXCollections.observableArrayList();
         ObservableList<String> classTraitOptions =
                 FXCollections.observableArrayList();
+        addPowerOptionsToComboBoxes(atWill1Options, atWill2Options, encounterOptions, dailyOptions, classTraitOptions);
+        manageHeroPowerComboBoxesViewing(atWill1Options, atWill2Options, encounterOptions, dailyOptions, classTraitOptions);
+    }
+
+    private void addPowerOptionsToComboBoxes(ObservableList<String> atWill1Options, ObservableList<String> atWill2Options, ObservableList<String> encounterOptions, ObservableList<String> dailyOptions, ObservableList<String> classTraitOptions) {
         HeroClassInformation heroClassInformation = new HeroClassInformation();
         int numberOfAtWillPowers = heroClassInformation.getAtWillPowersAtLevel1().get(selectedHeroClass).size();
         int numberOfEncounterPowers = heroClassInformation.getEncounterPowersAtLevel1().get(selectedHeroClass).size();
@@ -665,6 +674,9 @@ class CharacterCreatorGUI {
         for (int i = 0; i < numberOfClassTraits; i++) {
             classTraitOptions.add(heroClassInformation.getClassTraits().get(selectedHeroClass).get(i));
         }
+    }
+
+    private void manageHeroPowerComboBoxesViewing(ObservableList<String> atWill1Options, ObservableList<String> atWill2Options, ObservableList<String> encounterOptions, ObservableList<String> dailyOptions, ObservableList<String> classTraitOptions) {
         atWill1Choice.setItems(atWill1Options);
         atWill2Choice.setItems(atWill2Options);
         encounterChoice.setItems(encounterOptions);
@@ -678,6 +690,34 @@ class CharacterCreatorGUI {
         atWill2Choice.valueProperty().addListener((observable, oldValue, newValue) -> showThePowerDescription(newValue, "AtWill"));
         encounterChoice.valueProperty().addListener((observable, oldValue, newValue) -> showThePowerDescription(newValue, "Encounter"));
         dailyChoice.valueProperty().addListener((observable, oldValue, newValue) -> showThePowerDescription(newValue, "Daily"));
+        plugTheCellFactoryIntoComboBoxes(atWill1Choice);
+        plugTheCellFactoryIntoComboBoxes(atWill2Choice);
+        plugTheCellFactoryIntoComboBoxes(encounterChoice);
+        plugTheCellFactoryIntoComboBoxes(dailyChoice);
+        plugTheCellFactoryIntoComboBoxes(classTraitChoice);
+
+    }
+
+    private void plugTheCellFactoryIntoComboBoxes(ComboBox<String> comboBoxToBePlugged) {
+        comboBoxToBePlugged.setCellFactory(callFactory -> {
+            ListCell<String> cell = new ListCell<String>() {
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    setText(item);
+                }
+            };
+            cell.hoverProperty().addListener((obs, wasHovered, isNowHovered) -> {
+                if (!cell.isEmpty()) {
+                    if (isNowHovered) {
+                        displayThePowerPopup(selectedHeroClass, cell.getText(), comboBoxToBePlugged.getValue());
+                    } else if (wasHovered) {
+                        equipInfoPopup.hide();
+                    }
+                }
+            });
+            return cell;
+        });
     }
 
     private void showThePowerDescription(String powerName, String typeOfPower) {
@@ -716,8 +756,30 @@ class CharacterCreatorGUI {
     }
 
 
-    private void displayThePowerPopup() {
-        //todo add a helper to power choice - when a mouse is dragged onto the power, then the power description is shown.
+    private void displayThePowerPopup(String className, String powerName, String typeOfPower) {
+
+        HeroClassInformation heroClassInformation = new HeroClassInformation();
+        HeroPower currentPower = heroClassInformation.getHeroPowerByName(className, powerName, typeOfPower);
+        System.out.println("Hover Onto Power Detected. ");
+        VBox powerDescription = new VBox();
+        powerDescription.setStyle(" -fx-background-color: white;");
+        Label currentLabel = new Label();
+        currentLabel.setPadding(new Insets(5));
+        Text itemText1 = new Text();
+        itemText1.setText(currentPower.getPowerName());
+        powerDescription.getChildren().add(itemText1);
+        Text itemText3 = new Text();
+        itemText3.setText(currentPower.getAttributeUsedToHit());
+        powerDescription.getChildren().add(itemText3);
+        Text itemText4 = new Text();
+        itemText4.setText(currentPower.getDefenseToBeChecked());
+        powerDescription.getChildren().add(itemText4);
+        Text itemText2 = new Text();
+        itemText2.setText(currentPower.getHitDescription());
+        powerDescription.getChildren().add(itemText2);
+        Point mouseLocation = MouseInfo.getPointerInfo().getLocation();
+        equipInfoPopup.getContent().add(powerDescription);
+        equipInfoPopup.show(Main.getPrimaryStage(), mouseLocation.getX(), mouseLocation.getY());
     }
 
     private void eventOnRaceSelection(String newValue) {
