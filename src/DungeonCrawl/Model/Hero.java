@@ -343,7 +343,7 @@ public class Hero extends Creature {
         return gold;
     }
 
-    public Map attackAMonster(Monster attackedMonster, HeroPower powerUsedForAttacking) {
+    public Map<String, Integer> attackAMonster(Monster attackedMonster, HeroPower powerUsedForAttacking) {
         Map<String, Integer> valuesToBeReturned = new HashMap<>();
         String usedAttribute = powerUsedForAttacking.getAttributeUsedToHit();
         heroAttributesMap.forEach((k, v) -> System.out.println("Hero Attribute: " + k + " Value: " + v));

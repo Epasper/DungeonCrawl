@@ -9,15 +9,25 @@ public class Creature {
     private int mapXPos;
     private int mapYPos;
     private int hitPoints;
+    private int currentHitPoints;
     private double speed = 6;
     private double currentSpeed = speed;
     private int fortitude;
     private int reflex;
     private int will;
     private int AC;
-    Map<String, Integer> defensesMap = new HashMap<>();
+    private Map<String, Integer> defensesMap = new HashMap<>();
+
+    public int getCurrentHitPoints() {
+        return currentHitPoints;
+    }
+
+    public void setCurrentHitPoints(int currentHitPoints) {
+        this.currentHitPoints = currentHitPoints;
+    }
 
     public Creature() {
+
     }
 
     public void updateTheDefensesMap() {

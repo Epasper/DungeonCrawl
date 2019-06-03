@@ -8,6 +8,7 @@ public class GoblinSharpshooter extends Monster {
     public GoblinSharpshooter() {
         this.setID(101);
         this.setHitPoints(31);
+        this.setCurrentHitPoints(31);
         this.setAC(16);
         this.setFortitude(12);
         this.setReflex(14);

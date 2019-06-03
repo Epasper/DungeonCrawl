@@ -63,6 +63,9 @@ class DungeonGUI {
     private ScrollPane dungeonConsole = new ScrollPane();
     private List<HeroPower> currentPower = new ArrayList<>();
     private ScrollPane mapScrollPane = new ScrollPane();
+    private EncounterCalculator encounterCalculator = new EncounterCalculator();
+    private List<Monster> monsterList = encounterCalculator.getTheListOfPossibleMonsters();
+
 
     private DungeonMap getDungeonMap() {
         return dungeonMap;
@@ -286,19 +289,33 @@ class DungeonGUI {
     private void eventOnHeroAttackingAMonster(int XPos, int YPos, HeroPower attackingPower) {
         Hero hero = getHeroByID(getCurrentlyActiveHeroID(), heroList);
         EncounterCalculator encounterCalculator = new EncounterCalculator();
-        List<Monster> monsterList = encounterCalculator.getTheListOfPossibleMonsters();
         Monster monster = getMonsterByID(getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureId(), monsterList);
-        Map attackResults = hero.attackAMonster(monster, attackingPower);
+        Map<String, Integer> attackResults = hero.attackAMonster(monster, attackingPower);
         displayAttackMessage(attackingPower, monster, attackResults);
-        if (((int) attackResults.get("Attribute Bonus") + (int) attackResults.get("Dice Roll")) >
+        if ((attackResults.get("Attribute Bonus") + attackResults.get("Dice Roll")) >
                 monster.getDefensesMap().get(attackingPower.getDefenseToBeChecked().toLowerCase())) {
             triggerOnHit(attackingPower, hero, attackResults);
+            inflictDamageToMonster(attackResults, monster);
         } else {
             updateTheDungeonConsole("Your attack has missed.");
         }
     }
 
-    private void triggerOnHit(HeroPower attackingPower, Hero hero, Map attackResults) {
+    private void inflictDamageToMonster(Map<String, Integer> attackResults, Monster monster) {
+        int damageDealt = attackResults.get("Damage Inflicted");
+        monster.setCurrentHitPoints(monster.getCurrentHitPoints() - damageDealt);
+        System.out.println("DEBUG: " + monster.getHitPoints() + " HP");
+        System.out.println("DEBUG: " + monster.getCurrentHitPoints() + " HP");
+        System.out.println("DEBUG: " + monster.getID() + " ID");
+        if (monster.getCurrentHitPoints() < 1) {
+            updateTheDungeonConsole("The attacked monster - "+ monster.getMonsterName() + " - has fallen!");
+        }
+        else if (monster.getCurrentHitPoints()*2 < monster.getHitPoints()){
+            updateTheDungeonConsole("The attacked monster - "+ monster.getMonsterName() + " - is now bloodied.");
+        }
+    }
+
+    private void triggerOnHit(HeroPower attackingPower, Hero hero, Map<String, Integer> attackResults) {
         int weaponDamage;
         int numberOfDice;
         if (attackingPower.isThisWeaponDamage()) {
@@ -336,6 +353,7 @@ class DungeonGUI {
                 + ": "
                 + attackResults.get("Attribute Bonus"));
         updateTheDungeonConsole("You've dealt " + allDamage + " damage");
+        attackResults.put("Damage Inflicted", allDamage);
     }
 
     private void displayAttackMessage(HeroPower attackingPower, Monster monster, Map attackResults) {
@@ -415,7 +433,6 @@ class DungeonGUI {
 
     private void applyEntityIconToAButton(int heroID, Button aButton) {
         EncounterCalculator encounterCalculator = new EncounterCalculator();
-        List<Monster> monsterList = encounterCalculator.getTheListOfPossibleMonsters();
         if (heroID < 100) {
             aButton.setGraphic(new ImageView(getHeroByID(heroID, heroList).getHeroIcon()));
         } else {

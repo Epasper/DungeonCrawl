@@ -8,6 +8,7 @@ public class GoblinWarrior extends Monster {
     public GoblinWarrior() {
         this.setID(103);
         this.setHitPoints(29);
+        this.setCurrentHitPoints(29);
         this.setAC(17);
         this.setFortitude(13);
         this.setReflex(15);

@@ -8,6 +8,7 @@ public class GoblinSkullcleaver extends Monster {
     public GoblinSkullcleaver() {
         this.setID(102);
         this.setHitPoints(53);
+        this.setCurrentHitPoints(53);
         this.setAC(16);
         this.setFortitude(15);
         this.setReflex(14);
