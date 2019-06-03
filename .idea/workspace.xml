@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="de97b43a-8902-45e2-a345-dc80bad4fa20" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Model/PathFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Model/PathFinder.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/DungeonCrawl1.0/target/" />
@@ -66,8 +65,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Model/PathFinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="166" column="34" selection-start-line="166" selection-start-column="34" selection-end-line="166" selection-end-column="34" />
+            <state relative-caret-position="255">
+              <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -146,7 +145,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>listener</find>
       <find>Map</find>
       <find>heroequi</find>
       <find>backp</find>
@@ -176,6 +174,7 @@
       <find>Label</find>
       <find>heroeq</find>
       <find>done</find>
+      <find>find</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -245,8 +244,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="170" />
-    <option name="y" value="92" />
+    <option name="x" value="1739" />
+    <option name="y" value="-299" />
     <option name="width" value="1026" />
     <option name="height" value="554" />
   </component>
@@ -371,7 +370,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.algorithm">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="HelloDragAndDrop" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="HelloDragAndDrop" />
       <module name="DungeonCrawl" />
@@ -380,7 +379,7 @@
       </method>
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="sample.Main" />
+      <option name="MAIN_CLASS_NAME" value="DungeonCrawl.Main" />
       <module name="DungeonCrawl" />
       <extension name="coverage">
         <pattern>
@@ -418,8 +417,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.algorithm" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.algorithm" />
         <item itemvalue="Application.HelloDragAndDrop" />
         <item itemvalue="Application.sq" />
         <item itemvalue="JUnit.DungeonGUITest.checkTheSightForDirectionShouldReturnTheInupt" />
@@ -436,13 +435,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1556870921453</updated>
-    </task>
-    <task id="LOCAL-00050" summary="Model - added ac to fields and to SQL communication">
-      <created>1557812388477</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1557812388477</updated>
     </task>
     <task id="LOCAL-00051" summary="Monster - added fields to monsters, added &quot;monsters&quot; package, refactored fields, added getters and setters, corrected some inheritance errors">
       <created>1557813165239</created>
@@ -780,7 +772,14 @@
       <option name="project" value="LOCAL" />
       <updated>1559221471239</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL-00099" summary="Equipment GUI - Upgraded shadow casting algorithm. Has to implement it to Pathfinder.java">
+      <created>1559299180879</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1559299180879</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -800,7 +799,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49892932" visible="true" weight="0.11119516" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49892932" visible="true" weight="0.11119516" />
       <window_info id="Structure" order="1" sideWeight="0.5010707" side_tool="true" weight="0.2200489" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -813,7 +812,7 @@
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49633253" weight="0.3954984" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="TODO" order="6" sideWeight="0.76589245" visible="true" weight="0.32636657" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.76589245" visible="true" weight="0.32636657" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.21520342" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.45110023" side_tool="true" weight="0.21413276" />
       <window_info anchor="bottom" id="Version Control" order="9" />
@@ -859,7 +858,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added armor classes" />
     <MESSAGE value="Added Implements" />
     <MESSAGE value="Renamed Implements, added them to the view" />
     <MESSAGE value="Added DTO and DAO empty files for future item transactions" />
@@ -884,7 +882,8 @@
     <MESSAGE value="Equipment GUI - Popup window updated on mouse enter. DragAndDrop in equipment started." />
     <MESSAGE value="Equipment GUI - Dropping an equipment onto new slot does not update it. Have to repair" />
     <MESSAGE value="Equipment GUI - Dragging and Dropping the Items works" />
-    <option name="LAST_COMMIT_MESSAGE" value="Equipment GUI - Dragging and Dropping the Items works" />
+    <MESSAGE value="Equipment GUI - Upgraded shadow casting algorithm. Has to implement it to Pathfinder.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Equipment GUI - Upgraded shadow casting algorithm. Has to implement it to Pathfinder.java" />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/layout/Background.java">
@@ -1285,8 +1284,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Model/PathFinder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="166" column="34" selection-start-line="166" selection-start-column="34" selection-end-line="166" selection-end-column="34" />
+        <state relative-caret-position="255">
+          <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
         </state>
       </provider>
     </entry>
