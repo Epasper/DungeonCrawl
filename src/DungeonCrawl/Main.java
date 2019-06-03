@@ -12,6 +12,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         //debug SQL connection
+        //todo add an SQL method that creates a database if it doesn't already exist - for deployment purposes in the future.
         setPrimaryStage(primaryStage);
         MainMenuGUI mainMenuGUI = new MainMenuGUI();
         primaryStage.setWidth(500);

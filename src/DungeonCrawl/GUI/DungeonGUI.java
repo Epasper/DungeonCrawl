@@ -117,6 +117,8 @@ class DungeonGUI {
 
     //todo Add HPBars to portraits
 
+    //todo add a movement animation, so that the movement is more clear.
+
     private void manageTheConsoleAdding() {
         powersHBox.setStyle("-fx-background-color:grey;");
         powersHBox.setMinSize(200, 40);
