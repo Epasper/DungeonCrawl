@@ -1,0 +1,5 @@
+<?import javafx.scene.layout.GridPane?>
+
+<GridPane fx:controller="DungeonCrawl.Controller"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="2" vgap="2">
+</GridPane>
