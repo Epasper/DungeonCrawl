@@ -17,6 +17,7 @@ public class PathFinder {
         recursiveCheckDistance(dungeonMap, buttonGrid, "Start", YPos, XPos, heroSteps, "Walk Range");
         recursiveCheckDistance(dungeonMap, buttonGrid, "Start", YPos, XPos, heroInteractionSteps, "Interaction Range");
         System.out.println("X: " + XPos + " Y: " + YPos + " Speed: " + hero.getSpeed());
+
     }
 
     public void recursiveCheckDistance(DungeonMap dungeonMap, Button[][] buttonGrid, String previousDirection, int YPos, int XPos, double range, String reasonForChecking) {
@@ -85,6 +86,9 @@ public class PathFinder {
             temporaryY = YPos;
         }
         mapTile = dungeonMap.getMapTilesArray()[temporaryX][temporaryY];
+        /*if (reasonForChecking.contains("Visibility")) {
+            mapTile.setCurrentlyInvisible(false);
+        }*/
         gridButton = buttonGrid[temporaryX][temporaryY];
         if (currentDirection.contains("Room") || currentDirection.contains("Corridor") || currentDirection.contains("Opened")) {
             if (!currentDirection.contains("Occupied") || (reasonForChecking.contains("Interaction"))) {
@@ -208,4 +212,42 @@ public class PathFinder {
 
     }
 
+    public void checkTheVisibilityRange(Hero hero, DungeonMap dungeonMap) {
+        int visibilityRange = 10;
+        int XPos = hero.getMapXPos();
+        int YPos = hero.getMapYPos();
+        boolean breakTheOuterLoop = false;
+        for (int a = -1; a < 2; a += 2) {
+            for (int b = -1; b < 2; b += 2) {
+                breakTheOuterLoop = false;
+/*                if (a == 0 || b == 0) {
+                    continue;
+                }*/
+                for (int i = 0; i < visibilityRange; i++) {
+                    if (breakTheOuterLoop) break;
+                    for (int j = 0; j < visibilityRange; j++) {
+                        try {
+                            if (dungeonMap.getMapTilesArray()[i * a + XPos][j * b + YPos].typeOfTile.contains("Wall") ||
+                                    dungeonMap.getMapTilesArray()[i * a + XPos][j * b + YPos].typeOfTile.contains("Door")) {
+                                if (j == 0) {
+                                    if(Math.abs(i) != 1){
+                                        breakTheOuterLoop = true;
+                                    }
+                                }
+                                break;
+                            } else {
+                                dungeonMap.getMapTilesArray()[i * a + XPos][j * b + YPos].setCurrentlyInvisible(false);
+                                dungeonMap.getMapTilesArray()[i * a + XPos][j * b + YPos].setAlreadyDiscovered(true);
+
+                            }
+                        } catch (IndexOutOfBoundsException e) {
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
+
+

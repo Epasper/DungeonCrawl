@@ -66,7 +66,7 @@ class DungeonGUI {
     private ScrollPane mapScrollPane = new ScrollPane();
     private EncounterCalculator encounterCalculator = new EncounterCalculator();
     private List<Monster> monsterList = encounterCalculator.getTheListOfPossibleMonsters();
-    private List <Button> listOfHeroButtons = new ArrayList<>();
+    private List<Button> listOfHeroButtons = new ArrayList<>();
 
 
     private DungeonMap getDungeonMap() {
@@ -130,6 +130,7 @@ class DungeonGUI {
         consoleButtons.getChildren().add(equipmentButton);
         for (Hero hero : heroList) {
             Button heroButton = new Button();
+
             heroButton.setId(String.valueOf(hero.getID()));
             heroButton.setGraphic(new ImageView(hero.getHeroIcon()));
             heroButton.setOnAction(event -> buttonEvent(heroButton, hero.getMapXPos(), hero.getMapYPos()));
@@ -152,7 +153,7 @@ class DungeonGUI {
 
     private void viewMapEvent() {
         mapOuterPane.setCenter(mapScrollPane);
-        for (Button heroButton: listOfHeroButtons) {
+        for (Button heroButton : listOfHeroButtons) {
             int thisButtonID = Integer.valueOf(heroButton.getId());
             Hero currentHero = getHeroByID(thisButtonID, heroList);
             heroButton.setOnAction(event -> buttonEvent(heroButton, currentHero.getMapXPos(), currentHero.getMapYPos()));
@@ -267,6 +268,9 @@ class DungeonGUI {
         }
         updateMapGraphics(dungeonMap);
     }
+    //todo change the monster portrait after it being bloodied and/or killed (try BufferedImages)
+
+    //todo change the visibility checker, so it actually checks for visibility.
 
     private void updateMapGraphics(DungeonMap dungeonMap) {
         for (int i = 0; i < mapWidth; i++) {
@@ -275,7 +279,7 @@ class DungeonGUI {
                 String typeOfTile;
                 typeOfTile = dungeonMap.getMapTilesArray()[i][j].typeOfTile;
                 //debug mode only - make the whole dungeonMap alreadyDiscovered:
-                dungeonMap.getMapTilesArray()[i][j].alreadyDiscovered = true;
+                //dungeonMap.getMapTilesArray()[i][j].alreadyDiscovered = true;
                 applyATileImageToAButton(typeOfTile, buttonGrid[i][j]);
                 if (currentEntityID > 0) {
                     applyEntityIconToAButton(currentEntityID, buttonGrid[i][j]);
@@ -431,6 +435,7 @@ class DungeonGUI {
     }
 
     private void eventOnHeroMovement(Button aButton, int XPos, int YPos) {
+        PathFinder pathFinder = new PathFinder();
         Hero hero = getHeroByID(getCurrentlyActiveHeroID(), heroList);
         getDungeonMap().getMapTilesArray()[hero.getMapXPos()][hero.getMapYPos()].setOccupyingCreatureId(0);
         getDungeonMap().getMapTilesArray()[XPos][YPos].setOccupyingCreatureId(getCurrentlyActiveHeroID());
@@ -451,6 +456,7 @@ class DungeonGUI {
                 numberOfHeroesThatFinishedMovement = 0;
             }
         }
+        pathFinder.checkTheVisibilityRange(hero, dungeonMap);
     }
 
     private void eventOnPowerSelect(Hero currentHero, HeroPower selectedPower) {

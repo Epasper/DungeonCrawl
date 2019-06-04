@@ -12,6 +12,14 @@ public class MapTile {
     public boolean currentlyInvisible = false;
     public boolean currentlyBehindCover = false;
 
+    public boolean isAlreadyDiscovered() {
+        return alreadyDiscovered;
+    }
+
+    public void setAlreadyDiscovered(boolean alreadyDiscovered) {
+        this.alreadyDiscovered = alreadyDiscovered;
+    }
+
     public boolean isCurrentlyInvisible() {
         return currentlyInvisible;
     }
