@@ -1,5 +1,6 @@
 package DungeonCrawl.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -10,6 +11,16 @@ public class DungeonMap {
     private MapTile[][] mapTilesArray = new MapTile[numberOfTilesX][numberOfTilesY];
     private boolean isThisTheFirstSpawningRoom = true;
     private List<Hero> heroList;
+    private List<Monster> allMonstersList = new ArrayList<>();
+    private int currentMonsterUniqueID = 1;
+
+    public List<Monster> getAllMonstersList() {
+        return allMonstersList;
+    }
+
+    public void setAllMonstersList(List<Monster> allMonstersList) {
+        this.allMonstersList = allMonstersList;
+    }
 
     public List<Hero> getHeroList() {
         return heroList;
@@ -294,24 +305,30 @@ public class DungeonMap {
         for (Hero hero : heroList) {
             System.out.println(hero.getMonsterName() + " Hero Level: " + hero.getHeroLevel());
         }
-        List<Monster> monsterList = encounterCalculator.getTheListOfMonsters(heroList, "Hard");
+        List<Monster> monsterList = encounterCalculator.getTheListOfMonsters(heroList, "Hard", currentMonsterUniqueID);
+        currentMonsterUniqueID += monsterList.size();
         System.out.println("MONSTER LIST FOR MONSTER CALCULATIONS: ");
-        for (Monster hero : monsterList) {
-            System.out.println(hero.getMonsterName() + " Hero Experience: " + hero.getXpValue());
+        for (Monster currentMonster : monsterList) {
+            System.out.println(currentMonster.getMonsterName() + " Monster Experience: " + currentMonster.getXpValue());
         }
         for (int i = 0; i < monsterList.size(); i++) {
             currentMonsterXPos = randX.nextInt(room.roomWidth);
             currentMonsterYPos = randY.nextInt(room.roomHeight);
             Monster currentMonster = monsterList.get(i);
-            if (getMapTilesArray()[room.roomXPos + currentMonsterXPos][room.roomYPos + currentMonsterYPos].getOccupyingCreatureId() == 0) {
-                getMapTilesArray()[room.roomXPos + currentMonsterXPos][room.roomYPos + currentMonsterYPos].setOccupyingCreatureId(currentMonster.getID());
+            System.out.println("Monster UUID: " + currentMonster.getCurrentMonsterUniqueID() + "---" + currentMonsterUniqueID);
+            if (getMapTilesArray()[room.roomXPos + currentMonsterXPos][room.roomYPos + currentMonsterYPos].getOccupyingCreatureTypeId() == 0) {
+                getMapTilesArray()[room.roomXPos + currentMonsterXPos][room.roomYPos + currentMonsterYPos].setOccupyingCreatureTypeId(currentMonster.getID());
+                currentMonsterUniqueID++;
+                getMapTilesArray()[room.roomXPos + currentMonsterXPos][room.roomYPos + currentMonsterYPos].setOccupyingCreatureUniqueID(currentMonster.getCurrentMonsterUniqueID());
                 currentMonster.setMapXPos(room.roomXPos + currentMonsterXPos);
                 currentMonster.setMapYPos(room.roomYPos + currentMonsterYPos);
                 System.out.println("Monster Spawning: " + currentMonster.getMonsterName() + " X: " + currentMonster.getMapXPos() + " Y: " + currentMonster.getMapYPos());
+                System.out.println("Monster UUID: " + currentMonster.getCurrentMonsterUniqueID() + "|||" + currentMonsterUniqueID);
             } else {
                 i--;
             }
         }
+        allMonstersList.addAll(monsterList);
     }
 
     public void clearMapReachableProperties(DungeonMap dungeonMap) {
@@ -334,8 +351,8 @@ public class DungeonMap {
             currentHeroYPos = randY.nextInt(room.roomHeight);
             Hero currentHero = heroList.get(i);
             System.out.println("Name of current spawning hero: " + heroList.get(i).getMonsterName());
-            if (getMapTilesArray()[room.roomXPos + currentHeroXPos][room.roomYPos + currentHeroYPos].getOccupyingCreatureId() == 0) {
-                getMapTilesArray()[room.roomXPos + currentHeroXPos][room.roomYPos + currentHeroYPos].setOccupyingCreatureId(currentHero.getID());
+            if (getMapTilesArray()[room.roomXPos + currentHeroXPos][room.roomYPos + currentHeroYPos].getOccupyingCreatureTypeId() == 0) {
+                getMapTilesArray()[room.roomXPos + currentHeroXPos][room.roomYPos + currentHeroYPos].setOccupyingCreatureTypeId(currentHero.getID());
                 currentHero.setMapXPos(room.roomXPos + currentHeroXPos);
                 currentHero.setMapYPos(room.roomYPos + currentHeroYPos);
                 System.out.println("Hero Class: " + currentHero.getHeroClass() + " X: " + currentHero.getMapXPos() + " Y: " + currentHero.getMapYPos());

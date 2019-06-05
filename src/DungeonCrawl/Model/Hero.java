@@ -51,7 +51,6 @@ public class Hero extends Creature {
         this.heroEquipment = heroEquipment;
     }
 
-    //todo remove all icons from HDD after reconnecting things to SQL
     private Image heroIcon = new Image(getClass().getResourceAsStream("icon1.png"));
 
     public Hero() {
@@ -349,6 +348,8 @@ public class Hero extends Creature {
         Map<String, Integer> valuesToBeReturned = new HashMap<>();
         String usedAttribute = powerUsedForAttacking.getAttributeUsedToHit();
         heroAttributesMap.forEach((k, v) -> System.out.println("Hero Attribute: " + k + " Value: " + v));
+        System.out.println("Attacked Monster: " + attackedMonster.getMonsterName());
+        System.out.println("Attacked Monster UUID: " + attackedMonster.getCurrentMonsterUniqueID());
         System.out.println(usedAttribute);
         int attributeBonus = (heroAttributesMap.get(usedAttribute.toLowerCase()) - 10) / 2;
         String attackedDefense = powerUsedForAttacking.getDefenseToBeChecked().toLowerCase();

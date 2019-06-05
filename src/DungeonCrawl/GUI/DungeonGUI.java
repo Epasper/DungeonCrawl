@@ -1,6 +1,5 @@
 package DungeonCrawl.GUI;
 
-import javafx.collections.ObservableList;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -65,7 +64,8 @@ class DungeonGUI {
     private List<HeroPower> currentPower = new ArrayList<>();
     private ScrollPane mapScrollPane = new ScrollPane();
     private EncounterCalculator encounterCalculator = new EncounterCalculator();
-    private List<Monster> monsterList = encounterCalculator.getTheListOfPossibleMonsters();
+    private List<Monster> possibleMonsterTypes = encounterCalculator.getTheListOfPossibleMonsters();
+    private List<Monster> allMonstersList = dungeonMap.getAllMonstersList();
     private List<Button> listOfHeroButtons = new ArrayList<>();
 
 
@@ -119,6 +119,8 @@ class DungeonGUI {
 
     //todo add a movement animation, so that the movement is more clear.
 
+    //todo a method that identifies a flanking position. ?Maybe in pathfinder class?
+
     private void manageTheConsoleAdding() {
         powersHBox.setStyle("-fx-background-color:grey;");
         powersHBox.setMinSize(200, 40);
@@ -130,7 +132,6 @@ class DungeonGUI {
         consoleButtons.getChildren().add(equipmentButton);
         for (Hero hero : heroList) {
             Button heroButton = new Button();
-
             heroButton.setId(String.valueOf(hero.getID()));
             heroButton.setGraphic(new ImageView(hero.getHeroIcon()));
             heroButton.setOnAction(event -> buttonEvent(heroButton, hero.getMapXPos(), hero.getMapYPos()));
@@ -244,10 +245,20 @@ class DungeonGUI {
         return returnedHero;
     }
 
-    private Monster getMonsterByID(int ID, List<Monster> listOfMonsters) {
+    private Monster getMonsterTypeByID(int ID, List<Monster> listOfMonsters) {
         Monster returnedMonster = new Monster();
         for (Monster aMonster : listOfMonsters) {
             if (aMonster.getID() == ID) {
+                return aMonster;
+            }
+        }
+        return returnedMonster;
+    }
+
+    private Monster getSingleMonsterByUniqueID(int uniqueID, List<Monster> listOfMonsters) {
+        Monster returnedMonster = new Monster();
+        for (Monster aMonster : listOfMonsters) {
+            if (aMonster.getCurrentMonsterUniqueID() == uniqueID) {
                 return aMonster;
             }
         }
@@ -275,7 +286,7 @@ class DungeonGUI {
     private void updateMapGraphics(DungeonMap dungeonMap) {
         for (int i = 0; i < mapWidth; i++) {
             for (int j = 0; j < mapHeight; j++) {
-                int currentEntityID = dungeonMap.getMapTilesArray()[i][j].getOccupyingCreatureId();
+                int currentEntityID = dungeonMap.getMapTilesArray()[i][j].getOccupyingCreatureTypeId();
                 String typeOfTile;
                 typeOfTile = dungeonMap.getMapTilesArray()[i][j].typeOfTile;
                 //debug mode only - make the whole dungeonMap alreadyDiscovered:
@@ -293,7 +304,7 @@ class DungeonGUI {
 
     private void buttonEvent(Button aButton, int XPos, int YPos) {
         String currentTypeOfTile = getDungeonMap().getMapTilesArray()[XPos][YPos].getTypeOfTile();
-        int currentHeroID = getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureId();
+        int currentHeroID = getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureTypeId();
         boolean isTheTileInteractive = getDungeonMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange();
         if (isHasTheCharacterBeenSelected() && currentHeroID > 0) {
             eventOnReachableTileClick();
@@ -322,10 +333,19 @@ class DungeonGUI {
         System.out.println("Stage is closing");
     }
 
+    //todo attacking a monster now subtracts HP from all monsters of this type.
+
     private void eventOnHeroAttackingAMonster(int XPos, int YPos, HeroPower attackingPower) {
         Hero hero = getHeroByID(getCurrentlyActiveHeroID(), heroList);
-        EncounterCalculator encounterCalculator = new EncounterCalculator();
-        Monster monster = getMonsterByID(getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureId(), monsterList);
+        System.out.println("Attacking a monster with unique ID: " + getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID());
+        Monster monster = getSingleMonsterByUniqueID(getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID(), allMonstersList);
+        System.out.println("LIST OF ALL MONSTERS:");
+        for (Monster currentMonster : allMonstersList) {
+            System.out.println(currentMonster.getMonsterName());
+            System.out.println(currentMonster.getID());
+            System.out.println(currentMonster.getCurrentMonsterUniqueID());
+        }
+        System.out.println("ID From Tile: " + getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID());
         Map<String, Integer> attackResults = hero.attackAMonster(monster, attackingPower);
         displayAttackMessage(attackingPower, monster, attackResults);
         if ((attackResults.get("Attribute Bonus") + attackResults.get("Dice Roll")) >
@@ -437,8 +457,8 @@ class DungeonGUI {
     private void eventOnHeroMovement(Button aButton, int XPos, int YPos) {
         PathFinder pathFinder = new PathFinder();
         Hero hero = getHeroByID(getCurrentlyActiveHeroID(), heroList);
-        getDungeonMap().getMapTilesArray()[hero.getMapXPos()][hero.getMapYPos()].setOccupyingCreatureId(0);
-        getDungeonMap().getMapTilesArray()[XPos][YPos].setOccupyingCreatureId(getCurrentlyActiveHeroID());
+        getDungeonMap().getMapTilesArray()[hero.getMapXPos()][hero.getMapYPos()].setOccupyingCreatureTypeId(0);
+        getDungeonMap().getMapTilesArray()[XPos][YPos].setOccupyingCreatureTypeId(getCurrentlyActiveHeroID());
         int deltaX = Math.abs(hero.getMapXPos() - XPos);
         int deltaY = Math.abs(hero.getMapYPos() - YPos);
         hero.setCurrentSpeed(hero.getCurrentSpeed() - (deltaX + deltaY));
@@ -471,7 +491,7 @@ class DungeonGUI {
         if (heroID < 100) {
             aButton.setGraphic(new ImageView(getHeroByID(heroID, heroList).getHeroIcon()));
         } else {
-            aButton.setGraphic(new ImageView(getMonsterByID(heroID, monsterList).getMonsterImage()));
+            aButton.setGraphic(new ImageView(getMonsterTypeByID(heroID, possibleMonsterTypes).getMonsterImage()));
         }
     }
 

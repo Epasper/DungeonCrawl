@@ -36,6 +36,7 @@ public class HeroClassInformation {
     private Map<String, List<HeroPower>> dailyPowersAtLevel1 = new HashMap<>();
     private Map<String, List<HeroPower>> dailyPowers = new HashMap<>();
     private Map<String, List<String>> classTraits = new HashMap<>();
+    private Map<String, List<String>> classProficiencies = new HashMap<>();
 
     public Map<String, List<HeroPower>> getDailyPowersAtLevel1() {
         return dailyPowersAtLevel1;

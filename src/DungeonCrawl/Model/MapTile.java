@@ -5,7 +5,8 @@ import java.util.Random;
 public class MapTile {
 
     public String typeOfTile;
-    private int occupyingCreatureId = 0;
+    private int occupyingCreatureTypeId = 0;
+    private int occupyingCreatureUniqueID = 0;
     public boolean inWalkRange = false;
     public boolean alreadyDiscovered = false;
     public boolean withinInteractionRange = false;
@@ -14,6 +15,14 @@ public class MapTile {
 
     public boolean isAlreadyDiscovered() {
         return alreadyDiscovered;
+    }
+
+    public int getOccupyingCreatureUniqueID() {
+        return occupyingCreatureUniqueID;
+    }
+
+    public void setOccupyingCreatureUniqueID(int occupyingCreatureUniqueID) {
+        this.occupyingCreatureUniqueID = occupyingCreatureUniqueID;
     }
 
     public void setAlreadyDiscovered(boolean alreadyDiscovered) {
@@ -44,12 +53,12 @@ public class MapTile {
         this.typeOfTile = typeOfTile;
     }
 
-    public void setOccupyingCreatureId(int occupyingCreatureId) {
-        this.occupyingCreatureId = occupyingCreatureId;
+    public void setOccupyingCreatureTypeId(int occupyingCreatureTypeId) {
+        this.occupyingCreatureTypeId = occupyingCreatureTypeId;
     }
 
-    public int getOccupyingCreatureId() {
-        return occupyingCreatureId;
+    public int getOccupyingCreatureTypeId() {
+        return occupyingCreatureTypeId;
     }
 
     public boolean isInWalkRange() {

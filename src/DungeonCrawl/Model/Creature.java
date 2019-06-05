@@ -6,6 +6,7 @@ import java.util.Map;
 public class Creature {
     public String heroName;
     private int ID;
+    private int currentMonsterUniqueID;
     private int mapXPos;
     private int mapYPos;
     private int hitPoints;
@@ -17,6 +18,14 @@ public class Creature {
     private int will;
     private int AC;
     private Map<String, Integer> defensesMap = new HashMap<>();
+
+    public int getCurrentMonsterUniqueID() {
+        return currentMonsterUniqueID;
+    }
+
+    public void setCurrentMonsterUniqueID(int currentMonsterUniqueID) {
+        this.currentMonsterUniqueID = currentMonsterUniqueID;
+    }
 
     public int getCurrentHitPoints() {
         return currentHitPoints;

@@ -59,7 +59,7 @@ public class MainMenuGUI {
                 e.printStackTrace();
             }
         });
-        //todo add hero selector to manage equipment properly
+        //todo modify the equipment selector, so it shows all available characters
         manageEquipmentButton.setOnAction(event -> {
             PartySelectorGUI partySelectorGUI = null;
             try {

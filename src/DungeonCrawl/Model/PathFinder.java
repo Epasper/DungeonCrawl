@@ -31,28 +31,28 @@ public class PathFinder {
         String currentTileTypeSouth = "South";
         try {
             currentTileTypeNorth += dungeonMap.getMapTilesArray()[XPos][YPos + 1].typeOfTile;
-            if (dungeonMap.getMapTilesArray()[XPos][YPos + 1].getOccupyingCreatureId() > 0) {
+            if (dungeonMap.getMapTilesArray()[XPos][YPos + 1].getOccupyingCreatureTypeId() > 0) {
                 currentTileTypeNorth += "Occupied";
             }
         } catch (IndexOutOfBoundsException ignored) {
         }
         try {
             currentTileTypeEast += dungeonMap.getMapTilesArray()[XPos + 1][YPos].typeOfTile;
-            if (dungeonMap.getMapTilesArray()[XPos + 1][YPos].getOccupyingCreatureId() > 0) {
+            if (dungeonMap.getMapTilesArray()[XPos + 1][YPos].getOccupyingCreatureTypeId() > 0) {
                 currentTileTypeEast += "Occupied";
             }
         } catch (IndexOutOfBoundsException ignored) {
         }
         try {
             currentTileTypeWest += dungeonMap.getMapTilesArray()[XPos - 1][YPos].typeOfTile;
-            if (dungeonMap.getMapTilesArray()[XPos - 1][YPos].getOccupyingCreatureId() > 0) {
+            if (dungeonMap.getMapTilesArray()[XPos - 1][YPos].getOccupyingCreatureTypeId() > 0) {
                 currentTileTypeWest += "Occupied";
             }
         } catch (IndexOutOfBoundsException ignored) {
         }
         try {
             currentTileTypeSouth += dungeonMap.getMapTilesArray()[XPos][YPos - 1].typeOfTile;
-            if (dungeonMap.getMapTilesArray()[XPos][YPos - 1].getOccupyingCreatureId() > 0) {
+            if (dungeonMap.getMapTilesArray()[XPos][YPos - 1].getOccupyingCreatureTypeId() > 0) {
                 currentTileTypeSouth += "Occupied";
             }
         } catch (IndexOutOfBoundsException ignored) {
@@ -117,7 +117,7 @@ public class PathFinder {
         } else if (reasonForChecking.contains("Interact")) {
             mapTile.withinInteractionRange = true;
             gridButton.setStyle("-fx-color: #ffff00");
-            if (mapTile.getOccupyingCreatureId() > 100) {
+            if (mapTile.getOccupyingCreatureTypeId() > 100) {
                 gridButton.setStyle("-fx-color: #ff0000");
             }
         }
@@ -156,7 +156,7 @@ public class PathFinder {
                     int currentXPos = XPos + i * dir1;
                     int currentYPos = YPos + j * dir2;
                     MapTile currentMapTile = dungeonMap.getMapTilesArray()[currentXPos][currentYPos];
-                    boolean mapTileIsOccupied = currentMapTile.getOccupyingCreatureId() > 0;
+                    boolean mapTileIsOccupied = currentMapTile.getOccupyingCreatureTypeId() > 0;
                     if (!currentMapTile.isCurrentlyBehindCover() || !currentMapTile.isCurrentlyInvisible()) {
                         if (mapTileIsOccupied) {
                             for (int k = 0; k < 5; k++) {
@@ -230,7 +230,7 @@ public class PathFinder {
                             if (dungeonMap.getMapTilesArray()[i * a + XPos][j * b + YPos].typeOfTile.contains("Wall") ||
                                     dungeonMap.getMapTilesArray()[i * a + XPos][j * b + YPos].typeOfTile.contains("Door")) {
                                 if (j == 0) {
-                                    if(Math.abs(i) != 1){
+                                    if (Math.abs(i) != 1) {
                                         breakTheOuterLoop = true;
                                     }
                                 }
@@ -238,7 +238,7 @@ public class PathFinder {
                             } else {
                                 dungeonMap.getMapTilesArray()[i * a + XPos][j * b + YPos].setCurrentlyInvisible(false);
                                 dungeonMap.getMapTilesArray()[i * a + XPos][j * b + YPos].setAlreadyDiscovered(true);
-
+                                verifyIfTheMonstersOnThisTileAreAlarmed(dungeonMap.getMapTilesArray()[i * a + XPos][j * b + YPos]);
                             }
                         } catch (IndexOutOfBoundsException e) {
                             break;
@@ -246,6 +246,12 @@ public class PathFinder {
                     }
                 }
             }
+        }
+    }
+
+    private void verifyIfTheMonstersOnThisTileAreAlarmed(MapTile currentMapTile) {
+        if (currentMapTile.getOccupyingCreatureTypeId()>100) {
+
         }
     }
 }
