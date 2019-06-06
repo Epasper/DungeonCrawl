@@ -6,6 +6,8 @@ public class Item {
 
     //todo write the daily powers for level 1. Last updated: Cleric
 
+    //todo change a map of items to item factory
+
     protected String itemName;
     protected String itemType;
     protected String itemSlot;

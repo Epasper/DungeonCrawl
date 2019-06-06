@@ -4,6 +4,8 @@ public abstract class HeroPower {
 
     //todo write the daily powers for level 1. Last updated: Cleric
 
+    //todo maybe change a map of powers into a power factory?
+
     protected String powerName;
     protected String characterClass;
     protected String typeOfPower;
