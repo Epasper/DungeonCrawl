@@ -82,7 +82,7 @@ public class PartySelectorGUI {
         }
         DungeonGUI dungeonGui = new DungeonGUI(listOfSelectedHeroes);
         aStage.close();
-        aScene.getStylesheets().add("DungeonCrawl/Styling/Caspian.css");
+        //aScene.getStylesheets().add("DungeonCrawl/Styling/Caspian.css");
         aStage.setTitle("Dungeon");
         aScene.setRoot(dungeonGui.mapOuterPane);
         aStage.getIcons().add(new Image("DungeonCrawl/GUI/Images/WindowsIcons/dungeonIcon.jpg"));

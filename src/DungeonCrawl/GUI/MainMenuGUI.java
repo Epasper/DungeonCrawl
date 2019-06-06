@@ -71,7 +71,7 @@ public class MainMenuGUI {
             aStage.close();
             assert partySelectorGUI != null;
             aScene.setRoot(partySelectorGUI.partySelectorOuterPlane);
-            aScene.getStylesheets().add("DungeonCrawl/Styling/Caspian.css");
+            //aScene.getStylesheets().add("DungeonCrawl/Styling/Caspian.css");
             aStage.setMaximized(true);
             //aScene.setRoot(dungeonGui.mapScrollPane);
             aStage.setScene(aScene);
@@ -96,7 +96,7 @@ public class MainMenuGUI {
         //DungeonGUI dungeonGui = new DungeonGUI();
         aStage.close();
         aScene.setRoot(partySelectorGUI.partySelectorOuterPlane);
-        aScene.getStylesheets().add("DungeonCrawl/Styling/Caspian.css");
+        //aScene.getStylesheets().add("DungeonCrawl/Styling/Caspian.css");
         aStage.setMaximized(true);
         //aScene.setRoot(dungeonGui.mapScrollPane);
         aStage.setScene(aScene);
@@ -107,7 +107,7 @@ public class MainMenuGUI {
         ItemShopGUI itemShopGUI = new ItemShopGUI();
         aStage.close();
         aScene.setRoot(itemShopGUI.itemShopOuterPane);
-        aScene.getStylesheets().add("DungeonCrawl/Styling/Caspian.css");
+        //aScene.getStylesheets().add("DungeonCrawl/Styling/Caspian.css");
         aStage.setMaximized(true);
         aStage.setScene(aScene);
         aStage.show();

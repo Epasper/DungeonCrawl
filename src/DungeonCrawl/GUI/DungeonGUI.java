@@ -1,5 +1,6 @@
 package DungeonCrawl.GUI;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -269,7 +270,12 @@ class DungeonGUI {
         for (int i = 0; i < mapWidth; i++) {
             for (int j = 0; j < mapHeight; j++) {
                 Button aButton = new Button();
+/*                aButton.setStyle(".button {-fx-padding: 0 0 0 0};");
+                aButton.setStyle(".button {-fx-background-radius: 0,0,0;}");
+                aButton.setStyle(".button {-fx-background-insets: 0,0,0;}");*/
+                aButton.setPadding(new Insets(1));
                 aButton.setMaxSize(50, 50);
+                aButton.setStyle("-fx-background-radius: 0");
                 buttonGrid[i][j] = aButton;
                 int finalJ = j;
                 int finalI = i;

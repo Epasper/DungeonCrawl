@@ -20,6 +20,7 @@ linear-gradient(to bottom, derive(-fx-base,+50%), derive(-fx-base,-40%), derive(
 
 .button {
 -fx-background-color: transparent;
+-fx-background-radius: 0
 }
 
 .button:hover {
