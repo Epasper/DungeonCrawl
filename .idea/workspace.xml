@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de97b43a-8902-45e2-a345-dc80bad4fa20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/Styling/flatBee.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/GUI/DungeonConsoleGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/GUI/DungeonGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/GUI/DungeonGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/GUI/MainMenuGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/GUI/MainMenuGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/GUI/PartySelectorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/GUI/PartySelectorGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/Styling/CharacterCreator.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/Styling/CharacterCreator.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/DungeonCrawl1.0/target/" />
@@ -25,11 +22,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/DungeonGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2618">
-              <caret line="330" column="66" selection-start-line="330" selection-start-column="66" selection-end-line="330" selection-end-column="66" />
+            <state relative-caret-position="336">
+              <caret line="452" column="56" lean-forward="true" selection-start-line="452" selection-start-column="56" selection-end-line="452" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/DungeonConsoleGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#375#376#0" expanded="true" />
+                <element signature="e#412#413#0" expanded="true" />
+                <element signature="e#476#477#0" expanded="true" />
+                <element signature="e#528#529#0" expanded="true" />
+                <element signature="e#195#196#0" expanded="true" />
+                <element signature="e#233#234#0" expanded="true" />
+                <element signature="e#379#380#0" expanded="true" />
+                <element signature="e#433#434#0" expanded="true" />
+                <element signature="e#499#500#0" expanded="true" />
+                <element signature="e#559#560#0" expanded="true" />
+                <element signature="e#358#359#0" expanded="true" />
+                <element signature="e#399#400#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -46,7 +67,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Styling/CharacterCreator.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="294">
@@ -83,18 +104,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="192">
               <caret line="103" column="6" selection-start-line="103" selection-start-column="6" selection-end-line="103" selection-end-column="6" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="35" lean-forward="true" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -141,8 +150,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Label</find>
-      <find>heroeq</find>
       <find>done</find>
       <find>find</find>
       <find>info</find>
@@ -171,6 +178,8 @@
       <find>butt</find>
       <find>buttong</find>
       <find>buttongr</find>
+      <find>consol</find>
+      <find>cons</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -179,8 +188,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/sample/DTO/ItemShopDTO.java" />
-        <option value="$PROJECT_DIR$/src/sample/Model/DungeonMap.java" />
         <option value="$PROJECT_DIR$/src/sample/Model/Monster.java" />
         <option value="$PROJECT_DIR$/src/sample/StaticRules/HeroClassInformation.java" />
         <option value="$PROJECT_DIR$/src/sample/Model/Hero.java" />
@@ -228,8 +235,10 @@
         <option value="$PROJECT_DIR$/src/DungeonCrawl/Styling/flatBee.java" />
         <option value="$PROJECT_DIR$/src/DungeonCrawl/Styling/flatBee.css" />
         <option value="$PROJECT_DIR$/src/DungeonCrawl/GUI/CharacterCreatorGUI.java" />
-        <option value="$PROJECT_DIR$/src/DungeonCrawl/GUI/DungeonGUI.java" />
         <option value="$PROJECT_DIR$/src/DungeonCrawl/Styling/CharacterCreator.css" />
+        <option value="$PROJECT_DIR$/src/DungeonCrawl/GUI/PowersBoxGUI.java" />
+        <option value="$PROJECT_DIR$/src/DungeonCrawl/GUI/DungeonConsoleGUI.java" />
+        <option value="$PROJECT_DIR$/src/DungeonCrawl/GUI/DungeonGUI.java" />
       </list>
     </option>
   </component>
@@ -421,13 +430,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1556870921453</updated>
-    </task>
-    <task id="LOCAL-00059" summary="Dungeon GUI - visibility checker almost finished">
-      <created>1557835532957</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1557835532958</updated>
     </task>
     <task id="LOCAL-00060" summary="Dungeon GUI - visibility checker even closer to finishing, but it appeared to be tougher than expected.">
       <created>1557907078023</created>
@@ -765,7 +767,14 @@
       <option name="project" value="LOCAL" />
       <updated>1559738333860</updated>
     </task>
-    <option name="localTasksCounter" value="108" />
+    <task id="LOCAL-00108" summary="Dungeon GUI - Changed the view of a dungeon (displaying frame is now smaller and dungeon is more compact)">
+      <created>1559808569861</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1559808569861</updated>
+    </task>
+    <option name="localTasksCounter" value="109" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -817,7 +826,6 @@
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added weapons viewing to the shop" />
     <MESSAGE value="Item Shop - added hero buying option. SQL tables to be corrected next" />
     <MESSAGE value="Item shop adds items to backpack, gold is working. SQL has been updated." />
     <MESSAGE value="Cleaned the todo list, minor tweaks and refactors" />
@@ -842,29 +850,10 @@
     <MESSAGE value="Added few todos" />
     <MESSAGE value="Dungeon GUI - added visibility checker" />
     <MESSAGE value="Dungeon GUI - UUID is now set and read from each unique monster in the dungeon" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dungeon GUI - UUID is now set and read from each unique monster in the dungeon" />
+    <MESSAGE value="Dungeon GUI - Changed the view of a dungeon (displaying frame is now smaller and dungeon is more compact)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dungeon GUI - Changed the view of a dungeon (displaying frame is now smaller and dungeon is more compact)" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Items/Weapons/Greataxe.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="7" selection-start-line="7" selection-end-line="21" selection-end-column="94" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Items/Weapons/Broadsword.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="7" selection-start-line="7" selection-end-line="21" selection-end-column="96" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Items/Weapons/Battleaxe.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -1239,13 +1228,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/DungeonGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2618">
-          <caret line="330" column="66" selection-start-line="330" selection-start-column="66" selection-end-line="330" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Styling/Caspian.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -1267,6 +1249,42 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/PowersBoxGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/DungeonConsoleGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#375#376#0" expanded="true" />
+            <element signature="e#412#413#0" expanded="true" />
+            <element signature="e#476#477#0" expanded="true" />
+            <element signature="e#528#529#0" expanded="true" />
+            <element signature="e#195#196#0" expanded="true" />
+            <element signature="e#233#234#0" expanded="true" />
+            <element signature="e#379#380#0" expanded="true" />
+            <element signature="e#433#434#0" expanded="true" />
+            <element signature="e#499#500#0" expanded="true" />
+            <element signature="e#559#560#0" expanded="true" />
+            <element signature="e#358#359#0" expanded="true" />
+            <element signature="e#399#400#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/DungeonGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="452" column="56" lean-forward="true" selection-start-line="452" selection-start-column="56" selection-end-line="452" selection-end-column="56" />
         </state>
       </provider>
     </entry>

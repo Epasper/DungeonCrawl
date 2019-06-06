@@ -1,7 +1,6 @@
 package DungeonCrawl.GUI;
 
 import javafx.geometry.Insets;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -11,8 +10,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
-import javafx.stage.Screen;
 import DungeonCrawl.*;
 import DungeonCrawl.DAO.ItemsDAO;
 import DungeonCrawl.HeroPowers.HeroPower;
@@ -35,10 +32,9 @@ class DungeonGUI {
     private GridPane mapGridPane = new GridPane();
     private HBox powersHBox = new HBox();
     private VBox portraitsVBox = new VBox();
-    private VBox consoleButtons = new VBox();
+    private VBox controlsButtons = new VBox();
     BorderPane mapOuterPane = new BorderPane();
-    private Text dungeonConsoleText = new Text();
-    private GridPane completeConsole = new GridPane();
+    private DungeonConsoleGUI dungeonConsoleGUI = new DungeonConsoleGUI();
     private Image wallImage = new Image(getClass().getResourceAsStream("Images\\MapElements\\wall.png"));
     private Image floorImage = new Image(getClass().getResourceAsStream("Images\\MapElements\\floor.png"));
     private Image fogImage = new Image(getClass().getResourceAsStream("Images\\MapElements\\fog.png"));
@@ -61,7 +57,6 @@ class DungeonGUI {
     private int currentlyActiveHeroID;
     private boolean hasTheCharacterBeenSelected = false;
     private int numberOfHeroesThatFinishedMovement;
-    private ScrollPane dungeonConsole = new ScrollPane();
     private List<HeroPower> currentPower = new ArrayList<>();
     private ScrollPane mapScrollPane = new ScrollPane();
     private EncounterCalculator encounterCalculator = new EncounterCalculator();
@@ -93,7 +88,7 @@ class DungeonGUI {
     DungeonGUI(List<Hero> heroList) {
         this.heroList = heroList;
         manageTheConsoleAdding();
-        dungeonConsole.setContent(dungeonConsoleText);
+        dungeonConsoleGUI.getDungeonConsole().setContent(dungeonConsoleGUI.getDungeonConsoleText());
         mapOuterPane.setCenter(mapScrollPane);
         mapScrollPane.setContent(mapGridPane);
         Button returnToMainMenu = new Button();
@@ -129,8 +124,8 @@ class DungeonGUI {
         Button viewDungeon = new Button();
         viewDungeon.setOnAction(event -> viewMapEvent());
         viewDungeon.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images/DungeonView.jpg"))));
-        consoleButtons.getChildren().add(viewDungeon);
-        consoleButtons.getChildren().add(equipmentButton);
+        controlsButtons.getChildren().add(viewDungeon);
+        controlsButtons.getChildren().add(equipmentButton);
         for (Hero hero : heroList) {
             Button heroButton = new Button();
             heroButton.setId(String.valueOf(hero.getID()));
@@ -140,17 +135,9 @@ class DungeonGUI {
         }
         portraitsVBox.getChildren().addAll(listOfHeroButtons);
         mapOuterPane.setRight(portraitsVBox);
-        completeConsole.add(dungeonConsole, 0, 0);
-        mapOuterPane.setLeft(consoleButtons);
-        Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
-        completeConsole.setMinHeight(120);
-        completeConsole.setMinHeight(120);
-        dungeonConsole.setPrefWidth(primaryScreenBounds.getWidth());
-        dungeonConsole.setMinHeight(60);
-        dungeonConsole.setMaxHeight(60);
-        dungeonConsole.setFitToWidth(false);
-        completeConsole.add(powersHBox, 0, 2);
-        mapOuterPane.setBottom(completeConsole);
+        mapOuterPane.setLeft(controlsButtons);
+        dungeonConsoleGUI.getCompleteConsole().add(powersHBox, 0, 2);
+        mapOuterPane.setBottom(dungeonConsoleGUI.getCompleteConsole());
     }
 
     private void viewMapEvent() {
@@ -203,10 +190,7 @@ class DungeonGUI {
 //        equipmentGUI.aStage.show();
     }
 
-    private void updateTheDungeonConsole(String messageToUpdate) {
-        dungeonConsoleText.setText(dungeonConsoleText.getText() + "\n" + messageToUpdate);
-        dungeonConsole.setVvalue(1.0);
-    }
+
 
     private void updateButtonsWithHeroSkillNames(Hero currentHero) {
         for (HeroPower currentPower : currentHero.getAtWillPowers()) {
@@ -359,7 +343,7 @@ class DungeonGUI {
             triggerOnHit(attackingPower, hero, attackResults);
             inflictDamageToMonster(attackResults, monster);
         } else {
-            updateTheDungeonConsole("Your attack has missed.");
+            dungeonConsoleGUI.updateTheDungeonConsole("Your attack has missed.");
         }
     }
 
@@ -370,9 +354,9 @@ class DungeonGUI {
         System.out.println("DEBUG: " + monster.getCurrentHitPoints() + " HP");
         System.out.println("DEBUG: " + monster.getID() + " ID");
         if (monster.getCurrentHitPoints() < 1) {
-            updateTheDungeonConsole("The attacked monster - " + monster.getMonsterName() + " - has fallen!");
+            dungeonConsoleGUI.updateTheDungeonConsole("The attacked monster - " + monster.getMonsterName() + " - has fallen!");
         } else if (monster.getCurrentHitPoints() * 2 < monster.getHitPoints()) {
-            updateTheDungeonConsole("The attacked monster - " + monster.getMonsterName() + " - is now bloodied.");
+            dungeonConsoleGUI.updateTheDungeonConsole("The attacked monster - " + monster.getMonsterName() + " - is now bloodied.");
         }
     }
 
@@ -391,7 +375,7 @@ class DungeonGUI {
             weaponDamage = attackingPower.getTypeOfDamageDice();
             numberOfDice = attackingPower.getDamageDiceDealt();
         }
-        updateTheDungeonConsole("It's a hit! Roll for damage: "
+        dungeonConsoleGUI.updateTheDungeonConsole("It's a hit! Roll for damage: "
                 + numberOfDice
                 + "d"
                 + weaponDamage);
@@ -407,18 +391,18 @@ class DungeonGUI {
         }
         int bonusDamage = hero.getHeroAttributesMap().get(attackingPower.getDamageModifier().toLowerCase());
         allDamage += bonusDamage;
-        updateTheDungeonConsole("Result of damage dice rolls: "
+        dungeonConsoleGUI.updateTheDungeonConsole("Result of damage dice rolls: "
                 + diceDealt
                 + ". Bonus damage equal to your "
                 + attackingPower.getDamageModifier()
                 + ": "
                 + attackResults.get("Attribute Bonus"));
-        updateTheDungeonConsole("You've dealt " + allDamage + " damage");
+        dungeonConsoleGUI.updateTheDungeonConsole("You've dealt " + allDamage + " damage");
         attackResults.put("Damage Inflicted", allDamage);
     }
 
     private void displayAttackMessage(HeroPower attackingPower, Monster monster, Map attackResults) {
-        updateTheDungeonConsole("You have attacked a " +
+        dungeonConsoleGUI.updateTheDungeonConsole("You have attacked a " +
                 monster.getMonsterName()
                 + " with "
                 + attackingPower.getPowerName()
@@ -457,7 +441,7 @@ class DungeonGUI {
         setCurrentlyActiveHeroID(currentHeroID);
         setHasTheCharacterBeenSelected(true);
         updateButtonsWithHeroSkillNames(getHeroByID(currentHeroID, heroList));
-        updateTheDungeonConsole("You have selected " + getHeroByID(currentHeroID, heroList).getHeroName());
+        dungeonConsoleGUI.updateTheDungeonConsole("You have selected " + getHeroByID(currentHeroID, heroList).getHeroName());
     }
 
     private void eventOnHeroMovement(Button aButton, int XPos, int YPos) {
