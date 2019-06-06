@@ -35,24 +35,8 @@ class DungeonGUI {
     private VBox controlsButtons = new VBox();
     BorderPane mapOuterPane = new BorderPane();
     private DungeonConsoleGUI dungeonConsoleGUI = new DungeonConsoleGUI();
-    private Image wallImage = new Image(getClass().getResourceAsStream("Images\\MapElements\\wall.png"));
-    private Image floorImage = new Image(getClass().getResourceAsStream("Images\\MapElements\\floor.png"));
-    private Image fogImage = new Image(getClass().getResourceAsStream("Images\\MapElements\\fog.png"));
-    private Image wallWestImage = new Image(getClass().getResourceAsStream("Images\\MapElements\\FloorWallW.png"));
-    private Image wallEastImage = new Image(getClass().getResourceAsStream("Images\\MapElements\\FloorWallE.png"));
-    private Image wallSouthImage = new Image(getClass().getResourceAsStream("Images\\MapElements\\FloorWallS.png"));
-    private Image wallNorthImage = new Image(getClass().getResourceAsStream("Images\\MapElements\\FloorWallN.png"));
-    private Image wallNEImage = new Image(getClass().getResourceAsStream("Images\\MapElements\\FloorWallNE.png"));
-    private Image wallNWImage = new Image(getClass().getResourceAsStream("Images\\MapElements\\FloorWallNW.png"));
-    private Image wallSEImage = new Image(getClass().getResourceAsStream("Images\\MapElements\\FloorWallSE.png"));
-    private Image wallSWImage = new Image(getClass().getResourceAsStream("Images\\MapElements\\FloorWallSW.png"));
-    private Image wallVertical = new Image(getClass().getResourceAsStream("Images\\MapElements\\FloorWallVert.png"));
-    private Image wallHorizontal = new Image(getClass().getResourceAsStream("Images\\MapElements\\FloorWallHoriz.png"));
-    private Image doorVertical = new Image(getClass().getResourceAsStream("Images\\MapElements\\DoorVertical.png"));
-    private Image doorHorizontal = new Image(getClass().getResourceAsStream("Images\\MapElements\\DoorHorizontal.png"));
-    private Image openedDoorVertical = new Image(getClass().getResourceAsStream("Images\\MapElements\\OpenedDoorVertical.png"));
-    private Image openedDoorHorizontal = new Image(getClass().getResourceAsStream("Images\\MapElements\\OpenedDoorHorizontal.png"));
     private List<Hero> heroList;
+    private DungeonImageLibraryGUI dungeonImageLibraryGUI = new DungeonImageLibraryGUI();
     private DungeonMap dungeonMap = new DungeonMap(heroList);
     private int currentlyActiveHeroID;
     private boolean hasTheCharacterBeenSelected = false;
@@ -191,7 +175,6 @@ class DungeonGUI {
     }
 
 
-
     private void updateButtonsWithHeroSkillNames(Hero currentHero) {
         for (HeroPower currentPower : currentHero.getAtWillPowers()) {
             Button powerButton = new Button(currentPower.getPowerName());
@@ -281,12 +264,12 @@ class DungeonGUI {
                 typeOfTile = dungeonMap.getMapTilesArray()[i][j].typeOfTile;
                 //debug mode only - make the whole dungeonMap alreadyDiscovered:
                 //dungeonMap.getMapTilesArray()[i][j].alreadyDiscovered = true;
-                applyATileImageToAButton(typeOfTile, buttonGrid[i][j]);
+                dungeonImageLibraryGUI.applyATileImageToAButton(typeOfTile, buttonGrid[i][j]);
                 if (currentEntityID > 0) {
                     applyEntityIconToAButton(currentEntityID, buttonGrid[i][j]);
                 }
                 if (!dungeonMap.getMapTilesArray()[i][j].alreadyDiscovered) {
-                    applyATileImageToAButton("Fog", buttonGrid[i][j]);
+                    dungeonImageLibraryGUI.applyATileImageToAButton("Fog", buttonGrid[i][j]);
                 }
             }
         }
@@ -484,86 +467,12 @@ class DungeonGUI {
             aButton.setGraphic(new ImageView(getMonsterTypeByID(heroID, possibleMonsterTypes).getMonsterImage()));
         }
     }
-
-    private void applyATileImageToAButton(String typeOfTile, Button aButton) {
-        switch (typeOfTile) {
-            case "RoomSeed":
-            case "WallWest":
-                aButton.setStyle("-fx-color: #000000");
-                aButton.setGraphic(new ImageView(wallSouthImage));
-                break;
-            case "WallCornerNE":
-                aButton.setStyle("-fx-color: #000000");
-                aButton.setGraphic(new ImageView(wallNEImage));
-                break;
-            case "WallCornerSE":
-                aButton.setStyle("-fx-color: #000000");
-                aButton.setGraphic(new ImageView(wallSEImage));
-                break;
-            case "WallCornerNW":
-                aButton.setStyle("-fx-color: #000000");
-                aButton.setGraphic(new ImageView(wallNWImage));
-                break;
-            case "WallCornerSW":
-                aButton.setStyle("-fx-color: #000000");
-                aButton.setGraphic(new ImageView(wallSWImage));
-                break;
-            case "WallEast":
-                aButton.setStyle("-fx-color: #000000");
-                aButton.setGraphic(new ImageView(wallNorthImage));
-                break;
-            case "WallNorth":
-                aButton.setStyle("-fx-color: #000000");
-                aButton.setGraphic(new ImageView(wallWestImage));
-                break;
-            case "WallSouth":
-                aButton.setStyle("-fx-color: #000000");
-                aButton.setGraphic(new ImageView(wallEastImage));
-                break;
-            case "Room":
-            case "Corridor":
-            case "CorridorVertical":
-            case "CorridorHorizontal":
-                aButton.setStyle("-fx-color: #000000");
-                aButton.setGraphic(new ImageView(floorImage));
-                break;
-            case "Blank":
-                aButton.setStyle("-fx-color: #000000");
-                aButton.setGraphic(new ImageView(wallImage));
-                break;
-            case "Fog":
-                aButton.setStyle("-fx-color: #808080");
-                aButton.setGraphic(new ImageView(fogImage));
-                break;
-            case "WallNorthSouth":
-                aButton.setStyle("-fx-color: #000000");
-                aButton.setGraphic(new ImageView(wallVertical));
-                break;
-            case "WallEastWest":
-                aButton.setStyle("-fx-color: #000000");
-                aButton.setGraphic(new ImageView(wallHorizontal));
-                break;
-            case "ClosedDoorVertical":
-                aButton.setStyle("-fx-color: #000033");
-                aButton.setGraphic(new ImageView(doorVertical));
-                break;
-            case "ClosedDoorHorizontal":
-                aButton.setStyle("-fx-color: #000033");
-                aButton.setGraphic(new ImageView(doorHorizontal));
-                break;
-            case "OpenedDoorHorizontal":
-                aButton.setStyle("-fx-color: #000033");
-                aButton.setGraphic(new ImageView(openedDoorHorizontal));
-                break;
-            case "OpenedDoorVertical":
-                aButton.setStyle("-fx-color: #000033");
-                aButton.setGraphic(new ImageView(openedDoorVertical));
-                break;
-        }
-    }
-
-    //todo add a button to console that could extend its view range or minimize it.
-    //todo visibility checker has to stop on walls
+//todo add a button to console that could extend its view range or minimize it.
+//todo visibility checker has to stop on walls
 
 
 }
+
+
+
+
