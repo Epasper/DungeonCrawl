@@ -81,6 +81,8 @@ class DungeonGUI {
     ...
      */
 
+    //todo change the power buttons to icons with images. Add image selection to powers on character creation.
+
     //todo in future, change the portraits, so that each hero has a bigger portrait on the right and small icon on the field.
 
     //todo add an initiative tracker for all heroes and monsters (over the console?).

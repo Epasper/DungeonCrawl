@@ -17,10 +17,28 @@ public class Creature {
     private int reflex;
     private int will;
     private int AC;
+    private int currentInitiative;
+    private int initiativeBonus;
     private Map<String, Integer> defensesMap = new HashMap<>();
 
     public int getCurrentMonsterUniqueID() {
         return currentMonsterUniqueID;
+    }
+
+    public int getInitiativeBonus() {
+        return initiativeBonus;
+    }
+
+    public void setInitiativeBonus(int initiativeBonus) {
+        this.initiativeBonus = initiativeBonus;
+    }
+
+    public int getCurrentInitiative() {
+        return currentInitiative;
+    }
+
+    public void setCurrentInitiative(int currentInitiative) {
+        this.currentInitiative = currentInitiative;
     }
 
     public void setCurrentMonsterUniqueID(int currentMonsterUniqueID) {
