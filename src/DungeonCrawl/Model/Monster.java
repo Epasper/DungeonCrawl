@@ -5,7 +5,6 @@ import javafx.scene.image.Image;
 public class Monster extends Creature {
     private String monsterName;
     private String monsterType;
-    private Image monsterImage;
     private int xpValue;
     private int initiativeBonus;
     private String attack1Name;
@@ -79,13 +78,6 @@ public class Monster extends Creature {
         this.monsterType = monsterType;
     }
 
-    public Image getMonsterImage() {
-        return monsterImage;
-    }
-
-    public void setMonsterImage(Image monsterImage) {
-        this.monsterImage = monsterImage;
-    }
 
     public int getXpValue() {
         return xpValue;

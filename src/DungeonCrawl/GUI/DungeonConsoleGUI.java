@@ -1,11 +1,14 @@
 package DungeonCrawl.GUI;
 
+import DungeonCrawl.Model.Creature;
 import DungeonCrawl.Model.Hero;
 import DungeonCrawl.Model.Monster;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.TilePane;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
 
@@ -17,29 +20,89 @@ public class DungeonConsoleGUI {
     private ScrollPane dungeonConsole = new ScrollPane();
     private GridPane completeConsole = new GridPane();
     private Text dungeonConsoleText = new Text();
-    private HBox initiativeTracker = new HBox();
+    private ScrollPane initiativeTracker = new ScrollPane();
+    private List<Button> listOfButtons = new ArrayList<>();
+    private TilePane initiativeTilePane = new TilePane();
+
+    public TilePane getInitiativeTilePane() {
+        return initiativeTilePane;
+    }
+
+    public void setInitiativeTilePane(TilePane initiativeTilePane) {
+        this.initiativeTilePane = initiativeTilePane;
+    }
+
+    public ScrollPane getInitiativeTracker() {
+        return initiativeTracker;
+    }
+
+    public void setInitiativeTracker(ScrollPane initiativeTracker) {
+        this.initiativeTracker = initiativeTracker;
+    }
 
     public DungeonConsoleGUI() {
+        initializeTheConsole();
+    }
+
+    //todo discovering monsters has to be improved (heroes can sometimes see through walls)
+
+    private void initializeTheConsole() {
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
         dungeonConsole.setPrefWidth(primaryScreenBounds.getWidth());
         dungeonConsole.setMinHeight(60);
         dungeonConsole.setMaxHeight(60);
         dungeonConsole.setFitToWidth(false);
         completeConsole.add(dungeonConsole, 0, 0);
+        completeConsole.add(initiativeTracker, 0, 1);
+        Button test = new Button("Test test test");
+        initiativeTracker.setContent(test);
         completeConsole.setMinHeight(120);
         completeConsole.setMinHeight(120);
     }
 
     public void fillTheInitiativeTracker(List<Hero> listOfHeroes, List<Monster> listOfMonsters) {
+        Creature[] initiativeArray = new Creature[50];
+        System.out.println("ROLLING INITIATIVE: ");
         for (Hero hero : listOfHeroes) {
-            Random random = new Random();
-            int roll = (random.nextInt(19)) + 1;
-            hero.setCurrentInitiative(roll + hero.getInitiativeBonus());
+            rollForSingleInitiative(initiativeArray, hero);
         }
         for (Monster monster : listOfMonsters) {
-            Random random = new Random();
-            int roll = (random.nextInt(19)) + 1;
-            monster.setCurrentInitiative(roll + monster.getInitiativeBonus());
+            rollForSingleInitiative(initiativeArray, monster);
+        }
+        for (int i = 0; i < initiativeArray.length; i++) {
+            sortTheCreaturesAccordingToInitiative(i, initiativeArray);
+        }
+        initiativeTilePane.getChildren().addAll(listOfButtons);
+
+        initiativeTracker.setContent(initiativeTilePane);
+        System.out.println(listOfButtons);
+    }
+
+    private void sortTheCreaturesAccordingToInitiative(int i, Creature[] initiativeArray) {
+        System.out.println("Iterating through array: ");
+        if (initiativeArray[i] != null) {
+            Creature creature = initiativeArray[i];
+            System.out.println("Found a creature in the array: " + creature.getMonsterName());
+            Text test = new Text();
+            test.setText(creature.getMonsterName());
+            Button initiativeButton = new Button();
+            System.out.println(initiativeButton);
+            initiativeButton.setGraphic(new ImageView(creature.getCreatureImage()));
+            System.out.println(initiativeButton + initiativeButton.getGraphic().toString());
+            listOfButtons.add(initiativeButton);
+        }
+    }
+
+    private void rollForSingleInitiative(Creature[] initiativeArray, Creature currentCreature) {
+        Random random = new Random();
+        int roll = (random.nextInt(19)) + 1;
+        int currentInitiative = roll + currentCreature.getInitiativeBonus();
+        System.out.println("Current Initiative for " + currentCreature.getMonsterName() + ": " + currentInitiative);
+        currentCreature.setCurrentInitiative(currentInitiative);
+        if (initiativeArray[currentInitiative] == null) {
+            initiativeArray[currentInitiative] = currentCreature;
+        } else {
+            rollForSingleInitiative(initiativeArray, currentCreature);
         }
     }
 
@@ -71,4 +134,5 @@ public class DungeonConsoleGUI {
     public Text getDungeonConsoleText() {
         return dungeonConsoleText;
     }
+
 }

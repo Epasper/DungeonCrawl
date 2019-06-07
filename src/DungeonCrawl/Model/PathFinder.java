@@ -1,8 +1,18 @@
 package DungeonCrawl.Model;
 
+import DungeonCrawl.GUI.DungeonConsoleGUI;
+import DungeonCrawl.GUI.GUIUtilities;
 import javafx.scene.control.Button;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PathFinder {
+
+    private List<Monster> discoveredMonsters = new ArrayList<>();
+    private boolean alarmedMonsterVisible = false;
+    public DungeonConsoleGUI dungeonConsoleGUI = new DungeonConsoleGUI();
+
 
     public void checkTheAvailableDistance(Hero hero, DungeonMap dungeonMap, Button[][] buttonGrid) {
         int YPos = hero.getMapYPos();
@@ -86,9 +96,6 @@ public class PathFinder {
             temporaryY = YPos;
         }
         mapTile = dungeonMap.getMapTilesArray()[temporaryX][temporaryY];
-        /*if (reasonForChecking.contains("Visibility")) {
-            mapTile.setCurrentlyInvisible(false);
-        }*/
         gridButton = buttonGrid[temporaryX][temporaryY];
         if (currentDirection.contains("Room") || currentDirection.contains("Corridor") || currentDirection.contains("Opened")) {
             if (!currentDirection.contains("Occupied") || (reasonForChecking.contains("Interaction"))) {
@@ -212,7 +219,7 @@ public class PathFinder {
 
     }
 
-    public void checkTheVisibilityRange(Hero hero, DungeonMap dungeonMap) {
+    public void checkTheVisibilityRange(List<Monster> allMonstersList, List<Hero> listOfHeroes, Hero hero, DungeonMap dungeonMap) {
         int visibilityRange = 10;
         int XPos = hero.getMapXPos();
         int YPos = hero.getMapYPos();
@@ -238,7 +245,7 @@ public class PathFinder {
                             } else {
                                 dungeonMap.getMapTilesArray()[i * a + XPos][j * b + YPos].setCurrentlyInvisible(false);
                                 dungeonMap.getMapTilesArray()[i * a + XPos][j * b + YPos].setAlreadyDiscovered(true);
-                                verifyIfTheMonstersOnThisTileAreAlarmed(dungeonMap.getMapTilesArray()[i * a + XPos][j * b + YPos]);
+                                verifyIfTheMonsterOnThisTileIsAlarmed(allMonstersList, dungeonMap.getMapTilesArray()[i * a + XPos][j * b + YPos]);
                             }
                         } catch (IndexOutOfBoundsException e) {
                             break;
@@ -247,11 +254,21 @@ public class PathFinder {
                 }
             }
         }
+        if (alarmedMonsterVisible) {
+            for (Monster monster : discoveredMonsters) {
+                System.out.println("Passing the monster: " + monster.getMonsterName() + " UUID: " + monster.getCurrentMonsterUniqueID());
+            }
+            dungeonConsoleGUI.fillTheInitiativeTracker(listOfHeroes, discoveredMonsters);
+        }
     }
 
-    private void verifyIfTheMonstersOnThisTileAreAlarmed(MapTile currentMapTile) {
-        if (currentMapTile.getOccupyingCreatureTypeId()>100) {
-
+    private void verifyIfTheMonsterOnThisTileIsAlarmed(List<Monster> allMonstersList, MapTile currentMapTile) {
+        GUIUtilities guiUtilities = new GUIUtilities();
+        if (currentMapTile.getOccupyingCreatureTypeId() > 100) {
+            alarmedMonsterVisible = true;
+            Monster monster = guiUtilities.getSingleMonsterByUniqueID(currentMapTile.getOccupyingCreatureUniqueID(), allMonstersList);
+            discoveredMonsters.add(monster);
+            System.out.println("Adding the monster: " + monster.getMonsterName() + " UUID: " + monster.getCurrentMonsterUniqueID());
         }
     }
 }

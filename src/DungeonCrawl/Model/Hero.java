@@ -1,6 +1,4 @@
 package DungeonCrawl.Model;
-
-import javafx.scene.image.Image;
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.Items.Item;
 
@@ -50,8 +48,6 @@ public class Hero extends Creature {
     public void setHeroEquipment(Map<String, Item> heroEquipment) {
         this.heroEquipment = heroEquipment;
     }
-
-    private Image heroIcon = new Image(getClass().getResourceAsStream("icon1.png"));
 
     public Hero() {
     }
@@ -323,18 +319,9 @@ public class Hero extends Creature {
         Thievery = thievery;
     }
 
-    public Image getHeroIcon() {
-        return heroIcon;
-    }
-
 
     public void setGold(int gold) {
         this.gold = gold;
-    }
-
-
-    public void setHeroIcon(Image heroIcon) {
-        this.heroIcon = heroIcon;
     }
 
 

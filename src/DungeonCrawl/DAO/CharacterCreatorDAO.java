@@ -91,7 +91,7 @@ public class CharacterCreatorDAO {
         while (rs.next()) {
             a = rs.getString("hero_name");
             b = rs.getString("icon_id");
-            hero.setHeroIcon(getHeroIconByID(rs.getInt("icon_id")));
+            hero.setCreatureImage(getHeroIconByID(rs.getInt("icon_id")));
             hero.setHeroIconId(rs.getInt("icon_id"));
             hero.setID(rs.getInt("idheroes"));
             hero.setHeroName(rs.getString("hero_name"));

@@ -45,6 +45,7 @@ class DungeonGUI {
     private List<Monster> allMonstersList = dungeonMap.getAllMonstersList();
     private List<Button> listOfHeroButtons = new ArrayList<>();
     private DungeonGUIHeroManager dungeonGUIHeroManager = new DungeonGUIHeroManager();
+    private GUIUtilities guiUtilities = new GUIUtilities();
 
     private DungeonMap getDungeonMap() {
         return dungeonMap;
@@ -105,7 +106,7 @@ class DungeonGUI {
         for (Hero hero : dungeonGUIHeroManager.getHeroList()) {
             Button heroButton = new Button();
             heroButton.setId(String.valueOf(hero.getID()));
-            heroButton.setGraphic(new ImageView(hero.getHeroIcon()));
+            heroButton.setGraphic(new ImageView(hero.getCreatureImage()));
             heroButton.setOnAction(event -> buttonEvent(heroButton, hero.getMapXPos(), hero.getMapYPos()));
             listOfHeroButtons.add(heroButton);
         }
@@ -120,7 +121,7 @@ class DungeonGUI {
         mapOuterPane.setCenter(mapScrollPane);
         for (Button heroButton : listOfHeroButtons) {
             int thisButtonID = Integer.valueOf(heroButton.getId());
-            Hero currentHero = getHeroByID(thisButtonID, dungeonGUIHeroManager.getHeroList());
+            Hero currentHero = guiUtilities.getHeroByID(thisButtonID, dungeonGUIHeroManager.getHeroList());
             heroButton.setOnAction(event -> buttonEvent(heroButton, currentHero.getMapXPos(), currentHero.getMapYPos()));
         }
     }
@@ -156,7 +157,7 @@ class DungeonGUI {
     //todo add the character's sheet view
 
     private void showCurrentCharactersEquipment(int currentlyActiveHeroID) throws IOException, SQLException {
-        Hero currentHero = getHeroByID(currentlyActiveHeroID, dungeonGUIHeroManager.getHeroList());
+        Hero currentHero = guiUtilities.getHeroByID(currentlyActiveHeroID, dungeonGUIHeroManager.getHeroList());
         ItemsDAO itemsDAO = new ItemsDAO();
         currentHero.setHeroEquipment(itemsDAO.getHeroEquipmentByHeroID(currentHero.getID()));
         EquipmentGUI equipmentGUI = new EquipmentGUI();
@@ -192,35 +193,6 @@ class DungeonGUI {
         }
     }
 
-    private Hero getHeroByID(int ID, List<Hero> listOfHeroes) {
-        Hero returnedHero = new Hero();
-        for (Hero aHero : listOfHeroes) {
-            if (aHero.getID() == ID) {
-                return aHero;
-            }
-        }
-        return returnedHero;
-    }
-
-    private Monster getMonsterTypeByID(int ID, List<Monster> listOfMonsters) {
-        Monster returnedMonster = new Monster();
-        for (Monster aMonster : listOfMonsters) {
-            if (aMonster.getID() == ID) {
-                return aMonster;
-            }
-        }
-        return returnedMonster;
-    }
-
-    private Monster getSingleMonsterByUniqueID(int uniqueID, List<Monster> listOfMonsters) {
-        Monster returnedMonster = new Monster();
-        for (Monster aMonster : listOfMonsters) {
-            if (aMonster.getCurrentMonsterUniqueID() == uniqueID) {
-                return aMonster;
-            }
-        }
-        return returnedMonster;
-    }
 
     private void updateGUIAccordingToMap(DungeonMap dungeonMap) {
         for (int i = 0; i < mapWidth; i++) {
@@ -229,7 +201,7 @@ class DungeonGUI {
 /*                aButton.setStyle(".button {-fx-padding: 0 0 0 0};");
                 aButton.setStyle(".button {-fx-background-radius: 0,0,0;}");
                 aButton.setStyle(".button {-fx-background-insets: 0,0,0;}");*/
-                aButton.setPadding(new Insets(1));
+                aButton.setPadding(new Insets(2));
                 aButton.setMaxSize(50, 50);
                 aButton.setStyle("-fx-background-radius: 0");
                 buttonGrid[i][j] = aButton;
@@ -241,7 +213,7 @@ class DungeonGUI {
         }
         updateMapGraphics(dungeonMap);
     }
-    //todo change the monster portrait after it being bloodied and/or killed (try BufferedImages)
+    //todo change the monster portrait after it being bloodied and/or killed (Java Canvas)
 
     //todo change the visibility checker, so it actually checks for visibility.
 
@@ -298,9 +270,9 @@ class DungeonGUI {
     //todo attacking a monster now subtracts HP from all monsters of this type.
 
     private void eventOnHeroAttackingAMonster(int XPos, int YPos, HeroPower attackingPower) {
-        Hero hero = getHeroByID(dungeonGUIHeroManager.getCurrentlyActiveHeroID(), dungeonGUIHeroManager.getHeroList());
+        Hero hero = guiUtilities.getHeroByID(dungeonGUIHeroManager.getCurrentlyActiveHeroID(), dungeonGUIHeroManager.getHeroList());
         System.out.println("Attacking a monster with unique ID: " + getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID());
-        Monster monster = getSingleMonsterByUniqueID(getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID(), allMonstersList);
+        Monster monster = guiUtilities.getSingleMonsterByUniqueID(getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID(), allMonstersList);
         System.out.println("LIST OF ALL MONSTERS:");
         for (Monster currentMonster : allMonstersList) {
             System.out.println(currentMonster.getMonsterName());
@@ -408,17 +380,17 @@ class DungeonGUI {
 
     private void eventOnHeroClick(int currentHeroID) {
         PathFinder pathFinder = new PathFinder();
-        pathFinder.checkTheAvailableDistance(getHeroByID(currentHeroID, dungeonGUIHeroManager.getHeroList()), dungeonMap, buttonGrid);
+        pathFinder.checkTheAvailableDistance(guiUtilities.getHeroByID(currentHeroID, dungeonGUIHeroManager.getHeroList()), dungeonMap, buttonGrid);
         System.out.println("Clicked the ID " + currentHeroID + " hero.");
         dungeonGUIHeroManager.setCurrentlyActiveHeroID(currentHeroID);
         setHasTheCharacterBeenSelected(true);
-        updateButtonsWithHeroSkillNames(getHeroByID(currentHeroID, dungeonGUIHeroManager.getHeroList()));
-        dungeonConsoleGUI.updateTheDungeonConsole("You have selected " + getHeroByID(currentHeroID, dungeonGUIHeroManager.getHeroList()).getHeroName());
+        updateButtonsWithHeroSkillNames(guiUtilities.getHeroByID(currentHeroID, dungeonGUIHeroManager.getHeroList()));
+        dungeonConsoleGUI.updateTheDungeonConsole("You have selected " + guiUtilities.getHeroByID(currentHeroID, dungeonGUIHeroManager.getHeroList()).getHeroName());
     }
 
     private void eventOnHeroMovement(Button aButton, int XPos, int YPos) {
         PathFinder pathFinder = new PathFinder();
-        Hero hero = getHeroByID(dungeonGUIHeroManager.getCurrentlyActiveHeroID(), dungeonGUIHeroManager.getHeroList());
+        Hero hero = guiUtilities.getHeroByID(dungeonGUIHeroManager.getCurrentlyActiveHeroID(), dungeonGUIHeroManager.getHeroList());
         getDungeonMap().getMapTilesArray()[hero.getMapXPos()][hero.getMapYPos()].setOccupyingCreatureTypeId(0);
         getDungeonMap().getMapTilesArray()[XPos][YPos].setOccupyingCreatureTypeId(dungeonGUIHeroManager.getCurrentlyActiveHeroID());
         int deltaX = Math.abs(hero.getMapXPos() - XPos);
@@ -426,7 +398,7 @@ class DungeonGUI {
         hero.setCurrentSpeed(hero.getCurrentSpeed() - (deltaX + deltaY));
         hero.setMapXPos(XPos);
         hero.setMapYPos(YPos);
-        aButton.setGraphic(new ImageView(hero.getHeroIcon()));
+        aButton.setGraphic(new ImageView(hero.getCreatureImage()));
         if (hero.getCurrentSpeed() < 1) {
             dungeonGUIHeroManager.setNumberOfHeroesThatFinishedMovement(dungeonGUIHeroManager.getNumberOfHeroesThatFinishedMovement() + 1);
             System.out.println(hero.heroName + " has finished moving. " + dungeonGUIHeroManager.getNumberOfHeroesThatFinishedMovement() + " heroes had already finished moving");
@@ -438,7 +410,8 @@ class DungeonGUI {
                 dungeonGUIHeroManager.setNumberOfHeroesThatFinishedMovement(0);
             }
         }
-        pathFinder.checkTheVisibilityRange(hero, dungeonMap);
+        pathFinder.checkTheVisibilityRange(allMonstersList, dungeonGUIHeroManager.getHeroList(), hero, dungeonMap);
+        dungeonConsoleGUI.getInitiativeTracker().setContent(pathFinder.dungeonConsoleGUI.getInitiativeTilePane());
     }
 
     private void eventOnPowerSelect(Hero currentHero, HeroPower selectedPower) {
@@ -451,9 +424,9 @@ class DungeonGUI {
 
     private void applyEntityIconToAButton(int heroID, Button aButton) {
         if (heroID < 100) {
-            aButton.setGraphic(new ImageView(getHeroByID(heroID, dungeonGUIHeroManager.getHeroList()).getHeroIcon()));
+            aButton.setGraphic(new ImageView(guiUtilities.getHeroByID(heroID, dungeonGUIHeroManager.getHeroList()).getCreatureImage()));
         } else {
-            aButton.setGraphic(new ImageView(getMonsterTypeByID(heroID, possibleMonsterTypes).getMonsterImage()));
+            aButton.setGraphic(new ImageView(guiUtilities.getMonsterTypeByID(heroID, possibleMonsterTypes).getCreatureImage()));
         }
     }
 //todo add a button to console that could extend its view range or minimize it.

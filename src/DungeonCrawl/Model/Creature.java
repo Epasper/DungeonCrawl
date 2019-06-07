@@ -1,10 +1,13 @@
 package DungeonCrawl.Model;
 
+import javafx.scene.image.Image;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Creature {
     public String heroName;
+    private Image creatureImage;
     private int ID;
     private int currentMonsterUniqueID;
     private int mapXPos;
@@ -20,6 +23,14 @@ public class Creature {
     private int currentInitiative;
     private int initiativeBonus;
     private Map<String, Integer> defensesMap = new HashMap<>();
+
+    public Image getCreatureImage() {
+        return creatureImage;
+    }
+
+    public void setCreatureImage(Image creatureImage) {
+        this.creatureImage = creatureImage;
+    }
 
     public int getCurrentMonsterUniqueID() {
         return currentMonsterUniqueID;
