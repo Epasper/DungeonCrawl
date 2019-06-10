@@ -44,8 +44,6 @@ public class DungeonConsoleGUI {
         initializeTheConsole();
     }
 
-    //todo discovering monsters has to be improved (heroes can sometimes see through walls)
-
     private void initializeTheConsole() {
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
         dungeonConsole.setPrefWidth(primaryScreenBounds.getWidth());

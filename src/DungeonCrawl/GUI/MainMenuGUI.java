@@ -59,7 +59,6 @@ public class MainMenuGUI {
                 e.printStackTrace();
             }
         });
-        //todo modify the equipment selector, so it shows all available characters
         manageEquipmentButton.setOnAction(event -> {
             PartySelectorGUI partySelectorGUI = null;
             try {

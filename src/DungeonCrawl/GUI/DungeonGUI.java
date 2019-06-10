@@ -1,6 +1,8 @@
 package DungeonCrawl.GUI;
 
 import javafx.geometry.Insets;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -16,6 +18,10 @@ import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.Model.*;
 import DungeonCrawl.Model.Monster;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -87,8 +93,6 @@ class DungeonGUI {
     //todo change the power buttons to icons with images. Add image selection to powers on character creation.
 
     //todo in future, change the portraits, so that each hero has a bigger portrait on the right and small icon on the field.
-
-    //todo add an initiative tracker for all heroes and monsters (over the console?).
 
     //todo Add HPBars to portraits
 
@@ -217,7 +221,6 @@ class DungeonGUI {
     }
     //todo change the monster portrait after it being bloodied and/or killed (Java Canvas)
 
-    //todo change the visibility checker, so it actually checks for visibility.
 
     private void updateMapGraphics(DungeonMap dungeonMap) {
         for (int i = 0; i < mapWidth; i++) {
@@ -269,8 +272,6 @@ class DungeonGUI {
         System.out.println("Stage is closing");
     }
 
-    //todo attacking a monster now subtracts HP from all monsters of this type.
-
     private void eventOnHeroAttackingAMonster(int XPos, int YPos, HeroPower attackingPower) {
         Hero hero = guiUtilities.getHeroByID(dungeonGUIHeroManager.getCurrentlyActiveHeroID(), dungeonGUIHeroManager.getHeroList());
         System.out.println("Attacking a monster with unique ID: " + getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID());
@@ -287,13 +288,17 @@ class DungeonGUI {
         if ((attackResults.get("Attribute Bonus") + attackResults.get("Dice Roll")) >
                 monster.getDefensesMap().get(attackingPower.getDefenseToBeChecked().toLowerCase())) {
             triggerOnHit(attackingPower, hero, attackResults);
-            inflictDamageToMonster(attackResults, monster);
+            try {
+                inflictDamageToMonster(attackResults, monster);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else {
             dungeonConsoleGUI.updateTheDungeonConsole("Your attack has missed.");
         }
     }
 
-    private void inflictDamageToMonster(Map<String, Integer> attackResults, Monster monster) {
+    private void inflictDamageToMonster(Map<String, Integer> attackResults, Monster monster) throws IOException {
         int damageDealt = attackResults.get("Damage Inflicted");
         monster.setCurrentHitPoints(monster.getCurrentHitPoints() - damageDealt);
         System.out.println("DEBUG: " + monster.getHitPoints() + " HP");
@@ -301,9 +306,26 @@ class DungeonGUI {
         System.out.println("DEBUG: " + monster.getID() + " ID");
         if (monster.getCurrentHitPoints() < 1) {
             dungeonConsoleGUI.updateTheDungeonConsole("The attacked monster - " + monster.getMonsterName() + " - has fallen!");
+            eventOnMonsterDeath(monster);
         } else if (monster.getCurrentHitPoints() * 2 < monster.getHitPoints()) {
             dungeonConsoleGUI.updateTheDungeonConsole("The attacked monster - " + monster.getMonsterName() + " - is now bloodied.");
         }
+    }
+
+    private void eventOnMonsterDeath(Monster monster) throws IOException {
+        File path = new File("C:\\Users\\A753403\\IdeaProjects\\DungeonCrawl\\src\\DungeonCrawl\\GUI\\Images\\MapElements\\Skull.jpg");
+        Image img = monster.getCreatureImage();
+        BufferedImage bimage = new BufferedImage((int) img.getWidth(), (int) img.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        Graphics2D bGr = bimage.createGraphics();
+        bGr.drawImage(bimage, 0, 0, null);
+        BufferedImage overlay = ImageIO.read(new File(path, "Skull.jpg"));
+        int w = Math.max(bimage.getWidth(), overlay.getWidth());
+        int h = Math.max(bimage.getHeight(), overlay.getHeight());
+        BufferedImage combined = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+        Graphics g = combined.getGraphics();
+        g.drawImage(bimage, 0, 0, null);
+        g.drawImage(overlay, 0, 0, null);
+//        Image convertedImage = new Image(g);
     }
 
     private void triggerOnHit(HeroPower attackingPower, Hero hero, Map<String, Integer> attackResults) {
@@ -432,7 +454,6 @@ class DungeonGUI {
         }
     }
 //todo add a button to console that could extend its view range or minimize it.
-//todo visibility checker has to stop on walls
 
 
 }

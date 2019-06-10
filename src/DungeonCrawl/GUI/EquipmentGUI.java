@@ -165,7 +165,6 @@ public class EquipmentGUI {
         }
         event.consume();
         //updateTheGUI();
-        //todo clear the grid pane before refreshing it to avoid IllegalArgumentExceptions
         try {
             innerPane = displayAChosenHeroEquipment(currentHero);
         } catch (SQLException | IOException e) {
