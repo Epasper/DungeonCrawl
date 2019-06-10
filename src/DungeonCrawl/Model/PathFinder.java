@@ -11,16 +11,7 @@ public class PathFinder {
 
     private List<Monster> discoveredMonsters = new ArrayList<>();
     private boolean alarmedMonsterVisible = false;
-    private boolean fightAlreadyTakingPlace = false;
     public DungeonConsoleGUI dungeonConsoleGUI = new DungeonConsoleGUI();
-
-    public boolean isFightAlreadyTakingPlace() {
-        return fightAlreadyTakingPlace;
-    }
-
-    public void setFightAlreadyTakingPlace(boolean fightAlreadyTakingPlace) {
-        this.fightAlreadyTakingPlace = fightAlreadyTakingPlace;
-    }
 
     public void checkTheAvailableDistance(Hero hero, DungeonMap dungeonMap, Button[][] buttonGrid) {
         int YPos = hero.getMapYPos();
@@ -228,51 +219,43 @@ public class PathFinder {
 
     }
 
-    //todo change the room recognition so that the map generator spawns an object of a "Room" class that has all of the tiles coordinates.
-    public void checkTheVisibilityRange(List<Monster> allMonstersList, List<Hero> listOfHeroes, Hero hero, DungeonMap dungeonMap) {
-        int visibilityRange = 10;
-        int XPos = hero.getMapXPos();
-        int YPos = hero.getMapYPos();
-        boolean initializeTheLastIteration;
-        boolean breakTheLoop;
-        for (int a = -1; a < 2; a += 2) {
-            for (int b = -1; b < 2; b += 2) {
-                breakTheLoop = false;
-                initializeTheLastIteration = false;
-                for (int i = 0; i < visibilityRange; i++) {
-                    if (initializeTheLastIteration) breakTheLoop = true;
-                    if (breakTheLoop) break;
-                    for (int j = 0; j < visibilityRange; j++) {
-                        try {
-                            MapTile currentMapTile = dungeonMap.getMapTilesArray()[i * a + XPos][j * b + YPos];
-                            if (currentMapTile.typeOfTile.contains("Wall") ||
-                                    currentMapTile.typeOfTile.contains("Blank") ||
-                                    currentMapTile.typeOfTile.contains("Door")) {
-                                if (j == 0) {
-                                    initializeTheLastIteration = true;
-                                }
-                                currentMapTile.setCurrentlyInvisible(false);
-                                currentMapTile.setAlreadyDiscovered(true);
-                                break;
-                            } else {
-                                currentMapTile.setCurrentlyInvisible(false);
-                                currentMapTile.setAlreadyDiscovered(true);
-                                verifyIfTheMonsterOnThisTileIsAlarmed(allMonstersList, currentMapTile);
-                            }
-                        } catch (IndexOutOfBoundsException e) {
-                            break;
+    public void setTheRoomAsVisible(int XPos, int YPos, DungeonMap dungeonMap, List<Monster> allMonstersList) {
+        List<Room> listOfCurrentRooms = dungeonMap.getAllRoomsList();
+        for (Room currentRoom : listOfCurrentRooms) {
+            if (currentRoom.getRoomXStartPos() - 1 < XPos && ((currentRoom.getRoomXStartPos() + currentRoom.getRoomWidth() - 1) > XPos)) {
+                if (currentRoom.getRoomYStartPos() - 1 < YPos && ((currentRoom.getRoomYStartPos() + currentRoom.getRoomHeight() - 1) > YPos)) {
+                    System.out.println("Discovered room marked as visible.\n" +
+                            " Starting X: " + currentRoom.getRoomXStartPos() +
+                            "Starting Y: " + currentRoom.getRoomYStartPos() +
+                            "\n" + "Width: " + currentRoom.getRoomWidth() + "Height: " + currentRoom.getRoomHeight());
+                    for (int i = 0; i < currentRoom.getRoomWidth(); i++) {
+                        for (int j = 0; j < currentRoom.getRoomHeight(); j++) {
+                            MapTile currentMapTile = dungeonMap.getMapTilesArray()[currentRoom.getRoomXStartPos() + i][currentRoom.getRoomYStartPos() + j];
+                            currentMapTile.setCurrentlyInvisible(false);
+                            currentMapTile.setAlreadyDiscovered(true);
+                            verifyIfTheMonsterOnThisTileIsAlarmed(allMonstersList, currentMapTile);
                         }
                     }
                 }
             }
         }
-        if (alarmedMonsterVisible && !fightAlreadyTakingPlace) {
+    }
+
+    //todo change the room recognition so that the map generator spawns an object of a "Room" class that has all of the tiles coordinates.
+    public boolean checkTheVisibilityRange(List<Monster> allMonstersList, List<Hero> listOfHeroes, Hero hero, DungeonMap dungeonMap, boolean fightAlreadyTakingPlace) {
+        int XPos = hero.getMapXPos();
+        int YPos = hero.getMapYPos();
+        setTheRoomAsVisible(XPos, YPos, dungeonMap, allMonstersList);
+        if (alarmedMonsterVisible) {
             for (Monster monster : discoveredMonsters) {
                 System.out.println("Passing the monster: " + monster.getMonsterName() + " UUID: " + monster.getCurrentMonsterUniqueID());
             }
-            dungeonConsoleGUI.fillTheInitiativeTracker(listOfHeroes, discoveredMonsters);
+            dungeonConsoleGUI.fillTheInitiativeTracker(listOfHeroes, discoveredMonsters, !fightAlreadyTakingPlace);
+            System.out.println(fightAlreadyTakingPlace);
             fightAlreadyTakingPlace = true;
+            return fightAlreadyTakingPlace;
         }
+        return fightAlreadyTakingPlace;
     }
 
     private void verifyIfTheMonsterOnThisTileIsAlarmed(List<Monster> allMonstersList, MapTile currentMapTile) {

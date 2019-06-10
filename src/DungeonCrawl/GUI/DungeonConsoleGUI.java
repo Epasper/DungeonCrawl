@@ -52,30 +52,33 @@ public class DungeonConsoleGUI {
         dungeonConsole.setMinHeight(60);
         dungeonConsole.setMaxHeight(60);
         dungeonConsole.setFitToWidth(false);
+        initiativeTracker.setMaxHeight(70);
+        initiativeTracker.setMinHeight(70);
         completeConsole.add(dungeonConsole, 0, 0);
         completeConsole.add(initiativeTracker, 0, 1);
-        Button test = new Button("Test test test");
-        initiativeTracker.setContent(test);
         completeConsole.setMinHeight(120);
         completeConsole.setMinHeight(120);
     }
 
-    public void fillTheInitiativeTracker(List<Hero> listOfHeroes, List<Monster> listOfMonsters) {
+    public void fillTheInitiativeTracker(List<Hero> listOfHeroes, List<Monster> listOfMonsters, boolean shouldIRollForNewInitiative) {
+        TilePane initiativeTilePane = new TilePane();
         Creature[] initiativeArray = new Creature[50];
         System.out.println("ROLLING INITIATIVE: ");
-        for (Hero hero : listOfHeroes) {
-            rollForSingleInitiative(initiativeArray, hero);
-        }
-        for (Monster monster : listOfMonsters) {
-            rollForSingleInitiative(initiativeArray, monster);
+        if (shouldIRollForNewInitiative) {
+            for (Hero hero : listOfHeroes) {
+                rollForSingleInitiative(initiativeArray, hero);
+            }
+            for (Monster monster : listOfMonsters) {
+                rollForSingleInitiative(initiativeArray, monster);
+            }
         }
         for (int i = 0; i < initiativeArray.length; i++) {
             sortTheCreaturesAccordingToInitiative(i, initiativeArray);
         }
         initiativeTilePane.getChildren().addAll(listOfButtons);
-
         initiativeTracker.setContent(initiativeTilePane);
         System.out.println(listOfButtons);
+        this.initiativeTilePane = initiativeTilePane;
     }
 
     private void sortTheCreaturesAccordingToInitiative(int i, Creature[] initiativeArray) {

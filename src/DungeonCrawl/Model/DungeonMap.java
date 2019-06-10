@@ -12,7 +12,16 @@ public class DungeonMap {
     private boolean isThisTheFirstSpawningRoom = true;
     private List<Hero> heroList;
     private List<Monster> allMonstersList = new ArrayList<>();
+    private List<Room> allRoomsList = new ArrayList<>();
     private int currentMonsterUniqueID = 1;
+
+    public List<Room> getAllRoomsList() {
+        return allRoomsList;
+    }
+
+    public void setAllRoomsList(List<Room> allRoomsList) {
+        this.allRoomsList = allRoomsList;
+    }
 
     public List<Monster> getAllMonstersList() {
         return allMonstersList;
@@ -94,8 +103,8 @@ public class DungeonMap {
         Random randomH = new Random();
         Random randomW = new Random();
         Room room = new Room();
-        room.roomYPos = initialYPos;
-        room.roomXPos = initialXPos;
+        room.roomYStartPos = initialYPos;
+        room.roomXStartPos = initialXPos;
         int minRoomHeight = 7;
         int maxRoomHeight = 12;
         room.roomHeight = randomH.nextInt(maxRoomHeight - minRoomHeight);
@@ -117,6 +126,7 @@ public class DungeonMap {
                 spawnMonstersInARoom(room);
             }
             seedCorridors(room);
+            allRoomsList.add(room);
         } else {
             getMapTilesArray()[initialXPos][initialYPos].typeOfTile = "Blank";
         }
@@ -167,29 +177,29 @@ public class DungeonMap {
         Random randomV = new Random();
         int HSpawn = randomV.nextInt(room.roomWidth - 2);
         HSpawn++;
-        if (!searchForCrossingCorridors(room.roomXPos + room.roomWidth, room.roomXPos + room.roomWidth, "CorridorVertical")) {
+        if (!searchForCrossingCorridors(room.roomXStartPos + room.roomWidth, room.roomXStartPos + room.roomWidth, "CorridorVertical")) {
             for (int i = 0; i < corridorMaxLength; i++) {
                 try {
-                    if (!getMapTilesArray()[room.roomXPos + room.roomWidth + i][room.roomYPos + VSpawn].typeOfTile.contains("Room")) {
-                        getMapTilesArray()[room.roomXPos + room.roomWidth + i][room.roomYPos + VSpawn].typeOfTile = "CorridorVertical";
+                    if (!getMapTilesArray()[room.roomXStartPos + room.roomWidth + i][room.roomYStartPos + VSpawn].typeOfTile.contains("Room")) {
+                        getMapTilesArray()[room.roomXStartPos + room.roomWidth + i][room.roomYStartPos + VSpawn].typeOfTile = "CorridorVertical";
                     }
                 } catch (IndexOutOfBoundsException ignored) {
 
                 } catch (NullPointerException e) {
-                    getMapTilesArray()[room.roomXPos + room.roomWidth + i][room.roomYPos + VSpawn].typeOfTile = "CorridorVertical";
+                    getMapTilesArray()[room.roomXStartPos + room.roomWidth + i][room.roomYStartPos + VSpawn].typeOfTile = "CorridorVertical";
                 }
             }
         }
-        if (!searchForCrossingCorridors(room.roomXPos + HSpawn, room.roomYPos + room.roomHeight, "CorridorHorizontal")) {
+        if (!searchForCrossingCorridors(room.roomXStartPos + HSpawn, room.roomYStartPos + room.roomHeight, "CorridorHorizontal")) {
             for (int i = 0; i < corridorMaxLength; i++) {
                 try {
-                    if (!getMapTilesArray()[room.roomXPos + HSpawn][room.roomYPos + room.roomHeight + i].typeOfTile.contains("Room")) {
-                        getMapTilesArray()[room.roomXPos + HSpawn][room.roomYPos + room.roomHeight + i].typeOfTile = "CorridorHorizontal";
+                    if (!getMapTilesArray()[room.roomXStartPos + HSpawn][room.roomYStartPos + room.roomHeight + i].typeOfTile.contains("Room")) {
+                        getMapTilesArray()[room.roomXStartPos + HSpawn][room.roomYStartPos + room.roomHeight + i].typeOfTile = "CorridorHorizontal";
                     }
                 } catch (IndexOutOfBoundsException ignored) {
 
                 } catch (NullPointerException e) {
-                    getMapTilesArray()[room.roomXPos + HSpawn][room.roomYPos + room.roomHeight + i].typeOfTile = "CorridorHorizontal";
+                    getMapTilesArray()[room.roomXStartPos + HSpawn][room.roomYStartPos + room.roomHeight + i].typeOfTile = "CorridorHorizontal";
                 }
             }
         }
@@ -200,7 +210,7 @@ public class DungeonMap {
         for (int i = 0; i < room.roomWidth; i++) {
             for (int j = 0; j < room.roomHeight; j++) {
                 try {
-                    if (getMapTilesArray()[room.roomXPos + i][room.roomYPos + j].typeOfTile.contains("Corridor")) {
+                    if (getMapTilesArray()[room.roomXStartPos + i][room.roomYStartPos + j].typeOfTile.contains("Corridor")) {
                         roomEntranceFound = true;
                         break;
                     }
@@ -222,7 +232,7 @@ public class DungeonMap {
                 for (int j = -1; j < room.roomHeight + 1; j++) {
                     if (i != 0 || j != 0) {
                         try {
-                            if (getMapTilesArray()[room.roomXPos + i][room.roomYPos + j].typeOfTile.contains("Room")) {
+                            if (getMapTilesArray()[room.roomXStartPos + i][room.roomYStartPos + j].typeOfTile.contains("Room")) {
                                 seedingAllowed = false;
                                 break;
                             }
@@ -316,12 +326,12 @@ public class DungeonMap {
             currentMonsterYPos = randY.nextInt(room.roomHeight);
             Monster currentMonster = monsterList.get(i);
             System.out.println("Monster UUID: " + currentMonster.getCurrentMonsterUniqueID() + "---" + currentMonsterUniqueID);
-            if (getMapTilesArray()[room.roomXPos + currentMonsterXPos][room.roomYPos + currentMonsterYPos].getOccupyingCreatureTypeId() == 0) {
-                getMapTilesArray()[room.roomXPos + currentMonsterXPos][room.roomYPos + currentMonsterYPos].setOccupyingCreatureTypeId(currentMonster.getID());
+            if (getMapTilesArray()[room.roomXStartPos + currentMonsterXPos][room.roomYStartPos + currentMonsterYPos].getOccupyingCreatureTypeId() == 0) {
+                getMapTilesArray()[room.roomXStartPos + currentMonsterXPos][room.roomYStartPos + currentMonsterYPos].setOccupyingCreatureTypeId(currentMonster.getID());
                 currentMonsterUniqueID++;
-                getMapTilesArray()[room.roomXPos + currentMonsterXPos][room.roomYPos + currentMonsterYPos].setOccupyingCreatureUniqueID(currentMonster.getCurrentMonsterUniqueID());
-                currentMonster.setMapXPos(room.roomXPos + currentMonsterXPos);
-                currentMonster.setMapYPos(room.roomYPos + currentMonsterYPos);
+                getMapTilesArray()[room.roomXStartPos + currentMonsterXPos][room.roomYStartPos + currentMonsterYPos].setOccupyingCreatureUniqueID(currentMonster.getCurrentMonsterUniqueID());
+                currentMonster.setMapXPos(room.roomXStartPos + currentMonsterXPos);
+                currentMonster.setMapYPos(room.roomYStartPos + currentMonsterYPos);
                 System.out.println("Monster Spawning: " + currentMonster.getMonsterName() + " X: " + currentMonster.getMapXPos() + " Y: " + currentMonster.getMapYPos());
                 System.out.println("Monster UUID: " + currentMonster.getCurrentMonsterUniqueID() + "|||" + currentMonsterUniqueID);
             } else {
@@ -351,10 +361,10 @@ public class DungeonMap {
             currentHeroYPos = randY.nextInt(room.roomHeight);
             Hero currentHero = heroList.get(i);
             System.out.println("Name of current spawning hero: " + heroList.get(i).getMonsterName());
-            if (getMapTilesArray()[room.roomXPos + currentHeroXPos][room.roomYPos + currentHeroYPos].getOccupyingCreatureTypeId() == 0) {
-                getMapTilesArray()[room.roomXPos + currentHeroXPos][room.roomYPos + currentHeroYPos].setOccupyingCreatureTypeId(currentHero.getID());
-                currentHero.setMapXPos(room.roomXPos + currentHeroXPos);
-                currentHero.setMapYPos(room.roomYPos + currentHeroYPos);
+            if (getMapTilesArray()[room.roomXStartPos + currentHeroXPos][room.roomYStartPos + currentHeroYPos].getOccupyingCreatureTypeId() == 0) {
+                getMapTilesArray()[room.roomXStartPos + currentHeroXPos][room.roomYStartPos + currentHeroYPos].setOccupyingCreatureTypeId(currentHero.getID());
+                currentHero.setMapXPos(room.roomXStartPos + currentHeroXPos);
+                currentHero.setMapYPos(room.roomYStartPos + currentHeroYPos);
                 System.out.println("Hero Class: " + currentHero.getHeroClass() + " X: " + currentHero.getMapXPos() + " Y: " + currentHero.getMapYPos());
             } else {
                 i--;

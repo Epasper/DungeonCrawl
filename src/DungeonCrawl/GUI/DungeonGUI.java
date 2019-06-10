@@ -46,6 +46,8 @@ class DungeonGUI {
     private List<Button> listOfHeroButtons = new ArrayList<>();
     private DungeonGUIHeroManager dungeonGUIHeroManager = new DungeonGUIHeroManager();
     private GUIUtilities guiUtilities = new GUIUtilities();
+    private boolean fightAlreadyTakingPlace;
+    private PathFinder pathFinder = new PathFinder();
 
     private DungeonMap getDungeonMap() {
         return dungeonMap;
@@ -389,7 +391,7 @@ class DungeonGUI {
     }
 
     private void eventOnHeroMovement(Button aButton, int XPos, int YPos) {
-        PathFinder pathFinder = new PathFinder();
+
         Hero hero = guiUtilities.getHeroByID(dungeonGUIHeroManager.getCurrentlyActiveHeroID(), dungeonGUIHeroManager.getHeroList());
         getDungeonMap().getMapTilesArray()[hero.getMapXPos()][hero.getMapYPos()].setOccupyingCreatureTypeId(0);
         getDungeonMap().getMapTilesArray()[XPos][YPos].setOccupyingCreatureTypeId(dungeonGUIHeroManager.getCurrentlyActiveHeroID());
@@ -410,7 +412,7 @@ class DungeonGUI {
                 dungeonGUIHeroManager.setNumberOfHeroesThatFinishedMovement(0);
             }
         }
-        pathFinder.checkTheVisibilityRange(allMonstersList, dungeonGUIHeroManager.getHeroList(), hero, dungeonMap);
+        fightAlreadyTakingPlace = pathFinder.checkTheVisibilityRange(allMonstersList, dungeonGUIHeroManager.getHeroList(), hero, dungeonMap, fightAlreadyTakingPlace);
         dungeonConsoleGUI.getInitiativeTracker().setContent(pathFinder.dungeonConsoleGUI.getInitiativeTilePane());
     }
 
