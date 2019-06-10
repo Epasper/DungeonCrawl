@@ -11,8 +11,16 @@ public class PathFinder {
 
     private List<Monster> discoveredMonsters = new ArrayList<>();
     private boolean alarmedMonsterVisible = false;
+    private boolean fightAlreadyTakingPlace = false;
     public DungeonConsoleGUI dungeonConsoleGUI = new DungeonConsoleGUI();
 
+    public boolean isFightAlreadyTakingPlace() {
+        return fightAlreadyTakingPlace;
+    }
+
+    public void setFightAlreadyTakingPlace(boolean fightAlreadyTakingPlace) {
+        this.fightAlreadyTakingPlace = fightAlreadyTakingPlace;
+    }
 
     public void checkTheAvailableDistance(Hero hero, DungeonMap dungeonMap, Button[][] buttonGrid) {
         int YPos = hero.getMapYPos();
@@ -155,6 +163,7 @@ public class PathFinder {
         checkTheSightForOneDirection(dungeonMap, buttonGrid, YPos, XPos, -1, -1);
     }
 
+    //todo refactor the method so that it's called only once and the direction changes automatically (between 1 and -1)
     private void checkTheSightForOneDirection(DungeonMap dungeonMap, Button[][] buttonGrid, int YPos, int XPos, int dir1, int dir2) {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
@@ -219,33 +228,36 @@ public class PathFinder {
 
     }
 
+    //todo change the room recognition so that the map generator spawns an object of a "Room" class that has all of the tiles coordinates.
     public void checkTheVisibilityRange(List<Monster> allMonstersList, List<Hero> listOfHeroes, Hero hero, DungeonMap dungeonMap) {
         int visibilityRange = 10;
         int XPos = hero.getMapXPos();
         int YPos = hero.getMapYPos();
-        boolean breakTheOuterLoop = false;
+        boolean initializeTheLastIteration;
+        boolean breakTheLoop;
         for (int a = -1; a < 2; a += 2) {
             for (int b = -1; b < 2; b += 2) {
-                breakTheOuterLoop = false;
-/*                if (a == 0 || b == 0) {
-                    continue;
-                }*/
+                breakTheLoop = false;
+                initializeTheLastIteration = false;
                 for (int i = 0; i < visibilityRange; i++) {
-                    if (breakTheOuterLoop) break;
+                    if (initializeTheLastIteration) breakTheLoop = true;
+                    if (breakTheLoop) break;
                     for (int j = 0; j < visibilityRange; j++) {
                         try {
-                            if (dungeonMap.getMapTilesArray()[i * a + XPos][j * b + YPos].typeOfTile.contains("Wall") ||
-                                    dungeonMap.getMapTilesArray()[i * a + XPos][j * b + YPos].typeOfTile.contains("Door")) {
+                            MapTile currentMapTile = dungeonMap.getMapTilesArray()[i * a + XPos][j * b + YPos];
+                            if (currentMapTile.typeOfTile.contains("Wall") ||
+                                    currentMapTile.typeOfTile.contains("Blank") ||
+                                    currentMapTile.typeOfTile.contains("Door")) {
                                 if (j == 0) {
-                                    if (Math.abs(i) != 1) {
-                                        breakTheOuterLoop = true;
-                                    }
+                                    initializeTheLastIteration = true;
                                 }
+                                currentMapTile.setCurrentlyInvisible(false);
+                                currentMapTile.setAlreadyDiscovered(true);
                                 break;
                             } else {
-                                dungeonMap.getMapTilesArray()[i * a + XPos][j * b + YPos].setCurrentlyInvisible(false);
-                                dungeonMap.getMapTilesArray()[i * a + XPos][j * b + YPos].setAlreadyDiscovered(true);
-                                verifyIfTheMonsterOnThisTileIsAlarmed(allMonstersList, dungeonMap.getMapTilesArray()[i * a + XPos][j * b + YPos]);
+                                currentMapTile.setCurrentlyInvisible(false);
+                                currentMapTile.setAlreadyDiscovered(true);
+                                verifyIfTheMonsterOnThisTileIsAlarmed(allMonstersList, currentMapTile);
                             }
                         } catch (IndexOutOfBoundsException e) {
                             break;
@@ -254,11 +266,12 @@ public class PathFinder {
                 }
             }
         }
-        if (alarmedMonsterVisible) {
+        if (alarmedMonsterVisible && !fightAlreadyTakingPlace) {
             for (Monster monster : discoveredMonsters) {
                 System.out.println("Passing the monster: " + monster.getMonsterName() + " UUID: " + monster.getCurrentMonsterUniqueID());
             }
             dungeonConsoleGUI.fillTheInitiativeTracker(listOfHeroes, discoveredMonsters);
+            fightAlreadyTakingPlace = true;
         }
     }
 
