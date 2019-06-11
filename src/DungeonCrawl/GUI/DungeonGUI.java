@@ -1,10 +1,15 @@
 package DungeonCrawl.GUI;
 
+import javafx.animation.FillTransition;
+import javafx.animation.RotateTransition;
+import javafx.animation.ScaleTransition;
+import javafx.animation.TranslateTransition;
 import javafx.geometry.Insets;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.effect.Blend;
+import javafx.scene.effect.BlendMode;
+import javafx.scene.effect.ImageInput;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -17,11 +22,8 @@ import DungeonCrawl.DAO.ItemsDAO;
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.Model.*;
 import DungeonCrawl.Model.Monster;
+import javafx.util.Duration;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -232,7 +234,7 @@ class DungeonGUI {
                 //dungeonMap.getMapTilesArray()[i][j].alreadyDiscovered = true;
                 dungeonImageLibraryGUI.applyATileImageToAButton(typeOfTile, buttonGrid[i][j]);
                 if (currentEntityID > 0) {
-                    applyEntityIconToAButton(currentEntityID, buttonGrid[i][j]);
+                    applyEntityIconToAButton(currentEntityID, buttonGrid[i][j],dungeonMap.getMapTilesArray()[i][j].getOccupyingCreatureUniqueID());
                 }
                 if (!dungeonMap.getMapTilesArray()[i][j].alreadyDiscovered) {
                     dungeonImageLibraryGUI.applyATileImageToAButton("Fog", buttonGrid[i][j]);
@@ -277,6 +279,7 @@ class DungeonGUI {
         System.out.println("Attacking a monster with unique ID: " + getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID());
         Monster monster = guiUtilities.getSingleMonsterByUniqueID(getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID(), allMonstersList);
         System.out.println("LIST OF ALL MONSTERS:");
+        monsterAttackAnimation(buttonGrid[monster.getMapXPos()][monster.getMapYPos()]);
         for (Monster currentMonster : allMonstersList) {
             System.out.println(currentMonster.getMonsterName());
             System.out.println(currentMonster.getID());
@@ -288,17 +291,13 @@ class DungeonGUI {
         if ((attackResults.get("Attribute Bonus") + attackResults.get("Dice Roll")) >
                 monster.getDefensesMap().get(attackingPower.getDefenseToBeChecked().toLowerCase())) {
             triggerOnHit(attackingPower, hero, attackResults);
-            try {
-                inflictDamageToMonster(attackResults, monster);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            inflictDamageToMonster(attackResults, monster);
         } else {
             dungeonConsoleGUI.updateTheDungeonConsole("Your attack has missed.");
         }
     }
 
-    private void inflictDamageToMonster(Map<String, Integer> attackResults, Monster monster) throws IOException {
+    private void inflictDamageToMonster(Map<String, Integer> attackResults, Monster monster) {
         int damageDealt = attackResults.get("Damage Inflicted");
         monster.setCurrentHitPoints(monster.getCurrentHitPoints() - damageDealt);
         System.out.println("DEBUG: " + monster.getHitPoints() + " HP");
@@ -312,20 +311,22 @@ class DungeonGUI {
         }
     }
 
-    private void eventOnMonsterDeath(Monster monster) throws IOException {
-        File path = new File("C:\\Users\\A753403\\IdeaProjects\\DungeonCrawl\\src\\DungeonCrawl\\GUI\\Images\\MapElements\\Skull.jpg");
-        Image img = monster.getCreatureImage();
-        BufferedImage bimage = new BufferedImage((int) img.getWidth(), (int) img.getHeight(), BufferedImage.TYPE_INT_ARGB);
-        Graphics2D bGr = bimage.createGraphics();
-        bGr.drawImage(bimage, 0, 0, null);
-        BufferedImage overlay = ImageIO.read(new File(path, "Skull.jpg"));
-        int w = Math.max(bimage.getWidth(), overlay.getWidth());
-        int h = Math.max(bimage.getHeight(), overlay.getHeight());
-        BufferedImage combined = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
-        Graphics g = combined.getGraphics();
-        g.drawImage(bimage, 0, 0, null);
-        g.drawImage(overlay, 0, 0, null);
-//        Image convertedImage = new Image(g);
+    private void eventOnMonsterDeath(Monster monster) {
+        Image skull = new Image(
+                "DungeonCrawl/GUI/Images/MapElements/Skull.jpg"
+        );
+        Image monsterImage = monster.getCreatureImage();
+        ImageInput backImageView = new ImageInput(monsterImage);
+        ImageInput frontImageView = new ImageInput(skull);
+        Blend imagesBlend = new Blend();
+        imagesBlend.setBottomInput(backImageView);
+        imagesBlend.setTopInput(frontImageView);
+        imagesBlend.setMode(BlendMode.ADD);
+        ImageView finalImage = new ImageView(monsterImage);
+        finalImage.setEffect(imagesBlend);
+        monster.setCreatureImage(finalImage.getImage());
+        buttonGrid[monster.getMapXPos()][monster.getMapYPos()].setGraphic(finalImage);
+        System.out.println("Image has been modified");
     }
 
     private void triggerOnHit(HeroPower attackingPower, Hero hero, Map<String, Integer> attackResults) {
@@ -369,6 +370,25 @@ class DungeonGUI {
         attackResults.put("Damage Inflicted", allDamage);
     }
 
+    private void heroClickAnimation (Button button) {
+        ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(180), button.getGraphic());
+        scaleTransition.setByX(-0.1f);
+        scaleTransition.setByY(-0.1f);
+        scaleTransition.setCycleCount(2);
+        scaleTransition.setAutoReverse(true);
+        System.out.println("heroClickAnimation Triggered");
+        scaleTransition.play();
+    }
+
+    private void monsterAttackAnimation (Button button) {
+        RotateTransition rt = new RotateTransition(Duration.millis(180), button.getGraphic());
+        rt.setByAngle(30);
+        rt.setCycleCount(2);
+        rt.setAutoReverse(true);
+
+        rt.play();
+    }
+
     private void displayAttackMessage(HeroPower attackingPower, Monster monster, Map attackResults) {
         dungeonConsoleGUI.updateTheDungeonConsole("You have attacked a " +
                 monster.getMonsterName()
@@ -404,12 +424,14 @@ class DungeonGUI {
 
     private void eventOnHeroClick(int currentHeroID) {
         PathFinder pathFinder = new PathFinder();
-        pathFinder.checkTheAvailableDistance(guiUtilities.getHeroByID(currentHeroID, dungeonGUIHeroManager.getHeroList()), dungeonMap, buttonGrid);
+        Hero currentHero = guiUtilities.getHeroByID(currentHeroID, dungeonGUIHeroManager.getHeroList());
+        pathFinder.checkTheAvailableDistance(currentHero, dungeonMap, buttonGrid);
+        heroClickAnimation(buttonGrid[currentHero.getMapXPos()][currentHero.getMapYPos()]);
         System.out.println("Clicked the ID " + currentHeroID + " hero.");
         dungeonGUIHeroManager.setCurrentlyActiveHeroID(currentHeroID);
         setHasTheCharacterBeenSelected(true);
         updateButtonsWithHeroSkillNames(guiUtilities.getHeroByID(currentHeroID, dungeonGUIHeroManager.getHeroList()));
-        dungeonConsoleGUI.updateTheDungeonConsole("You have selected " + guiUtilities.getHeroByID(currentHeroID, dungeonGUIHeroManager.getHeroList()).getHeroName());
+        dungeonConsoleGUI.updateTheDungeonConsole("You have selected " + currentHero.getHeroName());
     }
 
     private void eventOnHeroMovement(Button aButton, int XPos, int YPos) {
@@ -446,11 +468,12 @@ class DungeonGUI {
     }
 
 
-    private void applyEntityIconToAButton(int heroID, Button aButton) {
+    private void applyEntityIconToAButton(int heroID, Button aButton, int uniqueMonsterID) {
         if (heroID < 100) {
             aButton.setGraphic(new ImageView(guiUtilities.getHeroByID(heroID, dungeonGUIHeroManager.getHeroList()).getCreatureImage()));
         } else {
-            aButton.setGraphic(new ImageView(guiUtilities.getMonsterTypeByID(heroID, possibleMonsterTypes).getCreatureImage()));
+
+            aButton.setGraphic(new ImageView(guiUtilities.getSingleMonsterByUniqueID(uniqueMonsterID, allMonstersList).getCreatureImage()));
         }
     }
 //todo add a button to console that could extend its view range or minimize it.
