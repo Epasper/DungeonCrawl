@@ -329,7 +329,6 @@ public class Hero extends Creature {
         return gold;
     }
 
-    //todo add a ranged attack mode for attacks with range > 0
 
     public Map<String, Integer> attackAMonster(Monster attackedMonster, HeroPower powerUsedForAttacking) {
         Map<String, Integer> valuesToBeReturned = new HashMap<>();

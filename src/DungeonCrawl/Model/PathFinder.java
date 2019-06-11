@@ -178,66 +178,69 @@ public class PathFinder {
         int LOSRange = hero.getAttackRange();
         int YPos = hero.getMapYPos();
         int XPos = hero.getMapXPos();
-        checkTheSightForOneDirection(dungeonMap, buttonGrid, YPos, XPos, LOSRange, 1, 1);
-        checkTheSightForOneDirection(dungeonMap, buttonGrid, YPos, XPos, LOSRange, 1, -1);
-        checkTheSightForOneDirection(dungeonMap, buttonGrid, YPos, XPos, LOSRange, -1, 1);
-        checkTheSightForOneDirection(dungeonMap, buttonGrid, YPos, XPos, LOSRange, -1, -1);
+        checkTheSightForOneDirection(dungeonMap, buttonGrid, YPos, XPos, LOSRange);
+        checkTheSightForOneDirection(dungeonMap, buttonGrid, YPos, XPos, LOSRange);
+        checkTheSightForOneDirection(dungeonMap, buttonGrid, YPos, XPos, LOSRange);
+        checkTheSightForOneDirection(dungeonMap, buttonGrid, YPos, XPos, LOSRange);
     }
 
-    //todo refactor the method so that it's called only once and the direction changes automatically (between 1 and -1)
-    private void checkTheSightForOneDirection(DungeonMap dungeonMap, Button[][] buttonGrid, int YPos, int XPos, int range, int dir1, int dir2) {
-        for (int i = 0; i < range; i++) {
-            for (int j = 0; j < range; j++) {
-                if (i == 0 && j == 0) continue;
-                try {
-                    int currentXPos = XPos + i * dir1;
-                    int currentYPos = YPos + j * dir2;
-                    MapTile currentMapTile = dungeonMap.getMapTilesArray()[currentXPos][currentYPos];
-                    boolean mapTileIsOccupied = currentMapTile.getOccupyingCreatureTypeId() > 0;
-                    if (!currentMapTile.isCurrentlyBehindCover() || !currentMapTile.isCurrentlyInvisible()) {
-                        if (mapTileIsOccupied) {
-                            for (int k = 0; k < 5; k++) {
-                                int deltaX = i + 1;
-                                int deltaY = j + 1;
-                                double skewingCoefficient;
-                                skewingCoefficient = deltaX / deltaY;
-                                System.out.println("DeltaX: " + deltaX + " DeltaY: " + deltaY);
-                                int valueX = currentXPos + (i * k * dir1);
-                                int valueY = currentYPos + (j * k * dir2);
-                                markTileAsUnreachable(dungeonMap, buttonGrid, valueX, valueY);
-                                //todo implement the logic from algorithm.java
-                                while (deltaY > 1 || deltaX > 1) {
-                                    if (deltaX == 1) skewingCoefficient = 0.1;
-                                    if (deltaY == 1) skewingCoefficient = 10;
-                                    int modifiedValueX = valueX + dir1;
-                                    int modifiedValueY = valueY + dir2;
-                                    if (skewingCoefficient <= 5 && skewingCoefficient >= 0.2) {
-                                        markTileAsUnreachable(dungeonMap, buttonGrid, modifiedValueX, modifiedValueY);
-                                        deltaY--;
-                                        deltaX--;
-                                        valueX += dir1;
-                                        valueY += dir2;
-                                        if (deltaY > 0) {
-                                            skewingCoefficient = deltaX / deltaY;
-                                        }
-                                    } else if (skewingCoefficient > 5) {
-                                        markTileAsUnreachable(dungeonMap, buttonGrid, modifiedValueX, valueY);
-                                        deltaX--;
-                                        valueX += dir1;
+    private void checkTheSightForOneDirection(DungeonMap dungeonMap, Button[][] buttonGrid, int YPos, int XPos, int range) {
+        for (int dir2 = -1; dir2 < 2; dir2 += 2) {
+            for (int dir1 = -1; dir1 < 2; dir1 += 2) {
+                for (int i = 0; i < range; i++) {
+                    for (int j = 0; j < range; j++) {
+                        if (i == 0 && j == 0) continue;
+                        try {
+                            int currentXPos = XPos + i * dir1;
+                            int currentYPos = YPos + j * dir2;
+                            MapTile currentMapTile = dungeonMap.getMapTilesArray()[currentXPos][currentYPos];
+                            boolean mapTileIsOccupied = currentMapTile.getOccupyingCreatureTypeId() > 0;
+                            if (!currentMapTile.isCurrentlyBehindCover() || !currentMapTile.isCurrentlyInvisible()) {
+                                if (mapTileIsOccupied) {
+                                    for (int k = 0; k < 5; k++) {
+                                        int deltaX = i + 1;
+                                        int deltaY = j + 1;
+                                        double skewingCoefficient;
                                         skewingCoefficient = deltaX / deltaY;
-                                    } else if (skewingCoefficient < 0.2) {
-                                        markTileAsUnreachable(dungeonMap, buttonGrid, valueX, modifiedValueY);
-                                        deltaY--;
-                                        valueY += dir2;
-                                        if (deltaY > 0) {
-                                            skewingCoefficient = deltaX / deltaY;
+                                        System.out.println("DeltaX: " + deltaX + " DeltaY: " + deltaY);
+                                        int valueX = currentXPos + (i * k * dir1);
+                                        int valueY = currentYPos + (j * k * dir2);
+                                        markTileAsUnreachable(dungeonMap, buttonGrid, valueX, valueY);
+                                        //todo implement the logic from algorithm.java
+                                        while (deltaY > 1 || deltaX > 1) {
+                                            if (deltaX == 1) skewingCoefficient = 0.1;
+                                            if (deltaY == 1) skewingCoefficient = 10;
+                                            int modifiedValueX = valueX + dir1;
+                                            int modifiedValueY = valueY + dir2;
+                                            if (skewingCoefficient <= 5 && skewingCoefficient >= 0.2) {
+                                                markTileAsUnreachable(dungeonMap, buttonGrid, modifiedValueX, modifiedValueY);
+                                                deltaY--;
+                                                deltaX--;
+                                                valueX += dir1;
+                                                valueY += dir2;
+                                                if (deltaY > 0) {
+                                                    skewingCoefficient = deltaX / deltaY;
+                                                }
+                                            } else if (skewingCoefficient > 5) {
+                                                markTileAsUnreachable(dungeonMap, buttonGrid, modifiedValueX, valueY);
+                                                deltaX--;
+                                                valueX += dir1;
+                                                skewingCoefficient = deltaX / deltaY;
+                                            } else if (skewingCoefficient < 0.2) {
+                                                markTileAsUnreachable(dungeonMap, buttonGrid, valueX, modifiedValueY);
+                                                deltaY--;
+                                                valueY += dir2;
+                                                if (deltaY > 0) {
+                                                    skewingCoefficient = deltaX / deltaY;
+                                                }
+                                            }
                                         }
                                     }
                                 }
                             }
+                        } catch (IndexOutOfBoundsException ignored) {
                         }
                     }
-                } catch (IndexOutOfBoundsException ignored) {
                 }
             }
         }
@@ -249,8 +252,6 @@ public class PathFinder {
 
     }
 
-    //todo there's an inconsistency bug that makes walls visible only occasionally. It'd be better if all of the walls were revealed when the room is revealed.
-
     public void setTheRoomAsVisible(int XPos, int YPos, DungeonMap dungeonMap, List<Monster> allMonstersList) {
         List<Room> listOfCurrentRooms = dungeonMap.getAllRoomsList();
         for (Room currentRoom : listOfCurrentRooms) {
@@ -260,12 +261,15 @@ public class PathFinder {
                             " Starting X: " + currentRoom.getRoomXStartPos() +
                             "Starting Y: " + currentRoom.getRoomYStartPos() +
                             "\n" + "Width: " + currentRoom.getRoomWidth() + "Height: " + currentRoom.getRoomHeight());
-                    for (int i = 0; i < currentRoom.getRoomWidth(); i++) {
-                        for (int j = 0; j < currentRoom.getRoomHeight(); j++) {
-                            MapTile currentMapTile = dungeonMap.getMapTilesArray()[currentRoom.getRoomXStartPos() + i][currentRoom.getRoomYStartPos() + j];
-                            currentMapTile.setCurrentlyInvisible(false);
-                            currentMapTile.setAlreadyDiscovered(true);
-                            verifyIfTheMonsterOnThisTileIsAlarmed(allMonstersList, currentMapTile);
+                    for (int i = -1; i < currentRoom.getRoomWidth() + 1; i++) {
+                        for (int j = -1; j < currentRoom.getRoomHeight() + 1; j++) {
+                            try {
+                                MapTile currentMapTile = dungeonMap.getMapTilesArray()[currentRoom.getRoomXStartPos() + i][currentRoom.getRoomYStartPos() + j];
+                                currentMapTile.setCurrentlyInvisible(false);
+                                currentMapTile.setAlreadyDiscovered(true);
+                                verifyIfTheMonsterOnThisTileIsAlarmed(allMonstersList, currentMapTile);
+                            } catch (IndexOutOfBoundsException ignored) {
+                            }
                         }
                     }
                 }
@@ -273,7 +277,6 @@ public class PathFinder {
         }
     }
 
-    //todo change the room recognition so that the map generator spawns an object of a "Room" class that has all of the tiles coordinates.
     public boolean checkTheVisibilityRange(List<Monster> allMonstersList, List<Hero> listOfHeroes, Hero hero, DungeonMap dungeonMap, boolean fightAlreadyTakingPlace) {
         int XPos = hero.getMapXPos();
         int YPos = hero.getMapYPos();
