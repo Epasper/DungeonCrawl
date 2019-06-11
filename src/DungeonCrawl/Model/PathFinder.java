@@ -29,7 +29,7 @@ public class PathFinder {
         this.discoveredMonsters = discoveredMonsters;
     }
 
-    public void checkTheAvailableDistance(Hero hero, DungeonMap dungeonMap, Button[][] buttonGrid) {
+    public void checkTheAvailableDistance(Hero hero, DungeonMap dungeonMap, Button[][] buttonGrid, String reasonForChecking) {
         int YPos = hero.getMapYPos();
         int XPos = hero.getMapXPos();
         double heroSteps = hero.getCurrentSpeed();
@@ -39,13 +39,16 @@ public class PathFinder {
         } else {
             heroInteractionSteps = 0;
         }
-        recursiveCheckDistance(dungeonMap, buttonGrid, "Start", YPos, XPos, heroSteps, "Walk Range");
-        recursiveCheckDistance(dungeonMap, buttonGrid, "Start", YPos, XPos, heroInteractionSteps, "Interaction Range");
-        System.out.println("X: " + XPos + " Y: " + YPos + " Speed: " + hero.getSpeed());
-
+        if (reasonForChecking.contains("Attack")) {
+            recursiveCheckDistance(dungeonMap, buttonGrid, "Start", YPos, XPos, hero.getAttackRange(), "Attack Range");
+        } else {
+            recursiveCheckDistance(dungeonMap, buttonGrid, "Start", YPos, XPos, heroSteps, "Walk Range");
+            recursiveCheckDistance(dungeonMap, buttonGrid, "Start", YPos, XPos, heroInteractionSteps, "Interaction Range");
+            System.out.println("X: " + XPos + " Y: " + YPos + " Speed: " + hero.getSpeed());
+        }
     }
 
-    public void recursiveCheckDistance(DungeonMap dungeonMap, Button[][] buttonGrid, String previousDirection, int YPos, int XPos, double range, String reasonForChecking) {
+    private void recursiveCheckDistance(DungeonMap dungeonMap, Button[][] buttonGrid, String previousDirection, int YPos, int XPos, double range, String reasonForChecking) {
         if (previousDirection.contains("North")) previousDirection = "North";
         else if (previousDirection.contains("East")) previousDirection = "East";
         else if (previousDirection.contains("West")) previousDirection = "West";
@@ -90,7 +93,7 @@ public class PathFinder {
         }
     }
 
-    public void setDistanceOnSingleTile(DungeonMap dungeonMap, Button[][] buttonGrid, String previousDirection, String currentDirection, int XPos, int YPos, double iterations, String reasonForChecking) {
+    private void setDistanceOnSingleTile(DungeonMap dungeonMap, Button[][] buttonGrid, String previousDirection, String currentDirection, int XPos, int YPos, double iterations, String reasonForChecking) {
         double stepDecrement;
         stepDecrement = calculateTheStepDecrement(previousDirection, currentDirection);
         MapTile mapTile;
@@ -113,7 +116,10 @@ public class PathFinder {
         mapTile = dungeonMap.getMapTilesArray()[temporaryX][temporaryY];
         gridButton = buttonGrid[temporaryX][temporaryY];
         if (currentDirection.contains("Room") || currentDirection.contains("Corridor") || currentDirection.contains("Opened")) {
-            if (!currentDirection.contains("Occupied") || (reasonForChecking.contains("Interaction"))) {
+            if (reasonForChecking.contains("Attack")) {
+                gridButton.setStyle("-fx-color: #f49242");
+                recursiveCheckDistance(dungeonMap, buttonGrid, currentDirection, temporaryY, temporaryX, iterations - stepDecrement, reasonForChecking);
+            } else if (!currentDirection.contains("Occupied") || (reasonForChecking.contains("Interaction"))) {
                 markTheTileAsAccessible(reasonForChecking, mapTile, gridButton);
                 recursiveCheckDistance(dungeonMap, buttonGrid, currentDirection, temporaryY, temporaryX, iterations - stepDecrement, reasonForChecking);
             }
@@ -162,18 +168,19 @@ public class PathFinder {
     }
 
     public void checkTheLineOfSight(DungeonMap dungeonMap, Button[][] buttonGrid, Hero hero) {
+        int LOSRange = hero.getAttackRange();
         int YPos = hero.getMapYPos();
         int XPos = hero.getMapXPos();
-        checkTheSightForOneDirection(dungeonMap, buttonGrid, YPos, XPos, 1, 1);
-        checkTheSightForOneDirection(dungeonMap, buttonGrid, YPos, XPos, 1, -1);
-        checkTheSightForOneDirection(dungeonMap, buttonGrid, YPos, XPos, -1, 1);
-        checkTheSightForOneDirection(dungeonMap, buttonGrid, YPos, XPos, -1, -1);
+        checkTheSightForOneDirection(dungeonMap, buttonGrid, YPos, XPos, LOSRange, 1, 1);
+        checkTheSightForOneDirection(dungeonMap, buttonGrid, YPos, XPos, LOSRange, 1, -1);
+        checkTheSightForOneDirection(dungeonMap, buttonGrid, YPos, XPos, LOSRange, -1, 1);
+        checkTheSightForOneDirection(dungeonMap, buttonGrid, YPos, XPos, LOSRange, -1, -1);
     }
 
     //todo refactor the method so that it's called only once and the direction changes automatically (between 1 and -1)
-    private void checkTheSightForOneDirection(DungeonMap dungeonMap, Button[][] buttonGrid, int YPos, int XPos, int dir1, int dir2) {
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
+    private void checkTheSightForOneDirection(DungeonMap dungeonMap, Button[][] buttonGrid, int YPos, int XPos, int range, int dir1, int dir2) {
+        for (int i = 0; i < range; i++) {
+            for (int j = 0; j < range; j++) {
                 if (i == 0 && j == 0) continue;
                 try {
                     int currentXPos = XPos + i * dir1;
@@ -231,9 +238,11 @@ public class PathFinder {
 
     private void markTileAsUnreachable(DungeonMap dungeonMap, Button[][] buttonGrid, int valueX, int valueY) {
         dungeonMap.getMapTilesArray()[valueX][valueY].setCurrentlyInvisible(true);
-        buttonGrid[valueX][valueY].setStyle("-fx-color: #ff6600");
+        buttonGrid[valueX][valueY].setStyle("-fx-color: #471660");
 
     }
+
+    //todo there's an inconsistency bug that makes walls visible only occasionally. It'd be better if all of the walls were revealed when the room is revealed.
 
     public void setTheRoomAsVisible(int XPos, int YPos, DungeonMap dungeonMap, List<Monster> allMonstersList) {
         List<Room> listOfCurrentRooms = dungeonMap.getAllRoomsList();

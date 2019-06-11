@@ -319,6 +319,8 @@ class DungeonGUI {
         checkIfAllCreaturesInRoomAreDead();
     }
 
+    //todo animated popup with damage value and fadeout
+
     private void checkIfAllCreaturesInRoomAreDead() {
         for (Monster monster : pathFinder.getDiscoveredMonsters()) {
             if (!monster.isThisCreatureDead()) {
@@ -470,7 +472,7 @@ class DungeonGUI {
     private void eventOnHeroClick(int currentHeroID) {
         PathFinder pathFinder = new PathFinder();
         Hero currentHero = guiUtilities.getHeroByID(currentHeroID, dungeonGUIHeroManager.getHeroList());
-        pathFinder.checkTheAvailableDistance(currentHero, dungeonMap, buttonGrid);
+        pathFinder.checkTheAvailableDistance(currentHero, dungeonMap, buttonGrid, "Available Distance");
         heroClickAnimation(buttonGrid[currentHero.getMapXPos()][currentHero.getMapYPos()]);
         System.out.println("Clicked the ID " + currentHeroID + " hero.");
         dungeonGUIHeroManager.setCurrentlyActiveHeroID(currentHeroID);
@@ -511,9 +513,11 @@ class DungeonGUI {
 
     private void eventOnPowerSelect(Hero currentHero, HeroPower selectedPower) {
         PathFinder pathFinder = new PathFinder();
+        currentHero.setAttackRange(selectedPower.getRange());
         currentPower.clear();
         currentPower.add(selectedPower);
         pathFinder.checkTheLineOfSight(dungeonMap, buttonGrid, currentHero);
+        pathFinder.checkTheAvailableDistance(currentHero,dungeonMap,buttonGrid, "Attack Range");
     }
 
 

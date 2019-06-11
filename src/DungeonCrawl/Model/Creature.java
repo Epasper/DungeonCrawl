@@ -24,6 +24,15 @@ public class Creature {
     private int initiativeBonus;
     private Map<String, Integer> defensesMap = new HashMap<>();
     private boolean isThisCreatureDead = false;
+    private int attackRange = 1;
+
+    public int getAttackRange() {
+        return attackRange;
+    }
+
+    public void setAttackRange(int attackRange) {
+        this.attackRange = attackRange;
+    }
 
     public boolean isThisCreatureDead() {
         return isThisCreatureDead;
