@@ -118,6 +118,7 @@ public class PathFinder {
         if (currentDirection.contains("Room") || currentDirection.contains("Corridor") || currentDirection.contains("Opened")) {
             if (reasonForChecking.contains("Attack")) {
                 gridButton.setStyle("-fx-color: #f49242");
+                markTheTileAsAccessible(reasonForChecking, mapTile, gridButton);
                 recursiveCheckDistance(dungeonMap, buttonGrid, currentDirection, temporaryY, temporaryX, iterations - stepDecrement, reasonForChecking);
             } else if (!currentDirection.contains("Occupied") || (reasonForChecking.contains("Interaction"))) {
                 markTheTileAsAccessible(reasonForChecking, mapTile, gridButton);
@@ -139,7 +140,9 @@ public class PathFinder {
 
     public void markTheTileAsAccessible(String reasonForChecking, MapTile mapTile, Button gridButton) {
         mapTile.alreadyDiscovered = true;
-        mapTile.inWalkRange = true;
+        if (!reasonForChecking.contains("Attack")) {
+            mapTile.inWalkRange = true;
+        }
         if (reasonForChecking.contains("Walk")) {
             gridButton.setStyle("-fx-color: #00ff00");
         } else if (reasonForChecking.contains("Interact")) {
@@ -148,8 +151,12 @@ public class PathFinder {
             if (mapTile.getOccupyingCreatureTypeId() > 100) {
                 gridButton.setStyle("-fx-color: #ff0000");
             }
+        } else if (reasonForChecking.contains("Attack") && mapTile.getOccupyingCreatureTypeId() > 100) {
+            mapTile.withinInteractionRange = true;
+            gridButton.setStyle("-fx-color: #ff0000");
         }
     }
+
 
     public double calculateTheStepDecrement(String previousDirection, String currentDirection) {
         double stepDecrement;
