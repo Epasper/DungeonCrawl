@@ -23,6 +23,15 @@ public class Creature {
     private int currentInitiative;
     private int initiativeBonus;
     private Map<String, Integer> defensesMap = new HashMap<>();
+    private boolean isThisCreatureDead = false;
+
+    public boolean isThisCreatureDead() {
+        return isThisCreatureDead;
+    }
+
+    public void setThisCreatureDead(boolean thisCreatureDead) {
+        isThisCreatureDead = thisCreatureDead;
+    }
 
     public Image getCreatureImage() {
         return creatureImage;

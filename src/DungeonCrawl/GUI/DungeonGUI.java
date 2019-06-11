@@ -1,6 +1,5 @@
 package DungeonCrawl.GUI;
 
-import javafx.animation.FillTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
@@ -234,7 +233,7 @@ class DungeonGUI {
                 //dungeonMap.getMapTilesArray()[i][j].alreadyDiscovered = true;
                 dungeonImageLibraryGUI.applyATileImageToAButton(typeOfTile, buttonGrid[i][j]);
                 if (currentEntityID > 0) {
-                    applyEntityIconToAButton(currentEntityID, buttonGrid[i][j],dungeonMap.getMapTilesArray()[i][j].getOccupyingCreatureUniqueID());
+                    applyEntityIconToAButton(currentEntityID, buttonGrid[i][j], dungeonMap.getMapTilesArray()[i][j].getOccupyingCreatureUniqueID());
                 }
                 if (!dungeonMap.getMapTilesArray()[i][j].alreadyDiscovered) {
                     dungeonImageLibraryGUI.applyATileImageToAButton("Fog", buttonGrid[i][j]);
@@ -279,7 +278,6 @@ class DungeonGUI {
         System.out.println("Attacking a monster with unique ID: " + getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID());
         Monster monster = guiUtilities.getSingleMonsterByUniqueID(getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID(), allMonstersList);
         System.out.println("LIST OF ALL MONSTERS:");
-        monsterAttackAnimation(buttonGrid[monster.getMapXPos()][monster.getMapYPos()]);
         for (Monster currentMonster : allMonstersList) {
             System.out.println(currentMonster.getMonsterName());
             System.out.println(currentMonster.getID());
@@ -292,8 +290,10 @@ class DungeonGUI {
                 monster.getDefensesMap().get(attackingPower.getDefenseToBeChecked().toLowerCase())) {
             triggerOnHit(attackingPower, hero, attackResults);
             inflictDamageToMonster(attackResults, monster);
+            creatureWasHitAnimation(buttonGrid[monster.getMapXPos()][monster.getMapYPos()]);
         } else {
             dungeonConsoleGUI.updateTheDungeonConsole("Your attack has missed.");
+            creatureWasMissedAnimation(buttonGrid[monster.getMapXPos()][monster.getMapYPos()]);
         }
     }
 
@@ -312,21 +312,26 @@ class DungeonGUI {
     }
 
     private void eventOnMonsterDeath(Monster monster) {
+        buttonGrid[monster.getMapXPos()][monster.getMapYPos()].setGraphic(addDeathImageToCreatureImage(monster));
+        addDeathImageToCreatureImage(monster);
+        monster.setThisCreatureDead(true);
+        System.out.println("Image has been modified");
+    }
+
+    private ImageView addDeathImageToCreatureImage(Creature creature) {
         Image skull = new Image(
                 "DungeonCrawl/GUI/Images/MapElements/Skull.jpg"
         );
-        Image monsterImage = monster.getCreatureImage();
+        Image monsterImage = creature.getCreatureImage();
         ImageInput backImageView = new ImageInput(monsterImage);
         ImageInput frontImageView = new ImageInput(skull);
         Blend imagesBlend = new Blend();
         imagesBlend.setBottomInput(backImageView);
         imagesBlend.setTopInput(frontImageView);
         imagesBlend.setMode(BlendMode.ADD);
-        ImageView finalImage = new ImageView(monsterImage);
-        finalImage.setEffect(imagesBlend);
-        monster.setCreatureImage(finalImage.getImage());
-        buttonGrid[monster.getMapXPos()][monster.getMapYPos()].setGraphic(finalImage);
-        System.out.println("Image has been modified");
+        ImageView finalImageView = new ImageView(monsterImage);
+        finalImageView.setEffect(imagesBlend);
+        return finalImageView;
     }
 
     private void triggerOnHit(HeroPower attackingPower, Hero hero, Map<String, Integer> attackResults) {
@@ -370,7 +375,7 @@ class DungeonGUI {
         attackResults.put("Damage Inflicted", allDamage);
     }
 
-    private void heroClickAnimation (Button button) {
+    private void heroClickAnimation(Button button) {
         ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(180), button.getGraphic());
         scaleTransition.setByX(-0.1f);
         scaleTransition.setByY(-0.1f);
@@ -380,13 +385,22 @@ class DungeonGUI {
         scaleTransition.play();
     }
 
-    private void monsterAttackAnimation (Button button) {
-        RotateTransition rt = new RotateTransition(Duration.millis(180), button.getGraphic());
-        rt.setByAngle(30);
-        rt.setCycleCount(2);
-        rt.setAutoReverse(true);
+    private void creatureWasHitAnimation(Button button) {
+        RotateTransition rotateTransition = new RotateTransition(Duration.millis(180), button.getGraphic());
+        rotateTransition.setByAngle(30);
+        rotateTransition.setCycleCount(2);
+        rotateTransition.setAutoReverse(true);
 
-        rt.play();
+        rotateTransition.play();
+    }
+
+    private void creatureWasMissedAnimation(Button button) {
+        TranslateTransition translateTransition = new TranslateTransition(Duration.millis(180), button.getGraphic());
+        translateTransition.setByX(30);
+        translateTransition.setCycleCount(2);
+        translateTransition.setAutoReverse(true);
+
+        translateTransition.play();
     }
 
     private void displayAttackMessage(HeroPower attackingPower, Monster monster, Map attackResults) {
@@ -472,8 +486,12 @@ class DungeonGUI {
         if (heroID < 100) {
             aButton.setGraphic(new ImageView(guiUtilities.getHeroByID(heroID, dungeonGUIHeroManager.getHeroList()).getCreatureImage()));
         } else {
-
-            aButton.setGraphic(new ImageView(guiUtilities.getSingleMonsterByUniqueID(uniqueMonsterID, allMonstersList).getCreatureImage()));
+            Monster monster = guiUtilities.getSingleMonsterByUniqueID(uniqueMonsterID, allMonstersList);
+            if (!monster.isThisCreatureDead()) {
+                aButton.setGraphic(new ImageView(monster.getCreatureImage()));
+            } else {
+                aButton.setGraphic(addDeathImageToCreatureImage(monster));
+            }
         }
     }
 //todo add a button to console that could extend its view range or minimize it.
