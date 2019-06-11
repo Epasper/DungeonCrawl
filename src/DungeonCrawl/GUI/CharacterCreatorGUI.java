@@ -93,11 +93,13 @@ class CharacterCreatorGUI {
     private Text armorClassText = new Text("Armor Class: \t\t" + AC);
     private TextArea powerDescription = new TextArea();
     private int iconID;
-    Popup equipInfoPopup = new Popup();
+    private Popup equipInfoPopup = new Popup();
 
     CharacterCreatorGUI() {
         initializeCharacterCreatorGUI();
     }
+
+    //todo change the power buttons to icons with images. Add image selection to powers on character creation.
 
     private void initializeCharacterCreatorGUI() {
         characterCreatorOuterPane.getStylesheets().add("DungeonCrawl/Styling/CharacterCreator.css");
