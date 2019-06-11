@@ -316,6 +316,23 @@ class DungeonGUI {
         addDeathImageToCreatureImage(monster);
         monster.setThisCreatureDead(true);
         System.out.println("Image has been modified");
+        checkIfAllCreaturesInRoomAreDead();
+    }
+
+    private void checkIfAllCreaturesInRoomAreDead() {
+        for (Monster monster : pathFinder.getDiscoveredMonsters()) {
+            if (!monster.isThisCreatureDead()) {
+                System.out.println("Found a creature that's alive");
+                fightAlreadyTakingPlace = true;
+                return;
+            }
+        }
+        System.out.println("All monsters are dead!");
+        List<Monster> emptyListOfMonsters = new ArrayList<>();
+        pathFinder.setDiscoveredMonsters(emptyListOfMonsters);
+        pathFinder.dungeonConsoleGUI.clearInitiativeTracker();
+        fightAlreadyTakingPlace = false;
+        pathFinder.setAlarmedMonsterVisible(false);
     }
 
     private ImageView addDeathImageToCreatureImage(Creature creature) {
@@ -396,10 +413,24 @@ class DungeonGUI {
 
     private void creatureWasMissedAnimation(Button button) {
         TranslateTransition translateTransition = new TranslateTransition(Duration.millis(180), button.getGraphic());
-        translateTransition.setByX(30);
+        translateTransition.setByX(10);
         translateTransition.setCycleCount(2);
         translateTransition.setAutoReverse(true);
 
+        translateTransition.play();
+    }
+
+    private void walkingAnimation(Button button, int startingXPosition, int startingYPosition, int endXPosition, int endYPosition) {
+        TranslateTransition translateTransition = new TranslateTransition(Duration.millis(180), button.getGraphic());
+        System.out.println("Walking Animation Triggered. " + (endXPosition - startingXPosition) + "   " + (endYPosition - startingYPosition));
+        int xMovement = (endXPosition - startingXPosition) * 50;
+        int yMovement = (endYPosition - startingYPosition) * 50;
+        translateTransition.setByX(xMovement);
+        translateTransition.setByY(yMovement);
+        System.out.println("Animation transition values: " + xMovement + " " + yMovement);
+        System.out.println("Animation graphic: " + button.getGraphic());
+        translateTransition.setCycleCount(8);
+        translateTransition.setAutoReverse(true);
         translateTransition.play();
     }
 
@@ -455,6 +486,9 @@ class DungeonGUI {
         getDungeonMap().getMapTilesArray()[XPos][YPos].setOccupyingCreatureTypeId(dungeonGUIHeroManager.getCurrentlyActiveHeroID());
         int deltaX = Math.abs(hero.getMapXPos() - XPos);
         int deltaY = Math.abs(hero.getMapYPos() - YPos);
+        // int oldHeroXPos = hero.getMapXPos();
+        // int oldHeroYPos = hero.getMapYPos();
+        //Button buttonToAnimate = buttonGrid[oldHeroXPos][oldHeroYPos];
         hero.setCurrentSpeed(hero.getCurrentSpeed() - (deltaX + deltaY));
         hero.setMapXPos(XPos);
         hero.setMapYPos(YPos);
@@ -472,6 +506,7 @@ class DungeonGUI {
         }
         fightAlreadyTakingPlace = pathFinder.checkTheVisibilityRange(allMonstersList, dungeonGUIHeroManager.getHeroList(), hero, dungeonMap, fightAlreadyTakingPlace);
         dungeonConsoleGUI.getInitiativeTracker().setContent(pathFinder.dungeonConsoleGUI.getInitiativeTilePane());
+        //walkingAnimation(buttonToAnimate, oldHeroXPos, oldHeroYPos, XPos, YPos);
     }
 
     private void eventOnPowerSelect(Hero currentHero, HeroPower selectedPower) {

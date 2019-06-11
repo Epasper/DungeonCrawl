@@ -13,6 +13,22 @@ public class PathFinder {
     private boolean alarmedMonsterVisible = false;
     public DungeonConsoleGUI dungeonConsoleGUI = new DungeonConsoleGUI();
 
+    public boolean isAlarmedMonsterVisible() {
+        return alarmedMonsterVisible;
+    }
+
+    public void setAlarmedMonsterVisible(boolean alarmedMonsterVisible) {
+        this.alarmedMonsterVisible = alarmedMonsterVisible;
+    }
+
+    public List<Monster> getDiscoveredMonsters() {
+        return discoveredMonsters;
+    }
+
+    public void setDiscoveredMonsters(List<Monster> discoveredMonsters) {
+        this.discoveredMonsters = discoveredMonsters;
+    }
+
     public void checkTheAvailableDistance(Hero hero, DungeonMap dungeonMap, Button[][] buttonGrid) {
         int YPos = hero.getMapYPos();
         int XPos = hero.getMapXPos();
@@ -246,11 +262,11 @@ public class PathFinder {
         int XPos = hero.getMapXPos();
         int YPos = hero.getMapYPos();
         setTheRoomAsVisible(XPos, YPos, dungeonMap, allMonstersList);
-        if (alarmedMonsterVisible) {
+        if (alarmedMonsterVisible && !fightAlreadyTakingPlace) {
             for (Monster monster : discoveredMonsters) {
                 System.out.println("Passing the monster: " + monster.getMonsterName() + " UUID: " + monster.getCurrentMonsterUniqueID());
             }
-            dungeonConsoleGUI.fillTheInitiativeTracker(listOfHeroes, discoveredMonsters, !fightAlreadyTakingPlace);
+            dungeonConsoleGUI.fillTheInitiativeTracker(listOfHeroes, discoveredMonsters, true);
             System.out.println(fightAlreadyTakingPlace);
             fightAlreadyTakingPlace = true;
             return fightAlreadyTakingPlace;
@@ -261,10 +277,12 @@ public class PathFinder {
     private void verifyIfTheMonsterOnThisTileIsAlarmed(List<Monster> allMonstersList, MapTile currentMapTile) {
         GUIUtilities guiUtilities = new GUIUtilities();
         if (currentMapTile.getOccupyingCreatureTypeId() > 100) {
-            alarmedMonsterVisible = true;
             Monster monster = guiUtilities.getSingleMonsterByUniqueID(currentMapTile.getOccupyingCreatureUniqueID(), allMonstersList);
-            discoveredMonsters.add(monster);
-            System.out.println("Adding the monster: " + monster.getMonsterName() + " UUID: " + monster.getCurrentMonsterUniqueID());
+            if (!monster.isThisCreatureDead()) {
+                discoveredMonsters.add(monster);
+                alarmedMonsterVisible = true;
+                System.out.println("Adding the monster: " + monster.getMonsterName() + " UUID: " + monster.getCurrentMonsterUniqueID());
+            }
         }
     }
 }

@@ -13,6 +13,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Screen;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -23,6 +24,15 @@ public class DungeonConsoleGUI {
     private ScrollPane initiativeTracker = new ScrollPane();
     private List<Button> listOfButtons = new ArrayList<>();
     private TilePane initiativeTilePane = new TilePane();
+    private Creature[] initiativeArray = new Creature[50];
+
+    public Creature[] getInitiativeArray() {
+        return initiativeArray;
+    }
+
+    public void setInitiativeArray(Creature[] initiativeArray) {
+        this.initiativeArray = initiativeArray;
+    }
 
     public TilePane getInitiativeTilePane() {
         return initiativeTilePane;
@@ -44,6 +54,13 @@ public class DungeonConsoleGUI {
         initializeTheConsole();
     }
 
+
+    public void clearInitiativeTracker() {
+        initiativeTilePane.getChildren().clear();
+        Arrays.fill(initiativeArray, null);
+        listOfButtons.clear();
+    }
+
     private void initializeTheConsole() {
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
         dungeonConsole.setPrefWidth(primaryScreenBounds.getWidth());
@@ -60,7 +77,6 @@ public class DungeonConsoleGUI {
 
     public void fillTheInitiativeTracker(List<Hero> listOfHeroes, List<Monster> listOfMonsters, boolean shouldIRollForNewInitiative) {
         TilePane initiativeTilePane = new TilePane();
-        Creature[] initiativeArray = new Creature[50];
         System.out.println("ROLLING INITIATIVE: ");
         if (shouldIRollForNewInitiative) {
             for (Hero hero : listOfHeroes) {
