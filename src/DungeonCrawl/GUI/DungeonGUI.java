@@ -87,6 +87,8 @@ class DungeonGUI {
 
     //todo lock the possibility of attacking when no power is selected.
 
+    //todo lock encounter powers on use until the end of encounter. Lock daily powers on use once every 3 encounters.
+
     /*todo add messages to console:
      CURRENTLY SELECTED POWER:
     ...
@@ -94,7 +96,7 @@ class DungeonGUI {
 
     //todo in future, change the portraits, so that each hero has a bigger portrait on the right and small icon on the field.
 
-    //todo Add HPBars to portraits
+    //todo Hero portraits to turn red with damage taken.
 
     //todo add a movement animation, so that the movement is more clear.
 

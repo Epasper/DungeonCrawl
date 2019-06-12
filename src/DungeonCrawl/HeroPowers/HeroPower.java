@@ -29,7 +29,7 @@ public abstract class HeroPower {
     protected boolean isThisABeastFormAttack = false;
     protected String secondAttributeUsed;
     protected String powersAdditionalOptions;
-    protected String powerIconId;
+    private String powerIconId;
 
     public String getPowerIconId() {
         return powerIconId;
