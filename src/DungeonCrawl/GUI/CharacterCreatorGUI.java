@@ -1,5 +1,6 @@
 package DungeonCrawl.GUI;
 
+import DungeonCrawl.GUI.Images.SkillIcons.SkillIcons;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
@@ -54,6 +55,10 @@ class CharacterCreatorGUI {
     private ComboBox<String> dailyChoice = new ComboBox<>();
     private ComboBox<String> classTraitChoice = new ComboBox<>();
     private ComboBox<String> raceChoice = new ComboBox<>();
+    private Button atWill1IconSelect = new Button("Select Icon");
+    private Button atWill2IconSelect = new Button("Select Icon");
+    private Button encounterIconSelect = new Button("Select Icon");
+    private Button dailyIconSelect = new Button("Select Icon");
     private Button returnToMainMenu = new Button();
     private Button saveTheCharacter = new Button();
     private Button addACharacterPortrait = new Button();
@@ -94,6 +99,10 @@ class CharacterCreatorGUI {
     private TextArea powerDescription = new TextArea();
     private int iconID;
     private Popup equipInfoPopup = new Popup();
+    private int atWillPower1IconID = -1;
+    private int atWillPower2IconID = -1;
+    private int encounterPowerIconID = -1;
+    private int dailyPowerIconID = -1;
 
     CharacterCreatorGUI() {
         initializeCharacterCreatorGUI();
@@ -146,11 +155,7 @@ class CharacterCreatorGUI {
             aButton.setGraphic(imageView);
             hBox.getChildren().add(aButton);
             aButton.setOnAction(event -> {
-                try {
-                    updateThePortrait(aButton.getId());
-                } catch (SQLException | IOException e) {
-                    e.printStackTrace();
-                }
+                updateThePortrait(aButton.getId());
                 aStage.close();
             });
         }
@@ -159,11 +164,36 @@ class CharacterCreatorGUI {
         aStage.show();
     }
 
-    private void updateThePortrait(String portraitId) throws SQLException, IOException {
+    private void chooseASkillIcon(String typeOfPower) {
+        HBox hBox = new HBox();
+        SkillIcons skillIcons = new SkillIcons();
+        List<Image> listOfIcons = skillIcons.getListOfSkillIcons();
+        Stage aStage = new Stage();
+        Scene aScene = new Scene(new Group());
+        aStage.setTitle("Select a Skill Icon");
+        aScene.getStylesheets().add("DungeonCrawl/Styling/CharacterCreator.css");
+        for (int i = 0; i < listOfIcons.size(); i++) {
+            ImageView imageView = new ImageView();
+            Button aButton = new Button();
+            aButton.setId(String.valueOf(i));
+            imageView.setImage(listOfIcons.get(i));
+            aButton.setGraphic(imageView);
+            hBox.getChildren().add(aButton);
+            aButton.setOnAction(event -> {
+                updateTheSkillIconID(aButton.getId(), typeOfPower);
+                aStage.close();
+            });
+        }
+        aScene.setRoot(hBox);
+        aStage.setScene(aScene);
+        aStage.show();
+    }
+
+    private void updateThePortrait(String portraitId) {
         int id = Integer.valueOf(portraitId);
-        CharacterCreatorDAO dao = new CharacterCreatorDAO();
+        SkillIcons skillIcons = new SkillIcons();
         System.out.println("CURRENT ID: " + id);
-        Image hero1img = dao.getHeroIconByID(id);
+        Image hero1img = skillIcons.getListOfSkillIcons().get(id);
         iconID = id;
         ImageView heroImageView = new ImageView(hero1img);
         try {
@@ -172,6 +202,34 @@ class CharacterCreatorGUI {
         }
         leftBox.getChildren().add(5, heroImageView);
     }
+
+    //todo power icon miniatures to be displayed next to the button
+
+    private void updateTheSkillIconID(String portraitId, String typeOfPower) {
+        int id = Integer.valueOf(portraitId);
+        String ok = "Icon Selected";
+        System.out.println("CURRENT ID: " + id);
+        switch (typeOfPower) {
+            case "AtWill1":
+                atWillPower1IconID = id;
+                atWill1IconSelect.setText(ok);
+                break;
+            case "AtWill2":
+                atWillPower2IconID = id;
+                atWill2IconSelect.setText(ok);
+                break;
+            case "Encounter":
+                encounterPowerIconID = id;
+                encounterIconSelect.setText(ok);
+                break;
+            case "Daily":
+                dailyPowerIconID = id;
+                dailyIconSelect.setText(ok);
+                break;
+        }
+    }
+
+    //todo refactor this class in accordance to Single Responsibility
 
     private List<Image> getAllIcons() throws SQLException, IOException {
         CharacterCreatorDAO dao = new CharacterCreatorDAO();
@@ -210,6 +268,10 @@ class CharacterCreatorGUI {
         characterCreatorDTO.setAtWillPower2(atWill2Choice.getValue());
         characterCreatorDTO.setEncounterPower1(encounterChoice.getValue());
         characterCreatorDTO.setDailyPower1(dailyChoice.getValue());
+        characterCreatorDTO.setAtWill1Power1IconID(String.valueOf(atWillPower1IconID));
+        characterCreatorDTO.setAtWill1Power2IconID(String.valueOf(atWillPower2IconID));
+        characterCreatorDTO.setEncounterPowerIconID(String.valueOf(encounterPowerIconID));
+        characterCreatorDTO.setDailyPowerIconID(String.valueOf(dailyPowerIconID));
         characterCreatorDTO.setAcrobatics(finalSkillPointsArray[0]);
         characterCreatorDTO.setArcana(finalSkillPointsArray[1]);
         characterCreatorDTO.setAthletics(finalSkillPointsArray[2]);
@@ -264,18 +326,42 @@ class CharacterCreatorGUI {
             listOfErrorMessages.add("Select an encounter power.");
         if (characterCreatorDTO.getDailyPower1().contains("Select"))
             listOfErrorMessages.add("Select a daily power.");
+        if (characterCreatorDTO.getAtWill1Power1IconID() == null)
+            listOfErrorMessages.add("Select an Icon for one of your at will powers");
+        if (characterCreatorDTO.getAtWill1Power2IconID() == null)
+            listOfErrorMessages.add("Select an Icon for one of your at will powers");
+        if (characterCreatorDTO.getEncounterPowerIconID() == null)
+            listOfErrorMessages.add("Select an Icon for your encounter power");
+        if (characterCreatorDTO.getDailyPowerIconID() == null)
+            listOfErrorMessages.add("Select an Icon for your daily power");
         return listOfErrorMessages;
     }
 
     private void addTheDerivedElements() {
-        Text breakLine = new Text("    ");
-        middleBox.add(breakLine, 0, 10);
-        middleBox.add(maxHpText, 0, 11);
+        manageDerivedElementsStyling();
+        disableComboBoxesUntilClassIsSelected();
+        addElementsToMiddleBox();
+        addEventsToIconSelectButtons();
+
+    }
+
+    private void disableComboBoxesUntilClassIsSelected() {
+        atWill1Choice.setDisable(true);
+        atWill2Choice.setDisable(true);
+        encounterChoice.setDisable(true);
+        dailyChoice.setDisable(true);
+    }
+
+    private void manageDerivedElementsStyling() {
         atWill1Choice.setMinWidth(200);
         atWill2Choice.setMinWidth(200);
         encounterChoice.setMinWidth(200);
         dailyChoice.setMinWidth(200);
         classTraitChoice.setMinWidth(200);
+        atWill1IconSelect.setMaxHeight(atWill1Choice.getMaxHeight());
+        atWill2IconSelect.setMaxHeight(atWill2Choice.getMaxHeight());
+        encounterIconSelect.setMaxHeight(encounterChoice.getMaxHeight());
+        dailyIconSelect.setMaxHeight(dailyChoice.getMaxHeight());
         encounterChoice.setStyle("-fx-background-color: #910000;");
         dailyChoice.setStyle("-fx-background-color: #5c005e;");
         atWill1Choice.setStyle("-fx-background-color: #007200;");
@@ -284,17 +370,23 @@ class CharacterCreatorGUI {
         atWill2Choice.setValue("Select 2nd At Will Power");
         encounterChoice.setValue("Select an Encounter Power");
         dailyChoice.setValue("Select a Daily Power");
-        atWill1Choice.setDisable(true);
-        atWill2Choice.setDisable(true);
-        encounterChoice.setDisable(true);
-        dailyChoice.setDisable(true);
-        middleBox.add(atWill1Choice, 2, 12);
-        middleBox.add(atWill2Choice, 2, 13);
-        middleBox.add(encounterChoice, 3, 12);
-        middleBox.add(dailyChoice, 3, 13);
-        middleBox.add(classTraitChoice, 2, 11);
+    }
+
+    private void addElementsToMiddleBox() {
+        Text breakLine = new Text("    ");
+        middleBox.add(breakLine, 0, 10);
+        middleBox.add(maxHpText, 0, 11);
         Text savingText = new Text("Saving Throws:  ");
         savingText.setFill(Color.WHITE);
+        middleBox.add(atWill1Choice, 2, 12);
+        middleBox.add(atWill1IconSelect, 3, 12);
+        middleBox.add(atWill2Choice, 2, 13);
+        middleBox.add(atWill2IconSelect, 3, 13);
+        middleBox.add(encounterChoice, 2, 14);
+        middleBox.add(encounterIconSelect, 3, 14);
+        middleBox.add(dailyChoice, 2, 15);
+        middleBox.add(dailyIconSelect, 3, 15);
+        middleBox.add(classTraitChoice, 2, 11);
         middleBox.add(savingText, 0, 12);
         middleBox.add(fortitudeSaveText, 0, 13);
         middleBox.add(reflexSaveText, 0, 14);
@@ -302,6 +394,14 @@ class CharacterCreatorGUI {
         middleBox.add(armorClassText, 0, 16);
         powerDescription.setMinSize(120, 250);
         middleBox.add(powerDescription, 0, 25, 10, 1);
+    }
+
+    private void addEventsToIconSelectButtons() {
+        String ok = "Power Selected";
+        atWill1IconSelect.setOnAction(event -> chooseASkillIcon("AtWill1"));
+        atWill2IconSelect.setOnAction(event -> chooseASkillIcon("AtWill2"));
+        encounterIconSelect.setOnAction(event -> chooseASkillIcon("Encounter"));
+        dailyIconSelect.setOnAction(event -> chooseASkillIcon("Daily"));
     }
 
     private void addTheSkillList() {
@@ -696,7 +796,7 @@ class CharacterCreatorGUI {
         plugTheCellFactoryIntoComboBoxes(atWill2Choice);
         plugTheCellFactoryIntoComboBoxes(encounterChoice);
         plugTheCellFactoryIntoComboBoxes(dailyChoice);
-        plugTheCellFactoryIntoComboBoxes(classTraitChoice);
+        //plugTheCellFactoryIntoComboBoxes(classTraitChoice);
 
     }
 

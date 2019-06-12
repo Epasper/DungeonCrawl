@@ -78,6 +78,7 @@ public class CharacterCreatorDAO {
         return numberOfHeroes;
     }
 
+
     public Hero getAHeroByID(int ID) throws SQLException, IOException {
         Hero hero = new Hero();
         HeroClassInformation heroClassInformation = new HeroClassInformation();
@@ -239,6 +240,7 @@ public class CharacterCreatorDAO {
         pst.executeUpdate();
         System.out.println("Character's gold amount has successfully been modified");
     }
+//    INSERT INTO `dungeon`.`heroes` (`idheroes`, `hero_name`, `hero_class`, `hero_race`, `hero_level`, `strength`, `constitution`, `dexterity`, `intelligence`, `wisdom`, `charisma`, `ac`, `fortitude`, `reflex`, `will`, `gold`, `icon_id`, `sk_acrobatics`, `sk_arcana`, `sk_athletics`, `sk_bluff`, `sk_diplomacy`, `sk_dungeoneering`, `sk_endurance`, `sk_heal`, `sk_history`, `sk_insight`, `sk_intimidate`, `sk_nature`, `sk_perception`, `sk_religion`, `sk_stealth`, `sk_streetwise`, `sk_thievery`, `powers_at_will`, `powers_encounter`, `powers_daily`, `power_icon_ids_at_will`, `power_icon_ids_encounter`, `power_icon_ids_daily`) VALUES ('3', 'Gwaihir', 'Fighter', 'Human', '1', '18', '18', '10', '10', '10', '10', '10', '3', '3', '0', '100', '12', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'Deft Strike___Riposte Strike', 'King\'s Castle___', 'Dazing Strike___', '1___2___', '3___', '4___');
 
     public void addAHeroToDatabase(CharacterCreatorDTO heroToBeAdded) throws SQLException {
         String sql = "INSERT INTO dungeon.heroes(" +
@@ -277,9 +279,12 @@ public class CharacterCreatorDAO {
                 "sk_thievery," +
                 "powers_at_will," +
                 "powers_encounter," +
-                "powers_daily)" +
+                "powers_daily," +
+                "power_icon_ids_at_will," +
+                "power_icon_ids_encounter," +
+                "power_icon_ids_daily)" +
                 "VALUES" +
-                "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+                "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
         pst = conn.prepareStatement(sql);
         pst.setString(1, heroToBeAdded.getHeroName());
         pst.setString(2, heroToBeAdded.getHeroClass());
@@ -317,6 +322,9 @@ public class CharacterCreatorDAO {
         pst.setString(34, heroToBeAdded.getAtWillPower1() + "___" + heroToBeAdded.getAtWillPower2());
         pst.setString(35, heroToBeAdded.getEncounterPower1() + "___");
         pst.setString(36, heroToBeAdded.getDailyPower1() + "___");
+        pst.setString(37, heroToBeAdded.getAtWill1Power1IconID() + "___" + heroToBeAdded.getAtWill1Power2IconID());
+        pst.setString(38, heroToBeAdded.getEncounterPowerIconID() + "___");
+        pst.setString(39, heroToBeAdded.getDailyPowerIconID() + "___");
         pst.executeUpdate();
         addHeroEquipmentTable(heroToBeAdded);
         System.out.println("Character has successfully been added to the database");

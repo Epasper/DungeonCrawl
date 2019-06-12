@@ -14,9 +14,13 @@ public class CharacterCreatorDTO {
     private int gold;
     private double speed = 6;
     private String atWillPower1;
+    private String atWill1Power1IconID;
     private String atWillPower2;
+    private String atWill1Power2IconID;
     private String encounterPower1;
+    private String encounterPowerIconID;
     private String dailyPower1;
+    private String dailyPowerIconID;
     private String allAtWillPowers;
     private String allEncounterPowers;
     private String allDailyPowers;
@@ -49,6 +53,38 @@ public class CharacterCreatorDTO {
     private int Streetwise;
     private int Thievery;
     private Image heroImage;
+
+    public String getAtWill1Power1IconID() {
+        return atWill1Power1IconID;
+    }
+
+    public void setAtWill1Power1IconID(String atWill1Power1IconID) {
+        this.atWill1Power1IconID = atWill1Power1IconID;
+    }
+
+    public String getAtWill1Power2IconID() {
+        return atWill1Power2IconID;
+    }
+
+    public void setAtWill1Power2IconID(String atWill1Power2IconID) {
+        this.atWill1Power2IconID = atWill1Power2IconID;
+    }
+
+    public String getEncounterPowerIconID() {
+        return encounterPowerIconID;
+    }
+
+    public void setEncounterPowerIconID(String encounterPowerIconID) {
+        this.encounterPowerIconID = encounterPowerIconID;
+    }
+
+    public String getDailyPowerIconID() {
+        return dailyPowerIconID;
+    }
+
+    public void setDailyPowerIconID(String dailyPowerIconID) {
+        this.dailyPowerIconID = dailyPowerIconID;
+    }
 
     public int getHeroLevel() {
         return heroLevel;
