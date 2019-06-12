@@ -1,5 +1,6 @@
 package DungeonCrawl.GUI;
 
+import DungeonCrawl.GUI.Images.SkillIcons.SkillIcons;
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
@@ -170,10 +171,14 @@ class DungeonGUI {
     }
 
 
-    private void updateButtonsWithHeroSkillNames(Hero currentHero) {
+    private void updateButtonsWithSkillIcons(Hero currentHero) {
+        SkillIcons skillIcons = new SkillIcons();
         for (HeroPower currentPower : currentHero.getAtWillPowers()) {
-            Button powerButton = new Button(currentPower.getPowerName());
-            powerButton.setMinWidth(130);
+            Button powerButton = new Button();
+            int powerIconID = Integer.valueOf(currentPower.getPowerIconId());
+            ImageView powerImageView = new ImageView(skillIcons.getListOfSkillIcons().get(powerIconID));
+            powerButton.setGraphic(powerImageView);
+            //powerButton.setMinWidth(130);
             powerButton.setStyle("-fx-background-color: #007200;");
             powerButton.setTextFill(Color.WHITE);
             powersHBox.getChildren().add(powerButton);
@@ -181,16 +186,22 @@ class DungeonGUI {
 
         }
         for (HeroPower currentPower : currentHero.getEncounterPowers()) {
-            Button powerButton = new Button(currentPower.getPowerName());
-            powerButton.setMinWidth(130);
+            Button powerButton = new Button();
+            int powerIconID = Integer.valueOf(currentPower.getPowerIconId());
+            ImageView powerImageView = new ImageView(skillIcons.getListOfSkillIcons().get(powerIconID));
+            powerButton.setGraphic(powerImageView);
+            //powerButton.setMinWidth(130);
             powerButton.setStyle("-fx-background-color: #910000;");
             powerButton.setTextFill(Color.WHITE);
             powersHBox.getChildren().add(powerButton);
             powerButton.setOnAction(event -> eventOnPowerSelect(currentHero, currentPower));
         }
         for (HeroPower currentPower : currentHero.getDailyPowers()) {
-            Button powerButton = new Button(currentPower.getPowerName());
-            powerButton.setMinWidth(130);
+            Button powerButton = new Button();
+            int powerIconID = Integer.valueOf(currentPower.getPowerIconId());
+            ImageView powerImageView = new ImageView(skillIcons.getListOfSkillIcons().get(powerIconID));
+            powerButton.setGraphic(powerImageView);
+            //powerButton.setMinWidth(130);
             powerButton.setStyle("-fx-background-color: #5c005e;");
             powerButton.setTextFill(Color.WHITE);
             powersHBox.getChildren().add(powerButton);
@@ -475,7 +486,7 @@ class DungeonGUI {
         System.out.println("Clicked the ID " + currentHeroID + " hero.");
         dungeonGUIHeroManager.setCurrentlyActiveHeroID(currentHeroID);
         setHasTheCharacterBeenSelected(true);
-        updateButtonsWithHeroSkillNames(guiUtilities.getHeroByID(currentHeroID, dungeonGUIHeroManager.getHeroList()));
+        updateButtonsWithSkillIcons(guiUtilities.getHeroByID(currentHeroID, dungeonGUIHeroManager.getHeroList()));
         dungeonConsoleGUI.updateTheDungeonConsole("You have selected " + currentHero.getHeroName());
     }
 

@@ -147,10 +147,16 @@ public class CharacterCreatorDAO {
         String allAtWillPowers = rs.getString("powers_at_will");
         String allEncounterPowers = rs.getString("powers_encounter");
         String allDailyPowers = rs.getString("powers_daily");
+        String atWillIconIDS = rs.getString("power_icon_ids_at_will");
+        String encounterIconIDS = rs.getString("power_icon_ids_encounter");
+        String dailyIconIDS = rs.getString("power_icon_ids_daily");
         List<HeroPower> allAtWillPowersForHero = heroClassInformation.getAtWillPowersAtLevel1().get(heroClass);
         List<HeroPower> validAtWillPowersForHero = new ArrayList<>();
         for (HeroPower currentPower : allAtWillPowersForHero) {
             if (allAtWillPowers.contains(currentPower.getPowerName())) {
+                String parsedIconID = atWillIconIDS.substring(0, atWillIconIDS.indexOf("___"));
+                currentPower.setPowerIconId(parsedIconID);
+                atWillIconIDS = atWillIconIDS.substring(atWillIconIDS.indexOf("___") + 3);
                 validAtWillPowersForHero.add(currentPower);
             }
         }
@@ -159,6 +165,9 @@ public class CharacterCreatorDAO {
         List<HeroPower> validEncounterPowersForHero = new ArrayList<>();
         for (HeroPower currentPower : allEncounterPowersForHero) {
             if (allEncounterPowers.contains(currentPower.getPowerName())) {
+                String parsedIconID = encounterIconIDS.substring(0, encounterIconIDS.indexOf("___"));
+                currentPower.setPowerIconId(parsedIconID);
+                encounterIconIDS = encounterIconIDS.substring(encounterIconIDS.indexOf("___") + 3);
                 validEncounterPowersForHero.add(currentPower);
             }
         }
@@ -167,6 +176,9 @@ public class CharacterCreatorDAO {
         List<HeroPower> validDailyPowersForHero = new ArrayList<>();
         for (HeroPower currentPower : allDailyPowersForHero) {
             if (allDailyPowers.contains(currentPower.getPowerName())) {
+                String parsedIconID = dailyIconIDS.substring(0, dailyIconIDS.indexOf("___"));
+                currentPower.setPowerIconId(parsedIconID);
+                dailyIconIDS = dailyIconIDS.substring(dailyIconIDS.indexOf("___") + 3);
                 validDailyPowersForHero.add(currentPower);
             }
         }
@@ -322,7 +334,7 @@ public class CharacterCreatorDAO {
         pst.setString(34, heroToBeAdded.getAtWillPower1() + "___" + heroToBeAdded.getAtWillPower2());
         pst.setString(35, heroToBeAdded.getEncounterPower1() + "___");
         pst.setString(36, heroToBeAdded.getDailyPower1() + "___");
-        pst.setString(37, heroToBeAdded.getAtWill1Power1IconID() + "___" + heroToBeAdded.getAtWill1Power2IconID());
+        pst.setString(37, heroToBeAdded.getAtWill1Power1IconID() + "___" + heroToBeAdded.getAtWill1Power2IconID() + "___");
         pst.setString(38, heroToBeAdded.getEncounterPowerIconID() + "___");
         pst.setString(39, heroToBeAdded.getDailyPowerIconID() + "___");
         pst.executeUpdate();

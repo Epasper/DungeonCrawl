@@ -155,7 +155,11 @@ class CharacterCreatorGUI {
             aButton.setGraphic(imageView);
             hBox.getChildren().add(aButton);
             aButton.setOnAction(event -> {
-                updateThePortrait(aButton.getId());
+                try {
+                    updateThePortrait(aButton.getId());
+                } catch (SQLException | IOException e) {
+                    e.printStackTrace();
+                }
                 aStage.close();
             });
         }
@@ -189,11 +193,11 @@ class CharacterCreatorGUI {
         aStage.show();
     }
 
-    private void updateThePortrait(String portraitId) {
+    private void updateThePortrait(String portraitId) throws SQLException, IOException {
         int id = Integer.valueOf(portraitId);
-        SkillIcons skillIcons = new SkillIcons();
+        CharacterCreatorDAO dao = new CharacterCreatorDAO();
         System.out.println("CURRENT ID: " + id);
-        Image hero1img = skillIcons.getListOfSkillIcons().get(id);
+        Image hero1img = dao.getHeroIconByID(id);
         iconID = id;
         ImageView heroImageView = new ImageView(hero1img);
         try {

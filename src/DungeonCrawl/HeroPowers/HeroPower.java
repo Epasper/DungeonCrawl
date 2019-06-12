@@ -29,6 +29,15 @@ public abstract class HeroPower {
     protected boolean isThisABeastFormAttack = false;
     protected String secondAttributeUsed;
     protected String powersAdditionalOptions;
+    protected String powerIconId;
+
+    public String getPowerIconId() {
+        return powerIconId;
+    }
+
+    public void setPowerIconId(String powerIconId) {
+        this.powerIconId = powerIconId;
+    }
 
     public String getPowerName() {
         return powerName;
