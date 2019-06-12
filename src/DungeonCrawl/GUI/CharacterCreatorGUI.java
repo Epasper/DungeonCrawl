@@ -141,7 +141,7 @@ class CharacterCreatorGUI {
     }
 
     private void choosePortrait() throws SQLException, IOException {
-        HBox hBox = new HBox();
+        GridPane gridPane = new GridPane();
         List<Image> listOfIcons = getAllIcons();
         Stage aStage = new Stage();
         Scene aScene = new Scene(new Group());
@@ -153,7 +153,9 @@ class CharacterCreatorGUI {
             aButton.setId(String.valueOf(i + 1));
             imageView.setImage(listOfIcons.get(i));
             aButton.setGraphic(imageView);
-            hBox.getChildren().add(aButton);
+            int x = i % 5;
+            int y = i / 5;
+            gridPane.add(aButton, y, x);
             aButton.setOnAction(event -> {
                 try {
                     updateThePortrait(aButton.getId());
@@ -163,13 +165,13 @@ class CharacterCreatorGUI {
                 aStage.close();
             });
         }
-        aScene.setRoot(hBox);
+        aScene.setRoot(gridPane);
         aStage.setScene(aScene);
         aStage.show();
     }
 
     private void chooseASkillIcon(String typeOfPower) {
-        HBox hBox = new HBox();
+        GridPane gridPane = new GridPane();
         SkillIcons skillIcons = new SkillIcons();
         List<Image> listOfIcons = skillIcons.getListOfSkillIcons();
         Stage aStage = new Stage();
@@ -182,13 +184,15 @@ class CharacterCreatorGUI {
             aButton.setId(String.valueOf(i));
             imageView.setImage(listOfIcons.get(i));
             aButton.setGraphic(imageView);
-            hBox.getChildren().add(aButton);
+            int x = i % 5;
+            int y = i / 5;
+            gridPane.add(aButton, y, x);
             aButton.setOnAction(event -> {
                 updateTheSkillIconID(aButton.getId(), typeOfPower);
                 aStage.close();
             });
         }
-        aScene.setRoot(hBox);
+        aScene.setRoot(gridPane);
         aStage.setScene(aScene);
         aStage.show();
     }
@@ -308,6 +312,8 @@ class CharacterCreatorGUI {
         }
     }
 
+    //todo test the field validation on hero saving
+
     private List<String> validateTheCharacterFields(CharacterCreatorDTO characterCreatorDTO) {
         List<String> listOfErrorMessages = new ArrayList<>();
         if (characterCreatorDTO.getHeroName().isEmpty())
@@ -330,14 +336,14 @@ class CharacterCreatorGUI {
             listOfErrorMessages.add("Select an encounter power.");
         if (characterCreatorDTO.getDailyPower1().contains("Select"))
             listOfErrorMessages.add("Select a daily power.");
-        if (characterCreatorDTO.getAtWill1Power1IconID() == null)
-            listOfErrorMessages.add("Select an Icon for one of your at will powers");
-        if (characterCreatorDTO.getAtWill1Power2IconID() == null)
-            listOfErrorMessages.add("Select an Icon for one of your at will powers");
-        if (characterCreatorDTO.getEncounterPowerIconID() == null)
-            listOfErrorMessages.add("Select an Icon for your encounter power");
-        if (characterCreatorDTO.getDailyPowerIconID() == null)
-            listOfErrorMessages.add("Select an Icon for your daily power");
+        if (Integer.valueOf(characterCreatorDTO.getAtWill1Power1IconID()) < 0)
+            listOfErrorMessages.add("Select an Icon for one of your at will powers.");
+        if (Integer.valueOf(characterCreatorDTO.getAtWill1Power2IconID()) < 0)
+            listOfErrorMessages.add("Select an Icon for one of your at will powers.");
+        if (Integer.valueOf(characterCreatorDTO.getEncounterPowerIconID()) < 0)
+            listOfErrorMessages.add("Select an Icon for your encounter power.");
+        if (Integer.valueOf(characterCreatorDTO.getDailyPowerIconID()) < 0)
+            listOfErrorMessages.add("Select an Icon for your daily power.");
         return listOfErrorMessages;
     }
 
