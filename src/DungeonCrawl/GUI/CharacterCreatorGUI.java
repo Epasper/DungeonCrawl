@@ -312,7 +312,7 @@ class CharacterCreatorGUI {
         }
     }
 
-    //todo test the field validation on hero saving
+    //todo after saving a character successfully, add a confirmation scene and return to main menu (or go to equipment shop)
 
     private List<String> validateTheCharacterFields(CharacterCreatorDTO characterCreatorDTO) {
         List<String> listOfErrorMessages = new ArrayList<>();
@@ -336,14 +336,18 @@ class CharacterCreatorGUI {
             listOfErrorMessages.add("Select an encounter power.");
         if (characterCreatorDTO.getDailyPower1().contains("Select"))
             listOfErrorMessages.add("Select a daily power.");
-        if (Integer.valueOf(characterCreatorDTO.getAtWill1Power1IconID()) < 0)
+        if (Integer.valueOf(characterCreatorDTO.getAtWill1Power1IconID()) < 0){
             listOfErrorMessages.add("Select an Icon for one of your at will powers.");
-        if (Integer.valueOf(characterCreatorDTO.getAtWill1Power2IconID()) < 0)
+        }
+        if (Integer.valueOf(characterCreatorDTO.getAtWill1Power2IconID()) < 0){
             listOfErrorMessages.add("Select an Icon for one of your at will powers.");
-        if (Integer.valueOf(characterCreatorDTO.getEncounterPowerIconID()) < 0)
+        }
+        if (Integer.valueOf(characterCreatorDTO.getEncounterPowerIconID()) < 0){
             listOfErrorMessages.add("Select an Icon for your encounter power.");
-        if (Integer.valueOf(characterCreatorDTO.getDailyPowerIconID()) < 0)
+        }
+        if (Integer.valueOf(characterCreatorDTO.getDailyPowerIconID()) < 0){
             listOfErrorMessages.add("Select an Icon for your daily power.");
+        }
         return listOfErrorMessages;
     }
 

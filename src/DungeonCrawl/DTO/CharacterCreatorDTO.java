@@ -14,13 +14,13 @@ public class CharacterCreatorDTO {
     private int gold;
     private double speed = 6;
     private String atWillPower1;
-    private String atWill1Power1IconID;
+    private String atWill1Power1IconID = "-1";
     private String atWillPower2;
-    private String atWill1Power2IconID;
+    private String atWill1Power2IconID = "-1";
     private String encounterPower1;
-    private String encounterPowerIconID;
+    private String encounterPowerIconID = "-1";
     private String dailyPower1;
-    private String dailyPowerIconID;
+    private String dailyPowerIconID = "-1";
     private String allAtWillPowers;
     private String allEncounterPowers;
     private String allDailyPowers;
