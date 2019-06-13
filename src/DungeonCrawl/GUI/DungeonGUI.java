@@ -319,7 +319,11 @@ class DungeonGUI {
             getDungeonMap().clearMapReachableProperties(getDungeonMap());
         }
         if (currentHeroID > 100 && isTheTileInteractive) {
-            eventOnHeroAttackingAMonster(XPos, YPos, currentPower.get(currentPower.size() - 1));
+            try {
+                eventOnHeroAttackingAMonster(XPos, YPos, currentPower.get(currentPower.size() - 1));
+            } catch (IndexOutOfBoundsException e) {
+                dungeonConsoleGUI.updateTheDungeonConsole("Please select a power before attacking");
+            }
         }
     }
 

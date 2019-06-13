@@ -40,8 +40,6 @@ public class Hero extends Creature {
     private int Thievery;
     private Map<String, Integer> heroAttributesMap;
     private Map<String, Item> heroEquipment;
-    private List<String> weaponProficiencies = new ArrayList<>();
-    private List<String> armorProficiencies = new ArrayList<>();
 
     public Map<String, Item> getHeroEquipment() {
         return heroEquipment;

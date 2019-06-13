@@ -1,5 +1,6 @@
 package DungeonCrawl.GUI;
 
+import DungeonCrawl.StaticRules.HeroClassInformationFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
@@ -27,7 +28,6 @@ public class ItemShopGUI {
     BorderPane itemShopOuterPane = new BorderPane();
     private GridPane heroSelectionPane = new GridPane();
     private GridPane currentChoicesGridPane = new GridPane();
-    private List<Button> listOfHeroButtons = new ArrayList<>();
     private CharacterCreatorDAO characterCreatorDAO = new CharacterCreatorDAO();
     private MainMenuGUI mainMenuGUI = new MainMenuGUI();
     private ItemInformation itemInformation = new ItemInformation();
@@ -57,10 +57,10 @@ public class ItemShopGUI {
         List<CharacterCreatorDTO> listOfAllHeroes = characterCreatorDAO.getAllHeroes();
         for (int i = 0; i < listOfAllHeroes.size(); i++) {
             Button currentButton = new Button();
-            int finalI = i + 1;
+            int finalI = i;
             currentButton.setOnAction(actionEvent -> {
                 try {
-                    eventOnHeroClick(finalI);
+                    eventOnHeroClick(listOfAllHeroes.get(finalI).getHeroID());
                 } catch (SQLException | IOException e) {
                     e.printStackTrace();
                 }
@@ -75,7 +75,6 @@ public class ItemShopGUI {
             currentButton.setId(String.valueOf(characterCreatorDTO.getHeroID()));
             currentButton.setText(characterCreatorDTO.getHeroName() + ", a brave " + characterCreatorDTO.getHeroRace() + " " + characterCreatorDTO.getHeroClass());
             System.out.println("CURRENTLY ADDING:  " + characterCreatorDTO.getHeroName());
-            listOfHeroButtons.add(currentButton);
             heroSelectionPane.add(currentButton, 0, i + 1);
         }
         currentChoicesGridPane.add(itemStatsTextArea, 0, 1);
@@ -112,6 +111,7 @@ public class ItemShopGUI {
     }
 
     private void eventOnHeroClick(int heroID) throws SQLException, IOException {
+        System.out.println("HERO ID: === " + heroID);
         currentChoicesGridPane.getChildren().removeAll();
         ItemsDAO itemShopDAO = new ItemsDAO();
         currentHeroEquipmentMap = itemShopDAO.getHeroEquipmentByHeroID(heroID);
@@ -157,6 +157,10 @@ public class ItemShopGUI {
             int numberOfDice = currentItem.getNumberOfDamageDiceDealt();
             int weight = currentItem.getWeight();
             int proficiencyBonus = currentItem.getProficiencyBonus();
+            String proficiencyInfo;
+            HeroClassInformationFactory heroClassInformationFactory = new HeroClassInformationFactory(currentlySelectedHero.getHeroClass());
+            //todo finish the proficiency recognition on buying the items
+            //if (heroClassInformationFactory.getClassArmorProficiencies().)
             itemStatsTextArea.setText("Selected: "
                     + weaponName
                     + "\nItem price: "
