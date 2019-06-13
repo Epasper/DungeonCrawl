@@ -109,8 +109,6 @@ class CharacterCreatorGUI {
         initializeCharacterCreatorGUI();
     }
 
-    //todo change the power buttons to icons with images. Add image selection to powers on character creation.
-
     private void initializeCharacterCreatorGUI() {
         characterCreatorOuterPane.getStylesheets().add("DungeonCrawl/Styling/CharacterCreator.css");
         manageThePanes();

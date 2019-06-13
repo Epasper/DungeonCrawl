@@ -5,6 +5,8 @@ import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.geometry.Insets;
+import javafx.scene.Cursor;
+import javafx.scene.ImageCursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.effect.Blend;
@@ -211,14 +213,11 @@ class DungeonGUI {
         }
     }
 
-
+    //todo change the updating so that it doesn't do anything for tiles with walls and/or pillars
     private void updateGUIAccordingToMap(DungeonMap dungeonMap) {
         for (int i = 0; i < mapWidth; i++) {
             for (int j = 0; j < mapHeight; j++) {
                 Button aButton = new Button();
-/*                aButton.setStyle(".button {-fx-padding: 0 0 0 0};");
-                aButton.setStyle(".button {-fx-background-radius: 0,0,0;}");
-                aButton.setStyle(".button {-fx-background-insets: 0,0,0;}");*/
                 aButton.setPadding(new Insets(2));
                 aButton.setMaxSize(50, 50);
                 aButton.setStyle("-fx-background-radius: 0");
@@ -226,10 +225,57 @@ class DungeonGUI {
                 int finalJ = j;
                 int finalI = i;
                 aButton.setOnAction(actionEvent -> buttonEvent(aButton, finalI, finalJ));
+                aButton.setOnMouseEntered(event -> changeTheIconOnHover(aButton, finalI, finalJ));
                 mapGridPane.add(aButton, j, i);
             }
         }
         updateMapGraphics(dungeonMap);
+    }
+
+    private void changeTheIconOnHover(Button aButton, int XPos, int YPos) {
+        Image mapCursor = new Image("DungeonCrawl/GUI/Images/Cursors/WalkingCursor.png");
+        Image lockCursor = new Image("DungeonCrawl/GUI/Images/Cursors/Lock.png");
+        Image swordCursor = new Image("DungeonCrawl/GUI/Images/Cursors/Sword.png");
+        //Image Cursor = new Image("DungeonCrawl/GUI/Images/Cursors/WalkingCursor.png");
+        String currentTypeOfTile = getDungeonMap().getMapTilesArray()[XPos][YPos].getTypeOfTile();
+        boolean inWalkRange = getDungeonMap().getMapTilesArray()[XPos][YPos].isInWalkRange();
+        int occupyingMonsterID = getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureTypeId();
+        boolean isTheTileInteractive = getDungeonMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange();
+        if (isTheTileInteractive && occupyingMonsterID > 100) {
+            changeTheCursor(swordCursor, false);
+        } else if (inWalkRange) {
+            changeTheCursor(mapCursor, false);
+        } else {
+            changeTheCursor(null, true);
+        }
+        if (currentTypeOfTile.contains("Door")) {
+            changeTheCursor(lockCursor, false);
+        }
+    }
+        /*if (currentHeroID > 0 && currentHeroID < 100) {
+            eventOnHeroClick(currentHeroID);
+            isTheTileInteractive = getDungeonMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange();
+        } else if (getDungeonMap().getMapTilesArray()[XPos][YPos].isInWalkRange()) {
+            if (currentTypeOfTile.contains("Closed") && getDungeonMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange()) {
+                getDungeonMap().getMapTilesArray()[XPos][YPos].setTypeOfTile(getDungeonMap().getMapTilesArray()[XPos][YPos].getTypeOfTile().replaceFirst("Closed", "Opened"));
+            } else if (!currentTypeOfTile.contains("Closed")) {
+                eventOnHeroMovement(aButton, XPos, YPos);
+            }
+            updateMapGraphics(getDungeonMap());
+            getDungeonMap().clearMapReachableProperties(getDungeonMap());
+        }
+        if (currentHeroID > 100 && isTheTileInteractive) {
+            eventOnHeroAttackingAMonster(XPos, YPos, currentPower.get(currentPower.size() - 1));
+        }*/
+
+
+    private void changeTheCursor(Image image, boolean backToDefault) {
+        if (backToDefault) {
+            mapOuterPane.setCursor(Cursor.DEFAULT);
+        } else {
+            mapOuterPane.setCursor(new ImageCursor(image));
+            System.out.println("Changing the cursor");
+        }
     }
     //todo change the monster portrait after it being bloodied and/or killed (Java Canvas)
 
@@ -528,7 +574,7 @@ class DungeonGUI {
         currentPower.clear();
         currentPower.add(selectedPower);
         pathFinder.checkTheLineOfSight(dungeonMap, buttonGrid, currentHero);
-        pathFinder.checkTheAvailableDistance(currentHero,dungeonMap,buttonGrid, "Attack Range");
+        pathFinder.checkTheAvailableDistance(currentHero, dungeonMap, buttonGrid, "Attack Range");
     }
 
 

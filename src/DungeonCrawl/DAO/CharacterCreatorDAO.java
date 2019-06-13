@@ -83,8 +83,6 @@ public class CharacterCreatorDAO {
 
     public Hero getAHeroByID(int ID) throws SQLException, IOException {
         Hero hero = new Hero();
-        HeroClassInformationFactory heroClassInformation= new HeroClassInformationFactory(hero.getClass().toString());
-        //HeroClassInformation heroClassInformation = new HeroClassInformation();
         System.out.println("-----> Hero ID From DAO" + ID);
         String sql = "SELECT * FROM dungeon.heroes WHERE idheroes = ?;";
         pst = conn.prepareStatement(sql);
@@ -112,7 +110,8 @@ public class CharacterCreatorDAO {
             hero.setGold(rs.getInt("gold"));
             manageHeroDefenses(hero, rs);
             manageHeroSkills(hero, rs);
-            manageHeroPowers(hero, heroClassInformation, rs);
+            HeroClassInformationFactory heroClassInformationFactory = new HeroClassInformationFactory(heroClass);
+            manageHeroPowers(hero, heroClassInformationFactory, rs);
         }
         hero.updateTheAttributesMap();
         System.out.println(hero.getMonsterName() + "|||" + a + " Icon number: " + b);
