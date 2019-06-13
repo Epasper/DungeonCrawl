@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Warlock;
 
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class EldritchBlast extends HeroPower {
     public EldritchBlast() {
         powerName = "Eldritch Blast";
-        characterClass = HeroClassInformation.CharacterClasses.Warlock.toString();
+        characterClass = HeroClasses.Warlock.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.AT_WILL.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;

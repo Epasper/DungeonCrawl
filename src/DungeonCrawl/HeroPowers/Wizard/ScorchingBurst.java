@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Wizard;
 
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class ScorchingBurst extends HeroPower {
     public ScorchingBurst() {
         powerName = "Scorching Burst";
-        characterClass = HeroClassInformation.CharacterClasses.Wizard.toString();
+        characterClass = HeroClasses.Wizard.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.AT_WILL.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;

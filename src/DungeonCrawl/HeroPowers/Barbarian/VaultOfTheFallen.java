@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Barbarian;
 
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class VaultOfTheFallen extends HeroPower {
     public VaultOfTheFallen() {
         powerName = "Vault of the Fallen";
-        characterClass = HeroClassInformation.CharacterClasses.Barbarian.toString();
+        characterClass = HeroClasses.Barbarian.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;

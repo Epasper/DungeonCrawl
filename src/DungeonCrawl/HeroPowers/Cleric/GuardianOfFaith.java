@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Cleric;
 
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.StaticRules.HeroClassInformation;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class GuardianOfFaith extends HeroPower {
     public GuardianOfFaith() {
         powerName = "Guardian of Faith";
-        characterClass = HeroClassInformation.CharacterClasses.Cleric.toString();
+        characterClass = HeroClasses.Cleric.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.DAILY.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;

@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Warlord;
 
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class CommandersStrike extends HeroPower {
     public CommandersStrike() {
         powerName = "Furious Smash";
-        characterClass = HeroClassInformation.CharacterClasses.Warlock.toString();
+        characterClass = HeroClasses.Warlock.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.AT_WILL.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;

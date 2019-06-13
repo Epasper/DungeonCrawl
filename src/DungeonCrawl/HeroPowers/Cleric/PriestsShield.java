@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Cleric;
 
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class PriestsShield extends HeroPower {
     public PriestsShield() {
         powerName = "Priest's Shield";
-        characterClass = HeroClassInformation.CharacterClasses.Cleric.toString();
+        characterClass = HeroClasses.Cleric.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.AT_WILL.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;

@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Invoker;
 
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class BladeOfAstralFire extends HeroPower {
     public BladeOfAstralFire() {
         powerName = "Blade of Astral Fire";
-        characterClass = HeroClassInformation.CharacterClasses.Invoker.toString();
+        characterClass = HeroClasses.Invoker.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;

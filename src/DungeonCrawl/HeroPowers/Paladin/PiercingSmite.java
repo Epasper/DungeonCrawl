@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Paladin;
 
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class PiercingSmite extends HeroPower {
     public PiercingSmite() {
         powerName = "Piercing Smite";
-        characterClass = HeroClassInformation.CharacterClasses.Paladin.toString();
+        characterClass = HeroClasses.Paladin.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;

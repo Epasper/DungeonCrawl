@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Bard;
 
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.StaticRules.HeroClassInformation;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class EchoesOfTheGuardian extends HeroPower {
     public EchoesOfTheGuardian() {
         powerName = "Echoes of the Guardian";
-        characterClass = HeroClassInformation.CharacterClasses.Bard.toString();
+        characterClass = HeroClasses.Bard.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.DAILY.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;

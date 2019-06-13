@@ -2,27 +2,24 @@ package DungeonCrawl.StaticRules;
 
 import DungeonCrawl.HeroPowers.HeroPower;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class HeroClassInformationFactory {
 
     private String className;
     private Integer classSkillPoints;
-    private List<String> availableSkills = new ArrayList<>();
+    private List<String> availableSkills;
     private Integer hitDiceAt1st;
     private Integer hitDicePerLevel;
-    private List<HeroPower> atWillPowersAtLevel1 = new ArrayList<>();
-    private List<HeroPower> atWillPowers = new ArrayList<>();
-    private List<HeroPower> encounterPowersAtLevel1 = new ArrayList<>();
-    private List<HeroPower> encounterPowers = new ArrayList<>();
-    private List<HeroPower> dailyPowersAtLevel1 = new ArrayList<>();
-    private List<HeroPower> dailyPowers = new ArrayList<>();
-    private List<String> classTraits = new ArrayList<>();
-    private List<String> classWeaponProficiencies = new ArrayList<>();
-    private List<String> classArmorProficiencies = new ArrayList<>();
+    private List<HeroPower> atWillPowersAtLevel1;
+    private List<HeroPower> atWillPowers;
+    private List<HeroPower> encounterPowersAtLevel1;
+    private List<HeroPower> encounterPowers;
+    private List<HeroPower> dailyPowersAtLevel1;
+    private List<HeroPower> dailyPowers;
+    private List<String> classTraits;
+    private List<String> classWeaponProficiencies;
+    private List<String> classArmorProficiencies;
 
     public HeroClassInformationFactory(String className) {
         this.className = className;

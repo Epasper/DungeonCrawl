@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Ranger;
 
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class TwinStrike extends HeroPower {
     public TwinStrike() {
         powerName = "Twin Strike";
-        characterClass = HeroClassInformation.CharacterClasses.Ranger.toString();
+        characterClass = HeroClasses.Ranger.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.AT_WILL.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;

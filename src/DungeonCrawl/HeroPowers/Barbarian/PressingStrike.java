@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Barbarian;
 
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class PressingStrike extends HeroPower {
     public PressingStrike() {
         powerName = "Pressing Strike";
-        characterClass = HeroClassInformation.CharacterClasses.Barbarian.toString();
+        characterClass = HeroClasses.Barbarian.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.AT_WILL.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;

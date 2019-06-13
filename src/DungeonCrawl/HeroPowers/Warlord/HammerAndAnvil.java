@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Warlord;
 
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class HammerAndAnvil extends HeroPower {
     public HammerAndAnvil() {
         powerName = "Hammer and Anvil";
-        characterClass = HeroClassInformation.CharacterClasses.Warlord.toString();
+        characterClass = HeroClasses.Warlord.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;

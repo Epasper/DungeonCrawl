@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Wizard;
 
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class ChillStrike extends HeroPower {
     public ChillStrike() {
         powerName = "Chill Strike";
-        characterClass = HeroClassInformation.CharacterClasses.Wizard.toString();
+        characterClass = HeroClasses.Wizard.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;

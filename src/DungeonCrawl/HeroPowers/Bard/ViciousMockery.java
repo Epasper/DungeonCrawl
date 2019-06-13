@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Bard;
 
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class ViciousMockery extends HeroPower {
     public ViciousMockery() {
         powerName = "Vicious Mockery";
-        characterClass = HeroClassInformation.CharacterClasses.Bard.toString();
+        characterClass = HeroClasses.Bard.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.AT_WILL.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;

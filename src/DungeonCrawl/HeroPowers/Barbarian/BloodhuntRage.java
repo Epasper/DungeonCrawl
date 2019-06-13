@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Barbarian;
 
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.StaticRules.HeroClassInformation;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class BloodhuntRage extends HeroPower {
     public BloodhuntRage() {
         powerName = "Bloodhunt Rage";
-        characterClass = HeroClassInformation.CharacterClasses.Barbarian.toString();
+        characterClass = HeroClasses.Barbarian.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.DAILY.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;

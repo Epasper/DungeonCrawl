@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Rogue;
 
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class KingsCastle extends HeroPower {
     public KingsCastle() {
         powerName = "King's Castle";
-        characterClass = HeroClassInformation.CharacterClasses.Rogue.toString();
+        characterClass = HeroClasses.Rogue.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;

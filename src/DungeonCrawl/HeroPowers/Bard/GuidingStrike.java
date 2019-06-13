@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Bard;
 
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class GuidingStrike extends HeroPower {
     public GuidingStrike() {
         powerName = "Guiding Strike";
-        characterClass = HeroClassInformation.CharacterClasses.Bard.toString();
+        characterClass = HeroClasses.Bard.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.AT_WILL.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;

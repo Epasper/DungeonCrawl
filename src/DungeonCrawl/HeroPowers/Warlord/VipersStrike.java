@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Warlord;
 
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class VipersStrike extends HeroPower {
     public VipersStrike() {
         powerName = "Viper's Strike";
-        characterClass = HeroClassInformation.CharacterClasses.Warlord.toString();
+        characterClass = HeroClasses.Warlord.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.AT_WILL.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;

@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Warden;
 
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class HungryEarth extends HeroPower {
     public HungryEarth() {
         powerName = "Hungry Earth";
-        characterClass = HeroClassInformation.CharacterClasses.Warden.toString();
+        characterClass = HeroClasses.Warden.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;

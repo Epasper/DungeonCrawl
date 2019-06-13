@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Sorcerer;
 
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class BurningSpray extends HeroPower {
     public BurningSpray() {
         powerName = "Burning Spray";
-        characterClass = HeroClassInformation.CharacterClasses.Sorcerer.toString();
+        characterClass = HeroClasses.Sorcerer.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.AT_WILL.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;

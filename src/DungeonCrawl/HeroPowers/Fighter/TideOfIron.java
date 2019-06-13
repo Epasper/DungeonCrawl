@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Fighter;
 
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class TideOfIron extends HeroPower {
     public TideOfIron() {
         powerName = "Tide of Iron";
-        characterClass = HeroClassInformation.CharacterClasses.Fighter.toString();
+        characterClass = HeroClasses.Fighter.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.AT_WILL.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;

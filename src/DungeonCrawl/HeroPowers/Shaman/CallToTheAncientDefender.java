@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Shaman;
 
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class CallToTheAncientDefender extends HeroPower {
     public CallToTheAncientDefender() {
         powerName = "Call to the Ancient Defender";
-        characterClass = HeroClassInformation.CharacterClasses.Shaman.toString();
+        characterClass = HeroClasses.Shaman.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;

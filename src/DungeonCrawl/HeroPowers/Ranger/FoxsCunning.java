@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Ranger;
 
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class FoxsCunning extends HeroPower {
     public FoxsCunning() {
         powerName = "Fox's Cunning";
-        characterClass = HeroClassInformation.CharacterClasses.Ranger.toString();
+        characterClass = HeroClasses.Ranger.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.REACTION.toString().toLowerCase();
         powerLevel = 1;

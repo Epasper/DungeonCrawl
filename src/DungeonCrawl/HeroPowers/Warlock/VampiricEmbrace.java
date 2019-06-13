@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Warlock;
 
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class VampiricEmbrace extends HeroPower {
     public VampiricEmbrace() {
         powerName = "Vampiric Embrace";
-        characterClass = HeroClassInformation.CharacterClasses.Warlock.toString();
+        characterClass = HeroClasses.Warlock.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;

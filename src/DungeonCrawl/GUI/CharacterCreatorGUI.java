@@ -1,6 +1,7 @@
 package DungeonCrawl.GUI;
 
 import DungeonCrawl.GUI.Images.SkillIcons.SkillIcons;
+import DungeonCrawl.StaticRules.HeroClasses;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
@@ -736,7 +737,7 @@ class CharacterCreatorGUI {
                 FXCollections.observableArrayList();
         ObservableList<String> raceOptions =
                 FXCollections.observableArrayList();
-        for (HeroClassInformation.CharacterClasses currentClass : HeroClassInformation.CharacterClasses.values()) {
+        for (HeroClasses currentClass : HeroClasses.values()) {
             classOptions.add(currentClass.toString());
         }
         for (HeroClassInformation.CharacterRaces currentRace : HeroClassInformation.CharacterRaces.values()) {

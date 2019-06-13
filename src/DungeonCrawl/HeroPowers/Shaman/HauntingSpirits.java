@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Shaman;
 
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class HauntingSpirits extends HeroPower {
     public HauntingSpirits() {
         powerName = "Haunting Spirits";
-        characterClass = HeroClassInformation.CharacterClasses.Shaman.toString();
+        characterClass = HeroClasses.Shaman.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.AT_WILL.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;

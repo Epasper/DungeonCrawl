@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Avenger;
 
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.StaticRules.HeroClassInformation;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class AspectOfMight extends HeroPower {
     public AspectOfMight() {
         powerName = "Aspect of Might";
-        characterClass = HeroClassInformation.CharacterClasses.Avenger.toString();
+        characterClass = HeroClasses.Avenger.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.DAILY.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;

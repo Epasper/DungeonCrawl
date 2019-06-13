@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Shaman;
 
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class ThunderBearsWarding extends HeroPower {
     public ThunderBearsWarding() {
         powerName = "Thunder Bear' s Warding";
-        characterClass = HeroClassInformation.CharacterClasses.Shaman.toString();
+        characterClass = HeroClasses.Shaman.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;

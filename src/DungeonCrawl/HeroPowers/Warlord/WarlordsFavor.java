@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Warlord;
 
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class WarlordsFavor extends HeroPower {
     public WarlordsFavor() {
         powerName = "Warlord's Favor";
-        characterClass = HeroClassInformation.CharacterClasses.Warlord.toString();
+        characterClass = HeroClasses.Warlord.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;

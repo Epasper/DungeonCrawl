@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Shaman;
 
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class WatchersStrike extends HeroPower {
     public WatchersStrike() {
         powerName = "Watcher's Strike";
-        characterClass = HeroClassInformation.CharacterClasses.Shaman.toString();
+        characterClass = HeroClasses.Shaman.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.AT_WILL.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;

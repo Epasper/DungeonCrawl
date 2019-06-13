@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Druid;
 
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class GraspingClaws extends HeroPower {
     public GraspingClaws() {
         powerName = "Grasping Claws";
-        characterClass = HeroClassInformation.CharacterClasses.Druid.toString();
+        characterClass = HeroClasses.Druid.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.AT_WILL.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;

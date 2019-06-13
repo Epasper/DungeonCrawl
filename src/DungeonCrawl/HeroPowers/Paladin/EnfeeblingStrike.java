@@ -2,11 +2,12 @@ package DungeonCrawl.HeroPowers.Paladin;
 
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
+import DungeonCrawl.StaticRules.HeroClasses;
 
 public class EnfeeblingStrike extends HeroPower {
     public EnfeeblingStrike() {
         powerName = "Enfeebling Strike";
-        characterClass = HeroClassInformation.CharacterClasses.Paladin.toString();
+        characterClass = HeroClasses.Paladin.toString();
         typeOfPower = HeroClassInformation.TypeOfPower.AT_WILL.toString().replace('_', ' ').toLowerCase();
         usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
         powerLevel = 1;
