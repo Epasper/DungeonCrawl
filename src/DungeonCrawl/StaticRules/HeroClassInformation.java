@@ -36,7 +36,24 @@ public class HeroClassInformation {
     private Map<String, List<HeroPower>> dailyPowersAtLevel1 = new HashMap<>();
     private Map<String, List<HeroPower>> dailyPowers = new HashMap<>();
     private Map<String, List<String>> classTraits = new HashMap<>();
-    private Map<String, List<String>> classProficiencies = new HashMap<>();
+    private Map<String, List<String>> classWeaponProficiencies = new HashMap<>();
+    private Map<String, List<String>> classArmorProficiencies = new HashMap<>();
+
+    public Map<String, List<String>> getClassWeaponProficiencies() {
+        return classWeaponProficiencies;
+    }
+
+    public void setClassWeaponProficiencies(Map<String, List<String>> classWeaponProficiencies) {
+        this.classWeaponProficiencies = classWeaponProficiencies;
+    }
+
+    public Map<String, List<String>> getClassArmorProficiencies() {
+        return classArmorProficiencies;
+    }
+
+    public void setClassArmorProficiencies(Map<String, List<String>> classArmorProficiencies) {
+        this.classArmorProficiencies = classArmorProficiencies;
+    }
 
     public Map<String, List<HeroPower>> getDailyPowersAtLevel1() {
         return dailyPowersAtLevel1;
@@ -118,7 +135,199 @@ public class HeroClassInformation {
         populateTheSkillsAndCorrespondingAttributes();
         populateTheTablesWithTraits();
         populateTheTablesWithDailyPowers();
+        populateTheProficienciesMaps();
     }
+
+    //todo add a factory class instead of passing all lists.
+
+    private void populateTheProficienciesMaps() {
+        List<String> avengerArmor = new ArrayList<>();
+        List<String> avengerWeapon = new ArrayList<>();
+        avengerArmor.add("Cloth Armor");
+        avengerWeapon.add("Simple Melee");
+        avengerWeapon.add("Military Melee");
+        avengerWeapon.add("Simple Ranged");
+        avengerWeapon.add("Holy Symbol");
+        classArmorProficiencies.put("Avenger", avengerArmor);
+        classWeaponProficiencies.put("Avenger", avengerWeapon);
+        List<String> barbarianArmor = new ArrayList<>();
+        List<String> barbarianWeapon = new ArrayList<>();
+        barbarianArmor.add("Cloth Armor");
+        barbarianArmor.add("Leather Armor");
+        barbarianArmor.add("Hide Armor");
+        barbarianWeapon.add("Simple Melee");
+        barbarianWeapon.add("Military Melee");
+        classArmorProficiencies.put("Barbarian", barbarianArmor);
+        classWeaponProficiencies.put("Barbarian", barbarianWeapon);
+        List<String> bardArmor = new ArrayList<>();
+        List<String> bardWeapon = new ArrayList<>();
+        bardArmor.add("Cloth Armor");
+        bardArmor.add("Leather Armor");
+        bardArmor.add("Hide Armor");
+        bardArmor.add("Chainmail");
+        bardWeapon.add("Simple Melee");
+        bardWeapon.add("Longsword");
+        bardWeapon.add("Scimitar");
+        bardWeapon.add("Short Sword");
+        bardWeapon.add("Simple Ranged");
+        bardWeapon.add("Military Ranged");
+        bardWeapon.add("Wand");
+        classArmorProficiencies.put("Bard", bardArmor);
+        classWeaponProficiencies.put("Bard", bardWeapon);
+        List<String> clericArmor = new ArrayList<>();
+        List<String> clericWeapon = new ArrayList<>();
+        clericArmor.add("Cloth Armor");
+        clericArmor.add("Leather Armor");
+        clericArmor.add("Hide Armor");
+        clericArmor.add("Chainmail");
+        clericWeapon.add("Simple Melee");
+        clericWeapon.add("Holy Symbol");
+        clericWeapon.add("Simple Ranged");
+        classArmorProficiencies.put("Cleric", clericArmor);
+        classWeaponProficiencies.put("Cleric", clericWeapon);
+        List<String> druidArmor = new ArrayList<>();
+        List<String> druidWeapon = new ArrayList<>();
+        druidArmor.add("Cloth Armor");
+        druidArmor.add("Leather Armor");
+        druidArmor.add("Hide Armor");
+        druidWeapon.add("Simple Melee");
+        druidWeapon.add("Totem");
+        druidWeapon.add("Staff");
+        druidWeapon.add("Simple Ranged");
+        classArmorProficiencies.put("Druid", druidArmor);
+        classWeaponProficiencies.put("Druid", druidWeapon);
+        List<String> fighterArmor = new ArrayList<>();
+        List<String> fighterWeapon = new ArrayList<>();
+        fighterArmor.add("Cloth Armor");
+        fighterArmor.add("Leather Armor");
+        fighterArmor.add("Hide Armor");
+        fighterArmor.add("Chainmail");
+        fighterArmor.add("Scale");
+        fighterArmor.add("Light Shield");
+        fighterArmor.add("Heavy Shield");
+        fighterWeapon.add("Simple Melee");
+        fighterWeapon.add("Military Melee");
+        fighterWeapon.add("Simple Ranged");
+        fighterWeapon.add("Military Ranged");
+        classArmorProficiencies.put("Fighter", fighterArmor);
+        classWeaponProficiencies.put("Fighter", fighterWeapon);
+        List<String> invokerArmor = new ArrayList<>();
+        List<String> invokerWeapon = new ArrayList<>();
+        invokerArmor.add("Cloth Armor");
+        invokerArmor.add("Leather Armor");
+        invokerArmor.add("Hide Armor");
+        invokerArmor.add("Chainmail");
+        invokerWeapon.add("Simple Melee");
+        invokerWeapon.add("Simple Ranged");
+        invokerWeapon.add("Rod");
+        invokerWeapon.add("Staff");
+        classArmorProficiencies.put("Invoker", invokerArmor);
+        classWeaponProficiencies.put("Invoker", invokerWeapon);
+        List<String> paladinArmor = new ArrayList<>();
+        List<String> paladinWeapon = new ArrayList<>();
+        paladinArmor.add("Cloth Armor");
+        paladinArmor.add("Leather Armor");
+        paladinArmor.add("Hide Armor");
+        paladinArmor.add("Chainmail");
+        paladinArmor.add("Scale");
+        paladinArmor.add("Plate");
+        paladinArmor.add("Chainmail");
+        paladinArmor.add("Light Shield");
+        paladinArmor.add("Heavy Shield");
+        paladinWeapon.add("Simple Melee");
+        paladinWeapon.add("Military Melee");
+        paladinWeapon.add("Simple Ranged");
+        paladinWeapon.add("Holy Symbol");
+        classArmorProficiencies.put("Paladin", paladinArmor);
+        classWeaponProficiencies.put("Paladin", paladinWeapon);
+        List<String> rangerArmor = new ArrayList<>();
+        List<String> rangerWeapon = new ArrayList<>();
+        rangerArmor.add("Cloth Armor");
+        rangerArmor.add("Leather Armor");
+        rangerWeapon.add("Simple Melee");
+        rangerWeapon.add("Military Melee");
+        rangerWeapon.add("Simple Ranged");
+        rangerWeapon.add("Military Ranged");
+        classArmorProficiencies.put("Ranger", rangerArmor);
+        classWeaponProficiencies.put("Ranger", rangerWeapon);
+        List<String> rogueArmor = new ArrayList<>();
+        List<String> rogueWeapon = new ArrayList<>();
+        rogueArmor.add("Cloth Armor");
+        rogueArmor.add("Leather Armor");
+        rogueArmor.add("Hide Armor");
+        rogueWeapon.add("Dagger");
+        rogueWeapon.add("Hand Crossbow");
+        rogueWeapon.add("Shuriken");
+        rogueWeapon.add("Sling");
+        rogueWeapon.add("Short Sword");
+        classArmorProficiencies.put("Rogue", rogueArmor);
+        classWeaponProficiencies.put("Rogue", rogueWeapon);
+        List<String> shamanArmor = new ArrayList<>();
+        List<String> shamanWeapon = new ArrayList<>();
+        shamanArmor.add("Cloth Armor");
+        shamanArmor.add("Leather Armor");
+        shamanWeapon.add("Simple Melee");
+        shamanWeapon.add("Longspear");
+        shamanWeapon.add("Totem");
+        classArmorProficiencies.put("Shaman", shamanArmor);
+        classWeaponProficiencies.put("Shaman", shamanWeapon);
+        List<String> sorcererArmor = new ArrayList<>();
+        List<String> sorcererWeapon = new ArrayList<>();
+        sorcererArmor.add("Cloth Armor");
+        sorcererWeapon.add("Simple Melee");
+        sorcererWeapon.add("Simple Ranged");
+        sorcererWeapon.add("Dagger");
+        sorcererWeapon.add("Staff");
+        classArmorProficiencies.put("Sorcerer", sorcererArmor);
+        classWeaponProficiencies.put("Sorcerer", sorcererWeapon);
+        List<String> wardenArmor = new ArrayList<>();
+        List<String> wardenWeapon = new ArrayList<>();
+        wardenArmor.add("Cloth Armor");
+        wardenArmor.add("Leather Armor");
+        wardenArmor.add("Hide Armor");
+        wardenArmor.add("Light Shield");
+        wardenArmor.add("Heavy Shield");
+        wardenWeapon.add("Simple Melee");
+        wardenWeapon.add("Military Melee");
+        wardenWeapon.add("Simple Ranged");
+        classArmorProficiencies.put("Warden", wardenArmor);
+        classWeaponProficiencies.put("Warden", wardenWeapon);
+        List<String> warlockArmor = new ArrayList<>();
+        List<String> warlockWeapon = new ArrayList<>();
+        warlockArmor.add("Cloth Armor");
+        warlockArmor.add("Leather Armor");
+        warlockWeapon.add("Simple Melee");
+        warlockWeapon.add("Simple Ranged");
+        warlockWeapon.add("Rod");
+        warlockWeapon.add("Wand");
+        classArmorProficiencies.put("Warlock", warlockArmor);
+        classWeaponProficiencies.put("Warlock", warlockWeapon);
+        List<String> warlordArmor = new ArrayList<>();
+        List<String> warlordWeapon = new ArrayList<>();
+        warlordArmor.add("Cloth Armor");
+        warlordArmor.add("Leather Armor");
+        warlordArmor.add("Hide Armor");
+        warlordArmor.add("Chainmail");
+        warlordArmor.add("Light Shield");
+        warlordWeapon.add("Simple Melee");
+        warlordWeapon.add("Military Melee");
+        warlordWeapon.add("Simple Ranged");
+        classArmorProficiencies.put("Warlord", warlordArmor);
+        classWeaponProficiencies.put("Warlord", warlordWeapon);
+        List<String> wizardArmor = new ArrayList<>();
+        List<String> wizardWeapon = new ArrayList<>();
+        wizardArmor.add("Cloth Armor");
+        wizardWeapon.add("Dagger");
+        wizardWeapon.add("Quarterstaff");
+        wizardWeapon.add("Orb");
+        wizardWeapon.add("Staff");
+        wizardWeapon.add("Wand");
+        wizardWeapon.add("Tome");
+        classArmorProficiencies.put("Wizard", wizardArmor);
+        classWeaponProficiencies.put("Wizard", wizardWeapon);
+
+    }
+
 
     private void populateTheSkillsAndCorrespondingAttributes() {
         skillsAndCorrespondingAttributes.put(CharacterSkills.Acrobatics, Attributes.Dexterity);
