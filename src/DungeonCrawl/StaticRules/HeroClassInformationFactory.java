@@ -2,6 +2,7 @@ package DungeonCrawl.StaticRules;
 
 import DungeonCrawl.HeroPowers.HeroPower;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HeroClassInformationFactory {
@@ -92,5 +93,84 @@ public class HeroClassInformationFactory {
 
     public List<String> getClassArmorProficiencies() {
         return classArmorProficiencies;
+    }
+
+    public HeroPower getHeroPowerByName(String powerName, String typeOfPower) {
+
+        try {
+            if (typeOfPower.contains("Will")) {
+                for (HeroPower currentPower : atWillPowersAtLevel1) {
+                    if (powerName.equals(currentPower.getPowerName())) {
+                        return currentPower;
+                    }
+                }
+            } else if (typeOfPower.contains("Encounter")) {
+                for (HeroPower currentPower : encounterPowersAtLevel1) {
+                    if (powerName.equals(currentPower.getPowerName())) {
+                        return currentPower;
+                    }
+                }
+            } else if (typeOfPower.contains("Daily")) {
+                for (HeroPower currentPower : dailyPowersAtLevel1) {
+                    if (powerName.equals(currentPower.getPowerName())) {
+                        return currentPower;
+                    }
+                }
+            }
+        } catch (NullPointerException ignored) {
+        }
+        return null;
+    }
+
+    public List<String> manageClassDefenceBonuses() {
+        List<String> listOfBonuses = new ArrayList<>();
+        switch (className) {
+            case "Avenger":
+            case "Invoker":
+            case "Paladin": {
+                listOfBonuses.add(CreatureDefenses.Fortitude.toString());
+                listOfBonuses.add(CreatureDefenses.Reflex.toString());
+                listOfBonuses.add(CreatureDefenses.Will.toString());
+                break;
+            }
+            case "Barbarian":
+            case "Fighter": {
+                listOfBonuses.add(CreatureDefenses.Fortitude.toString());
+                listOfBonuses.add(CreatureDefenses.Fortitude.toString());
+                break;
+            }
+            case "Bard":
+            case "Druid":
+            case "Warlock": {
+                listOfBonuses.add(CreatureDefenses.Reflex.toString());
+                listOfBonuses.add(CreatureDefenses.Will.toString());
+                break;
+            }
+            case "Cleric":
+            case "Sorcerer":
+            case "Wizard": {
+                listOfBonuses.add(CreatureDefenses.Will.toString());
+                listOfBonuses.add(CreatureDefenses.Will.toString());
+                break;
+            }
+            case "Ranger": {
+                listOfBonuses.add(CreatureDefenses.Fortitude.toString());
+                listOfBonuses.add(CreatureDefenses.Reflex.toString());
+                break;
+            }
+            case "Rogue": {
+                listOfBonuses.add(CreatureDefenses.Reflex.toString());
+                listOfBonuses.add(CreatureDefenses.Reflex.toString());
+                break;
+            }
+            case "Shaman":
+            case "Warden":
+            case "Warlord": {
+                listOfBonuses.add(CreatureDefenses.Fortitude.toString());
+                listOfBonuses.add(CreatureDefenses.Will.toString());
+                break;
+            }
+        }
+        return listOfBonuses;
     }
 }

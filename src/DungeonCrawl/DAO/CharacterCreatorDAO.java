@@ -1,11 +1,13 @@
 package DungeonCrawl.DAO;
 
+import DungeonCrawl.StaticRules.HeroClassInformation;
+import DungeonCrawl.StaticRules.HeroClassInformationFactory;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import DungeonCrawl.DTO.CharacterCreatorDTO;
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.Model.Hero;
-import DungeonCrawl.StaticRules.HeroClassInformation;
+
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -81,7 +83,8 @@ public class CharacterCreatorDAO {
 
     public Hero getAHeroByID(int ID) throws SQLException, IOException {
         Hero hero = new Hero();
-        HeroClassInformation heroClassInformation = new HeroClassInformation();
+        HeroClassInformationFactory heroClassInformation= new HeroClassInformationFactory(hero.getClass().toString());
+        //HeroClassInformation heroClassInformation = new HeroClassInformation();
         System.out.println("-----> Hero ID From DAO" + ID);
         String sql = "SELECT * FROM dungeon.heroes WHERE idheroes = ?;";
         pst = conn.prepareStatement(sql);
@@ -109,7 +112,7 @@ public class CharacterCreatorDAO {
             hero.setGold(rs.getInt("gold"));
             manageHeroDefenses(hero, rs);
             manageHeroSkills(hero, rs);
-            manageHeroPowers(hero, heroClassInformation, rs, heroClass);
+            manageHeroPowers(hero, heroClassInformation, rs);
         }
         hero.updateTheAttributesMap();
         System.out.println(hero.getMonsterName() + "|||" + a + " Icon number: " + b);
@@ -143,14 +146,14 @@ public class CharacterCreatorDAO {
         hero.setThievery(rs.getInt("sk_thievery"));
     }
 
-    private void manageHeroPowers(Hero hero, HeroClassInformation heroClassInformation, ResultSet rs, String heroClass) throws SQLException {
+    private void manageHeroPowers(Hero hero, HeroClassInformationFactory heroClassInformationFactory, ResultSet rs) throws SQLException {
         String allAtWillPowers = rs.getString("powers_at_will");
         String allEncounterPowers = rs.getString("powers_encounter");
         String allDailyPowers = rs.getString("powers_daily");
         String atWillIconIDS = rs.getString("power_icon_ids_at_will");
         String encounterIconIDS = rs.getString("power_icon_ids_encounter");
         String dailyIconIDS = rs.getString("power_icon_ids_daily");
-        List<HeroPower> allAtWillPowersForHero = heroClassInformation.getAtWillPowersAtLevel1().get(heroClass);
+        List<HeroPower> allAtWillPowersForHero = heroClassInformationFactory.getAtWillPowersAtLevel1();
         List<HeroPower> validAtWillPowersForHero = new ArrayList<>();
         for (HeroPower currentPower : allAtWillPowersForHero) {
             if (allAtWillPowers.contains(currentPower.getPowerName())) {
@@ -161,7 +164,7 @@ public class CharacterCreatorDAO {
             }
         }
         hero.setAtWillPowers(validAtWillPowersForHero);
-        List<HeroPower> allEncounterPowersForHero = heroClassInformation.getEncounterPowersAtLevel1().get(heroClass);
+        List<HeroPower> allEncounterPowersForHero = heroClassInformationFactory.getEncounterPowersAtLevel1();
         List<HeroPower> validEncounterPowersForHero = new ArrayList<>();
         for (HeroPower currentPower : allEncounterPowersForHero) {
             if (allEncounterPowers.contains(currentPower.getPowerName())) {
@@ -172,7 +175,7 @@ public class CharacterCreatorDAO {
             }
         }
         hero.setEncounterPowers(validEncounterPowersForHero);
-        List<HeroPower> allDailyPowersForHero = heroClassInformation.getDailyPowersAtLevel1().get(heroClass);
+        List<HeroPower> allDailyPowersForHero = heroClassInformationFactory.getDailyPowersAtLevel1();
         List<HeroPower> validDailyPowersForHero = new ArrayList<>();
         for (HeroPower currentPower : allDailyPowersForHero) {
             if (allDailyPowers.contains(currentPower.getPowerName())) {

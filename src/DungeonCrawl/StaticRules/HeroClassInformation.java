@@ -26,9 +26,9 @@ public class HeroClassInformation {
 
     public Map<String, Integer> classSkillPoints = new HashMap<>();
     public Map<String, List<String>> availableSkills = new HashMap<>();
-    public Map<String, Integer> hitDiceAt1st = new HashMap<>();
+    private Map<String, Integer> hitDiceAt1st = new HashMap<>();
     Map<String, Integer> hitDicePerLevel = new HashMap<>();
-    public Map<HeroSkills, AttributeNames> skillsAndCorrespondingAttributes = new HashMap<>();
+    private Map<HeroSkills, AttributeNames> skillsAndCorrespondingAttributes = new HashMap<>();
     private Map<String, List<HeroPower>> atWillPowersAtLevel1 = new HashMap<>();
     private Map<String, List<HeroPower>> atWillPowers = new HashMap<>();
     private Map<String, List<HeroPower>> encounterPowersAtLevel1 = new HashMap<>();
@@ -38,6 +38,10 @@ public class HeroClassInformation {
     private Map<String, List<String>> classTraits = new HashMap<>();
     private Map<String, List<String>> classWeaponProficiencies = new HashMap<>();
     private Map<String, List<String>> classArmorProficiencies = new HashMap<>();
+
+    public Map<HeroSkills, AttributeNames> getSkillsAndCorrespondingAttributes() {
+        return skillsAndCorrespondingAttributes;
+    }
 
     public Map<String, List<String>> getClassWeaponProficiencies() {
         return classWeaponProficiencies;
@@ -784,85 +788,6 @@ public class HeroClassInformation {
             }
         }
         return racialBonuses;
-    }
-
-    public List<String> manageClassDefenceBonuses(String className) {
-        List<String> listOfBonuses = new ArrayList<>();
-        switch (className) {
-            case "Avenger":
-            case "Invoker":
-            case "Paladin": {
-                listOfBonuses.add(CreatureDefenses.Fortitude.toString());
-                listOfBonuses.add(CreatureDefenses.Reflex.toString());
-                listOfBonuses.add(CreatureDefenses.Will.toString());
-                break;
-            }
-            case "Barbarian":
-            case "Fighter": {
-                listOfBonuses.add(CreatureDefenses.Fortitude.toString());
-                listOfBonuses.add(CreatureDefenses.Fortitude.toString());
-                break;
-            }
-            case "Bard":
-            case "Druid":
-            case "Warlock": {
-                listOfBonuses.add(CreatureDefenses.Reflex.toString());
-                listOfBonuses.add(CreatureDefenses.Will.toString());
-                break;
-            }
-            case "Cleric":
-            case "Sorcerer":
-            case "Wizard": {
-                listOfBonuses.add(CreatureDefenses.Will.toString());
-                listOfBonuses.add(CreatureDefenses.Will.toString());
-                break;
-            }
-            case "Ranger": {
-                listOfBonuses.add(CreatureDefenses.Fortitude.toString());
-                listOfBonuses.add(CreatureDefenses.Reflex.toString());
-                break;
-            }
-            case "Rogue": {
-                listOfBonuses.add(CreatureDefenses.Reflex.toString());
-                listOfBonuses.add(CreatureDefenses.Reflex.toString());
-                break;
-            }
-            case "Shaman":
-            case "Warden":
-            case "Warlord": {
-                listOfBonuses.add(CreatureDefenses.Fortitude.toString());
-                listOfBonuses.add(CreatureDefenses.Will.toString());
-                break;
-            }
-        }
-        return listOfBonuses;
-    }
-
-    public HeroPower getHeroPowerByName(String className, String powerName, String typeOfPower) {
-
-        try {
-            if (typeOfPower.contains("Will")) {
-                for (HeroPower currentPower : atWillPowersAtLevel1.get(className)) {
-                    if (powerName.equals(currentPower.getPowerName())) {
-                        return currentPower;
-                    }
-                }
-            } else if (typeOfPower.contains("Encounter")) {
-                for (HeroPower currentPower : encounterPowersAtLevel1.get(className)) {
-                    if (powerName.equals(currentPower.getPowerName())) {
-                        return currentPower;
-                    }
-                }
-            } else if (typeOfPower.contains("Daily")) {
-                for (HeroPower currentPower : dailyPowersAtLevel1.get(className)) {
-                    if (powerName.equals(currentPower.getPowerName())) {
-                        return currentPower;
-                    }
-                }
-            }
-        } catch (NullPointerException ignored) {
-        }
-        return null;
     }
 
     private void populateTheTablesWithSkills() {

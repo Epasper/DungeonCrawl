@@ -1,6 +1,6 @@
 package DungeonCrawl.HeroPowers.Druid;
 
-import DungeonCrawl.StaticRules.HeroClassInformation;
+
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.StaticRules.HeroClasses;
 import DungeonCrawl.StaticRules.TypesOfPowers;

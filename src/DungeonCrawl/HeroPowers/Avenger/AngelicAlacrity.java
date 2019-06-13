@@ -1,6 +1,5 @@
 package DungeonCrawl.HeroPowers.Avenger;
 
-import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.StaticRules.HeroClasses;
 import DungeonCrawl.StaticRules.TypesOfPowers;

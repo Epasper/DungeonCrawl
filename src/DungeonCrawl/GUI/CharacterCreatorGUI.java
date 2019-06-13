@@ -337,16 +337,16 @@ class CharacterCreatorGUI {
             listOfErrorMessages.add("Select an encounter power.");
         if (characterCreatorDTO.getDailyPower1().contains("Select"))
             listOfErrorMessages.add("Select a daily power.");
-        if (Integer.valueOf(characterCreatorDTO.getAtWill1Power1IconID()) < 0){
+        if (Integer.valueOf(characterCreatorDTO.getAtWill1Power1IconID()) < 0) {
             listOfErrorMessages.add("Select an Icon for one of your at will powers.");
         }
-        if (Integer.valueOf(characterCreatorDTO.getAtWill1Power2IconID()) < 0){
+        if (Integer.valueOf(characterCreatorDTO.getAtWill1Power2IconID()) < 0) {
             listOfErrorMessages.add("Select an Icon for one of your at will powers.");
         }
-        if (Integer.valueOf(characterCreatorDTO.getEncounterPowerIconID()) < 0){
+        if (Integer.valueOf(characterCreatorDTO.getEncounterPowerIconID()) < 0) {
             listOfErrorMessages.add("Select an Icon for your encounter power.");
         }
-        if (Integer.valueOf(characterCreatorDTO.getDailyPowerIconID()) < 0){
+        if (Integer.valueOf(characterCreatorDTO.getDailyPowerIconID()) < 0) {
             listOfErrorMessages.add("Select an Icon for your daily power.");
         }
         return listOfErrorMessages;
@@ -456,7 +456,7 @@ class CharacterCreatorGUI {
             if (isThisTheFirstBuild) {
                 availableSkills.add(currentSkill.toString());
             }
-            String attribute = heroClassInformation.skillsAndCorrespondingAttributes.get(currentSkill).toString();
+            String attribute = heroClassInformation.getSkillsAndCorrespondingAttributes().get(currentSkill).toString();
             String attributeAbbreviation = attribute.substring(0, 3).toUpperCase();
             StringBuilder skillName = uglyWorkaroundForSkillPointsFormatting(currentSkill);
             int skillValue = getFinalAbilityScoreByName(attribute);
@@ -587,11 +587,11 @@ class CharacterCreatorGUI {
         System.out.println("Constitution: " + constitutionString);
         int constitution = valueOf(constitutionString);
         try {
-            HeroClassInformation classInfo = new HeroClassInformation();
-
-            int a = classInfo.hitDiceAt1st.get(selectedClass);
+            //HeroClassInformation classInfo = new HeroClassInformation();
+            HeroClassInformationFactory classInfo = new HeroClassInformationFactory(selectedClass);
+            int a = classInfo.getHitDiceAt1st();
             System.out.println(a);
-            maxHP = (classInfo.hitDiceAt1st.get(selectedClass) + constitution);
+            maxHP = (classInfo.getHitDiceAt1st() + constitution);
             maxHpText.setText("Max HP: \t\t" + maxHP);
         } catch (NullPointerException e) {
             maxHP = (constitution);
@@ -625,8 +625,8 @@ class CharacterCreatorGUI {
                 }
             }
         }
-        HeroClassInformation heroClassInformation = new HeroClassInformation();
-        List<String> classBonuses = heroClassInformation.manageClassDefenceBonuses(selectedHeroClass);
+        HeroClassInformationFactory heroClassInformation = new HeroClassInformationFactory(selectedHeroClass);
+        List<String> classBonuses = heroClassInformation.manageClassDefenceBonuses();
         for (String currentBonus : classBonuses) {
             switch (currentBonus) {
                 case "Fortitude": {
@@ -771,25 +771,25 @@ class CharacterCreatorGUI {
     }
 
     private void addPowerOptionsToComboBoxes(ObservableList<String> atWill1Options, ObservableList<String> atWill2Options, ObservableList<String> encounterOptions, ObservableList<String> dailyOptions, ObservableList<String> classTraitOptions) {
-        HeroClassInformation heroClassInformation = new HeroClassInformation();
-        int numberOfAtWillPowers = heroClassInformation.getAtWillPowersAtLevel1().get(selectedHeroClass).size();
-        int numberOfEncounterPowers = heroClassInformation.getEncounterPowersAtLevel1().get(selectedHeroClass).size();
-        int numberOfDailyPowers = heroClassInformation.getEncounterPowersAtLevel1().get(selectedHeroClass).size();
-        int numberOfClassTraits = heroClassInformation.getClassTraits().get(selectedHeroClass).size();
+        HeroClassInformationFactory heroClassInformation = new HeroClassInformationFactory(selectedHeroClass);
+        int numberOfAtWillPowers = heroClassInformation.getAtWillPowersAtLevel1().size();
+        int numberOfEncounterPowers = heroClassInformation.getEncounterPowersAtLevel1().size();
+        int numberOfDailyPowers = heroClassInformation.getEncounterPowersAtLevel1().size();
+        int numberOfClassTraits = heroClassInformation.getClassTraits().size();
         for (int i = 0; i < numberOfAtWillPowers; i++) {
-            atWill1Options.add(heroClassInformation.getAtWillPowersAtLevel1().get(selectedHeroClass).get(i).getPowerName());
+            atWill1Options.add(heroClassInformation.getAtWillPowersAtLevel1().get(i).getPowerName());
         }
         for (int i = 0; i < numberOfAtWillPowers; i++) {
-            atWill2Options.add(heroClassInformation.getAtWillPowersAtLevel1().get(selectedHeroClass).get(i).getPowerName());
+            atWill2Options.add(heroClassInformation.getAtWillPowersAtLevel1().get(i).getPowerName());
         }
         for (int i = 0; i < numberOfEncounterPowers; i++) {
-            encounterOptions.add(heroClassInformation.getEncounterPowersAtLevel1().get(selectedHeroClass).get(i).getPowerName());
+            encounterOptions.add(heroClassInformation.getEncounterPowersAtLevel1().get(i).getPowerName());
         }
         for (int i = 0; i < numberOfDailyPowers; i++) {
-            dailyOptions.add(heroClassInformation.getDailyPowersAtLevel1().get(selectedHeroClass).get(i).getPowerName());
+            dailyOptions.add(heroClassInformation.getDailyPowersAtLevel1().get(i).getPowerName());
         }
         for (int i = 0; i < numberOfClassTraits; i++) {
-            classTraitOptions.add(heroClassInformation.getClassTraits().get(selectedHeroClass).get(i));
+            classTraitOptions.add(heroClassInformation.getClassTraits().get(i));
         }
     }
 
@@ -838,8 +838,8 @@ class CharacterCreatorGUI {
     }
 
     private void showThePowerDescription(String powerName, String typeOfPower) {
-        HeroClassInformation heroClassInformation = new HeroClassInformation();
-        HeroPower heroPower = heroClassInformation.getHeroPowerByName(selectedHeroClass, powerName, typeOfPower);
+        HeroClassInformationFactory heroClassInformation = new HeroClassInformationFactory(selectedHeroClass);
+        HeroPower heroPower = heroClassInformation.getHeroPowerByName(powerName, typeOfPower);
         powerDescription.setWrapText(true);
         try {
             powerDescription.setText("Preview of a recently selected power:  \n\n" + "Power Name:  \n" + heroPower.getPowerName() + "\n\n" + "Power Description:  \n" + heroPower.getHitDescription());
@@ -875,8 +875,8 @@ class CharacterCreatorGUI {
 
     private void displayThePowerPopup(String className, String powerName, String typeOfPower) {
 
-        HeroClassInformation heroClassInformation = new HeroClassInformation();
-        HeroPower currentPower = heroClassInformation.getHeroPowerByName(className, powerName, typeOfPower);
+        HeroClassInformationFactory heroClassInformation = new HeroClassInformationFactory(className);
+        HeroPower currentPower = heroClassInformation.getHeroPowerByName(powerName, typeOfPower);
         System.out.println("Hover Onto Power Detected. ");
         VBox powerDescription = new VBox();
         powerDescription.setStyle(" -fx-background-color: white;");
@@ -911,14 +911,14 @@ class CharacterCreatorGUI {
     }
 
     private void eventOnClassSelection(String newValue) {
-        HeroClassInformation heroClassInformation = new HeroClassInformation();
+        HeroClassInformationFactory heroClassInformation = new HeroClassInformationFactory(newValue);
         System.out.println(newValue);
         availableSkills.clear();
         selectedSkills.clear();
-        availableSkills.addAll(heroClassInformation.availableSkills.get(newValue));
+        availableSkills.addAll(heroClassInformation.getAvailableSkills());
         availableSkillsListView.setMaxHeight(availableSkills.size() * 24);
         selectedSkillsListView.setMaxHeight(selectedSkills.size() * 24);
-        numberOfAvailableSkillPoints = (heroClassInformation.classSkillPoints.get(newValue));
+        numberOfAvailableSkillPoints = (heroClassInformation.getClassSkillPoints());
         skillPointsText.setText(String.valueOf(numberOfAvailableSkillPoints));
         availableSkillsListView.setDisable(false);
         selectedHeroClass = newValue;
