@@ -3,20 +3,24 @@ package DungeonCrawl.HeroPowers.Barbarian;
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.StaticRules.HeroClasses;
+import DungeonCrawl.StaticRules.TypesOfPowers;
+import DungeonCrawl.StaticRules.AttributeNames;
+import DungeonCrawl.StaticRules.CreatureDefenses;
+import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class VaultOfTheFallen extends HeroPower {
     public VaultOfTheFallen() {
         powerName = "Vault of the Fallen";
         characterClass = HeroClasses.Barbarian.toString();
-        typeOfPower = HeroClassInformation.TypeOfPower.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
+        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
+        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
         powerLevel = 1;
         range = 0;
         numberOfTargets = "One or Two targets";
-        attributeUsedToHit = HeroClassInformation.Attributes.Strength.toString();
-        defenseToBeChecked = HeroClassInformation.Defenses.AC.toString();
+        attributeUsedToHit = AttributeNames.Strength.toString();
+        defenseToBeChecked = CreatureDefenses.AC.toString();
         damageDiceDealt = 2;
-        damageModifier = HeroClassInformation.Attributes.Strength.toString();
+        damageModifier = AttributeNames.Strength.toString();
         isThisWeaponDamage = true;
         bonusDamage = true;
         typeOfBonusDamageDice = 6;

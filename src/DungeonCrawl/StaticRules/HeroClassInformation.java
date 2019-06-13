@@ -28,7 +28,7 @@ public class HeroClassInformation {
     public Map<String, List<String>> availableSkills = new HashMap<>();
     public Map<String, Integer> hitDiceAt1st = new HashMap<>();
     Map<String, Integer> hitDicePerLevel = new HashMap<>();
-    public Map<CharacterSkills, Attributes> skillsAndCorrespondingAttributes = new HashMap<>();
+    public Map<HeroSkills, AttributeNames> skillsAndCorrespondingAttributes = new HashMap<>();
     private Map<String, List<HeroPower>> atWillPowersAtLevel1 = new HashMap<>();
     private Map<String, List<HeroPower>> atWillPowers = new HashMap<>();
     private Map<String, List<HeroPower>> encounterPowersAtLevel1 = new HashMap<>();
@@ -101,26 +101,6 @@ public class HeroClassInformation {
 
     public void setEncounterPowersAtLevel1(Map<String, List<HeroPower>> encounterPowersAtLevel1) {
         this.encounterPowersAtLevel1 = encounterPowersAtLevel1;
-    }
-
-    public enum ExpandedAction {FREE, MINOR, STANDARD, REACTION}
-
-    public enum TypeOfPower {AT_WILL, ENCOUNTER, DAILY}
-
-    public enum CharacterSkills {
-        Acrobatics, Arcana, Athletics, Bluff, Diplomacy, Dungeoneering, Endurance, Heal, History, Insight, Intimidate, Nature, Perception, Religion, Stealth, Streetwise, Thievery
-    }
-
-    public enum CharacterRaces {
-        Deva, Dragonborn, Dwarf, Eladrin, Elf, Gnome, Goliath, Halfelf, Halforc, Halfling, Human, Shifter, Tiefling
-    }
-
-    public enum Attributes {
-        Strength, Constitution, Dexterity, Intelligence, Wisdom, Charisma
-    }
-
-    public enum Defenses {
-        AC, Fortitude, Reflex, Will
     }
 
     public HeroClassInformation() {
@@ -326,23 +306,23 @@ public class HeroClassInformation {
 
 
     private void populateTheSkillsAndCorrespondingAttributes() {
-        skillsAndCorrespondingAttributes.put(CharacterSkills.Acrobatics, Attributes.Dexterity);
-        skillsAndCorrespondingAttributes.put(CharacterSkills.Arcana, Attributes.Intelligence);
-        skillsAndCorrespondingAttributes.put(CharacterSkills.Athletics, Attributes.Strength);
-        skillsAndCorrespondingAttributes.put(CharacterSkills.Bluff, Attributes.Charisma);
-        skillsAndCorrespondingAttributes.put(CharacterSkills.Diplomacy, Attributes.Charisma);
-        skillsAndCorrespondingAttributes.put(CharacterSkills.Dungeoneering, Attributes.Wisdom);
-        skillsAndCorrespondingAttributes.put(CharacterSkills.Endurance, Attributes.Constitution);
-        skillsAndCorrespondingAttributes.put(CharacterSkills.Heal, Attributes.Wisdom);
-        skillsAndCorrespondingAttributes.put(CharacterSkills.History, Attributes.Wisdom);
-        skillsAndCorrespondingAttributes.put(CharacterSkills.Insight, Attributes.Wisdom);
-        skillsAndCorrespondingAttributes.put(CharacterSkills.Intimidate, Attributes.Charisma);
-        skillsAndCorrespondingAttributes.put(CharacterSkills.Nature, Attributes.Wisdom);
-        skillsAndCorrespondingAttributes.put(CharacterSkills.Perception, Attributes.Wisdom);
-        skillsAndCorrespondingAttributes.put(CharacterSkills.Religion, Attributes.Wisdom);
-        skillsAndCorrespondingAttributes.put(CharacterSkills.Stealth, Attributes.Dexterity);
-        skillsAndCorrespondingAttributes.put(CharacterSkills.Streetwise, Attributes.Charisma);
-        skillsAndCorrespondingAttributes.put(CharacterSkills.Thievery, Attributes.Dexterity);
+        skillsAndCorrespondingAttributes.put(HeroSkills.Acrobatics, AttributeNames.Dexterity);
+        skillsAndCorrespondingAttributes.put(HeroSkills.Arcana, AttributeNames.Intelligence);
+        skillsAndCorrespondingAttributes.put(HeroSkills.Athletics, AttributeNames.Strength);
+        skillsAndCorrespondingAttributes.put(HeroSkills.Bluff, AttributeNames.Charisma);
+        skillsAndCorrespondingAttributes.put(HeroSkills.Diplomacy, AttributeNames.Charisma);
+        skillsAndCorrespondingAttributes.put(HeroSkills.Dungeoneering, AttributeNames.Wisdom);
+        skillsAndCorrespondingAttributes.put(HeroSkills.Endurance, AttributeNames.Constitution);
+        skillsAndCorrespondingAttributes.put(HeroSkills.Heal, AttributeNames.Wisdom);
+        skillsAndCorrespondingAttributes.put(HeroSkills.History, AttributeNames.Wisdom);
+        skillsAndCorrespondingAttributes.put(HeroSkills.Insight, AttributeNames.Wisdom);
+        skillsAndCorrespondingAttributes.put(HeroSkills.Intimidate, AttributeNames.Charisma);
+        skillsAndCorrespondingAttributes.put(HeroSkills.Nature, AttributeNames.Wisdom);
+        skillsAndCorrespondingAttributes.put(HeroSkills.Perception, AttributeNames.Wisdom);
+        skillsAndCorrespondingAttributes.put(HeroSkills.Religion, AttributeNames.Wisdom);
+        skillsAndCorrespondingAttributes.put(HeroSkills.Stealth, AttributeNames.Dexterity);
+        skillsAndCorrespondingAttributes.put(HeroSkills.Streetwise, AttributeNames.Charisma);
+        skillsAndCorrespondingAttributes.put(HeroSkills.Thievery, AttributeNames.Dexterity);
     }
 
     public Map<String, Integer> getClassSkillPoints() {
@@ -812,46 +792,46 @@ public class HeroClassInformation {
             case "Avenger":
             case "Invoker":
             case "Paladin": {
-                listOfBonuses.add(Defenses.Fortitude.toString());
-                listOfBonuses.add(Defenses.Reflex.toString());
-                listOfBonuses.add(Defenses.Will.toString());
+                listOfBonuses.add(CreatureDefenses.Fortitude.toString());
+                listOfBonuses.add(CreatureDefenses.Reflex.toString());
+                listOfBonuses.add(CreatureDefenses.Will.toString());
                 break;
             }
             case "Barbarian":
             case "Fighter": {
-                listOfBonuses.add(Defenses.Fortitude.toString());
-                listOfBonuses.add(Defenses.Fortitude.toString());
+                listOfBonuses.add(CreatureDefenses.Fortitude.toString());
+                listOfBonuses.add(CreatureDefenses.Fortitude.toString());
                 break;
             }
             case "Bard":
             case "Druid":
             case "Warlock": {
-                listOfBonuses.add(Defenses.Reflex.toString());
-                listOfBonuses.add(Defenses.Will.toString());
+                listOfBonuses.add(CreatureDefenses.Reflex.toString());
+                listOfBonuses.add(CreatureDefenses.Will.toString());
                 break;
             }
             case "Cleric":
             case "Sorcerer":
             case "Wizard": {
-                listOfBonuses.add(Defenses.Will.toString());
-                listOfBonuses.add(Defenses.Will.toString());
+                listOfBonuses.add(CreatureDefenses.Will.toString());
+                listOfBonuses.add(CreatureDefenses.Will.toString());
                 break;
             }
             case "Ranger": {
-                listOfBonuses.add(Defenses.Fortitude.toString());
-                listOfBonuses.add(Defenses.Reflex.toString());
+                listOfBonuses.add(CreatureDefenses.Fortitude.toString());
+                listOfBonuses.add(CreatureDefenses.Reflex.toString());
                 break;
             }
             case "Rogue": {
-                listOfBonuses.add(Defenses.Reflex.toString());
-                listOfBonuses.add(Defenses.Reflex.toString());
+                listOfBonuses.add(CreatureDefenses.Reflex.toString());
+                listOfBonuses.add(CreatureDefenses.Reflex.toString());
                 break;
             }
             case "Shaman":
             case "Warden":
             case "Warlord": {
-                listOfBonuses.add(Defenses.Fortitude.toString());
-                listOfBonuses.add(Defenses.Will.toString());
+                listOfBonuses.add(CreatureDefenses.Fortitude.toString());
+                listOfBonuses.add(CreatureDefenses.Will.toString());
                 break;
             }
         }

@@ -3,20 +3,24 @@ package DungeonCrawl.HeroPowers.Warlord;
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.StaticRules.HeroClasses;
+import DungeonCrawl.StaticRules.TypesOfPowers;
+import DungeonCrawl.StaticRules.AttributeNames;
+import DungeonCrawl.StaticRules.CreatureDefenses;
+import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class WarlordsFavor extends HeroPower {
     public WarlordsFavor() {
         powerName = "Warlord's Favor";
         characterClass = HeroClasses.Warlord.toString();
-        typeOfPower = HeroClassInformation.TypeOfPower.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
+        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
+        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
         powerLevel = 1;
         range = 0;
         numberOfTargets = "One target";
-        attributeUsedToHit = HeroClassInformation.Attributes.Strength.toString();
-        defenseToBeChecked = HeroClassInformation.Defenses.Reflex.toString();
+        attributeUsedToHit = AttributeNames.Strength.toString();
+        defenseToBeChecked = CreatureDefenses.Reflex.toString();
         damageDiceDealt = 1;
-        damageModifier = HeroClassInformation.Attributes.Strength.toString();
+        damageModifier = AttributeNames.Strength.toString();
         isThisWeaponDamage = true;
         powersAdditionalOptions = "Tactical Presence";
         hitDescription = "2[W] + Strength modifier damage. One ally within 5 squares of you gains a +2 power bonus to attack rolls against the target until the end of your next turn.\n" +

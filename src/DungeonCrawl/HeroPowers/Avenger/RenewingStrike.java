@@ -1,22 +1,21 @@
 package DungeonCrawl.HeroPowers.Avenger;
 
 import DungeonCrawl.HeroPowers.HeroPower;
-import DungeonCrawl.StaticRules.HeroClassInformation;
-import DungeonCrawl.StaticRules.HeroClasses;
+import DungeonCrawl.StaticRules.*;
 
 public class RenewingStrike extends HeroPower {
     public RenewingStrike() {
         powerName = "Renewing Strike";
         characterClass = HeroClasses.Avenger.toString();
-        typeOfPower = HeroClassInformation.TypeOfPower.DAILY.toString().replace('_', ' ').toLowerCase();
-        usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
+        typeOfPower = TypesOfPowers.DAILY.toString().replace('_', ' ').toLowerCase();
+        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
         powerLevel = 1;
         range = 10;
         numberOfTargets = "One target";
-        attributeUsedToHit = HeroClassInformation.Attributes.Wisdom.toString();
-        defenseToBeChecked = HeroClassInformation.Defenses.Reflex.toString();
+        attributeUsedToHit = AttributeNames.Wisdom.toString();
+        defenseToBeChecked = CreatureDefenses.Reflex.toString();
         damageDiceDealt = 2;
-        damageModifier = HeroClassInformation.Attributes.Wisdom.toString();
+        damageModifier = AttributeNames.Wisdom.toString();
         isThisWeaponDamage = false;
         damageDiceDealt = 10;
         hitDescription = "2d10 + Wisdom modifier lightning damage\n" +

@@ -3,21 +3,25 @@ package DungeonCrawl.HeroPowers.Druid;
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.StaticRules.HeroClasses;
+import DungeonCrawl.StaticRules.TypesOfPowers;
+import DungeonCrawl.StaticRules.AttributeNames;
+import DungeonCrawl.StaticRules.CreatureDefenses;
+import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class DartingBite extends HeroPower {
     public DartingBite() {
         powerName = "Darting Bite";
         characterClass = HeroClasses.Druid.toString();
-        typeOfPower = HeroClassInformation.TypeOfPower.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
+        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
+        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
         powerLevel = 1;
         range = 0;
         numberOfTargets = "One or Two targets";
-        attributeUsedToHit = HeroClassInformation.Attributes.Wisdom.toString();
-        defenseToBeChecked = HeroClassInformation.Defenses.Will.toString();
+        attributeUsedToHit = AttributeNames.Wisdom.toString();
+        defenseToBeChecked = CreatureDefenses.Will.toString();
         damageDiceDealt = 1;
         typeOfDamageDice = 10;
-        damageModifier = HeroClassInformation.Attributes.Wisdom.toString();
+        damageModifier = AttributeNames.Wisdom.toString();
         isThisWeaponDamage = false;
         isThisABeastFormAttack = true;
         powersAdditionalOptions = "Primal Predator";

@@ -1,22 +1,21 @@
 package DungeonCrawl.HeroPowers.Cleric;
 
 import DungeonCrawl.HeroPowers.HeroPower;
-import DungeonCrawl.StaticRules.HeroClassInformation;
-import DungeonCrawl.StaticRules.HeroClasses;
+import DungeonCrawl.StaticRules.*;
 
 public class CascadeOfLight extends HeroPower {
     public CascadeOfLight() {
         powerName = "Cascade of Light";
         characterClass = HeroClasses.Cleric.toString();
-        typeOfPower = HeroClassInformation.TypeOfPower.DAILY.toString().replace('_', ' ').toLowerCase();
-        usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
+        typeOfPower = TypesOfPowers.DAILY.toString().replace('_', ' ').toLowerCase();
+        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
         powerLevel = 1;
         range = 10;
         numberOfTargets = "One target";
-        attributeUsedToHit = HeroClassInformation.Attributes.Wisdom.toString();
-        defenseToBeChecked = HeroClassInformation.Defenses.Will.toString();
+        attributeUsedToHit = AttributeNames.Wisdom.toString();
+        defenseToBeChecked = CreatureDefenses.Will.toString();
         damageDiceDealt = 3;
-        damageModifier = HeroClassInformation.Attributes.Wisdom.toString();
+        damageModifier = AttributeNames.Wisdom.toString();
         typeOfDamageDice = 8;
         isThisWeaponDamage = false;
         hitDescription = "3d8 + Wisdom modifier radiant damage, and the target gains vulnerable 5 to all damage from your attacks (save ends).\n" +

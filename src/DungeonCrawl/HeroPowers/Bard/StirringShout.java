@@ -1,23 +1,22 @@
 package DungeonCrawl.HeroPowers.Bard;
 
 import DungeonCrawl.HeroPowers.HeroPower;
-import DungeonCrawl.StaticRules.HeroClassInformation;
-import DungeonCrawl.StaticRules.HeroClasses;
+import DungeonCrawl.StaticRules.*;
 
 public class StirringShout extends HeroPower {
     public StirringShout() {
         powerName = "Stirring Shout";
         characterClass = HeroClasses.Bard.toString();
-        typeOfPower = HeroClassInformation.TypeOfPower.DAILY.toString().replace('_', ' ').toLowerCase();
-        usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
+        typeOfPower = TypesOfPowers.DAILY.toString().replace('_', ' ').toLowerCase();
+        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
         powerLevel = 1;
         range = 10;
         numberOfTargets = "One target";
-        attributeUsedToHit = HeroClassInformation.Attributes.Charisma.toString();
-        defenseToBeChecked = HeroClassInformation.Defenses.Will.toString();
+        attributeUsedToHit = AttributeNames.Charisma.toString();
+        defenseToBeChecked = CreatureDefenses.Will.toString();
         damageDiceDealt = 2;
         typeOfDamageDice = 6;
-        damageModifier = HeroClassInformation.Attributes.Charisma.toString();
+        damageModifier = AttributeNames.Charisma.toString();
         isThisWeaponDamage = false;
         hitDescription = "2d6 + Charisma modifier psychic damage.\n" +
                 "\n" +

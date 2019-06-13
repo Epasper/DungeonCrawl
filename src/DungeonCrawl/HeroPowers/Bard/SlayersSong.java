@@ -1,22 +1,21 @@
 package DungeonCrawl.HeroPowers.Bard;
 
 import DungeonCrawl.HeroPowers.HeroPower;
-import DungeonCrawl.StaticRules.HeroClassInformation;
-import DungeonCrawl.StaticRules.HeroClasses;
+import DungeonCrawl.StaticRules.*;
 
 public class SlayersSong extends HeroPower {
     public SlayersSong() {
         powerName = "Slayer's Song";
         characterClass = HeroClasses.Bard.toString();
-        typeOfPower = HeroClassInformation.TypeOfPower.DAILY.toString().replace('_', ' ').toLowerCase();
-        usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
+        typeOfPower = TypesOfPowers.DAILY.toString().replace('_', ' ').toLowerCase();
+        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
         powerLevel = 1;
         range = 0;
         numberOfTargets = "One target";
-        attributeUsedToHit = HeroClassInformation.Attributes.Charisma.toString();
-        defenseToBeChecked = HeroClassInformation.Defenses.AC.toString();
+        attributeUsedToHit = AttributeNames.Charisma.toString();
+        defenseToBeChecked = CreatureDefenses.AC.toString();
         damageDiceDealt = 2;
-        damageModifier = HeroClassInformation.Attributes.Charisma.toString();
+        damageModifier = AttributeNames.Charisma.toString();
         isThisWeaponDamage = true;
         hitDescription = "2[W] + Charisma modifier damage, and the target grants combat advantage to you and your allies (save ends).\n" +
                 "\n" +

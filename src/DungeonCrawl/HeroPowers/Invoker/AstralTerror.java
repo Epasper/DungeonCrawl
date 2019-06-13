@@ -3,21 +3,25 @@ package DungeonCrawl.HeroPowers.Invoker;
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.StaticRules.HeroClasses;
+import DungeonCrawl.StaticRules.TypesOfPowers;
+import DungeonCrawl.StaticRules.AttributeNames;
+import DungeonCrawl.StaticRules.CreatureDefenses;
+import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class AstralTerror extends HeroPower {
     public AstralTerror() {
         powerName = "Astral Terror";
         characterClass = HeroClasses.Invoker.toString();
-        typeOfPower = HeroClassInformation.TypeOfPower.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
+        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
+        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
         powerLevel = 1;
         range = 10;
         numberOfTargets = "Burst 1";
-        attributeUsedToHit = HeroClassInformation.Attributes.Wisdom.toString();
-        defenseToBeChecked = HeroClassInformation.Defenses.Reflex.toString();
+        attributeUsedToHit = AttributeNames.Wisdom.toString();
+        defenseToBeChecked = CreatureDefenses.Reflex.toString();
         damageDiceDealt = 1;
         typeOfDamageDice = 6;
-        damageModifier = HeroClassInformation.Attributes.Wisdom.toString();
+        damageModifier = AttributeNames.Wisdom.toString();
         isThisWeaponDamage = false;
         powersAdditionalOptions = "Covenant of Preservation";
         hitDescription = "Hit: 1d6 + Wisdom modifier radiant damage.\n" +

@@ -3,20 +3,24 @@ package DungeonCrawl.HeroPowers.Ranger;
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.StaticRules.HeroClasses;
+import DungeonCrawl.StaticRules.TypesOfPowers;
+import DungeonCrawl.StaticRules.AttributeNames;
+import DungeonCrawl.StaticRules.CreatureDefenses;
+import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class FoxsCunning extends HeroPower {
     public FoxsCunning() {
         powerName = "Fox's Cunning";
         characterClass = HeroClasses.Ranger.toString();
-        typeOfPower = HeroClassInformation.TypeOfPower.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = HeroClassInformation.ExpandedAction.REACTION.toString().toLowerCase();
+        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
+        usedAction = TypesOfActions.REACTION.toString().toLowerCase();
         powerLevel = 1;
         range = 0;
         numberOfTargets = "One target";
-        attributeUsedToHit = HeroClassInformation.Attributes.Strength.toString();
-        defenseToBeChecked = HeroClassInformation.Defenses.AC.toString();
+        attributeUsedToHit = AttributeNames.Strength.toString();
+        defenseToBeChecked = CreatureDefenses.AC.toString();
         damageDiceDealt = 1;
-        damageModifier = HeroClassInformation.Attributes.Strength.toString();
+        damageModifier = AttributeNames.Strength.toString();
         isThisWeaponDamage = true;
         canThisAttackAlsoBeRanged = true;
         hitDescription = "Trigger: an enemy makes a melee attack against the user\n" +

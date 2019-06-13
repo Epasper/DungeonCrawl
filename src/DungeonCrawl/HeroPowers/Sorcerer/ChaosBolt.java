@@ -3,21 +3,25 @@ package DungeonCrawl.HeroPowers.Sorcerer;
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.StaticRules.HeroClasses;
+import DungeonCrawl.StaticRules.TypesOfPowers;
+import DungeonCrawl.StaticRules.AttributeNames;
+import DungeonCrawl.StaticRules.CreatureDefenses;
+import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class ChaosBolt extends HeroPower {
     public ChaosBolt() {
         powerName = "Chaos Bolt";
         characterClass = HeroClasses.Sorcerer.toString();
-        typeOfPower = HeroClassInformation.TypeOfPower.AT_WILL.toString().replace('_', ' ').toLowerCase();
-        usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
+        typeOfPower = TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase();
+        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
         powerLevel = 1;
         range = 10;
         numberOfTargets = "one target";
-        attributeUsedToHit = HeroClassInformation.Attributes.Charisma.toString();
-        defenseToBeChecked = HeroClassInformation.Defenses.Will.toString();
+        attributeUsedToHit = AttributeNames.Charisma.toString();
+        defenseToBeChecked = CreatureDefenses.Will.toString();
         damageDiceDealt = 1;
         typeOfDamageDice = 10;
-        damageModifier = HeroClassInformation.Attributes.Charisma.toString();
+        damageModifier = AttributeNames.Charisma.toString();
         isThisWeaponDamage = false;
         hitDescription = "Wild Magic: If you roll an even number for the primary attack roll and hit your target, make a secondary attack.\n" +
                 "Secondary target: One creature within 5 squares of the target last hit by this power.\n" +

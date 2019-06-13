@@ -3,21 +3,25 @@ package DungeonCrawl.HeroPowers.Warlock;
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.StaticRules.HeroClasses;
+import DungeonCrawl.StaticRules.TypesOfPowers;
+import DungeonCrawl.StaticRules.AttributeNames;
+import DungeonCrawl.StaticRules.CreatureDefenses;
+import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class DreadfulWord extends HeroPower {
     public DreadfulWord() {
         powerName = "Dreadful Word";
         characterClass = HeroClasses.Warlock.toString();
-        typeOfPower = HeroClassInformation.TypeOfPower.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
+        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
+        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
         powerLevel = 1;
         range = 10;
         numberOfTargets = "One target";
-        attributeUsedToHit = HeroClassInformation.Attributes.Charisma.toString();
-        defenseToBeChecked = HeroClassInformation.Defenses.Will.toString();
+        attributeUsedToHit = AttributeNames.Charisma.toString();
+        defenseToBeChecked = CreatureDefenses.Will.toString();
         damageDiceDealt = 2;
         typeOfDamageDice = 8;
-        damageModifier = HeroClassInformation.Attributes.Charisma.toString();
+        damageModifier = AttributeNames.Charisma.toString();
         isThisWeaponDamage = false;
         powersAdditionalOptions = "Star Pact";
         hitDescription = "2d8 + Charisma modifier psychic damage, and the target takes a −1 penalty to Will defense until the end of your next turn.\n" +

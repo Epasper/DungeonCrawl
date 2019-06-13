@@ -3,20 +3,24 @@ package DungeonCrawl.HeroPowers.Barbarian;
 import DungeonCrawl.StaticRules.HeroClassInformation;
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.StaticRules.HeroClasses;
+import DungeonCrawl.StaticRules.TypesOfPowers;
+import DungeonCrawl.StaticRules.AttributeNames;
+import DungeonCrawl.StaticRules.CreatureDefenses;
+import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class DevastatingStrike extends HeroPower {
     public DevastatingStrike() {
         powerName = "Devastating Strike";
         characterClass = HeroClasses.Barbarian.toString();
-        typeOfPower = HeroClassInformation.TypeOfPower.AT_WILL.toString().replace('_', ' ').toLowerCase();
-        usedAction = HeroClassInformation.ExpandedAction.STANDARD.toString().toLowerCase();
+        typeOfPower = TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase();
+        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
         powerLevel = 1;
         range = 0;
         numberOfTargets = "One target";
-        attributeUsedToHit = HeroClassInformation.Attributes.Strength.toString();
-        defenseToBeChecked = HeroClassInformation.Defenses.AC.toString();
+        attributeUsedToHit = AttributeNames.Strength.toString();
+        defenseToBeChecked = CreatureDefenses.AC.toString();
         damageDiceDealt = 1;
-        damageModifier = HeroClassInformation.Attributes.Strength.toString();
+        damageModifier = AttributeNames.Strength.toString();
         isThisWeaponDamage = true;
         bonusDamage = true;
         typeOfBonusDamageDice = 8;

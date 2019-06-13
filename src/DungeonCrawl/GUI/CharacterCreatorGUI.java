@@ -1,7 +1,8 @@
 package DungeonCrawl.GUI;
 
 import DungeonCrawl.GUI.Images.SkillIcons.SkillIcons;
-import DungeonCrawl.StaticRules.HeroClasses;
+import DungeonCrawl.Model.Hero;
+import DungeonCrawl.StaticRules.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
@@ -25,7 +26,6 @@ import DungeonCrawl.*;
 import DungeonCrawl.DAO.CharacterCreatorDAO;
 import DungeonCrawl.DTO.CharacterCreatorDTO;
 import DungeonCrawl.HeroPowers.HeroPower;
-import DungeonCrawl.StaticRules.HeroClassInformation;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -326,7 +326,7 @@ class CharacterCreatorGUI {
             listOfErrorMessages.add("Select your character's race.");
         }
         if (availableAttributePoints > 0)
-            listOfErrorMessages.add("You still have some attribute points left. Increase some attributes.");
+            listOfErrorMessages.add("You still have some attribute points left. Increase some AttributeNames.");
         if (availableAttributePoints < 0)
             listOfErrorMessages.add("Some of your attributes are too high. The number of attribute points has to be 0 for the character to be finished.");
         if (characterCreatorDTO.getHeroIconId() == 0)
@@ -452,7 +452,7 @@ class CharacterCreatorGUI {
         allSkills.clear();
         HeroClassInformation heroClassInformation = new HeroClassInformation();
         int i = 0;
-        for (HeroClassInformation.CharacterSkills currentSkill : HeroClassInformation.CharacterSkills.values()) {
+        for (HeroSkills currentSkill : HeroSkills.values()) {
             if (isThisTheFirstBuild) {
                 availableSkills.add(currentSkill.toString());
             }
@@ -475,7 +475,7 @@ class CharacterCreatorGUI {
         }
     }
 
-    private StringBuilder uglyWorkaroundForSkillPointsFormatting(HeroClassInformation.CharacterSkills currentSkill) {
+    private StringBuilder uglyWorkaroundForSkillPointsFormatting(HeroSkills currentSkill) {
         StringBuilder skillName = new StringBuilder(currentSkill.toString());
         boolean longWord = false;
         boolean shortWord = false;
@@ -538,7 +538,7 @@ class CharacterCreatorGUI {
         for (int i = 8; i < 19; i++) {
             statPointsOptions.add(i);
         }
-        for (HeroClassInformation.Attributes currentStat : HeroClassInformation.Attributes.values()) {
+        for (AttributeNames currentStat : AttributeNames.values()) {
             prepareASingleAttribute(currentStat);
         }
         for (int i = 0; i < 6; i++) {
@@ -649,7 +649,7 @@ class CharacterCreatorGUI {
         armorClassText.setText("Armor Class: \t\t" + AC);
     }
 
-    private void prepareASingleAttribute(HeroClassInformation.Attributes currentStat) {
+    private void prepareASingleAttribute(AttributeNames currentStat) {
         Text abilityWord = new Text("  " + currentStat.toString() + " ");
         abilityWord.setFill(Color.WHITE);
         Text finalScore = new Text("  ");
@@ -740,7 +740,7 @@ class CharacterCreatorGUI {
         for (HeroClasses currentClass : HeroClasses.values()) {
             classOptions.add(currentClass.toString());
         }
-        for (HeroClassInformation.CharacterRaces currentRace : HeroClassInformation.CharacterRaces.values()) {
+        for (HeroRaces currentRace : HeroRaces.values()) {
             raceOptions.add(currentRace.toString());
         }
         raceChoice.valueProperty().addListener((observable, oldValue, newValue) -> eventOnRaceSelection(newValue));
@@ -950,7 +950,7 @@ class CharacterCreatorGUI {
     }
 
     private int getStatID(String name) {
-        return HeroClassInformation.Attributes.valueOf(name).ordinal();
+        return AttributeNames.valueOf(name).ordinal();
     }
 
     private void manageRadioButtonsAfterSwitchingTheRace() {
