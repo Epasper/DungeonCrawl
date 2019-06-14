@@ -178,7 +178,6 @@ public class ItemShopGUI {
         String proficiencyInfo = currentlySelectedHero.getHeroName() + " is not proficient with " + currentItem.getItemName()
                 + ".\n It is not recommended to use a weapon that a hero is not proficient with.";
         HeroClassInformationFactory heroClassInformationFactory = new HeroClassInformationFactory(currentlySelectedHero.getHeroClass());
-        //todo finish the proficiency recognition on buying the items
         List<String> inspectedListOfProficiencies;
         if (typeOfProficiency.equals("Weapon")) {
             inspectedListOfProficiencies = heroClassInformationFactory.getClassWeaponProficiencies();

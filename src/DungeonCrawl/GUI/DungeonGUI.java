@@ -106,7 +106,7 @@ class DungeonGUI {
 
     private void manageTheConsoleAdding() {
         powersHBox.setStyle("-fx-background-color:grey;");
-        powersHBox.setMinSize(200, 40);
+        powersHBox.setMinSize(200, 110);
         Button equipmentButton = addViewEquipmentButton();
         Button viewDungeon = new Button();
         viewDungeon.setOnAction(event -> viewMapEvent());
@@ -277,7 +277,7 @@ class DungeonGUI {
             System.out.println("Changing the cursor");
         }
     }
-    //todo change the monster portrait after it being bloodied and/or killed (Java Canvas)
+    //todo change the monster portrait after it being bloodied
 
 
     private void updateMapGraphics(DungeonMap dungeonMap) {
@@ -396,6 +396,10 @@ class DungeonGUI {
         pathFinder.dungeonConsoleGUI.clearInitiativeTracker();
         fightAlreadyTakingPlace = false;
         pathFinder.setAlarmedMonsterVisible(false);
+    }
+
+    private void lockAllUnactiveHeroButtons (int activeHeroID) {
+
     }
 
     private ImageView addDeathImageToCreatureImage(Creature creature) {
@@ -541,6 +545,8 @@ class DungeonGUI {
         updateButtonsWithSkillIcons(guiUtilities.getHeroByID(currentHeroID, dungeonGUIHeroManager.getHeroList()));
         dungeonConsoleGUI.updateTheDungeonConsole("You have selected " + currentHero.getHeroName());
     }
+
+    //todo change the logic of the buttons, so that Hero class has a Button field with the ready methods and the button objects are placed after moving
 
     private void eventOnHeroMovement(Button aButton, int XPos, int YPos) {
 

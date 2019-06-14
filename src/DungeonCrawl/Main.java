@@ -10,8 +10,7 @@ public class Main extends Application {
     private static Stage pStage;
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        //debug SQL connection
+    public void start(Stage primaryStage) {
         //todo add an SQL method that creates a database if it doesn't already exist - for deployment purposes in the future.
         setPrimaryStage(primaryStage);
         MainMenuGUI mainMenuGUI = new MainMenuGUI();
@@ -33,7 +32,6 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-
         launch(args);
     }
 }

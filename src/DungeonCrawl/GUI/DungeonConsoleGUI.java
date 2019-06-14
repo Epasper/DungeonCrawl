@@ -75,6 +75,10 @@ public class DungeonConsoleGUI {
         completeConsole.setMinHeight(120);
     }
 
+    //todo allow only the next character in the initiative tracker to be selected and moved.
+
+    //todo add an animation that indicates which character is able to move right now.
+
     public void fillTheInitiativeTracker(List<Hero> listOfHeroes, List<Monster> listOfMonsters, boolean shouldIRollForNewInitiative) {
         TilePane initiativeTilePane = new TilePane();
         System.out.println("ROLLING INITIATIVE: ");
@@ -93,6 +97,17 @@ public class DungeonConsoleGUI {
         initiativeTracker.setContent(initiativeTilePane);
         System.out.println(listOfButtons);
         this.initiativeTilePane = initiativeTilePane;
+    }
+
+    public int getNextCharacterID(int currentInitiativeValue) {
+        for (int i = currentInitiativeValue; i < initiativeArray.length; i++) {
+            if (initiativeArray[i] != null && initiativeArray[i].getID() > 100) {
+                return initiativeArray[i].getCurrentMonsterUniqueID();
+            } else if (initiativeArray[i] != null) {
+                return initiativeArray[i].getID();
+            }
+        }
+        return -1;
     }
 
     private void sortTheCreaturesAccordingToInitiative(int i, Creature[] initiativeArray) {

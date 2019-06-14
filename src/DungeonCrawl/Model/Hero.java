@@ -1,6 +1,8 @@
 package DungeonCrawl.Model;
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.Items.Item;
+import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 
 import java.util.*;
 

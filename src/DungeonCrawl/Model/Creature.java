@@ -1,6 +1,8 @@
 package DungeonCrawl.Model;
 
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -83,7 +85,6 @@ public class Creature {
     }
 
     public Creature() {
-
     }
 
     public void updateTheDefensesMap() {
