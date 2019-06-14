@@ -420,12 +420,14 @@ class DungeonGUI {
                         "ID: " + hero.getID() +
                         " Init: " +
                         hero.getCurrentInitiative());
+                System.out.println("Unlocking");
                 buttonGrid[hero.getMapXPos()][hero.getMapYPos()].setDisable(false);
                 System.out.println("THIS Creature Init: " + hero.getCurrentInitiative());
                 currentCreatureInitiative = hero.getCurrentInitiative();
                 System.out.println("GLOBAL INITIATIVE SET TO: " + currentCreatureInitiative);
             } else {
                 buttonGrid[hero.getMapXPos()][hero.getMapYPos()].setDisable(true);
+                System.out.println("Locking.");
             }
         }
     }
@@ -608,8 +610,8 @@ class DungeonGUI {
         }
         if (!fightAlreadyTakingPlace) {
             resetAllHeroesSpeedToMax();
+            fightAlreadyTakingPlace = pathFinder.checkTheVisibilityRange(allMonstersList, dungeonGUIHeroManager.getHeroList(), hero, dungeonMap, fightAlreadyTakingPlace);
         }
-        fightAlreadyTakingPlace = pathFinder.checkTheVisibilityRange(allMonstersList, dungeonGUIHeroManager.getHeroList(), hero, dungeonMap, fightAlreadyTakingPlace);
         pathFinder.dungeonConsoleGUI.getInitiativeTracker().setContent(pathFinder.dungeonConsoleGUI.getInitiativeTilePane());
         if (fightAlreadyTakingPlace) {
             lockAllInactiveHeroButtons();

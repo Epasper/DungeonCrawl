@@ -255,12 +255,13 @@ public class PathFinder {
     public void setTheRoomAsVisible(int XPos, int YPos, DungeonMap dungeonMap, List<Monster> allMonstersList) {
         List<Room> listOfCurrentRooms = dungeonMap.getAllRoomsList();
         for (Room currentRoom : listOfCurrentRooms) {
-            if (currentRoom.getRoomXStartPos() - 1 < XPos && ((currentRoom.getRoomXStartPos() + currentRoom.getRoomWidth() - 1) > XPos)) {
-                if (currentRoom.getRoomYStartPos() - 1 < YPos && ((currentRoom.getRoomYStartPos() + currentRoom.getRoomHeight() - 1) > YPos)) {
+            if (currentRoom.getRoomXStartPos() - 1 < XPos && ((currentRoom.getRoomXStartPos() + currentRoom.getRoomWidth() + 1) > XPos)) {
+                if (currentRoom.getRoomYStartPos() - 1 < YPos && ((currentRoom.getRoomYStartPos() + currentRoom.getRoomHeight() + 1) > YPos)) {
                     System.out.println("Discovered room marked as visible.\n" +
                             " Starting X: " + currentRoom.getRoomXStartPos() +
                             "Starting Y: " + currentRoom.getRoomYStartPos() +
                             "\n" + "Width: " + currentRoom.getRoomWidth() + "Height: " + currentRoom.getRoomHeight());
+                    System.out.println("Verification if the room is occupied:");
                     for (int i = -1; i < currentRoom.getRoomWidth() + 1; i++) {
                         for (int j = -1; j < currentRoom.getRoomHeight() + 1; j++) {
                             try {
@@ -299,7 +300,7 @@ public class PathFinder {
             if (!monster.isThisCreatureDead()) {
                 discoveredMonsters.add(monster);
                 alarmedMonsterVisible = true;
-                System.out.println("Adding the monster: " + monster.getMonsterName() + " UUID: " + monster.getCurrentMonsterUniqueID());
+                System.out.println("Found a monster. Adding: " + monster.getMonsterName() + " UUID: " + monster.getCurrentMonsterUniqueID());
             }
         }
     }

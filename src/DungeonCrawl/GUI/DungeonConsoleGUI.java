@@ -82,6 +82,7 @@ public class DungeonConsoleGUI {
 
     public void fillTheInitiativeTracker(List<Hero> listOfHeroes, List<Monster> listOfMonsters, boolean shouldIRollForNewInitiative) {
         TilePane initiativeTilePane = new TilePane();
+        initiativeTilePane.setPrefColumns(20);
         System.out.println("ROLLING INITIATIVE: ");
         if (shouldIRollForNewInitiative) {
             for (Hero hero : listOfHeroes) {
