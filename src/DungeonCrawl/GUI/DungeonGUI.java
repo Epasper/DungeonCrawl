@@ -44,7 +44,6 @@ class DungeonGUI {
     private VBox portraitsVBox = new VBox();
     private VBox controlsButtons = new VBox();
     BorderPane mapOuterPane = new BorderPane();
-    private DungeonConsoleGUI dungeonConsoleGUI = new DungeonConsoleGUI();
     private DungeonImageLibraryGUI dungeonImageLibraryGUI = new DungeonImageLibraryGUI();
     private DungeonMap dungeonMap = new DungeonMap(null);
     private boolean hasTheCharacterBeenSelected = false;
@@ -58,6 +57,7 @@ class DungeonGUI {
     private GUIUtilities guiUtilities = new GUIUtilities();
     private boolean fightAlreadyTakingPlace;
     private PathFinder pathFinder = new PathFinder();
+    private int currentCreatureInitiative = 0;
 
     private DungeonMap getDungeonMap() {
         return dungeonMap;
@@ -75,7 +75,7 @@ class DungeonGUI {
 
         dungeonGUIHeroManager.setHeroList(heroList);
         manageTheConsoleAdding();
-        dungeonConsoleGUI.getDungeonConsole().setContent(dungeonConsoleGUI.getDungeonConsoleText());
+        pathFinder.dungeonConsoleGUI.getDungeonConsole().setContent(pathFinder.dungeonConsoleGUI.getDungeonConsoleText());
         mapOuterPane.setCenter(mapScrollPane);
         mapScrollPane.setContent(mapGridPane);
         Button returnToMainMenu = new Button();
@@ -123,8 +123,8 @@ class DungeonGUI {
         portraitsVBox.getChildren().addAll(listOfHeroButtons);
         mapOuterPane.setRight(portraitsVBox);
         mapOuterPane.setLeft(controlsButtons);
-        dungeonConsoleGUI.getCompleteConsole().add(powersHBox, 0, 2);
-        mapOuterPane.setBottom(dungeonConsoleGUI.getCompleteConsole());
+        pathFinder.dungeonConsoleGUI.getCompleteConsole().add(powersHBox, 0, 2);
+        mapOuterPane.setBottom(pathFinder.dungeonConsoleGUI.getCompleteConsole());
     }
 
     private void viewMapEvent() {
@@ -225,14 +225,14 @@ class DungeonGUI {
                 int finalJ = j;
                 int finalI = i;
                 aButton.setOnAction(actionEvent -> buttonEvent(aButton, finalI, finalJ));
-                aButton.setOnMouseEntered(event -> changeTheIconOnHover(aButton, finalI, finalJ));
+                aButton.setOnMouseEntered(event -> changeTheIconOnHover(finalI, finalJ));
                 mapGridPane.add(aButton, j, i);
             }
         }
         updateMapGraphics(dungeonMap);
     }
 
-    private void changeTheIconOnHover(Button aButton, int XPos, int YPos) {
+    private void changeTheIconOnHover(int XPos, int YPos) {
         Image mapCursor = new Image("DungeonCrawl/GUI/Images/Cursors/WalkingCursor.png");
         Image lockCursor = new Image("DungeonCrawl/GUI/Images/Cursors/Lock.png");
         Image swordCursor = new Image("DungeonCrawl/GUI/Images/Cursors/Sword.png");
@@ -322,7 +322,7 @@ class DungeonGUI {
             try {
                 eventOnHeroAttackingAMonster(XPos, YPos, currentPower.get(currentPower.size() - 1));
             } catch (IndexOutOfBoundsException e) {
-                dungeonConsoleGUI.updateTheDungeonConsole("Please select a power before attacking");
+                pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("Please select a power before attacking");
             }
         }
     }
@@ -353,7 +353,7 @@ class DungeonGUI {
             inflictDamageToMonster(attackResults, monster);
             creatureWasHitAnimation(buttonGrid[monster.getMapXPos()][monster.getMapYPos()]);
         } else {
-            dungeonConsoleGUI.updateTheDungeonConsole("Your attack has missed.");
+            pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("Your attack has missed.");
             creatureWasMissedAnimation(buttonGrid[monster.getMapXPos()][monster.getMapYPos()]);
         }
     }
@@ -365,10 +365,10 @@ class DungeonGUI {
         System.out.println("DEBUG: " + monster.getCurrentHitPoints() + " HP");
         System.out.println("DEBUG: " + monster.getID() + " ID");
         if (monster.getCurrentHitPoints() < 1) {
-            dungeonConsoleGUI.updateTheDungeonConsole("The attacked monster - " + monster.getMonsterName() + " - has fallen!");
+            pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("The attacked monster - " + monster.getMonsterName() + " - has fallen!");
             eventOnMonsterDeath(monster);
         } else if (monster.getCurrentHitPoints() * 2 < monster.getHitPoints()) {
-            dungeonConsoleGUI.updateTheDungeonConsole("The attacked monster - " + monster.getMonsterName() + " - is now bloodied.");
+            pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("The attacked monster - " + monster.getMonsterName() + " - is now bloodied.");
         }
     }
 
@@ -391,6 +391,7 @@ class DungeonGUI {
             }
         }
         System.out.println("All monsters are dead!");
+        enableAllHeroButtons();
         List<Monster> emptyListOfMonsters = new ArrayList<>();
         pathFinder.setDiscoveredMonsters(emptyListOfMonsters);
         pathFinder.dungeonConsoleGUI.clearInitiativeTracker();
@@ -398,8 +399,35 @@ class DungeonGUI {
         pathFinder.setAlarmedMonsterVisible(false);
     }
 
-    private void lockAllUnactiveHeroButtons (int activeHeroID) {
+    private void enableAllHeroButtons() {
+        for (Hero hero : dungeonGUIHeroManager.getHeroList()) {
+            buttonGrid[hero.getMapXPos()][hero.getMapYPos()].setDisable(false);
+        }
+    }
 
+    private void lockAllInactiveHeroButtons() {
+        for (Hero hero : dungeonGUIHeroManager.getHeroList()) {
+            int heroIdFromInitiativeArray = pathFinder.dungeonConsoleGUI.getNextCharacterID(currentCreatureInitiative);
+            System.out.println("NEXT CHAR ID: " +
+                    heroIdFromInitiativeArray
+                    + " Hero name: " +
+                    hero.getHeroName());
+            if (hero.getID() == heroIdFromInitiativeArray) {
+                System.out.println("Found a creature with ID " +
+                        heroIdFromInitiativeArray +
+                        " hero name: " +
+                        hero.getHeroName() +
+                        "ID: " + hero.getID() +
+                        " Init: " +
+                        hero.getCurrentInitiative());
+                buttonGrid[hero.getMapXPos()][hero.getMapYPos()].setDisable(false);
+                System.out.println("THIS Creature Init: " + hero.getCurrentInitiative());
+                currentCreatureInitiative = hero.getCurrentInitiative();
+                System.out.println("GLOBAL INITIATIVE SET TO: " + currentCreatureInitiative);
+            } else {
+                buttonGrid[hero.getMapXPos()][hero.getMapYPos()].setDisable(true);
+            }
+        }
     }
 
     private ImageView addDeathImageToCreatureImage(Creature creature) {
@@ -433,7 +461,7 @@ class DungeonGUI {
             weaponDamage = attackingPower.getTypeOfDamageDice();
             numberOfDice = attackingPower.getDamageDiceDealt();
         }
-        dungeonConsoleGUI.updateTheDungeonConsole("It's a hit! Roll for damage: "
+        pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("It's a hit! Roll for damage: "
                 + numberOfDice
                 + "d"
                 + weaponDamage);
@@ -449,13 +477,13 @@ class DungeonGUI {
         }
         int bonusDamage = hero.getHeroAttributesMap().get(attackingPower.getDamageModifier().toLowerCase());
         allDamage += bonusDamage;
-        dungeonConsoleGUI.updateTheDungeonConsole("Result of damage dice rolls: "
+        pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("Result of damage dice rolls: "
                 + diceDealt
                 + ". Bonus damage equal to your "
                 + attackingPower.getDamageModifier()
                 + ": "
                 + attackResults.get("Attribute Bonus"));
-        dungeonConsoleGUI.updateTheDungeonConsole("You've dealt " + allDamage + " damage");
+        pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("You've dealt " + allDamage + " damage");
         attackResults.put("Damage Inflicted", allDamage);
     }
 
@@ -502,7 +530,7 @@ class DungeonGUI {
     }
 
     private void displayAttackMessage(HeroPower attackingPower, Monster monster, Map attackResults) {
-        dungeonConsoleGUI.updateTheDungeonConsole("You have attacked a " +
+        pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("You have attacked a " +
                 monster.getMonsterName()
                 + " with "
                 + attackingPower.getPowerName()
@@ -535,7 +563,7 @@ class DungeonGUI {
     }
 
     private void eventOnHeroClick(int currentHeroID) {
-        PathFinder pathFinder = new PathFinder();
+        //PathFinder pathFinder = new PathFinder();
         Hero currentHero = guiUtilities.getHeroByID(currentHeroID, dungeonGUIHeroManager.getHeroList());
         pathFinder.checkTheAvailableDistance(currentHero, dungeonMap, buttonGrid, "Available Distance");
         heroClickAnimation(buttonGrid[currentHero.getMapXPos()][currentHero.getMapYPos()]);
@@ -543,7 +571,7 @@ class DungeonGUI {
         dungeonGUIHeroManager.setCurrentlyActiveHeroID(currentHeroID);
         setHasTheCharacterBeenSelected(true);
         updateButtonsWithSkillIcons(guiUtilities.getHeroByID(currentHeroID, dungeonGUIHeroManager.getHeroList()));
-        dungeonConsoleGUI.updateTheDungeonConsole("You have selected " + currentHero.getHeroName());
+        pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("You have selected " + currentHero.getHeroName());
     }
 
     //todo change the logic of the buttons, so that Hero class has a Button field with the ready methods and the button objects are placed after moving
@@ -565,17 +593,34 @@ class DungeonGUI {
         if (hero.getCurrentSpeed() < 1) {
             dungeonGUIHeroManager.setNumberOfHeroesThatFinishedMovement(dungeonGUIHeroManager.getNumberOfHeroesThatFinishedMovement() + 1);
             System.out.println(hero.heroName + " has finished moving. " + dungeonGUIHeroManager.getNumberOfHeroesThatFinishedMovement() + " heroes had already finished moving");
+            if (fightAlreadyTakingPlace) {
+                currentCreatureInitiative++;
+                lockAllInactiveHeroButtons();
+            }
             if (dungeonGUIHeroManager.getNumberOfHeroesThatFinishedMovement() == dungeonGUIHeroManager.getHeroList().size()) {
                 for (Hero currentHero : dungeonGUIHeroManager.getHeroList()) {
                     currentHero.setCurrentSpeed(currentHero.getSpeed());
                     System.out.println("Resetting the movement points for " + currentHero.heroName);
+                    currentCreatureInitiative = 0;
                 }
                 dungeonGUIHeroManager.setNumberOfHeroesThatFinishedMovement(0);
             }
         }
+        if (!fightAlreadyTakingPlace) {
+            resetAllHeroesSpeedToMax();
+        }
         fightAlreadyTakingPlace = pathFinder.checkTheVisibilityRange(allMonstersList, dungeonGUIHeroManager.getHeroList(), hero, dungeonMap, fightAlreadyTakingPlace);
-        dungeonConsoleGUI.getInitiativeTracker().setContent(pathFinder.dungeonConsoleGUI.getInitiativeTilePane());
+        pathFinder.dungeonConsoleGUI.getInitiativeTracker().setContent(pathFinder.dungeonConsoleGUI.getInitiativeTilePane());
+        if (fightAlreadyTakingPlace) {
+            lockAllInactiveHeroButtons();
+        }
         //walkingAnimation(buttonToAnimate, oldHeroXPos, oldHeroYPos, XPos, YPos);
+    }
+
+    private void resetAllHeroesSpeedToMax() {
+        for (Hero hero : dungeonGUIHeroManager.getHeroList()) {
+            hero.setCurrentSpeed(hero.getSpeed());
+        }
     }
 
     private void eventOnPowerSelect(Hero currentHero, HeroPower selectedPower) {

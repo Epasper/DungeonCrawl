@@ -57,6 +57,7 @@ public class DungeonConsoleGUI {
 
     public void clearInitiativeTracker() {
         initiativeTilePane.getChildren().clear();
+        System.out.println("CLEARING THE WHOLE INITIATIVE TRACKER");
         Arrays.fill(initiativeArray, null);
         listOfButtons.clear();
     }
@@ -84,14 +85,14 @@ public class DungeonConsoleGUI {
         System.out.println("ROLLING INITIATIVE: ");
         if (shouldIRollForNewInitiative) {
             for (Hero hero : listOfHeroes) {
-                rollForSingleInitiative(initiativeArray, hero);
+                rollForSingleInitiative(hero);
             }
             for (Monster monster : listOfMonsters) {
-                rollForSingleInitiative(initiativeArray, monster);
+                rollForSingleInitiative(monster);
             }
         }
         for (int i = 0; i < initiativeArray.length; i++) {
-            sortTheCreaturesAccordingToInitiative(i, initiativeArray);
+            sortTheCreaturesAccordingToInitiative(i);
         }
         initiativeTilePane.getChildren().addAll(listOfButtons);
         initiativeTracker.setContent(initiativeTilePane);
@@ -101,22 +102,21 @@ public class DungeonConsoleGUI {
 
     public int getNextCharacterID(int currentInitiativeValue) {
         for (int i = currentInitiativeValue; i < initiativeArray.length; i++) {
-            if (initiativeArray[i] != null && initiativeArray[i].getID() > 100) {
+/*            if (initiativeArray[i] != null && initiativeArray[i].getID() > 100) {
                 return initiativeArray[i].getCurrentMonsterUniqueID();
-            } else if (initiativeArray[i] != null) {
+            } else */
+                if (initiativeArray[i] != null && initiativeArray[i].getID() < 100) {
                 return initiativeArray[i].getID();
             }
         }
         return -1;
     }
 
-    private void sortTheCreaturesAccordingToInitiative(int i, Creature[] initiativeArray) {
+    private void sortTheCreaturesAccordingToInitiative(int i) {
         System.out.println("Iterating through array: ");
         if (initiativeArray[i] != null) {
             Creature creature = initiativeArray[i];
             System.out.println("Found a creature in the array: " + creature.getMonsterName());
-            Text test = new Text();
-            test.setText(creature.getMonsterName());
             Button initiativeButton = new Button();
             System.out.println(initiativeButton);
             initiativeButton.setGraphic(new ImageView(creature.getCreatureImage()));
@@ -125,16 +125,18 @@ public class DungeonConsoleGUI {
         }
     }
 
-    private void rollForSingleInitiative(Creature[] initiativeArray, Creature currentCreature) {
+    private void rollForSingleInitiative(Creature currentCreature) {
         Random random = new Random();
         int roll = (random.nextInt(19)) + 1;
         int currentInitiative = roll + currentCreature.getInitiativeBonus();
         System.out.println("Current Initiative for " + currentCreature.getMonsterName() + ": " + currentInitiative);
         currentCreature.setCurrentInitiative(currentInitiative);
+        System.out.println("Setting current initiative of " + currentCreature.getHeroName() + " to " + currentInitiative);
         if (initiativeArray[currentInitiative] == null) {
             initiativeArray[currentInitiative] = currentCreature;
+            System.out.println("FILLING ARRAY FIELD: " + currentInitiative);
         } else {
-            rollForSingleInitiative(initiativeArray, currentCreature);
+            rollForSingleInitiative(currentCreature);
         }
     }
 

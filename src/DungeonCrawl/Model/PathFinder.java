@@ -287,8 +287,7 @@ public class PathFinder {
             }
             dungeonConsoleGUI.fillTheInitiativeTracker(listOfHeroes, discoveredMonsters, true);
             System.out.println(fightAlreadyTakingPlace);
-            fightAlreadyTakingPlace = true;
-            return fightAlreadyTakingPlace;
+            return true;
         }
         return fightAlreadyTakingPlace;
     }
