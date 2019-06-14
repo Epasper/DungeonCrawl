@@ -19,7 +19,6 @@ import DungeonCrawl.StaticRules.ItemInformation;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -88,7 +87,7 @@ public class ItemShopGUI {
                 e.printStackTrace();
             }
         });
-        currentChoicesGridPane.add(buyThisItemButton,0,2);
+        currentChoicesGridPane.add(buyThisItemButton, 0, 2);
     }
 
     private void buyThisItem() throws SQLException {
@@ -98,11 +97,11 @@ public class ItemShopGUI {
         for (int i = 1; i < 20; i++) {
             String currentBackpackSlot = "Backpack Slot " + i + " Item";
             System.out.println(currentBackpackSlot);
-            if (currentHeroEquipmentMap.get(currentBackpackSlot) == null){
+            if (currentHeroEquipmentMap.get(currentBackpackSlot) == null) {
                 System.out.println("Entered the backpack");
                 currentHeroEquipmentMap.put(currentBackpackSlot, currentItem);
                 itemShopDTO.setMapOfItems(currentHeroEquipmentMap);
-                characterCreatorDAO.updateHeroGold(currentlySelectedHero,-(currentItem.getPrice()));
+                characterCreatorDAO.updateHeroGold(currentlySelectedHero, -(currentItem.getPrice()));
                 currentlySelectedHero.setGold(currentlySelectedHero.getGold() - currentItem.getPrice());
                 itemShopDAO.putItemIntoSlotInDatabase(itemShopDTO, currentlySelectedHero, currentBackpackSlot);
                 break;
@@ -157,10 +156,7 @@ public class ItemShopGUI {
             int numberOfDice = currentItem.getNumberOfDamageDiceDealt();
             int weight = currentItem.getWeight();
             int proficiencyBonus = currentItem.getProficiencyBonus();
-            String proficiencyInfo;
-            HeroClassInformationFactory heroClassInformationFactory = new HeroClassInformationFactory(currentlySelectedHero.getHeroClass());
-            //todo finish the proficiency recognition on buying the items
-            //if (heroClassInformationFactory.getClassArmorProficiencies().)
+            String proficiencyInfo = manageProficiencyBonus("Weapon");
             itemStatsTextArea.setText("Selected: "
                     + weaponName
                     + "\nItem price: "
@@ -172,9 +168,32 @@ public class ItemShopGUI {
                     + "\nProficiency bonus:  "
                     + proficiencyBonus
                     + "\nWeight: "
-                    + weight);
+                    + weight + "\n" +
+                    proficiencyInfo);
         });
         itemTypesAccordion.getPanes().add(weaponsTitledPane);
+    }
+
+    private String manageProficiencyBonus(String typeOfProficiency) {
+        String proficiencyInfo = currentlySelectedHero.getHeroName() + " is not proficient with " + currentItem.getItemName()
+                + ".\n It is not recommended to use a weapon that a hero is not proficient with.";
+        HeroClassInformationFactory heroClassInformationFactory = new HeroClassInformationFactory(currentlySelectedHero.getHeroClass());
+        //todo finish the proficiency recognition on buying the items
+        List<String> inspectedListOfProficiencies;
+        if (typeOfProficiency.equals("Weapon")) {
+            inspectedListOfProficiencies = heroClassInformationFactory.getClassWeaponProficiencies();
+        } else {
+            inspectedListOfProficiencies = heroClassInformationFactory.getClassArmorProficiencies();
+        }
+        for (String prof : inspectedListOfProficiencies) {
+            if (currentItem.getItemName().contains(prof)
+                    || currentItem.getItemType().contains(prof)
+                    || currentItem.getItemGroup().contains(prof)) {
+                proficiencyInfo = currentlySelectedHero.getHeroName() + " is proficient with " + currentItem.getItemName();
+                break;
+            }
+        }
+        return proficiencyInfo;
     }
 
     //todo add weapon proficiencies to heroclassinformation and to character creator. getters for shop would also be nice.
@@ -197,12 +216,14 @@ public class ItemShopGUI {
             String implementName = currentItem.getItemName();
             int price = currentItem.getPrice();
             int weight = currentItem.getWeight();
+
             itemStatsTextArea.setText("Selected: "
                     + implementName
                     + "\nItem price: "
                     + price
                     + "\nWeight: "
-                    + weight);
+                    + weight + "\n" +
+                    manageProficiencyBonus("Weapon"));
         });
         itemTypesAccordion.getPanes().add(implementsTitledPane);
     }
@@ -233,7 +254,8 @@ public class ItemShopGUI {
                     + "\nAC Bonus: "
                     + acBonus
                     + "\nWeight: "
-                    + weight);
+                    + weight + "\n"
+                    + manageProficiencyBonus("Armor"));
         });
         itemTypesAccordion.getPanes().add(armorsTitledPane);
     }

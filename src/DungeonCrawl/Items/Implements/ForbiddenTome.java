@@ -7,6 +7,7 @@ public class ForbiddenTome extends Item {
         itemName = "Forbidden Tome";
         itemType = "Implement";
         itemSlot = "Hand";
+        itemGroup = "Tome";
         properties = "Deadly, Unstoppable";
         itemLevel = 1;
         price = 15;

@@ -7,6 +7,7 @@ public class AshenRod extends Item {
         itemName = "Ashen Rod";
         itemType = "Implement";
         itemSlot = "Hand";
+        itemGroup = "Rod";
         properties = "Unerring";
         itemLevel = 1;
         price = 22;

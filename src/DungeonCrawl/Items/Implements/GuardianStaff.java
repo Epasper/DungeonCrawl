@@ -7,6 +7,7 @@ public class GuardianStaff extends Item {
         itemName = "Guardian Staff";
         itemType = "Implement";
         itemSlot = "Hand";
+        itemGroup = "Staff";
         properties = "Shielding";
         itemLevel = 1;
         price = 13;

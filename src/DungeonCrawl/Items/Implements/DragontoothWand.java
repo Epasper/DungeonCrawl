@@ -7,6 +7,7 @@ public class DragontoothWand extends Item {
         itemName = "Dragontooth Wand";
         itemType = "Implement";
         itemSlot = "Hand";
+        itemGroup = "Wand";
         properties = "Deadly, unerring";
         itemLevel = 1;
         price = 18;

@@ -6,6 +6,7 @@ public class AccurateHolySymbol extends Item {
     public AccurateHolySymbol() {
         itemName = "Accurate Holy Symbol";
         itemType = "Implement";
+        itemGroup = "Holy Symbol";
         itemSlot = "Hand";
         properties = "Accurate";
         itemLevel = 1;

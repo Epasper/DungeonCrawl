@@ -7,6 +7,7 @@ public class IcicleTotem extends Item {
         itemName = "Icicle Totem";
         itemType = "Implement";
         itemSlot = "Hand";
+        itemGroup = "Totem";
         properties = "Empowered crit, energized (cold)";
         itemLevel = 1;
         price = 15;

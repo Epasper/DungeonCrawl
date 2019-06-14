@@ -7,6 +7,7 @@ public class CrystalOrb extends Item {
         itemName = "Crystal Orb";
         itemType = "Implement";
         itemSlot = "Hand";
+        itemGroup = "Orb";
         properties = "Undeniable";
         itemLevel = 1;
         price = 27;
