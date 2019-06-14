@@ -315,7 +315,8 @@ class DungeonGUI {
             } else if (!currentTypeOfTile.contains("Closed")) {
                 eventOnHeroMovement(aButton, XPos, YPos);
             }
-            updateMapGraphics(getDungeonMap());
+            //debug animation tinkering
+            //updateMapGraphics(getDungeonMap());
             getDungeonMap().clearMapReachableProperties(getDungeonMap());
         }
         if (currentHeroID > 100 && isTheTileInteractive) {
@@ -513,21 +514,23 @@ class DungeonGUI {
         translateTransition.setByX(10);
         translateTransition.setCycleCount(2);
         translateTransition.setAutoReverse(true);
-
         translateTransition.play();
     }
 
-    private void walkingAnimation(Button button, int startingXPosition, int startingYPosition, int endXPosition, int endYPosition) {
-        TranslateTransition translateTransition = new TranslateTransition(Duration.millis(180), button.getGraphic());
+    private void walkingAnimation(int startingXPosition, int startingYPosition, int endXPosition, int endYPosition) {
+        Button button = buttonGrid[startingXPosition][startingYPosition];
+        button.toFront();
+        TranslateTransition translateTransition = new TranslateTransition(Duration.millis(300), button.getGraphic());
         System.out.println("Walking Animation Triggered. " + (endXPosition - startingXPosition) + "   " + (endYPosition - startingYPosition));
-        int xMovement = (endXPosition - startingXPosition) * 50;
-        int yMovement = (endYPosition - startingYPosition) * 50;
+        int yMovement = (endXPosition - startingXPosition) * 50;
+        int xMovement = (endYPosition - startingYPosition) * 50;
         translateTransition.setByX(xMovement);
         translateTransition.setByY(yMovement);
         System.out.println("Animation transition values: " + xMovement + " " + yMovement);
         System.out.println("Animation graphic: " + button.getGraphic());
-        translateTransition.setCycleCount(8);
-        translateTransition.setAutoReverse(true);
+        translateTransition.setCycleCount(1);
+        translateTransition.setAutoReverse(false);
+        translateTransition.setOnFinished(e -> updateMapGraphics(getDungeonMap()));
         translateTransition.play();
     }
 
@@ -585,13 +588,13 @@ class DungeonGUI {
         getDungeonMap().getMapTilesArray()[XPos][YPos].setOccupyingCreatureTypeId(dungeonGUIHeroManager.getCurrentlyActiveHeroID());
         int deltaX = Math.abs(hero.getMapXPos() - XPos);
         int deltaY = Math.abs(hero.getMapYPos() - YPos);
-        // int oldHeroXPos = hero.getMapXPos();
-        // int oldHeroYPos = hero.getMapYPos();
+        int oldHeroXPos = hero.getMapXPos();
+        int oldHeroYPos = hero.getMapYPos();
         //Button buttonToAnimate = buttonGrid[oldHeroXPos][oldHeroYPos];
         hero.setCurrentSpeed(hero.getCurrentSpeed() - (deltaX + deltaY));
         hero.setMapXPos(XPos);
         hero.setMapYPos(YPos);
-        aButton.setGraphic(new ImageView(hero.getCreatureImage()));
+        //aButton.setGraphic(new ImageView(hero.getCreatureImage()));
         if (hero.getCurrentSpeed() < 1) {
             dungeonGUIHeroManager.setNumberOfHeroesThatFinishedMovement(dungeonGUIHeroManager.getNumberOfHeroesThatFinishedMovement() + 1);
             System.out.println(hero.heroName + " has finished moving. " + dungeonGUIHeroManager.getNumberOfHeroesThatFinishedMovement() + " heroes had already finished moving");
@@ -616,7 +619,7 @@ class DungeonGUI {
         if (fightAlreadyTakingPlace) {
             lockAllInactiveHeroButtons();
         }
-        //walkingAnimation(buttonToAnimate, oldHeroXPos, oldHeroYPos, XPos, YPos);
+        walkingAnimation(oldHeroXPos, oldHeroYPos, XPos, YPos);
     }
 
     private void resetAllHeroesSpeedToMax() {
