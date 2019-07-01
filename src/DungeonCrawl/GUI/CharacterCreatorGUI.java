@@ -60,6 +60,10 @@ class CharacterCreatorGUI {
     private Button atWill2IconSelect = new Button("Select Icon");
     private Button encounterIconSelect = new Button("Select Icon");
     private Button dailyIconSelect = new Button("Select Icon");
+    private ImageView atWill1MiniatureIcon = new ImageView();
+    private ImageView atWill2MiniatureIcon = new ImageView();
+    private ImageView encounterMiniatureIcon = new ImageView();
+    private ImageView dailyMiniatureIcon = new ImageView();
     private Button returnToMainMenu = new Button();
     private Button saveTheCharacter = new Button();
     private Button addACharacterPortrait = new Button();
@@ -214,24 +218,37 @@ class CharacterCreatorGUI {
 
     private void updateTheSkillIconID(String portraitId, String typeOfPower) {
         int id = Integer.valueOf(portraitId);
+        SkillIcons skillIcons = new SkillIcons();
         String ok = "Icon Selected";
         System.out.println("CURRENT ID: " + id);
         switch (typeOfPower) {
             case "AtWill1":
                 atWillPower1IconID = id;
                 atWill1IconSelect.setText(ok);
+                atWill1MiniatureIcon.setImage(skillIcons.getSkillIconById(id));
+                atWill1MiniatureIcon.setFitHeight(25);
+                atWill1MiniatureIcon.setFitWidth(25);
                 break;
             case "AtWill2":
                 atWillPower2IconID = id;
                 atWill2IconSelect.setText(ok);
+                atWill2MiniatureIcon.setImage(skillIcons.getSkillIconById(id));
+                atWill2MiniatureIcon.setFitHeight(25);
+                atWill2MiniatureIcon.setFitWidth(25);
                 break;
             case "Encounter":
                 encounterPowerIconID = id;
                 encounterIconSelect.setText(ok);
+                encounterMiniatureIcon.setImage(skillIcons.getSkillIconById(id));
+                encounterMiniatureIcon.setFitHeight(25);
+                encounterMiniatureIcon.setFitWidth(25);
                 break;
             case "Daily":
                 dailyPowerIconID = id;
                 dailyIconSelect.setText(ok);
+                dailyMiniatureIcon.setImage(skillIcons.getSkillIconById(id));
+                dailyMiniatureIcon.setFitHeight(25);
+                dailyMiniatureIcon.setFitWidth(25);
                 break;
         }
     }
@@ -393,12 +410,16 @@ class CharacterCreatorGUI {
         savingText.setFill(Color.WHITE);
         middleBox.add(atWill1Choice, 2, 12);
         middleBox.add(atWill1IconSelect, 3, 12);
+        middleBox.add(atWill1MiniatureIcon, 4, 12);
         middleBox.add(atWill2Choice, 2, 13);
         middleBox.add(atWill2IconSelect, 3, 13);
+        middleBox.add(atWill2MiniatureIcon, 4, 13);
         middleBox.add(encounterChoice, 2, 14);
         middleBox.add(encounterIconSelect, 3, 14);
+        middleBox.add(encounterMiniatureIcon, 4, 14);
         middleBox.add(dailyChoice, 2, 15);
         middleBox.add(dailyIconSelect, 3, 15);
+        middleBox.add(dailyMiniatureIcon, 4, 15);
         middleBox.add(classTraitChoice, 2, 11);
         middleBox.add(savingText, 0, 12);
         middleBox.add(fortitudeSaveText, 0, 13);

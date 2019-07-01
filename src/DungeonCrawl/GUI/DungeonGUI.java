@@ -180,7 +180,7 @@ class DungeonGUI {
         for (HeroPower currentPower : currentHero.getAtWillPowers()) {
             Button powerButton = new Button();
             int powerIconID = Integer.valueOf(currentPower.getPowerIconId());
-            ImageView powerImageView = new ImageView(skillIcons.getListOfSkillIcons().get(powerIconID));
+            ImageView powerImageView = new ImageView(skillIcons.getSkillIconById(powerIconID));
             powerButton.setGraphic(powerImageView);
             //powerButton.setMinWidth(130);
             powerButton.setStyle("-fx-background-color: #007200;");
@@ -192,7 +192,7 @@ class DungeonGUI {
         for (HeroPower currentPower : currentHero.getEncounterPowers()) {
             Button powerButton = new Button();
             int powerIconID = Integer.valueOf(currentPower.getPowerIconId());
-            ImageView powerImageView = new ImageView(skillIcons.getListOfSkillIcons().get(powerIconID));
+            ImageView powerImageView = new ImageView(skillIcons.getSkillIconById(powerIconID));
             powerButton.setGraphic(powerImageView);
             //powerButton.setMinWidth(130);
             powerButton.setStyle("-fx-background-color: #910000;");
@@ -203,7 +203,7 @@ class DungeonGUI {
         for (HeroPower currentPower : currentHero.getDailyPowers()) {
             Button powerButton = new Button();
             int powerIconID = Integer.valueOf(currentPower.getPowerIconId());
-            ImageView powerImageView = new ImageView(skillIcons.getListOfSkillIcons().get(powerIconID));
+            ImageView powerImageView = new ImageView(skillIcons.getSkillIconById(powerIconID));
             powerButton.setGraphic(powerImageView);
             //powerButton.setMinWidth(130);
             powerButton.setStyle("-fx-background-color: #5c005e;");

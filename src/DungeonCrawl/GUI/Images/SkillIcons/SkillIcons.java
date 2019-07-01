@@ -137,6 +137,10 @@ public class SkillIcons {
         return listOfSkillIcons;
     }
 
+    public Image getSkillIconById (int id) {
+        return getListOfSkillIcons().get(id);
+    }
+
     public SkillIcons() {
         listOfSkillIcons.add(skillIcon1);
         listOfSkillIcons.add(skillIcon2);
