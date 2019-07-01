@@ -137,7 +137,7 @@ public class DungeonConsoleGUI {
         }
     }
 
-    void updateTheDungeonConsole(String messageToUpdate) {
+    public void updateTheDungeonConsole(String messageToUpdate) {
         dungeonConsoleText.setText(dungeonConsoleText.getText() + "\n" + messageToUpdate);
         dungeonConsole.setVvalue(1.0);
     }

@@ -30,8 +30,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Random;
 
 class DungeonGUI {
 
@@ -45,13 +43,8 @@ class DungeonGUI {
     private VBox controlsButtons = new VBox();
     BorderPane mapOuterPane = new BorderPane();
     private DungeonImageLibraryGUI dungeonImageLibraryGUI = new DungeonImageLibraryGUI();
-    private DungeonMap dungeonMap = new DungeonMap(null);
-    private boolean hasTheCharacterBeenSelected = false;
     private List<HeroPower> currentPower = new ArrayList<>();
     private ScrollPane mapScrollPane = new ScrollPane();
-    private EncounterCalculator encounterCalculator = new EncounterCalculator();
-    private List<Monster> possibleMonsterTypes = encounterCalculator.getTheListOfPossibleMonsters();
-    private List<Monster> allMonstersList = dungeonMap.getAllMonstersList();
     private List<Button> listOfHeroButtons = new ArrayList<>();
     private HeroManager heroManager = new HeroManager();
     private GUIUtilities guiUtilities = new GUIUtilities();
@@ -59,17 +52,6 @@ class DungeonGUI {
     private EncounterManager encounterManager = new EncounterManager(heroManager, buttonGrid, pathFinder);
     private int currentCreatureInitiative = 0;
 
-    private DungeonMap getDungeonMap() {
-        return dungeonMap;
-    }
-
-    private boolean isHasTheCharacterBeenSelected() {
-        return hasTheCharacterBeenSelected;
-    }
-
-    private void setHasTheCharacterBeenSelected(boolean hasTheCharacterBeenSelected) {
-        this.hasTheCharacterBeenSelected = hasTheCharacterBeenSelected;
-    }
 
     DungeonGUI(List<Hero> heroList) {
 
@@ -82,9 +64,9 @@ class DungeonGUI {
         returnToMainMenu.setText("Return to Main Menu");
         mapGridPane.add(returnToMainMenu, 0, mapHeight + 1, 3, 3);
         returnToMainMenu.setOnAction(event -> returnToMainMenu());
-        dungeonMap.setHeroList(heroList);
-        getDungeonMap().drawAMap();
-        updateGUIAccordingToMap(getDungeonMap());
+        encounterManager.getDungeonMap().setHeroList(heroList);
+        encounterManager.getDungeonMap().drawAMap();
+        updateGUIAccordingToMap(encounterManager.getDungeonMap());
     }
 
     //todo lock the possibility of attacking when no power is selected.
@@ -182,7 +164,6 @@ class DungeonGUI {
             int powerIconID = Integer.valueOf(currentPower.getPowerIconId());
             ImageView powerImageView = new ImageView(skillIcons.getSkillIconById(powerIconID));
             powerButton.setGraphic(powerImageView);
-            //powerButton.setMinWidth(130);
             powerButton.setStyle("-fx-background-color: #007200;");
             powerButton.setTextFill(Color.WHITE);
             powersHBox.getChildren().add(powerButton);
@@ -194,7 +175,6 @@ class DungeonGUI {
             int powerIconID = Integer.valueOf(currentPower.getPowerIconId());
             ImageView powerImageView = new ImageView(skillIcons.getSkillIconById(powerIconID));
             powerButton.setGraphic(powerImageView);
-            //powerButton.setMinWidth(130);
             powerButton.setStyle("-fx-background-color: #910000;");
             powerButton.setTextFill(Color.WHITE);
             powersHBox.getChildren().add(powerButton);
@@ -205,7 +185,6 @@ class DungeonGUI {
             int powerIconID = Integer.valueOf(currentPower.getPowerIconId());
             ImageView powerImageView = new ImageView(skillIcons.getSkillIconById(powerIconID));
             powerButton.setGraphic(powerImageView);
-            //powerButton.setMinWidth(130);
             powerButton.setStyle("-fx-background-color: #5c005e;");
             powerButton.setTextFill(Color.WHITE);
             powersHBox.getChildren().add(powerButton);
@@ -237,10 +216,10 @@ class DungeonGUI {
         Image lockCursor = new Image("DungeonCrawl/GUI/Images/Cursors/Lock.png");
         Image swordCursor = new Image("DungeonCrawl/GUI/Images/Cursors/Sword.png");
         //Image Cursor = new Image("DungeonCrawl/GUI/Images/Cursors/WalkingCursor.png");
-        String currentTypeOfTile = getDungeonMap().getMapTilesArray()[XPos][YPos].getTypeOfTile();
-        boolean inWalkRange = getDungeonMap().getMapTilesArray()[XPos][YPos].isInWalkRange();
-        int occupyingMonsterID = getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureTypeId();
-        boolean isTheTileInteractive = getDungeonMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange();
+        String currentTypeOfTile = encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].getTypeOfTile();
+        boolean inWalkRange = encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].isInWalkRange();
+        int occupyingMonsterID = encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureTypeId();
+        boolean isTheTileInteractive = encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange();
         if (isTheTileInteractive && occupyingMonsterID > 100) {
             changeTheCursor(swordCursor, false);
         } else if (inWalkRange) {
@@ -284,34 +263,6 @@ class DungeonGUI {
         }
     }
 
-    private void buttonEvent(int XPos, int YPos) {
-        String currentTypeOfTile = getDungeonMap().getMapTilesArray()[XPos][YPos].getTypeOfTile();
-        int currentHeroID = getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureTypeId();
-        boolean isTheTileInteractive = getDungeonMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange();
-        if (isHasTheCharacterBeenSelected() && currentHeroID > 0) {
-            eventOnReachableTileClick();
-        }
-        if (currentHeroID > 0 && currentHeroID < 100) {
-            eventOnHeroClick(currentHeroID);
-            isTheTileInteractive = getDungeonMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange();
-        } else if (getDungeonMap().getMapTilesArray()[XPos][YPos].isInWalkRange()) {
-            if (currentTypeOfTile.contains("Closed") && getDungeonMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange()) {
-                getDungeonMap().getMapTilesArray()[XPos][YPos].setTypeOfTile(getDungeonMap().getMapTilesArray()[XPos][YPos].getTypeOfTile().replaceFirst("Closed", "Opened"));
-            } else if (!currentTypeOfTile.contains("Closed")) {
-                eventOnHeroMovement(XPos, YPos);
-            }
-            //debug animation tinkering
-            updateMapGraphics(getDungeonMap());
-            getDungeonMap().clearMapReachableProperties(getDungeonMap());
-        }
-        if (currentHeroID > 100 && isTheTileInteractive) {
-            try {
-                eventOnHeroAttackingAMonster(XPos, YPos, currentPower.get(currentPower.size() - 1));
-            } catch (IndexOutOfBoundsException e) {
-                pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("Please select a power before attacking");
-            }
-        }
-    }
 
     private void returnToMainMenu() {
         mainMenuGUI.aStage = Main.getPrimaryStage();
@@ -320,57 +271,7 @@ class DungeonGUI {
         System.out.println("Stage is closing");
     }
 
-    private void eventOnHeroAttackingAMonster(int XPos, int YPos, HeroPower attackingPower) {
-        Hero hero = guiUtilities.getHeroByID(heroManager.getCurrentlyActiveHeroID(), heroManager.getHeroList());
-        System.out.println("Attacking a monster with unique ID: " + getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID());
-        Monster monster = guiUtilities.getSingleMonsterByUniqueID(getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID(), allMonstersList);
-        System.out.println("LIST OF ALL MONSTERS:");
-        for (Monster currentMonster : allMonstersList) {
-            System.out.println(currentMonster.getMonsterName());
-            System.out.println(currentMonster.getID());
-            System.out.println(currentMonster.getCurrentMonsterUniqueID());
-        }
-        System.out.println("ID From Tile: " + getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID());
-        Map<String, Integer> attackResults = hero.attackAMonster(monster, attackingPower);
-        displayAttackMessage(attackingPower, monster, attackResults);
-        if ((attackResults.get("Attribute Bonus") + attackResults.get("Dice Roll")) >
-                monster.getDefensesMap().get(attackingPower.getDefenseToBeChecked().toLowerCase())) {
-            triggerOnHit(attackingPower, hero, attackResults);
-            inflictDamageToMonster(attackResults, monster);
-            creatureWasHitAnimation(buttonGrid[monster.getMapXPos()][monster.getMapYPos()]);
-        } else {
-            pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("Your attack has missed.");
-            creatureWasMissedAnimation(buttonGrid[monster.getMapXPos()][monster.getMapYPos()]);
-        }
-    }
-
-    private void inflictDamageToMonster(Map<String, Integer> attackResults, Monster monster) {
-        int damageDealt = attackResults.get("Damage Inflicted");
-        monster.setCurrentHitPoints(monster.getCurrentHitPoints() - damageDealt);
-        System.out.println("DEBUG: " + monster.getHitPoints() + " HP");
-        System.out.println("DEBUG: " + monster.getCurrentHitPoints() + " HP");
-        System.out.println("DEBUG: " + monster.getID() + " ID");
-        if (monster.getCurrentHitPoints() < 1) {
-            pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("The attacked monster - " + monster.getMonsterName() + " - has fallen!");
-            eventOnMonsterDeath(monster);
-        } else if (monster.getCurrentHitPoints() * 2 < monster.getHitPoints()) {
-            pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("The attacked monster - " + monster.getMonsterName() + " - is now bloodied.");
-        }
-    }
-
-    private void eventOnMonsterDeath(Monster monster) {
-        buttonGrid[monster.getMapXPos()][monster.getMapYPos()].setGraphic(addDeathImageToCreatureImage(monster));
-        addDeathImageToCreatureImage(monster);
-        monster.setThisCreatureDead(true);
-        System.out.println("Image has been modified");
-        encounterManager.checkIfAllCreaturesInRoomAreDead();
-    }
-
     //todo animated popup with damage value and fadeout
-
-
-
-
 
     private void lockAllInactiveHeroButtons() {
         for (Hero hero : heroManager.getHeroList()) {
@@ -415,45 +316,44 @@ class DungeonGUI {
         return finalImageView;
     }
 
-    private void triggerOnHit(HeroPower attackingPower, Hero hero, Map<String, Integer> attackResults) {
-        int weaponDamage;
-        int numberOfDice;
-        if (attackingPower.isThisWeaponDamage()) {
-            try {
-                weaponDamage = hero.getHeroEquipment().get("Right Hand Slot").getTypeOfDamageDice();
-                numberOfDice = hero.getHeroEquipment().get("Right Hand Slot").getNumberOfDamageDiceDealt();
-            } catch (NullPointerException e) {
-                weaponDamage = 4;
-                numberOfDice = 1;
+    private void buttonEvent(int XPos, int YPos) {
+        String currentTypeOfTile = encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].getTypeOfTile();
+        int currentHeroID = encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureTypeId();
+        boolean isTheTileInteractive = encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange();
+        if (encounterManager.isHasTheCharacterBeenSelected() && currentHeroID > 0) {
+            eventOnReachableTileClick();
+        }
+        if (currentHeroID > 0 && currentHeroID < 100) {
+            encounterManager.eventOnHeroClick(currentHeroID);
+            heroClickAnimation(buttonGrid[XPos][YPos]);
+            updateButtonsWithSkillIcons(guiUtilities.getHeroByID(currentHeroID, heroManager.getHeroList()));
+            isTheTileInteractive = encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange();
+        } else if (encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].isInWalkRange()) {
+            if (currentTypeOfTile.contains("Closed") && encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange()) {
+                encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].setTypeOfTile(encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].getTypeOfTile().replaceFirst("Closed", "Opened"));
+            } else if (!currentTypeOfTile.contains("Closed")) {
+                eventOnHeroMovement(XPos, YPos);
             }
-        } else {
-            weaponDamage = attackingPower.getTypeOfDamageDice();
-            numberOfDice = attackingPower.getDamageDiceDealt();
+            //debug animation tinkering
+            updateMapGraphics(encounterManager.getDungeonMap());
+            encounterManager.getDungeonMap().clearMapReachableProperties(encounterManager.getDungeonMap());
         }
-        pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("It's a hit! Roll for damage: "
-                + numberOfDice
-                + "d"
-                + weaponDamage);
-        StringBuilder diceDealt = new StringBuilder();
-        int allDamage = 0;
-        Random random = new Random();
-
-        for (int i = 0; i < numberOfDice; i++) {
-            int damageRoll = random.nextInt(weaponDamage);
-            System.out.println("--->" + damageRoll);
-            diceDealt.append(" ").append(damageRoll).append(" ");
-            allDamage += damageRoll;
+        if (currentHeroID > 100 && isTheTileInteractive) {
+            try {
+                Monster monster = guiUtilities.getSingleMonsterByUniqueID(encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID(), encounterManager.getAllMonstersList());
+                String hitResult = encounterManager.eventOnHeroAttackingAMonster(XPos, YPos, currentPower.get(currentPower.size() - 1));
+                if (hitResult.contains("Hit")) {
+                    creatureWasHitAnimation(buttonGrid[XPos][YPos]);
+                } else if (hitResult.contains("Miss")) {
+                    creatureWasMissedAnimation(buttonGrid[XPos][YPos]);
+                } else if (hitResult.contains("Dead")) {
+                    addDeathImageToCreatureImage(monster);
+                    buttonGrid[monster.getMapXPos()][monster.getMapYPos()].setGraphic(addDeathImageToCreatureImage(monster));
+                }
+            } catch (IndexOutOfBoundsException e) {
+                pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("Please select a power before attacking");
+            }
         }
-        int bonusDamage = hero.getHeroAttributesMap().get(attackingPower.getDamageModifier().toLowerCase());
-        allDamage += bonusDamage;
-        pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("Result of damage dice rolls: "
-                + diceDealt
-                + ". Bonus damage equal to your "
-                + attackingPower.getDamageModifier()
-                + ": "
-                + attackResults.get("Attribute Bonus"));
-        pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("You've dealt " + allDamage + " damage");
-        attackResults.put("Damage Inflicted", allDamage);
     }
 
     private void heroClickAnimation(Button button) {
@@ -500,58 +400,21 @@ class DungeonGUI {
         translateTransition.play();
     }*/
 
-    private void displayAttackMessage(HeroPower attackingPower, Monster monster, Map attackResults) {
-        pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("You have attacked a " +
-                monster.getMonsterName()
-                + " with "
-                + attackingPower.getPowerName()
-                + " attack \n"
-                + "Your current "
-                + attackingPower.getAttributeUsedToHit()
-                + " bonus equals to "
-                + attackResults.get("Attribute Bonus")
-                + "\n"
-                + "The dice roll: "
-                + attackResults.get("Dice Roll")
-                + " plus the modifier of "
-                + attackResults.get("Attribute Bonus")
-                + " equals "
-                + ((int) attackResults.get("Attribute Bonus")
-                + (int) attackResults.get("Dice Roll"))
-                + " against "
-                + monster.getMonsterName()
-                + "'s "
-                + attackingPower.getDefenseToBeChecked()
-                + " of "
-                + monster.getDefensesMap().get(attackingPower.getDefenseToBeChecked().toLowerCase()));
-    }
-
     private void eventOnReachableTileClick() {
-        getDungeonMap().clearMapReachableProperties(getDungeonMap());
-        updateMapGraphics(getDungeonMap());
-        setHasTheCharacterBeenSelected(false);
+        encounterManager.getDungeonMap().clearMapReachableProperties(encounterManager.getDungeonMap());
+        updateMapGraphics(encounterManager.getDungeonMap());
+        encounterManager.setHasTheCharacterBeenSelected(false);
         powersHBox.getChildren().clear();
     }
 
-    private void eventOnHeroClick(int currentHeroID) {
-        //PathFinder pathFinder = new PathFinder();
-        Hero currentHero = guiUtilities.getHeroByID(currentHeroID, heroManager.getHeroList());
-        pathFinder.checkTheAvailableDistance(currentHero, dungeonMap, buttonGrid, "Available Distance");
-        heroClickAnimation(buttonGrid[currentHero.getMapXPos()][currentHero.getMapYPos()]);
-        System.out.println("Clicked the ID " + currentHeroID + " hero.");
-        heroManager.setCurrentlyActiveHeroID(currentHeroID);
-        setHasTheCharacterBeenSelected(true);
-        updateButtonsWithSkillIcons(guiUtilities.getHeroByID(currentHeroID, heroManager.getHeroList()));
-        pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("You have selected " + currentHero.getHeroName());
-    }
 
     //todo change the logic of the buttons, so that Hero class has a Button field with the ready methods and the button objects are placed after moving
 
     private void eventOnHeroMovement(int XPos, int YPos) {
 
         Hero hero = guiUtilities.getHeroByID(heroManager.getCurrentlyActiveHeroID(), heroManager.getHeroList());
-        getDungeonMap().getMapTilesArray()[hero.getMapXPos()][hero.getMapYPos()].setOccupyingCreatureTypeId(0);
-        getDungeonMap().getMapTilesArray()[XPos][YPos].setOccupyingCreatureTypeId(heroManager.getCurrentlyActiveHeroID());
+        encounterManager.getDungeonMap().getMapTilesArray()[hero.getMapXPos()][hero.getMapYPos()].setOccupyingCreatureTypeId(0);
+        encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].setOccupyingCreatureTypeId(heroManager.getCurrentlyActiveHeroID());
         int deltaX = Math.abs(hero.getMapXPos() - XPos);
         int deltaY = Math.abs(hero.getMapYPos() - YPos);
         hero.setCurrentSpeed(hero.getCurrentSpeed() - (deltaX + deltaY));
@@ -575,7 +438,7 @@ class DungeonGUI {
         }
         if (!encounterManager.isFightAlreadyTakingPlace()) {
             resetAllHeroesSpeedToMax();
-            encounterManager.setFightAlreadyTakingPlace(pathFinder.checkTheVisibilityRange(allMonstersList, heroManager.getHeroList(), hero, dungeonMap, encounterManager.isFightAlreadyTakingPlace()));
+            encounterManager.setFightAlreadyTakingPlace(pathFinder.checkTheVisibilityRange(encounterManager.getAllMonstersList(), heroManager.getHeroList(), hero, encounterManager.getDungeonMap(), encounterManager.isFightAlreadyTakingPlace()));
         }
         pathFinder.dungeonConsoleGUI.getInitiativeTracker().setContent(pathFinder.dungeonConsoleGUI.getInitiativeTilePane());
         if (encounterManager.isFightAlreadyTakingPlace()) {
@@ -595,8 +458,8 @@ class DungeonGUI {
         currentHero.setAttackRange(selectedPower.getRange());
         currentPower.clear();
         currentPower.add(selectedPower);
-        pathFinder.checkTheLineOfSight(dungeonMap, buttonGrid, currentHero);
-        pathFinder.checkTheAvailableDistance(currentHero, dungeonMap, buttonGrid, "Attack Range");
+        pathFinder.checkTheLineOfSight(encounterManager.getDungeonMap(), buttonGrid, currentHero);
+        pathFinder.checkTheAvailableDistance(currentHero, encounterManager.getDungeonMap(), buttonGrid, "Attack Range");
     }
 
 
@@ -604,7 +467,7 @@ class DungeonGUI {
         if (heroID < 100) {
             aButton.setGraphic(new ImageView(guiUtilities.getHeroByID(heroID, heroManager.getHeroList()).getCreatureImage()));
         } else {
-            Monster monster = guiUtilities.getSingleMonsterByUniqueID(uniqueMonsterID, allMonstersList);
+            Monster monster = guiUtilities.getSingleMonsterByUniqueID(uniqueMonsterID, encounterManager.getAllMonstersList());
             if (!monster.isThisCreatureDead()) {
                 aButton.setGraphic(new ImageView(monster.getCreatureImage()));
             } else {
