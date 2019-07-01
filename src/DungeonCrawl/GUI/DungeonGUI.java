@@ -1,31 +1,35 @@
 package DungeonCrawl.GUI;
 
 import DungeonCrawl.GUI.Images.SkillIcons.SkillIcons;
+import javafx.animation.FadeTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.ImageCursor;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.effect.Blend;
 import javafx.scene.effect.BlendMode;
 import javafx.scene.effect.ImageInput;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import DungeonCrawl.*;
 import DungeonCrawl.DAO.ItemsDAO;
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.Model.*;
 import DungeonCrawl.Model.Monster;
+import javafx.stage.Popup;
 import javafx.util.Duration;
 
+import java.awt.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -343,17 +347,39 @@ class DungeonGUI {
                 Monster monster = guiUtilities.getSingleMonsterByUniqueID(encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID(), encounterManager.getAllMonstersList());
                 String hitResult = encounterManager.eventOnHeroAttackingAMonster(XPos, YPos, currentPower.get(currentPower.size() - 1));
                 if (hitResult.contains("Hit")) {
-                    creatureWasHitAnimation(buttonGrid[XPos][YPos]);
+                    visualsOnHit(buttonGrid[XPos][YPos], hitResult);
                 } else if (hitResult.contains("Miss")) {
                     creatureWasMissedAnimation(buttonGrid[XPos][YPos]);
                 } else if (hitResult.contains("Dead")) {
                     addDeathImageToCreatureImage(monster);
+                    visualsOnHit(buttonGrid[XPos][YPos], hitResult);
                     buttonGrid[monster.getMapXPos()][monster.getMapYPos()].setGraphic(addDeathImageToCreatureImage(monster));
                 }
             } catch (IndexOutOfBoundsException e) {
                 pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("Please select a power before attacking");
             }
         }
+    }
+
+    private void visualsOnHit(Button button, String hitResult) {
+        String damageString = hitResult.replace("Hit - ", "");
+        creatureWasHitAnimation(button);
+        Popup damagePopup = new Popup();
+        VBox damageBox = new VBox();
+        Label damage = new Label();
+        damage.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        damage.setText(damageString);
+        damage.setTextFill(Color.RED);
+        damageBox.getChildren().add(damage);
+        Point mouseLocation = MouseInfo.getPointerInfo().getLocation();
+        damagePopup.getContent().add(damageBox);
+        damagePopup.show(Main.getPrimaryStage(), mouseLocation.getX()-20, mouseLocation.getY()-20);
+        FadeTransition fadeTransition
+                = new FadeTransition(Duration.millis(750), damageBox);
+        fadeTransition.setFromValue(1.0);
+        fadeTransition.setToValue(0.0);
+        fadeTransition.setOnFinished(e -> damagePopup.hide());
+        fadeTransition.play();
     }
 
     private void heroClickAnimation(Button button) {

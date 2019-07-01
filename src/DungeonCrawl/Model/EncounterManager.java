@@ -99,7 +99,6 @@ public class EncounterManager {
         StringBuilder diceDealt = new StringBuilder();
         int allDamage = 0;
         Random random = new Random();
-
         for (int i = 0; i < numberOfDice; i++) {
             int damageRoll = random.nextInt(weaponDamage);
             System.out.println("--->" + damageRoll);
@@ -163,7 +162,7 @@ public class EncounterManager {
             if (inflictDamageToMonster(attackResults, monster)) {
                 return "Dead";
             }
-            return "Hit";
+            return "Hit - " + attackResults.get("Damage Inflicted");
         } else {
             pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("Your attack has missed.");
             return "Missed";
