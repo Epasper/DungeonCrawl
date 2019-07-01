@@ -214,8 +214,6 @@ class CharacterCreatorGUI {
         leftBox.getChildren().add(5, heroImageView);
     }
 
-    //todo power icon miniatures to be displayed next to the button
-
     private void updateTheSkillIconID(String portraitId, String typeOfPower) {
         int id = Integer.valueOf(portraitId);
         SkillIcons skillIcons = new SkillIcons();

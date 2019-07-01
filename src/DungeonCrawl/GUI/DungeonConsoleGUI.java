@@ -76,10 +76,6 @@ public class DungeonConsoleGUI {
         completeConsole.setMinHeight(120);
     }
 
-    //todo allow only the next character in the initiative tracker to be selected and moved.
-
-    //todo add an animation that indicates which character is able to move right now.
-
     public void fillTheInitiativeTracker(List<Hero> listOfHeroes, List<Monster> listOfMonsters, boolean shouldIRollForNewInitiative) {
         TilePane initiativeTilePane = new TilePane();
         initiativeTilePane.setPrefColumns(20);

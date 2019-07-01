@@ -9,9 +9,28 @@ import java.util.List;
 
 public class PathFinder {
 
+    public DungeonConsoleGUI dungeonConsoleGUI = new DungeonConsoleGUI();
+
     private List<Monster> discoveredMonsters = new ArrayList<>();
     private boolean alarmedMonsterVisible = false;
-    public DungeonConsoleGUI dungeonConsoleGUI = new DungeonConsoleGUI();
+    private int numberOfEncountersInThisDungeon;
+    private boolean isCurrentEncounterFinished;
+
+    public int getNumberOfEncountersInThisDungeon() {
+        return numberOfEncountersInThisDungeon;
+    }
+
+    public void setNumberOfEncountersInThisDungeon(int numberOfEncountersInThisDungeon) {
+        this.numberOfEncountersInThisDungeon = numberOfEncountersInThisDungeon;
+    }
+
+    public boolean isCurrentEncounterFinished() {
+        return isCurrentEncounterFinished;
+    }
+
+    public void setCurrentEncounterFinished(boolean currentEncounterFinished) {
+        isCurrentEncounterFinished = currentEncounterFinished;
+    }
 
     public boolean isAlarmedMonsterVisible() {
         return alarmedMonsterVisible;
@@ -138,7 +157,7 @@ public class PathFinder {
         buttonGrid[temporaryX][temporaryY] = gridButton;
     }
 
-    public void markTheTileAsAccessible(String reasonForChecking, MapTile mapTile, Button gridButton) {
+    private void markTheTileAsAccessible(String reasonForChecking, MapTile mapTile, Button gridButton) {
         mapTile.alreadyDiscovered = true;
         if (!reasonForChecking.contains("Attack")) {
             mapTile.inWalkRange = true;
@@ -158,7 +177,7 @@ public class PathFinder {
     }
 
 
-    public double calculateTheStepDecrement(String previousDirection, String currentDirection) {
+    private double calculateTheStepDecrement(String previousDirection, String currentDirection) {
         double stepDecrement;
         if ((previousDirection.contains("South") || previousDirection.contains("North"))
                 &&
@@ -252,7 +271,7 @@ public class PathFinder {
 
     }
 
-    public void setTheRoomAsVisible(int XPos, int YPos, DungeonMap dungeonMap, List<Monster> allMonstersList) {
+    private void setTheRoomAsVisible(int XPos, int YPos, DungeonMap dungeonMap, List<Monster> allMonstersList) {
         List<Room> listOfCurrentRooms = dungeonMap.getAllRoomsList();
         for (Room currentRoom : listOfCurrentRooms) {
             if (currentRoom.getRoomXStartPos() - 1 < XPos && ((currentRoom.getRoomXStartPos() + currentRoom.getRoomWidth() + 1) > XPos)) {
@@ -301,6 +320,9 @@ public class PathFinder {
                 discoveredMonsters.add(monster);
                 alarmedMonsterVisible = true;
                 System.out.println("Found a monster. Adding: " + monster.getMonsterName() + " UUID: " + monster.getCurrentMonsterUniqueID());
+                isCurrentEncounterFinished = false;
+                numberOfEncountersInThisDungeon++;
+                System.out.println("This is the encounter number: " + numberOfEncountersInThisDungeon);
             }
         }
     }

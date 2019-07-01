@@ -1,10 +1,10 @@
-package DungeonCrawl.GUI;
+package DungeonCrawl.Model;
 
 import DungeonCrawl.Model.Hero;
 
 import java.util.List;
 
-public class DungeonGUIHeroManager {
+public class HeroManager {
     private List<Hero> heroList;
     private int numberOfHeroesThatFinishedMovement;
     private int currentlyActiveHeroID;
