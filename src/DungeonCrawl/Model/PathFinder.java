@@ -297,7 +297,7 @@ public class PathFinder {
         }
     }
 
-    public boolean checkTheVisibilityRange(List<Monster> allMonstersList, List<Hero> listOfHeroes, Hero hero, DungeonMap dungeonMap, boolean fightAlreadyTakingPlace) {
+    public boolean checkIfTheEncounterShouldStart (List<Monster> allMonstersList, List<Hero> listOfHeroes, Hero hero, DungeonMap dungeonMap, boolean fightAlreadyTakingPlace) {
         int XPos = hero.getMapXPos();
         int YPos = hero.getMapYPos();
         setTheRoomAsVisible(XPos, YPos, dungeonMap, allMonstersList);
@@ -306,7 +306,6 @@ public class PathFinder {
                 System.out.println("Passing the monster: " + monster.getMonsterName() + " UUID: " + monster.getCurrentMonsterUniqueID());
             }
             dungeonConsoleGUI.fillTheInitiativeTracker(listOfHeroes, discoveredMonsters, true);
-            System.out.println(fightAlreadyTakingPlace);
             return true;
         }
         return fightAlreadyTakingPlace;

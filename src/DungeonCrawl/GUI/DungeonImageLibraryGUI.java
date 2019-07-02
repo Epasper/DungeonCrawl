@@ -23,7 +23,7 @@ public class DungeonImageLibraryGUI {
     private Image openedDoorVertical = new Image(getClass().getResourceAsStream("Images\\MapElements\\OpenedDoorVertical.png"));
     private Image openedDoorHorizontal = new Image(getClass().getResourceAsStream("Images\\MapElements\\OpenedDoorHorizontal.png"));
 
-    void applyATileImageToAButton(String typeOfTile, Button aButton) {
+    public void applyATileImageToAButton(String typeOfTile, Button aButton) {
         switch (typeOfTile) {
             case "RoomSeed":
             case "WallWest":

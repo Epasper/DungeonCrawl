@@ -11,7 +11,7 @@ import java.util.Random;
 
 public class EncounterManager {
 
-    private boolean fightAlreadyTakingPlace;
+    private boolean encounterOnline;
     private HeroManager heroManager;
     private Button[][] buttonGrid;
     private PathFinder pathFinder;
@@ -22,6 +22,10 @@ public class EncounterManager {
 
     public List<Monster> getAllMonstersList() {
         return allMonstersList;
+    }
+
+    public HeroManager getHeroManager() {
+        return heroManager;
     }
 
     public EncounterManager(HeroManager heroManager, Button[][] buttonGrid, PathFinder pathFinder) {
@@ -42,16 +46,15 @@ public class EncounterManager {
         return dungeonMap;
     }
 
-    public boolean isFightAlreadyTakingPlace() {
-        return fightAlreadyTakingPlace;
+    public boolean isEncounterOnline() {
+        return encounterOnline;
     }
 
-    public void setFightAlreadyTakingPlace(boolean fightAlreadyTakingPlace) {
-        this.fightAlreadyTakingPlace = fightAlreadyTakingPlace;
+    public void setEncounterOnline(boolean encounterOnline) {
+        this.encounterOnline = encounterOnline;
     }
 
     public void eventOnHeroClick(int currentHeroID) {
-        //PathFinder pathFinder = new PathFinder();
         Hero currentHero = guiUtilities.getHeroByID(currentHeroID, heroManager.getHeroList());
         pathFinder.checkTheAvailableDistance(currentHero, dungeonMap, buttonGrid, "Available Distance");
         System.out.println("Clicked the ID " + currentHeroID + " hero.");
@@ -64,7 +67,7 @@ public class EncounterManager {
         for (Monster monster : pathFinder.getDiscoveredMonsters()) {
             if (!monster.isThisCreatureDead()) {
                 System.out.println("Found a creature that's alive");
-                fightAlreadyTakingPlace = true;
+                encounterOnline = true;
                 return;
             }
         }
@@ -73,7 +76,7 @@ public class EncounterManager {
         List<Monster> emptyListOfMonsters = new ArrayList<>();
         pathFinder.setDiscoveredMonsters(emptyListOfMonsters);
         pathFinder.dungeonConsoleGUI.clearInitiativeTracker();
-        fightAlreadyTakingPlace = false;
+        encounterOnline = false;
         pathFinder.setAlarmedMonsterVisible(false);
     }
 
@@ -197,5 +200,9 @@ public class EncounterManager {
         for (Hero hero : heroManager.getHeroList()) {
             buttonGrid[hero.getMapXPos()][hero.getMapYPos()].setDisable(false);
         }
+    }
+
+    public void startTheMonsterAI() {
+        MonsterAI monsterAI = new MonsterAI();
     }
 }
