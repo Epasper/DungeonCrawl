@@ -19,15 +19,15 @@ public class MapManager {
     private int mapHeight;
     private Button[][] buttonGrid;
 
-    public Button[][] getButtonGrid() {
+    Button[][] getButtonGrid() {
         return buttonGrid;
     }
 
-    public MapManager(int mapWidth, int mapHeight, Button[][] buttonGrid, EncounterManager encounterManager) {
+    public MapManager(int mapWidth, int mapHeight, EncounterManager encounterManager) {
         this.mapWidth = mapWidth;
         this.mapHeight = mapHeight;
-        this.buttonGrid = buttonGrid;
         this.encounterManager = encounterManager;
+        buttonGrid = encounterManager.getButtonGrid();
         heroManager = encounterManager.getHeroManager();
     }
 
@@ -63,7 +63,7 @@ public class MapManager {
         }
     }
 
-    public ImageView addDeathImageToCreatureImage(Creature creature) {
+    ImageView addDeathImageToCreatureImage(Creature creature) {
         Image skull = new Image("DungeonCrawl/GUI/Images/MapElements/Skull.jpg");
         Image monsterImage = creature.getCreatureImage();
         ImageInput backImageView = new ImageInput(monsterImage);

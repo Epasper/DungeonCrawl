@@ -4,15 +4,9 @@ import DungeonCrawl.GUI.GUIUtilities;
 import DungeonCrawl.GUI.Images.SkillIcons.SkillIcons;
 import DungeonCrawl.HeroPowers.HeroPower;
 import javafx.scene.control.Button;
-import javafx.scene.effect.Blend;
-import javafx.scene.effect.BlendMode;
-import javafx.scene.effect.ImageInput;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class DungeonButtonEvents {
@@ -29,12 +23,12 @@ public class DungeonButtonEvents {
     private Button[][] buttonGrid;
 
 
-    public DungeonButtonEvents(EncounterManager encounterManager, PathFinder pathFinder, MapManager mapManager, HBox powersHBox, List<HeroPower> currentHeroPowers) {
+    public DungeonButtonEvents(EncounterManager encounterManager, MapManager mapManager, HBox powersHBox, List<HeroPower> currentHeroPowers) {
         this.encounterManager = encounterManager;
-        this.pathFinder = pathFinder;
         this.mapManager = mapManager;
         this.powersHBox = powersHBox;
         this.currentHeroPowers = currentHeroPowers;
+        pathFinder = encounterManager.getPathFinder();
         buttonGrid = mapManager.getButtonGrid();
         heroManager = encounterManager.getHeroManager();
     }

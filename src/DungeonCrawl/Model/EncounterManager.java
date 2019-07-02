@@ -20,8 +20,16 @@ public class EncounterManager {
     private List<Monster> allMonstersList = dungeonMap.getAllMonstersList();
     private boolean hasTheCharacterBeenSelected = false;
 
+    public PathFinder getPathFinder() {
+        return pathFinder;
+    }
+
     public List<Monster> getAllMonstersList() {
         return allMonstersList;
+    }
+
+    public Button[][] getButtonGrid() {
+        return buttonGrid;
     }
 
     public HeroManager getHeroManager() {

@@ -5,9 +5,6 @@ import javafx.scene.Cursor;
 import javafx.scene.ImageCursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.effect.Blend;
-import javafx.scene.effect.BlendMode;
-import javafx.scene.effect.ImageInput;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -15,8 +12,6 @@ import DungeonCrawl.*;
 import DungeonCrawl.DAO.ItemsDAO;
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.Model.*;
-import DungeonCrawl.Model.Monster;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -33,7 +28,6 @@ class DungeonGUI {
     private VBox portraitsVBox = new VBox();
     private VBox controlsButtons = new VBox();
     BorderPane mapOuterPane = new BorderPane();
-    private DungeonImageLibraryGUI dungeonImageLibraryGUI = new DungeonImageLibraryGUI();
     private List<HeroPower> currentHeroPowers = new ArrayList<>();
     private ScrollPane mapScrollPane = new ScrollPane();
     private List<Button> listOfHeroButtons = new ArrayList<>();
@@ -41,8 +35,8 @@ class DungeonGUI {
     private GUIUtilities guiUtilities = new GUIUtilities();
     private PathFinder pathFinder = new PathFinder();
     private EncounterManager encounterManager = new EncounterManager(heroManager, buttonGrid, pathFinder);
-    private MapManager mapManager = new MapManager(mapWidth, mapHeight, buttonGrid, encounterManager);
-    private DungeonButtonEvents dungeonButtonEvents = new DungeonButtonEvents(encounterManager, pathFinder, mapManager, powersHBox, currentHeroPowers);
+    private MapManager mapManager = new MapManager(mapWidth, mapHeight, encounterManager);
+    private DungeonButtonEvents dungeonButtonEvents = new DungeonButtonEvents(encounterManager, mapManager, powersHBox, currentHeroPowers);
 
     DungeonGUI(List<Hero> heroList) {
 
