@@ -97,18 +97,6 @@ public class DungeonConsoleGUI {
         this.initiativeTilePane = initiativeTilePane;
     }
 
-    public int getNextCharacterID(int currentInitiativeValue) {
-        for (int i = currentInitiativeValue; i < initiativeArray.length; i++) {
-/*            if (initiativeArray[i] != null && initiativeArray[i].getID() > 100) {
-                return initiativeArray[i].getCurrentMonsterUniqueID();
-            } else */
-                if (initiativeArray[i] != null && initiativeArray[i].getID() < 100) {
-                return initiativeArray[i].getID();
-            }
-        }
-        return -1;
-    }
-
     private void sortTheCreaturesAccordingToInitiative(int i) {
         System.out.println("Iterating through array: ");
         if (initiativeArray[i] != null) {

@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+
 import java.util.List;
 
 public class DungeonButtonEvents {
@@ -20,6 +21,7 @@ public class DungeonButtonEvents {
     private int currentCreatureInitiative = 0;
     private HBox powersHBox;
     private List<HeroPower> currentHeroPowers;
+    private List<Monster> listOfMonsters;
     private Button[][] buttonGrid;
 
 
@@ -31,6 +33,7 @@ public class DungeonButtonEvents {
         pathFinder = encounterManager.getPathFinder();
         buttonGrid = mapManager.getButtonGrid();
         heroManager = encounterManager.getHeroManager();
+        listOfMonsters = encounterManager.getAllMonstersList();
     }
 
     public void buttonEvent(int XPos, int YPos, List<HeroPower> currentHeroPowers) {
@@ -99,10 +102,15 @@ public class DungeonButtonEvents {
         }
         pathFinder.dungeonConsoleGUI.getInitiativeTracker().setContent(pathFinder.dungeonConsoleGUI.getInitiativeTilePane());
         if (encounterManager.isEncounterOnline()) {
-            lockAllInactiveHeroButtons();
-            encounterManager.startTheMonsterAI();
+            setTheEncounter();
         }
         //guiAnimations.walkingAnimation(oldHeroXPos, oldHeroYPos, XPos, YPos);
+    }
+
+    private void setTheEncounter() {
+        unlockTheNextCreatureInTheInitiativeOrder();
+
+        encounterManager.startTheMonsterAI();
     }
 
     private void eventOnReachableTileClick() {
@@ -152,7 +160,7 @@ public class DungeonButtonEvents {
         System.out.println(hero.heroName + " has finished moving. " + heroManager.getNumberOfHeroesThatFinishedMovement() + " heroes had already finished moving");
         if (encounterManager.isEncounterOnline()) {
             currentCreatureInitiative++;
-            lockAllInactiveHeroButtons();
+            unlockTheNextCreatureInTheInitiativeOrder();
         }
         if (heroManager.getNumberOfHeroesThatFinishedMovement() == heroManager.getHeroList().size()) {
             for (Hero currentHero : heroManager.getHeroList()) {
@@ -179,30 +187,76 @@ public class DungeonButtonEvents {
         pathFinder.checkTheAvailableDistance(currentHero, encounterManager.getDungeonMap(), buttonGrid, "Attack Range");
     }
 
-    private void lockAllInactiveHeroButtons() {
-        for (Hero hero : heroManager.getHeroList()) {
-            int heroIdFromInitiativeArray = pathFinder.dungeonConsoleGUI.getNextCharacterID(currentCreatureInitiative);
-            System.out.println("NEXT CHAR ID: " +
-                    heroIdFromInitiativeArray
-                    + " Hero name: " +
-                    hero.getHeroName());
-            if (hero.getID() == heroIdFromInitiativeArray) {
-                System.out.println("Found a creature with ID " +
-                        heroIdFromInitiativeArray +
-                        " hero name: " +
-                        hero.getHeroName() +
-                        "ID: " + hero.getID() +
-                        " Init: " +
-                        hero.getCurrentInitiative());
-                System.out.println("Unlocking");
-                buttonGrid[hero.getMapXPos()][hero.getMapYPos()].setDisable(false);
-                System.out.println("THIS Creature Init: " + hero.getCurrentInitiative());
-                currentCreatureInitiative = hero.getCurrentInitiative();
-                System.out.println("GLOBAL INITIATIVE SET TO: " + currentCreatureInitiative);
-            } else {
-                buttonGrid[hero.getMapXPos()][hero.getMapYPos()].setDisable(true);
-                System.out.println("Locking.");
+    private void unlockTheNextCreatureInTheInitiativeOrder() {
+        int creatureIdFromInitiativeArray = getNextCharacterID(currentCreatureInitiative);
+        System.out.println("NEXT INITIATIVE CHECK for number: " + creatureIdFromInitiativeArray);
+        if (creatureIdFromInitiativeArray < 100) {
+            for (Hero hero : heroManager.getHeroList()) {
+                System.out.println("NEXT CHAR ID: " +
+                        creatureIdFromInitiativeArray
+                        + " Hero name: " +
+                        hero.getHeroName());
+                if (hero.getID() == creatureIdFromInitiativeArray) {
+                    allowNextHeroToMakeTheMove(hero, creatureIdFromInitiativeArray);
+                } else {
+                    lockTheInactiveHeroButton(buttonGrid[hero.getMapXPos()][hero.getMapYPos()]);
+                }
+            }
+        } else {
+            int monsterUniqueID = getNextMonsterUniqueID(currentCreatureInitiative);
+            for (Monster monster : listOfMonsters) {
+                if (monster.getCurrentMonsterUniqueID() == monsterUniqueID && !monster.isThisCreatureDead()) {
+                    System.out.println("NEXT MONSTER ID: " +
+                            creatureIdFromInitiativeArray
+                            + " Hero name: " +
+                            monster.getMonsterName());
+                    enterTheCurrentMonstersRound(monster);
+                }
             }
         }
+    }
+
+    public int getNextMonsterUniqueID(int currentInitiativeValue) {
+        for (int i = currentInitiativeValue; i < pathFinder.dungeonConsoleGUI.getInitiativeArray().length; i++) {
+            if (pathFinder.dungeonConsoleGUI.getInitiativeArray()[i] != null) {
+                return pathFinder.dungeonConsoleGUI.getInitiativeArray()[i].getCurrentMonsterUniqueID();
+            }
+        }
+        return -1;
+    }
+
+    public int getNextCharacterID(int currentInitiativeValue) {
+        for (int i = currentInitiativeValue; i < pathFinder.dungeonConsoleGUI.getInitiativeArray().length; i++) {
+            if (pathFinder.dungeonConsoleGUI.getInitiativeArray()[i] != null) {
+                return pathFinder.dungeonConsoleGUI.getInitiativeArray()[i].getID();
+            }
+        }
+        return -1;
+    }
+
+    private void enterTheCurrentMonstersRound(Monster monster) {
+        System.out.println("MONSTER ROUND");
+        currentCreatureInitiative++;
+        unlockTheNextCreatureInTheInitiativeOrder();
+    }
+
+    private void lockTheInactiveHeroButton(Button button) {
+        button.setDisable(true);
+        System.out.println("Locking a hero button.");
+    }
+
+    private void allowNextHeroToMakeTheMove(Hero hero, int heroID) {
+        System.out.println("Found a creature with ID " +
+                heroID +
+                " hero name: " +
+                hero.getHeroName() +
+                "ID: " + hero.getID() +
+                " Init: " +
+                hero.getCurrentInitiative());
+        System.out.println("Unlocking");
+        buttonGrid[hero.getMapXPos()][hero.getMapYPos()].setDisable(false);
+        System.out.println("THIS Creature Init: " + hero.getCurrentInitiative());
+        currentCreatureInitiative = hero.getCurrentInitiative();
+        System.out.println("GLOBAL INITIATIVE SET TO: " + currentCreatureInitiative);
     }
 }
