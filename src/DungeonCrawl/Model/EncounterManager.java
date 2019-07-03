@@ -368,7 +368,11 @@ public class EncounterManager {
     public void startTheMonsterAI(Monster monster) {
         //todo set the aggression level for each hero in regards to their class and raise aggression after using some powers.
         MonsterAI monsterAI = new MonsterAI();
-        int attackedHeroId = monsterAI.makeAnAggressionRoll(heroManager.getHeroList());
+        int attackedHeroId = monsterAI.makeAnAggressionRoll(heroManager.getHeroList(), monster);
         Hero attackedHero = guiUtilities.getHeroByID(attackedHeroId, heroManager.getHeroList());
+        System.out.println(
+                ConsoleColors.ANSI_PURPLE + "Monster: " + monster.getMonsterName()
+                        + " is attacking a hero: " + attackedHero.getHeroName()
+                        + ConsoleColors.ANSI_RESET);
     }
 }

@@ -42,7 +42,7 @@ public class Hero extends Creature {
     private int Thievery;
     private Map<String, Integer> heroAttributesMap;
     private Map<String, Item> heroEquipment;
-    private int aggressionLevel;
+    private int aggressionLevel = 5;
 
     public int getAggressionLevel() {
         return aggressionLevel;
