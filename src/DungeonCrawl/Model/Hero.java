@@ -42,6 +42,15 @@ public class Hero extends Creature {
     private int Thievery;
     private Map<String, Integer> heroAttributesMap;
     private Map<String, Item> heroEquipment;
+    private int aggressionLevel;
+
+    public int getAggressionLevel() {
+        return aggressionLevel;
+    }
+
+    public void setAggressionLevel(int aggressionLevel) {
+        this.aggressionLevel = aggressionLevel;
+    }
 
     public Map<String, Item> getHeroEquipment() {
         return heroEquipment;

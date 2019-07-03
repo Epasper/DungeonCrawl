@@ -248,7 +248,6 @@ public class EncounterManager {
         System.out.println(ConsoleColors.ANSI_YELLOW + "Setting the Encounter" + ConsoleColors.ANSI_RESET);
         resetAllHeroesSpeedToMax();
         unlockTheNextCreatureInTheInitiativeOrder();
-        startTheMonsterAI();
     }
 
     public int getNextMonsterUniqueID(int currentInitiativeValue) {
@@ -273,6 +272,7 @@ public class EncounterManager {
 
     private void enterTheCurrentMonstersRound(Monster monster) {
         System.out.println(ConsoleColors.ANSI_PURPLE + "MONSTER ROUND" + ConsoleColors.ANSI_RESET);
+        startTheMonsterAI(monster);
         globalInitiative = monster.getCurrentInitiative();
         globalInitiative++;
         System.out.println("GLOBAL INITIATIVE SET TO: " + globalInitiative);
@@ -365,7 +365,10 @@ public class EncounterManager {
         }
     }
 
-    public void startTheMonsterAI() {
+    public void startTheMonsterAI(Monster monster) {
+        //todo set the aggression level for each hero in regards to their class and raise aggression after using some powers.
         MonsterAI monsterAI = new MonsterAI();
+        int attackedHeroId = monsterAI.makeAnAggressionRoll(heroManager.getHeroList());
+        Hero attackedHero = guiUtilities.getHeroByID(attackedHeroId, heroManager.getHeroList());
     }
 }
