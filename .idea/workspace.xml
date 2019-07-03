@@ -8,7 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/Model/DungeonButtonEvents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/Model/DungeonButtonEvents.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/Model/EncounterManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/Model/EncounterManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/Model/GUIAnimations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/GUI/GUIAnimations.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/DungeonCrawl1.0/target/" />
@@ -44,8 +43,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/DungeonButtonEvents.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="404">
-              <caret line="76" selection-start-line="76" selection-end-line="76" />
+            <state relative-caret-position="438">
+              <caret line="34" selection-start-line="34" selection-end-line="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -68,10 +67,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/EncounterManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="73" column="129" selection-start-line="73" selection-start-column="129" selection-end-line="73" selection-end-column="129" />
+            <state relative-caret-position="-250">
+              <caret line="253" column="44" lean-forward="true" selection-start-line="253" selection-start-column="44" selection-end-line="253" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#768#769#0" expanded="true" />
+                <element signature="e#816#817#0" expanded="true" />
                 <element signature="e#713#714#0" expanded="true" />
                 <element signature="e#746#747#0" expanded="true" />
                 <element signature="e#795#796#0" expanded="true" />
@@ -145,8 +146,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>animation</find>
-      <find>debug</find>
       <find>icon sele</find>
       <find>icon</find>
       <find>30</find>
@@ -175,6 +174,8 @@
       <find>tinker</find>
       <find>update</find>
       <find>curren</find>
+      <find>monster</find>
+      <find>unloc</find>
     </findStrings>
     <replaceStrings>
       <replace>HeroClasses</replace>
@@ -458,13 +459,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1556870921453</updated>
-    </task>
-    <task id="LOCAL-00098" summary="Equipment GUI - Dragging and Dropping the Items works">
-      <created>1559221471239</created>
-      <option name="number" value="00098" />
-      <option name="presentableId" value="LOCAL-00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1559221471239</updated>
     </task>
     <task id="LOCAL-00099" summary="Equipment GUI - Upgraded shadow casting algorithm. Has to implement it to Pathfinder.java">
       <created>1559299180879</created>
@@ -802,7 +796,14 @@
       <option name="project" value="LOCAL" />
       <updated>1562073545076</updated>
     </task>
-    <option name="localTasksCounter" value="147" />
+    <task id="LOCAL-00147" summary="Dungeon GUI - repaired the animations on hit and on miss">
+      <created>1562134240823</created>
+      <option name="number" value="00147" />
+      <option name="presentableId" value="LOCAL-00147" />
+      <option name="project" value="LOCAL" />
+      <updated>1562134240824</updated>
+    </task>
+    <option name="localTasksCounter" value="148" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -883,7 +884,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Dungeon - rooms are now revealed in a more consistent manner. Recursive distance check has better call and can now be called only once." />
     <MESSAGE value="Added skill icons and moved skill icon todo element to character creation" />
     <MESSAGE value="Character Creator GUI - added skill icon selector to Character Creator. Minor refactoring of methods in the class" />
     <MESSAGE value="Character Creator GUI - Skill icons are now being added and read into/from HDD." />
@@ -908,7 +908,8 @@
     <MESSAGE value="DungeonGUI - Refactor into new classes" />
     <MESSAGE value="DungeonGUI - Empty fields clearing, minor refactoring" />
     <MESSAGE value="DungeonButtonEvents - beginning of Monster Round in the Initiative Order" />
-    <option name="LAST_COMMIT_MESSAGE" value="DungeonButtonEvents - beginning of Monster Round in the Initiative Order" />
+    <MESSAGE value="Dungeon GUI - repaired the animations on hit and on miss" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dungeon GUI - repaired the animations on hit and on miss" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/StaticRules/HeroSkills.java">
@@ -1312,16 +1313,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/DungeonButtonEvents.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="76" selection-start-line="76" selection-end-line="76" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/GUIAnimations.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="557">
@@ -1332,12 +1323,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/EncounterManager.java">
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/DungeonButtonEvents.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="73" column="129" selection-start-line="73" selection-start-column="129" selection-end-line="73" selection-end-column="129" />
+        <state relative-caret-position="438">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/EncounterManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-250">
+          <caret line="253" column="44" lean-forward="true" selection-start-line="253" selection-start-column="44" selection-end-line="253" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#768#769#0" expanded="true" />
+            <element signature="e#816#817#0" expanded="true" />
             <element signature="e#713#714#0" expanded="true" />
             <element signature="e#746#747#0" expanded="true" />
             <element signature="e#795#796#0" expanded="true" />

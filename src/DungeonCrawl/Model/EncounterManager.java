@@ -19,6 +19,16 @@ public class EncounterManager {
     private DungeonMap dungeonMap = new DungeonMap(null);
     private List<Monster> allMonstersList = dungeonMap.getAllMonstersList();
     private boolean hasTheCharacterBeenSelected = false;
+    private int currentCreatureInitiative = 0;
+
+
+    public int getCurrentCreatureInitiative() {
+        return currentCreatureInitiative;
+    }
+
+    public void setCurrentCreatureInitiative(int currentCreatureInitiative) {
+        this.currentCreatureInitiative = currentCreatureInitiative;
+    }
 
     public PathFinder getPathFinder() {
         return pathFinder;
@@ -179,6 +189,86 @@ public class EncounterManager {
         } else {
             pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("Your attack has missed.");
             return "Missed";
+        }
+    }
+
+    public void setTheEncounter() {
+        unlockTheNextCreatureInTheInitiativeOrder();
+        startTheMonsterAI();
+    }
+
+    public int getNextMonsterUniqueID(int currentInitiativeValue) {
+        for (int i = currentInitiativeValue; i < pathFinder.dungeonConsoleGUI.getInitiativeArray().length; i++) {
+            if (pathFinder.dungeonConsoleGUI.getInitiativeArray()[i] != null) {
+                return pathFinder.dungeonConsoleGUI.getInitiativeArray()[i].getCurrentMonsterUniqueID();
+            }
+        }
+        return -1;
+    }
+
+    public int getNextCharacterID(int currentInitiativeValue) {
+        for (int i = currentInitiativeValue; i < pathFinder.dungeonConsoleGUI.getInitiativeArray().length; i++) {
+            if (pathFinder.dungeonConsoleGUI.getInitiativeArray()[i] != null) {
+                return pathFinder.dungeonConsoleGUI.getInitiativeArray()[i].getID();
+            }
+        }
+        return -1;
+    }
+
+
+
+    private void enterTheCurrentMonstersRound(Monster monster) {
+        System.out.println("MONSTER ROUND");
+        currentCreatureInitiative++;
+        unlockTheNextCreatureInTheInitiativeOrder();
+    }
+
+    private void lockTheInactiveHeroButton(Button button) {
+        button.setDisable(true);
+        System.out.println("Locking a hero button.");
+    }
+
+    private void allowNextHeroToMakeTheMove(Hero hero, int heroID) {
+        System.out.println("Found a creature with ID " +
+                heroID +
+                " hero name: " +
+                hero.getHeroName() +
+                "ID: " + hero.getID() +
+                " Init: " +
+                hero.getCurrentInitiative());
+        System.out.println("Unlocking");
+        buttonGrid[hero.getMapXPos()][hero.getMapYPos()].setDisable(false);
+        System.out.println("THIS Creature Init: " + hero.getCurrentInitiative());
+        currentCreatureInitiative = hero.getCurrentInitiative();
+        System.out.println("GLOBAL INITIATIVE SET TO: " + currentCreatureInitiative);
+    }
+
+    public void unlockTheNextCreatureInTheInitiativeOrder() {
+        int creatureIdFromInitiativeArray = getNextCharacterID(currentCreatureInitiative);
+        System.out.println("NEXT INITIATIVE CHECK for number: " + creatureIdFromInitiativeArray);
+        if (creatureIdFromInitiativeArray < 100) {
+            for (Hero hero : heroManager.getHeroList()) {
+                System.out.println("NEXT CHAR ID: " +
+                        creatureIdFromInitiativeArray
+                        + " Hero name: " +
+                        hero.getHeroName());
+                if (hero.getID() == creatureIdFromInitiativeArray) {
+                    allowNextHeroToMakeTheMove(hero, creatureIdFromInitiativeArray);
+                } else {
+                    lockTheInactiveHeroButton(buttonGrid[hero.getMapXPos()][hero.getMapYPos()]);
+                }
+            }
+        } else {
+            int monsterUniqueID = getNextMonsterUniqueID(currentCreatureInitiative);
+            for (Monster monster : allMonstersList) {
+                if (monster.getCurrentMonsterUniqueID() == monsterUniqueID && !monster.isThisCreatureDead()) {
+                    System.out.println("NEXT MONSTER ID: " +
+                            creatureIdFromInitiativeArray
+                            + " Hero name: " +
+                            monster.getMonsterName());
+                    enterTheCurrentMonstersRound(monster);
+                }
+            }
         }
     }
 
