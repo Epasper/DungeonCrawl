@@ -18,9 +18,9 @@ public class EncounterManager {
     private GUIUtilities guiUtilities = new GUIUtilities();
     private DungeonMap dungeonMap = new DungeonMap(null);
     private List<Monster> allMonstersList = dungeonMap.getAllMonstersList();
+    private List<Monster> discoveredMonsters;
     private boolean hasTheCharacterBeenSelected = false;
     private int currentCreatureInitiative = 0;
-
 
     public int getCurrentCreatureInitiative() {
         return currentCreatureInitiative;
@@ -75,7 +75,7 @@ public class EncounterManager {
     public void eventOnHeroClick(int currentHeroID) {
         Hero currentHero = guiUtilities.getHeroByID(currentHeroID, heroManager.getHeroList());
         pathFinder.checkTheAvailableDistance(currentHero, dungeonMap, buttonGrid, "Available Distance");
-        System.out.println("Clicked the ID " + currentHeroID + " hero.");
+        System.out.println(ConsoleColors.ANSI_GREEN + "Clicked the ID " + currentHeroID + " hero." + ConsoleColors.ANSI_RESET);
         heroManager.setCurrentlyActiveHeroID(currentHeroID);
         setHasTheCharacterBeenSelected(true);
         pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("You have selected " + currentHero.getHeroName());
@@ -84,7 +84,8 @@ public class EncounterManager {
     //todo there's a bug that unlocks a first heroes' movement twice and a bug that locks the button unnecessarily. Has something to do with the initiative queue
 
     private void checkIfAllCreaturesInRoomAreDead() {
-        for (Monster monster : pathFinder.getDiscoveredMonsters()) {
+        this.discoveredMonsters = pathFinder.getDiscoveredMonsters();
+        for (Monster monster : discoveredMonsters) {
             if (!monster.isThisCreatureDead()) {
                 System.out.println("Found a creature that's alive");
                 encounterOnline = true;
@@ -166,6 +167,57 @@ public class EncounterManager {
                 + monster.getDefensesMap().get(attackingPower.getDefenseToBeChecked().toLowerCase()));
     }
 
+    public void endTheCurrentHeroMovement(Hero hero) {
+        heroManager.setNumberOfHeroesThatFinishedMovement(heroManager.getNumberOfHeroesThatFinishedMovement() + 1);
+        hero.setFinishedMovement(true);
+        System.out.println(hero.heroName + " has finished moving. " + heroManager.getNumberOfHeroesThatFinishedMovement() + " heroes had already finished moving");
+        if (isEncounterOnline()) {
+            currentCreatureInitiative++;
+            unlockTheNextCreatureInTheInitiativeOrder();
+        }
+        if (checkIfAllHeroesHaveMoved() && checkIfAllOfMonstersHaveMoved()) {
+            restartInitiative();
+        }
+    }
+
+    private void restartInitiative() {
+        //todo change this algorithm so that it checks for all creatures instead of heroes only.
+        for (Hero currentHero : heroManager.getHeroList()) {
+            currentHero.setCurrentSpeed(currentHero.getSpeed());
+            currentHero.setFinishedMovement(false);
+            System.out.println("Resetting the movement points for " + currentHero.heroName);
+        }
+        for (Monster currentMonster : discoveredMonsters) {
+            currentMonster.setFinishedMovement(false);
+        }
+        setCurrentCreatureInitiative(0);
+    }
+
+    private boolean checkIfAllOfMonstersHaveMoved() {
+        this.discoveredMonsters = pathFinder.getDiscoveredMonsters();
+        for (Monster monster : discoveredMonsters) {
+            if (!monster.isFinishedMovement()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean checkIfAllHeroesHaveMoved() {
+        for (Hero hero : heroManager.getHeroList()) {
+            if (!hero.isFinishedMovement()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void resetAllHeroesSpeedToMax() {
+        for (Hero hero : heroManager.getHeroList()) {
+            hero.setCurrentSpeed(hero.getSpeed());
+        }
+    }
+
     public String eventOnHeroAttackingAMonster(int XPos, int YPos, HeroPower attackingPower) {
         Hero hero = guiUtilities.getHeroByID(heroManager.getCurrentlyActiveHeroID(), heroManager.getHeroList());
         System.out.println("Attacking a monster with unique ID: " + getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID());
@@ -193,6 +245,7 @@ public class EncounterManager {
     }
 
     public void setTheEncounter() {
+        resetAllHeroesSpeedToMax();
         unlockTheNextCreatureInTheInitiativeOrder();
         startTheMonsterAI();
     }
@@ -200,6 +253,7 @@ public class EncounterManager {
     public int getNextMonsterUniqueID(int currentInitiativeValue) {
         for (int i = currentInitiativeValue; i < pathFinder.dungeonConsoleGUI.getInitiativeArray().length; i++) {
             if (pathFinder.dungeonConsoleGUI.getInitiativeArray()[i] != null) {
+                System.out.println("Found monster Unique ID: " + pathFinder.dungeonConsoleGUI.getInitiativeArray()[i].getCurrentMonsterUniqueID());
                 return pathFinder.dungeonConsoleGUI.getInitiativeArray()[i].getCurrentMonsterUniqueID();
             }
         }
@@ -216,10 +270,10 @@ public class EncounterManager {
     }
 
 
-
     private void enterTheCurrentMonstersRound(Monster monster) {
         System.out.println("MONSTER ROUND");
         currentCreatureInitiative++;
+        monster.setFinishedMovement(true);
         unlockTheNextCreatureInTheInitiativeOrder();
     }
 
@@ -244,15 +298,17 @@ public class EncounterManager {
     }
 
     public void unlockTheNextCreatureInTheInitiativeOrder() {
+        this.discoveredMonsters = pathFinder.getDiscoveredMonsters();
         int creatureIdFromInitiativeArray = getNextCharacterID(currentCreatureInitiative);
         System.out.println("NEXT INITIATIVE CHECK for number: " + creatureIdFromInitiativeArray);
         if (creatureIdFromInitiativeArray < 100) {
             for (Hero hero : heroManager.getHeroList()) {
-                System.out.println("NEXT CHAR ID: " +
-                        creatureIdFromInitiativeArray
+                System.out.println(ConsoleColors.ANSI_GREEN + "NEXT CHAR ID: " +
+                        hero.getID()
                         + " Hero name: " +
-                        hero.getHeroName());
+                        hero.getHeroName() + ConsoleColors.ANSI_RESET);
                 if (hero.getID() == creatureIdFromInitiativeArray) {
+                    System.out.println("Initiative matches that of a hero. Unlocking the button.");
                     allowNextHeroToMakeTheMove(hero, creatureIdFromInitiativeArray);
                 } else {
                     lockTheInactiveHeroButton(buttonGrid[hero.getMapXPos()][hero.getMapYPos()]);
@@ -260,12 +316,13 @@ public class EncounterManager {
             }
         } else {
             int monsterUniqueID = getNextMonsterUniqueID(currentCreatureInitiative);
-            for (Monster monster : allMonstersList) {
+            for (Monster monster : discoveredMonsters) {
                 if (monster.getCurrentMonsterUniqueID() == monsterUniqueID && !monster.isThisCreatureDead()) {
-                    System.out.println("NEXT MONSTER ID: " +
-                            creatureIdFromInitiativeArray
-                            + " Hero name: " +
-                            monster.getMonsterName());
+                    System.out.println(ConsoleColors.ANSI_RED + "NEXT MONSTER ID: " +
+                            creatureIdFromInitiativeArray +
+                            " Monster UUID: " + monster.getCurrentMonsterUniqueID() + " || " + monsterUniqueID
+                            + " Monster name: " +
+                            monster.getMonsterName() + ConsoleColors.ANSI_RESET);
                     enterTheCurrentMonstersRound(monster);
                 }
             }

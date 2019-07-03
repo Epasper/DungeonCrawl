@@ -186,7 +186,7 @@ class DungeonGUI {
             mapOuterPane.setCursor(Cursor.DEFAULT);
         } else {
             mapOuterPane.setCursor(new ImageCursor(image));
-            System.out.println("Changing the cursor");
+            //System.out.println("Changing the cursor");
         }
     }
     //todo change the monster portrait after it being bloodied

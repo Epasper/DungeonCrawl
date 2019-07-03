@@ -27,6 +27,15 @@ public class Creature {
     private Map<String, Integer> defensesMap = new HashMap<>();
     private boolean isThisCreatureDead = false;
     private int attackRange = 1;
+    private boolean finishedMovement;
+
+    public boolean isFinishedMovement() {
+        return finishedMovement;
+    }
+
+    public void setFinishedMovement(boolean finishedMovement) {
+        this.finishedMovement = finishedMovement;
+    }
 
     public int getAttackRange() {
         return attackRange;

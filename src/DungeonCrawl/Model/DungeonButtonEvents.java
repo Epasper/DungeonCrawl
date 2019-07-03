@@ -83,7 +83,7 @@ public class DungeonButtonEvents {
     }
 
     private void eventOnHeroMovement(int XPos, int YPos) {
-
+        boolean shouldEncounterGetTriggered = false;
         Hero hero = guiUtilities.getHeroByID(heroManager.getCurrentlyActiveHeroID(), heroManager.getHeroList());
         encounterManager.getDungeonMap().getMapTilesArray()[hero.getMapXPos()][hero.getMapYPos()].setOccupyingCreatureTypeId(0);
         encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].setOccupyingCreatureTypeId(heroManager.getCurrentlyActiveHeroID());
@@ -95,17 +95,16 @@ public class DungeonButtonEvents {
         hero.setMapXPos(XPos);
         hero.setMapYPos(YPos);
         if (hero.getCurrentSpeed() < 1) {
-            endTheCurrentHeroMovement(hero);
+            encounterManager.endTheCurrentHeroMovement(hero);
         }
         if (!encounterManager.isEncounterOnline()) {
-            resetAllHeroesSpeedToMax();
-            encounterManager.setEncounterOnline
-                    (pathFinder.checkIfTheEncounterShouldStart
-                            (encounterManager.getAllMonstersList(), heroManager.getHeroList(), hero, encounterManager.getDungeonMap(), encounterManager.isEncounterOnline())
-                    );
+            encounterManager.resetAllHeroesSpeedToMax();
+            shouldEncounterGetTriggered = pathFinder.checkIfTheEncounterShouldStart
+                    (encounterManager.getAllMonstersList(), heroManager.getHeroList(), hero, encounterManager.getDungeonMap(), encounterManager.isEncounterOnline());
+            encounterManager.setEncounterOnline(shouldEncounterGetTriggered);
         }
         pathFinder.dungeonConsoleGUI.getInitiativeTracker().setContent(pathFinder.dungeonConsoleGUI.getInitiativeTilePane());
-        if (encounterManager.isEncounterOnline()) {
+        if (shouldEncounterGetTriggered) {
             encounterManager.setTheEncounter();
         }
         //guiAnimations.walkingAnimation(oldHeroXPos, oldHeroYPos, XPos, YPos);
@@ -151,30 +150,6 @@ public class DungeonButtonEvents {
             powerButton.setTextFill(Color.WHITE);
             powersHBox.getChildren().add(powerButton);
             powerButton.setOnAction(event -> eventOnPowerSelect(currentHero, currentPower));
-        }
-    }
-
-    private void endTheCurrentHeroMovement(Hero hero) {
-        heroManager.setNumberOfHeroesThatFinishedMovement(heroManager.getNumberOfHeroesThatFinishedMovement() + 1);
-        System.out.println(hero.heroName + " has finished moving. " + heroManager.getNumberOfHeroesThatFinishedMovement() + " heroes had already finished moving");
-        if (encounterManager.isEncounterOnline()) {
-            encounterManager.setCurrentCreatureInitiative(encounterManager.getCurrentCreatureInitiative()+1);
-            encounterManager.unlockTheNextCreatureInTheInitiativeOrder();
-        }
-        if (heroManager.getNumberOfHeroesThatFinishedMovement() == heroManager.getHeroList().size()) {
-            //todo change this algorithm so that it checks for all creatures instead of heroes only.
-            for (Hero currentHero : heroManager.getHeroList()) {
-                currentHero.setCurrentSpeed(currentHero.getSpeed());
-                System.out.println("Resetting the movement points for " + currentHero.heroName);
-            }
-            encounterManager.setCurrentCreatureInitiative(0);
-            heroManager.setNumberOfHeroesThatFinishedMovement(0);
-        }
-    }
-
-    private void resetAllHeroesSpeedToMax() {
-        for (Hero hero : heroManager.getHeroList()) {
-            hero.setCurrentSpeed(hero.getSpeed());
         }
     }
 
