@@ -24,6 +24,10 @@ public class MonsterAI {
         return aggressionList.get(aggressionRoll);
     }
 
+    public boolean checkIfTheHeroIsWithinRange () {
+        return false;
+    }
+
     public void attackAHero(Monster monster, Hero hero) {
 
     }

@@ -64,6 +64,7 @@ class DungeonGUI {
      */
 
     //todo in future, change the portraits, so that each hero has a bigger portrait on the right and small icon on the field.
+    //todo download some bigger portraits from the internet and use JavaFX resize to fit the big ones in the buttons
 
     //todo Hero portraits to turn red with damage taken.
 
@@ -141,6 +142,7 @@ class DungeonGUI {
 
 
     //todo change the updating so that it doesn't do anything for tiles with walls and/or pillars
+
     private void updateGUIAccordingToMap(DungeonMap dungeonMap) {
         for (int i = 0; i < mapWidth; i++) {
             for (int j = 0; j < mapHeight; j++) {
@@ -158,6 +160,8 @@ class DungeonGUI {
         }
         mapManager.updateMapGraphics(dungeonMap);
     }
+
+    //todo add a CursorManager class that manages the cursors - refactor these methods onto the new class.
 
     private void changeTheCursorOnHover(int XPos, int YPos) {
         Image mapCursor = new Image("DungeonCrawl/GUI/Images/Cursors/WalkingCursor.png");
