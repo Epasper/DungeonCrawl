@@ -1,6 +1,8 @@
-package DungeonCrawl.Model;
+package DungeonCrawl.GUI;
 
 import DungeonCrawl.Main;
+import DungeonCrawl.Model.EncounterManager;
+import DungeonCrawl.Model.MapManager;
 import javafx.animation.FadeTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
@@ -20,9 +22,9 @@ import java.awt.*;
 
 public class GUIAnimations {
 
-    public void visualsOnHit(Button button, String hitResult) {
+    public void visualsOnHit(Button button, String hitResult, MapManager mapManager, EncounterManager encounterManager) {
         String damageString = hitResult.replace("Hit - ", "");
-        creatureWasHitAnimation(button);
+        creatureWasHitAnimation(button, mapManager, encounterManager);
         Popup damagePopup = new Popup();
         VBox damageBox = new VBox();
         Label damage = new Label();
@@ -51,20 +53,23 @@ public class GUIAnimations {
         scaleTransition.play();
     }
 
-    public void creatureWasHitAnimation(Button button) {
+    public void creatureWasHitAnimation(Button button, MapManager mapManager, EncounterManager encounterManager) {
         RotateTransition rotateTransition = new RotateTransition(Duration.millis(180), button.getGraphic());
         rotateTransition.setByAngle(30);
         rotateTransition.setCycleCount(2);
         rotateTransition.setAutoReverse(true);
-
+        rotateTransition.setOnFinished(e -> mapManager.updateMapGraphics(encounterManager.getDungeonMap()));
+        System.out.println("Creature hit, rotating.");
         rotateTransition.play();
     }
 
-    public void creatureWasMissedAnimation(Button button) {
+    public void creatureWasMissedAnimation(Button button, MapManager mapManager, EncounterManager encounterManager) {
         TranslateTransition translateTransition = new TranslateTransition(Duration.millis(180), button.getGraphic());
         translateTransition.setByX(10);
         translateTransition.setCycleCount(2);
         translateTransition.setAutoReverse(true);
+        translateTransition.setOnFinished(e -> mapManager.updateMapGraphics(encounterManager.getDungeonMap()));
+        System.out.println("Creature missed, translating. Coordinates: " + button.getId());
         translateTransition.play();
     }
 

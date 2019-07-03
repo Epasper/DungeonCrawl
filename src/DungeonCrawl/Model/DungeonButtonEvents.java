@@ -1,5 +1,6 @@
 package DungeonCrawl.Model;
 
+import DungeonCrawl.GUI.GUIAnimations;
 import DungeonCrawl.GUI.GUIUtilities;
 import DungeonCrawl.GUI.Images.SkillIcons.SkillIcons;
 import DungeonCrawl.HeroPowers.HeroPower;
@@ -59,22 +60,28 @@ public class DungeonButtonEvents {
             encounterManager.getDungeonMap().clearMapReachableProperties(encounterManager.getDungeonMap());
         }
         if (currentHeroID > 100 && isTheTileInteractive) {
+            boolean updateTheGraphics = true;
             try {
                 Monster monster = guiUtilities.getSingleMonsterByUniqueID(encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID(), encounterManager.getAllMonstersList());
                 String hitResult = encounterManager.eventOnHeroAttackingAMonster(XPos, YPos, currentHeroPowers.get(currentHeroPowers.size() - 1));
                 if (hitResult.contains("Hit")) {
-                    guiAnimations.visualsOnHit(buttonGrid[XPos][YPos], hitResult);
+                    updateTheGraphics = false;
+                    guiAnimations.visualsOnHit(buttonGrid[XPos][YPos], hitResult, mapManager, encounterManager);
                 } else if (hitResult.contains("Miss")) {
-                    guiAnimations.creatureWasMissedAnimation(buttonGrid[XPos][YPos]);
+                    updateTheGraphics = false;
+                    guiAnimations.creatureWasMissedAnimation(buttonGrid[XPos][YPos], mapManager, encounterManager);
                 } else if (hitResult.contains("Dead")) {
+                    updateTheGraphics = false;
+                    guiAnimations.visualsOnHit(buttonGrid[XPos][YPos], hitResult, mapManager, encounterManager);
                     mapManager.addDeathImageToCreatureImage(monster);
-                    guiAnimations.visualsOnHit(buttonGrid[XPos][YPos], hitResult);
                     buttonGrid[monster.getMapXPos()][monster.getMapYPos()].setGraphic(mapManager.addDeathImageToCreatureImage(monster));
                 }
             } catch (IndexOutOfBoundsException e) {
                 pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("Please select a power before attacking");
             }
-            mapManager.updateMapGraphics(encounterManager.getDungeonMap());
+            if (updateTheGraphics) {
+                mapManager.updateMapGraphics(encounterManager.getDungeonMap());
+            }
         }
     }
 
@@ -163,6 +170,7 @@ public class DungeonButtonEvents {
             unlockTheNextCreatureInTheInitiativeOrder();
         }
         if (heroManager.getNumberOfHeroesThatFinishedMovement() == heroManager.getHeroList().size()) {
+            //todo change this algorithm so that it checks for all creatures instead of heroes only.
             for (Hero currentHero : heroManager.getHeroList()) {
                 currentHero.setCurrentSpeed(currentHero.getSpeed());
                 System.out.println("Resetting the movement points for " + currentHero.heroName);
