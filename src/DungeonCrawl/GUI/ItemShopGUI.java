@@ -195,8 +195,6 @@ public class ItemShopGUI {
         return proficiencyInfo;
     }
 
-    //todo add weapon proficiencies to heroclassinformation and to character creator. getters for shop would also be nice.
-
     private void addImplementList() {
         itemShopOuterPane.getStylesheets().add("DungeonCrawl/Styling/CharacterCreator.css");
         TitledPane implementsTitledPane = new TitledPane("Implements", new Label("Show available implements"));

@@ -145,7 +145,6 @@ public class DungeonButtonEvents {
             powerButton.setTextFill(Color.WHITE);
             powersHBox.getChildren().add(powerButton);
             powerButton.setOnAction(event -> eventOnPowerSelect(currentHero, currentPower));
-            //todo buttons before AI get blocked smh
             if (currentPower.getNumberOfLockedEncounters() > 0) {
                 System.out.println("DISABLING THE ENCOUNTER POWER");
                 powerButton.setDisable(true);

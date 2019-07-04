@@ -4,7 +4,7 @@ import javafx.scene.image.Image;
 
 public class Item {
 
-    //todo write the daily powers for level 1. Last updated: Cleric
+    //todo write the daily powers for level 1. Last updated: Paladin
 
     //todo change a map of items to item factory
 

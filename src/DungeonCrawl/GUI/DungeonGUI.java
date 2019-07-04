@@ -143,9 +143,6 @@ class DungeonGUI {
         mapOuterPane.setCenter(equipmentGUI.displayAChosenHeroEquipment(currentHero));
     }
 
-
-    //todo change the updating so that it doesn't do anything for tiles with walls and/or pillars
-
     private void updateGUIAccordingToMap(DungeonMap dungeonMap) {
         for (int i = 0; i < mapWidth; i++) {
             for (int j = 0; j < mapHeight; j++) {

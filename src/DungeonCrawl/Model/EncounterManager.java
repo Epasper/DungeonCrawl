@@ -83,8 +83,6 @@ public class EncounterManager {
         pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("You have selected " + currentHero.getHeroName());
     }
 
-    //todo there's a bug that unlocks a first heroes' movement twice and a bug that locks the button unnecessarily. Has something to do with the initiative queue
-
     private void checkIfAllCreaturesInRoomAreDead() {
         this.discoveredMonsters = pathFinder.getDiscoveredMonsters();
         for (Monster monster : discoveredMonsters) {
@@ -314,7 +312,6 @@ public class EncounterManager {
     public void unlockTheNextCreatureInTheInitiativeOrder() {
         this.discoveredMonsters = pathFinder.getDiscoveredMonsters();
         int creatureIdFromInitiativeArray = getNextCharacterID(globalInitiative);
-        //todo this is risky
         if (creatureIdFromInitiativeArray < 0) {
             setGlobalInitiative(0);
             unlockTheNextCreatureInTheInitiativeOrder();

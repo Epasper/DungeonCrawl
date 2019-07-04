@@ -33,8 +33,6 @@ public class Monster extends Creature {
     private String passive2Description;
     private String passive3Description;
 
-    //todo add the first AI elements - detecting the heroes by monsters and deciding upon moving toward the heroes
-
     public Monster() {
     }
 
