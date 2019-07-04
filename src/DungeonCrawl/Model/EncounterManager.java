@@ -77,6 +77,8 @@ public class EncounterManager {
         pathFinder.checkTheAvailableDistance(currentHero, dungeonMap, buttonGrid, "Available Distance");
         System.out.println(ConsoleColors.ANSI_GREEN + "Clicked the ID " + currentHeroID + " hero." + ConsoleColors.ANSI_RESET);
         heroManager.setCurrentlyActiveHeroID(currentHeroID);
+        System.out.println("Currently Active Hero ID: " + currentHeroID + " || " + currentHero.getID());
+        System.out.println("Current Hero Speed: " + ConsoleColors.ANSI_BLUE + currentHero.getCurrentSpeed() + ConsoleColors.ANSI_RESET);
         setHasTheCharacterBeenSelected(true);
         pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("You have selected " + currentHero.getHeroName());
     }
@@ -304,6 +306,12 @@ public class EncounterManager {
     public void unlockTheNextCreatureInTheInitiativeOrder() {
         this.discoveredMonsters = pathFinder.getDiscoveredMonsters();
         int creatureIdFromInitiativeArray = getNextCharacterID(globalInitiative);
+        //todo this is risky
+        if (creatureIdFromInitiativeArray < 0) {
+            setGlobalInitiative(0);
+            unlockTheNextCreatureInTheInitiativeOrder();
+            return;
+        }
         System.out.println("NEXT INITIATIVE CHECK for number: " + creatureIdFromInitiativeArray);
         if (creatureIdFromInitiativeArray < 100) {
             for (Hero hero : heroManager.getHeroList()) {
@@ -321,20 +329,28 @@ public class EncounterManager {
         } else {
             int monsterUniqueID = getNextMonsterUniqueID(globalInitiative);
             for (Monster monster : discoveredMonsters) {
-                if (monster.getCurrentMonsterUniqueID() == monsterUniqueID && !monster.isThisCreatureDead()) {
-                    System.out.println(ConsoleColors.ANSI_RED + "NEXT MONSTER ID: " +
-                            creatureIdFromInitiativeArray +
-                            " Monster UUID: " + monster.getCurrentMonsterUniqueID() + " || " + monsterUniqueID
-                            + " Monster name: " +
-                            monster.getMonsterName()
-                            + " Init: " + monster.getCurrentInitiative()
-                            + ConsoleColors.ANSI_RESET);
-                    enterTheCurrentMonstersRound(monster);
-                    break;
-                }
+                if (monster.getCurrentMonsterUniqueID() == monsterUniqueID)
+                    if (monster.isThisCreatureDead()) {
+                        monster.setFinishedMovement(true);
+                        System.out.println("Found a dead monster in the initiative order. Proceeding.");
+                        setGlobalInitiative(monster.getCurrentInitiative() + 1);
+                        unlockTheNextCreatureInTheInitiativeOrder();
+                        break;
+                    } else {
+                        System.out.println(ConsoleColors.ANSI_RED + "NEXT MONSTER ID: " +
+                                creatureIdFromInitiativeArray +
+                                " Monster UUID: " + monster.getCurrentMonsterUniqueID() + " || " + monsterUniqueID
+                                + " Monster name: " +
+                                monster.getMonsterName()
+                                + " Init: " + monster.getCurrentInitiative()
+                                + ConsoleColors.ANSI_RESET);
+                        enterTheCurrentMonstersRound(monster);
+                        break;
+                    }
             }
         }
     }
+
 
     private boolean inflictDamageToMonster(Map<String, Integer> attackResults, Monster monster) {
         boolean isTheCreatureDead = false;
