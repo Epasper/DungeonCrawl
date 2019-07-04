@@ -99,6 +99,14 @@ public class EncounterManager {
         List<Monster> emptyListOfMonsters = new ArrayList<>();
         pathFinder.setDiscoveredMonsters(emptyListOfMonsters);
         pathFinder.dungeonConsoleGUI.clearInitiativeTracker();
+        for (Hero currentHero : heroManager.getHeroList()) {
+            for (HeroPower power : currentHero.getEncounterPowers()) {
+                power.setNumberOfLockedEncounters(0);
+            }
+            for (HeroPower power : currentHero.getDailyPowers()) {
+                power.setNumberOfLockedEncounters(power.getNumberOfLockedEncounters() - 1);
+            }
+        }
         encounterOnline = false;
         pathFinder.setAlarmedMonsterVisible(false);
     }

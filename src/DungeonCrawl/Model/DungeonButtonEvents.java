@@ -24,7 +24,6 @@ public class DungeonButtonEvents {
     private List<HeroPower> currentHeroPowers;
 
 
-
     public DungeonButtonEvents(EncounterManager encounterManager, MapManager mapManager, HBox powersHBox, List<HeroPower> currentHeroPowers) {
         this.encounterManager = encounterManager;
         this.mapManager = mapManager;
@@ -162,6 +161,7 @@ public class DungeonButtonEvents {
             powersHBox.getChildren().add(powerButton);
             powerButton.setOnAction(event -> eventOnPowerSelect(currentHero, currentPower));
             if (currentPower.getNumberOfLockedEncounters() > 0) {
+                System.out.println(ConsoleColors.ANSI_CYAN + "Rounds Locked: " + currentPower.getNumberOfLockedEncounters() + ConsoleColors.ANSI_RESET);
                 System.out.println(ConsoleColors.ANSI_BLUE + "DISABLING THE DAILY POWER" + ConsoleColors.ANSI_RESET);
                 powerButton.setDisable(true);
             }

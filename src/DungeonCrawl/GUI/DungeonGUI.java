@@ -56,7 +56,7 @@ class DungeonGUI {
 
     //todo lock the portrait buttons' walk function when the hero is locked out of movement.
 
-    //todo lock the possibility of attacking when no power is selected.
+    //todo lock the possibility of attacking when no power is selected. After the attack, disable the power from currently selected powers.
 
     //todo lock encounter powers on use until the end of encounter. Lock daily powers on use once every 3 encounters.
 
