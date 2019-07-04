@@ -54,6 +54,8 @@ class DungeonGUI {
         updateGUIAccordingToMap(encounterManager.getDungeonMap());
     }
 
+    //todo lock the portrait buttons' walk function when the hero is locked out of movement.
+
     //todo lock the possibility of attacking when no power is selected.
 
     //todo lock encounter powers on use until the end of encounter. Lock daily powers on use once every 3 encounters.
@@ -64,6 +66,7 @@ class DungeonGUI {
      */
 
     //todo in future, change the portraits, so that each hero has a bigger portrait on the right and small icon on the field.
+
     //todo download some bigger portraits from the internet and use JavaFX resize to fit the big ones in the buttons
 
     //todo Hero portraits to turn red with damage taken.

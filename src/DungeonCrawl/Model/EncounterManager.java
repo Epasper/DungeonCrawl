@@ -215,6 +215,7 @@ public class EncounterManager {
     public void resetAllHeroesSpeedToMax() {
         for (Hero hero : heroManager.getHeroList()) {
             hero.setCurrentSpeed(hero.getSpeed());
+            hero.setFinishedMovement(false);
         }
     }
 

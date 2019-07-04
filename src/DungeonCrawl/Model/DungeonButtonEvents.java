@@ -20,8 +20,9 @@ public class DungeonButtonEvents {
     private MapManager mapManager;
     private EncounterManager encounterManager;
     private HBox powersHBox;
-    private List<HeroPower> currentHeroPowers;
     private Button[][] buttonGrid;
+    private List<HeroPower> currentHeroPowers;
+
 
 
     public DungeonButtonEvents(EncounterManager encounterManager, MapManager mapManager, HBox powersHBox, List<HeroPower> currentHeroPowers) {
@@ -57,30 +58,35 @@ public class DungeonButtonEvents {
             encounterManager.getDungeonMap().clearMapReachableProperties(encounterManager.getDungeonMap());
         }
         if (currentHeroID > 100 && isTheTileInteractive) {
-            boolean updateTheGraphics = true;
-            try {
-                Monster monster = guiUtilities.getSingleMonsterByUniqueID(encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID(), encounterManager.getAllMonstersList());
-                String hitResult = encounterManager.eventOnHeroAttackingAMonster(XPos, YPos, currentHeroPowers.get(currentHeroPowers.size() - 1));
-                if (hitResult.contains("Hit")) {
-                    updateTheGraphics = false;
-                    guiAnimations.visualsOnHit(buttonGrid[XPos][YPos], hitResult, mapManager, encounterManager);
-                } else if (hitResult.contains("Miss")) {
-                    updateTheGraphics = false;
-                    guiAnimations.creatureWasMissedAnimation(buttonGrid[XPos][YPos], mapManager, encounterManager);
-                } else if (hitResult.contains("Dead")) {
-                    updateTheGraphics = false;
-                    guiAnimations.visualsOnHit(buttonGrid[XPos][YPos], hitResult, mapManager, encounterManager);
-                    mapManager.addDeathImageToCreatureImage(monster);
-                    buttonGrid[monster.getMapXPos()][monster.getMapYPos()].setGraphic(mapManager.addDeathImageToCreatureImage(monster));
-                }
-            } catch (IndexOutOfBoundsException e) {
-                pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("Please select a power before attacking");
-            }
-            if (updateTheGraphics) {
-                mapManager.updateMapGraphics(encounterManager.getDungeonMap());
-            }
+            attackAMonsterEvent(XPos, YPos, currentHeroPowers);
         }
     }
+
+    private void attackAMonsterEvent(int XPos, int YPos, List<HeroPower> currentHeroPowers) {
+        boolean updateTheGraphics = true;
+        try {
+            Monster monster = guiUtilities.getSingleMonsterByUniqueID(encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID(), encounterManager.getAllMonstersList());
+            String hitResult = encounterManager.eventOnHeroAttackingAMonster(XPos, YPos, currentHeroPowers.get(currentHeroPowers.size() - 1));
+            if (hitResult.contains("Hit")) {
+                updateTheGraphics = false;
+                guiAnimations.visualsOnHit(buttonGrid[XPos][YPos], hitResult, mapManager, encounterManager);
+            } else if (hitResult.contains("Miss")) {
+                updateTheGraphics = false;
+                guiAnimations.creatureWasMissedAnimation(buttonGrid[XPos][YPos], mapManager, encounterManager);
+            } else if (hitResult.contains("Dead")) {
+                updateTheGraphics = false;
+                guiAnimations.visualsOnHit(buttonGrid[XPos][YPos], hitResult, mapManager, encounterManager);
+                mapManager.addDeathImageToCreatureImage(monster);
+                buttonGrid[monster.getMapXPos()][monster.getMapYPos()].setGraphic(mapManager.addDeathImageToCreatureImage(monster));
+            }
+        } catch (IndexOutOfBoundsException e) {
+            pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("Please select a power before attacking");
+        }
+        if (updateTheGraphics) {
+            mapManager.updateMapGraphics(encounterManager.getDungeonMap());
+        }
+    }
+
 
     private void eventOnHeroMovement(int XPos, int YPos) {
         boolean shouldEncounterGetTriggered = false;
@@ -140,6 +146,10 @@ public class DungeonButtonEvents {
             powerButton.setTextFill(Color.WHITE);
             powersHBox.getChildren().add(powerButton);
             powerButton.setOnAction(event -> eventOnPowerSelect(currentHero, currentPower));
+            if (currentPower.getNumberOfLockedEncounters() > 0) {
+                System.out.println("DISABLING THE ENCOUNTER POWER");
+                powerButton.setDisable(true);
+            }
         }
         for (HeroPower currentPower : currentHero.getDailyPowers()) {
             Button powerButton = new Button();
@@ -150,15 +160,27 @@ public class DungeonButtonEvents {
             powerButton.setTextFill(Color.WHITE);
             powersHBox.getChildren().add(powerButton);
             powerButton.setOnAction(event -> eventOnPowerSelect(currentHero, currentPower));
+            if (currentPower.getNumberOfLockedEncounters() > 0) {
+                System.out.println(ConsoleColors.ANSI_BLUE + "DISABLING THE DAILY POWER" + ConsoleColors.ANSI_RESET);
+                powerButton.setDisable(true);
+            }
         }
     }
 
     private void eventOnPowerSelect(Hero currentHero, HeroPower selectedPower) {
+        System.out.println(ConsoleColors.ANSI_PURPLE +
+                "SELECTED A POWER " + selectedPower.getTypeOfPower() + "  " + selectedPower.getPowerName()
+                + ConsoleColors.ANSI_RESET);
         PathFinder pathFinder = new PathFinder();
         currentHero.setAttackRange(selectedPower.getRange());
-        currentHeroPowers.clear();
-        currentHeroPowers.add(selectedPower);
         pathFinder.checkTheLineOfSight(encounterManager.getDungeonMap(), buttonGrid, currentHero);
         pathFinder.checkTheAvailableDistance(currentHero, encounterManager.getDungeonMap(), buttonGrid, "Attack Range");
+        currentHeroPowers.clear();
+        currentHeroPowers.add(selectedPower);
+        if (selectedPower.getTypeOfPower().contains("encounter")) {
+            selectedPower.setNumberOfLockedEncounters(1);
+        } else if (selectedPower.getTypeOfPower().contains("daily")) {
+            selectedPower.setNumberOfLockedEncounters(3);
+        }
     }
 }

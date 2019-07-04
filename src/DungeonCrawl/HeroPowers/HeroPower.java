@@ -32,6 +32,15 @@ public abstract class HeroPower {
     protected String secondAttributeUsed;
     protected String powersAdditionalOptions;
     private String powerIconId;
+    private int numberOfLockedEncounters = 0;
+
+    public int getNumberOfLockedEncounters() {
+        return numberOfLockedEncounters;
+    }
+
+    public void setNumberOfLockedEncounters(int numberOfLockedEncounters) {
+        this.numberOfLockedEncounters = numberOfLockedEncounters;
+    }
 
     public String getPowerIconId() {
         return powerIconId;
