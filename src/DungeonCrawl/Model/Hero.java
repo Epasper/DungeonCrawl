@@ -1,4 +1,5 @@
 package DungeonCrawl.Model;
+
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.Items.Item;
 import javafx.scene.control.Button;
@@ -341,8 +342,9 @@ public class Hero extends Creature {
     }
 
 
-    public Map<String, Integer> attackAMonster(Monster attackedMonster, HeroPower powerUsedForAttacking) {
-        Map<String, Integer> valuesToBeReturned = new HashMap<>();
+    public AttackResults attackAMonster(Monster attackedMonster, HeroPower powerUsedForAttacking) {
+        AttackResults attackResults = new AttackResults();
+        //Map<String, Integer> valuesToBeReturned = new HashMap<>();
         String usedAttribute = powerUsedForAttacking.getAttributeUsedToHit();
         heroAttributesMap.forEach((k, v) -> System.out.println("Hero Attribute: " + k + " Value: " + v));
         System.out.println("Attacked Monster: " + attackedMonster.getMonsterName());
@@ -352,10 +354,10 @@ public class Hero extends Creature {
         String attackedDefense = powerUsedForAttacking.getDefenseToBeChecked().toLowerCase();
         int defenseValue = attackedMonster.getDefensesMap().get(attackedDefense);
         Random random = new Random();
-        int diceRoll = random.nextInt(20);
-        valuesToBeReturned.put("Attribute Bonus", attributeBonus);
-        valuesToBeReturned.put("Defense Value", defenseValue);
-        valuesToBeReturned.put("Dice Roll", diceRoll);
-        return valuesToBeReturned;
+        int diceRoll = random.nextInt(20) + 1;
+        attackResults.setAttributeBonus(attributeBonus);
+        attackResults.setDefenseChecked(defenseValue);
+        attackResults.setDiceRollValue(diceRoll);
+        return attackResults;
     }
 }

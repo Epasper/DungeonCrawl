@@ -3,10 +3,8 @@ package DungeonCrawl.Model;
 import DungeonCrawl.GUI.GUIUtilities;
 import DungeonCrawl.HeroPowers.HeroPower;
 import javafx.scene.control.Button;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 public class EncounterManager {
@@ -94,6 +92,7 @@ public class EncounterManager {
         }
         System.out.println("All monsters are dead!");
         enableAllHeroButtons();
+        resetAllHeroesSpeedToMax();
         List<Monster> emptyListOfMonsters = new ArrayList<>();
         pathFinder.setDiscoveredMonsters(emptyListOfMonsters);
         pathFinder.dungeonConsoleGUI.clearInitiativeTracker();
@@ -109,7 +108,7 @@ public class EncounterManager {
         pathFinder.setAlarmedMonsterVisible(false);
     }
 
-    private void triggerOnHit(HeroPower attackingPower, Hero hero, Map<String, Integer> attackResults) {
+    private void triggerOnHit(HeroPower attackingPower, Hero hero, AttackResults attackResults) {
         int weaponDamage;
         int numberOfDice;
         if (attackingPower.isThisWeaponDamage()) {
@@ -144,12 +143,12 @@ public class EncounterManager {
                 + ". Bonus damage equal to your "
                 + attackingPower.getDamageModifier()
                 + ": "
-                + attackResults.get("Attribute Bonus"));
+                + attackResults.getAttributeBonus());
         pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("You've dealt " + allDamage + " damage");
-        attackResults.put("Damage Inflicted", allDamage);
+        attackResults.setDamage(allDamage);
     }
 
-    private void prepareTheAttackMessage(HeroPower attackingPower, Monster monster, Map attackResults) {
+    private void prepareTheAttackMessage(HeroPower attackingPower, Monster monster, AttackResults attackResults) {
         pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("You have attacked a " +
                 monster.getMonsterName()
                 + " with "
@@ -158,15 +157,15 @@ public class EncounterManager {
                 + "Your current "
                 + attackingPower.getAttributeUsedToHit()
                 + " bonus equals to "
-                + attackResults.get("Attribute Bonus")
+                + attackResults.getAttributeBonus()
                 + "\n"
                 + "The dice roll: "
-                + attackResults.get("Dice Roll")
+                + attackResults.getDiceRollValue()
                 + " plus the modifier of "
-                + attackResults.get("Attribute Bonus")
+                + attackResults.getAttributeBonus()
                 + " equals "
-                + ((int) attackResults.get("Attribute Bonus")
-                + (int) attackResults.get("Dice Roll"))
+                + ((int) attackResults.getAttributeBonus()
+                + (int) attackResults.getDiceRollValue())
                 + " against "
                 + monster.getMonsterName()
                 + "'s "
@@ -238,15 +237,15 @@ public class EncounterManager {
             System.out.println(currentMonster.getCurrentMonsterUniqueID());
         }
         System.out.println("ID From Tile: " + getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID());
-        Map<String, Integer> attackResults = hero.attackAMonster(monster, attackingPower);
+        AttackResults attackResults = hero.attackAMonster(monster, attackingPower);
         prepareTheAttackMessage(attackingPower, monster, attackResults);
-        if ((attackResults.get("Attribute Bonus") + attackResults.get("Dice Roll")) >
+        if ((attackResults.getAttributeBonus() + attackResults.getDiceRollValue()) >
                 monster.getDefensesMap().get(attackingPower.getDefenseToBeChecked().toLowerCase())) {
             triggerOnHit(attackingPower, hero, attackResults);
             if (inflictDamageToMonster(attackResults, monster)) {
                 return "Dead";
             }
-            return "Hit - " + attackResults.get("Damage Inflicted");
+            return "Hit - " + attackResults.getDamage();
         } else {
             pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("Your attack has missed.");
             return "Missed";
@@ -357,9 +356,9 @@ public class EncounterManager {
     }
 
 
-    private boolean inflictDamageToMonster(Map<String, Integer> attackResults, Monster monster) {
+    private boolean inflictDamageToMonster(AttackResults attackResults, Monster monster) {
         boolean isTheCreatureDead = false;
-        int damageDealt = attackResults.get("Damage Inflicted");
+        int damageDealt = attackResults.getDamage();
         monster.setCurrentHitPoints(monster.getCurrentHitPoints() - damageDealt);
         System.out.println("DEBUG: " + monster.getHitPoints() + " HP");
         System.out.println("DEBUG: " + monster.getCurrentHitPoints() + " HP");

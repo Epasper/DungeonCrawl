@@ -8,7 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.List;
 
 public class DungeonButtonEvents {
@@ -126,45 +127,40 @@ public class DungeonButtonEvents {
     private void updateButtonsWithSkillIcons(Hero currentHero) {
         SkillIcons skillIcons = new SkillIcons();
         for (HeroPower currentPower : currentHero.getAtWillPowers()) {
-            Button powerButton = new Button();
-            int powerIconID = Integer.valueOf(currentPower.getPowerIconId());
-            ImageView powerImageView = new ImageView(skillIcons.getSkillIconById(powerIconID));
-            powerButton.setGraphic(powerImageView);
-            powerButton.setStyle("-fx-background-color: #007200;");
-            powerButton.setTextFill(Color.WHITE);
-            powersHBox.getChildren().add(powerButton);
-            powerButton.setOnAction(event -> eventOnPowerSelect(currentHero, currentPower));
+            addAPowerButton(currentHero, skillIcons, currentPower, "-fx-background-color: #007200;");
 
         }
         for (HeroPower currentPower : currentHero.getEncounterPowers()) {
-            Button powerButton = new Button();
-            int powerIconID = Integer.valueOf(currentPower.getPowerIconId());
-            ImageView powerImageView = new ImageView(skillIcons.getSkillIconById(powerIconID));
-            powerButton.setGraphic(powerImageView);
-            powerButton.setStyle("-fx-background-color: #910000;");
-            powerButton.setTextFill(Color.WHITE);
-            powersHBox.getChildren().add(powerButton);
-            powerButton.setOnAction(event -> eventOnPowerSelect(currentHero, currentPower));
+            Button powerButton = addAPowerButton(currentHero, skillIcons, currentPower, "-fx-background-color: #910000;");
             if (currentPower.getNumberOfLockedEncounters() > 0) {
                 System.out.println("DISABLING THE ENCOUNTER POWER");
                 powerButton.setDisable(true);
             }
         }
         for (HeroPower currentPower : currentHero.getDailyPowers()) {
-            Button powerButton = new Button();
-            int powerIconID = Integer.valueOf(currentPower.getPowerIconId());
-            ImageView powerImageView = new ImageView(skillIcons.getSkillIconById(powerIconID));
-            powerButton.setGraphic(powerImageView);
-            powerButton.setStyle("-fx-background-color: #5c005e;");
-            powerButton.setTextFill(Color.WHITE);
-            powersHBox.getChildren().add(powerButton);
-            powerButton.setOnAction(event -> eventOnPowerSelect(currentHero, currentPower));
+            Button powerButton = addAPowerButton(currentHero, skillIcons, currentPower, "-fx-background-color: #5c005e;");
             if (currentPower.getNumberOfLockedEncounters() > 0) {
                 System.out.println(ConsoleColors.ANSI_CYAN + "Rounds Locked: " + currentPower.getNumberOfLockedEncounters() + ConsoleColors.ANSI_RESET);
                 System.out.println(ConsoleColors.ANSI_BLUE + "DISABLING THE DAILY POWER" + ConsoleColors.ANSI_RESET);
                 powerButton.setDisable(true);
             }
         }
+    }
+
+    private Button addAPowerButton(Hero currentHero, SkillIcons skillIcons, HeroPower currentPower, String s) {
+        Button powerButton = new Button();
+        int powerIconID = Integer.valueOf(currentPower.getPowerIconId());
+        ImageView powerImageView = new ImageView(skillIcons.getSkillIconById(powerIconID));
+        powerImageView.setFitWidth(50);
+        powerImageView.setFitHeight(50);
+        powerButton.setGraphic(powerImageView);
+        powerButton.setStyle(s);
+        powerButton.setTextFill(Color.WHITE);
+        powerButton.setMaxHeight(50);
+        powerButton.setMaxWidth(50);
+        powersHBox.getChildren().add(powerButton);
+        powerButton.setOnAction(event -> eventOnPowerSelect(currentHero, currentPower));
+        return powerButton;
     }
 
     private void eventOnPowerSelect(Hero currentHero, HeroPower selectedPower) {

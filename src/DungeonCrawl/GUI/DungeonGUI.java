@@ -75,7 +75,7 @@ class DungeonGUI {
 
     private void manageTheConsoleAdding() {
         powersHBox.setStyle("-fx-background-color:grey;");
-        powersHBox.setMinSize(200, 110);
+        powersHBox.setMinSize(200, 60);
         Button equipmentButton = addViewEquipmentButton();
         Button viewDungeon = new Button();
         viewDungeon.setOnAction(event -> viewMapEvent());

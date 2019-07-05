@@ -1,5 +1,7 @@
 package DungeonCrawl.HeroPowers;
 
+import DungeonCrawl.Model.AttackResults;
+
 public abstract class HeroPower {
 
     //todo write the daily powers for level 1. Last updated: Paladin
@@ -175,4 +177,5 @@ public abstract class HeroPower {
     public void setTypeOfBonusDamageDice(int typeOfBonusDamageDice) {
         this.typeOfBonusDamageDice = typeOfBonusDamageDice;
     }
+
 }
