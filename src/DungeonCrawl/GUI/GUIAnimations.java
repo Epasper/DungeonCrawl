@@ -69,7 +69,7 @@ public class GUIAnimations {
         translateTransition.setCycleCount(2);
         translateTransition.setAutoReverse(true);
         translateTransition.setOnFinished(e -> mapManager.updateMapGraphics(encounterManager.getDungeonMap()));
-        System.out.println("Creature missed, translating. Coordinates: " + button.getId());
+        System.out.println("Creature missed, translating.");
         translateTransition.play();
     }
 

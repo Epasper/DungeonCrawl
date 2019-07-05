@@ -8,8 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-import java.awt.*;
-import java.awt.image.BufferedImage;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class DungeonButtonEvents {
@@ -62,22 +62,70 @@ public class DungeonButtonEvents {
         }
     }
 
+    public List<Creature> determineTheNumberOfCreaturesAttacked(int XPos, int YPos, HeroPower heroPower, DungeonMap dungeonMap, List<Monster> allDiscoveredMonsters, List<Hero> allDiscoveredHeroes) {
+        List<Creature> listOfCreaturesAttacked = new ArrayList<>();
+        if (heroPower.getNumberOfTargets().contains("Burst")) {
+            manageBurstAttack(XPos, YPos, heroPower, dungeonMap, allDiscoveredMonsters, allDiscoveredHeroes, listOfCreaturesAttacked);
+        } else {
+            listOfCreaturesAttacked.add(guiUtilities.getSingleMonsterByUniqueID(dungeonMap.getMapTilesArray()[XPos][YPos].getOccupyingCreatureTypeId(), allDiscoveredMonsters));
+        }
+        return listOfCreaturesAttacked;
+    }
+
+    private void manageBurstAttack(int XPos, int YPos, HeroPower heroPower, DungeonMap dungeonMap, List<Monster> allDiscoveredMonsters, List<Hero> allDiscoveredHeroes, List<Creature> listOfCreaturesAttacked) {
+        int burstValue = heroPower.getBurstValue();
+        for (int i = -burstValue; i < burstValue; i++) {
+            for (int j = -burstValue; j < burstValue; j++) {
+                try {
+                    int creatureId = dungeonMap.getMapTilesArray()[XPos + i][YPos + j].getOccupyingCreatureTypeId();
+                    if (creatureId > 100) {
+                        creatureId = dungeonMap.getMapTilesArray()[XPos + i][YPos + j].getOccupyingCreatureUniqueID();
+                        for (Monster monster : allDiscoveredMonsters) {
+                            if (monster.getCurrentMonsterUniqueID() == creatureId) {
+                                listOfCreaturesAttacked.add(monster);
+                            }
+                        }
+                    } else {
+                        for (Hero hero : allDiscoveredHeroes) {
+                            if (hero.getID() == creatureId) {
+                                listOfCreaturesAttacked.add(hero);
+                            }
+                        }
+                    }
+                } catch (NullPointerException ignored) {
+                }
+            }
+        }
+    }
+
     private void attackAMonsterEvent(int XPos, int YPos, List<HeroPower> currentHeroPowers) {
         boolean updateTheGraphics = true;
         try {
-            Monster monster = guiUtilities.getSingleMonsterByUniqueID(encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID(), encounterManager.getAllMonstersList());
-            String hitResult = encounterManager.eventOnHeroAttackingAMonster(XPos, YPos, currentHeroPowers.get(currentHeroPowers.size() - 1));
-            if (hitResult.contains("Hit")) {
-                updateTheGraphics = false;
-                guiAnimations.visualsOnHit(buttonGrid[XPos][YPos], hitResult, mapManager, encounterManager);
-            } else if (hitResult.contains("Miss")) {
-                updateTheGraphics = false;
-                guiAnimations.creatureWasMissedAnimation(buttonGrid[XPos][YPos], mapManager, encounterManager);
-            } else if (hitResult.contains("Dead")) {
-                updateTheGraphics = false;
-                guiAnimations.visualsOnHit(buttonGrid[XPos][YPos], hitResult, mapManager, encounterManager);
-                mapManager.addDeathImageToCreatureImage(monster);
-                buttonGrid[monster.getMapXPos()][monster.getMapYPos()].setGraphic(mapManager.addDeathImageToCreatureImage(monster));
+            HeroPower currentPower = currentHeroPowers.get(currentHeroPowers.size() - 1);
+            List<Creature> listOfAttackedCreatures = determineTheNumberOfCreaturesAttacked(XPos,
+                    YPos,
+                    currentPower,
+                    encounterManager.getDungeonMap(),
+                    encounterManager.getDiscoveredMonsters(),
+                    encounterManager.getHeroManager().getHeroList());
+            for (Creature creature : listOfAttackedCreatures) {
+                String hitResult = encounterManager.eventOnHeroAttackingASingleCreature(XPos, YPos, currentPower, creature);
+                System.out.println(ConsoleColors.ANSI_PURPLE + "Hit Results: " + hitResult + ConsoleColors.ANSI_RESET);
+                if (hitResult.contains("Hit")) {
+                    System.out.println(ConsoleColors.ANSI_GREEN + creature.getHeroName() + "  " + creature.getHitPoints() + " Was Hit" + ConsoleColors.ANSI_RESET);
+                    updateTheGraphics = false;
+                    guiAnimations.visualsOnHit(buttonGrid[creature.getMapXPos()][creature.getMapYPos()], hitResult, mapManager, encounterManager);
+                } else if (hitResult.contains("Miss")) {
+                    System.out.println(ConsoleColors.ANSI_BLUE + creature.getHeroName() + "  " + creature.getHitPoints() + " Was Missed" + ConsoleColors.ANSI_RESET);
+                    updateTheGraphics = false;
+                    guiAnimations.creatureWasMissedAnimation(buttonGrid[creature.getMapXPos()][creature.getMapYPos()], mapManager, encounterManager);
+                } else if (hitResult.contains("Dead")) {
+                    System.out.println(ConsoleColors.ANSI_RED + creature.getHeroName() + "  " + creature.getHitPoints() + " Is Dead" + ConsoleColors.ANSI_RESET);
+                    updateTheGraphics = false;
+                    guiAnimations.visualsOnHit(buttonGrid[creature.getMapXPos()][creature.getMapYPos()], hitResult, mapManager, encounterManager);
+                    //mapManager.addDeathImageToCreatureImage(creature);
+                    buttonGrid[creature.getMapXPos()][creature.getMapYPos()].setGraphic(mapManager.addDeathImageToCreatureImage(creature));
+                }
             }
         } catch (IndexOutOfBoundsException e) {
             pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("Please select a power before attacking");

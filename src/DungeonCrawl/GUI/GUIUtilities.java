@@ -9,6 +9,7 @@ public class GUIUtilities {
 
     public Hero getHeroByID(int ID, List<Hero> listOfHeroes) {
         Hero returnedHero = new Hero();
+        returnedHero.updateTheDefensesMap();
         for (Hero aHero : listOfHeroes) {
             if (aHero.getID() == ID) {
                 return aHero;

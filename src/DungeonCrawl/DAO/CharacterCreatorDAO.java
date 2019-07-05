@@ -83,6 +83,9 @@ public class CharacterCreatorDAO {
 
     public Hero getAHeroByID(int ID) throws SQLException, IOException {
         Hero hero = new Hero();
+        hero.setHitPoints(1000); //todo set HP properly
+        hero.setCurrentHitPoints(1000);
+        hero.updateTheDefensesMap();
         System.out.println("-----> Hero ID From DAO" + ID);
         String sql = "SELECT * FROM dungeon.heroes WHERE idheroes = ?;";
         pst = conn.prepareStatement(sql);

@@ -31,8 +31,17 @@ public abstract class HeroPower {
     protected boolean isThisABeastFormAttack = false;
     protected String secondAttributeUsed;
     protected String powersAdditionalOptions;
+    protected int burstValue = 0;
     private String powerIconId;
     private int numberOfLockedEncounters = 0;
+
+    public int getBurstValue() {
+        return burstValue;
+    }
+
+    public void setBurstValue(int burstValue) {
+        this.burstValue = burstValue;
+    }
 
     public int getNumberOfLockedEncounters() {
         return numberOfLockedEncounters;

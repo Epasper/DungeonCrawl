@@ -16,7 +16,8 @@ public class AstralTerror extends HeroPower {
         usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
         powerLevel = 1;
         range = 10;
-        numberOfTargets = "Burst 1";
+        numberOfTargets = "Burst";
+        burstValue = 1;
         attributeUsedToHit = AttributeNames.Wisdom.toString();
         defenseToBeChecked = CreatureDefenses.Reflex.toString();
         damageDiceDealt = 1;

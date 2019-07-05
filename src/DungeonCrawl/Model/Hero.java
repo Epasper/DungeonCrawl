@@ -341,18 +341,16 @@ public class Hero extends Creature {
         return gold;
     }
 
-
-    public AttackResults attackAMonster(Monster attackedMonster, HeroPower powerUsedForAttacking) {
+    public AttackResults attackAMonster(Creature attackedCreature, HeroPower powerUsedForAttacking) {
         AttackResults attackResults = new AttackResults();
-        //Map<String, Integer> valuesToBeReturned = new HashMap<>();
         String usedAttribute = powerUsedForAttacking.getAttributeUsedToHit();
         heroAttributesMap.forEach((k, v) -> System.out.println("Hero Attribute: " + k + " Value: " + v));
-        System.out.println("Attacked Monster: " + attackedMonster.getMonsterName());
-        System.out.println("Attacked Monster UUID: " + attackedMonster.getCurrentMonsterUniqueID());
+        System.out.println("Attacked Monster: " + attackedCreature.getMonsterName());
+        System.out.println("Attacked Monster UUID: " + attackedCreature.getCurrentMonsterUniqueID());
         System.out.println(usedAttribute);
         int attributeBonus = (heroAttributesMap.get(usedAttribute.toLowerCase()) - 10) / 2;
         String attackedDefense = powerUsedForAttacking.getDefenseToBeChecked().toLowerCase();
-        int defenseValue = attackedMonster.getDefensesMap().get(attackedDefense);
+        int defenseValue = attackedCreature.getDefensesMap().get(attackedDefense);
         Random random = new Random();
         int diceRoll = random.nextInt(20) + 1;
         attackResults.setAttributeBonus(attributeBonus);

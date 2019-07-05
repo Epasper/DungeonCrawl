@@ -221,7 +221,7 @@ public class PathFinder {
                                         int deltaY = j + 1;
                                         double skewingCoefficient;
                                         skewingCoefficient = deltaX / deltaY;
-                                        System.out.println("DeltaX: " + deltaX + " DeltaY: " + deltaY);
+                                        //System.out.println("DeltaX: " + deltaX + " DeltaY: " + deltaY);
                                         int valueX = currentXPos + (i * k * dir1);
                                         int valueY = currentYPos + (j * k * dir2);
                                         markTileAsUnreachable(dungeonMap, buttonGrid, valueX, valueY);

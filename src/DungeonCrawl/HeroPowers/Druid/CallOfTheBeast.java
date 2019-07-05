@@ -16,7 +16,8 @@ public class CallOfTheBeast extends HeroPower {
         usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
         powerLevel = 1;
         range = 10;
-        numberOfTargets = "Burst 1, Enemies only";
+        numberOfTargets = "Burst";
+        burstValue = 1;
         attributeUsedToHit = AttributeNames.Wisdom.toString();
         defenseToBeChecked = CreatureDefenses.Fortitude.toString();
         damageDiceDealt = 0;

@@ -3,6 +3,7 @@ package DungeonCrawl.Model;
 import DungeonCrawl.GUI.GUIUtilities;
 import DungeonCrawl.HeroPowers.HeroPower;
 import javafx.scene.control.Button;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -19,6 +20,14 @@ public class EncounterManager {
     private List<Monster> discoveredMonsters;
     private boolean hasTheCharacterBeenSelected = false;
     private int globalInitiative = 0;
+
+    public List<Monster> getDiscoveredMonsters() {
+        return discoveredMonsters;
+    }
+
+    public void setDiscoveredMonsters(List<Monster> discoveredMonsters) {
+        this.discoveredMonsters = discoveredMonsters;
+    }
 
     public int getGlobalInitiative() {
         return globalInitiative;
@@ -148,9 +157,9 @@ public class EncounterManager {
         attackResults.setDamage(allDamage);
     }
 
-    private void prepareTheAttackMessage(HeroPower attackingPower, Monster monster, AttackResults attackResults) {
+    private void prepareTheAttackMessage(HeroPower attackingPower, Creature attackedCreature, AttackResults attackResults) {
         pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("You have attacked a " +
-                monster.getMonsterName()
+                attackedCreature.getMonsterName()
                 + " with "
                 + attackingPower.getPowerName()
                 + " attack \n"
@@ -164,14 +173,14 @@ public class EncounterManager {
                 + " plus the modifier of "
                 + attackResults.getAttributeBonus()
                 + " equals "
-                + ((int) attackResults.getAttributeBonus()
-                + (int) attackResults.getDiceRollValue())
+                + (attackResults.getAttributeBonus()
+                + attackResults.getDiceRollValue()
                 + " against "
-                + monster.getMonsterName()
+                + attackedCreature.getMonsterName()
                 + "'s "
                 + attackingPower.getDefenseToBeChecked()
                 + " of "
-                + monster.getDefensesMap().get(attackingPower.getDefenseToBeChecked().toLowerCase()));
+                + attackedCreature.getDefensesMap().get(attackingPower.getDefenseToBeChecked().toLowerCase())));
     }
 
     public void endTheCurrentHeroMovement(Hero hero) {
@@ -226,23 +235,22 @@ public class EncounterManager {
         }
     }
 
-    public String eventOnHeroAttackingAMonster(int XPos, int YPos, HeroPower attackingPower) {
+    public String eventOnHeroAttackingASingleCreature(int XPos, int YPos, HeroPower attackingPower, Creature creature) {
         Hero hero = guiUtilities.getHeroByID(heroManager.getCurrentlyActiveHeroID(), heroManager.getHeroList());
         System.out.println("Attacking a monster with unique ID: " + getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID());
-        Monster monster = guiUtilities.getSingleMonsterByUniqueID(getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID(), allMonstersList);
-        System.out.println("LIST OF ALL MONSTERS:");
+        /*System.out.println("LIST OF ALL MONSTERS:");
         for (Monster currentMonster : allMonstersList) {
             System.out.println(currentMonster.getMonsterName());
             System.out.println(currentMonster.getID());
             System.out.println(currentMonster.getCurrentMonsterUniqueID());
-        }
+        }*/
         System.out.println("ID From Tile: " + getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID());
-        AttackResults attackResults = hero.attackAMonster(monster, attackingPower);
-        prepareTheAttackMessage(attackingPower, monster, attackResults);
+        AttackResults attackResults = hero.attackAMonster(creature, attackingPower);
+        prepareTheAttackMessage(attackingPower, creature, attackResults);
         if ((attackResults.getAttributeBonus() + attackResults.getDiceRollValue()) >
-                monster.getDefensesMap().get(attackingPower.getDefenseToBeChecked().toLowerCase())) {
+                creature.getDefensesMap().get(attackingPower.getDefenseToBeChecked().toLowerCase())) {
             triggerOnHit(attackingPower, hero, attackResults);
-            if (inflictDamageToMonster(attackResults, monster)) {
+            if (inflictDamageToCreature(attackResults, creature)) {
                 return "Dead";
             }
             return "Hit - " + attackResults.getDamage();
@@ -356,26 +364,26 @@ public class EncounterManager {
     }
 
 
-    private boolean inflictDamageToMonster(AttackResults attackResults, Monster monster) {
+    private boolean inflictDamageToCreature(AttackResults attackResults, Creature creature) {
         boolean isTheCreatureDead = false;
         int damageDealt = attackResults.getDamage();
-        monster.setCurrentHitPoints(monster.getCurrentHitPoints() - damageDealt);
-        System.out.println("DEBUG: " + monster.getHitPoints() + " HP");
-        System.out.println("DEBUG: " + monster.getCurrentHitPoints() + " HP");
-        System.out.println("DEBUG: " + monster.getID() + " ID");
-        if (monster.getCurrentHitPoints() < 1) {
-            pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("The attacked monster - " + monster.getMonsterName() + " - has fallen!");
-            eventOnMonsterDeath(monster);
+        creature.setCurrentHitPoints(creature.getCurrentHitPoints() - damageDealt);
+        System.out.println("DEBUG: " + creature.getHitPoints() + " HP");
+        System.out.println("DEBUG: " + creature.getCurrentHitPoints() + " HP");
+        System.out.println("DEBUG: " + creature.getID() + " ID");
+        if (creature.getCurrentHitPoints() < 1) {
+            pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("The attacked monster - " + creature.getMonsterName() + " - has fallen!");
+            eventOnCreatureDeath(creature);
             isTheCreatureDead = true;
-        } else if (monster.getCurrentHitPoints() * 2 < monster.getHitPoints()) {
-            pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("The attacked monster - " + monster.getMonsterName() + " - is now bloodied.");
+        } else if (creature.getCurrentHitPoints() * 2 < creature.getHitPoints()) {
+            pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("The attacked monster - " + creature.getMonsterName() + " - is now bloodied.");
             isTheCreatureDead = false;
         }
         return isTheCreatureDead;
     }
 
-    private void eventOnMonsterDeath(Monster monster) {
-        monster.setThisCreatureDead(true);
+    private void eventOnCreatureDeath(Creature creature) {
+        creature.setThisCreatureDead(true);
         System.out.println("Image has been modified");
         checkIfAllCreaturesInRoomAreDead();
     }
