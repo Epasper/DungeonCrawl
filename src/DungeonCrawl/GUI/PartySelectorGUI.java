@@ -84,7 +84,7 @@ public class PartySelectorGUI {
         aStage.close();
         //aScene.getStylesheets().add("DungeonCrawl/Styling/Caspian.css");
         aStage.setTitle("Dungeon");
-        aScene.setRoot(dungeonGui.mapOuterPane);
+        aScene.setRoot(dungeonGui.getMapOuterPane());
         aStage.getIcons().add(new Image("DungeonCrawl/GUI/Images/WindowsIcons/dungeonIcon.jpg"));
         aStage.setMaximized(true);
         aStage.setScene(aScene);

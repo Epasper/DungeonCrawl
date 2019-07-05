@@ -27,7 +27,7 @@ class DungeonGUI {
     private HBox powersHBox = new HBox();
     private VBox portraitsVBox = new VBox();
     private VBox controlsButtons = new VBox();
-    BorderPane mapOuterPane = new BorderPane();
+    private BorderPane mapOuterPane = new BorderPane();
     private List<HeroPower> currentHeroPowers = new ArrayList<>();
     private ScrollPane mapScrollPane = new ScrollPane();
     private List<Button> listOfHeroButtons = new ArrayList<>();
@@ -43,7 +43,7 @@ class DungeonGUI {
         heroManager.setHeroList(heroList);
         manageTheConsoleAdding();
         pathFinder.dungeonConsoleGUI.getDungeonConsole().setContent(pathFinder.dungeonConsoleGUI.getDungeonConsoleText());
-        mapOuterPane.setCenter(mapScrollPane);
+        getMapOuterPane().setCenter(mapScrollPane);
         mapScrollPane.setContent(mapGridPane);
         Button returnToMainMenu = new Button();
         returnToMainMenu.setText("Return to Main Menu");
@@ -90,14 +90,14 @@ class DungeonGUI {
             listOfHeroButtons.add(heroButton);
         }
         portraitsVBox.getChildren().addAll(listOfHeroButtons);
-        mapOuterPane.setRight(portraitsVBox);
-        mapOuterPane.setLeft(controlsButtons);
+        getMapOuterPane().setRight(portraitsVBox);
+        getMapOuterPane().setLeft(controlsButtons);
         pathFinder.dungeonConsoleGUI.getCompleteConsole().add(powersHBox, 0, 2);
-        mapOuterPane.setBottom(pathFinder.dungeonConsoleGUI.getCompleteConsole());
+        getMapOuterPane().setBottom(pathFinder.dungeonConsoleGUI.getCompleteConsole());
     }
 
     private void viewMapEvent() {
-        mapOuterPane.setCenter(mapScrollPane);
+        getMapOuterPane().setCenter(mapScrollPane);
         for (Button heroButton : listOfHeroButtons) {
             int thisButtonID = Integer.valueOf(heroButton.getId());
             Hero currentHero = guiUtilities.getHeroByID(thisButtonID, heroManager.getHeroList());
@@ -140,7 +140,7 @@ class DungeonGUI {
         ItemsDAO itemsDAO = new ItemsDAO();
         currentHero.setHeroEquipment(itemsDAO.getHeroEquipmentByHeroID(currentHero.getID()));
         EquipmentGUI equipmentGUI = new EquipmentGUI();
-        mapOuterPane.setCenter(equipmentGUI.displayAChosenHeroEquipment(currentHero));
+        getMapOuterPane().setCenter(equipmentGUI.displayAChosenHeroEquipment(currentHero));
     }
 
     private void updateGUIAccordingToMap(DungeonMap dungeonMap) {
@@ -187,9 +187,9 @@ class DungeonGUI {
 
     private void changeTheCursor(Image image, boolean backToDefault) {
         if (backToDefault) {
-            mapOuterPane.setCursor(Cursor.DEFAULT);
+            getMapOuterPane().setCursor(Cursor.DEFAULT);
         } else {
-            mapOuterPane.setCursor(new ImageCursor(image));
+            getMapOuterPane().setCursor(new ImageCursor(image));
             //System.out.println("Changing the cursor");
         }
     }
@@ -200,6 +200,14 @@ class DungeonGUI {
         mainMenuGUI.aStage.setScene(mainMenuGUI.aScene);
         mainMenuGUI.aStage.show();
         System.out.println("Stage is closing");
+    }
+
+    public BorderPane getMapOuterPane() {
+        return mapOuterPane;
+    }
+
+    public void setMapOuterPane(BorderPane mapOuterPane) {
+        this.mapOuterPane = mapOuterPane;
     }
 //todo add a button to console that could extend its view range or minimize it.
 

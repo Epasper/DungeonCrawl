@@ -64,10 +64,13 @@ public class DungeonButtonEvents {
 
     public List<Creature> determineTheNumberOfCreaturesAttacked(int XPos, int YPos, HeroPower heroPower, DungeonMap dungeonMap, List<Monster> allDiscoveredMonsters, List<Hero> allDiscoveredHeroes) {
         List<Creature> listOfCreaturesAttacked = new ArrayList<>();
+        System.out.println("---" + XPos + "---" + YPos + "---");
         if (heroPower.getNumberOfTargets().contains("Burst")) {
+            //todo after selecting a burst power, all tiles should be clickable as a target of the power
+            //todo add a GUI element that shows the range of AoE attack to be made.
             manageBurstAttack(XPos, YPos, heroPower, dungeonMap, allDiscoveredMonsters, allDiscoveredHeroes, listOfCreaturesAttacked);
         } else {
-            listOfCreaturesAttacked.add(guiUtilities.getSingleMonsterByUniqueID(dungeonMap.getMapTilesArray()[XPos][YPos].getOccupyingCreatureTypeId(), allDiscoveredMonsters));
+            listOfCreaturesAttacked.add(guiUtilities.getSingleMonsterByUniqueID(dungeonMap.getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID(), allDiscoveredMonsters));
         }
         return listOfCreaturesAttacked;
     }
