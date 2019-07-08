@@ -2,6 +2,7 @@ package DungeonCrawl.Model;
 
 import DungeonCrawl.GUI.DungeonImageLibraryGUI;
 import DungeonCrawl.GUI.GUIUtilities;
+import DungeonCrawl.GUI.FieldColors;
 import javafx.scene.control.Button;
 import javafx.scene.effect.Blend;
 import javafx.scene.effect.BlendMode;
@@ -55,7 +56,7 @@ public class MapManager {
                 //dungeonMap.getMapTilesArray()[i][j].alreadyDiscovered = true;
                 dungeonImageLibraryGUI.applyATileImageToAButton(typeOfTile, buttonGrid[i][j]);
                 if (dungeonMap.getMapTilesArray()[i][j].isInRangedAttackRange() && shouldWalkingTilesUpgradeBeSkipped){
-                    buttonGrid[i][j].setStyle("-fx-background-color: #ff0000; ");
+                    buttonGrid[i][j].setStyle(FieldColors.ATTACK_RANGE);
                 }
                 if (currentEntityID > 0) {
                     applyEntityIconToAButton(currentEntityID, buttonGrid[i][j], dungeonMap.getMapTilesArray()[i][j].getOccupyingCreatureUniqueID());

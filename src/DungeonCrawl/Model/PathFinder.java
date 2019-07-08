@@ -1,6 +1,7 @@
 package DungeonCrawl.Model;
 
 import DungeonCrawl.GUI.DungeonConsoleGUI;
+import DungeonCrawl.GUI.FieldColors;
 import DungeonCrawl.GUI.GUIUtilities;
 import DungeonCrawl.HeroPowers.HeroPower;
 import javafx.scene.control.Button;
@@ -66,7 +67,7 @@ public class PathFinder {
                             if (temp < Math.pow(range, 2)) {
                                 if (dungeonMap.getMapTilesArray()[XPos + i * a][YPos + j * b].getTypeOfTile().contains("Room")) {
                                     dungeonMap.getMapTilesArray()[XPos + i * a][YPos + j * b].setInRangedAttackRange(true);
-                                    buttonGrid[XPos + i * a][YPos + j * b].setStyle("-fx-color: #ff00ff");
+                                    buttonGrid[XPos + i * a][YPos + j * b].setStyle(FieldColors.ATTACK_RANGE);
                                 } else {
                                     break;
                                 }
@@ -172,7 +173,7 @@ public class PathFinder {
         gridButton = buttonGrid[temporaryX][temporaryY];
         if (currentDirection.contains("Room") || currentDirection.contains("Corridor") || currentDirection.contains("Opened")) {
             if (reasonForChecking.contains("Attack")) {
-                gridButton.setStyle("-fx-color: #f49242");
+                gridButton.setStyle(FieldColors.ATTACK);
                 markTheTileAsAccessible(reasonForChecking, mapTile, gridButton);
                 recursiveCheckDistance(dungeonMap, buttonGrid, currentDirection, temporaryY, temporaryX, iterations - stepDecrement, reasonForChecking);
             } else if (!currentDirection.contains("Occupied") || (reasonForChecking.contains("Interaction"))) {
@@ -185,7 +186,7 @@ public class PathFinder {
         } else if (currentDirection.contains("Closed")) {
             mapTile.setAlreadyDiscovered(true);
             mapTile.setInWalkRange(true);
-            gridButton.setStyle("-fx-color: #333399");
+            gridButton.setStyle(FieldColors.INTERACTION);
             if (reasonForChecking.contains("Interact")) {
                 mapTile.setWithinInteractionRange(true);
             }
@@ -202,12 +203,12 @@ public class PathFinder {
             mapTile.setInWalkRange(true);
         }
         if (reasonForChecking.contains("Walk")) {
-            gridButton.setStyle("-fx-color: #00ff00");
+            gridButton.setStyle(FieldColors.WALK_RANGE);
         } else if (reasonForChecking.contains("Interact")) {
             mapTile.setWithinInteractionRange(true);
-            gridButton.setStyle("-fx-color: #ffff00");
+            gridButton.setStyle(FieldColors.INTERACTION_RANGE);
             if (mapTile.getOccupyingCreatureTypeId() > 100) {
-                gridButton.setStyle("-fx-color: #ff0000");
+                gridButton.setStyle(FieldColors.ATTACK);
             }
         } else if (reasonForChecking.contains("Attack") && mapTile.getOccupyingCreatureTypeId() > 100) {
             //mapTile.setWithinInteractionRange(true);
@@ -306,7 +307,7 @@ public class PathFinder {
 
     private void markTileAsUnreachable(DungeonMap dungeonMap, Button[][] buttonGrid, int valueX, int valueY) {
         dungeonMap.getMapTilesArray()[valueX][valueY].setCurrentlyInvisible(true);
-        buttonGrid[valueX][valueY].setStyle("-fx-color: #471660");
+        buttonGrid[valueX][valueY].setStyle(FieldColors.BEHIND_BARRIER);
 
     }
 

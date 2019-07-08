@@ -1,5 +1,6 @@
 package DungeonCrawl.Model;
 
+import DungeonCrawl.GUI.FieldColors;
 import DungeonCrawl.GUI.GUIAnimations;
 import DungeonCrawl.GUI.GUIUtilities;
 import DungeonCrawl.GUI.Images.SkillIcons.SkillIcons;
@@ -113,6 +114,7 @@ public class DungeonButtonEvents {
             //mapManager.addDeathImageToCreatureImage(creature);
             buttonGrid[creature.getMapXPos()][creature.getMapYPos()].setGraphic(mapManager.addDeathImageToCreatureImage(creature));
         }
+        clearHoverEvents();
         return wasTheAttackFinished;
     }
 
@@ -156,18 +158,18 @@ public class DungeonButtonEvents {
     private void updateButtonsWithSkillIcons(Hero currentHero) {
         SkillIcons skillIcons = new SkillIcons();
         for (HeroPower currentPower : currentHero.getAtWillPowers()) {
-            addAPowerButton(currentHero, skillIcons, currentPower, "-fx-background-color: #007200;");
+            addAPowerButton(currentHero, skillIcons, currentPower, FieldColors.AT_WILL_POWER);
 
         }
         for (HeroPower currentPower : currentHero.getEncounterPowers()) {
-            Button powerButton = addAPowerButton(currentHero, skillIcons, currentPower, "-fx-background-color: #910000;");
+            Button powerButton = addAPowerButton(currentHero, skillIcons, currentPower, FieldColors.ENCOUNTER_POWER);
             if (currentPower.getNumberOfLockedEncounters() > 0) {
                 System.out.println("DISABLING THE ENCOUNTER POWER");
                 powerButton.setDisable(true);
             }
         }
         for (HeroPower currentPower : currentHero.getDailyPowers()) {
-            Button powerButton = addAPowerButton(currentHero, skillIcons, currentPower, "-fx-background-color: #5c005e;");
+            Button powerButton = addAPowerButton(currentHero, skillIcons, currentPower, FieldColors.DAILY_POWER);
             if (currentPower.getNumberOfLockedEncounters() > 0) {
                 System.out.println(ConsoleColors.ANSI_CYAN + "Rounds Locked: " + currentPower.getNumberOfLockedEncounters() + ConsoleColors.ANSI_RESET);
                 System.out.println(ConsoleColors.ANSI_BLUE + "DISABLING THE DAILY POWER" + ConsoleColors.ANSI_RESET);
@@ -193,6 +195,7 @@ public class DungeonButtonEvents {
     }
 
     private void eventOnPowerSelect(Hero currentHero, HeroPower selectedPower) {
+        encounterManager.getDungeonMap().clearMapReachableProperties();
         System.out.println("Updating Map Graphics after Power Selection");
         mapManager.updateMapGraphics();
         System.out.println("Map Graphics Updated");
@@ -238,10 +241,14 @@ public class DungeonButtonEvents {
         DungeonMap dungeonMap = mapManager.getDungeonMap();
         for (int i = 0; i < dungeonMap.getNumberOfTilesX(); i++) {
             for (int j = 0; j < dungeonMap.getNumberOfTilesY(); j++) {
-                int finalI = i;
-                int finalJ = j;
-                buttonGrid[i][j].setOnMouseEntered(event -> paintTheTilesInRange(buttonGrid, finalI, finalJ, burstValue));
-                buttonGrid[i][j].setOnMouseExited(event -> mapManager.updateMapGraphics(true));
+                if (dungeonMap.getMapTilesArray()[i][j].isInRangedAttackRange()) {
+                    int finalI = i;
+                    int finalJ = j;
+                    buttonGrid[i][j].setOnMouseEntered(event -> paintTheTilesInRange(buttonGrid, finalI, finalJ, burstValue));
+                    buttonGrid[i][j].setOnMouseExited(event -> mapManager.updateMapGraphics(true));
+                } else {
+                    buttonGrid[i][j].setOnMouseExited(event -> mapManager.updateMapGraphics(true));
+                }
             }
         }
     }
@@ -250,7 +257,7 @@ public class DungeonButtonEvents {
         for (int i = XCoord - burstValue; i < XCoord + burstValue + 1; i++) {
             for (int j = YCoord - burstValue; j < YCoord + burstValue + 1; j++) {
                 try {
-                    buttonGrid[i][j].setStyle("-fx-background-color: #f54242; ");
+                    buttonGrid[i][j].setStyle(FieldColors.AOE_DAMAGE);
                 } catch (IndexOutOfBoundsException ignored) {
 
                 }
