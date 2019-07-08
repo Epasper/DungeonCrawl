@@ -364,6 +364,8 @@ public class DungeonMap {
             for (int j = 0; j < numberOfTilesY; j++) {
                 this.getMapTilesArray()[i][j].setInWalkRange(false);
                 this.getMapTilesArray()[i][j].setWithinInteractionRange(false);
+                this.getMapTilesArray()[i][j].setInRangedAttackRange(false);
+
             }
         }
     }

@@ -2,6 +2,7 @@ package DungeonCrawl.Model;
 
 import DungeonCrawl.GUI.DungeonConsoleGUI;
 import DungeonCrawl.GUI.GUIUtilities;
+import DungeonCrawl.HeroPowers.HeroPower;
 import javafx.scene.control.Button;
 
 import java.util.ArrayList;
@@ -48,7 +49,41 @@ public class PathFinder {
         this.discoveredMonsters = discoveredMonsters;
     }
 
+    public void checkTheAttacksRange(Hero hero, DungeonMap dungeonMap, Button[][] buttonGrid, HeroPower heroPower) {
+
+        int XPos = hero.getMapXPos();
+        int YPos = hero.getMapYPos();
+        int range = heroPower.getRange();
+        if (range == 0) {
+            range = 2;
+        }
+        for (int a = -1; a < 2; a += 2) {
+            for (int b = -1; b < 2; b += 2) {
+                for (int i = 0; i < range; i++) {
+                    for (int j = 0; j < range; j++) {
+                        try {
+                            double temp = Math.pow(i, 2) + Math.pow(j, 2);
+                            if (temp < Math.pow(range, 2)) {
+                                if (dungeonMap.getMapTilesArray()[XPos + i * a][YPos + j * b].getTypeOfTile().contains("Room")) {
+                                    dungeonMap.getMapTilesArray()[XPos + i * a][YPos + j * b].setInRangedAttackRange(true);
+                                    buttonGrid[XPos + i * a][YPos + j * b].setStyle("-fx-color: #ff00ff");
+                                } else {
+                                    break;
+                                }
+                            }
+
+                        } catch (IndexOutOfBoundsException ignored) {
+
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
     public void checkTheAvailableDistance(Hero hero, DungeonMap dungeonMap, Button[][] buttonGrid, String reasonForChecking) {
+        System.out.println("Checking begins");
         int YPos = hero.getMapYPos();
         int XPos = hero.getMapXPos();
         double heroSteps = hero.getCurrentSpeed();
@@ -59,6 +94,7 @@ public class PathFinder {
             heroInteractionSteps = 0;
         }
         if (reasonForChecking.contains("Attack")) {
+            System.out.println("Checking For Attack");
             recursiveCheckDistance(dungeonMap, buttonGrid, "Start", YPos, XPos, hero.getAttackRange(), "Attack Range");
         } else {
             recursiveCheckDistance(dungeonMap, buttonGrid, "Start", YPos, XPos, heroSteps, "Walk Range");
@@ -145,6 +181,7 @@ public class PathFinder {
             }
         } else if (currentDirection.contains("Wall")) {
             mapTile.setAlreadyDiscovered(true);
+            return;
         } else if (currentDirection.contains("Closed")) {
             mapTile.setAlreadyDiscovered(true);
             mapTile.setInWalkRange(true);
@@ -152,6 +189,7 @@ public class PathFinder {
             if (reasonForChecking.contains("Interact")) {
                 mapTile.setWithinInteractionRange(true);
             }
+            return;
         }
         dungeonMap.getMapTilesArray()[temporaryX][temporaryY] = mapTile;
         buttonGrid[temporaryX][temporaryY] = gridButton;
@@ -172,8 +210,8 @@ public class PathFinder {
                 gridButton.setStyle("-fx-color: #ff0000");
             }
         } else if (reasonForChecking.contains("Attack") && mapTile.getOccupyingCreatureTypeId() > 100) {
-            mapTile.setWithinInteractionRange(true);
-            gridButton.setStyle("-fx-color: #ff0000");
+            //mapTile.setWithinInteractionRange(true);
+            //gridButton.setStyle("-fx-color: #ff0000");
         }
     }
 
@@ -298,7 +336,7 @@ public class PathFinder {
         }
     }
 
-    public boolean checkIfTheEncounterShouldStart (List<Monster> allMonstersList, List<Hero> listOfHeroes, Hero hero, DungeonMap dungeonMap, boolean fightAlreadyTakingPlace) {
+    public boolean checkIfTheEncounterShouldStart(List<Monster> allMonstersList, List<Hero> listOfHeroes, Hero hero, DungeonMap dungeonMap, boolean fightAlreadyTakingPlace) {
         int XPos = hero.getMapXPos();
         int YPos = hero.getMapYPos();
         setTheRoomAsVisible(XPos, YPos, dungeonMap, allMonstersList);
