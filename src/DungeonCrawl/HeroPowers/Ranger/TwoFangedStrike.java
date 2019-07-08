@@ -10,20 +10,20 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class TwoFangedStrike extends HeroPower {
     public TwoFangedStrike() {
-        powerName = "Two-Fanged Strike";
-        characterClass = HeroClasses.Ranger.toString();
-        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 20;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Strength.toString();
-        defenseToBeChecked = CreatureDefenses.AC.toString();
-        damageDiceDealt = 1;
-        damageModifier = AttributeNames.Strength.toString();
-        isThisWeaponDamage = true;
-        bonusDamageModifier = AttributeNames.Wisdom.toString();
-        hitDescription = "Hit: 1[W]+ Strength modifier damage (melee) or 1[W]+Dexterity modifier damage per attack.\n" +
-                "If both attacks hit, you deal extra damage equal to your wisdom modifier.";
+        setPowerName("Two-Fanged Strike");
+        setCharacterClass(HeroClasses.Ranger.toString());
+        setTypeOfPower(TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(20);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Strength.toString());
+        setDefenseToBeChecked(CreatureDefenses.AC.toString());
+        setDamageDiceDealt(1);
+        setDamageModifier(AttributeNames.Strength.toString());
+        setThisWeaponDamage(true);
+        setBonusDamageModifier(AttributeNames.Wisdom.toString());
+        setHitDescription("Hit: 1[W]+ Strength modifier damage (melee) or 1[W]+Dexterity modifier damage per attack.\n" +
+                "If both attacks hit, you deal extra damage equal to your wisdom modifier.");
     }
 }

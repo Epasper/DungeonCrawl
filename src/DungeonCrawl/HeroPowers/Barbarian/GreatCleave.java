@@ -10,19 +10,19 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class GreatCleave extends HeroPower {
     public GreatCleave() {
-        powerName = "Great Cleave";
-        characterClass = HeroClasses.Barbarian.toString();
-        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "Close Burst 1";
-        attributeUsedToHit = AttributeNames.Strength.toString();
-        defenseToBeChecked = CreatureDefenses.AC.toString();
-        damageDiceDealt = 2;
-        damageModifier = AttributeNames.Strength.toString();
-        isThisWeaponDamage = true;
-        bonusDamage = true;
-        hitDescription = "1[W] + Strength modifier damage + 1 damage for each enemy adjacent to you.";
+        setPowerName("Great Cleave");
+        setCharacterClass(HeroClasses.Barbarian.toString());
+        setTypeOfPower(TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("Close Burst 1");
+        setAttributeUsedToHit(AttributeNames.Strength.toString());
+        setDefenseToBeChecked(CreatureDefenses.AC.toString());
+        setDamageDiceDealt(2);
+        setDamageModifier(AttributeNames.Strength.toString());
+        setThisWeaponDamage(true);
+        setBonusDamage(true);
+        setHitDescription("1[W] + Strength modifier damage + 1 damage for each enemy adjacent to you.");
     }
 }

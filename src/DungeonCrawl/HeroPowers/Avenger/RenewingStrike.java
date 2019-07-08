@@ -5,23 +5,23 @@ import DungeonCrawl.StaticRules.*;
 
 public class RenewingStrike extends HeroPower {
     public RenewingStrike() {
-        powerName = "Renewing Strike";
-        characterClass = HeroClasses.Avenger.toString();
-        typeOfPower = TypesOfPowers.DAILY.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 10;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Wisdom.toString();
-        defenseToBeChecked = CreatureDefenses.Reflex.toString();
-        damageDiceDealt = 2;
-        damageModifier = AttributeNames.Wisdom.toString();
-        isThisWeaponDamage = false;
-        damageDiceDealt = 10;
-        hitDescription = "2d10 + Wisdom modifier lightning damage\n" +
+        setPowerName("Renewing Strike");
+        setCharacterClass(HeroClasses.Avenger.toString());
+        setTypeOfPower(TypesOfPowers.DAILY.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(10);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Wisdom.toString());
+        setDefenseToBeChecked(CreatureDefenses.Reflex.toString());
+        setDamageDiceDealt(2);
+        setDamageModifier(AttributeNames.Wisdom.toString());
+        setThisWeaponDamage(false);
+        setDamageDiceDealt(10);
+        setHitDescription("2d10 + Wisdom modifier lightning damage\n" +
                 "\n" +
                 "Miss: Half damage\n" +
                 "\n" +
-                "Effect: You can spend a healing surge";
+                "Effect: You can spend a healing surge");
     }
 }

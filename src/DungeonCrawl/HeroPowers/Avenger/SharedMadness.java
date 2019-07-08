@@ -10,19 +10,19 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class SharedMadness extends HeroPower {
     public SharedMadness() {
-        powerName = "Shared Madness";
-        characterClass = HeroClasses.Avenger.toString();
-        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 10;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Wisdom.toString();
-        defenseToBeChecked = CreatureDefenses.Will.toString();
-        damageDiceDealt = 1;
-        typeOfDamageDice = 10;
-        damageModifier = AttributeNames.Wisdom.toString();
-        isThisWeaponDamage = false;
-        hitDescription = "1d10 + Wisdom modifier psychic damage, and a second creature you can see takes the same damage.";
+        setPowerName("Shared Madness");
+        setCharacterClass(HeroClasses.Avenger.toString());
+        setTypeOfPower(TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(10);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Wisdom.toString());
+        setDefenseToBeChecked(CreatureDefenses.Will.toString());
+        setDamageDiceDealt(1);
+        setTypeOfDamageDice(10);
+        setDamageModifier(AttributeNames.Wisdom.toString());
+        setThisWeaponDamage(false);
+        setHitDescription("1d10 + Wisdom modifier psychic damage, and a second creature you can see takes the same damage.");
     }
 }

@@ -10,18 +10,18 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class PiercingSmite extends HeroPower {
     public PiercingSmite() {
-        powerName = "Piercing Smite";
-        characterClass = HeroClasses.Paladin.toString();
-        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Charisma.toString();
-        defenseToBeChecked = CreatureDefenses.Reflex.toString();
-        damageDiceDealt = 2;
-        damageModifier = AttributeNames.Charisma.toString();
-        isThisWeaponDamage = true;
-        hitDescription = "2[W] + Strength modifier damage, and the target and a number of enemies adjacent to you equal to your Wisdom modifier are marked until the end of your next turn.";
+        setPowerName("Piercing Smite");
+        setCharacterClass(HeroClasses.Paladin.toString());
+        setTypeOfPower(TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Charisma.toString());
+        setDefenseToBeChecked(CreatureDefenses.Reflex.toString());
+        setDamageDiceDealt(2);
+        setDamageModifier(AttributeNames.Charisma.toString());
+        setThisWeaponDamage(true);
+        setHitDescription("2[W] + Strength modifier damage, and the target and a number of enemies adjacent to you equal to your Wisdom modifier are marked until the end of your next turn.");
     }
 }

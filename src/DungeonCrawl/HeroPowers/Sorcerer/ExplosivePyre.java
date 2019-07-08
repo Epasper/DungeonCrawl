@@ -10,19 +10,19 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class ExplosivePyre extends HeroPower {
     public ExplosivePyre() {
-        powerName = "Explosive Pyre";
-        characterClass = HeroClasses.Sorcerer.toString();
-        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 10;
-        numberOfTargets = "one target";
-        attributeUsedToHit = AttributeNames.Charisma.toString();
-        defenseToBeChecked = CreatureDefenses.Will.toString();
-        damageDiceDealt = 1;
-        typeOfDamageDice = 10;
-        damageModifier = AttributeNames.Charisma.toString();
-        isThisWeaponDamage = false;
-        hitDescription = "2d8 + Charisma modifier damage. Until the start of your next turn, any enemy that enters a square adjacent to the target or starts its turn there takes 1d6 fire damage. An enemy can take this damage only once per turn.";
+        setPowerName("Explosive Pyre");
+        setCharacterClass(HeroClasses.Sorcerer.toString());
+        setTypeOfPower(TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(10);
+        setNumberOfTargets("one target");
+        setAttributeUsedToHit(AttributeNames.Charisma.toString());
+        setDefenseToBeChecked(CreatureDefenses.Will.toString());
+        setDamageDiceDealt(1);
+        setTypeOfDamageDice(10);
+        setDamageModifier(AttributeNames.Charisma.toString());
+        setThisWeaponDamage(false);
+        setHitDescription("2d8 + Charisma modifier damage. Until the start of your next turn, any enemy that enters a square adjacent to the target or starts its turn there takes 1d6 fire damage. An enemy can take this damage only once per turn.");
     }
 }

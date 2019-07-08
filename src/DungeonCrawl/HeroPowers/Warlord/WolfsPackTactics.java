@@ -10,18 +10,18 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class WolfsPackTactics extends HeroPower {
     public WolfsPackTactics() {
-        powerName = "Wolf Pack Tactics";
-        characterClass = HeroClasses.Warlord.toString();
-        typeOfPower = TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Strength.toString();
-        defenseToBeChecked = CreatureDefenses.AC.toString();
-        damageDiceDealt = 1;
-        damageModifier = AttributeNames.Strength.toString();
-        isThisWeaponDamage = true;
-        hitDescription = "Before the attack, an ally adjacent to you or to the target can shift 1 square as a free action. 1[W] + Strength modifier damage.";
+        setPowerName("Wolf Pack Tactics");
+        setCharacterClass(HeroClasses.Warlord.toString());
+        setTypeOfPower(TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Strength.toString());
+        setDefenseToBeChecked(CreatureDefenses.AC.toString());
+        setDamageDiceDealt(1);
+        setDamageModifier(AttributeNames.Strength.toString());
+        setThisWeaponDamage(true);
+        setHitDescription("Before the attack, an ally adjacent to you or to the target can shift 1 square as a free action. 1[W] + Strength modifier damage.");
     }
 }

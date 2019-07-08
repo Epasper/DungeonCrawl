@@ -10,20 +10,20 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class HauntingSpirits extends HeroPower {
     public HauntingSpirits() {
-        powerName = "Haunting Spirits";
-        characterClass = HeroClasses.Shaman.toString();
-        typeOfPower = TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Wisdom.toString();
-        defenseToBeChecked = CreatureDefenses.Will.toString();
-        damageDiceDealt = 1;
-        typeOfDamageDice = 8;
-        damageModifier = AttributeNames.Wisdom.toString();
-        isThisWeaponDamage = false;
-        isThisASpiritAttack = true;
-        hitDescription = "1d8 + Wisdom modifier damage, and each ally adjacent to your spirit companion gains temporary hit points equal to your Constitution modifier.";
+        setPowerName("Haunting Spirits");
+        setCharacterClass(HeroClasses.Shaman.toString());
+        setTypeOfPower(TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Wisdom.toString());
+        setDefenseToBeChecked(CreatureDefenses.Will.toString());
+        setDamageDiceDealt(1);
+        setTypeOfDamageDice(8);
+        setDamageModifier(AttributeNames.Wisdom.toString());
+        setThisWeaponDamage(false);
+        setThisASpiritAttack(true);
+        setHitDescription("1d8 + Wisdom modifier damage, and each ally adjacent to your spirit companion gains temporary hit points equal to your Constitution modifier.");
     }
 }

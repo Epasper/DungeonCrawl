@@ -10,19 +10,19 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class Frostbind extends HeroPower {
     public Frostbind() {
-        powerName = "Frostbind";
-        characterClass = HeroClasses.Sorcerer.toString();
-        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 10;
-        numberOfTargets = "one target";
-        attributeUsedToHit = AttributeNames.Charisma.toString();
-        defenseToBeChecked = CreatureDefenses.Fortitude.toString();
-        damageDiceDealt = 3;
-        typeOfDamageDice = 6;
-        damageModifier = AttributeNames.Charisma.toString();
-        isThisWeaponDamage = false;
-        hitDescription = "3d6 + Charisma modifier cold damage, and the target takes a –2 penalty to Reflex until the end of your next turn.";
+        setPowerName("Frostbind");
+        setCharacterClass(HeroClasses.Sorcerer.toString());
+        setTypeOfPower(TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(10);
+        setNumberOfTargets("one target");
+        setAttributeUsedToHit(AttributeNames.Charisma.toString());
+        setDefenseToBeChecked(CreatureDefenses.Fortitude.toString());
+        setDamageDiceDealt(3);
+        setTypeOfDamageDice(6);
+        setDamageModifier(AttributeNames.Charisma.toString());
+        setThisWeaponDamage(false);
+        setHitDescription("3d6 + Charisma modifier cold damage, and the target takes a –2 penalty to Reflex until the end of your next turn.");
     }
 }

@@ -10,19 +10,19 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class Eyebite extends HeroPower {
     public Eyebite() {
-        powerName = "Eyebite";
-        characterClass = HeroClasses.Warlock.toString();
-        typeOfPower = TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 10;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Charisma.toString();
-        defenseToBeChecked = CreatureDefenses.Will.toString();
-        damageDiceDealt = 1;
-        typeOfDamageDice = 6;
-        damageModifier = AttributeNames.Charisma.toString();
-        isThisWeaponDamage = false;
-        hitDescription = "1d6 + Charisma modifier psychic damage, and you are invisible to the target until the start of your next turn.";
+        setPowerName("Eyebite");
+        setCharacterClass(HeroClasses.Warlock.toString());
+        setTypeOfPower(TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(10);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Charisma.toString());
+        setDefenseToBeChecked(CreatureDefenses.Will.toString());
+        setDamageDiceDealt(1);
+        setTypeOfDamageDice(6);
+        setDamageModifier(AttributeNames.Charisma.toString());
+        setThisWeaponDamage(false);
+        setHitDescription("1d6 + Charisma modifier psychic damage, and you are invisible to the target until the start of your next turn.");
     }
 }

@@ -10,19 +10,19 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class CoveringAttack extends HeroPower {
     public CoveringAttack() {
-        powerName = "Covering Attack";
-        characterClass = HeroClasses.Fighter.toString();
-        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Strength.toString();
-        defenseToBeChecked = CreatureDefenses.AC.toString();
-        damageDiceDealt = 2;
-        damageModifier = AttributeNames.Strength.toString();
-        isThisWeaponDamage = true;
-        hitDescription = "2[W] + Strength modifier damage, and an ally adjacent to the target can shift 2 square as a free action. ";
+        setPowerName("Covering Attack");
+        setCharacterClass(HeroClasses.Fighter.toString());
+        setTypeOfPower(TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Strength.toString());
+        setDefenseToBeChecked(CreatureDefenses.AC.toString());
+        setDamageDiceDealt(2);
+        setDamageModifier(AttributeNames.Strength.toString());
+        setThisWeaponDamage(true);
+        setHitDescription("2[W] + Strength modifier damage, and an ally adjacent to the target can shift 2 square as a free action. ");
 
     }
 }

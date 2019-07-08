@@ -10,19 +10,19 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class RadiantVengeance extends HeroPower {
     public RadiantVengeance() {
-        powerName = "Radiant Vengeance";
-        characterClass = HeroClasses.Avenger.toString();
-        typeOfPower = TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 10;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Wisdom.toString();
-        defenseToBeChecked = CreatureDefenses.Reflex.toString();
-        damageDiceDealt = 1;
-        damageModifier = AttributeNames.Wisdom.toString();
-        isThisWeaponDamage = false;
-        damageDiceDealt = 8;
-        hitDescription = "1d8 + Wisdom modifier radiant damage, and you gain temporary hit points equal to your Wisdom modifier.";
+        setPowerName("Radiant Vengeance");
+        setCharacterClass(HeroClasses.Avenger.toString());
+        setTypeOfPower(TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(10);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Wisdom.toString());
+        setDefenseToBeChecked(CreatureDefenses.Reflex.toString());
+        setDamageDiceDealt(1);
+        setDamageModifier(AttributeNames.Wisdom.toString());
+        setThisWeaponDamage(false);
+        setDamageDiceDealt(8);
+        setHitDescription("1d8 + Wisdom modifier radiant damage, and you gain temporary hit points equal to your Wisdom modifier.");
     }
 }

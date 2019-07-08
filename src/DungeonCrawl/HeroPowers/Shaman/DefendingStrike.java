@@ -10,20 +10,20 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class DefendingStrike extends HeroPower {
     public DefendingStrike() {
-        powerName = "Defending Strike";
-        characterClass = HeroClasses.Shaman.toString();
-        typeOfPower = TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Wisdom.toString();
-        defenseToBeChecked = CreatureDefenses.Reflex.toString();
-        damageDiceDealt = 1;
-        typeOfDamageDice = 8;
-        damageModifier = AttributeNames.Wisdom.toString();
-        isThisWeaponDamage = false;
-        isThisASpiritAttack = true;
-        hitDescription = "1d8 + Wisdom modifier damage. Until the end of your next turn, you and your allies gain a +1 power bonus to AC while adjacent to your spirit companion.";
+        setPowerName("Defending Strike");
+        setCharacterClass(HeroClasses.Shaman.toString());
+        setTypeOfPower(TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Wisdom.toString());
+        setDefenseToBeChecked(CreatureDefenses.Reflex.toString());
+        setDamageDiceDealt(1);
+        setTypeOfDamageDice(8);
+        setDamageModifier(AttributeNames.Wisdom.toString());
+        setThisWeaponDamage(false);
+        setThisASpiritAttack(true);
+        setHitDescription("1d8 + Wisdom modifier damage. Until the end of your next turn, you and your allies gain a +1 power bonus to AC while adjacent to your spirit companion.");
     }
 }

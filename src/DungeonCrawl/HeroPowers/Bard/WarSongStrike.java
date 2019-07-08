@@ -10,18 +10,18 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class WarSongStrike extends HeroPower {
     public WarSongStrike() {
-        powerName = "War Song Strike";
-        characterClass = HeroClasses.Bard.toString();
-        typeOfPower = TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Charisma.toString();
-        defenseToBeChecked = CreatureDefenses.AC.toString();
-        damageDiceDealt = 1;
-        damageModifier = AttributeNames.Charisma.toString();
-        isThisWeaponDamage = true;
-        hitDescription = "1[W] + Charisma modifier damage, and any ally who hits the target before the end of your next turn gains temporary hit points equal to your Constitution modifier.";
+        setPowerName("War Song Strike");
+        setCharacterClass(HeroClasses.Bard.toString());
+        setTypeOfPower(TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Charisma.toString());
+        setDefenseToBeChecked(CreatureDefenses.AC.toString());
+        setDamageDiceDealt(1);
+        setDamageModifier(AttributeNames.Charisma.toString());
+        setThisWeaponDamage(true);
+        setHitDescription("1[W] + Charisma modifier damage, and any ally who hits the target before the end of your next turn gains temporary hit points equal to your Constitution modifier.");
     }
 }

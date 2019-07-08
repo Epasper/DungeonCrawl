@@ -238,12 +238,6 @@ public class EncounterManager {
     public String eventOnHeroAttackingASingleCreature(int XPos, int YPos, HeroPower attackingPower, Creature creature) {
         Hero hero = guiUtilities.getHeroByID(heroManager.getCurrentlyActiveHeroID(), heroManager.getHeroList());
         System.out.println("Attacking a monster with unique ID: " + getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID());
-        /*System.out.println("LIST OF ALL MONSTERS:");
-        for (Monster currentMonster : allMonstersList) {
-            System.out.println(currentMonster.getMonsterName());
-            System.out.println(currentMonster.getID());
-            System.out.println(currentMonster.getCurrentMonsterUniqueID());
-        }*/
         System.out.println("ID From Tile: " + getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID());
         AttackResults attackResults = hero.attackAMonster(creature, attackingPower);
         prepareTheAttackMessage(attackingPower, creature, attackResults);

@@ -10,20 +10,20 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class BurningSpray extends HeroPower {
     public BurningSpray() {
-        powerName = "Burning Spray";
-        characterClass = HeroClasses.Sorcerer.toString();
-        typeOfPower = TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "Blast 3";
-        attributeUsedToHit = AttributeNames.Charisma.toString();
-        defenseToBeChecked = CreatureDefenses.Reflex.toString();
-        damageDiceDealt = 1;
-        typeOfDamageDice = 8;
-        damageModifier = AttributeNames.Charisma.toString();
-        isThisWeaponDamage = false;
-        bonusDamageModifier = AttributeNames.Strength.toString();
-        hitDescription = "1d8 + Charisma modifier fire damage. Dragon Magic: The next enemy that hits you with a melee attack before the end of your next turn takes fire damage equal to your Strength modifier.";
+        setPowerName("Burning Spray");
+        setCharacterClass(HeroClasses.Sorcerer.toString());
+        setTypeOfPower(TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("Blast 3");
+        setAttributeUsedToHit(AttributeNames.Charisma.toString());
+        setDefenseToBeChecked(CreatureDefenses.Reflex.toString());
+        setDamageDiceDealt(1);
+        setTypeOfDamageDice(8);
+        setDamageModifier(AttributeNames.Charisma.toString());
+        setThisWeaponDamage(false);
+        setBonusDamageModifier(AttributeNames.Strength.toString());
+        setHitDescription("1d8 + Charisma modifier fire damage. Dragon Magic: The next enemy that hits you with a melee attack before the end of your next turn takes fire damage equal to your Strength modifier.");
     }
 }

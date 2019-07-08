@@ -10,21 +10,21 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class DiabolicGrasp extends HeroPower {
     public DiabolicGrasp() {
-        powerName = "Diabolic Grasp";
-        characterClass = HeroClasses.Warlock.toString();
-        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 10;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Constitution.toString();
-        defenseToBeChecked = CreatureDefenses.Fortitude.toString();
-        damageDiceDealt = 2;
-        typeOfDamageDice = 8;
-        damageModifier = AttributeNames.Constitution.toString();
-        isThisWeaponDamage = false;
-        powersAdditionalOptions = "Infernal Pact";
-        hitDescription = "2d8 + Constitution modifier damage, and you slide the target 2 squares.\n" +
-                "Infernal Pact: The distance of the slide equals 1 + your Intelligence modifier.";
+        setPowerName("Diabolic Grasp");
+        setCharacterClass(HeroClasses.Warlock.toString());
+        setTypeOfPower(TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(10);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Constitution.toString());
+        setDefenseToBeChecked(CreatureDefenses.Fortitude.toString());
+        setDamageDiceDealt(2);
+        setTypeOfDamageDice(8);
+        setDamageModifier(AttributeNames.Constitution.toString());
+        setThisWeaponDamage(false);
+        setPowersAdditionalOptions("Infernal Pact");
+        setHitDescription("2d8 + Constitution modifier damage, and you slide the target 2 squares.\n" +
+                "Infernal Pact: The distance of the slide equals 1 + your Intelligence modifier.");
     }
 }

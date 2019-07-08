@@ -10,20 +10,20 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class DivineGlow extends HeroPower {
     public DivineGlow() {
-        powerName = "Divine Glow";
-        characterClass = HeroClasses.Cleric.toString();
-        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "Close Blast 3";
-        attributeUsedToHit = AttributeNames.Wisdom.toString();
-        defenseToBeChecked = CreatureDefenses.Reflex.toString();
-        damageDiceDealt = 1;
-        damageModifier = AttributeNames.Wisdom.toString();
-        typeOfDamageDice = 8;
-        isThisWeaponDamage = false;
-        hitDescription = "1d8 + Wisdom modifier radiant damage. Effect: Allies in the blast gain a +2 power bonus to attack rolls until the end of your next turn.";
+        setPowerName("Divine Glow");
+        setCharacterClass(HeroClasses.Cleric.toString());
+        setTypeOfPower(TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("Close Blast 3");
+        setAttributeUsedToHit(AttributeNames.Wisdom.toString());
+        setDefenseToBeChecked(CreatureDefenses.Reflex.toString());
+        setDamageDiceDealt(1);
+        setDamageModifier(AttributeNames.Wisdom.toString());
+        setTypeOfDamageDice(8);
+        setThisWeaponDamage(false);
+        setHitDescription("1d8 + Wisdom modifier radiant damage. Effect: Allies in the blast gain a +2 power bonus to attack rolls until the end of your next turn.");
 
     }
 }

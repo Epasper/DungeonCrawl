@@ -10,20 +10,20 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class TwistingVines extends HeroPower {
     public TwistingVines() {
-        powerName = "Twisting Vines";
-        characterClass = HeroClasses.Druid.toString();
-        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 10;
-        numberOfTargets = "Area Burst 1";
-        attributeUsedToHit = AttributeNames.Wisdom.toString();
-        defenseToBeChecked = CreatureDefenses.Reflex.toString();
-        damageDiceDealt = 1;
-        typeOfDamageDice = 8;
-        bonusDamageModifier = AttributeNames.Wisdom.toString();
-        damageModifier = "None";
-        isThisWeaponDamage = false;
-        hitDescription = "1d8 + Wisdom modifier damage. Each square adjacent to the target becomes difficult terrain until the end of the user's next turn.";
+        setPowerName("Twisting Vines");
+        setCharacterClass(HeroClasses.Druid.toString());
+        setTypeOfPower(TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(10);
+        setNumberOfTargets("Area Burst 1");
+        setAttributeUsedToHit(AttributeNames.Wisdom.toString());
+        setDefenseToBeChecked(CreatureDefenses.Reflex.toString());
+        setDamageDiceDealt(1);
+        setTypeOfDamageDice(8);
+        setBonusDamageModifier(AttributeNames.Wisdom.toString());
+        setDamageModifier("None");
+        setThisWeaponDamage(false);
+        setHitDescription("1d8 + Wisdom modifier damage. Each square adjacent to the target becomes difficult terrain until the end of the user's next turn.");
     }
 }

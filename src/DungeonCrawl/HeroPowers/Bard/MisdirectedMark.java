@@ -10,19 +10,19 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class MisdirectedMark extends HeroPower {
     public MisdirectedMark() {
-        powerName = "Misdirected Mark";
-        characterClass = HeroClasses.Bard.toString();
-        typeOfPower = TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 10;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Charisma.toString();
-        defenseToBeChecked = CreatureDefenses.Reflex.toString();
-        damageDiceDealt = 1;
-        typeOfDamageDice = 8;
-        damageModifier = AttributeNames.Charisma.toString();
-        isThisWeaponDamage = false;
-        hitDescription = "1d8 + Charisma modifier damage, and the target is marked by an ally within 5 squares of you until the end of your next turn.";
+        setPowerName("Misdirected Mark");
+        setCharacterClass(HeroClasses.Bard.toString());
+        setTypeOfPower(TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(10);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Charisma.toString());
+        setDefenseToBeChecked(CreatureDefenses.Reflex.toString());
+        setDamageDiceDealt(1);
+        setTypeOfDamageDice(8);
+        setDamageModifier(AttributeNames.Charisma.toString());
+        setThisWeaponDamage(false);
+        setHitDescription("1d8 + Charisma modifier damage, and the target is marked by an ally within 5 squares of you until the end of your next turn.");
     }
 }

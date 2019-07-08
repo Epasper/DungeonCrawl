@@ -10,19 +10,19 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class WrathOfWinter extends HeroPower {
     public WrathOfWinter() {
-        powerName = "Wrath of Winter";
-        characterClass = HeroClasses.Shaman.toString();
-        typeOfPower = TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 5;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Wisdom.toString();
-        defenseToBeChecked = CreatureDefenses.Fortitude.toString();
-        damageDiceDealt = 1;
-        typeOfDamageDice = 10;
-        damageModifier = AttributeNames.Wisdom.toString();
-        isThisWeaponDamage = false;
-        hitDescription = "1d10 + Wisdom modifier cold damage. You can teleport your spirit companion to a space adjacent to the target.";
+        setPowerName("Wrath of Winter");
+        setCharacterClass(HeroClasses.Shaman.toString());
+        setTypeOfPower(TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(5);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Wisdom.toString());
+        setDefenseToBeChecked(CreatureDefenses.Fortitude.toString());
+        setDamageDiceDealt(1);
+        setTypeOfDamageDice(10);
+        setDamageModifier(AttributeNames.Wisdom.toString());
+        setThisWeaponDamage(false);
+        setHitDescription("1d10 + Wisdom modifier cold damage. You can teleport your spirit companion to a space adjacent to the target.");
     }
 }

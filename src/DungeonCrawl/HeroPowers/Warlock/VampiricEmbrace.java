@@ -10,21 +10,21 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class VampiricEmbrace extends HeroPower {
     public VampiricEmbrace() {
-        powerName = "Vampiric Embrace";
-        characterClass = HeroClasses.Warlock.toString();
-        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 5;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Constitution.toString();
-        defenseToBeChecked = CreatureDefenses.Will.toString();
-        damageDiceDealt = 2;
-        typeOfDamageDice = 8;
-        damageModifier = AttributeNames.Constitution.toString();
-        isThisWeaponDamage = false;
-        powersAdditionalOptions = "Infernal Pact";
-        hitDescription = "2d8 + Constitution modifier necrotic damage, and you gain 5 temporary hit points.\"\n" +
-                "Infernal Pact: Add your Intelligence modifier to the temporary hit points.";
+        setPowerName("Vampiric Embrace");
+        setCharacterClass(HeroClasses.Warlock.toString());
+        setTypeOfPower(TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(5);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Constitution.toString());
+        setDefenseToBeChecked(CreatureDefenses.Will.toString());
+        setDamageDiceDealt(2);
+        setTypeOfDamageDice(8);
+        setDamageModifier(AttributeNames.Constitution.toString());
+        setThisWeaponDamage(false);
+        setPowersAdditionalOptions("Infernal Pact");
+        setHitDescription("2d8 + Constitution modifier necrotic damage, and you gain 5 temporary hit points.\"\n" +
+                "Infernal Pact: Add your Intelligence modifier to the temporary hit points.");
     }
 }

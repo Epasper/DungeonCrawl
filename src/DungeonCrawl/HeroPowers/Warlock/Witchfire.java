@@ -10,21 +10,21 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class Witchfire extends HeroPower {
     public Witchfire() {
-        powerName = "Witchfire";
-        characterClass = HeroClasses.Warlock.toString();
-        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 10;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Charisma.toString();
-        defenseToBeChecked = CreatureDefenses.Reflex.toString();
-        damageDiceDealt = 2;
-        typeOfDamageDice = 8;
-        damageModifier = AttributeNames.Charisma.toString();
-        isThisWeaponDamage = false;
-        powersAdditionalOptions = "Fey Pact";
-        hitDescription = "2d6 + Charisma modifier fire damage, and the target takes a −2 penalty to attack rolls until the end of your next turn.\n" +
-                "Fey Pact: The penalty to attack rolls is equal to 2 + your Intelligence modifier.";
+        setPowerName("Witchfire");
+        setCharacterClass(HeroClasses.Warlock.toString());
+        setTypeOfPower(TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(10);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Charisma.toString());
+        setDefenseToBeChecked(CreatureDefenses.Reflex.toString());
+        setDamageDiceDealt(2);
+        setTypeOfDamageDice(8);
+        setDamageModifier(AttributeNames.Charisma.toString());
+        setThisWeaponDamage(false);
+        setPowersAdditionalOptions("Fey Pact");
+        setHitDescription("2d6 + Charisma modifier fire damage, and the target takes a −2 penalty to attack rolls until the end of your next turn.\n" +
+                "Fey Pact: The penalty to attack rolls is equal to 2 + your Intelligence modifier.");
     }
 }

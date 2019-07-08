@@ -5,20 +5,20 @@ import DungeonCrawl.StaticRules.*;
 
 public class PaladinsJudgement extends HeroPower {
     public PaladinsJudgement() {
-        powerName = "Paladins' Judgement";
-        characterClass = HeroClasses.Paladin.toString();
-        typeOfPower = TypesOfPowers.DAILY.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Strength.toString();
-        defenseToBeChecked = CreatureDefenses.AC.toString();
-        damageDiceDealt = 3;
-        damageModifier = AttributeNames.Strength.toString();
-        isThisWeaponDamage = true;
-        hitDescription = "Hit: \"3[W] + Strength modifier damage, and one ally within 5 squares of you can spend a healing surge.\"\n" +
+        setPowerName("Paladins' Judgement");
+        setCharacterClass(HeroClasses.Paladin.toString());
+        setTypeOfPower(TypesOfPowers.DAILY.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Strength.toString());
+        setDefenseToBeChecked(CreatureDefenses.AC.toString());
+        setDamageDiceDealt(3);
+        setDamageModifier(AttributeNames.Strength.toString());
+        setThisWeaponDamage(true);
+        setHitDescription("Hit: \"3[W] + Strength modifier damage, and one ally within 5 squares of you can spend a healing surge.\"\n" +
                 "\n" +
-                "Miss: \"One ally within 5 squares of you can spend a healing surge.";
+                "Miss: \"One ally within 5 squares of you can spend a healing surge.");
     }
 }

@@ -10,20 +10,20 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class ScorchingBurst extends HeroPower {
     public ScorchingBurst() {
-        powerName = "Scorching Burst";
-        characterClass = HeroClasses.Wizard.toString();
-        typeOfPower = TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 10;
-        numberOfTargets = "Burst";
-        burstValue = 1;
-        attributeUsedToHit = AttributeNames.Intelligence.toString();
-        defenseToBeChecked = CreatureDefenses.Reflex.toString();
-        damageDiceDealt = 1;
-        typeOfDamageDice = 6;
-        damageModifier = AttributeNames.Intelligence.toString();
-        isThisWeaponDamage = false;
-        hitDescription = "1d6 + Intelligence modifier fire damage.";
+        setPowerName("Scorching Burst");
+        setCharacterClass(HeroClasses.Wizard.toString());
+        setTypeOfPower(TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(10);
+        setNumberOfTargets("Burst");
+        setBurstValue(1);
+        setAttributeUsedToHit(AttributeNames.Intelligence.toString());
+        setDefenseToBeChecked(CreatureDefenses.Reflex.toString());
+        setDamageDiceDealt(1);
+        setTypeOfDamageDice(6);
+        setDamageModifier(AttributeNames.Intelligence.toString());
+        setThisWeaponDamage(false);
+        setHitDescription("1d6 + Intelligence modifier fire damage.");
     }
 }

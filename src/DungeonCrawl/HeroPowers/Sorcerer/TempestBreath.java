@@ -10,20 +10,20 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class TempestBreath extends HeroPower {
     public TempestBreath() {
-        powerName = "Burning Spray";
-        characterClass = HeroClasses.Sorcerer.toString();
-        typeOfPower = TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "Close Blast 3";
-        attributeUsedToHit = AttributeNames.Charisma.toString();
-        defenseToBeChecked = CreatureDefenses.Reflex.toString();
-        damageDiceDealt = 3;
-        typeOfDamageDice = 6;
-        damageModifier = AttributeNames.Charisma.toString();
-        isThisWeaponDamage = false;
-        bonusDamageModifier = AttributeNames.Strength.toString();
-        hitDescription = "2d6 + Charisma modifier acid damage, and the target can’t gain combat advantage against any creature until the end of your next turn. \n\nDragon Magic: You gain concealment until the end of your next turn.";
+        setPowerName("Burning Spray");
+        setCharacterClass(HeroClasses.Sorcerer.toString());
+        setTypeOfPower(TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("Close Blast 3");
+        setAttributeUsedToHit(AttributeNames.Charisma.toString());
+        setDefenseToBeChecked(CreatureDefenses.Reflex.toString());
+        setDamageDiceDealt(3);
+        setTypeOfDamageDice(6);
+        setDamageModifier(AttributeNames.Charisma.toString());
+        setThisWeaponDamage(false);
+        setBonusDamageModifier(AttributeNames.Strength.toString());
+        setHitDescription("2d6 + Charisma modifier acid damage, and the target can’t gain combat advantage against any creature until the end of your next turn. \n\nDragon Magic: You gain concealment until the end of your next turn.");
     }
 }

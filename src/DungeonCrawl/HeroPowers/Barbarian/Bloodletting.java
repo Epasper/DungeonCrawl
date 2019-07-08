@@ -10,19 +10,19 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class Bloodletting extends HeroPower {
     public Bloodletting() {
-        powerName = "Bloodletting";
-        characterClass = HeroClasses.Barbarian.toString();
-        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Strength.toString();
-        defenseToBeChecked = CreatureDefenses.AC.toString();
-        damageDiceDealt = 2;
-        damageModifier = AttributeNames.Strength.toString();
-        isThisWeaponDamage = true;
-        bonusDamage = true;
-        hitDescription = "2[W] + Strength modifier damage. If the target is bloodied, the attack deals extra damage equal to your Constitution modifier.";
+        setPowerName("Bloodletting");
+        setCharacterClass(HeroClasses.Barbarian.toString());
+        setTypeOfPower(TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Strength.toString());
+        setDefenseToBeChecked(CreatureDefenses.AC.toString());
+        setDamageDiceDealt(2);
+        setDamageModifier(AttributeNames.Strength.toString());
+        setThisWeaponDamage(true);
+        setBonusDamage(true);
+        setHitDescription("2[W] + Strength modifier damage. If the target is bloodied, the attack deals extra damage equal to your Constitution modifier.");
     }
 }

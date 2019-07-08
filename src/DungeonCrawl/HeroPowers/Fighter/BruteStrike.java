@@ -6,18 +6,18 @@ import DungeonCrawl.StaticRules.*;
 
 public class BruteStrike extends HeroPower {
     public BruteStrike() {
-        powerName = "Brute Strike";
-        characterClass = HeroClasses.Fighter.toString();
-        typeOfPower = TypesOfPowers.DAILY.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Strength.toString();
-        defenseToBeChecked = CreatureDefenses.AC.toString();
-        damageDiceDealt = 3;
-        damageModifier = AttributeNames.Strength.toString();
-        isThisWeaponDamage = true;
-        hitDescription = "Hit: \"3[W] + Strength modifier damage.";
+        setPowerName("Brute Strike");
+        setCharacterClass(HeroClasses.Fighter.toString());
+        setTypeOfPower(TypesOfPowers.DAILY.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Strength.toString());
+        setDefenseToBeChecked(CreatureDefenses.AC.toString());
+        setDamageDiceDealt(3);
+        setDamageModifier(AttributeNames.Strength.toString());
+        setThisWeaponDamage(true);
+        setHitDescription("Hit: \"3[W] + Strength modifier damage.");
     }
 }

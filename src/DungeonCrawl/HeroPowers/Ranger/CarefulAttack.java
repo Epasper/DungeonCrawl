@@ -10,20 +10,20 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class CarefulAttack extends HeroPower {
     public CarefulAttack() {
-        powerName = "Careful Attack";
-        characterClass = HeroClasses.Ranger.toString();
-        typeOfPower = TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Strength.toString();
-        defenseToBeChecked = CreatureDefenses.AC.toString();
-        damageDiceDealt = 1;
-        bonusToHit = 2;
-        damageModifier = AttributeNames.Strength.toString();
-        isThisWeaponDamage = true;
-        canThisAttackAlsoBeRanged = true;
-        hitDescription = "1[W] + Strength modifier damage (melee) or 1[W] + Dexterity modifier damage (ranged).";
+        setPowerName("Careful Attack");
+        setCharacterClass(HeroClasses.Ranger.toString());
+        setTypeOfPower(TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Strength.toString());
+        setDefenseToBeChecked(CreatureDefenses.AC.toString());
+        setDamageDiceDealt(1);
+        setBonusToHit(2);
+        setDamageModifier(AttributeNames.Strength.toString());
+        setThisWeaponDamage(true);
+        setCanThisAttackAlsoBeRanged(true);
+        setHitDescription("1[W] + Strength modifier damage (melee) or 1[W] + Dexterity modifier damage (ranged).");
     }
 }

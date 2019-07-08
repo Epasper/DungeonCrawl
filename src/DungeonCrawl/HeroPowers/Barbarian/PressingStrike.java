@@ -10,18 +10,18 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class PressingStrike extends HeroPower {
     public PressingStrike() {
-        powerName = "Pressing Strike";
-        characterClass = HeroClasses.Barbarian.toString();
-        typeOfPower = TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Strength.toString();
-        defenseToBeChecked = CreatureDefenses.AC.toString();
-        damageDiceDealt = 1;
-        damageModifier = AttributeNames.Strength.toString();
-        isThisWeaponDamage = true;
-        hitDescription = "1 [W] + Strength modifier damage, and you push the target 1 square. If you are raging, the attack deals 1d6 extra damage.";
+        setPowerName("Pressing Strike");
+        setCharacterClass(HeroClasses.Barbarian.toString());
+        setTypeOfPower(TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Strength.toString());
+        setDefenseToBeChecked(CreatureDefenses.AC.toString());
+        setDamageDiceDealt(1);
+        setDamageModifier(AttributeNames.Strength.toString());
+        setThisWeaponDamage(true);
+        setHitDescription("1 [W] + Strength modifier damage, and you push the target 1 square. If you are raging, the attack deals 1d6 extra damage.");
     }
 }

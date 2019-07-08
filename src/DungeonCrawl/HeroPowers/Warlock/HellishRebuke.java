@@ -10,19 +10,19 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class HellishRebuke extends HeroPower {
     public HellishRebuke() {
-        powerName = "Hellish Rebuke";
-        characterClass = HeroClasses.Warlock.toString();
-        typeOfPower = TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 10;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Charisma.toString();
-        defenseToBeChecked = CreatureDefenses.Reflex.toString();
-        damageDiceDealt = 1;
-        typeOfDamageDice = 6;
-        damageModifier = AttributeNames.Charisma.toString();
-        isThisWeaponDamage = false;
-        hitDescription = "1d6 + Constitution modifier fire damage. The first time you take damage before the end of your next turn, the target takes 1d6 + Constitution modifier fire damage.";
+        setPowerName("Hellish Rebuke");
+        setCharacterClass(HeroClasses.Warlock.toString());
+        setTypeOfPower(TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(10);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Charisma.toString());
+        setDefenseToBeChecked(CreatureDefenses.Reflex.toString());
+        setDamageDiceDealt(1);
+        setTypeOfDamageDice(6);
+        setDamageModifier(AttributeNames.Charisma.toString());
+        setThisWeaponDamage(false);
+        setHitDescription("1d6 + Constitution modifier fire damage. The first time you take damage before the end of your next turn, the target takes 1d6 + Constitution modifier fire damage.");
     }
 }

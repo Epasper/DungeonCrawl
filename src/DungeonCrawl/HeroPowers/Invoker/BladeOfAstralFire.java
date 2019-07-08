@@ -10,19 +10,19 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class BladeOfAstralFire extends HeroPower {
     public BladeOfAstralFire() {
-        powerName = "Blade of Astral Fire";
-        characterClass = HeroClasses.Invoker.toString();
-        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "Close Burst 3";
-        attributeUsedToHit = AttributeNames.Wisdom.toString();
-        defenseToBeChecked = CreatureDefenses.Will.toString();
-        damageDiceDealt = 1;
-        typeOfDamageDice = 6;
-        damageModifier = AttributeNames.Wisdom.toString();
-        isThisWeaponDamage = false;
-        hitDescription = "1d6 + Wisdom modifier psychic damage, and you push the target 2 squares.";
+        setPowerName("Blade of Astral Fire");
+        setCharacterClass(HeroClasses.Invoker.toString());
+        setTypeOfPower(TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("Close Burst 3");
+        setAttributeUsedToHit(AttributeNames.Wisdom.toString());
+        setDefenseToBeChecked(CreatureDefenses.Will.toString());
+        setDamageDiceDealt(1);
+        setTypeOfDamageDice(6);
+        setDamageModifier(AttributeNames.Wisdom.toString());
+        setThisWeaponDamage(false);
+        setHitDescription("1d6 + Wisdom modifier psychic damage, and you push the target 2 squares.");
     }
 }

@@ -10,21 +10,21 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class HungryEarth extends HeroPower {
     public HungryEarth() {
-        powerName = "Hungry Earth";
-        characterClass = HeroClasses.Warden.toString();
-        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "Close Burst 1";
-        attributeUsedToHit = AttributeNames.Strength.toString();
-        defenseToBeChecked = CreatureDefenses.Fortitude.toString();
-        damageDiceDealt = 1;
-        damageModifier = AttributeNames.Strength.toString();
-        bonusDamageModifier = AttributeNames.Constitution.toString();
-        isThisWeaponDamage = true;
-        hitDescription = "1[W] + Strength modifier damage.\n" +
+        setPowerName("Hungry Earth");
+        setCharacterClass(HeroClasses.Warden.toString());
+        setTypeOfPower(TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("Close Burst 1");
+        setAttributeUsedToHit(AttributeNames.Strength.toString());
+        setDefenseToBeChecked(CreatureDefenses.Fortitude.toString());
+        setDamageDiceDealt(1);
+        setDamageModifier(AttributeNames.Strength.toString());
+        setBonusDamageModifier(AttributeNames.Constitution.toString());
+        setThisWeaponDamage(true);
+        setHitDescription("1[W] + Strength modifier damage.\n" +
                 "\n" +
-                "Effect: Until the end of your next turn, each square in the burst is difficult terrain for your enemies.";
+                "Effect: Until the end of your next turn, each square in the burst is difficult terrain for your enemies.");
     }
 }

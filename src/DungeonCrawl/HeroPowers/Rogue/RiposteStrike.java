@@ -10,18 +10,18 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class RiposteStrike extends HeroPower {
     public RiposteStrike() {
-        powerName = "Riposte Strike";
-        characterClass = HeroClasses.Rogue.toString();
-        typeOfPower = TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Dexterity.toString();
-        defenseToBeChecked = CreatureDefenses.AC.toString();
-        damageDiceDealt = 1;
-        damageModifier = AttributeNames.Dexterity.toString();
-        isThisWeaponDamage = true;
-        hitDescription = "1[W] + Dexterity modifier damage. If the target attacks you before the start of your next turn, you make your riposte against the target as an immediate interrupt: a Strength vs. AC attack that deals 1[W] + Strength modifier damage.";
+        setPowerName("Riposte Strike");
+        setCharacterClass(HeroClasses.Rogue.toString());
+        setTypeOfPower(TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Dexterity.toString());
+        setDefenseToBeChecked(CreatureDefenses.AC.toString());
+        setDamageDiceDealt(1);
+        setDamageModifier(AttributeNames.Dexterity.toString());
+        setThisWeaponDamage(true);
+        setHitDescription("1[W] + Dexterity modifier damage. If the target attacks you before the start of your next turn, you make your riposte against the target as an immediate interrupt: a Strength vs. AC attack that deals 1[W] + Strength modifier damage.");
     }
 }

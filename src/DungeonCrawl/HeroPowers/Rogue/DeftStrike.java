@@ -10,19 +10,19 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class DeftStrike extends HeroPower {
     public DeftStrike() {
-        powerName = "Deft Strike";
-        characterClass = HeroClasses.Rogue.toString();
-        typeOfPower = TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Dexterity.toString();
-        defenseToBeChecked = CreatureDefenses.AC.toString();
-        damageDiceDealt = 1;
-        damageModifier = AttributeNames.Dexterity.toString();
-        isThisWeaponDamage = true;
-        canThisAttackAlsoBeRanged = true;
-        hitDescription = "User can move 2 squares before the attack. 1[W] + Dexterity modifier damage.";
+        setPowerName("Deft Strike");
+        setCharacterClass(HeroClasses.Rogue.toString());
+        setTypeOfPower(TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Dexterity.toString());
+        setDefenseToBeChecked(CreatureDefenses.AC.toString());
+        setDamageDiceDealt(1);
+        setDamageModifier(AttributeNames.Dexterity.toString());
+        setThisWeaponDamage(true);
+        setCanThisAttackAlsoBeRanged(true);
+        setHitDescription("User can move 2 squares before the attack. 1[W] + Dexterity modifier damage.");
     }
 }

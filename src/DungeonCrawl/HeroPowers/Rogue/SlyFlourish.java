@@ -10,20 +10,20 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class SlyFlourish extends HeroPower {
     public SlyFlourish() {
-        powerName = "Sly Flourish";
-        characterClass = HeroClasses.Rogue.toString();
-        typeOfPower = TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Dexterity.toString();
-        defenseToBeChecked = CreatureDefenses.Reflex.toString();
-        damageDiceDealt = 1;
-        damageModifier = AttributeNames.Dexterity.toString();
-        bonusDamageModifier = AttributeNames.Charisma.toString();
-        isThisWeaponDamage = true;
-        canThisAttackAlsoBeRanged = true;
-        hitDescription = "1[W] + Dexterity modifier + Charisma modifier damage.";
+        setPowerName("Sly Flourish");
+        setCharacterClass(HeroClasses.Rogue.toString());
+        setTypeOfPower(TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Dexterity.toString());
+        setDefenseToBeChecked(CreatureDefenses.Reflex.toString());
+        setDamageDiceDealt(1);
+        setDamageModifier(AttributeNames.Dexterity.toString());
+        setBonusDamageModifier(AttributeNames.Charisma.toString());
+        setThisWeaponDamage(true);
+        setCanThisAttackAlsoBeRanged(true);
+        setHitDescription("1[W] + Dexterity modifier + Charisma modifier damage.");
     }
 }

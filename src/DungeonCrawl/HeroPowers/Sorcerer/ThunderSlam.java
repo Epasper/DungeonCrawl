@@ -10,19 +10,19 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class ThunderSlam extends HeroPower {
     public ThunderSlam() {
-        powerName = "Thunder Slam";
-        characterClass = HeroClasses.Sorcerer.toString();
-        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 10;
-        numberOfTargets = "one target";
-        attributeUsedToHit = AttributeNames.Charisma.toString();
-        defenseToBeChecked = CreatureDefenses.Fortitude.toString();
-        damageDiceDealt = 2;
-        typeOfDamageDice = 10;
-        damageModifier = AttributeNames.Charisma.toString();
-        isThisWeaponDamage = false;
-        hitDescription = "2d10 + Charisma modifier thunder damage, and you push the target 3 squares.";
+        setPowerName("Thunder Slam");
+        setCharacterClass(HeroClasses.Sorcerer.toString());
+        setTypeOfPower(TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(10);
+        setNumberOfTargets("one target");
+        setAttributeUsedToHit(AttributeNames.Charisma.toString());
+        setDefenseToBeChecked(CreatureDefenses.Fortitude.toString());
+        setDamageDiceDealt(2);
+        setTypeOfDamageDice(10);
+        setDamageModifier(AttributeNames.Charisma.toString());
+        setThisWeaponDamage(false);
+        setHitDescription("2d10 + Charisma modifier thunder damage, and you push the target 3 squares.");
     }
 }

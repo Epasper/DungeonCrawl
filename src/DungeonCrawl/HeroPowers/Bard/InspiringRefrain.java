@@ -10,18 +10,18 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class InspiringRefrain extends HeroPower {
     public InspiringRefrain() {
-        powerName = "Inspiring Refrain";
-        characterClass = HeroClasses.Bard.toString();
-        typeOfPower = TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Charisma.toString();
-        defenseToBeChecked = CreatureDefenses.AC.toString();
-        damageDiceDealt = 2;
-        damageModifier = AttributeNames.Charisma.toString();
-        isThisWeaponDamage = true;
-        hitDescription = "2[W] + Charisma modifier damage, and each ally within 5 squares of you gains a +1 power bonus to attack rolls until the end of your next turn.";
+        setPowerName("Inspiring Refrain");
+        setCharacterClass(HeroClasses.Bard.toString());
+        setTypeOfPower(TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Charisma.toString());
+        setDefenseToBeChecked(CreatureDefenses.AC.toString());
+        setDamageDiceDealt(2);
+        setDamageModifier(AttributeNames.Charisma.toString());
+        setThisWeaponDamage(true);
+        setHitDescription("2[W] + Charisma modifier damage, and each ally within 5 squares of you gains a +1 power bonus to attack rolls until the end of your next turn.");
     }
 }

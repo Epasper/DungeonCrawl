@@ -5,20 +5,20 @@ import DungeonCrawl.StaticRules.*;
 
 public class AvengingFlame extends HeroPower {
     public AvengingFlame() {
-        powerName = "Avenging Flame";
-        characterClass = HeroClasses.Cleric.toString();
-        typeOfPower = TypesOfPowers.DAILY.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Strength.toString();
-        defenseToBeChecked = CreatureDefenses.AC.toString();
-        damageDiceDealt = 2;
-        damageModifier = AttributeNames.Strength.toString();
-        isThisWeaponDamage = true;
-        hitDescription = "2[W] + Strength modifier damage, and ongoing 5 fire damage (save ends). If the target attacks on its turn, it can’t make a saving throw against the ongoing damage on that turn.[PH:64][Dr399:Cleric]\n" +
+        setPowerName("Avenging Flame");
+        setCharacterClass(HeroClasses.Cleric.toString());
+        setTypeOfPower(TypesOfPowers.DAILY.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Strength.toString());
+        setDefenseToBeChecked(CreatureDefenses.AC.toString());
+        setDamageDiceDealt(2);
+        setDamageModifier(AttributeNames.Strength.toString());
+        setThisWeaponDamage(true);
+        setHitDescription("2[W] + Strength modifier damage, and ongoing 5 fire damage (save ends). If the target attacks on its turn, it can’t make a saving throw against the ongoing damage on that turn.[PH:64][Dr399:Cleric]\n" +
                 "\n" +
-                "Miss: Half damage";
+                "Miss: Half damage");
     }
 }

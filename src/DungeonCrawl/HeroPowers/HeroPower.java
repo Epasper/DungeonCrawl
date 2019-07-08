@@ -1,6 +1,10 @@
 package DungeonCrawl.HeroPowers;
 
-import DungeonCrawl.Model.AttackResults;
+import DungeonCrawl.GUI.GUIUtilities;
+import DungeonCrawl.Model.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class HeroPower {
 
@@ -8,30 +12,30 @@ public abstract class HeroPower {
 
     //todo change a map of powers into a power factory.
 
-    protected String powerName;
-    protected String characterClass;
-    protected String typeOfPower;
-    protected String usedAction;
-    protected int powerLevel;
-    protected int range; //for melee skills use range = 0
-    protected String numberOfTargets;
-    protected String attributeUsedToHit;
-    protected int bonusToHit;
-    protected String defenseToBeChecked;
-    protected String hitDescription;
-    protected int damageDiceDealt;
-    protected String damageModifier;
-    protected boolean isThisWeaponDamage;
-    protected int typeOfDamageDice;
-    protected boolean bonusDamage;
-    protected int typeOfBonusDamageDice;
-    protected String bonusDamageModifier;
-    protected boolean canThisAttackAlsoBeRanged = false;
-    protected boolean isThisASpiritAttack = false;
-    protected boolean isThisABeastFormAttack = false;
-    protected String secondAttributeUsed;
-    protected String powersAdditionalOptions;
-    protected int burstValue = 0;
+    private String powerName;
+    private String characterClass;
+    private String typeOfPower;
+    private String usedAction;
+    private int powerLevel;
+    private int range; //for melee skills use range = 0
+    private String numberOfTargets;
+    private String attributeUsedToHit;
+    private int bonusToHit;
+    private String defenseToBeChecked;
+    private String hitDescription;
+    private int damageDiceDealt;
+    private String damageModifier;
+    private boolean isThisWeaponDamage;
+    private int typeOfDamageDice;
+    private boolean bonusDamage;
+    private int typeOfBonusDamageDice;
+    private String bonusDamageModifier;
+    private boolean canThisAttackAlsoBeRanged = false;
+    private boolean isThisASpiritAttack = false;
+    private boolean isThisABeastFormAttack = false;
+    private String secondAttributeUsed;
+    private String powersAdditionalOptions;
+    private int burstValue = 0;
     private String powerIconId;
     private int numberOfLockedEncounters = 0;
 
@@ -187,4 +191,99 @@ public abstract class HeroPower {
         this.typeOfBonusDamageDice = typeOfBonusDamageDice;
     }
 
+    public List<Creature> determineTheNumberOfCreaturesAttacked(int XPos, int YPos, DungeonMap dungeonMap, List<Monster> allDiscoveredMonsters, List<Hero> allDiscoveredHeroes) {
+        GUIUtilities guiUtilities = new GUIUtilities();
+        List<Creature> listOfCreaturesAttacked = new ArrayList<>();
+        System.out.println("---" + XPos + "---" + YPos + "---");
+        if (this.getNumberOfTargets().contains("Burst")) {
+            //todo after selecting a burst power, all tiles should be clickable as a target of the power
+            //todo add a GUI element that shows the range of AoE attack to be made.
+            manageBurstAttack(XPos, YPos, dungeonMap, allDiscoveredMonsters, allDiscoveredHeroes, listOfCreaturesAttacked);
+        } else {
+            listOfCreaturesAttacked.add(guiUtilities.getSingleMonsterByUniqueID(dungeonMap.getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID(), allDiscoveredMonsters));
+        }
+        return listOfCreaturesAttacked;
+    }
+
+    private void manageBurstAttack(int XPos, int YPos, DungeonMap dungeonMap, List<Monster> allDiscoveredMonsters, List<Hero> allDiscoveredHeroes, List<Creature> listOfCreaturesAttacked) {
+        int burstValue = this.getBurstValue();
+        for (int i = -burstValue; i < burstValue; i++) {
+            for (int j = -burstValue; j < burstValue; j++) {
+                try {
+                    int creatureId = dungeonMap.getMapTilesArray()[XPos + i][YPos + j].getOccupyingCreatureTypeId();
+                    if (creatureId > 100) {
+                        creatureId = dungeonMap.getMapTilesArray()[XPos + i][YPos + j].getOccupyingCreatureUniqueID();
+                        for (Monster monster : allDiscoveredMonsters) {
+                            if (monster.getCurrentMonsterUniqueID() == creatureId) {
+                                listOfCreaturesAttacked.add(monster);
+                            }
+                        }
+                    } else {
+                        for (Hero hero : allDiscoveredHeroes) {
+                            if (hero.getID() == creatureId) {
+                                listOfCreaturesAttacked.add(hero);
+                            }
+                        }
+                    }
+                } catch (NullPointerException ignored) {
+                }
+            }
+        }
+    }
+
+    public int getBonusToHit() {
+        return bonusToHit;
+    }
+
+    public void setBonusToHit(int bonusToHit) {
+        this.bonusToHit = bonusToHit;
+    }
+
+    public String getBonusDamageModifier() {
+        return bonusDamageModifier;
+    }
+
+    public void setBonusDamageModifier(String bonusDamageModifier) {
+        this.bonusDamageModifier = bonusDamageModifier;
+    }
+
+    public boolean isCanThisAttackAlsoBeRanged() {
+        return canThisAttackAlsoBeRanged;
+    }
+
+    public void setCanThisAttackAlsoBeRanged(boolean canThisAttackAlsoBeRanged) {
+        this.canThisAttackAlsoBeRanged = canThisAttackAlsoBeRanged;
+    }
+
+    public boolean isThisASpiritAttack() {
+        return isThisASpiritAttack;
+    }
+
+    public void setThisASpiritAttack(boolean thisASpiritAttack) {
+        isThisASpiritAttack = thisASpiritAttack;
+    }
+
+    public boolean isThisABeastFormAttack() {
+        return isThisABeastFormAttack;
+    }
+
+    public void setThisABeastFormAttack(boolean thisABeastFormAttack) {
+        isThisABeastFormAttack = thisABeastFormAttack;
+    }
+
+    public String getSecondAttributeUsed() {
+        return secondAttributeUsed;
+    }
+
+    public void setSecondAttributeUsed(String secondAttributeUsed) {
+        this.secondAttributeUsed = secondAttributeUsed;
+    }
+
+    public String getPowersAdditionalOptions() {
+        return powersAdditionalOptions;
+    }
+
+    public void setPowersAdditionalOptions(String powersAdditionalOptions) {
+        this.powersAdditionalOptions = powersAdditionalOptions;
+    }
 }

@@ -6,23 +6,23 @@ import DungeonCrawl.StaticRules.*;
 
 public class FaerieFire extends HeroPower {
     public FaerieFire() {
-        powerName = "Faerie Fire";
-        characterClass = HeroClasses.Druid.toString();
-        typeOfPower = TypesOfPowers.DAILY.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 10;
-        numberOfTargets = "Burst";
-        burstValue = 1;
-        attributeUsedToHit = AttributeNames.Wisdom.toString();
-        defenseToBeChecked = CreatureDefenses.Will.toString();
-        damageDiceDealt = 3;
-        typeOfDamageDice = 6;
-        damageModifier = AttributeNames.Wisdom.toString();;
-        isThisWeaponDamage = false;
-        hitDescription = "The target is slowed and grants combat advantage (save ends both).\n" +
+        setPowerName("Faerie Fire");
+        setCharacterClass(HeroClasses.Druid.toString());
+        setTypeOfPower(TypesOfPowers.DAILY.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(10);
+        setNumberOfTargets("Burst");
+        setBurstValue(1);
+        setAttributeUsedToHit(AttributeNames.Wisdom.toString());
+        setDefenseToBeChecked(CreatureDefenses.Will.toString());
+        setDamageDiceDealt(3);
+        setTypeOfDamageDice(6);
+        setDamageModifier(AttributeNames.Wisdom.toString());;
+        setThisWeaponDamage(false);
+        setHitDescription("The target is slowed and grants combat advantage (save ends both).\n" +
                 "Aftereffect: 3d6 + Wisdom modifier radiant damage. The target grants combat advantage until the end of the user's next turn.\n" +
                 "\n" +
-                "Miss: 1d6 + Wisdom modifier radiant damage. The target grants combat advantage until the end of the user's next turn.";
+                "Miss: 1d6 + Wisdom modifier radiant damage. The target grants combat advantage until the end of the user's next turn.");
     }
 }

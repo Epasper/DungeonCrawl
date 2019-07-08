@@ -5,19 +5,19 @@ import DungeonCrawl.StaticRules.*;
 
 public class SwiftPantherRage extends HeroPower {
     public SwiftPantherRage() {
-        powerName = "Swift Panther Rage";
-        characterClass = HeroClasses.Barbarian.toString();
-        typeOfPower = TypesOfPowers.DAILY.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Strength.toString();
-        defenseToBeChecked = CreatureDefenses.AC.toString();
-        damageDiceDealt = 3;
-        damageModifier = AttributeNames.Strength.toString();
-        isThisWeaponDamage = true;
-        bonusDamage = true;
-        hitDescription = "You enter the rage of the swift panther. Until the rage ends, you gain a +2 bonus to speed and can shift 2 squares as a move action.";
+        setPowerName("Swift Panther Rage");
+        setCharacterClass(HeroClasses.Barbarian.toString());
+        setTypeOfPower(TypesOfPowers.DAILY.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Strength.toString());
+        setDefenseToBeChecked(CreatureDefenses.AC.toString());
+        setDamageDiceDealt(3);
+        setDamageModifier(AttributeNames.Strength.toString());
+        setThisWeaponDamage(true);
+        setBonusDamage(true);
+        setHitDescription("You enter the rage of the swift panther. Until the rage ends, you gain a +2 bonus to speed and can shift 2 squares as a move action.");
     }
 }

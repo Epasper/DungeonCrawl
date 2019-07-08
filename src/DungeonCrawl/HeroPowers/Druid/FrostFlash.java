@@ -10,20 +10,20 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class FrostFlash extends HeroPower {
     public FrostFlash() {
-        powerName = "Frost Flash";
-        characterClass = HeroClasses.Druid.toString();
-        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 10;
-        numberOfTargets = "One Target";
-        attributeUsedToHit = AttributeNames.Wisdom.toString();
-        defenseToBeChecked = CreatureDefenses.Fortitude.toString();
-        damageDiceDealt = 1;
-        typeOfDamageDice = 6;
-        bonusDamageModifier = AttributeNames.Wisdom.toString();
-        damageModifier = "None";
-        isThisWeaponDamage = false;
-        hitDescription = "1d6 + Wisdom modifier cold damage. The target is immobilized until the end of the user's next turn. Primal Guardian: Extra damage equal to the user's Constitution modifier.";
+        setPowerName("Frost Flash");
+        setCharacterClass(HeroClasses.Druid.toString());
+        setTypeOfPower(TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(10);
+        setNumberOfTargets("One Target");
+        setAttributeUsedToHit(AttributeNames.Wisdom.toString());
+        setDefenseToBeChecked(CreatureDefenses.Fortitude.toString());
+        setDamageDiceDealt(1);
+        setTypeOfDamageDice(6);
+        setBonusDamageModifier(AttributeNames.Wisdom.toString());
+        setDamageModifier("None");
+        setThisWeaponDamage(false);
+        setHitDescription("1d6 + Wisdom modifier cold damage. The target is immobilized until the end of the user's next turn. Primal Guardian: Extra damage equal to the user's Constitution modifier.");
     }
 }

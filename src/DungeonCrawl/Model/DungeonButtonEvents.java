@@ -9,7 +9,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DungeonButtonEvents {
@@ -58,56 +57,16 @@ public class DungeonButtonEvents {
             encounterManager.getDungeonMap().clearMapReachableProperties(encounterManager.getDungeonMap());
         }
         if (currentHeroID > 100 && isTheTileInteractive) {
-            attackAMonsterEvent(XPos, YPos, currentHeroPowers);
+            eventOnAttackingAMonster(XPos, YPos, currentHeroPowers);
         }
     }
 
-    public List<Creature> determineTheNumberOfCreaturesAttacked(int XPos, int YPos, HeroPower heroPower, DungeonMap dungeonMap, List<Monster> allDiscoveredMonsters, List<Hero> allDiscoveredHeroes) {
-        List<Creature> listOfCreaturesAttacked = new ArrayList<>();
-        System.out.println("---" + XPos + "---" + YPos + "---");
-        if (heroPower.getNumberOfTargets().contains("Burst")) {
-            //todo after selecting a burst power, all tiles should be clickable as a target of the power
-            //todo add a GUI element that shows the range of AoE attack to be made.
-            manageBurstAttack(XPos, YPos, heroPower, dungeonMap, allDiscoveredMonsters, allDiscoveredHeroes, listOfCreaturesAttacked);
-        } else {
-            listOfCreaturesAttacked.add(guiUtilities.getSingleMonsterByUniqueID(dungeonMap.getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID(), allDiscoveredMonsters));
-        }
-        return listOfCreaturesAttacked;
-    }
-
-    private void manageBurstAttack(int XPos, int YPos, HeroPower heroPower, DungeonMap dungeonMap, List<Monster> allDiscoveredMonsters, List<Hero> allDiscoveredHeroes, List<Creature> listOfCreaturesAttacked) {
-        int burstValue = heroPower.getBurstValue();
-        for (int i = -burstValue; i < burstValue; i++) {
-            for (int j = -burstValue; j < burstValue; j++) {
-                try {
-                    int creatureId = dungeonMap.getMapTilesArray()[XPos + i][YPos + j].getOccupyingCreatureTypeId();
-                    if (creatureId > 100) {
-                        creatureId = dungeonMap.getMapTilesArray()[XPos + i][YPos + j].getOccupyingCreatureUniqueID();
-                        for (Monster monster : allDiscoveredMonsters) {
-                            if (monster.getCurrentMonsterUniqueID() == creatureId) {
-                                listOfCreaturesAttacked.add(monster);
-                            }
-                        }
-                    } else {
-                        for (Hero hero : allDiscoveredHeroes) {
-                            if (hero.getID() == creatureId) {
-                                listOfCreaturesAttacked.add(hero);
-                            }
-                        }
-                    }
-                } catch (NullPointerException ignored) {
-                }
-            }
-        }
-    }
-
-    private void attackAMonsterEvent(int XPos, int YPos, List<HeroPower> currentHeroPowers) {
+    private void eventOnAttackingAMonster(int XPos, int YPos, List<HeroPower> currentHeroPowers) {
         boolean updateTheGraphics = true;
         try {
             HeroPower currentPower = currentHeroPowers.get(currentHeroPowers.size() - 1);
-            List<Creature> listOfAttackedCreatures = determineTheNumberOfCreaturesAttacked(XPos,
+            List<Creature> listOfAttackedCreatures = currentPower.determineTheNumberOfCreaturesAttacked(XPos,
                     YPos,
-                    currentPower,
                     encounterManager.getDungeonMap(),
                     encounterManager.getDiscoveredMonsters(),
                     encounterManager.getHeroManager().getHeroList());

@@ -10,21 +10,21 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class SacredFlame extends HeroPower {
     public SacredFlame() {
-        powerName = "Sacred Flame";
-        characterClass = HeroClasses.Cleric.toString();
-        typeOfPower = TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 5;
-        numberOfTargets = "Burst"; //todo change this to "one target" after testing
-        burstValue = 3; //todo delete this line after burst testing
-        attributeUsedToHit = AttributeNames.Wisdom.toString();
-        defenseToBeChecked = CreatureDefenses.Reflex.toString();
-        damageDiceDealt = 1;
-        damageModifier = AttributeNames.Wisdom.toString();
-        typeOfDamageDice = 6;
-        isThisWeaponDamage = false;
-        hitDescription = "1d6 + Wisdom modifier radiant damage, and one ally you can see chooses either to make a saving throw or to gain temporary hit points equal to your Charisma modifier + one-half your level.";
+        setPowerName("Sacred Flame");
+        setCharacterClass(HeroClasses.Cleric.toString());
+        setTypeOfPower(TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(5);
+        setNumberOfTargets("Burst"); //todo change this to "one target" after testing
+        setBurstValue(3); //todo delete this line after burst testing
+        setAttributeUsedToHit(AttributeNames.Wisdom.toString());
+        setDefenseToBeChecked(CreatureDefenses.Reflex.toString());
+        setDamageDiceDealt(1);
+        setDamageModifier(AttributeNames.Wisdom.toString());
+        setTypeOfDamageDice(6);
+        setThisWeaponDamage(false);
+        setHitDescription("1d6 + Wisdom modifier radiant damage, and one ally you can see chooses either to make a saving throw or to gain temporary hit points equal to your Charisma modifier + one-half your level.");
 
     }
 }

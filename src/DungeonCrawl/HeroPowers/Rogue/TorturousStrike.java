@@ -10,19 +10,19 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class TorturousStrike extends HeroPower {
     public TorturousStrike() {
-        powerName = "Torturous Strike";
-        characterClass = HeroClasses.Rogue.toString();
-        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Dexterity.toString();
-        defenseToBeChecked = CreatureDefenses.AC.toString();
-        damageDiceDealt = 2;
-        damageModifier = AttributeNames.Dexterity.toString();
-        isThisWeaponDamage = true;
-        hitDescription = "1[W] + Dexterity modifier damage, and you slide the target 1 square.\n" +
-                "Artful Dodger: You slide the target a number of squares equal to your Charisma modifier";
+        setPowerName("Torturous Strike");
+        setCharacterClass(HeroClasses.Rogue.toString());
+        setTypeOfPower(TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Dexterity.toString());
+        setDefenseToBeChecked(CreatureDefenses.AC.toString());
+        setDamageDiceDealt(2);
+        setDamageModifier(AttributeNames.Dexterity.toString());
+        setThisWeaponDamage(true);
+        setHitDescription("1[W] + Dexterity modifier damage, and you slide the target 1 square.\n" +
+                "Artful Dodger: You slide the target a number of squares equal to your Charisma modifier");
     }
 }

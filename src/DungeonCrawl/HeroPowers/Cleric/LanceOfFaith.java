@@ -10,20 +10,20 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class LanceOfFaith extends HeroPower {
     public LanceOfFaith() {
-        powerName = "Lance of Faith";
-        characterClass = HeroClasses.Cleric.toString();
-        typeOfPower = TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 5;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Wisdom.toString();
-        defenseToBeChecked = CreatureDefenses.Reflex.toString();
-        damageDiceDealt = 1;
-        damageModifier = AttributeNames.Wisdom.toString();
-        typeOfDamageDice = 8;
-        isThisWeaponDamage = false;
-        hitDescription = "1d8 + Wisdom modifier radiant damage, and one ally you can see gains a +2 power bonus to his or her next attack roll against the target.";
+        setPowerName("Lance of Faith");
+        setCharacterClass(HeroClasses.Cleric.toString());
+        setTypeOfPower(TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(5);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Wisdom.toString());
+        setDefenseToBeChecked(CreatureDefenses.Reflex.toString());
+        setDamageDiceDealt(1);
+        setDamageModifier(AttributeNames.Wisdom.toString());
+        setTypeOfDamageDice(8);
+        setThisWeaponDamage(false);
+        setHitDescription("1d8 + Wisdom modifier radiant damage, and one ally you can see gains a +2 power bonus to his or her next attack roll against the target.");
 
     }
 }

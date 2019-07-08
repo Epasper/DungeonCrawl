@@ -5,18 +5,18 @@ import DungeonCrawl.StaticRules.*;
 
 public class MacetailsRage extends HeroPower {
     public MacetailsRage() {
-        powerName = "Macetail's Rage";
-        characterClass = HeroClasses.Barbarian.toString();
-        typeOfPower = TypesOfPowers.DAILY.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "Close Burst 1";
-        attributeUsedToHit = AttributeNames.Strength.toString();
-        defenseToBeChecked = CreatureDefenses.Reflex.toString();
-        damageDiceDealt = 1;
-        damageModifier = AttributeNames.Strength.toString();
-        isThisWeaponDamage = true;
-        hitDescription = "You enter the rage of the Macetail Behemoth. Until the rage ends, whenever you hit, gain temporary hit points equal to your Str mod";
+        setPowerName("Macetail's Rage");
+        setCharacterClass(HeroClasses.Barbarian.toString());
+        setTypeOfPower(TypesOfPowers.DAILY.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("Close Burst 1");
+        setAttributeUsedToHit(AttributeNames.Strength.toString());
+        setDefenseToBeChecked(CreatureDefenses.Reflex.toString());
+        setDamageDiceDealt(1);
+        setDamageModifier(AttributeNames.Strength.toString());
+        setThisWeaponDamage(true);
+        setHitDescription("You enter the rage of the Macetail Behemoth. Until the rage ends, whenever you hit, gain temporary hit points equal to your Str mod");
     }
 }

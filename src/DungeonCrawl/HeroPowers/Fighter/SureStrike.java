@@ -10,20 +10,20 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class SureStrike extends HeroPower {
     public SureStrike() {
-        powerName = "Sure Strike";
-        characterClass = HeroClasses.Fighter.toString();
-        typeOfPower = TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Strength.toString();
-        bonusToHit = 2;
-        defenseToBeChecked = CreatureDefenses.AC.toString();
-        damageDiceDealt = 1;
-        damageModifier = "None";
-        isThisWeaponDamage = true;
-        hitDescription = "1[W] damage.";
+        setPowerName("Sure Strike");
+        setCharacterClass(HeroClasses.Fighter.toString());
+        setTypeOfPower(TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Strength.toString());
+        setBonusToHit(2);
+        setDefenseToBeChecked(CreatureDefenses.AC.toString());
+        setDamageDiceDealt(1);
+        setDamageModifier("None");
+        setThisWeaponDamage(true);
+        setHitDescription("1[W] damage.");
 
     }
 }

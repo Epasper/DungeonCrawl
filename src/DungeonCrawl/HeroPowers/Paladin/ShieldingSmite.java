@@ -10,18 +10,18 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class ShieldingSmite extends HeroPower {
     public ShieldingSmite() {
-        powerName = "Shielding Smite";
-        characterClass = HeroClasses.Paladin.toString();
-        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Charisma.toString();
-        defenseToBeChecked = CreatureDefenses.Reflex.toString();
-        damageDiceDealt = 2;
-        damageModifier = AttributeNames.Charisma.toString();
-        isThisWeaponDamage = true;
-        hitDescription = "Until the end of your next turn, one ally within 5 squares of you gains a power bonus to AC equal to your Wisdom modifier.";
+        setPowerName("Shielding Smite");
+        setCharacterClass(HeroClasses.Paladin.toString());
+        setTypeOfPower(TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Charisma.toString());
+        setDefenseToBeChecked(CreatureDefenses.Reflex.toString());
+        setDamageDiceDealt(2);
+        setDamageModifier(AttributeNames.Charisma.toString());
+        setThisWeaponDamage(true);
+        setHitDescription("Until the end of your next turn, one ally within 5 squares of you gains a power bonus to AC equal to your Wisdom modifier.");
     }
 }

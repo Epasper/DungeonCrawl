@@ -10,18 +10,18 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class WhirlwindCharge extends HeroPower {
     public WhirlwindCharge() {
-        powerName = "Whirlwind Charge";
-        characterClass = HeroClasses.Avenger.toString();
-        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 10;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Wisdom.toString();
-        defenseToBeChecked = CreatureDefenses.AC.toString();
-        damageDiceDealt = 2;
-        damageModifier = AttributeNames.Wisdom.toString();
-        isThisWeaponDamage = true;
-        hitDescription = "2[W] + Wisdom modifier damage. Special: When charging, you can use this power in place of a melee basic attack. If you charge, you gain a +4 bonus to AC against opportunity attacks you provoke while moving to the target.";
+        setPowerName("Whirlwind Charge");
+        setCharacterClass(HeroClasses.Avenger.toString());
+        setTypeOfPower(TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(10);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Wisdom.toString());
+        setDefenseToBeChecked(CreatureDefenses.AC.toString());
+        setDamageDiceDealt(2);
+        setDamageModifier(AttributeNames.Wisdom.toString());
+        setThisWeaponDamage(true);
+        setHitDescription("2[W] + Wisdom modifier damage. Special: When charging, you can use this power in place of a melee basic attack. If you charge, you gain a +4 bonus to AC against opportunity attacks you provoke while moving to the target.");
     }
 }

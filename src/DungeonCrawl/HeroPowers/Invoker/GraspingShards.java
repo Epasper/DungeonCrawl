@@ -10,20 +10,20 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class GraspingShards extends HeroPower {
     public GraspingShards() {
-        powerName = "Grasping Shards";
-        characterClass = HeroClasses.Invoker.toString();
-        typeOfPower = TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 10;
-        numberOfTargets = "Burst";
-        burstValue = 1;
-        attributeUsedToHit = AttributeNames.Wisdom.toString();
-        defenseToBeChecked = CreatureDefenses.Fortitude.toString();
-        damageDiceDealt = 0;
-        typeOfDamageDice = 0;
-        damageModifier = AttributeNames.Wisdom.toString();
-        isThisWeaponDamage = false;
-        hitDescription = "Wisdom modifier radiant damage, and the target is slowed until the end of your next turn.";
+        setPowerName("Grasping Shards");
+        setCharacterClass(HeroClasses.Invoker.toString());
+        setTypeOfPower(TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(10);
+        setNumberOfTargets("Burst");
+        setBurstValue(1);
+        setAttributeUsedToHit(AttributeNames.Wisdom.toString());
+        setDefenseToBeChecked(CreatureDefenses.Fortitude.toString());
+        setDamageDiceDealt(0);
+        setTypeOfDamageDice(0);
+        setDamageModifier(AttributeNames.Wisdom.toString());
+        setThisWeaponDamage(false);
+        setHitDescription("Wisdom modifier radiant damage, and the target is slowed until the end of your next turn.");
     }
 }

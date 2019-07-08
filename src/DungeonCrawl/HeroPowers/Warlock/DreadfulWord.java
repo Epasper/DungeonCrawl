@@ -10,21 +10,21 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class DreadfulWord extends HeroPower {
     public DreadfulWord() {
-        powerName = "Dreadful Word";
-        characterClass = HeroClasses.Warlock.toString();
-        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 10;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Charisma.toString();
-        defenseToBeChecked = CreatureDefenses.Will.toString();
-        damageDiceDealt = 2;
-        typeOfDamageDice = 8;
-        damageModifier = AttributeNames.Charisma.toString();
-        isThisWeaponDamage = false;
-        powersAdditionalOptions = "Star Pact";
-        hitDescription = "2d8 + Charisma modifier psychic damage, and the target takes a −1 penalty to Will defense until the end of your next turn.\n" +
-                "Star Pact: The penalty to Will defense is equal to 1 + your Intelligence modifier.";
+        setPowerName("Dreadful Word");
+        setCharacterClass(HeroClasses.Warlock.toString());
+        setTypeOfPower(TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(10);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Charisma.toString());
+        setDefenseToBeChecked(CreatureDefenses.Will.toString());
+        setDamageDiceDealt(2);
+        setTypeOfDamageDice(8);
+        setDamageModifier(AttributeNames.Charisma.toString());
+        setThisWeaponDamage(false);
+        setPowersAdditionalOptions("Star Pact");
+        setHitDescription("2d8 + Charisma modifier psychic damage, and the target takes a −1 penalty to Will defense until the end of your next turn.\n" +
+                "Star Pact: The penalty to Will defense is equal to 1 + your Intelligence modifier.");
     }
 }

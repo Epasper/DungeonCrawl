@@ -10,19 +10,19 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class BurningHands extends HeroPower {
     public BurningHands() {
-        powerName = "Burning Hands";
-        characterClass = HeroClasses.Wizard.toString();
-        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 10;
-        numberOfTargets = "Close Blast 5";
-        attributeUsedToHit = AttributeNames.Intelligence.toString();
-        defenseToBeChecked = CreatureDefenses.Reflex.toString();
-        damageDiceDealt = 2;
-        typeOfDamageDice = 6;
-        damageModifier = AttributeNames.Intelligence.toString();
-        isThisWeaponDamage = false;
-        hitDescription = "2d6 + Intelligence modifier fire damage.\n\nMiss: Half damage.";
+        setPowerName("Burning Hands");
+        setCharacterClass(HeroClasses.Wizard.toString());
+        setTypeOfPower(TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(10);
+        setNumberOfTargets("Close Blast 5");
+        setAttributeUsedToHit(AttributeNames.Intelligence.toString());
+        setDefenseToBeChecked(CreatureDefenses.Reflex.toString());
+        setDamageDiceDealt(2);
+        setTypeOfDamageDice(6);
+        setDamageModifier(AttributeNames.Intelligence.toString());
+        setThisWeaponDamage(false);
+        setHitDescription("2d6 + Intelligence modifier fire damage.\n\nMiss: Half damage.");
     }
 }

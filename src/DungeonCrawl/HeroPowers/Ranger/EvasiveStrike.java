@@ -10,21 +10,21 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class EvasiveStrike extends HeroPower {
     public EvasiveStrike() {
-        powerName = "Evasive Strike";
-        characterClass = HeroClasses.Ranger.toString();
-        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 20;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Strength.toString();
-        defenseToBeChecked = CreatureDefenses.AC.toString();
-        damageDiceDealt = 1;
-        damageModifier = AttributeNames.Strength.toString();
-        isThisWeaponDamage = true;
-        hitDescription = "Special: You can shift a number of squares equal to 1+ Wisdom modifier either before or after the attack. \n" +
+        setPowerName("Evasive Strike");
+        setCharacterClass(HeroClasses.Ranger.toString());
+        setTypeOfPower(TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(20);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Strength.toString());
+        setDefenseToBeChecked(CreatureDefenses.AC.toString());
+        setDamageDiceDealt(1);
+        setDamageModifier(AttributeNames.Strength.toString());
+        setThisWeaponDamage(true);
+        setHitDescription("Special: You can shift a number of squares equal to 1+ Wisdom modifier either before or after the attack. \n" +
                 "Strength vs. AC(melee) or Dexterity vs. AC(ranged)\n" +
                 "\n" +
-                "Hit: 2[W] + Dexterity(ranged) modifier damage or 2[W] + Strength(melee) modifier damage.";
+                "Hit: 2[W] + Dexterity(ranged) modifier damage or 2[W] + Strength(melee) modifier damage.");
     }
 }

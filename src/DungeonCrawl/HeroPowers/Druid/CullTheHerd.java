@@ -10,20 +10,20 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class CullTheHerd extends HeroPower {
     public CullTheHerd() {
-        powerName = "Cull the Herd";
-        characterClass = HeroClasses.Druid.toString();
-        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 5;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Wisdom.toString();
-        defenseToBeChecked = CreatureDefenses.Will.toString();
-        damageDiceDealt = 2;
-        typeOfDamageDice = 8;
-        damageModifier = AttributeNames.Wisdom.toString();
-        isThisWeaponDamage = false;
-        isThisABeastFormAttack = true;
-        hitDescription = "2d8 + Wisdom modifier psychic damage. The target is pulled 3 squares.";
+        setPowerName("Cull the Herd");
+        setCharacterClass(HeroClasses.Druid.toString());
+        setTypeOfPower(TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(5);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Wisdom.toString());
+        setDefenseToBeChecked(CreatureDefenses.Will.toString());
+        setDamageDiceDealt(2);
+        setTypeOfDamageDice(8);
+        setDamageModifier(AttributeNames.Wisdom.toString());
+        setThisWeaponDamage(false);
+        setThisABeastFormAttack(true);
+        setHitDescription("2d8 + Wisdom modifier psychic damage. The target is pulled 3 squares.");
     }
 }

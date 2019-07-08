@@ -11,18 +11,18 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 public class RecuperatingStrike extends HeroPower {
 
     public RecuperatingStrike() {
-        powerName = "Recuperating Strike";
-        characterClass = HeroClasses.Barbarian.toString();
-        typeOfPower = TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Strength.toString();
-        defenseToBeChecked = CreatureDefenses.AC.toString();
-        damageDiceDealt = 1;
-        damageModifier = AttributeNames.Strength.toString();
-        isThisWeaponDamage = true;
-        hitDescription = "1 [W] + Strength modifier damage, and you gain temporary hit points equal to your Constitution modifier. If you are raging, the number of temporary hit points you gain equals 5 + your Constitution modifier.";
+        setPowerName("Recuperating Strike");
+        setCharacterClass(HeroClasses.Barbarian.toString());
+        setTypeOfPower(TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Strength.toString());
+        setDefenseToBeChecked(CreatureDefenses.AC.toString());
+        setDamageDiceDealt(1);
+        setDamageModifier(AttributeNames.Strength.toString());
+        setThisWeaponDamage(true);
+        setHitDescription("1 [W] + Strength modifier damage, and you gain temporary hit points equal to your Constitution modifier. If you are raging, the number of temporary hit points you gain equals 5 + your Constitution modifier.");
     }
 }

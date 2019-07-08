@@ -10,21 +10,21 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class KingsCastle extends HeroPower {
     public KingsCastle() {
-        powerName = "King's Castle";
-        characterClass = HeroClasses.Rogue.toString();
-        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Dexterity.toString();
-        defenseToBeChecked = CreatureDefenses.Reflex.toString();
-        damageDiceDealt = 1;
-        damageModifier = AttributeNames.Dexterity.toString();
-        isThisWeaponDamage = true;
-        canThisAttackAlsoBeRanged = true;
-        hitDescription = "Hit: \"2[W] + Dexterity modifier damage.\"\n" +
+        setPowerName("King's Castle");
+        setCharacterClass(HeroClasses.Rogue.toString());
+        setTypeOfPower(TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Dexterity.toString());
+        setDefenseToBeChecked(CreatureDefenses.Reflex.toString());
+        setDamageDiceDealt(1);
+        setDamageModifier(AttributeNames.Dexterity.toString());
+        setThisWeaponDamage(true);
+        setCanThisAttackAlsoBeRanged(true);
+        setHitDescription("Hit: \"2[W] + Dexterity modifier damage.\"\n" +
                 "\n" +
-                "Effect: \"Switch places with a willing adjacent ally.";
+                "Effect: \"Switch places with a willing adjacent ally.");
     }
 }

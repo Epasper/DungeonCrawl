@@ -10,18 +10,18 @@ import DungeonCrawl.StaticRules.TypesOfActions;
 
 public class HammerAndAnvil extends HeroPower {
     public HammerAndAnvil() {
-        powerName = "Hammer and Anvil";
-        characterClass = HeroClasses.Warlord.toString();
-        typeOfPower = TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase();
-        usedAction = TypesOfActions.STANDARD.toString().toLowerCase();
-        powerLevel = 1;
-        range = 0;
-        numberOfTargets = "One target";
-        attributeUsedToHit = AttributeNames.Strength.toString();
-        defenseToBeChecked = CreatureDefenses.Reflex.toString();
-        damageDiceDealt = 1;
-        damageModifier = AttributeNames.Strength.toString();
-        isThisWeaponDamage = true;
-        hitDescription = "1[W] + Strength modifier damage. One ally adjacent to the target can make a melee basic attack against it as a free action, with a bonus to the damage roll equal to your Charisma modifier.";
+        setPowerName("Hammer and Anvil");
+        setCharacterClass(HeroClasses.Warlord.toString());
+        setTypeOfPower(TypesOfPowers.ENCOUNTER.toString().replace('_', ' ').toLowerCase());
+        setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
+        setPowerLevel(1);
+        setRange(0);
+        setNumberOfTargets("One target");
+        setAttributeUsedToHit(AttributeNames.Strength.toString());
+        setDefenseToBeChecked(CreatureDefenses.Reflex.toString());
+        setDamageDiceDealt(1);
+        setDamageModifier(AttributeNames.Strength.toString());
+        setThisWeaponDamage(true);
+        setHitDescription("1[W] + Strength modifier damage. One ally adjacent to the target can make a melee basic attack against it as a free action, with a bonus to the damage roll equal to your Charisma modifier.");
     }
 }
