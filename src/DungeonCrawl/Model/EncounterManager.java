@@ -79,7 +79,7 @@ public class EncounterManager {
         this.encounterOnline = encounterOnline;
     }
 
-    public void eventOnHeroClick(int currentHeroID) {
+    public void manageHeroClicking(int currentHeroID) {
         Hero currentHero = guiUtilities.getHeroByID(currentHeroID, heroManager.getHeroList());
         pathFinder.checkTheAvailableDistance(currentHero, dungeonMap, buttonGrid, "Available Distance");
         System.out.println(ConsoleColors.ANSI_GREEN + "Clicked the ID " + currentHeroID + " hero." + ConsoleColors.ANSI_RESET);
@@ -235,7 +235,7 @@ public class EncounterManager {
         }
     }
 
-    public String eventOnHeroAttackingASingleCreature(int XPos, int YPos, HeroPower attackingPower, Creature creature) {
+    public String attackASingleCreature(int XPos, int YPos, HeroPower attackingPower, Creature creature) {
         Hero hero = guiUtilities.getHeroByID(heroManager.getCurrentlyActiveHeroID(), heroManager.getHeroList());
         System.out.println("Attacking a monster with unique ID: " + getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID());
         System.out.println("ID From Tile: " + getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID());

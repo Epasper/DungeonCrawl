@@ -4,14 +4,23 @@ import java.util.Random;
 
 public class MapTile {
 
-    public String typeOfTile;
+    private String typeOfTile;
     private int occupyingCreatureTypeId = 0;
     private int occupyingCreatureUniqueID = 0;
-    boolean inWalkRange = false;
-    public boolean alreadyDiscovered = false;
-    boolean withinInteractionRange = false;
+    private boolean inWalkRange = false;
+    private boolean inRangedAttackRange = false;
+    private boolean alreadyDiscovered = false;
+    private boolean withinInteractionRange = false;
     private boolean currentlyInvisible = false;
     private boolean currentlyBehindCover = false;
+
+    public boolean isInRangedAttackRange() {
+        return inRangedAttackRange;
+    }
+
+    public void setInRangedAttackRange(boolean inRangedAttackRange) {
+        this.inRangedAttackRange = inRangedAttackRange;
+    }
 
     public boolean isAlreadyDiscovered() {
         return alreadyDiscovered;
@@ -69,24 +78,31 @@ public class MapTile {
         return withinInteractionRange;
     }
 
+    public void setInWalkRange(boolean inWalkRange) {
+        this.inWalkRange = inWalkRange;
+    }
+
+    public void setWithinInteractionRange(boolean withinInteractionRange) {
+        this.withinInteractionRange = withinInteractionRange;
+    }
+
     void rollForTypeOfTile(boolean skipToRoom, boolean skipToNonRoom, boolean skipTheCorridor) {
         Random random = new Random();
         int seed = random.nextInt(100);
 
         if (!skipTheCorridor) {
             if (seed < 60) {
-                typeOfTile = "Blank";
+                setTypeOfTile("Blank");
             } else {
-                typeOfTile = "RoomSeed";
+                setTypeOfTile("RoomSeed");
             }
             if (skipToRoom) {
-                typeOfTile = "Room";
+                setTypeOfTile("Room");
             }
             if (skipToNonRoom) {
-                typeOfTile = "Blank";
+                setTypeOfTile("Blank");
             }
         }
     }
-
 
 }

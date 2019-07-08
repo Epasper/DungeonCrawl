@@ -38,6 +38,7 @@ public abstract class HeroPower {
     private int burstValue = 0;
     private String powerIconId;
     private int numberOfLockedEncounters = 0;
+    private List<Coordinates> affectedCoordinatesList = new ArrayList<>();
 
     public int getBurstValue() {
         return burstValue;
@@ -191,44 +192,12 @@ public abstract class HeroPower {
         this.typeOfBonusDamageDice = typeOfBonusDamageDice;
     }
 
-    public List<Creature> determineTheNumberOfCreaturesAttacked(int XPos, int YPos, DungeonMap dungeonMap, List<Monster> allDiscoveredMonsters, List<Hero> allDiscoveredHeroes) {
-        GUIUtilities guiUtilities = new GUIUtilities();
-        List<Creature> listOfCreaturesAttacked = new ArrayList<>();
-        System.out.println("---" + XPos + "---" + YPos + "---");
-        if (this.getNumberOfTargets().contains("Burst")) {
-            //todo after selecting a burst power, all tiles should be clickable as a target of the power
-            //todo add a GUI element that shows the range of AoE attack to be made.
-            manageBurstAttack(XPos, YPos, dungeonMap, allDiscoveredMonsters, allDiscoveredHeroes, listOfCreaturesAttacked);
-        } else {
-            listOfCreaturesAttacked.add(guiUtilities.getSingleMonsterByUniqueID(dungeonMap.getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID(), allDiscoveredMonsters));
-        }
-        return listOfCreaturesAttacked;
+    public List<Coordinates> getAffectedCoordinatesList() {
+        return affectedCoordinatesList;
     }
 
-    private void manageBurstAttack(int XPos, int YPos, DungeonMap dungeonMap, List<Monster> allDiscoveredMonsters, List<Hero> allDiscoveredHeroes, List<Creature> listOfCreaturesAttacked) {
-        int burstValue = this.getBurstValue();
-        for (int i = -burstValue; i < burstValue; i++) {
-            for (int j = -burstValue; j < burstValue; j++) {
-                try {
-                    int creatureId = dungeonMap.getMapTilesArray()[XPos + i][YPos + j].getOccupyingCreatureTypeId();
-                    if (creatureId > 100) {
-                        creatureId = dungeonMap.getMapTilesArray()[XPos + i][YPos + j].getOccupyingCreatureUniqueID();
-                        for (Monster monster : allDiscoveredMonsters) {
-                            if (monster.getCurrentMonsterUniqueID() == creatureId) {
-                                listOfCreaturesAttacked.add(monster);
-                            }
-                        }
-                    } else {
-                        for (Hero hero : allDiscoveredHeroes) {
-                            if (hero.getID() == creatureId) {
-                                listOfCreaturesAttacked.add(hero);
-                            }
-                        }
-                    }
-                } catch (NullPointerException ignored) {
-                }
-            }
-        }
+    public void setAffectedCoordinatesList(List<Coordinates> affectedCoordinatesList) {
+        this.affectedCoordinatesList = affectedCoordinatesList;
     }
 
     public int getBonusToHit() {
@@ -285,5 +254,70 @@ public abstract class HeroPower {
 
     public void setPowersAdditionalOptions(String powersAdditionalOptions) {
         this.powersAdditionalOptions = powersAdditionalOptions;
+    }
+
+    public class Coordinates {
+        private int XCoordinate;
+        private int YCoordinate;
+
+        public int getXCoordinate() {
+            return XCoordinate;
+        }
+
+        public void setXCoordinate(int XCoordinate) {
+            this.XCoordinate = XCoordinate;
+        }
+
+        public int getYCoordinate() {
+            return YCoordinate;
+        }
+
+        public void setYCoordinate(int YCoordinate) {
+            this.YCoordinate = YCoordinate;
+        }
+    }
+
+    public List<Creature> determineTheNumberOfCreaturesAttacked(int XPos, int YPos, DungeonMap dungeonMap, List<Monster> allDiscoveredMonsters, List<Hero> allDiscoveredHeroes) {
+        GUIUtilities guiUtilities = new GUIUtilities();
+        List<Creature> listOfCreaturesAttacked = new ArrayList<>();
+        System.out.println("---" + XPos + "---" + YPos + "---");
+        if (this.getNumberOfTargets().contains("Burst")) {
+            //todo after selecting a burst power, all tiles should be clickable as a target of the power
+            //todo add a GUI element that shows the range of AoE attack to be made.
+            manageBurstAttack(XPos, YPos, dungeonMap, allDiscoveredMonsters, allDiscoveredHeroes, listOfCreaturesAttacked);
+        } else {
+            listOfCreaturesAttacked.add(guiUtilities.getSingleMonsterByUniqueID(dungeonMap.getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID(), allDiscoveredMonsters));
+        }
+        return listOfCreaturesAttacked;
+    }
+
+    private void manageBurstAttack(int XPos, int YPos, DungeonMap dungeonMap, List<Monster> allDiscoveredMonsters, List<Hero> allDiscoveredHeroes, List<Creature> listOfCreaturesAttacked) {
+        int burstValue = this.getBurstValue();
+        for (int i = -burstValue; i < burstValue; i++) {
+            for (int j = -burstValue; j < burstValue; j++) {
+                Coordinates coordinates = new Coordinates();
+                coordinates.setXCoordinate(XPos + i);
+                coordinates.setYCoordinate(YPos + j);
+                affectedCoordinatesList.add(coordinates);
+                try {
+                    int creatureId = dungeonMap.getMapTilesArray()[XPos + i][YPos + j].getOccupyingCreatureTypeId();
+                    if (creatureId > 100) {
+                        creatureId = dungeonMap.getMapTilesArray()[XPos + i][YPos + j].getOccupyingCreatureUniqueID();
+                        for (Monster monster : allDiscoveredMonsters) {
+                            if (monster.getCurrentMonsterUniqueID() == creatureId) {
+                                listOfCreaturesAttacked.add(monster);
+                            }
+                        }
+                    } else {
+                        for (Hero hero : allDiscoveredHeroes) {
+                            if (hero.getID() == creatureId) {
+                                listOfCreaturesAttacked.add(hero);
+                            }
+                        }
+                    }
+                } catch (NullPointerException ignored) {
+                }
+            }
+        }
     }
 }

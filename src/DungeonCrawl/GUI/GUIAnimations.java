@@ -58,7 +58,7 @@ public class GUIAnimations {
         rotateTransition.setByAngle(30);
         rotateTransition.setCycleCount(2);
         rotateTransition.setAutoReverse(true);
-        rotateTransition.setOnFinished(e -> mapManager.updateMapGraphics(encounterManager.getDungeonMap()));
+        rotateTransition.setOnFinished(e -> mapManager.updateMapGraphics());
         System.out.println("Creature hit, rotating.");
         rotateTransition.play();
     }
@@ -68,7 +68,7 @@ public class GUIAnimations {
         translateTransition.setByX(10);
         translateTransition.setCycleCount(2);
         translateTransition.setAutoReverse(true);
-        translateTransition.setOnFinished(e -> mapManager.updateMapGraphics(encounterManager.getDungeonMap()));
+        translateTransition.setOnFinished(e -> mapManager.updateMapGraphics());
         System.out.println("Creature missed, translating.");
         translateTransition.play();
     }

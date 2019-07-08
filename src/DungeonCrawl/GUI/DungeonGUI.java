@@ -168,7 +168,7 @@ class DungeonGUI {
                 mapGridPane.add(aButton, j, i);
             }
         }
-        mapManager.updateMapGraphics(dungeonMap);
+        mapManager.updateMapGraphics();
     }
 
     //todo add a CursorManager class that manages the cursors - refactor these methods onto the new class.

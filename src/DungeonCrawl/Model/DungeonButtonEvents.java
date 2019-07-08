@@ -4,8 +4,10 @@ import DungeonCrawl.GUI.GUIAnimations;
 import DungeonCrawl.GUI.GUIUtilities;
 import DungeonCrawl.GUI.Images.SkillIcons.SkillIcons;
 import DungeonCrawl.HeroPowers.HeroPower;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 
@@ -42,23 +44,35 @@ public class DungeonButtonEvents {
             eventOnReachableTileClick();
         }
         if (currentHeroID > 0 && currentHeroID < 100) {
-            encounterManager.eventOnHeroClick(currentHeroID);
-            guiAnimations.heroClickAnimation(buttonGrid[XPos][YPos]);
-            updateButtonsWithSkillIcons(guiUtilities.getHeroByID(currentHeroID, heroManager.getHeroList()));
-            isTheTileInteractive = encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange();
+            isTheTileInteractive = eventOnHeroClick(XPos, YPos, currentHeroID);
         } else if (encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].isInWalkRange()) {
-            if (currentTypeOfTile.contains("Closed") && encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange()) {
-                encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].setTypeOfTile(encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].getTypeOfTile().replaceFirst("Closed", "Opened"));
-            } else if (!currentTypeOfTile.contains("Closed")) {
-                eventOnHeroMovement(XPos, YPos);
-            }
-            //debug animation tinkering
-            mapManager.updateMapGraphics(encounterManager.getDungeonMap());
-            encounterManager.getDungeonMap().clearMapReachableProperties(encounterManager.getDungeonMap());
+            eventOnHeroMapInteraction(XPos, YPos, currentTypeOfTile);
         }
         if (currentHeroID > 100 && isTheTileInteractive) {
             eventOnAttackingAMonster(XPos, YPos, currentHeroPowers);
         }
+    }
+
+    private void eventOnHeroMapInteraction(int XPos, int YPos, String currentTypeOfTile) {
+        if (currentTypeOfTile.contains("Closed") && encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange()) {
+            encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].setTypeOfTile(encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].getTypeOfTile().replaceFirst("Closed", "Opened"));
+        } else if (!currentTypeOfTile.contains("Closed")) {
+            eventOnHeroMovement(XPos, YPos);
+        }
+        //debug animation tinkering
+        mapManager.updateMapGraphics();
+        encounterManager.getDungeonMap().clearMapReachableProperties();
+    }
+
+    private boolean eventOnHeroClick(int XPos, int YPos, int currentHeroID) {
+        boolean isTheTileInteractive;
+        clearHoverEvents();
+        mapManager.getDungeonMap().clearMapReachableProperties();
+        encounterManager.manageHeroClicking(currentHeroID);
+        guiAnimations.heroClickAnimation(buttonGrid[XPos][YPos]);
+        updateButtonsWithSkillIcons(guiUtilities.getHeroByID(currentHeroID, heroManager.getHeroList()));
+        isTheTileInteractive = encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange();
+        return isTheTileInteractive;
     }
 
     private void eventOnAttackingAMonster(int XPos, int YPos, List<HeroPower> currentHeroPowers) {
@@ -71,30 +85,35 @@ public class DungeonButtonEvents {
                     encounterManager.getDiscoveredMonsters(),
                     encounterManager.getHeroManager().getHeroList());
             for (Creature creature : listOfAttackedCreatures) {
-                String hitResult = encounterManager.eventOnHeroAttackingASingleCreature(XPos, YPos, currentPower, creature);
-                System.out.println(ConsoleColors.ANSI_PURPLE + "Hit Results: " + hitResult + ConsoleColors.ANSI_RESET);
-                if (hitResult.contains("Hit")) {
-                    System.out.println(ConsoleColors.ANSI_GREEN + creature.getHeroName() + "  " + creature.getHitPoints() + " Was Hit" + ConsoleColors.ANSI_RESET);
-                    updateTheGraphics = false;
-                    guiAnimations.visualsOnHit(buttonGrid[creature.getMapXPos()][creature.getMapYPos()], hitResult, mapManager, encounterManager);
-                } else if (hitResult.contains("Miss")) {
-                    System.out.println(ConsoleColors.ANSI_BLUE + creature.getHeroName() + "  " + creature.getHitPoints() + " Was Missed" + ConsoleColors.ANSI_RESET);
-                    updateTheGraphics = false;
-                    guiAnimations.creatureWasMissedAnimation(buttonGrid[creature.getMapXPos()][creature.getMapYPos()], mapManager, encounterManager);
-                } else if (hitResult.contains("Dead")) {
-                    System.out.println(ConsoleColors.ANSI_RED + creature.getHeroName() + "  " + creature.getHitPoints() + " Is Dead" + ConsoleColors.ANSI_RESET);
-                    updateTheGraphics = false;
-                    guiAnimations.visualsOnHit(buttonGrid[creature.getMapXPos()][creature.getMapYPos()], hitResult, mapManager, encounterManager);
-                    //mapManager.addDeathImageToCreatureImage(creature);
-                    buttonGrid[creature.getMapXPos()][creature.getMapYPos()].setGraphic(mapManager.addDeathImageToCreatureImage(creature));
-                }
+                updateTheGraphics = hitResults(XPos, YPos, updateTheGraphics, currentPower, creature);
             }
         } catch (IndexOutOfBoundsException e) {
             pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("Please select a power before attacking");
         }
         if (updateTheGraphics) {
-            mapManager.updateMapGraphics(encounterManager.getDungeonMap());
+            mapManager.updateMapGraphics();
         }
+    }
+
+    private boolean hitResults(int XPos, int YPos, boolean updateTheGraphics, HeroPower currentPower, Creature creature) {
+        String hitResult = encounterManager.attackASingleCreature(XPos, YPos, currentPower, creature);
+        System.out.println(ConsoleColors.ANSI_PURPLE + "Hit Results: " + hitResult + ConsoleColors.ANSI_RESET);
+        if (hitResult.contains("Hit")) {
+            System.out.println(ConsoleColors.ANSI_GREEN + creature.getHeroName() + "  " + creature.getHitPoints() + " Was Hit" + ConsoleColors.ANSI_RESET);
+            updateTheGraphics = false;
+            guiAnimations.visualsOnHit(buttonGrid[creature.getMapXPos()][creature.getMapYPos()], hitResult, mapManager, encounterManager);
+        } else if (hitResult.contains("Miss")) {
+            System.out.println(ConsoleColors.ANSI_BLUE + creature.getHeroName() + "  " + creature.getHitPoints() + " Was Missed" + ConsoleColors.ANSI_RESET);
+            updateTheGraphics = false;
+            guiAnimations.creatureWasMissedAnimation(buttonGrid[creature.getMapXPos()][creature.getMapYPos()], mapManager, encounterManager);
+        } else if (hitResult.contains("Dead")) {
+            System.out.println(ConsoleColors.ANSI_RED + creature.getHeroName() + "  " + creature.getHitPoints() + " Is Dead" + ConsoleColors.ANSI_RESET);
+            updateTheGraphics = false;
+            guiAnimations.visualsOnHit(buttonGrid[creature.getMapXPos()][creature.getMapYPos()], hitResult, mapManager, encounterManager);
+            //mapManager.addDeathImageToCreatureImage(creature);
+            buttonGrid[creature.getMapXPos()][creature.getMapYPos()].setGraphic(mapManager.addDeathImageToCreatureImage(creature));
+        }
+        return updateTheGraphics;
     }
 
 
@@ -128,8 +147,8 @@ public class DungeonButtonEvents {
 
 
     private void eventOnReachableTileClick() {
-        encounterManager.getDungeonMap().clearMapReachableProperties(encounterManager.getDungeonMap());
-        mapManager.updateMapGraphics(encounterManager.getDungeonMap());
+        encounterManager.getDungeonMap().clearMapReachableProperties();
+        mapManager.updateMapGraphics();
         encounterManager.setHasTheCharacterBeenSelected(false);
         powersHBox.getChildren().clear();
     }
@@ -174,19 +193,67 @@ public class DungeonButtonEvents {
     }
 
     private void eventOnPowerSelect(Hero currentHero, HeroPower selectedPower) {
+        System.out.println("Updating Map Graphics after Power Selection");
+        mapManager.updateMapGraphics();
+        System.out.println("Map Graphics Updated");
         System.out.println(ConsoleColors.ANSI_PURPLE +
                 "SELECTED A POWER " + selectedPower.getTypeOfPower() + "  " + selectedPower.getPowerName()
                 + ConsoleColors.ANSI_RESET);
         PathFinder pathFinder = new PathFinder();
+        System.out.println("Setting Attack Range");
         currentHero.setAttackRange(selectedPower.getRange());
+        System.out.println("Range Set");
         pathFinder.checkTheLineOfSight(encounterManager.getDungeonMap(), buttonGrid, currentHero);
+        System.out.println("Marking Attack Distance");
+        //todo checkTheAvailableDistance takes time for long ranges
         pathFinder.checkTheAvailableDistance(currentHero, encounterManager.getDungeonMap(), buttonGrid, "Attack Range");
+        System.out.println("Attack Range Marked");
         currentHeroPowers.clear();
         currentHeroPowers.add(selectedPower);
         if (selectedPower.getTypeOfPower().contains("encounter")) {
             selectedPower.setNumberOfLockedEncounters(1);
         } else if (selectedPower.getTypeOfPower().contains("daily")) {
             selectedPower.setNumberOfLockedEncounters(3);
+        }
+        if (selectedPower.getBurstValue() > 0) {
+            markTilesAsAoEDamage(selectedPower.getBurstValue());
+        } else {
+            clearHoverEvents();
+        }
+    }
+
+    private void clearHoverEvents() {
+        DungeonMap dungeonMap = mapManager.getDungeonMap();
+        for (int i = 0; i < dungeonMap.getNumberOfTilesX(); i++) {
+            for (int j = 0; j < dungeonMap.getNumberOfTilesY(); j++) {
+                buttonGrid[i][j].setOnMouseEntered(null);
+                buttonGrid[i][j].setOnMouseExited(null);
+            }
+        }
+        System.out.println("Hover Events Cleared");
+    }
+
+    private void markTilesAsAoEDamage(int burstValue) {
+        DungeonMap dungeonMap = mapManager.getDungeonMap();
+        for (int i = 0; i < dungeonMap.getNumberOfTilesX(); i++) {
+            for (int j = 0; j < dungeonMap.getNumberOfTilesY(); j++) {
+                int finalI = i;
+                int finalJ = j;
+                buttonGrid[i][j].setOnMouseEntered(event -> paintTheTilesInRange(buttonGrid, finalI, finalJ, burstValue));
+                buttonGrid[i][j].setOnMouseExited(event -> mapManager.updateMapGraphics(true));
+            }
+        }
+    }
+
+    private void paintTheTilesInRange(Button[][] buttonGrid, int XCoord, int YCoord, int burstValue) {
+        for (int i = XCoord - burstValue; i < XCoord + burstValue + 1; i++) {
+            for (int j = YCoord - burstValue; j < YCoord + burstValue + 1; j++) {
+                try {
+                    buttonGrid[i][j].setStyle("-fx-background-color: #f54242; ");
+                } catch (IndexOutOfBoundsException ignored) {
+
+                }
+            }
         }
     }
 }

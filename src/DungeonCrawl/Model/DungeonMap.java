@@ -15,6 +15,22 @@ public class DungeonMap {
     private List<Room> allRoomsList = new ArrayList<>();
     private int currentMonsterUniqueID = 1;
 
+    public int getNumberOfTilesY() {
+        return numberOfTilesY;
+    }
+
+    public void setNumberOfTilesY(int numberOfTilesY) {
+        this.numberOfTilesY = numberOfTilesY;
+    }
+
+    public int getNumberOfTilesX() {
+        return numberOfTilesX;
+    }
+
+    public void setNumberOfTilesX(int numberOfTilesX) {
+        this.numberOfTilesX = numberOfTilesX;
+    }
+
     public List<Room> getAllRoomsList() {
         return allRoomsList;
     }
@@ -62,7 +78,7 @@ public class DungeonMap {
     private boolean checkAroundForExistingRooms(int posX, int posY) {
         boolean foundRoom;
         try {
-            foundRoom = getMapTilesArray()[posX - 1][posY - 1].typeOfTile.equals("Room");
+            foundRoom = getMapTilesArray()[posX - 1][posY - 1].getTypeOfTile().equals("Room");
         } catch (IndexOutOfBoundsException ignored) {
             foundRoom = true;
         }
@@ -83,18 +99,18 @@ public class DungeonMap {
         boolean checkAroundForRooms = false;
         boolean checkThisTileForCorridors = false;
         try {
-            checkThisTileForCorridors = getMapTilesArray()[i][j].typeOfTile.contains("Corridor");
+            checkThisTileForCorridors = getMapTilesArray()[i][j].getTypeOfTile().contains("Corridor");
         } catch (NullPointerException ignored) {
         }
         try {
-            checkThisTileForRooms = (getMapTilesArray()[i][j].typeOfTile.equals("Room") || getMapTilesArray()[i][j].typeOfTile.equals("RoomSeed"));
+            checkThisTileForRooms = (getMapTilesArray()[i][j].getTypeOfTile().equals("Room") || getMapTilesArray()[i][j].getTypeOfTile().equals("RoomSeed"));
         } catch (NullPointerException ignored) {
         }
         if (!checkThisTileForRooms) {
             checkAroundForRooms = checkAroundForExistingRooms(i, j);
         }
         getMapTilesArray()[i][j].rollForTypeOfTile(checkThisTileForRooms, checkAroundForRooms, checkThisTileForCorridors);
-        if (getMapTilesArray()[i][j].typeOfTile.equals("RoomSeed")) {
+        if (getMapTilesArray()[i][j].getTypeOfTile().equals("RoomSeed")) {
             seedARoom(i, j);
         }
     }
@@ -128,16 +144,16 @@ public class DungeonMap {
             seedCorridors(room);
             allRoomsList.add(room);
         } else {
-            getMapTilesArray()[initialXPos][initialYPos].typeOfTile = "Blank";
+            getMapTilesArray()[initialXPos][initialYPos].setTypeOfTile("Blank");
         }
     }
 
     private void seedASingleRoomTile(int initialXPos, int initialYPos, int i, int j) {
         try {
             if (isThisTheFirstSpawningRoom) {
-                getMapTilesArray()[initialXPos + i][initialYPos + j].alreadyDiscovered = true;
+                getMapTilesArray()[initialXPos + i][initialYPos + j].setAlreadyDiscovered(true);
             }
-            getMapTilesArray()[initialXPos + i][initialYPos + j].typeOfTile = "Room";
+            getMapTilesArray()[initialXPos + i][initialYPos + j].setTypeOfTile("Room");
         } catch (IndexOutOfBoundsException ignored) {
         }
     }
@@ -147,7 +163,7 @@ public class DungeonMap {
         if (typeOfCorridor.contains("Vertical")) {
             try {
                 for (int i = 0; i < corridorMaxLength + 1; i++) {
-                    if (getMapTilesArray()[XPos + i][YPos].typeOfTile.contains("Corridor")) {
+                    if (getMapTilesArray()[XPos + i][YPos].getTypeOfTile().contains("Corridor")) {
                         crossingCorridorFound = true;
                         break;
                     }
@@ -157,7 +173,7 @@ public class DungeonMap {
         } else if (typeOfCorridor.contains("Horizontal")) {
             try {
                 for (int i = 0; i < corridorMaxLength + 1; i++) {
-                    if (getMapTilesArray()[XPos][YPos + i].typeOfTile.contains("Corridor")) {
+                    if (getMapTilesArray()[XPos][YPos + i].getTypeOfTile().contains("Corridor")) {
                         crossingCorridorFound = true;
                         break;
                     }
@@ -180,26 +196,26 @@ public class DungeonMap {
         if (!searchForCrossingCorridors(room.roomXStartPos + room.roomWidth, room.roomXStartPos + room.roomWidth, "CorridorVertical")) {
             for (int i = 0; i < corridorMaxLength; i++) {
                 try {
-                    if (!getMapTilesArray()[room.roomXStartPos + room.roomWidth + i][room.roomYStartPos + VSpawn].typeOfTile.contains("Room")) {
-                        getMapTilesArray()[room.roomXStartPos + room.roomWidth + i][room.roomYStartPos + VSpawn].typeOfTile = "CorridorVertical";
+                    if (!getMapTilesArray()[room.roomXStartPos + room.roomWidth + i][room.roomYStartPos + VSpawn].getTypeOfTile().contains("Room")) {
+                        getMapTilesArray()[room.roomXStartPos + room.roomWidth + i][room.roomYStartPos + VSpawn].setTypeOfTile("CorridorVertical");
                     }
                 } catch (IndexOutOfBoundsException ignored) {
 
                 } catch (NullPointerException e) {
-                    getMapTilesArray()[room.roomXStartPos + room.roomWidth + i][room.roomYStartPos + VSpawn].typeOfTile = "CorridorVertical";
+                    getMapTilesArray()[room.roomXStartPos + room.roomWidth + i][room.roomYStartPos + VSpawn].setTypeOfTile("CorridorVertical");
                 }
             }
         }
         if (!searchForCrossingCorridors(room.roomXStartPos + HSpawn, room.roomYStartPos + room.roomHeight, "CorridorHorizontal")) {
             for (int i = 0; i < corridorMaxLength; i++) {
                 try {
-                    if (!getMapTilesArray()[room.roomXStartPos + HSpawn][room.roomYStartPos + room.roomHeight + i].typeOfTile.contains("Room")) {
-                        getMapTilesArray()[room.roomXStartPos + HSpawn][room.roomYStartPos + room.roomHeight + i].typeOfTile = "CorridorHorizontal";
+                    if (!getMapTilesArray()[room.roomXStartPos + HSpawn][room.roomYStartPos + room.roomHeight + i].getTypeOfTile().contains("Room")) {
+                        getMapTilesArray()[room.roomXStartPos + HSpawn][room.roomYStartPos + room.roomHeight + i].setTypeOfTile("CorridorHorizontal");
                     }
                 } catch (IndexOutOfBoundsException ignored) {
 
                 } catch (NullPointerException e) {
-                    getMapTilesArray()[room.roomXStartPos + HSpawn][room.roomYStartPos + room.roomHeight + i].typeOfTile = "CorridorHorizontal";
+                    getMapTilesArray()[room.roomXStartPos + HSpawn][room.roomYStartPos + room.roomHeight + i].setTypeOfTile("CorridorHorizontal");
                 }
             }
         }
@@ -210,7 +226,7 @@ public class DungeonMap {
         for (int i = 0; i < room.roomWidth; i++) {
             for (int j = 0; j < room.roomHeight; j++) {
                 try {
-                    if (getMapTilesArray()[room.roomXStartPos + i][room.roomYStartPos + j].typeOfTile.contains("Corridor")) {
+                    if (getMapTilesArray()[room.roomXStartPos + i][room.roomYStartPos + j].getTypeOfTile().contains("Corridor")) {
                         roomEntranceFound = true;
                         break;
                     }
@@ -232,7 +248,7 @@ public class DungeonMap {
                 for (int j = -1; j < room.roomHeight + 1; j++) {
                     if (i != 0 || j != 0) {
                         try {
-                            if (getMapTilesArray()[room.roomXStartPos + i][room.roomYStartPos + j].typeOfTile.contains("Room")) {
+                            if (getMapTilesArray()[room.roomXStartPos + i][room.roomYStartPos + j].getTypeOfTile().contains("Room")) {
                                 seedingAllowed = false;
                                 break;
                             }
@@ -257,10 +273,10 @@ public class DungeonMap {
         if (typeOfCorridor.contains("Vertical")) {
             for (int i = 0; i < corridorMaxLength + 1; i++) {
                 try {
-                    if (getMapTilesArray()[XPos + i][YPos].typeOfTile.contains("Room")) {
+                    if (getMapTilesArray()[XPos + i][YPos].getTypeOfTile().contains("Room")) {
                         corridorIsInvalid = false;
                         break;
-                    } else if ((getMapTilesArray()[XPos + i][YPos].typeOfTile.contains("Blank"))) {
+                    } else if ((getMapTilesArray()[XPos + i][YPos].getTypeOfTile().contains("Blank"))) {
                         corridorIsInvalid = true;
                         break;
                     } else {
@@ -273,10 +289,10 @@ public class DungeonMap {
         } else if (typeOfCorridor.contains("Horizontal")) {
             for (int i = 0; i < corridorMaxLength + 1; i++) {
                 try {
-                    if (getMapTilesArray()[XPos][YPos + i].typeOfTile.contains("Room")) {
+                    if (getMapTilesArray()[XPos][YPos + i].getTypeOfTile().contains("Room")) {
                         corridorIsInvalid = false;
                         break;
-                    } else if ((getMapTilesArray()[XPos][YPos + i].typeOfTile.contains("Blank"))) {
+                    } else if ((getMapTilesArray()[XPos][YPos + i].getTypeOfTile().contains("Blank"))) {
                         corridorIsInvalid = true;
                         break;
                     } else {
@@ -294,10 +310,10 @@ public class DungeonMap {
         boolean trimThisTile;
         for (int i = 0; i < numberOfTilesX; i++) {
             for (int j = 0; j < numberOfTilesY; j++) {
-                if (getMapTilesArray()[i][j].typeOfTile.contains("Corridor")) {
-                    trimThisTile = checkIfTheCorridorTileIsInvalid(getMapTilesArray()[i][j].typeOfTile, i, j);
+                if (getMapTilesArray()[i][j].getTypeOfTile().contains("Corridor")) {
+                    trimThisTile = checkIfTheCorridorTileIsInvalid(getMapTilesArray()[i][j].getTypeOfTile(), i, j);
                     if (trimThisTile) {
-                        getMapTilesArray()[i][j].typeOfTile = "Blank";
+                        getMapTilesArray()[i][j].setTypeOfTile("Blank");
                     }
                 }
             }
@@ -341,11 +357,13 @@ public class DungeonMap {
         allMonstersList.addAll(monsterList);
     }
 
-    public void clearMapReachableProperties(DungeonMap dungeonMap) {
+
+
+    public void clearMapReachableProperties() {
         for (int i = 0; i < numberOfTilesX; i++) {
             for (int j = 0; j < numberOfTilesY; j++) {
-                dungeonMap.getMapTilesArray()[i][j].inWalkRange = false;
-                dungeonMap.getMapTilesArray()[i][j].withinInteractionRange = false;
+                this.getMapTilesArray()[i][j].setInWalkRange(false);
+                this.getMapTilesArray()[i][j].setWithinInteractionRange(false);
             }
         }
     }
@@ -376,13 +394,13 @@ public class DungeonMap {
         for (int i = 0; i < numberOfTilesX; i++) {
             for (int j = 0; j < numberOfTilesY; j++) {
                 String foundBorders = "";
-                if (getMapTilesArray()[i][j].typeOfTile.contains("Blank")) {
+                if (getMapTilesArray()[i][j].getTypeOfTile().contains("Blank")) {
                     foundBorders = checkForStraightWalls(i, j, foundBorders);
                     if (foundBorders.length() < 2) {
                         foundBorders = checkForCorners(i, j, foundBorders);
                     }
                     if (foundBorders.length() > 2) {
-                        getMapTilesArray()[i][j].typeOfTile = "Wall" + foundBorders;
+                        getMapTilesArray()[i][j].setTypeOfTile("Wall" + foundBorders);
                     }
                 }
             }
@@ -392,25 +410,25 @@ public class DungeonMap {
 
     private String checkForStraightWalls(int i, int j, String foundBorders) {
         try {
-            if (getMapTilesArray()[i + 1][j].typeOfTile.contains("Room")) {
+            if (getMapTilesArray()[i + 1][j].getTypeOfTile().contains("Room")) {
                 foundBorders += "East";
             }
         } catch (IndexOutOfBoundsException ignored) {
         }
         try {
-            if (getMapTilesArray()[i - 1][j].typeOfTile.contains("Room")) {
+            if (getMapTilesArray()[i - 1][j].getTypeOfTile().contains("Room")) {
                 foundBorders += "West";
             }
         } catch (IndexOutOfBoundsException ignored) {
         }
         try {
-            if (getMapTilesArray()[i][j + 1].typeOfTile.contains("Room")) {
+            if (getMapTilesArray()[i][j + 1].getTypeOfTile().contains("Room")) {
                 foundBorders += "North";
             }
         } catch (IndexOutOfBoundsException ignored) {
         }
         try {
-            if (getMapTilesArray()[i][j - 1].typeOfTile.contains("Room")) {
+            if (getMapTilesArray()[i][j - 1].getTypeOfTile().contains("Room")) {
                 foundBorders += "South";
             }
         } catch (IndexOutOfBoundsException ignored) {
@@ -420,25 +438,25 @@ public class DungeonMap {
 
     private String checkForCorners(int i, int j, String foundBorders) {
         try {
-            if (getMapTilesArray()[i - 1][j - 1].typeOfTile.contains("Room")) {
+            if (getMapTilesArray()[i - 1][j - 1].getTypeOfTile().contains("Room")) {
                 foundBorders = "CornerSW";
             }
         } catch (IndexOutOfBoundsException ignored) {
         }
         try {
-            if (getMapTilesArray()[i + 1][j - 1].typeOfTile.contains("Room")) {
+            if (getMapTilesArray()[i + 1][j - 1].getTypeOfTile().contains("Room")) {
                 foundBorders = "CornerSE";
             }
         } catch (IndexOutOfBoundsException ignored) {
         }
         try {
-            if (getMapTilesArray()[i + 1][j + 1].typeOfTile.contains("Room")) {
+            if (getMapTilesArray()[i + 1][j + 1].getTypeOfTile().contains("Room")) {
                 foundBorders = "CornerNW";
             }
         } catch (IndexOutOfBoundsException ignored) {
         }
         try {
-            if (getMapTilesArray()[i - 1][j + 1].typeOfTile.contains("Room")) {
+            if (getMapTilesArray()[i - 1][j + 1].getTypeOfTile().contains("Room")) {
                 foundBorders = "CornerNE";
             }
         } catch (IndexOutOfBoundsException ignored) {
@@ -449,18 +467,18 @@ public class DungeonMap {
     private void markTheDoorTiles() {
         for (int i = 0; i < numberOfTilesX; i++) {
             for (int j = 0; j < numberOfTilesY; j++) {
-                if (getMapTilesArray()[i][j].typeOfTile.contains("Corridor") &&
-                        getMapTilesArray()[i - 1][j].typeOfTile.contains("Room")) {
-                    getMapTilesArray()[i][j].typeOfTile = "ClosedDoorHorizontal";
-                } else if (getMapTilesArray()[i][j].typeOfTile.contains("Corridor") &&
-                        getMapTilesArray()[i + 1][j].typeOfTile.contains("Room")) {
-                    getMapTilesArray()[i][j].typeOfTile = "ClosedDoorHorizontal";
-                } else if (getMapTilesArray()[i][j].typeOfTile.contains("Corridor") &&
-                        getMapTilesArray()[i][j - 1].typeOfTile.contains("Room")) {
-                    getMapTilesArray()[i][j].typeOfTile = "ClosedDoorVertical";
-                } else if (getMapTilesArray()[i][j].typeOfTile.contains("Corridor") &&
-                        getMapTilesArray()[i][j + 1].typeOfTile.contains("Room")) {
-                    getMapTilesArray()[i][j].typeOfTile = "ClosedDoorVertical";
+                if (getMapTilesArray()[i][j].getTypeOfTile().contains("Corridor") &&
+                        getMapTilesArray()[i - 1][j].getTypeOfTile().contains("Room")) {
+                    getMapTilesArray()[i][j].setTypeOfTile("ClosedDoorHorizontal");
+                } else if (getMapTilesArray()[i][j].getTypeOfTile().contains("Corridor") &&
+                        getMapTilesArray()[i + 1][j].getTypeOfTile().contains("Room")) {
+                    getMapTilesArray()[i][j].setTypeOfTile("ClosedDoorHorizontal");
+                } else if (getMapTilesArray()[i][j].getTypeOfTile().contains("Corridor") &&
+                        getMapTilesArray()[i][j - 1].getTypeOfTile().contains("Room")) {
+                    getMapTilesArray()[i][j].setTypeOfTile("ClosedDoorVertical");
+                } else if (getMapTilesArray()[i][j].getTypeOfTile().contains("Corridor") &&
+                        getMapTilesArray()[i][j + 1].getTypeOfTile().contains("Room")) {
+                    getMapTilesArray()[i][j].setTypeOfTile("ClosedDoorVertical");
                 }
             }
         }

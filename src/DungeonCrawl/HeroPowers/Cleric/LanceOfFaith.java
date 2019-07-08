@@ -15,7 +15,7 @@ public class LanceOfFaith extends HeroPower {
         setTypeOfPower(TypesOfPowers.AT_WILL.toString().replace('_', ' ').toLowerCase());
         setUsedAction(TypesOfActions.STANDARD.toString().toLowerCase());
         setPowerLevel(1);
-        setRange(5);
+        setRange(10); //todo change this to 5 after testing
         setNumberOfTargets("One target");
         setAttributeUsedToHit(AttributeNames.Wisdom.toString());
         setDefenseToBeChecked(CreatureDefenses.Reflex.toString());

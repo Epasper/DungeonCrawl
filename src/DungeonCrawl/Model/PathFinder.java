@@ -77,28 +77,28 @@ public class PathFinder {
         String currentTileTypeWest = "West";
         String currentTileTypeSouth = "South";
         try {
-            currentTileTypeNorth += dungeonMap.getMapTilesArray()[XPos][YPos + 1].typeOfTile;
+            currentTileTypeNorth += dungeonMap.getMapTilesArray()[XPos][YPos + 1].getTypeOfTile();
             if (dungeonMap.getMapTilesArray()[XPos][YPos + 1].getOccupyingCreatureTypeId() > 0) {
                 currentTileTypeNorth += "Occupied";
             }
         } catch (IndexOutOfBoundsException ignored) {
         }
         try {
-            currentTileTypeEast += dungeonMap.getMapTilesArray()[XPos + 1][YPos].typeOfTile;
+            currentTileTypeEast += dungeonMap.getMapTilesArray()[XPos + 1][YPos].getTypeOfTile();
             if (dungeonMap.getMapTilesArray()[XPos + 1][YPos].getOccupyingCreatureTypeId() > 0) {
                 currentTileTypeEast += "Occupied";
             }
         } catch (IndexOutOfBoundsException ignored) {
         }
         try {
-            currentTileTypeWest += dungeonMap.getMapTilesArray()[XPos - 1][YPos].typeOfTile;
+            currentTileTypeWest += dungeonMap.getMapTilesArray()[XPos - 1][YPos].getTypeOfTile();
             if (dungeonMap.getMapTilesArray()[XPos - 1][YPos].getOccupyingCreatureTypeId() > 0) {
                 currentTileTypeWest += "Occupied";
             }
         } catch (IndexOutOfBoundsException ignored) {
         }
         try {
-            currentTileTypeSouth += dungeonMap.getMapTilesArray()[XPos][YPos - 1].typeOfTile;
+            currentTileTypeSouth += dungeonMap.getMapTilesArray()[XPos][YPos - 1].getTypeOfTile();
             if (dungeonMap.getMapTilesArray()[XPos][YPos - 1].getOccupyingCreatureTypeId() > 0) {
                 currentTileTypeSouth += "Occupied";
             }
@@ -144,13 +144,13 @@ public class PathFinder {
                 recursiveCheckDistance(dungeonMap, buttonGrid, currentDirection, temporaryY, temporaryX, iterations - stepDecrement, reasonForChecking);
             }
         } else if (currentDirection.contains("Wall")) {
-            mapTile.alreadyDiscovered = true;
+            mapTile.setAlreadyDiscovered(true);
         } else if (currentDirection.contains("Closed")) {
-            mapTile.alreadyDiscovered = true;
-            mapTile.inWalkRange = true;
+            mapTile.setAlreadyDiscovered(true);
+            mapTile.setInWalkRange(true);
             gridButton.setStyle("-fx-color: #333399");
             if (reasonForChecking.contains("Interact")) {
-                mapTile.withinInteractionRange = true;
+                mapTile.setWithinInteractionRange(true);
             }
         }
         dungeonMap.getMapTilesArray()[temporaryX][temporaryY] = mapTile;
@@ -158,20 +158,21 @@ public class PathFinder {
     }
 
     private void markTheTileAsAccessible(String reasonForChecking, MapTile mapTile, Button gridButton) {
-        mapTile.alreadyDiscovered = true;
+        mapTile.setAlreadyDiscovered(true);
         if (!reasonForChecking.contains("Attack")) {
-            mapTile.inWalkRange = true;
+            mapTile.setInRangedAttackRange(true);
+            mapTile.setInWalkRange(true);
         }
         if (reasonForChecking.contains("Walk")) {
             gridButton.setStyle("-fx-color: #00ff00");
         } else if (reasonForChecking.contains("Interact")) {
-            mapTile.withinInteractionRange = true;
+            mapTile.setWithinInteractionRange(true);
             gridButton.setStyle("-fx-color: #ffff00");
             if (mapTile.getOccupyingCreatureTypeId() > 100) {
                 gridButton.setStyle("-fx-color: #ff0000");
             }
         } else if (reasonForChecking.contains("Attack") && mapTile.getOccupyingCreatureTypeId() > 100) {
-            mapTile.withinInteractionRange = true;
+            mapTile.setWithinInteractionRange(true);
             gridButton.setStyle("-fx-color: #ff0000");
         }
     }
@@ -193,7 +194,7 @@ public class PathFinder {
         return stepDecrement;
     }
 
-    public void checkTheLineOfSight(DungeonMap dungeonMap, Button[][] buttonGrid, Hero hero) {
+    void checkTheLineOfSight(DungeonMap dungeonMap, Button[][] buttonGrid, Hero hero) {
         int LOSRange = hero.getAttackRange();
         int YPos = hero.getMapYPos();
         int XPos = hero.getMapXPos();
