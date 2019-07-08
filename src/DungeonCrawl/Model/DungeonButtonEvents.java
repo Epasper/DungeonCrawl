@@ -5,6 +5,8 @@ import DungeonCrawl.GUI.GUIAnimations;
 import DungeonCrawl.GUI.GUIUtilities;
 import DungeonCrawl.GUI.Images.SkillIcons.SkillIcons;
 import DungeonCrawl.HeroPowers.HeroPower;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -65,6 +67,7 @@ public class DungeonButtonEvents {
     }
 
     private boolean eventOnHeroClick(int XPos, int YPos, int currentHeroID) {
+
         boolean isTheTileInteractive;
         clearHoverEvents();
         mapManager.getDungeonMap().clearMapReachableProperties();
@@ -230,6 +233,9 @@ public class DungeonButtonEvents {
         DungeonMap dungeonMap = mapManager.getDungeonMap();
         for (int i = 0; i < dungeonMap.getNumberOfTilesX(); i++) {
             for (int j = 0; j < dungeonMap.getNumberOfTilesY(); j++) {
+                int finalJ = j;
+                int finalI = i;
+                buttonGrid[i][j].setOnAction(event -> buttonEvent(finalI, finalJ, currentHeroPowers));
                 buttonGrid[i][j].setOnMouseEntered(null);
                 buttonGrid[i][j].setOnMouseExited(null);
             }
@@ -244,6 +250,7 @@ public class DungeonButtonEvents {
                 if (dungeonMap.getMapTilesArray()[i][j].isInRangedAttackRange()) {
                     int finalI = i;
                     int finalJ = j;
+                    buttonGrid[i][j].setOnAction(event -> eventOnAttackingAMonster(finalI, finalJ, currentHeroPowers));
                     buttonGrid[i][j].setOnMouseEntered(event -> paintTheTilesInRange(buttonGrid, finalI, finalJ, burstValue));
                     buttonGrid[i][j].setOnMouseExited(event -> mapManager.updateMapGraphics(true));
                 } else {

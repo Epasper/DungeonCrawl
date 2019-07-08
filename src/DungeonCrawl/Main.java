@@ -12,6 +12,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         //todo add an SQL method that creates a database if it doesn't already exist - for deployment purposes in the future.
+        //todo change the SQL dependency to JSON dependency and write the "database" as files consisting of encoded JSONs
         setPrimaryStage(primaryStage);
         MainMenuGUI mainMenuGUI = new MainMenuGUI();
         primaryStage.setWidth(500);
