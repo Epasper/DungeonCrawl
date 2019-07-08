@@ -28,7 +28,7 @@ public class MainMenuGUI {
     private Button itemShopButton = new Button();
     private Button manageEquipmentButton = new Button("Manage Hero Equipment");
     public Scene aScene = new Scene(new Group());
-    public Stage aStage = new Stage();
+    private Stage aStage = new Stage();
 
     public MainMenuGUI() {
         buildTheMainMenu();
@@ -37,7 +37,7 @@ public class MainMenuGUI {
 
     private void buildTheMainMenu() {
         aScene.getStylesheets().add("DungeonCrawl/Styling/CharacterCreator.css");
-        aStage = Main.getPrimaryStage();
+        setaStage(Main.getPrimaryStage());
         mainMenuScrollPane.setContent(mainMenuBorderPane);
         mainMenuBorderPane.setTop(topBox);
         mainMenuBorderPane.setLeft(leftBox);
@@ -50,7 +50,7 @@ public class MainMenuGUI {
         middlePane.getChildren().add(characterCreatorGUIButton);
         middlePane.getChildren().add(itemShopButton);
         middlePane.getChildren().add(manageEquipmentButton);
-        aStage.getIcons().add(new Image("DungeonCrawl/GUI/Images/WindowsIcons/MainMenuIcon.jpg"));
+        getaStage().getIcons().add(new Image("DungeonCrawl/GUI/Images/WindowsIcons/MainMenuIcon.jpg"));
         newDungeonButton.setText("Generate a New Dungeon");
         newDungeonButton.setOnAction(event -> {
             try {
@@ -67,14 +67,14 @@ public class MainMenuGUI {
                 e.printStackTrace();
             }
             //DungeonGUI dungeonGui = new DungeonGUI();
-            aStage.close();
+            getaStage().close();
             assert partySelectorGUI != null;
             aScene.setRoot(partySelectorGUI.partySelectorOuterPlane);
             //aScene.getStylesheets().add("DungeonCrawl/Styling/Caspian.css");
-            aStage.setMaximized(true);
+            getaStage().setMaximized(true);
             //aScene.setRoot(dungeonGui.mapScrollPane);
-            aStage.setScene(aScene);
-            aStage.show();
+            getaStage().setScene(aScene);
+            getaStage().show();
         });
         characterCreatorGUIButton.setText("Character Creator");
         characterCreatorGUIButton.setOnAction(event -> openCharacterCreationGUI());
@@ -87,41 +87,48 @@ public class MainMenuGUI {
             }
         });
         aScene.setRoot(mainMenuScrollPane);
-        aStage.show();
+        getaStage().show();
     }
 
     private void openDungeonGUI() throws SQLException, IOException {
         PartySelectorGUI partySelectorGUI = new PartySelectorGUI();
         //DungeonGUI dungeonGui = new DungeonGUI();
-        aStage.close();
+        getaStage().close();
         aScene.setRoot(partySelectorGUI.partySelectorOuterPlane);
         //aScene.getStylesheets().add("DungeonCrawl/Styling/Caspian.css");
-        aStage.setMaximized(true);
+        getaStage().setMaximized(true);
         //aScene.setRoot(dungeonGui.mapScrollPane);
-        aStage.setScene(aScene);
-        aStage.show();
+        getaStage().setScene(aScene);
+        getaStage().show();
     }
 
     private void openItemShop() throws SQLException, IOException {
         ItemShopGUI itemShopGUI = new ItemShopGUI();
-        aStage.close();
+        getaStage().close();
         aScene.setRoot(itemShopGUI.itemShopOuterPane);
         //aScene.getStylesheets().add("DungeonCrawl/Styling/Caspian.css");
-        aStage.setMaximized(true);
-        aStage.setScene(aScene);
-        aStage.show();
+        getaStage().setMaximized(true);
+        getaStage().setScene(aScene);
+        getaStage().show();
     }
 
     private void openCharacterCreationGUI() {
         CharacterCreatorGUI characterCreatorGUI = new CharacterCreatorGUI();
-        aStage.close();
-        aStage.getIcons().clear();
-        aStage.getIcons().add(new Image("DungeonCrawl/GUI/Images/WindowsIcons/CharacterCreatorIcon.jpg"));
-        aScene.setRoot(characterCreatorGUI.characterCreatorOuterPane);
-        aStage.setMaximized(true);
-        aStage.setScene(aScene);
-        aStage.show();
+        getaStage().close();
+        getaStage().getIcons().clear();
+        getaStage().getIcons().add(new Image("DungeonCrawl/GUI/Images/WindowsIcons/CharacterCreatorIcon.jpg"));
+        aScene.setRoot(characterCreatorGUI.getCharacterCreatorOuterPane());
+        getaStage().setMaximized(true);
+        getaStage().setScene(aScene);
+        getaStage().show();
     }
 
 
+    public Stage getaStage() {
+        return aStage;
+    }
+
+    public void setaStage(Stage aStage) {
+        this.aStage = aStage;
+    }
 }

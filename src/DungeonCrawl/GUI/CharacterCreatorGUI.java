@@ -1,7 +1,6 @@
 package DungeonCrawl.GUI;
 
 import DungeonCrawl.GUI.Images.SkillIcons.SkillIcons;
-import DungeonCrawl.Model.Hero;
 import DungeonCrawl.StaticRules.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -43,7 +42,7 @@ import static java.lang.Integer.valueOf;
 class CharacterCreatorGUI {
     private MainMenuGUI mainMenuGUI = new MainMenuGUI();
     private String selectedHeroClass;
-    ScrollPane characterCreatorOuterPane = new ScrollPane();
+    private ScrollPane characterCreatorOuterPane = new ScrollPane();
     private BorderPane characterCreatorInnerPane = new BorderPane();
     private HBox topBox = new HBox();
     private FlowPane leftBox = new FlowPane();
@@ -114,7 +113,7 @@ class CharacterCreatorGUI {
     }
 
     private void initializeCharacterCreatorGUI() {
-        characterCreatorOuterPane.getStylesheets().add("DungeonCrawl/Styling/CharacterCreator.css");
+        getCharacterCreatorOuterPane().getStylesheets().add("DungeonCrawl/Styling/CharacterCreator.css");
         manageThePanes();
         addElementsToPanes();
         setStyling();
@@ -706,7 +705,7 @@ class CharacterCreatorGUI {
     }
 
     private void manageThePanes() {
-        characterCreatorOuterPane.setContent(characterCreatorInnerPane);
+        getCharacterCreatorOuterPane().setContent(characterCreatorInnerPane);
         characterCreatorInnerPane.setTop(topBox);
         characterCreatorInnerPane.setLeft(leftBox);
         characterCreatorInnerPane.setCenter(middleBox);
@@ -1011,9 +1010,17 @@ class CharacterCreatorGUI {
     }
 
     private void returnToMainMenu() {
-        mainMenuGUI.aStage = Main.getPrimaryStage();
-        mainMenuGUI.aStage.setScene(mainMenuGUI.aScene);
-        mainMenuGUI.aStage.show();
+        mainMenuGUI.setaStage(Main.getPrimaryStage());
+        mainMenuGUI.getaStage().setScene(mainMenuGUI.aScene);
+        mainMenuGUI.getaStage().show();
         System.out.println("Stage is closing");
+    }
+
+    public ScrollPane getCharacterCreatorOuterPane() {
+        return characterCreatorOuterPane;
+    }
+
+    public void setCharacterCreatorOuterPane(ScrollPane characterCreatorOuterPane) {
+        this.characterCreatorOuterPane = characterCreatorOuterPane;
     }
 }

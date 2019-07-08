@@ -258,9 +258,9 @@ public class ItemShopGUI {
     }
 
     private void returnToMainMenu() {
-        mainMenuGUI.aStage = Main.getPrimaryStage();
-        mainMenuGUI.aStage.setScene(mainMenuGUI.aScene);
-        mainMenuGUI.aStage.show();
+        mainMenuGUI.setaStage(Main.getPrimaryStage());
+        mainMenuGUI.getaStage().setScene(mainMenuGUI.aScene);
+        mainMenuGUI.getaStage().show();
         System.out.println("Stage is closing");
     }
 

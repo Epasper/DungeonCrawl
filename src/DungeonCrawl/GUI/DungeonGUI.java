@@ -12,6 +12,7 @@ import DungeonCrawl.*;
 import DungeonCrawl.DAO.ItemsDAO;
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.Model.*;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -37,6 +38,14 @@ class DungeonGUI {
     private EncounterManager encounterManager = new EncounterManager(heroManager, buttonGrid, pathFinder);
     private MapManager mapManager = new MapManager(mapWidth, mapHeight, encounterManager);
     private DungeonButtonEvents dungeonButtonEvents = new DungeonButtonEvents(encounterManager, mapManager, powersHBox, currentHeroPowers);
+
+    public BorderPane getMapOuterPane() {
+        return mapOuterPane;
+    }
+
+    public void setMapOuterPane(BorderPane mapOuterPane) {
+        this.mapOuterPane = mapOuterPane;
+    }
 
     DungeonGUI(List<Hero> heroList) {
 
@@ -144,6 +153,7 @@ class DungeonGUI {
     }
 
     private void updateGUIAccordingToMap(DungeonMap dungeonMap) {
+        CursorManager cursorManager = new CursorManager(mapOuterPane, encounterManager);
         for (int i = 0; i < mapWidth; i++) {
             for (int j = 0; j < mapHeight; j++) {
                 Button aButton = new Button();
@@ -154,7 +164,7 @@ class DungeonGUI {
                 int finalJ = j;
                 int finalI = i;
                 aButton.setOnAction(actionEvent -> dungeonButtonEvents.buttonEvent(finalI, finalJ, currentHeroPowers));
-                aButton.setOnMouseEntered(event -> changeTheCursorOnHover(finalI, finalJ));
+                aButton.setOnMouseEntered(event -> cursorManager.changeTheCursorOnHover(finalI, finalJ));
                 mapGridPane.add(aButton, j, i);
             }
         }
@@ -163,51 +173,13 @@ class DungeonGUI {
 
     //todo add a CursorManager class that manages the cursors - refactor these methods onto the new class.
 
-    private void changeTheCursorOnHover(int XPos, int YPos) {
-        Image mapCursor = new Image("DungeonCrawl/GUI/Images/Cursors/WalkingCursor.png");
-        Image lockCursor = new Image("DungeonCrawl/GUI/Images/Cursors/Lock.png");
-        Image swordCursor = new Image("DungeonCrawl/GUI/Images/Cursors/Sword.png");
-        //Image Cursor = new Image("DungeonCrawl/GUI/Images/Cursors/WalkingCursor.png");
-        String currentTypeOfTile = encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].getTypeOfTile();
-        boolean inWalkRange = encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].isInWalkRange();
-        int occupyingMonsterID = encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureTypeId();
-        boolean isTheTileInteractive = encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange();
-        if (isTheTileInteractive && occupyingMonsterID > 100) {
-            changeTheCursor(swordCursor, false);
-        } else if (inWalkRange) {
-            changeTheCursor(mapCursor, false);
-        } else {
-            changeTheCursor(null, true);
-        }
-        if (currentTypeOfTile.contains("Door")) {
-            changeTheCursor(lockCursor, false);
-        }
-    }
-
-
-    private void changeTheCursor(Image image, boolean backToDefault) {
-        if (backToDefault) {
-            getMapOuterPane().setCursor(Cursor.DEFAULT);
-        } else {
-            getMapOuterPane().setCursor(new ImageCursor(image));
-            //System.out.println("Changing the cursor");
-        }
-    }
     //todo change the monster portrait after it being bloodied
 
     private void returnToMainMenu() {
-        mainMenuGUI.aStage = Main.getPrimaryStage();
-        mainMenuGUI.aStage.setScene(mainMenuGUI.aScene);
-        mainMenuGUI.aStage.show();
+        mainMenuGUI.setaStage(Main.getPrimaryStage());
+        mainMenuGUI.getaStage().setScene(mainMenuGUI.aScene);
+        mainMenuGUI.getaStage().show();
         System.out.println("Stage is closing");
-    }
-
-    public BorderPane getMapOuterPane() {
-        return mapOuterPane;
-    }
-
-    public void setMapOuterPane(BorderPane mapOuterPane) {
-        this.mapOuterPane = mapOuterPane;
     }
 //todo add a button to console that could extend its view range or minimize it.
 
