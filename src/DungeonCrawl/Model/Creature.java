@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Creature {
-    public String heroName;
+    private String heroName;
     private Image creatureImage;
     private int ID;
     private int currentMonsterUniqueID;
@@ -178,7 +178,7 @@ public class Creature {
     }
 
     public String getMonsterName() {
-        return heroName;
+        return getHeroName();
     }
 
     public int getID() {

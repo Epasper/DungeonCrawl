@@ -2,8 +2,6 @@ package DungeonCrawl.Model;
 
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.Items.Item;
-import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
 
 import java.util.*;
 
@@ -24,23 +22,23 @@ public class Hero extends Creature {
     private int intelligence;
     private int wisdom;
     private int charisma;
-    private int Acrobatics;
-    private int Arcana;
-    private int Athletics;
-    private int Bluff;
-    private int Diplomacy;
-    private int Dungeoneering;
-    private int Endurance;
-    private int Heal;
-    private int History;
-    private int Insight;
-    private int Intimidate;
-    private int Nature;
-    private int Perception;
-    private int Religion;
-    private int Stealth;
-    private int Streetwise;
-    private int Thievery;
+    private int acrobatics;
+    private int arcana;
+    private int athletics;
+    private int bluff;
+    private int diplomacy;
+    private int dungeoneering;
+    private int endurance;
+    private int heal;
+    private int history;
+    private int insight;
+    private int intimidate;
+    private int nature;
+    private int perception;
+    private int religion;
+    private int stealth;
+    private int streetwise;
+    private int thievery;
     private Map<String, Integer> heroAttributesMap;
     private Map<String, Item> heroEquipment;
     private int aggressionLevel = 5;
@@ -196,139 +194,139 @@ public class Hero extends Creature {
     }
 
     public int getAcrobatics() {
-        return Acrobatics;
+        return acrobatics;
     }
 
     public void setAcrobatics(int acrobatics) {
-        Acrobatics = acrobatics;
+        this.acrobatics = acrobatics;
     }
 
     public int getArcana() {
-        return Arcana;
+        return arcana;
     }
 
     public void setArcana(int arcana) {
-        Arcana = arcana;
+        this.arcana = arcana;
     }
 
     public int getAthletics() {
-        return Athletics;
+        return athletics;
     }
 
     public void setAthletics(int athletics) {
-        Athletics = athletics;
+        this.athletics = athletics;
     }
 
     public int getBluff() {
-        return Bluff;
+        return bluff;
     }
 
     public void setBluff(int bluff) {
-        Bluff = bluff;
+        this.bluff = bluff;
     }
 
     public int getDiplomacy() {
-        return Diplomacy;
+        return diplomacy;
     }
 
     public void setDiplomacy(int diplomacy) {
-        Diplomacy = diplomacy;
+        this.diplomacy = diplomacy;
     }
 
     public int getDungeoneering() {
-        return Dungeoneering;
+        return dungeoneering;
     }
 
     public void setDungeoneering(int dungeoneering) {
-        Dungeoneering = dungeoneering;
+        this.dungeoneering = dungeoneering;
     }
 
     public int getEndurance() {
-        return Endurance;
+        return endurance;
     }
 
     public void setEndurance(int endurance) {
-        Endurance = endurance;
+        this.endurance = endurance;
     }
 
     public int getHeal() {
-        return Heal;
+        return heal;
     }
 
     public void setHeal(int heal) {
-        Heal = heal;
+        this.heal = heal;
     }
 
     public int getHistory() {
-        return History;
+        return history;
     }
 
     public void setHistory(int history) {
-        History = history;
+        this.history = history;
     }
 
     public int getInsight() {
-        return Insight;
+        return insight;
     }
 
     public void setInsight(int insight) {
-        Insight = insight;
+        this.insight = insight;
     }
 
     public int getIntimidate() {
-        return Intimidate;
+        return intimidate;
     }
 
     public void setIntimidate(int intimidate) {
-        Intimidate = intimidate;
+        this.intimidate = intimidate;
     }
 
     public int getNature() {
-        return Nature;
+        return nature;
     }
 
     public void setNature(int nature) {
-        Nature = nature;
+        this.nature = nature;
     }
 
     public int getPerception() {
-        return Perception;
+        return perception;
     }
 
     public void setPerception(int perception) {
-        Perception = perception;
+        this.perception = perception;
     }
 
     public int getReligion() {
-        return Religion;
+        return religion;
     }
 
     public void setReligion(int religion) {
-        Religion = religion;
+        this.religion = religion;
     }
 
     public int getStealth() {
-        return Stealth;
+        return stealth;
     }
 
     public void setStealth(int stealth) {
-        Stealth = stealth;
+        this.stealth = stealth;
     }
 
     public int getStreetwise() {
-        return Streetwise;
+        return streetwise;
     }
 
     public void setStreetwise(int streetwise) {
-        Streetwise = streetwise;
+        this.streetwise = streetwise;
     }
 
     public int getThievery() {
-        return Thievery;
+        return thievery;
     }
 
     public void setThievery(int thievery) {
-        Thievery = thievery;
+        this.thievery = thievery;
     }
 
 

@@ -17,7 +17,7 @@ public class SacredFlame extends HeroPower {
         setPowerLevel(1);
         setRange(5);
         setNumberOfTargets("Burst"); //todo change this to "one target" after testing
-        setBurstValue(3); //todo delete this line after burst testing
+        setBurstValue(2); //todo delete this line after burst testing
         setAttributeUsedToHit(AttributeNames.Wisdom.toString());
         setDefenseToBeChecked(CreatureDefenses.Reflex.toString());
         setDamageDiceDealt(1);

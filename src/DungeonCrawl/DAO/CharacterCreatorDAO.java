@@ -1,21 +1,24 @@
 package DungeonCrawl.DAO;
 
-import DungeonCrawl.StaticRules.HeroClassInformation;
-import DungeonCrawl.StaticRules.HeroClassInformationFactory;
-import javafx.embed.swing.SwingFXUtils;
-import javafx.scene.image.Image;
 import DungeonCrawl.DTO.CharacterCreatorDTO;
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.Model.Hero;
-
+import DungeonCrawl.StaticRules.HeroClassInformationFactory;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.Image;
+import org.json.*;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 
 public class CharacterCreatorDAO {
@@ -28,6 +31,7 @@ public class CharacterCreatorDAO {
     private PreparedStatement pst;
 
     public CharacterCreatorDAO() throws SQLException {
+        //todo decryption takes place here
         System.out.println("Connecting to database...");
         conn = DriverManager.getConnection(DB_URL, USER, PASS);
         System.out.println("Creating connection...");
@@ -55,8 +59,26 @@ public class CharacterCreatorDAO {
         return rs;
     }
 
-    public List<String> getAllHeroNames() throws SQLException {
+    public String jsonToString(String path) {
+        StringBuilder contentBuilder = new StringBuilder();
+        try (Stream<String> stream = Files.lines(Paths.get(path), StandardCharsets.UTF_8)) {
+            stream.forEach(s -> contentBuilder.append(s).append("\n"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return contentBuilder.toString();
+    }
+
+    public List<String> getAllHeroNames() throws SQLException, IOException {
+        String json = jsonToString("C:\\Users\\A753403\\IdeaProjects\\DungeonCrawl\\src\\DungeonCrawl\\UserFiles\\HeroIDs.JSON");
+        List<String> jsonNamesToBeReturned = new ArrayList<>();
         List<String> namesToBeReturned = new ArrayList<>();
+        JSONObject jsonObject = new JSONObject(json);
+        JSONArray jsonArray = jsonObject.getJSONArray("heroIDs");
+        for (int i = 0; i <jsonArray.length() ; i++) {
+            String stringFromJson = jsonArray.getString(i);
+            jsonNamesToBeReturned.add(stringFromJson);
+        }
         String sql = "SELECT" +
                 "    `heroes`.`hero_name`" +
                 "FROM `dungeon`.`heroes`;";
@@ -66,7 +88,10 @@ public class CharacterCreatorDAO {
             String name = results.getString("hero_name");
             namesToBeReturned.add(name);
         }
-        return namesToBeReturned;
+        for (String name: jsonNamesToBeReturned) {
+            System.out.println("Name from JSon: " + name);
+        }
+        return jsonNamesToBeReturned;
     }
 
     public int getNumberOfHeroes() throws SQLException {

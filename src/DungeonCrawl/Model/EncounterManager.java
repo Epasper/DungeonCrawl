@@ -186,7 +186,7 @@ public class EncounterManager {
     public void endTheCurrentHeroMovement(Hero hero) {
         heroManager.setNumberOfHeroesThatFinishedMovement(heroManager.getNumberOfHeroesThatFinishedMovement() + 1);
         hero.setFinishedMovement(true);
-        System.out.println(hero.heroName + " has finished moving. " + heroManager.getNumberOfHeroesThatFinishedMovement() + " heroes had already finished moving");
+        System.out.println(hero.getHeroName() + " has finished moving. " + heroManager.getNumberOfHeroesThatFinishedMovement() + " heroes had already finished moving");
         if (isEncounterOnline()) {
             globalInitiative++;
             unlockTheNextCreatureInTheInitiativeOrder();
@@ -201,7 +201,7 @@ public class EncounterManager {
         for (Hero currentHero : heroManager.getHeroList()) {
             currentHero.setCurrentSpeed(currentHero.getSpeed());
             currentHero.setFinishedMovement(false);
-            System.out.println("Resetting the movement points for " + currentHero.heroName);
+            System.out.println("Resetting the movement points for " + currentHero.getHeroName());
         }
         for (Monster currentMonster : discoveredMonsters) {
             currentMonster.setFinishedMovement(false);
