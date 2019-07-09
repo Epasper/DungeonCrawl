@@ -277,17 +277,18 @@ public class CharacterCreatorDAO {
     public void addAHeroToDatabase(CharacterCreatorDTO heroToBeAdded) throws IOException {
         JSONObject jsonObject = new JSONObject(heroToBeAdded);
         List<String> allNames = getAllHeroNames();
-        JSONObject jsonAllNamesObject = new JSONObject(allNames);
         allNames.add(heroToBeAdded.getHeroName());
+        JSONArray allNamesArray = new JSONArray(allNames);
         String jsonString = jsonObject.toString(1);
-        String allNamesString = jsonAllNamesObject.toString(1);
+        String allNamesString = allNamesArray.toString(1);
         String fileName = heroToBeAdded.getHeroName() + ".JSON";
         String path = "C:\\Users\\A753403\\IdeaProjects\\DungeonCrawl\\src\\DungeonCrawl\\UserFiles\\";
         BufferedWriter fileWriter = new BufferedWriter(new FileWriter(path + fileName));
         fileWriter.write(jsonString);
         fileWriter.close();
         BufferedWriter allHeroNamesWriter = new BufferedWriter(new FileWriter(path + "HeroNames.JSON"));
-        allHeroNamesWriter.write(allNamesString);
+        allHeroNamesWriter.write("{\n" +
+                "  \"heroIDs\":" + allNamesString + "\n" + "}");
         allHeroNamesWriter.close();
         /*String sql = "INSERT INTO dungeon.heroes(" +
                 "hero_name," +
