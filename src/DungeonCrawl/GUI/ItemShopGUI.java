@@ -47,33 +47,33 @@ public class ItemShopGUI {
         addImplementList();
     }
 
-    private void fillTheHeroesPanes() throws SQLException, IOException {
+    private void fillTheHeroesPanes() {
         heroSelectionPane.getStylesheets().add("DungeonCrawl/Styling/CharacterCreator.css");
         ObservableList<String> heroNames =
                 FXCollections.observableArrayList();
         List<String> heroNameList = characterCreatorDAO.getAllHeroNames();
         heroNames.addAll(heroNameList);
-        List<CharacterCreatorDTO> listOfAllHeroes = characterCreatorDAO.getAllHeroes();
+        List<Hero> listOfAllHeroes = characterCreatorDAO.getAllHeroes();
         for (int i = 0; i < listOfAllHeroes.size(); i++) {
             Button currentButton = new Button();
             int finalI = i;
             currentButton.setOnAction(actionEvent -> {
                 try {
-                    eventOnHeroClick(listOfAllHeroes.get(finalI).getHeroID());
+                    eventOnHeroClick(listOfAllHeroes.get(finalI).getID());
                 } catch (SQLException | IOException e) {
                     e.printStackTrace();
                 }
             });
             currentButton.setMinWidth(350);
             currentButton.setStyle("-fx-alignment: center-left;");
-            CharacterCreatorDTO characterCreatorDTO = listOfAllHeroes.get(i);
-            Image heroImage = characterCreatorDAO.getHeroIconByID(characterCreatorDTO.getHeroIconId());
+            Hero hero = listOfAllHeroes.get(i);
+            Image heroImage = characterCreatorDAO.getHeroIconByID(hero.getHeroIconId());
             ImageView heroImageView = new ImageView(heroImage);
             currentButton.setGraphic(heroImageView);
-            System.out.println("SETTER FOR ID: -->" + characterCreatorDTO.getHeroID());
-            currentButton.setId(String.valueOf(characterCreatorDTO.getHeroID()));
-            currentButton.setText(characterCreatorDTO.getHeroName() + ", a brave " + characterCreatorDTO.getHeroRace() + " " + characterCreatorDTO.getHeroClass());
-            System.out.println("CURRENTLY ADDING:  " + characterCreatorDTO.getHeroName());
+            System.out.println("SETTER FOR ID: -->" + hero.getID());
+            currentButton.setId(String.valueOf(hero.getID()));
+            currentButton.setText(hero.getHeroName() + ", a brave " + hero.getHeroRace() + " " + hero.getHeroClass());
+            System.out.println("CURRENTLY ADDING:  " + hero.getHeroName());
             heroSelectionPane.add(currentButton, 0, i + 1);
         }
         currentChoicesGridPane.add(itemStatsTextArea, 0, 1);

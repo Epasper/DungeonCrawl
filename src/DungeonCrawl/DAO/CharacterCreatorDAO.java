@@ -10,6 +10,7 @@ import org.json.*;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
@@ -22,41 +23,25 @@ import java.util.stream.Stream;
 
 
 public class CharacterCreatorDAO {
-
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/mysql?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-    private static final String USER = "root";
-    private static final String PASS = "root";
-
-    private Connection conn;
     private PreparedStatement pst;
 
-    public CharacterCreatorDAO() throws SQLException {
+    public CharacterCreatorDAO() {
         //todo decryption takes place here
-        System.out.println("Connecting to database...");
-        conn = DriverManager.getConnection(DB_URL, USER, PASS);
-        System.out.println("Creating connection...");
-        conn.createStatement();
     }
 
-    public Image getHeroIconByID(int id) throws SQLException, IOException {
-        String sql = "SELECT heroicons.id_hero_icons, heroicons.hero_icon FROM dungeon.heroicons WHERE (id_hero_icons=?);";
-        pst = conn.prepareStatement(sql);
-        pst.setInt(1, id);
-        ResultSet rs = pst.executeQuery();
-        if (rs.next()) {
-            Blob blob = rs.getBlob("hero_icon");
-            InputStream in = blob.getBinaryStream();
-            BufferedImage bufferedImage = ImageIO.read(in);
-            return SwingFXUtils.toFXImage(bufferedImage, null);
+    public Image getHeroIconByID(int id) {
+        File file = new File("C:\\Users\\A753403\\IdeaProjects\\DungeonCrawl\\src\\DungeonCrawl\\GUI\\Images\\HeroPortraits\\icon" + id + ".png");
+        System.out.println("Overwriting base image with HeroIcon: " + id);
+        return new Image(file.toURI().toString());
+    }
+
+    public List<Image> getAllHeroIcons() {
+        List<Image> listOfIcons = new ArrayList<>();
+        for (int i = 0; i < 14; i++) {
+            Image newImage = getHeroIconByID(i);
+            listOfIcons.add(newImage);
         }
-        return null;
-    }
-
-    public ResultSet getAllHeroIcons() throws SQLException {
-        String sql = "SELECT `heroicons`.`id_hero_icons`,`heroicons`.`hero_icon`FROM `dungeon`.`heroicons`;";
-        pst = conn.prepareStatement(sql);
-        ResultSet rs = pst.executeQuery();
-        return rs;
+        return listOfIcons;
     }
 
     public String jsonToString(String path) {
@@ -69,56 +54,60 @@ public class CharacterCreatorDAO {
         return contentBuilder.toString();
     }
 
-    public List<String> getAllHeroNames() throws SQLException, IOException {
-        String json = jsonToString("C:\\Users\\A753403\\IdeaProjects\\DungeonCrawl\\src\\DungeonCrawl\\UserFiles\\HeroIDs.JSON");
+    public List<String> getAllHeroNames() {
+        String json = jsonToString("C:\\Users\\A753403\\IdeaProjects\\DungeonCrawl\\src\\DungeonCrawl\\UserFiles\\HeroNames.JSON");
         List<String> jsonNamesToBeReturned = new ArrayList<>();
-        List<String> namesToBeReturned = new ArrayList<>();
         JSONObject jsonObject = new JSONObject(json);
         JSONArray jsonArray = jsonObject.getJSONArray("heroIDs");
-        for (int i = 0; i <jsonArray.length() ; i++) {
+        for (int i = 0; i < jsonArray.length(); i++) {
             String stringFromJson = jsonArray.getString(i);
             jsonNamesToBeReturned.add(stringFromJson);
         }
-        String sql = "SELECT" +
-                "    `heroes`.`hero_name`" +
-                "FROM `dungeon`.`heroes`;";
-        pst = conn.prepareStatement(sql);
-        ResultSet results = pst.executeQuery();
-        while (results.next()) {
-            String name = results.getString("hero_name");
-            namesToBeReturned.add(name);
-        }
-        for (String name: jsonNamesToBeReturned) {
+        for (String name : jsonNamesToBeReturned) {
             System.out.println("Name from JSon: " + name);
         }
         return jsonNamesToBeReturned;
     }
 
-    public int getNumberOfHeroes() throws SQLException {
-        String sql = "SELECT COUNT(*) from dungeon.heroes;";
-        int numberOfHeroes = 0;
-        pst = conn.prepareStatement(sql);
-        ResultSet rs = pst.executeQuery();
-        if (rs.next()) {
-            numberOfHeroes = rs.getInt("COUNT(*)");
-        }
-        return numberOfHeroes;
+    public String getHeroNameByID(int ID) {
+        String json = jsonToString("C:\\Users\\A753403\\IdeaProjects\\DungeonCrawl\\src\\DungeonCrawl\\UserFiles\\HeroNames.JSON");
+        JSONObject jsonObject = new JSONObject(json);
+        JSONArray jsonArray = jsonObject.getJSONArray("heroIDs");
+        return jsonArray.getString(ID);
     }
 
-
-    public Hero getAHeroByID(int ID) throws SQLException, IOException {
+    public Hero getAHeroByID(int ID) {
         Hero hero = new Hero();
+        String heroName = getHeroNameByID(ID);
+        String json = jsonToString("C:\\Users\\A753403\\IdeaProjects\\DungeonCrawl\\src\\DungeonCrawl\\UserFiles\\" + heroName + ".JSON");
         hero.setHitPoints(1000); //todo set HP properly
         hero.setCurrentHitPoints(1000);
         hero.updateTheDefensesMap();
-        System.out.println("-----> Hero ID From DAO" + ID);
-        String sql = "SELECT * FROM dungeon.heroes WHERE idheroes = ?;";
-        pst = conn.prepareStatement(sql);
-        pst.setInt(1, ID);
-        ResultSet rs = pst.executeQuery();
-        String a = "a";
-        String b = "B";
-        while (rs.next()) {
+        System.out.println("-----> Hero ID From DAO:  " + ID);
+        JSONObject jsonObject = new JSONObject(json);
+        hero.setCreatureImage(getHeroIconByID(jsonObject.getInt("iconId")));
+        hero.setHeroName(jsonObject.getString("heroName"));
+        hero.setHeroIconId(jsonObject.getInt("iconId"));
+        hero.setID(ID);
+        String heroClass = jsonObject.getString("heroClass");
+        hero.setHeroClass(heroClass);
+
+        hero.setHeroClass(heroClass);
+        hero.setHeroRace(jsonObject.getString("heroRace"));
+        hero.setHeroLevel(jsonObject.getInt("heroLevel"));
+        hero.setStrength(jsonObject.getInt("strength"));
+        hero.setConstitution(jsonObject.getInt("constitution"));
+        hero.setDexterity(jsonObject.getInt("dexterity"));
+        hero.setIntelligence(jsonObject.getInt("intelligence"));
+        hero.setWisdom(jsonObject.getInt("wisdom"));
+        hero.setCharisma(jsonObject.getInt("charisma"));
+        hero.setGold(jsonObject.getInt("gold"));
+        manageHeroDefenses(hero, jsonObject);
+        manageHeroSkills(hero, jsonObject);
+        HeroClassInformationFactory heroClassInformationFactory = new HeroClassInformationFactory(heroClass);
+        manageHeroPowers(hero, heroClassInformationFactory, jsonObject);
+
+        /*while (rs.next()) {
             a = rs.getString("hero_name");
             b = rs.getString("icon_id");
             hero.setCreatureImage(getHeroIconByID(rs.getInt("icon_id")));
@@ -140,46 +129,45 @@ public class CharacterCreatorDAO {
             manageHeroSkills(hero, rs);
             HeroClassInformationFactory heroClassInformationFactory = new HeroClassInformationFactory(heroClass);
             manageHeroPowers(hero, heroClassInformationFactory, rs);
-        }
+        }*/
         hero.updateTheAttributesMap();
-        System.out.println(hero.getMonsterName() + "|||" + a + " Icon number: " + b);
         return hero;
     }
 
-    private void manageHeroDefenses(Hero hero, ResultSet rs) throws SQLException {
-        hero.setAC(rs.getInt("ac"));
-        hero.setFortitude(rs.getInt("fortitude"));
-        hero.setReflex(rs.getInt("reflex"));
-        hero.setWill(rs.getInt("will"));
+    private void manageHeroDefenses(Hero hero, JSONObject jsonObject) {
+        hero.setAC(jsonObject.getInt("ac"));
+        hero.setFortitude(jsonObject.getInt("fortitude"));
+        hero.setReflex(jsonObject.getInt("reflex"));
+        hero.setWill(jsonObject.getInt("will"));
     }
 
-    private void manageHeroSkills(Hero hero, ResultSet rs) throws SQLException {
-        hero.setAcrobatics(rs.getInt("sk_acrobatics"));
-        hero.setArcana(rs.getInt("sk_arcana"));
-        hero.setAthletics(rs.getInt("sk_athletics"));
-        hero.setBluff(rs.getInt("sk_bluff"));
-        hero.setDiplomacy(rs.getInt("sk_diplomacy"));
-        hero.setDungeoneering(rs.getInt("sk_dungeoneering"));
-        hero.setEndurance(rs.getInt("sk_endurance"));
-        hero.setHeal(rs.getInt("sk_heal"));
-        hero.setHistory(rs.getInt("sk_history"));
-        hero.setInsight(rs.getInt("sk_insight"));
-        hero.setIntimidate(rs.getInt("sk_intimidate"));
-        hero.setNature(rs.getInt("sk_nature"));
-        hero.setPerception(rs.getInt("sk_perception"));
-        hero.setReligion(rs.getInt("sk_religion"));
-        hero.setStealth(rs.getInt("sk_stealth"));
-        hero.setStreetwise(rs.getInt("sk_streetwise"));
-        hero.setThievery(rs.getInt("sk_thievery"));
+    private void manageHeroSkills(Hero hero, JSONObject jsonObject) {
+        hero.setAcrobatics(jsonObject.getInt("acrobatics"));
+        hero.setArcana(jsonObject.getInt("arcana"));
+        hero.setAthletics(jsonObject.getInt("athletics"));
+        hero.setBluff(jsonObject.getInt("bluff"));
+        hero.setDiplomacy(jsonObject.getInt("diplomacy"));
+        hero.setDungeoneering(jsonObject.getInt("dungeoneering"));
+        hero.setEndurance(jsonObject.getInt("endurance"));
+        hero.setHeal(jsonObject.getInt("heal"));
+        hero.setHistory(jsonObject.getInt("history"));
+        hero.setInsight(jsonObject.getInt("insight"));
+        hero.setIntimidate(jsonObject.getInt("intimidate"));
+        hero.setNature(jsonObject.getInt("nature"));
+        hero.setPerception(jsonObject.getInt("perception"));
+        hero.setReligion(jsonObject.getInt("religion"));
+        hero.setStealth(jsonObject.getInt("stealth"));
+        hero.setStreetwise(jsonObject.getInt("streetwise"));
+        hero.setThievery(jsonObject.getInt("thievery"));
     }
 
-    private void manageHeroPowers(Hero hero, HeroClassInformationFactory heroClassInformationFactory, ResultSet rs) throws SQLException {
-        String allAtWillPowers = rs.getString("powers_at_will");
-        String allEncounterPowers = rs.getString("powers_encounter");
-        String allDailyPowers = rs.getString("powers_daily");
-        String atWillIconIDS = rs.getString("power_icon_ids_at_will");
-        String encounterIconIDS = rs.getString("power_icon_ids_encounter");
-        String dailyIconIDS = rs.getString("power_icon_ids_daily");
+    private void manageHeroPowers(Hero hero, HeroClassInformationFactory heroClassInformationFactory, JSONObject jsonObject) {
+        String allAtWillPowers = jsonObject.getString("powersAtWill");
+        String allEncounterPowers = jsonObject.getString("powersEncounter");
+        String allDailyPowers = jsonObject.getString("powersDaily");
+        String atWillIconIDS = jsonObject.getString("powerIconIDsAtWill");
+        String encounterIconIDS = jsonObject.getString("powerIconIDsEncounter");
+        String dailyIconIDS = jsonObject.getString("powerIconIDsDaily");
         List<HeroPower> allAtWillPowersForHero = heroClassInformationFactory.getAtWillPowersAtLevel1();
         List<HeroPower> validAtWillPowersForHero = new ArrayList<>();
         for (HeroPower currentPower : allAtWillPowersForHero) {
@@ -215,12 +203,17 @@ public class CharacterCreatorDAO {
         hero.setDailyPowers(validDailyPowersForHero);
     }
 
-    public List<CharacterCreatorDTO> getAllHeroes() throws SQLException, IOException {
-        List<CharacterCreatorDTO> list = new ArrayList<>();
-        String sql = "SELECT * FROM dungeon.heroes";
-        pst = conn.prepareStatement(sql);
-        ResultSet rs = pst.executeQuery();
-        while (rs.next()) {
+    public List<Hero> getAllHeroes() {
+        String json = jsonToString("C:\\Users\\A753403\\IdeaProjects\\DungeonCrawl\\src\\DungeonCrawl\\UserFiles\\HeroNames.JSON");
+        JSONObject jsonAllHeroNamesObject = new JSONObject(json);
+        JSONArray jsonArray = jsonAllHeroNamesObject.getJSONArray("heroIDs");
+        List<Hero> list = new ArrayList<>();
+//        ResultSet rs = pst.executeQuery();
+        for (int i = 1; i < jsonArray.length(); i++) {
+            Hero hero = getAHeroByID(i);
+            list.add(hero);
+        }
+        /*while (rs.next()) {
             CharacterCreatorDTO dto = new CharacterCreatorDTO();
             dto.setHeroImage(getHeroIconByID(rs.getInt("icon_id")));
             dto.setHeroID(rs.getInt("idheroes"));
@@ -264,10 +257,7 @@ public class CharacterCreatorDAO {
             String allDailyPowers = rs.getString("powers_daily");
             dto.setDailyPower1(allDailyPowers.substring(0, allDailyPowers.indexOf("_") - 1));
             list.add(dto);
-        }
-        for (CharacterCreatorDTO a : list) {
-            System.out.println("HERO" + a.getHeroName() + "COPIED FROM DATABASE");
-        }
+        }*/
         return list;
     }
 
@@ -275,7 +265,6 @@ public class CharacterCreatorDAO {
         String sql = "UPDATE dungeon.heroes SET " +
                 "gold=? " +
                 "WHERE (`idheroes`=?)";
-        pst = conn.prepareStatement(sql);
         pst.setInt(1, hero.getGold() + goldDifference);
         pst.setInt(2, hero.getID());
         System.out.println(sql);
@@ -327,7 +316,6 @@ public class CharacterCreatorDAO {
                 "power_icon_ids_daily)" +
                 "VALUES" +
                 "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
-        pst = conn.prepareStatement(sql);
         pst.setString(1, heroToBeAdded.getHeroName());
         pst.setString(2, heroToBeAdded.getHeroClass());
         pst.setString(3, heroToBeAdded.getHeroRace());
@@ -368,13 +356,12 @@ public class CharacterCreatorDAO {
         pst.setString(38, heroToBeAdded.getEncounterPowerIconID() + "___");
         pst.setString(39, heroToBeAdded.getDailyPowerIconID() + "___");
         pst.executeUpdate();
+        //todo fill this method with JSON reference
         addHeroEquipmentTable(heroToBeAdded);
         System.out.println("Character has successfully been added to the database");
     }
 
     public void addHeroEquipmentTable(CharacterCreatorDTO heroToBeAdded) throws SQLException {
-        String sql = "INSERT INTO `dungeon`.`hero_equipment` (`right_hand_slot`) VALUES ('null');";
-        pst = conn.prepareStatement(sql);
-        pst.executeUpdate();
+
     }
 }

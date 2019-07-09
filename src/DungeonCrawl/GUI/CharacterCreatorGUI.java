@@ -252,19 +252,9 @@ class CharacterCreatorGUI {
 
     //todo refactor this class in accordance to Single Responsibility
 
-    private List<Image> getAllIcons() throws SQLException, IOException {
+    private List<Image> getAllIcons() {
         CharacterCreatorDAO dao = new CharacterCreatorDAO();
-        ResultSet rs = dao.getAllHeroIcons();
-        ImageView imageView = new ImageView();
-        List<Image> allIcons = new ArrayList<>();
-        while (rs.next()) {
-            Blob blob = rs.getBlob("hero_icon");
-            InputStream in = blob.getBinaryStream();
-            BufferedImage bufferedImage = ImageIO.read(in);
-            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
-            imageView.setImage(image);
-            allIcons.add(image);
-        }
+        List<Image> allIcons = dao.getAllHeroIcons();
         return allIcons;
     }
 

@@ -51,17 +51,17 @@ public class PartySelectorGUI {
             }
         });
         innerPane.getChildren().add(startADungeonButton);
-        List<CharacterCreatorDTO> listOfAllHeroes = characterCreatorDAO.getAllHeroes();
+        List<Hero> listOfAllHeroes = characterCreatorDAO.getAllHeroes();
         for (int i = 0; i < listOfAllHeroes.size(); i++) {
             CheckBox currentCheckBox = new CheckBox();
-            CharacterCreatorDTO characterCreatorDTO = listOfAllHeroes.get(i);
-            Image heroImage = characterCreatorDAO.getHeroIconByID(characterCreatorDTO.getHeroIconId());
+            Hero hero = listOfAllHeroes.get(i);
+            Image heroImage = characterCreatorDAO.getHeroIconByID(hero.getHeroIconId());
             ImageView heroImageView = new ImageView(heroImage);
             currentCheckBox.setGraphic(heroImageView);
-            System.out.println("SETTER FOR ID: -->" + characterCreatorDTO.getHeroID());
-            currentCheckBox.setId(String.valueOf(characterCreatorDTO.getHeroID()));
-            currentCheckBox.setText(characterCreatorDTO.getHeroName() + ", a brave " + characterCreatorDTO.getHeroRace() + " " + characterCreatorDTO.getHeroClass());
-            System.out.println("CURRENTLY ADDING:  " + characterCreatorDTO.getHeroName());
+            System.out.println("SETTER FOR ID: -->" + hero.getID());
+            currentCheckBox.setId(String.valueOf(hero.getID()));
+            currentCheckBox.setText(hero.getHeroName() + ", a brave " + hero.getHeroRace() + " " + hero.getHeroClass());
+            System.out.println("CURRENTLY ADDING:  " + hero.getHeroName());
             listOfCheckBoxes.add(currentCheckBox);
             innerPane.add(currentCheckBox, 0, i + 1);
         }
