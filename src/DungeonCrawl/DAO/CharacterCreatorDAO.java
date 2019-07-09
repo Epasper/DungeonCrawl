@@ -262,6 +262,8 @@ public class CharacterCreatorDAO {
         return list;
     }
 
+    //todo update all equipment methods to work with JSONs
+
     public void updateHeroGold(Hero hero, int goldDifference) throws SQLException {
         String sql = "UPDATE dungeon.heroes SET " +
                 "gold=? " +

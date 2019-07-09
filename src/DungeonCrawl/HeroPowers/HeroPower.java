@@ -293,8 +293,8 @@ public abstract class HeroPower {
 
     private void manageBurstAttack(int XPos, int YPos, DungeonMap dungeonMap, List<Monster> allDiscoveredMonsters, List<Hero> allDiscoveredHeroes, List<Creature> listOfCreaturesAttacked) {
         int burstValue = this.getBurstValue();
-        for (int i = -burstValue; i < burstValue; i++) {
-            for (int j = -burstValue; j < burstValue; j++) {
+        for (int i = -burstValue; i < burstValue + 1; i++) {
+            for (int j = -burstValue; j < burstValue + 1; j++) {
                 Coordinates coordinates = new Coordinates();
                 coordinates.setXCoordinate(XPos + i);
                 coordinates.setYCoordinate(YPos + j);
