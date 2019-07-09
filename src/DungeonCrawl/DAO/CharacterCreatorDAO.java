@@ -2,17 +2,16 @@ package DungeonCrawl.DAO;
 
 import DungeonCrawl.DTO.CharacterCreatorDTO;
 import DungeonCrawl.HeroPowers.HeroPower;
+import DungeonCrawl.HeroPowers.HeroPowerFactory;
 import DungeonCrawl.Model.Hero;
 import DungeonCrawl.StaticRules.HeroClassInformationFactory;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import org.json.*;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -85,9 +84,9 @@ public class CharacterCreatorDAO {
         hero.updateTheDefensesMap();
         System.out.println("-----> Hero ID From DAO:  " + ID);
         JSONObject jsonObject = new JSONObject(json);
-        hero.setCreatureImage(getHeroIconByID(jsonObject.getInt("iconId")));
+        hero.setCreatureImage(getHeroIconByID(jsonObject.getInt("heroIconId")));
         hero.setHeroName(jsonObject.getString("heroName"));
-        hero.setHeroIconId(jsonObject.getInt("iconId"));
+        hero.setHeroIconId(jsonObject.getInt("heroIconId"));
         hero.setID(ID);
         String heroClass = jsonObject.getString("heroClass");
         hero.setHeroClass(heroClass);
@@ -162,19 +161,25 @@ public class CharacterCreatorDAO {
     }
 
     private void manageHeroPowers(Hero hero, HeroClassInformationFactory heroClassInformationFactory, JSONObject jsonObject) {
-        String allAtWillPowers = jsonObject.getString("powersAtWill");
-        String allEncounterPowers = jsonObject.getString("powersEncounter");
-        String allDailyPowers = jsonObject.getString("powersDaily");
-        String atWillIconIDS = jsonObject.getString("powerIconIDsAtWill");
-        String encounterIconIDS = jsonObject.getString("powerIconIDsEncounter");
-        String dailyIconIDS = jsonObject.getString("powerIconIDsDaily");
+        String atWillPower1 = jsonObject.getString("atWillPower1");
+        String atWillPower2 = jsonObject.getString("atWillPower2");
+        String encounterPower1 = jsonObject.getString("encounterPower1");
+        String DailyPower1 = jsonObject.getString("dailyPower1");
+        String atWill1IconID = jsonObject.getString("atWillPower1IconID");
+        String atWill2IconID = jsonObject.getString("atWillPower2IconID");
+        String encounterIconID = jsonObject.getString("encounterPowerIconID");
+        String dailyIconID = jsonObject.getString("dailyPowerIconID");
         List<HeroPower> allAtWillPowersForHero = heroClassInformationFactory.getAtWillPowersAtLevel1();
         List<HeroPower> validAtWillPowersForHero = new ArrayList<>();
         for (HeroPower currentPower : allAtWillPowersForHero) {
-            if (allAtWillPowers.contains(currentPower.getPowerName())) {
-                String parsedIconID = atWillIconIDS.substring(0, atWillIconIDS.indexOf("___"));
-                currentPower.setPowerIconId(parsedIconID);
-                atWillIconIDS = atWillIconIDS.substring(atWillIconIDS.indexOf("___") + 3);
+            if (atWillPower1.contains(currentPower.getPowerName())) {
+                currentPower.setPowerIconId(atWill1IconID);
+                validAtWillPowersForHero.add(currentPower);
+            }
+        }
+        for (HeroPower currentPower : allAtWillPowersForHero) {
+            if (atWillPower2.contains(currentPower.getPowerName())) {
+                currentPower.setPowerIconId(atWill2IconID);
                 validAtWillPowersForHero.add(currentPower);
             }
         }
@@ -182,10 +187,8 @@ public class CharacterCreatorDAO {
         List<HeroPower> allEncounterPowersForHero = heroClassInformationFactory.getEncounterPowersAtLevel1();
         List<HeroPower> validEncounterPowersForHero = new ArrayList<>();
         for (HeroPower currentPower : allEncounterPowersForHero) {
-            if (allEncounterPowers.contains(currentPower.getPowerName())) {
-                String parsedIconID = encounterIconIDS.substring(0, encounterIconIDS.indexOf("___"));
-                currentPower.setPowerIconId(parsedIconID);
-                encounterIconIDS = encounterIconIDS.substring(encounterIconIDS.indexOf("___") + 3);
+            if (encounterPower1.contains(currentPower.getPowerName())) {
+                currentPower.setPowerIconId(encounterIconID);
                 validEncounterPowersForHero.add(currentPower);
             }
         }
@@ -193,10 +196,8 @@ public class CharacterCreatorDAO {
         List<HeroPower> allDailyPowersForHero = heroClassInformationFactory.getDailyPowersAtLevel1();
         List<HeroPower> validDailyPowersForHero = new ArrayList<>();
         for (HeroPower currentPower : allDailyPowersForHero) {
-            if (allDailyPowers.contains(currentPower.getPowerName())) {
-                String parsedIconID = dailyIconIDS.substring(0, dailyIconIDS.indexOf("___"));
-                currentPower.setPowerIconId(parsedIconID);
-                dailyIconIDS = dailyIconIDS.substring(dailyIconIDS.indexOf("___") + 3);
+            if (DailyPower1.contains(currentPower.getPowerName())) {
+                currentPower.setPowerIconId(dailyIconID);
                 validDailyPowersForHero.add(currentPower);
             }
         }
@@ -227,7 +228,7 @@ public class CharacterCreatorDAO {
             dto.setIntelligence(rs.getInt("intelligence"));
             dto.setWisdom(rs.getInt("wisdom"));
             dto.setCharisma(rs.getInt("charisma"));
-            dto.setAC(rs.getInt("ac"));
+            dto.setAc(rs.getInt("ac"));
             dto.setFortitude(rs.getInt("fortitude"));
             dto.setReflex(rs.getInt("reflex"));
             dto.setWill(rs.getInt("will"));
@@ -273,8 +274,22 @@ public class CharacterCreatorDAO {
     }
 //    INSERT INTO `dungeon`.`heroes` (`idheroes`, `hero_name`, `hero_class`, `hero_race`, `hero_level`, `strength`, `constitution`, `dexterity`, `intelligence`, `wisdom`, `charisma`, `ac`, `fortitude`, `reflex`, `will`, `gold`, `icon_id`, `sk_acrobatics`, `sk_arcana`, `sk_athletics`, `sk_bluff`, `sk_diplomacy`, `sk_dungeoneering`, `sk_endurance`, `sk_heal`, `sk_history`, `sk_insight`, `sk_intimidate`, `sk_nature`, `sk_perception`, `sk_religion`, `sk_stealth`, `sk_streetwise`, `sk_thievery`, `powers_at_will`, `powers_encounter`, `powers_daily`, `power_icon_ids_at_will`, `power_icon_ids_encounter`, `power_icon_ids_daily`) VALUES ('3', 'Gwaihir', 'Fighter', 'Human', '1', '18', '18', '10', '10', '10', '10', '10', '3', '3', '0', '100', '12', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'Deft Strike___Riposte Strike', 'King\'s Castle___', 'Dazing Strike___', '1___2___', '3___', '4___');
 
-    public void addAHeroToDatabase(CharacterCreatorDTO heroToBeAdded) throws SQLException {
-        String sql = "INSERT INTO dungeon.heroes(" +
+    public void addAHeroToDatabase(CharacterCreatorDTO heroToBeAdded) throws IOException {
+        JSONObject jsonObject = new JSONObject(heroToBeAdded);
+        List<String> allNames = getAllHeroNames();
+        JSONObject jsonAllNamesObject = new JSONObject(allNames);
+        allNames.add(heroToBeAdded.getHeroName());
+        String jsonString = jsonObject.toString(1);
+        String allNamesString = jsonAllNamesObject.toString(1);
+        String fileName = heroToBeAdded.getHeroName() + ".JSON";
+        String path = "C:\\Users\\A753403\\IdeaProjects\\DungeonCrawl\\src\\DungeonCrawl\\UserFiles\\";
+        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(path + fileName));
+        fileWriter.write(jsonString);
+        fileWriter.close();
+        BufferedWriter allHeroNamesWriter = new BufferedWriter(new FileWriter(path + "HeroNames.JSON"));
+        allHeroNamesWriter.write(allNamesString);
+        allHeroNamesWriter.close();
+        /*String sql = "INSERT INTO dungeon.heroes(" +
                 "hero_name," +
                 "hero_class," +
                 "hero_race," +
@@ -352,12 +367,12 @@ public class CharacterCreatorDAO {
         pst.setString(34, heroToBeAdded.getAtWillPower1() + "___" + heroToBeAdded.getAtWillPower2());
         pst.setString(35, heroToBeAdded.getEncounterPower1() + "___");
         pst.setString(36, heroToBeAdded.getDailyPower1() + "___");
-        pst.setString(37, heroToBeAdded.getAtWill1Power1IconID() + "___" + heroToBeAdded.getAtWill1Power2IconID() + "___");
+        pst.setString(37, heroToBeAdded.getAtWillPower1IconID() + "___" + heroToBeAdded.getAtWillPower2IconID() + "___");
         pst.setString(38, heroToBeAdded.getEncounterPowerIconID() + "___");
         pst.setString(39, heroToBeAdded.getDailyPowerIconID() + "___");
         pst.executeUpdate();
         //todo fill this method with JSON reference
-        addHeroEquipmentTable(heroToBeAdded);
+        addHeroEquipmentTable(heroToBeAdded);*/
         System.out.println("Character has successfully been added to the database");
     }
 

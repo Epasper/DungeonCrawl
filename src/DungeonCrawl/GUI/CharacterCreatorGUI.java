@@ -4,7 +4,6 @@ import DungeonCrawl.GUI.Images.SkillIcons.SkillIcons;
 import DungeonCrawl.StaticRules.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -26,13 +25,8 @@ import DungeonCrawl.DAO.CharacterCreatorDAO;
 import DungeonCrawl.DTO.CharacterCreatorDTO;
 import DungeonCrawl.HeroPowers.HeroPower;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.io.InputStream;
-import java.sql.Blob;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -125,8 +119,7 @@ class CharacterCreatorGUI {
         saveTheCharacter.setOnAction((event -> {
             try {
                 saveTheCharacterToDatabase();
-            } catch (SQLException e) {
-                System.out.println("Connection to the database could not be established.");
+            } catch (SQLException | IOException e) {
                 e.printStackTrace();
             }
         }));
@@ -258,7 +251,7 @@ class CharacterCreatorGUI {
         return allIcons;
     }
 
-    private void saveTheCharacterToDatabase() throws SQLException {
+    private void saveTheCharacterToDatabase() throws SQLException, IOException {
         CharacterCreatorDTO characterCreatorDTO = new CharacterCreatorDTO();
         characterCreatorDTO.setHeroName(characterName.getText());
         characterCreatorDTO.setHeroClass(classChoice.getValue());
@@ -279,8 +272,8 @@ class CharacterCreatorGUI {
         characterCreatorDTO.setAtWillPower2(atWill2Choice.getValue());
         characterCreatorDTO.setEncounterPower1(encounterChoice.getValue());
         characterCreatorDTO.setDailyPower1(dailyChoice.getValue());
-        characterCreatorDTO.setAtWill1Power1IconID(String.valueOf(atWillPower1IconID));
-        characterCreatorDTO.setAtWill1Power2IconID(String.valueOf(atWillPower2IconID));
+        characterCreatorDTO.setAtWillPower1IconID(String.valueOf(atWillPower1IconID));
+        characterCreatorDTO.setAtWillPower2IconID(String.valueOf(atWillPower2IconID));
         characterCreatorDTO.setEncounterPowerIconID(String.valueOf(encounterPowerIconID));
         characterCreatorDTO.setDailyPowerIconID(String.valueOf(dailyPowerIconID));
         characterCreatorDTO.setAcrobatics(finalSkillPointsArray[0]);
@@ -339,10 +332,10 @@ class CharacterCreatorGUI {
             listOfErrorMessages.add("Select an encounter power.");
         if (characterCreatorDTO.getDailyPower1().contains("Select"))
             listOfErrorMessages.add("Select a daily power.");
-        if (Integer.valueOf(characterCreatorDTO.getAtWill1Power1IconID()) < 0) {
+        if (Integer.valueOf(characterCreatorDTO.getAtWillPower1IconID()) < 0) {
             listOfErrorMessages.add("Select an Icon for one of your at will powers.");
         }
-        if (Integer.valueOf(characterCreatorDTO.getAtWill1Power2IconID()) < 0) {
+        if (Integer.valueOf(characterCreatorDTO.getAtWillPower2IconID()) < 0) {
             listOfErrorMessages.add("Select an Icon for one of your at will powers.");
         }
         if (Integer.valueOf(characterCreatorDTO.getEncounterPowerIconID()) < 0) {

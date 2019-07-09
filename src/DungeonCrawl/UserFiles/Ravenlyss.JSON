@@ -14,7 +14,7 @@
   "reflex": 0,
   "will": 0,
   "gold": 20,
-  "iconId": 15,
+  "heroIconId": 15,
   "acrobatics": 0,
   "arcana": -1,
   "athletics": 5,
@@ -32,10 +32,12 @@
   "stealth": 0,
   "streetwise": 0,
   "thievery": 0,
-  "powersAtWill": "Piercing Strike___Sly Flourish",
-  "powersEncounter": "King's Castle___",
-  "powersDaily": "Positioning Strike___",
-  "powerIconIDsAtWill": "1___3___",
-  "powerIconIDsEncounter": "8___",
-  "powerIconIDsDaily": "5___"
+  "atWillPower1": "Piercing Strike",
+  "atWillPower2": "Sly Flourish",
+  "atWillPower1IconID": "1",
+  "atWillPower2IconID": "3",
+  "encounterPower1": "King's Castle",
+  "encounterPowerIconID": "8",
+  "dailyPower1": "Positioning Strike",
+  "dailyPowerIconID": "5"
 }

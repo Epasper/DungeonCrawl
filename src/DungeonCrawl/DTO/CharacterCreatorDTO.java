@@ -14,9 +14,9 @@ public class CharacterCreatorDTO {
     private int gold;
     private double speed = 6;
     private String atWillPower1;
-    private String atWill1Power1IconID = "-1";
+    private String atWillPower1IconID = "-1";
     private String atWillPower2;
-    private String atWill1Power2IconID = "-1";
+    private String atWillPower2IconID = "-1";
     private String encounterPower1;
     private String encounterPowerIconID = "-1";
     private String dailyPower1;
@@ -31,7 +31,7 @@ public class CharacterCreatorDTO {
     private int intelligence;
     private int wisdom;
     private int charisma;
-    private int AC;
+    private int ac;
     private int fortitude;
     private int reflex;
     private int will;
@@ -54,20 +54,20 @@ public class CharacterCreatorDTO {
     private int Thievery;
     private Image heroImage;
 
-    public String getAtWill1Power1IconID() {
-        return atWill1Power1IconID;
+    public String getAtWillPower1IconID() {
+        return atWillPower1IconID;
     }
 
-    public void setAtWill1Power1IconID(String atWill1Power1IconID) {
-        this.atWill1Power1IconID = atWill1Power1IconID;
+    public void setAtWillPower1IconID(String atWillPower1IconID) {
+        this.atWillPower1IconID = atWillPower1IconID;
     }
 
-    public String getAtWill1Power2IconID() {
-        return atWill1Power2IconID;
+    public String getAtWillPower2IconID() {
+        return atWillPower2IconID;
     }
 
-    public void setAtWill1Power2IconID(String atWill1Power2IconID) {
-        this.atWill1Power2IconID = atWill1Power2IconID;
+    public void setAtWillPower2IconID(String atWillPower2IconID) {
+        this.atWillPower2IconID = atWillPower2IconID;
     }
 
     public String getEncounterPowerIconID() {
@@ -98,12 +98,12 @@ public class CharacterCreatorDTO {
         return allAtWillPowers;
     }
 
-    public int getAC() {
-        return AC;
+    public int getAc() {
+        return ac;
     }
 
-    public void setAC(int AC) {
-        this.AC = AC;
+    public void setAc(int ac) {
+        this.ac = ac;
     }
 
     public void setAllAtWillPowers(String allAtWillPowers) {
