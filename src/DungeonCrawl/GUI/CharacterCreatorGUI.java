@@ -145,7 +145,7 @@ class CharacterCreatorGUI {
         for (int i = 0; i < listOfIcons.size(); i++) {
             ImageView imageView = new ImageView();
             Button aButton = new Button();
-            aButton.setId(String.valueOf(i + 1));
+            aButton.setId(String.valueOf(i));
             imageView.setImage(listOfIcons.get(i));
             aButton.setGraphic(imageView);
             int x = i % 5;

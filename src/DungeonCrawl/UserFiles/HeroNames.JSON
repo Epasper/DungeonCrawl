@@ -1,9 +1,11 @@
 {
-  "heroIDs": [
-    "NullHero",
-    "Brander",
-    "Gvydor",
-    "Ravenlyss",
-    "Colbert"
-  ]
+  "heroIDs":[
+ "NullHero",
+ "Brander",
+ "Gvydor",
+ "Ravenlyss",
+ "Colbert",
+ "Hinterbrand",
+ "Yaveir"
+]
 }
