@@ -160,7 +160,9 @@ public class EquipmentGUI {
             System.out.println("Item Name: " + currentItem.getItemName());
             itemsDAO.removeItemFromSlotInDatabase(currentHero, sourceSlotName);
             itemsDAO.putItemIntoSlotInDatabase(itemsDTO, currentHero, targetSlotName);
-        } catch (IOException | NullPointerException ignored) {
+        } catch (NullPointerException ignored) {
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         event.consume();
         updateTheGUI();

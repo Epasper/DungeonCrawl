@@ -18,7 +18,7 @@ public class ItemsDAO {
         HeroDAO characterCreatorDAO = new HeroDAO();
         Map<String, Item> heroEquipment = hero.getHeroEquipment();
         heroEquipment.remove(slotToBeRemoved);
-        characterCreatorDAO.addAHeroToDatabase(hero);
+        characterCreatorDAO.addAHeroToDatabase(hero, heroEquipment);
         System.out.println("Item removed from the " + slotToBeRemoved + " slot.");
     }
 
@@ -27,7 +27,7 @@ public class ItemsDAO {
         Map<String, Item> heroEquipment = hero.getHeroEquipment();
         Item itemToBeAdded = itemShopDTO.getItemBySlotName(slotToBeFilled);
         heroEquipment.put(slotToBeFilled, itemToBeAdded);
-        characterCreatorDAO.addAHeroToDatabase(hero);
+        characterCreatorDAO.addAHeroToDatabase(hero, heroEquipment);
         System.out.println("Item " + itemToBeAdded.getItemName() + " added to the " + slotToBeFilled + " slot");
     }
 

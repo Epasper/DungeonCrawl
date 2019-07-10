@@ -5,6 +5,7 @@ import DungeonCrawl.DTO.ItemsDTO;
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.Items.Item;
 import DungeonCrawl.Items.ItemFactory;
+import DungeonCrawl.Model.ConsoleColors;
 import DungeonCrawl.Model.Hero;
 import DungeonCrawl.StaticRules.HeroClassInformationFactory;
 import javafx.scene.image.Image;
@@ -25,35 +26,6 @@ import java.util.stream.Stream;
 
 
 public class HeroDAO {
-
-    static String ITEM_NAMES = "  \"heroEquipmentNames\": [\n" +
-            "    \"Right Hand Slot Item\",\n" +
-            "    \"Left Hand Slot Item\",\n" +
-            "    \"Head Slot Item\",\n" +
-            "    \"Torso Slot Item\",\n" +
-            "    \"Feet Slot Item\",\n" +
-            "    \"Arms Slot Item\",\n" +
-            "    \"Backpack Slot 1 Item\",\n" +
-            "    \"Backpack Slot 2 Item\",\n" +
-            "    \"Backpack Slot 3 Item\",\n" +
-            "    \"Backpack Slot 4 Item\",\n" +
-            "    \"Backpack Slot 5 Item\",\n" +
-            "    \"Backpack Slot 6 Item\",\n" +
-            "    \"Backpack Slot 7 Item\",\n" +
-            "    \"Backpack Slot 8 Item\",\n" +
-            "    \"Backpack Slot 9 Item\",\n" +
-            "    \"Backpack Slot 10 Item\",\n" +
-            "    \"Backpack Slot 11 Item\",\n" +
-            "    \"Backpack Slot 12 Item\",\n" +
-            "    \"Backpack Slot 13 Item\",\n" +
-            "    \"Backpack Slot 14 Item\",\n" +
-            "    \"Backpack Slot 15 Item\",\n" +
-            "    \"Backpack Slot 16 Item\",\n" +
-            "    \"Backpack Slot 17 Item\",\n" +
-            "    \"Backpack Slot 18 Item\",\n" +
-            "    \"Backpack Slot 19 Item\",\n" +
-            "    \"Backpack Slot 20 Item\"\n" +
-            "  ],";
 
     public HeroDAO() {
         //todo decryption takes place here
@@ -292,17 +264,20 @@ public class HeroDAO {
         addAHeroToDatabase(dto);
     }
 
-    public void addAHeroToDatabase(Hero heroToBeAdded, ItemsDTO itemsToBeUpdated) throws IOException {
+    public void addAHeroToDatabase(Hero heroToBeAdded, Map<String, Item> itemsToBeUpdated) throws IOException {
         HeroDTO dto = changeHeroToDTO(heroToBeAdded);
-        addAHeroToDatabase(dto, itemsToBeUpdated);
+        addAHeroToDatabase(dto, itemsToBeUpdated, false);
     }
 
-    public void addAHeroToDatabase(HeroDTO heroToBeAdded, ItemsDTO itemsToBeUpdated) throws IOException {
-        Map<String, Item> mapOfItems = itemsToBeUpdated.getMapOfItems();
+    public void addAHeroToDatabase(HeroDTO heroToBeAdded, Map<String, Item> itemsToBeUpdated, boolean shouldTheHeroNameListBeUpdated) throws IOException {
         List<Item> itemsList = new ArrayList<>();
-        mapOfItems.forEach((key, value) -> {
+        List<String> slotNamesList = new ArrayList<>();
+        for (Map.Entry<String, Item> entry : itemsToBeUpdated.entrySet()) {
+            String key = entry.getKey();
+            Item value = entry.getValue();
             itemsList.add(value);
-        });
+            slotNamesList.add(key);
+        }
         JSONObject jsonObject = new JSONObject(heroToBeAdded);
         List<String> allNames = getAllHeroNames();
         allNames.add(heroToBeAdded.getHeroName());
@@ -312,20 +287,92 @@ public class HeroDAO {
         String fileName = heroToBeAdded.getHeroName() + ".JSON";
         String path = "src\\DungeonCrawl\\UserFiles\\";
         BufferedWriter fileWriter = new BufferedWriter(new FileWriter(path + fileName));
+        jsonString = jsonString.substring(0, jsonString.lastIndexOf("\n"));
         fileWriter.write(jsonString);
-        fileWriter.write(ITEM_NAMES);
-        fileWriter.write("\"heroEquipment\": [");
-        for (int i = 0; i < itemsList.size() - 1; i++) {
-            fileWriter.write("\"" + itemsList.get(i).getItemName() + "\",");
-        }
-        fileWriter.write("\"" + itemsList.get(itemsList.size() - 1).getItemName() + "\" \n  ]");
-
+        System.out.println(jsonString);
+        appendSlotNames(slotNamesList, fileWriter);
+        appendItemNames(itemsList, fileWriter);
         fileWriter.close();
-        BufferedWriter allHeroNamesWriter = new BufferedWriter(new FileWriter(path + "HeroNames.JSON"));
-        allHeroNamesWriter.write("{\n" +
-                "  \"heroIDs\":" + allNamesString + "\n" + "}");
-        allHeroNamesWriter.close();
+
+        if (shouldTheHeroNameListBeUpdated) {
+            BufferedWriter allHeroNamesWriter = new BufferedWriter(new FileWriter(path + "HeroNames.JSON"));
+            allHeroNamesWriter.write("{\n" +
+                    "  \"heroIDs\":" + allNamesString + "\n" + "}");
+            allHeroNamesWriter.close();
+        }
         System.out.println("Character has successfully been added to the database");
+    }
+
+    private void appendSlotNames(List<String> itemsList, BufferedWriter fileWriter) throws IOException {
+        fileWriter.write(",\n \"heroEquipmentNames\": [");
+        StringBuilder equipmentString = new StringBuilder();
+        equipmentString.append(" \n");
+        System.out.println(equipmentString.toString());
+        try {
+            for (int i = 0; i < itemsList.size() - 1; i++) {
+                if (itemsList.get(i) != null) {
+                    equipmentString.append("\"")
+                            .append(itemsList.get(i))
+                            .append("\",\n");
+                } else {
+                    equipmentString.append("null,\n");
+                }
+                System.out.println(equipmentString.toString());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Looping caused IO Exception");
+        }
+        try {
+            if (itemsList.get(itemsList.size() - 1) != null) {
+                equipmentString.append("\"");
+                equipmentString.append(itemsList.get(itemsList.size() - 1));
+                equipmentString.append("\" \n  ],\n");
+            } else {
+                equipmentString.append("null\n],\n");
+            }
+            fileWriter.write(equipmentString.toString());
+            System.out.println(ConsoleColors.ANSI_RED + "String Builder Result: " + ConsoleColors.ANSI_RESET);
+            System.out.println(equipmentString.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void appendItemNames(List<Item> itemsList, BufferedWriter fileWriter) throws IOException {
+        fileWriter.write("\"heroEquipment\": [");
+        StringBuilder equipmentString = new StringBuilder();
+        equipmentString.append(" \n");
+        System.out.println(equipmentString.toString());
+        try {
+            for (int i = 0; i < itemsList.size() - 1; i++) {
+                if (itemsList.get(i) != null) {
+                    equipmentString.append("\"")
+                            .append(itemsList.get(i).getItemName())
+                            .append("\",\n");
+                } else {
+                    equipmentString.append("null,\n");
+                }
+                System.out.println(equipmentString.toString());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Looping caused IO Exception");
+        }
+        try {
+            if (itemsList.get(itemsList.size() - 1) != null) {
+                equipmentString.append("\"");
+                equipmentString.append(itemsList.get(itemsList.size() - 1).getItemName());
+                equipmentString.append("\" \n  ]\n}");
+            } else {
+                equipmentString.append("null\n]\n}");
+            }
+            fileWriter.write(equipmentString.toString());
+            System.out.println(ConsoleColors.ANSI_RED + "String Builder Result: " + ConsoleColors.ANSI_RESET);
+            System.out.println(equipmentString.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void addAHeroToDatabase(HeroDTO heroToBeAdded) throws IOException {
