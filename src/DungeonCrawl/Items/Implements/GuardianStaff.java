@@ -4,16 +4,16 @@ import DungeonCrawl.Items.Item;
 
 public class GuardianStaff extends Item {
     public GuardianStaff() {
-        itemName = "Guardian Staff";
-        itemType = "Implement";
-        itemSlot = "Hand";
-        itemGroup = "Staff";
-        properties = "Shielding";
-        itemLevel = 1;
-        price = 13;
-        range = 0;
-        bonusToHit = 0;
-        bonusToDamage = 0;
-        weight = 4;
+        setItemName("Guardian Staff");
+        setItemType("Implement");
+        setItemSlot("Hand");
+        setItemGroup("Staff");
+        setProperties("Shielding");
+        setItemLevel(1);
+        setPrice(13);
+        setRange(0);
+        setBonusToHit(0);
+        setBonusToDamage(0);
+        setWeight(4);
     }
 }

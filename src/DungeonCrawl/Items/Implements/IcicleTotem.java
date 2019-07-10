@@ -4,16 +4,16 @@ import DungeonCrawl.Items.Item;
 
 public class IcicleTotem extends Item {
     public IcicleTotem() {
-        itemName = "Icicle Totem";
-        itemType = "Implement";
-        itemSlot = "Hand";
-        itemGroup = "Totem";
-        properties = "Empowered crit, energized (cold)";
-        itemLevel = 1;
-        price = 15;
-        range = 0;
-        bonusToHit = 0;
-        bonusToDamage = 0;
-        weight = 3;
+        setItemName("Icicle Totem");
+        setItemType("Implement");
+        setItemSlot("Hand");
+        setItemGroup("Totem");
+        setProperties("Empowered crit, energized (cold)");
+        setItemLevel(1);
+        setPrice(15);
+        setRange(0);
+        setBonusToHit(0);
+        setBonusToDamage(0);
+        setWeight(3);
     }
 }

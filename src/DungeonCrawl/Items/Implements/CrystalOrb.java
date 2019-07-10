@@ -4,16 +4,16 @@ import DungeonCrawl.Items.Item;
 
 public class CrystalOrb extends Item {
     public CrystalOrb() {
-        itemName = "Crystal Orb";
-        itemType = "Implement";
-        itemSlot = "Hand";
-        itemGroup = "Orb";
-        properties = "Undeniable";
-        itemLevel = 1;
-        price = 27;
-        range = 0;
-        bonusToHit = 0;
-        bonusToDamage = 0;
-        weight = 2;
+        setItemName("Crystal Orb");
+        setItemType("Implement");
+        setItemSlot("Hand");
+        setItemGroup("Orb");
+        setProperties("Undeniable");
+        setItemLevel(1);
+        setPrice(27);
+        setRange(0);
+        setBonusToHit(0);
+        setBonusToDamage(0);
+        setWeight(2);
     }
 }

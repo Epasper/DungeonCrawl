@@ -4,7 +4,7 @@ package DungeonCrawl.DAO;
 import DungeonCrawl.DTO.ItemsDTO;
 import DungeonCrawl.Items.Item;
 import DungeonCrawl.Model.Hero;
-import DungeonCrawl.StaticRules.ItemInformation;
+import DungeonCrawl.Items.ItemFactory;
 
 import java.sql.*;
 import java.util.HashMap;
@@ -209,7 +209,7 @@ public class ItemsDAO {
     }
 
     public Map<String, Item> getHeroEquipmentByHeroID(int heroId) throws SQLException {
-        ItemInformation itemInformation = new ItemInformation();
+        ItemFactory itemInformation = new ItemFactory();
         Map<String, Item> mapToBeReturned = new HashMap<>();
         String sql = "SELECT * FROM dungeon.hero_equipment WHERE (idhero_equipment=?);";
         pst = conn.prepareStatement(sql);

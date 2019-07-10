@@ -1,4 +1,4 @@
-package DungeonCrawl.StaticRules;
+package DungeonCrawl.Items;
 
 import DungeonCrawl.Items.Armor.*;
 import DungeonCrawl.Items.Implements.*;
@@ -8,18 +8,30 @@ import DungeonCrawl.Items.Weapons.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ItemInformation {
+public class ItemFactory {
 
     public Map<String, Item> weaponsList = new HashMap<>();
     public Map<String, Item> armorsList = new HashMap<>();
     public Map<String, Item> implementsList = new HashMap<>();
     public Map<String, Item> allItemsList = new HashMap<>();
 
-    public ItemInformation() {
+    public ItemFactory() {
         populateTheTablesWithWeapons();
         populateTheTablesWithArmor();
         populateTheTablesWithImplements();
         populateAllItemsList();
+    }
+
+    public Item getItemByName(String itemName) {
+        return allItemsList.get(itemName);
+    }
+
+    public Item getWeaponByName(String itemName) {
+        return weaponsList.get(itemName);
+    }
+
+    public Item getArmorByName(String itemName) {
+        return armorsList.get(itemName);
     }
 
     private void populateTheTablesWithImplements() {

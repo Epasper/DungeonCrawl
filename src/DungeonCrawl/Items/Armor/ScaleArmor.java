@@ -5,14 +5,14 @@ import DungeonCrawl.Items.Item;
 public class ScaleArmor extends Item {
 
     public ScaleArmor() {
-        itemName = "Scale Armor";
-        itemType = "Heavy Armor";
-        itemSlot = "Torso";
-        itemGroup = "Heavy";
-        itemLevel = 1;
-        price = 45;
-        bonusToAC = 7;
-        weight = 45;
+        setItemName("Scale Armor");
+        setItemType("Heavy Armor");
+        setItemSlot("Torso");
+        setItemGroup("Heavy");
+        setItemLevel(1);
+        setPrice(45);
+        setBonusToAC(7);
+        setWeight(45);
     }
 
 }

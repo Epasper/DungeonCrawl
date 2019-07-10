@@ -4,16 +4,16 @@ import DungeonCrawl.Items.Item;
 
 public class AccurateHolySymbol extends Item {
     public AccurateHolySymbol() {
-        itemName = "Accurate Holy Symbol";
-        itemType = "Implement";
-        itemGroup = "Holy Symbol";
-        itemSlot = "Hand";
-        properties = "Accurate";
-        itemLevel = 1;
-        price = 25;
-        range = 0;
-        bonusToHit = 0;
-        bonusToDamage = 0;
-        weight = 1;
+        setItemName("Accurate Holy Symbol");
+        setItemType("Implement");
+        setItemGroup("Holy Symbol");
+        setItemSlot("Hand");
+        setProperties("Accurate");
+        setItemLevel(1);
+        setPrice(25);
+        setRange(0);
+        setBonusToHit(0);
+        setBonusToDamage(0);
+        setWeight(1);
     }
 }

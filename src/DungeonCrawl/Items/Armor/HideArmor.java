@@ -5,14 +5,14 @@ import DungeonCrawl.Items.Item;
 public class HideArmor extends Item {
 
     public HideArmor() {
-        itemName = "Hide Armor";
-        itemType = "Light Armor";
-        itemSlot = "Torso";
-        itemGroup = "Light";
-        itemLevel = 1;
-        price = 30;
-        bonusToAC = 3;
-        weight = 25;
+        setItemName("Hide Armor");
+        setItemType("Light Armor");
+        setItemSlot("Torso");
+        setItemGroup("Light");
+        setItemLevel(1);
+        setPrice(30);
+        setBonusToAC(3);
+        setWeight(25);
     }
 
 }

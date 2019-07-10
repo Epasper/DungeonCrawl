@@ -4,16 +4,16 @@ import DungeonCrawl.Items.Item;
 
 public class DragontoothWand extends Item {
     public DragontoothWand() {
-        itemName = "Dragontooth Wand";
-        itemType = "Implement";
-        itemSlot = "Hand";
-        itemGroup = "Wand";
-        properties = "Deadly, unerring";
-        itemLevel = 1;
-        price = 18;
-        range = 0;
-        bonusToHit = 0;
-        bonusToDamage = 0;
-        weight = 1;
+        setItemName("Dragontooth Wand");
+        setItemType("Implement");
+        setItemSlot("Hand");
+        setItemGroup("Wand");
+        setProperties("Deadly, unerring");
+        setItemLevel(1);
+        setPrice(18);
+        setRange(0);
+        setBonusToHit(0);
+        setBonusToDamage(0);
+        setWeight(1);
     }
 }

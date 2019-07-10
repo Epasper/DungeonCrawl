@@ -10,12 +10,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import DungeonCrawl.DAO.CharacterCreatorDAO;
 import DungeonCrawl.DAO.ItemsDAO;
-import DungeonCrawl.DTO.CharacterCreatorDTO;
 import DungeonCrawl.DTO.ItemsDTO;
 import DungeonCrawl.Items.Item;
 import DungeonCrawl.Main;
 import DungeonCrawl.Model.Hero;
-import DungeonCrawl.StaticRules.ItemInformation;
+import DungeonCrawl.Items.ItemFactory;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -29,7 +28,7 @@ public class ItemShopGUI {
     private GridPane currentChoicesGridPane = new GridPane();
     private CharacterCreatorDAO characterCreatorDAO = new CharacterCreatorDAO();
     private MainMenuGUI mainMenuGUI = new MainMenuGUI();
-    private ItemInformation itemInformation = new ItemInformation();
+    private ItemFactory itemInformation = new ItemFactory();
     private Hero currentlySelectedHero = new Hero();
     private Accordion itemTypesAccordion = new Accordion();
     private TextArea itemStatsTextArea = new TextArea();
@@ -101,7 +100,11 @@ public class ItemShopGUI {
                 System.out.println("Entered the backpack");
                 currentHeroEquipmentMap.put(currentBackpackSlot, currentItem);
                 itemShopDTO.setMapOfItems(currentHeroEquipmentMap);
-                characterCreatorDAO.updateHeroGold(currentlySelectedHero, -(currentItem.getPrice()));
+                try {
+                    characterCreatorDAO.updateHeroGold(currentlySelectedHero, -(currentItem.getPrice()));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 currentlySelectedHero.setGold(currentlySelectedHero.getGold() - currentItem.getPrice());
                 itemShopDAO.putItemIntoSlotInDatabase(itemShopDTO, currentlySelectedHero, currentBackpackSlot);
                 break;
@@ -135,7 +138,7 @@ public class ItemShopGUI {
     }
 
     private void addWeaponList() {
-        ItemInformation itemInformation = new ItemInformation();
+        ItemFactory itemInformation = new ItemFactory();
         itemShopOuterPane.getStylesheets().add("DungeonCrawl/Styling/CharacterCreator.css");
         TitledPane weaponsTitledPane = new TitledPane("Weapons", new Label("Show available weapons"));
         ObservableList<String> weaponNames =

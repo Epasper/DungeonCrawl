@@ -4,16 +4,16 @@ import DungeonCrawl.Items.Item;
 
 public class ForbiddenTome extends Item {
     public ForbiddenTome() {
-        itemName = "Forbidden Tome";
-        itemType = "Implement";
-        itemSlot = "Hand";
-        itemGroup = "Tome";
-        properties = "Deadly, Unstoppable";
-        itemLevel = 1;
-        price = 15;
-        range = 0;
-        bonusToHit = 0;
-        bonusToDamage = 0;
-        weight = 3;
+        setItemName("Forbidden Tome");
+        setItemType("Implement");
+        setItemSlot("Hand");
+        setItemGroup("Tome");
+        setProperties("Deadly, Unstoppable");
+        setItemLevel(1);
+        setPrice(15);
+        setRange(0);
+        setBonusToHit(0);
+        setBonusToDamage(0);
+        setWeight(3);
     }
 }

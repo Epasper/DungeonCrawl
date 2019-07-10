@@ -14,7 +14,7 @@ public class Chainmail extends Item {
         this.setPrice(40);
         this.setBonusToAC(6);
         this.setWeight(40);
-        setItemImage(new Image(getClass().getResourceAsStream("ArmorImages\\Chainmail.png")));
+        this.setItemImage(new Image(getClass().getResourceAsStream("ArmorImages\\Chainmail.png")));
     }
 
 }

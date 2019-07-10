@@ -163,7 +163,7 @@ public class EquipmentGUI {
         } catch (SQLException | NullPointerException ignored) {
         }
         event.consume();
-        //updateTheGUI();
+        updateTheGUI();
         try {
             innerPane = displayAChosenHeroEquipment(currentHero);
         } catch (SQLException | IOException e) {

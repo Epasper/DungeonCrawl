@@ -118,8 +118,8 @@ class CharacterCreatorGUI {
         returnToMainMenu.setOnAction(event -> returnToMainMenu());
         saveTheCharacter.setOnAction((event -> {
             try {
-                saveTheCharacterToDatabase();
-            } catch (SQLException | IOException e) {
+                prepareTheDTOObject();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }));
@@ -247,11 +247,10 @@ class CharacterCreatorGUI {
 
     private List<Image> getAllIcons() {
         CharacterCreatorDAO dao = new CharacterCreatorDAO();
-        List<Image> allIcons = dao.getAllHeroIcons();
-        return allIcons;
+        return dao.getAllHeroIcons();
     }
 
-    private void saveTheCharacterToDatabase() throws SQLException, IOException {
+    private void prepareTheDTOObject() throws IOException {
         CharacterCreatorDTO characterCreatorDTO = new CharacterCreatorDTO();
         characterCreatorDTO.setHeroName(characterName.getText());
         characterCreatorDTO.setHeroClass(classChoice.getValue());

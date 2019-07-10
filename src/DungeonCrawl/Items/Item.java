@@ -8,24 +8,24 @@ public class Item {
 
     //todo change a map of items to item factory
 
-    protected String itemName;
-    protected String itemType;
-    protected String itemSlot;
-    protected String properties;
-    protected String itemGroup;
-    protected int itemLevel;
-    protected int price;
-    protected int range; //for melee skills use range = 0
-    protected int bonusToHit;
-    protected int proficiencyBonus;
-    protected int bonusToDamage;
-    protected int weight;
+    private String itemName;
+    private String itemType;
+    private String itemSlot;
+    private String properties;
+    private String itemGroup;
+    private int itemLevel;
+    private int price;
+    private int range; //for melee skills use range = 0
+    private int bonusToHit;
+    private int proficiencyBonus;
+    private int bonusToDamage;
+    private int weight;
     private String itemDescription;
-    protected int numberOfDamageDiceDealt;
-    protected int typeOfDamageDice;
+    private int numberOfDamageDiceDealt;
+    private int typeOfDamageDice;
     private boolean isThisItemConsumable = false;
-    protected int bonusToAC;
-    protected Image itemImage;
+    private int bonusToAC;
+    private Image itemImage;
 
     public Image getItemImage() {
         return itemImage;
