@@ -273,7 +273,10 @@ public class EncounterManager {
     public int getNextCharacterID(int currentInitiativeValue) {
         for (int i = currentInitiativeValue; i < pathFinder.dungeonConsoleGUI.getInitiativeArray().length; i++) {
             if (pathFinder.dungeonConsoleGUI.getInitiativeArray()[i] != null) {
+                System.out.println("FOUND" + i);
                 return pathFinder.dungeonConsoleGUI.getInitiativeArray()[i].getID();
+            } else {
+                System.out.println("Not Found: " + i);
             }
         }
         return -1;
@@ -313,6 +316,7 @@ public class EncounterManager {
     public void unlockTheNextCreatureInTheInitiativeOrder() {
         this.discoveredMonsters = pathFinder.getDiscoveredMonsters();
         int creatureIdFromInitiativeArray = getNextCharacterID(globalInitiative);
+        System.out.println(creatureIdFromInitiativeArray);
         if (creatureIdFromInitiativeArray < 0) {
             setGlobalInitiative(0);
             unlockTheNextCreatureInTheInitiativeOrder();

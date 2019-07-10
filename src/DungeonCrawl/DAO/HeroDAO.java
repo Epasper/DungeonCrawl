@@ -206,13 +206,13 @@ public class HeroDAO {
         return list;
     }
 
-    //todo update all equipment methods to work with JSONs
-
     public void updateHeroGold(Hero hero, int goldDifference) throws IOException {
         int gold = hero.getGold();
         hero.setGold(gold - goldDifference);
         addAHeroToDatabase(hero);
     }
+
+    //todo after creating a new character, the JSON with all hero names has to be updated.
 
     private HeroDTO changeHeroToDTO(Hero heroToChange) {
         HeroDTO dto = new HeroDTO();

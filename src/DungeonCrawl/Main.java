@@ -11,8 +11,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        //todo add an SQL method that creates a database if it doesn't already exist - for deployment purposes in the future.
-        //todo change the SQL dependency to JSON dependency and write the "database" as files consisting of encoded JSONs
         setPrimaryStage(primaryStage);
         MainMenuGUI mainMenuGUI = new MainMenuGUI();
         primaryStage.setWidth(500);
@@ -20,8 +18,7 @@ public class Main extends Application {
         Scene primaryScene = mainMenuGUI.aScene;
         primaryStage.setTitle("Dungeon");
         primaryStage.setScene(primaryScene);
-        //debug use only to put blobs into database. Delete before production
-        //PutBLOBIntoDB.putFiles();
+
     }
 
     public static Stage getPrimaryStage() {
