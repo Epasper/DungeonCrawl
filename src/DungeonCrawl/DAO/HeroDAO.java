@@ -1,6 +1,7 @@
 package DungeonCrawl.DAO;
 
-import DungeonCrawl.DTO.CharacterCreatorDTO;
+import DungeonCrawl.DTO.HeroDTO;
+import DungeonCrawl.DTO.ItemsDTO;
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.Items.Item;
 import DungeonCrawl.Items.ItemFactory;
@@ -23,9 +24,38 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 
-public class CharacterCreatorDAO {
+public class HeroDAO {
 
-    public CharacterCreatorDAO() {
+    static String ITEM_NAMES = "  \"heroEquipmentNames\": [\n" +
+            "    \"Right Hand Slot Item\",\n" +
+            "    \"Left Hand Slot Item\",\n" +
+            "    \"Head Slot Item\",\n" +
+            "    \"Torso Slot Item\",\n" +
+            "    \"Feet Slot Item\",\n" +
+            "    \"Arms Slot Item\",\n" +
+            "    \"Backpack Slot 1 Item\",\n" +
+            "    \"Backpack Slot 2 Item\",\n" +
+            "    \"Backpack Slot 3 Item\",\n" +
+            "    \"Backpack Slot 4 Item\",\n" +
+            "    \"Backpack Slot 5 Item\",\n" +
+            "    \"Backpack Slot 6 Item\",\n" +
+            "    \"Backpack Slot 7 Item\",\n" +
+            "    \"Backpack Slot 8 Item\",\n" +
+            "    \"Backpack Slot 9 Item\",\n" +
+            "    \"Backpack Slot 10 Item\",\n" +
+            "    \"Backpack Slot 11 Item\",\n" +
+            "    \"Backpack Slot 12 Item\",\n" +
+            "    \"Backpack Slot 13 Item\",\n" +
+            "    \"Backpack Slot 14 Item\",\n" +
+            "    \"Backpack Slot 15 Item\",\n" +
+            "    \"Backpack Slot 16 Item\",\n" +
+            "    \"Backpack Slot 17 Item\",\n" +
+            "    \"Backpack Slot 18 Item\",\n" +
+            "    \"Backpack Slot 19 Item\",\n" +
+            "    \"Backpack Slot 20 Item\"\n" +
+            "  ],";
+
+    public HeroDAO() {
         //todo decryption takes place here
     }
 
@@ -212,8 +242,8 @@ public class CharacterCreatorDAO {
         addAHeroToDatabase(hero);
     }
 
-    private CharacterCreatorDTO changeHeroToDTO(Hero heroToChange) {
-        CharacterCreatorDTO dto = new CharacterCreatorDTO();
+    private HeroDTO changeHeroToDTO(Hero heroToChange) {
+        HeroDTO dto = new HeroDTO();
         dto.setHeroName(heroToChange.getHeroName());
         dto.setHeroClass(heroToChange.getHeroClass());
         dto.setHeroRace(heroToChange.getHeroRace());
@@ -258,12 +288,47 @@ public class CharacterCreatorDAO {
     }
 
     public void addAHeroToDatabase(Hero heroToBeAdded) throws IOException {
-        CharacterCreatorDTO dto = changeHeroToDTO(heroToBeAdded);
+        HeroDTO dto = changeHeroToDTO(heroToBeAdded);
         addAHeroToDatabase(dto);
     }
 
+    public void addAHeroToDatabase(Hero heroToBeAdded, ItemsDTO itemsToBeUpdated) throws IOException {
+        HeroDTO dto = changeHeroToDTO(heroToBeAdded);
+        addAHeroToDatabase(dto, itemsToBeUpdated);
+    }
 
-    public void addAHeroToDatabase(CharacterCreatorDTO heroToBeAdded) throws IOException {
+    public void addAHeroToDatabase(HeroDTO heroToBeAdded, ItemsDTO itemsToBeUpdated) throws IOException {
+        Map<String, Item> mapOfItems = itemsToBeUpdated.getMapOfItems();
+        List<Item> itemsList = new ArrayList<>();
+        mapOfItems.forEach((key, value) -> {
+            itemsList.add(value);
+        });
+        JSONObject jsonObject = new JSONObject(heroToBeAdded);
+        List<String> allNames = getAllHeroNames();
+        allNames.add(heroToBeAdded.getHeroName());
+        JSONArray allNamesArray = new JSONArray(allNames);
+        String jsonString = jsonObject.toString(1);
+        String allNamesString = allNamesArray.toString(1);
+        String fileName = heroToBeAdded.getHeroName() + ".JSON";
+        String path = "src\\DungeonCrawl\\UserFiles\\";
+        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(path + fileName));
+        fileWriter.write(jsonString);
+        fileWriter.write(ITEM_NAMES);
+        fileWriter.write("\"heroEquipment\": [");
+        for (int i = 0; i < itemsList.size() - 1; i++) {
+            fileWriter.write("\"" + itemsList.get(i).getItemName() + "\",");
+        }
+        fileWriter.write("\"" + itemsList.get(itemsList.size() - 1).getItemName() + "\" \n  ]");
+
+        fileWriter.close();
+        BufferedWriter allHeroNamesWriter = new BufferedWriter(new FileWriter(path + "HeroNames.JSON"));
+        allHeroNamesWriter.write("{\n" +
+                "  \"heroIDs\":" + allNamesString + "\n" + "}");
+        allHeroNamesWriter.close();
+        System.out.println("Character has successfully been added to the database");
+    }
+
+    public void addAHeroToDatabase(HeroDTO heroToBeAdded) throws IOException {
         JSONObject jsonObject = new JSONObject(heroToBeAdded);
         List<String> allNames = getAllHeroNames();
         allNames.add(heroToBeAdded.getHeroName());
@@ -282,7 +347,7 @@ public class CharacterCreatorDAO {
         System.out.println("Character has successfully been added to the database");
     }
 
-    public void addHeroEquipmentTable(CharacterCreatorDTO heroToBeAdded) {
+    public void addHeroEquipmentTable(HeroDTO heroToBeAdded) {
 
     }
 }

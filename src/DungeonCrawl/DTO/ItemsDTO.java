@@ -60,6 +60,8 @@ public class ItemsDTO {
         this.mapOfItems = mapOfItems;
     }
 
+
+
     public Item getItemBySlotName(String slotName) {
         return mapOfItems.get(slotName);
     }

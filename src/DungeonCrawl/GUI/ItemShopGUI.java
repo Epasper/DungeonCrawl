@@ -8,7 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import DungeonCrawl.DAO.CharacterCreatorDAO;
+import DungeonCrawl.DAO.HeroDAO;
 import DungeonCrawl.DAO.ItemsDAO;
 import DungeonCrawl.DTO.ItemsDTO;
 import DungeonCrawl.Items.Item;
@@ -26,7 +26,7 @@ public class ItemShopGUI {
     BorderPane itemShopOuterPane = new BorderPane();
     private GridPane heroSelectionPane = new GridPane();
     private GridPane currentChoicesGridPane = new GridPane();
-    private CharacterCreatorDAO characterCreatorDAO = new CharacterCreatorDAO();
+    private HeroDAO characterCreatorDAO = new HeroDAO();
     private MainMenuGUI mainMenuGUI = new MainMenuGUI();
     private ItemFactory itemInformation = new ItemFactory();
     private Hero currentlySelectedHero = new Hero();
@@ -92,7 +92,7 @@ public class ItemShopGUI {
     private void buyThisItem() throws SQLException {
         ItemsDTO itemShopDTO = new ItemsDTO(currentlySelectedHero.getID());
         ItemsDAO itemShopDAO = new ItemsDAO();
-        CharacterCreatorDAO characterCreatorDAO = new CharacterCreatorDAO();
+        HeroDAO characterCreatorDAO = new HeroDAO();
         for (int i = 1; i < 20; i++) {
             String currentBackpackSlot = "Backpack Slot " + i + " Item";
             System.out.println(currentBackpackSlot);
@@ -106,7 +106,11 @@ public class ItemShopGUI {
                     e.printStackTrace();
                 }
                 currentlySelectedHero.setGold(currentlySelectedHero.getGold() - currentItem.getPrice());
-                itemShopDAO.putItemIntoSlotInDatabase(itemShopDTO, currentlySelectedHero, currentBackpackSlot);
+                try {
+                    itemShopDAO.putItemIntoSlotInDatabase(itemShopDTO, currentlySelectedHero, currentBackpackSlot);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 break;
             }
         }
@@ -117,7 +121,7 @@ public class ItemShopGUI {
         currentChoicesGridPane.getChildren().removeAll();
         ItemsDAO itemShopDAO = new ItemsDAO();
         currentHeroEquipmentMap = itemShopDAO.getHeroEquipmentByHeroID(heroID);
-        CharacterCreatorDAO characterCreatorDAO = new CharacterCreatorDAO();
+        HeroDAO characterCreatorDAO = new HeroDAO();
         currentlySelectedHero = characterCreatorDAO.getAHeroByID(heroID);
         TextArea heroStatsText = new TextArea();
         heroStatsText.setText(currentlySelectedHero.getHeroName() + "\n");

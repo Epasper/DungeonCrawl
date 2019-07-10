@@ -1,12 +1,13 @@
+
 {
-  "heroIDs":[
- "NullHero",
- "Brander",
- "Gvydor",
- "Ravenlyss",
- "Colbert",
- "Hinterbrand",
- "Yaveir",
- "Colbert"
-]
+ "heroIDs":[
+  "NullHero",
+  "Brander",
+  "Gvydor",
+  "Ravenlyss",
+  "Colbert",
+  "Hinterbrand",
+  "Yaveir",
+  "Colbert"
+ ]
 }

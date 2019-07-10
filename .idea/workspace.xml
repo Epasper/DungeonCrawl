@@ -6,32 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="de97b43a-8902-45e2-a345-dc80bad4fa20" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/DAO/CharacterCreatorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/DAO/CharacterCreatorDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/DAO/CharacterCreatorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/DAO/HeroDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/DAO/ItemsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/DAO/ItemsDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/DTO/CharacterCreatorDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/DTO/HeroDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/DTO/ItemsDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/DTO/ItemsDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/GUI/CharacterCreatorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/GUI/CharacterCreatorGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/GUI/EquipmentGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/GUI/EquipmentGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/GUI/ItemShopGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/GUI/ItemShopGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/Items/Armor/Chainmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/Items/Armor/Chainmail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/Items/Armor/HideArmor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/Items/Armor/HideArmor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/Items/Armor/ScaleArmor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/Items/Armor/ScaleArmor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/Items/Implements/AccurateHolySymbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/Items/Implements/AccurateHolySymbol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/Items/Implements/AshenRod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/Items/Implements/AshenRod.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/Items/Implements/CrystalOrb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/Items/Implements/CrystalOrb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/Items/Implements/DragontoothWand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/Items/Implements/DragontoothWand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/Items/Implements/ForbiddenTome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/Items/Implements/ForbiddenTome.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/Items/Implements/GuardianStaff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/Items/Implements/GuardianStaff.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/Items/Implements/IcicleTotem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/Items/Implements/IcicleTotem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/Items/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/Items/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/Items/Weapons/Falchion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/Items/Weapons/Falchion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/StaticRules/ItemInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/Items/ItemFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/GUI/PartySelectorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/GUI/PartySelectorGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Brander.JSON" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Brander.JSON" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Colbert.JSON" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Colbert.JSON" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Gvydor.JSON" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Gvydor.JSON" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/UserFiles/HeroNames.JSON" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/UserFiles/HeroNames.JSON" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Hinterbrand.JSON" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Hinterbrand.JSON" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Ivri.JSON" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Ivri.JSON" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Ravenlyss.JSON" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Ravenlyss.JSON" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Yaveir.JSON" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Yaveir.JSON" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/DungeonCrawl1.0/target/" />
@@ -46,38 +31,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Hinterbrand.JSON">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/DAO/HeroDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="737">
-              <caret line="100" column="2" selection-start-line="100" selection-start-column="2" selection-end-line="100" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Ivri.JSON">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="737">
-              <caret line="100" column="2" selection-start-line="100" selection-start-column="2" selection-end-line="100" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Ravenlyss.JSON">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="737">
-              <caret line="97" column="3" selection-start-line="97" selection-start-column="3" selection-end-line="97" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Yaveir.JSON">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="65" column="26" lean-forward="true" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
+            <state relative-caret-position="380">
+              <caret line="313" column="88" lean-forward="true" selection-start-line="313" selection-start-column="88" selection-end-line="313" selection-end-column="88" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -85,8 +46,47 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/ItemShopGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="183" column="24" selection-start-line="183" selection-start-column="24" selection-end-line="183" selection-end-column="24" />
+            <state relative-caret-position="322">
+              <caret line="111" column="20" selection-start-line="111" selection-start-column="20" selection-end-line="111" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Brander.JSON">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="42" selection-start-line="42" selection-end-line="69" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/UserFiles/HeroNames.JSON">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="2" lean-forward="true" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/DAO/ItemsDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" column="35" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/DTO/ItemsDTO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="10" column="35" lean-forward="true" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -94,35 +94,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/EquipmentGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="176" column="71" lean-forward="true" selection-start-line="176" selection-start-column="71" selection-end-line="176" selection-end-column="71" />
+            <state relative-caret-position="401">
+              <caret line="162" column="10" selection-start-line="162" selection-start-column="10" selection-end-line="162" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Items/Armor/Chainmail.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="16" column="24" lean-forward="true" selection-start-line="16" selection-end-line="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Items/Armor/HideArmor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Items/Item.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+            <state relative-caret-position="306">
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
             </state>
           </provider>
         </entry>
@@ -130,8 +112,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Gvydor.JSON">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1145">
-              <caret line="97" column="3" selection-start-line="97" selection-start-column="3" selection-end-line="97" selection-end-column="3" />
+            <state relative-caret-position="1394">
+              <caret line="82" column="7" lean-forward="true" selection-start-line="82" selection-start-column="7" selection-end-line="82" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -198,8 +180,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Invoker/GraspingShards.java" />
-        <option value="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Invoker/AstralTerror.java" />
         <option value="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Wizard/ScorchingBurst.java" />
         <option value="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Druid/FaerieFire.java" />
         <option value="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Druid/CallOfTheBeast.java" />
@@ -229,26 +209,28 @@
         <option value="$PROJECT_DIR$/src/DungeonCrawl/Model/Creature.java" />
         <option value="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/HeroPowerFactory.java" />
         <option value="$PROJECT_DIR$/src/DungeonCrawl/DTO/CharacterCreatorDTO.java" />
-        <option value="$PROJECT_DIR$/src/DungeonCrawl/UserFiles/HeroNames.JSON" />
         <option value="$PROJECT_DIR$/src/DungeonCrawl/Model/DungeonButtonEvents.java" />
         <option value="$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/HeroPower.java" />
-        <option value="$PROJECT_DIR$/src/DungeonCrawl/GUI/ItemShopGUI.java" />
-        <option value="$PROJECT_DIR$/src/DungeonCrawl/DAO/ItemsDAO.java" />
         <option value="$PROJECT_DIR$/src/DungeonCrawl/GUI/CharacterCreatorGUI.java" />
         <option value="$PROJECT_DIR$/src/DungeonCrawl/StaticRules/ItemInformation.java" />
         <option value="$PROJECT_DIR$/src/DungeonCrawl/StaticRules/ItemFactory.java" />
         <option value="$PROJECT_DIR$/src/DungeonCrawl/Items/ItemFactory.java" />
         <option value="$PROJECT_DIR$/src/DungeonCrawl/DAO/CharacterCreatorDAO.java" />
-        <option value="$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Brander.JSON" />
         <option value="$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Colbert.JSON" />
-        <option value="$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Gvydor.JSON" />
         <option value="$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Hinterbrand.JSON" />
         <option value="$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Ivri.JSON" />
         <option value="$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Ravenlyss.JSON" />
         <option value="$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Yaveir.JSON" />
-        <option value="$PROJECT_DIR$/src/DungeonCrawl/GUI/EquipmentGUI.java" />
         <option value="$PROJECT_DIR$/src/DungeonCrawl/Items/Item.java" />
         <option value="$PROJECT_DIR$/src/DungeonCrawl/Items/Armor/Chainmail.java" />
+        <option value="$PROJECT_DIR$/src/DungeonCrawl/DTO/ItemsDTO.java" />
+        <option value="$PROJECT_DIR$/src/DungeonCrawl/DAO/ItemsDAO.java" />
+        <option value="$PROJECT_DIR$/src/DungeonCrawl/GUI/EquipmentGUI.java" />
+        <option value="$PROJECT_DIR$/src/DungeonCrawl/GUI/ItemShopGUI.java" />
+        <option value="$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Gvydor.JSON" />
+        <option value="$PROJECT_DIR$/src/DungeonCrawl/UserFiles/HeroNames.JSON" />
+        <option value="$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Brander.JSON" />
+        <option value="$PROJECT_DIR$/src/DungeonCrawl/DAO/HeroDAO.java" />
       </list>
     </option>
   </component>
@@ -521,13 +503,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1556870921453</updated>
-    </task>
-    <task id="LOCAL-00125" summary="Character Creator GUI - Skill icons are now being added and read into/from HDD.">
-      <created>1560335229103</created>
-      <option name="number" value="00125" />
-      <option name="presentableId" value="LOCAL-00125" />
-      <option name="project" value="LOCAL" />
-      <updated>1560335229104</updated>
     </task>
     <task id="LOCAL-00126" summary="Character Creator GUI - New skill icons, small improvements to field validation, better viewing of hero icons and skill icons upon selection.">
       <created>1560341278614</created>
@@ -865,7 +840,14 @@
       <option name="project" value="LOCAL" />
       <updated>1562675279757</updated>
     </task>
-    <option name="localTasksCounter" value="174" />
+    <task id="LOCAL-00174" summary="Item management changed to JSON">
+      <created>1562749594116</created>
+      <option name="number" value="00174" />
+      <option name="presentableId" value="LOCAL-00174" />
+      <option name="project" value="LOCAL" />
+      <updated>1562749594118</updated>
+    </task>
+    <option name="localTasksCounter" value="175" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -904,7 +886,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.21382637" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.45110023" side_tool="true" weight="0.21413276" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.49356914" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.31672025" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.31584582" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -917,7 +899,6 @@
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Encounter Manager - some methods were refactored from ButtonEvents class" />
     <MESSAGE value="Encounter Manager - inserting monster round into the initiative tracker, part 1" />
     <MESSAGE value="Encounter Manager - initiative order works and takes monsters into consideration" />
     <MESSAGE value="Monster AI - mock methods were created and aggression stat was introduced." />
@@ -942,7 +923,8 @@
     <MESSAGE value="Heroes are now saved into the JSON file and being read from them as well" />
     <MESSAGE value="Fixed a bug with AllHeroNames JSON being incorrectly written" />
     <MESSAGE value="HeroPower - fixed a small bug that caused the burst attack to calculate number of hit creatures incorrectly." />
-    <option name="LAST_COMMIT_MESSAGE" value="HeroPower - fixed a small bug that caused the burst attack to calculate number of hit creatures incorrectly." />
+    <MESSAGE value="Item management changed to JSON" />
+    <option name="LAST_COMMIT_MESSAGE" value="Item management changed to JSON" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1007,31 +989,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/GUIAnimations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="63" column="5" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/MapTile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
-          <folding>
-            <element signature="e#533#534#0" expanded="true" />
-            <element signature="e#575#576#0" expanded="true" />
-            <element signature="e#646#647#0" expanded="true" />
-            <element signature="e#708#709#0" expanded="true" />
-            <element signature="e#1646#1647#0" expanded="true" />
-            <element signature="e#1679#1680#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -1203,13 +1160,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/UserFiles/HeroNames.JSON">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/DungeonButtonEvents.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1224">
@@ -1234,7 +1184,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/DTO/CharacterCreatorDTO.java">
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/DTO/HeroDTO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
@@ -1273,13 +1223,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/DAO/ItemsDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="211" column="8" lean-forward="true" selection-start-line="211" selection-start-column="8" selection-end-line="211" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Items/ItemFactory.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1299,27 +1242,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/DAO/CharacterCreatorDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="643">
-          <caret line="113" column="45" selection-start-line="113" selection-start-column="45" selection-end-line="113" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Brander.JSON">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="42" selection-start-line="42" selection-end-line="97" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Colbert.JSON">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="910">
           <caret line="88" column="7" lean-forward="true" selection-start-line="88" selection-start-column="7" selection-end-line="88" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Items/Item.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Items/Armor/Chainmail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="16" column="24" lean-forward="true" selection-start-line="16" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Items/Armor/HideArmor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
         </state>
       </provider>
     </entry>
@@ -1351,45 +1298,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/ItemShopGUI.java">
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/DTO/ItemsDTO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="183" column="24" selection-start-line="183" selection-start-column="24" selection-end-line="183" selection-end-column="24" />
+        <state relative-caret-position="102">
+          <caret line="10" column="35" lean-forward="true" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/EquipmentGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="176" column="71" lean-forward="true" selection-start-line="176" selection-start-column="71" selection-end-line="176" selection-end-column="71" />
+        <state relative-caret-position="401">
+          <caret line="162" column="10" selection-start-line="162" selection-start-column="10" selection-end-line="162" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/DAO/ItemsDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="35" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/UserFiles/HeroNames.JSON">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="2" lean-forward="true" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Gvydor.JSON">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1145">
-          <caret line="97" column="3" selection-start-line="97" selection-start-column="3" selection-end-line="97" selection-end-column="3" />
+        <state relative-caret-position="1394">
+          <caret line="82" column="7" lean-forward="true" selection-start-line="82" selection-start-column="7" selection-end-line="82" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Items/Item.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/Map.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+        <state relative-caret-position="264">
+          <caret line="617" column="17" selection-start-line="617" selection-start-column="17" selection-end-line="617" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Items/Armor/Chainmail.java">
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/ItemShopGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" column="24" lean-forward="true" selection-start-line="16" selection-end-line="17" />
+        <state relative-caret-position="322">
+          <caret line="111" column="20" selection-start-line="111" selection-start-column="20" selection-end-line="111" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Items/Armor/HideArmor.java">
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Brander.JSON">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+        <state relative-caret-position="176">
+          <caret line="42" selection-start-line="42" selection-end-line="69" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/DAO/HeroDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="313" column="88" lean-forward="true" selection-start-line="313" selection-start-column="88" selection-end-line="313" selection-end-column="88" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

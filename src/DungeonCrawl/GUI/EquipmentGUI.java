@@ -11,7 +11,7 @@ import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.stage.Popup;
-import DungeonCrawl.DAO.CharacterCreatorDAO;
+import DungeonCrawl.DAO.HeroDAO;
 import DungeonCrawl.DAO.ItemsDAO;
 import DungeonCrawl.DTO.ItemsDTO;
 import DungeonCrawl.Items.Item;
@@ -34,7 +34,7 @@ public class EquipmentGUI {
     private Scene aScene = new Scene(new Group());
     private List<Hero> listOfSelectedHeroes = new ArrayList<>();
     private Popup equipInfoPopup = new Popup();
-    private CharacterCreatorDAO characterCreatorDAO = new CharacterCreatorDAO();
+    private HeroDAO characterCreatorDAO = new HeroDAO();
     private Hero currentHero;
     private Map<String, Label> equipmentLabels = new HashMap<>();
     private Item draggedItem = new Item();
@@ -58,7 +58,7 @@ public class EquipmentGUI {
     public GridPane displayAChosenHeroEquipment(Hero chosenHero) throws SQLException, IOException {
         innerPane.getChildren().removeAll();
         characterIcon.setGraphic(null);
-        CharacterCreatorDAO characterCreatorDAO = new CharacterCreatorDAO();
+        HeroDAO characterCreatorDAO = new HeroDAO();
         this.currentHero = chosenHero;
         partySelectorOuterPlane.getStylesheets().add("DungeonCrawl/Styling/CharacterCreator.css");
         Map<String, Item> heroEquipmentMap = currentHero.getHeroEquipment();
@@ -160,7 +160,7 @@ public class EquipmentGUI {
             System.out.println("Item Name: " + currentItem.getItemName());
             itemsDAO.removeItemFromSlotInDatabase(currentHero, sourceSlotName);
             itemsDAO.putItemIntoSlotInDatabase(itemsDTO, currentHero, targetSlotName);
-        } catch (SQLException | NullPointerException ignored) {
+        } catch (IOException | NullPointerException ignored) {
         }
         event.consume();
         updateTheGUI();

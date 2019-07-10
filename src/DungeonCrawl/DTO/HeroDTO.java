@@ -3,7 +3,7 @@ package DungeonCrawl.DTO;
 
 import javafx.scene.image.Image;
 
-public class CharacterCreatorDTO {
+public class HeroDTO {
 
     private int heroID;
     private String heroName;

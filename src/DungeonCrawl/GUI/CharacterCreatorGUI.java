@@ -21,8 +21,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import DungeonCrawl.*;
-import DungeonCrawl.DAO.CharacterCreatorDAO;
-import DungeonCrawl.DTO.CharacterCreatorDTO;
+import DungeonCrawl.DAO.HeroDAO;
+import DungeonCrawl.DTO.HeroDTO;
 import DungeonCrawl.HeroPowers.HeroPower;
 
 import java.awt.*;
@@ -194,7 +194,7 @@ class CharacterCreatorGUI {
 
     private void updateThePortrait(String portraitId) throws SQLException, IOException {
         int id = Integer.valueOf(portraitId);
-        CharacterCreatorDAO dao = new CharacterCreatorDAO();
+        HeroDAO dao = new HeroDAO();
         System.out.println("CURRENT ID: " + id);
         Image hero1img = dao.getHeroIconByID(id);
         iconID = id;
@@ -246,56 +246,56 @@ class CharacterCreatorGUI {
     //todo refactor this class in accordance to Single Responsibility
 
     private List<Image> getAllIcons() {
-        CharacterCreatorDAO dao = new CharacterCreatorDAO();
+        HeroDAO dao = new HeroDAO();
         return dao.getAllHeroIcons();
     }
 
     private void prepareTheDTOObject() throws IOException {
-        CharacterCreatorDTO characterCreatorDTO = new CharacterCreatorDTO();
-        characterCreatorDTO.setHeroName(characterName.getText());
-        characterCreatorDTO.setHeroClass(classChoice.getValue());
-        characterCreatorDTO.setHeroRace(raceChoice.getValue());
-        characterCreatorDTO.setStrength(finalAttributeIntegersArray[0]);
-        characterCreatorDTO.setConstitution(finalAttributeIntegersArray[1]);
-        characterCreatorDTO.setDexterity(finalAttributeIntegersArray[2]);
-        characterCreatorDTO.setIntelligence(finalAttributeIntegersArray[3]);
-        characterCreatorDTO.setWisdom(finalAttributeIntegersArray[4]);
-        characterCreatorDTO.setCharisma(finalAttributeIntegersArray[5]);
-        characterCreatorDTO.setFortitude(fort);
-        characterCreatorDTO.setReflex(reflex);
-        characterCreatorDTO.setWill(will);
-        characterCreatorDTO.setHitPoints(maxHP);
-        characterCreatorDTO.setGold(100);
-        characterCreatorDTO.setHeroIconId(iconID);
-        characterCreatorDTO.setAtWillPower1(atWill1Choice.getValue());
-        characterCreatorDTO.setAtWillPower2(atWill2Choice.getValue());
-        characterCreatorDTO.setEncounterPower1(encounterChoice.getValue());
-        characterCreatorDTO.setDailyPower1(dailyChoice.getValue());
-        characterCreatorDTO.setAtWillPower1IconID(String.valueOf(atWillPower1IconID));
-        characterCreatorDTO.setAtWillPower2IconID(String.valueOf(atWillPower2IconID));
-        characterCreatorDTO.setEncounterPowerIconID(String.valueOf(encounterPowerIconID));
-        characterCreatorDTO.setDailyPowerIconID(String.valueOf(dailyPowerIconID));
-        characterCreatorDTO.setAcrobatics(finalSkillPointsArray[0]);
-        characterCreatorDTO.setArcana(finalSkillPointsArray[1]);
-        characterCreatorDTO.setAthletics(finalSkillPointsArray[2]);
-        characterCreatorDTO.setBluff(finalSkillPointsArray[3]);
-        characterCreatorDTO.setDiplomacy(finalSkillPointsArray[4]);
-        characterCreatorDTO.setDungeoneering(finalSkillPointsArray[5]);
-        characterCreatorDTO.setEndurance(finalSkillPointsArray[6]);
-        characterCreatorDTO.setHeal(finalSkillPointsArray[7]);
-        characterCreatorDTO.setHistory(finalSkillPointsArray[8]);
-        characterCreatorDTO.setInsight(finalSkillPointsArray[9]);
-        characterCreatorDTO.setIntimidate(finalSkillPointsArray[10]);
-        characterCreatorDTO.setNature(finalSkillPointsArray[11]);
-        characterCreatorDTO.setPerception(finalSkillPointsArray[12]);
-        characterCreatorDTO.setReligion(finalSkillPointsArray[13]);
-        characterCreatorDTO.setStealth(finalSkillPointsArray[14]);
-        characterCreatorDTO.setStreetwise(finalSkillPointsArray[15]);
-        characterCreatorDTO.setThievery(finalSkillPointsArray[16]);
-        List<String> errors = validateTheCharacterFields(characterCreatorDTO);
+        HeroDTO heroDTO = new HeroDTO();
+        heroDTO.setHeroName(characterName.getText());
+        heroDTO.setHeroClass(classChoice.getValue());
+        heroDTO.setHeroRace(raceChoice.getValue());
+        heroDTO.setStrength(finalAttributeIntegersArray[0]);
+        heroDTO.setConstitution(finalAttributeIntegersArray[1]);
+        heroDTO.setDexterity(finalAttributeIntegersArray[2]);
+        heroDTO.setIntelligence(finalAttributeIntegersArray[3]);
+        heroDTO.setWisdom(finalAttributeIntegersArray[4]);
+        heroDTO.setCharisma(finalAttributeIntegersArray[5]);
+        heroDTO.setFortitude(fort);
+        heroDTO.setReflex(reflex);
+        heroDTO.setWill(will);
+        heroDTO.setHitPoints(maxHP);
+        heroDTO.setGold(100);
+        heroDTO.setHeroIconId(iconID);
+        heroDTO.setAtWillPower1(atWill1Choice.getValue());
+        heroDTO.setAtWillPower2(atWill2Choice.getValue());
+        heroDTO.setEncounterPower1(encounterChoice.getValue());
+        heroDTO.setDailyPower1(dailyChoice.getValue());
+        heroDTO.setAtWillPower1IconID(String.valueOf(atWillPower1IconID));
+        heroDTO.setAtWillPower2IconID(String.valueOf(atWillPower2IconID));
+        heroDTO.setEncounterPowerIconID(String.valueOf(encounterPowerIconID));
+        heroDTO.setDailyPowerIconID(String.valueOf(dailyPowerIconID));
+        heroDTO.setAcrobatics(finalSkillPointsArray[0]);
+        heroDTO.setArcana(finalSkillPointsArray[1]);
+        heroDTO.setAthletics(finalSkillPointsArray[2]);
+        heroDTO.setBluff(finalSkillPointsArray[3]);
+        heroDTO.setDiplomacy(finalSkillPointsArray[4]);
+        heroDTO.setDungeoneering(finalSkillPointsArray[5]);
+        heroDTO.setEndurance(finalSkillPointsArray[6]);
+        heroDTO.setHeal(finalSkillPointsArray[7]);
+        heroDTO.setHistory(finalSkillPointsArray[8]);
+        heroDTO.setInsight(finalSkillPointsArray[9]);
+        heroDTO.setIntimidate(finalSkillPointsArray[10]);
+        heroDTO.setNature(finalSkillPointsArray[11]);
+        heroDTO.setPerception(finalSkillPointsArray[12]);
+        heroDTO.setReligion(finalSkillPointsArray[13]);
+        heroDTO.setStealth(finalSkillPointsArray[14]);
+        heroDTO.setStreetwise(finalSkillPointsArray[15]);
+        heroDTO.setThievery(finalSkillPointsArray[16]);
+        List<String> errors = validateTheCharacterFields(heroDTO);
         if (errors.size() == 0) {
-            CharacterCreatorDAO characterCreatorDAO = new CharacterCreatorDAO();
-            characterCreatorDAO.addAHeroToDatabase(characterCreatorDTO);
+            HeroDAO characterCreatorDAO = new HeroDAO();
+            characterCreatorDAO.addAHeroToDatabase(heroDTO);
         } else {
             StringBuilder errorBuilder = new StringBuilder();
             errorBuilder.append("Character cannot be created. Check the information below for details: \n");
@@ -309,38 +309,38 @@ class CharacterCreatorGUI {
 
     //todo after saving a character successfully, add a confirmation scene and return to main menu (or go to equipment shop)
 
-    private List<String> validateTheCharacterFields(CharacterCreatorDTO characterCreatorDTO) {
+    private List<String> validateTheCharacterFields(HeroDTO heroDTO) {
         List<String> listOfErrorMessages = new ArrayList<>();
-        if (characterCreatorDTO.getHeroName().isEmpty())
+        if (heroDTO.getHeroName().isEmpty())
             listOfErrorMessages.add("Write a name for your character.");
-        if (characterCreatorDTO.getHeroClass() == null) {
+        if (heroDTO.getHeroClass() == null) {
             listOfErrorMessages.add("Select your character's class.");
         }
-        if (characterCreatorDTO.getHeroRace() == null) {
+        if (heroDTO.getHeroRace() == null) {
             listOfErrorMessages.add("Select your character's race.");
         }
         if (availableAttributePoints > 0)
             listOfErrorMessages.add("You still have some attribute points left. Increase some AttributeNames.");
         if (availableAttributePoints < 0)
             listOfErrorMessages.add("Some of your attributes are too high. The number of attribute points has to be 0 for the character to be finished.");
-        if (characterCreatorDTO.getHeroIconId() == 0)
+        if (heroDTO.getHeroIconId() == 0)
             listOfErrorMessages.add("Select your character's portrait.");
-        if ((characterCreatorDTO.getAtWillPower1().contains("Select")) || (characterCreatorDTO.getAtWillPower2().contains("Select")))
+        if ((heroDTO.getAtWillPower1().contains("Select")) || (heroDTO.getAtWillPower2().contains("Select")))
             listOfErrorMessages.add("Select an at will power.");
-        if (characterCreatorDTO.getEncounterPower1().contains("Select"))
+        if (heroDTO.getEncounterPower1().contains("Select"))
             listOfErrorMessages.add("Select an encounter power.");
-        if (characterCreatorDTO.getDailyPower1().contains("Select"))
+        if (heroDTO.getDailyPower1().contains("Select"))
             listOfErrorMessages.add("Select a daily power.");
-        if (Integer.valueOf(characterCreatorDTO.getAtWillPower1IconID()) < 0) {
+        if (Integer.valueOf(heroDTO.getAtWillPower1IconID()) < 0) {
             listOfErrorMessages.add("Select an Icon for one of your at will powers.");
         }
-        if (Integer.valueOf(characterCreatorDTO.getAtWillPower2IconID()) < 0) {
+        if (Integer.valueOf(heroDTO.getAtWillPower2IconID()) < 0) {
             listOfErrorMessages.add("Select an Icon for one of your at will powers.");
         }
-        if (Integer.valueOf(characterCreatorDTO.getEncounterPowerIconID()) < 0) {
+        if (Integer.valueOf(heroDTO.getEncounterPowerIconID()) < 0) {
             listOfErrorMessages.add("Select an Icon for your encounter power.");
         }
-        if (Integer.valueOf(characterCreatorDTO.getDailyPowerIconID()) < 0) {
+        if (Integer.valueOf(heroDTO.getDailyPowerIconID()) < 0) {
             listOfErrorMessages.add("Select an Icon for your daily power.");
         }
         return listOfErrorMessages;

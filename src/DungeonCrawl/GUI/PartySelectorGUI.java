@@ -11,9 +11,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import DungeonCrawl.DAO.CharacterCreatorDAO;
+import DungeonCrawl.DAO.HeroDAO;
 import DungeonCrawl.DAO.ItemsDAO;
-import DungeonCrawl.DTO.CharacterCreatorDTO;
 import DungeonCrawl.Main;
 import DungeonCrawl.Model.Hero;
 
@@ -30,7 +29,7 @@ public class PartySelectorGUI {
     private Scene aScene = new Scene(new Group());
     private List<CheckBox> listOfCheckBoxes = new ArrayList<>();
     private List<Hero> listOfSelectedHeroes = new ArrayList<>();
-    private CharacterCreatorDAO characterCreatorDAO = new CharacterCreatorDAO();
+    private HeroDAO characterCreatorDAO = new HeroDAO();
 
 
     public PartySelectorGUI() throws SQLException, IOException {
