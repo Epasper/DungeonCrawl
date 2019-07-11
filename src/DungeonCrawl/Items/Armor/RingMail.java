@@ -3,19 +3,17 @@ package DungeonCrawl.Items.Armor;
 import DungeonCrawl.Items.Item;
 import javafx.scene.image.Image;
 
-public class HideArmor extends Item {
+public class RingMail extends Item {
 
-    public HideArmor() {
-        this.setItemName("Hide Armor");
+    public RingMail() {
+        this.setItemName("Ring Mail");
         this.setItemType("Light Armor");
         this.setItemSlot("Torso");
         this.setItemGroup("Light");
         this.setItemLevel(1);
-        this.setPrice(30);
+        this.setPrice(40);
         this.setBonusToAC(3);
-        this.setWeight(25);
-        this.setItemImage(new Image(getClass().getResourceAsStream("ArmorImages\\HideArmor.png")));
-
+        this.setWeight(30);
+        this.setItemImage(new Image(getClass().getResourceAsStream("ArmorImages\\StuddedLeatherArmor.png")));
     }
-
 }

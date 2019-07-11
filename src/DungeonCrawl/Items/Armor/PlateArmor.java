@@ -14,7 +14,7 @@ public class PlateArmor extends Item {
         this.setPrice(50);
         this.setBonusToAC(8);
         this.setWeight(50);
-        setItemImage(new Image(getClass().getResourceAsStream("ArmorImages\\PlateArmor.png")));
+        this.setItemImage(new Image(getClass().getResourceAsStream("ArmorImages\\PlateArmor.png")));
     }
 
 }

@@ -212,8 +212,6 @@ public class HeroDAO {
         addAHeroToDatabase(hero, false);
     }
 
-    //todo after creating a new character, the JSON with all hero names has to be updated.
-
     public HeroDTO changeHeroToDTO(Hero heroToChange) {
         HeroDTO dto = new HeroDTO();
         List<String> heroEquipmentNames = new ArrayList<>();

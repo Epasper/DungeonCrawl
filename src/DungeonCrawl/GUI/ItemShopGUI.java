@@ -108,6 +108,8 @@ public class ItemShopGUI {
         }
     }
 
+    //todo item lists have to be updated straight after buying and not after reselecting the character
+
     private void eventOnHeroClick(int heroID) {
         System.out.println("HERO ID: === " + heroID);
         currentChoicesGridPane.getChildren().removeAll();

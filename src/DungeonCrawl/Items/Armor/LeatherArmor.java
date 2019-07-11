@@ -14,7 +14,7 @@ public class LeatherArmor extends Item {
         this.setPrice(25);
         this.setBonusToAC(2);
         this.setWeight(15);
-        setItemImage(new Image(getClass().getResourceAsStream("ArmorImages\\LeatherArmor.png")));
+        this.setItemImage(new Image(getClass().getResourceAsStream("ArmorImages\\LeatherArmor.png")));
     }
 
 }
