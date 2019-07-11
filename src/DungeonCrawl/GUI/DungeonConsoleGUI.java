@@ -3,9 +3,12 @@ package DungeonCrawl.GUI;
 import DungeonCrawl.Model.Creature;
 import DungeonCrawl.Model.Hero;
 import DungeonCrawl.Model.Monster;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.TilePane;
@@ -19,6 +22,7 @@ import java.util.Random;
 
 public class DungeonConsoleGUI {
     private ScrollPane dungeonConsole = new ScrollPane();
+    private GridPane outerDungeonConsole = new GridPane();
     private GridPane completeConsole = new GridPane();
     private Text dungeonConsoleText = new Text();
     private ScrollPane initiativeTracker = new ScrollPane();
@@ -55,25 +59,43 @@ public class DungeonConsoleGUI {
     }
 
 
-    public void clearInitiativeTracker() {
-        initiativeTilePane.getChildren().clear();
-        System.out.println("CLEARING THE WHOLE INITIATIVE TRACKER");
-        Arrays.fill(initiativeArray, null);
-        listOfButtons.clear();
-    }
-
     private void initializeTheConsole() {
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
         dungeonConsole.setPrefWidth(primaryScreenBounds.getWidth());
+        Button changeConsoleSizeButton = new Button();
+        changeConsoleSizeButton.setOnAction(event -> changeTheConsoleSize(changeConsoleSizeButton));
+        changeConsoleSizeButton.setGraphic(new ImageView(new Image("DungeonCrawl/GUI/Images/consoleSize.png")));
+        changeConsoleSizeButton.setMaxSize(30,60);
         dungeonConsole.setMinHeight(60);
         dungeonConsole.setMaxHeight(60);
         dungeonConsole.setFitToWidth(false);
         initiativeTracker.setMaxHeight(70);
         initiativeTracker.setMinHeight(70);
-        completeConsole.add(dungeonConsole, 0, 0);
+        outerDungeonConsole.add(dungeonConsole, 0,0);
+        outerDungeonConsole.add(changeConsoleSizeButton, 1, 0);
+        completeConsole.add(outerDungeonConsole, 0, 0);
         completeConsole.add(initiativeTracker, 0, 1);
         completeConsole.setMinHeight(120);
         completeConsole.setMinHeight(120);
+    }
+
+    private void changeTheConsoleSize(Button changeConsoleSizeButton) {
+        if (dungeonConsole.getMinHeight() < 65) {
+            dungeonConsole.setMinHeight(120);
+            changeConsoleSizeButton.setGraphic(new ImageView(new Image("DungeonCrawl/GUI/Images/consoleSizeDown.png")));
+            changeConsoleSizeButton.setMaxSize(30,120);
+        } else {
+            dungeonConsole.setMinHeight(60);
+            changeConsoleSizeButton.setGraphic(new ImageView(new Image("DungeonCrawl/GUI/Images/consoleSize.png")));
+            changeConsoleSizeButton.setMaxSize(30,60);
+        }
+    }
+
+    public void clearInitiativeTracker() {
+        initiativeTilePane.getChildren().clear();
+        System.out.println("CLEARING THE WHOLE INITIATIVE TRACKER");
+        Arrays.fill(initiativeArray, null);
+        listOfButtons.clear();
     }
 
     public void fillTheInitiativeTracker(List<Hero> listOfHeroes, List<Monster> listOfMonsters, boolean shouldIRollForNewInitiative) {

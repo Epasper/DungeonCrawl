@@ -180,7 +180,6 @@ class DungeonGUI {
         mainMenuGUI.getaStage().show();
         System.out.println("Stage is closing");
     }
-//todo add a button to console that could extend its view range or minimize it.
 
 
 }
