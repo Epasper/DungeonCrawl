@@ -27,7 +27,6 @@ import DungeonCrawl.HeroPowers.HeroPower;
 
 import java.awt.*;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -124,18 +123,12 @@ class CharacterCreatorGUI {
             }
         }));
 
-        addACharacterPortrait.setOnAction((event -> {
-            try {
-                choosePortrait();
-            } catch (IOException | SQLException e) {
-                e.printStackTrace();
-            }
-        }));
+        addACharacterPortrait.setOnAction((event -> choosePortrait()));
         updateMaxHP(null);
 
     }
 
-    private void choosePortrait() throws SQLException, IOException {
+    private void choosePortrait() {
         GridPane gridPane = new GridPane();
         List<Image> listOfIcons = getAllIcons();
         Stage aStage = new Stage();
@@ -152,11 +145,7 @@ class CharacterCreatorGUI {
             int y = i / 5;
             gridPane.add(aButton, y, x);
             aButton.setOnAction(event -> {
-                try {
-                    updateThePortrait(aButton.getId());
-                } catch (SQLException | IOException e) {
-                    e.printStackTrace();
-                }
+                updateThePortrait(aButton.getId());
                 aStage.close();
             });
         }
@@ -192,7 +181,7 @@ class CharacterCreatorGUI {
         aStage.show();
     }
 
-    private void updateThePortrait(String portraitId) throws SQLException, IOException {
+    private void updateThePortrait(String portraitId) {
         int id = Integer.valueOf(portraitId);
         HeroDAO dao = new HeroDAO();
         System.out.println("CURRENT ID: " + id);
@@ -295,7 +284,7 @@ class CharacterCreatorGUI {
         List<String> errors = validateTheCharacterFields(heroDTO);
         if (errors.size() == 0) {
             HeroDAO characterCreatorDAO = new HeroDAO();
-            characterCreatorDAO.addAHeroToDatabase(heroDTO);
+            characterCreatorDAO.addAHeroToDatabase(heroDTO, true);
         } else {
             StringBuilder errorBuilder = new StringBuilder();
             errorBuilder.append("Character cannot be created. Check the information below for details: \n");

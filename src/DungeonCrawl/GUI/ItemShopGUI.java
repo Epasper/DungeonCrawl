@@ -37,7 +37,7 @@ public class ItemShopGUI {
     private Item currentItem = new Item();
 
 
-    public ItemShopGUI() throws SQLException, IOException {
+    public ItemShopGUI() {
         itemShopOuterPane.setStyle("-fx-background-color:grey;");
         fillTheHeroesPanes();
         addWeaponList();
@@ -56,13 +56,7 @@ public class ItemShopGUI {
         for (int i = 0; i < listOfAllHeroes.size(); i++) {
             Button currentButton = new Button();
             int finalI = i;
-            currentButton.setOnAction(actionEvent -> {
-                try {
-                    eventOnHeroClick(listOfAllHeroes.get(finalI).getID());
-                } catch (SQLException | IOException e) {
-                    e.printStackTrace();
-                }
-            });
+            currentButton.setOnAction(actionEvent -> eventOnHeroClick(listOfAllHeroes.get(finalI).getID()));
             currentButton.setMinWidth(350);
             currentButton.setStyle("-fx-alignment: center-left;");
             Hero hero = listOfAllHeroes.get(i);
@@ -80,16 +74,14 @@ public class ItemShopGUI {
         itemShopOuterPane.setCenter(currentChoicesGridPane);
         itemShopOuterPane.setLeft(itemTypesAccordion);
         buyThisItemButton.setOnAction(event -> {
-            try {
-                buyThisItem();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+
+            buyThisItem();
+
         });
         currentChoicesGridPane.add(buyThisItemButton, 0, 2);
     }
 
-    private void buyThisItem() throws SQLException {
+    private void buyThisItem() {
         ItemsDTO itemShopDTO = new ItemsDTO(currentlySelectedHero.getID());
         ItemsDAO itemShopDAO = new ItemsDAO();
         HeroDAO characterCreatorDAO = new HeroDAO();
@@ -116,7 +108,7 @@ public class ItemShopGUI {
         }
     }
 
-    private void eventOnHeroClick(int heroID) throws SQLException, IOException {
+    private void eventOnHeroClick(int heroID) {
         System.out.println("HERO ID: === " + heroID);
         currentChoicesGridPane.getChildren().removeAll();
         ItemsDAO itemShopDAO = new ItemsDAO();

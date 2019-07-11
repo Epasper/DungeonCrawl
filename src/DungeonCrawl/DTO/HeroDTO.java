@@ -1,7 +1,11 @@
 package DungeonCrawl.DTO;
 
 
+import DungeonCrawl.Items.Item;
 import javafx.scene.image.Image;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HeroDTO {
 
@@ -53,6 +57,8 @@ public class HeroDTO {
     private int Streetwise;
     private int Thievery;
     private Image heroImage;
+    private List<String> heroEquipment = new ArrayList<>();
+    private List<String> heroEquipmentNames = new ArrayList<>();
 
     public String getAtWillPower1IconID() {
         return atWillPower1IconID;
@@ -439,4 +445,19 @@ public class HeroDTO {
     }
 
 
+    public List<String> getHeroEquipmentNames() {
+        return heroEquipmentNames;
+    }
+
+    public void setHeroEquipmentNames(List<String> heroEquipmentNames) {
+        this.heroEquipmentNames = heroEquipmentNames;
+    }
+
+    public List<String> getHeroEquipment() {
+        return heroEquipment;
+    }
+
+    public void setHeroEquipment(List<String> heroEquipment) {
+        this.heroEquipment = heroEquipment;
+    }
 }

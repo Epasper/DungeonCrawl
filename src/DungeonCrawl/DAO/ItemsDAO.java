@@ -1,6 +1,7 @@
 package DungeonCrawl.DAO;
 
 
+import DungeonCrawl.DTO.HeroDTO;
 import DungeonCrawl.DTO.ItemsDTO;
 import DungeonCrawl.Items.Item;
 import DungeonCrawl.Model.Hero;
@@ -18,16 +19,17 @@ public class ItemsDAO {
         HeroDAO characterCreatorDAO = new HeroDAO();
         Map<String, Item> heroEquipment = hero.getHeroEquipment();
         heroEquipment.remove(slotToBeRemoved);
-        characterCreatorDAO.addAHeroToDatabase(hero, heroEquipment);
+        characterCreatorDAO.addAHeroToDatabase(hero, false);
         System.out.println("Item removed from the " + slotToBeRemoved + " slot.");
     }
 
     public void putItemIntoSlotInDatabase(ItemsDTO itemShopDTO, Hero hero, String slotToBeFilled) throws IOException {
-        HeroDAO characterCreatorDAO = new HeroDAO();
+        HeroDAO heroDAO = new HeroDAO();
         Map<String, Item> heroEquipment = hero.getHeroEquipment();
         Item itemToBeAdded = itemShopDTO.getItemBySlotName(slotToBeFilled);
         heroEquipment.put(slotToBeFilled, itemToBeAdded);
-        characterCreatorDAO.addAHeroToDatabase(hero, heroEquipment);
+        HeroDTO heroDTO = heroDAO.changeHeroToDTO(hero);
+        heroDAO.addAHeroToDatabase(heroDTO, false);
         System.out.println("Item " + itemToBeAdded.getItemName() + " added to the " + slotToBeFilled + " slot");
     }
 
