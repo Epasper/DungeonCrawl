@@ -133,6 +133,11 @@ public class EquipmentGUI {
         Dragboard dragboard = event.getDragboard();
         String sourceSlotName = dragboard.getString();
         String targetSlotName = currentSlotBeingDraggedOver;
+        if (currentHero.getHeroEquipment().get(targetSlotName) != null) {
+            event.consume();
+            updateTheGUI();
+            return;
+        }
         Item currentItem = heroEquipmentMap.get(sourceSlotName);
         heroEquipmentMap.remove(sourceSlotName);
         heroEquipmentMap.put(targetSlotName, currentItem);
@@ -144,21 +149,18 @@ public class EquipmentGUI {
             System.out.println("Item Name: " + currentItem.getItemName());
             itemsDAO.removeItemFromSlotInDatabase(currentHero, sourceSlotName);
             itemsDAO.putItemIntoSlotInDatabase(itemsDTO, currentHero, targetSlotName);
-        } catch (NullPointerException ignored) {
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (NullPointerException | IOException ignored) {
         }
         event.consume();
         updateTheGUI();
-            innerPane = displayAChosenHeroEquipment(currentHero);
+        innerPane = displayAChosenHeroEquipment(currentHero);
     }
 
     private void updateTheGUI() {
         equipmentLabels.forEach((k, v) -> {
             try {
                 v.setGraphic(new ImageView(heroEquipmentMap.get(k).getItemImage()));
-            } catch (NullPointerException e) {
-                v.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("Images\\EquipmentGUI\\EmptyEquipmentSlot.jpg"))));
+            } catch (NullPointerException ignored) {
             }
         });
     }
