@@ -6,7 +6,7 @@ public class Item {
 
     //todo write the daily powers for level 1. Last updated: Paladin
 
-    //todo change a map of items to item factory
+    //todo write all basic weapons and all basic implements
 
     private String itemName;
     private String itemType;

@@ -32,30 +32,15 @@ public class EquipmentGUI {
     private Label characterIcon = new Label();
     private GridPane innerPane = new GridPane();
     private Scene aScene = new Scene(new Group());
-    private List<Hero> listOfSelectedHeroes = new ArrayList<>();
     private Popup equipInfoPopup = new Popup();
-    private HeroDAO characterCreatorDAO = new HeroDAO();
     private Hero currentHero;
     private Map<String, Label> equipmentLabels = new HashMap<>();
-    private Item draggedItem = new Item();
-    private List<Label> listOfAllLabels = new ArrayList<>();
     private Map<String, Item> heroEquipmentMap;
     private ItemsDTO itemsDTO;
     private String currentSlotBeingDraggedOver;
 
 
-    EquipmentGUI() throws SQLException {
-    }
-
-    public List<Hero> getListOfSelectedHeroes() {
-        return listOfSelectedHeroes;
-    }
-
-    public void setListOfSelectedHeroes(List<Hero> listOfSelectedHeroes) {
-        this.listOfSelectedHeroes = listOfSelectedHeroes;
-    }
-
-    public GridPane displayAChosenHeroEquipment(Hero chosenHero) throws SQLException, IOException {
+    public GridPane displayAChosenHeroEquipment(Hero chosenHero) {
         innerPane.getChildren().removeAll();
         characterIcon.setGraphic(null);
         HeroDAO characterCreatorDAO = new HeroDAO();
@@ -104,9 +89,9 @@ public class EquipmentGUI {
     //todo reverse the item putting when the slot is already occupied
 
     private void eventOnDragDetected(String slotName, Label currentLabel, String finalFilledSlot, MouseEvent event) {
-        System.out.println("Dragging Detected");
-        System.out.println("Slot Name: " + slotName);
-        System.out.println("Item Name: " + finalFilledSlot);
+        //System.out.println("Dragging Detected");
+        //System.out.println("Slot Name: " + slotName);
+        //System.out.println("Item Name: " + finalFilledSlot);
         Dragboard dragboard = currentLabel.startDragAndDrop(TransferMode.ANY);
         ClipboardContent content = new ClipboardContent();
         ImageView currentImageView = (ImageView) currentLabel.getGraphic();
@@ -121,7 +106,7 @@ public class EquipmentGUI {
 
     private void eventOnDragEnter(String slotName, Label currentLabel, DragEvent event) {
         event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
-        System.out.println("Drag Entered detected on: " + slotName);
+        //System.out.println("Drag Entered detected on: " + slotName);
         currentSlotBeingDraggedOver = currentLabel.getText();
         event.consume();
     }
@@ -165,11 +150,7 @@ public class EquipmentGUI {
         }
         event.consume();
         updateTheGUI();
-        try {
             innerPane = displayAChosenHeroEquipment(currentHero);
-        } catch (SQLException | IOException e) {
-            e.printStackTrace();
-        }
     }
 
     private void updateTheGUI() {
@@ -183,7 +164,7 @@ public class EquipmentGUI {
     }
 
     private void viewItemDetails(Item currentItem) {
-        System.out.println("MOUSE HOVER DETECTED");
+//        System.out.println("MOUSE HOVER DETECTED");
         VBox itemDetails = new VBox();
         itemDetails.setStyle(" -fx-background-color: white;");
         Label currentLabel = new Label();

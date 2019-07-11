@@ -105,7 +105,7 @@ public class MainMenuGUI {
     private void openItemShop() throws SQLException, IOException {
         ItemShopGUI itemShopGUI = new ItemShopGUI();
         getaStage().close();
-        aScene.setRoot(itemShopGUI.itemShopOuterPane);
+        aScene.setRoot(itemShopGUI.getItemShopOuterPane());
         //aScene.getStylesheets().add("DungeonCrawl/Styling/Caspian.css");
         getaStage().setMaximized(true);
         getaStage().setScene(aScene);

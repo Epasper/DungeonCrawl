@@ -17,13 +17,12 @@ import DungeonCrawl.Model.Hero;
 import DungeonCrawl.Items.ItemFactory;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class ItemShopGUI {
-    BorderPane itemShopOuterPane = new BorderPane();
+    private BorderPane itemShopOuterPane = new BorderPane();
     private GridPane heroSelectionPane = new GridPane();
     private GridPane currentChoicesGridPane = new GridPane();
     private HeroDAO characterCreatorDAO = new HeroDAO();
@@ -32,18 +31,28 @@ public class ItemShopGUI {
     private Hero currentlySelectedHero = new Hero();
     private Accordion itemTypesAccordion = new Accordion();
     private TextArea itemStatsTextArea = new TextArea();
+    private TextArea heroStatsText = new TextArea();
     private Map<String, Item> currentHeroEquipmentMap = new HashMap<>();
     private Button buyThisItemButton = new Button("Buy this Item");
     private Item currentItem = new Item();
 
+    public BorderPane getItemShopOuterPane() {
+        return itemShopOuterPane;
+    }
+
+    public void setItemShopOuterPane(BorderPane itemShopOuterPane) {
+        this.itemShopOuterPane = itemShopOuterPane;
+    }
+
 
     public ItemShopGUI() {
-        itemShopOuterPane.setStyle("-fx-background-color:grey;");
+        getItemShopOuterPane().setStyle("-fx-background-color:grey;");
         fillTheHeroesPanes();
         addWeaponList();
         addArmorList();
         addReturnToMainMenu();
         addImplementList();
+        updateCenterWidth();
     }
 
     private void fillTheHeroesPanes() {
@@ -69,16 +78,13 @@ public class ItemShopGUI {
             System.out.println("CURRENTLY ADDING:  " + hero.getHeroName());
             heroSelectionPane.add(currentButton, 0, i + 1);
         }
-        currentChoicesGridPane.add(itemStatsTextArea, 0, 1);
-        itemShopOuterPane.setRight(heroSelectionPane);
-        itemShopOuterPane.setCenter(currentChoicesGridPane);
-        itemShopOuterPane.setLeft(itemTypesAccordion);
-        buyThisItemButton.setOnAction(event -> {
-
-            buyThisItem();
-
-        });
-        currentChoicesGridPane.add(buyThisItemButton, 0, 2);
+        currentChoicesGridPane.add(itemStatsTextArea, 0, 1, 5, 1);
+        getItemShopOuterPane().setRight(heroSelectionPane);
+        getItemShopOuterPane().setCenter(currentChoicesGridPane);
+        getItemShopOuterPane().setLeft(itemTypesAccordion);
+        buyThisItemButton.setOnAction(event -> buyThisItem());
+        currentChoicesGridPane.add(buyThisItemButton, 0, 6);
+        updateCenterWidth();
     }
 
     private void buyThisItem() {
@@ -92,12 +98,7 @@ public class ItemShopGUI {
                 System.out.println("Entered the backpack");
                 currentHeroEquipmentMap.put(currentBackpackSlot, currentItem);
                 itemShopDTO.setMapOfItems(currentHeroEquipmentMap);
-                try {
-                    characterCreatorDAO.updateHeroGold(currentlySelectedHero, -(currentItem.getPrice()));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                currentlySelectedHero.setGold(currentlySelectedHero.getGold() - currentItem.getPrice());
+                currentlySelectedHero = characterCreatorDAO.updateHeroGold(currentlySelectedHero, (currentItem.getPrice()));
                 try {
                     itemShopDAO.putItemIntoSlotInDatabase(itemShopDTO, currentlySelectedHero, currentBackpackSlot);
                 } catch (IOException e) {
@@ -106,6 +107,7 @@ public class ItemShopGUI {
                 break;
             }
         }
+        updateHeroInformation();
     }
 
     //todo item lists have to be updated straight after buying and not after reselecting the character
@@ -117,27 +119,43 @@ public class ItemShopGUI {
         currentHeroEquipmentMap = itemShopDAO.getHeroEquipmentByHeroID(heroID);
         HeroDAO characterCreatorDAO = new HeroDAO();
         currentlySelectedHero = characterCreatorDAO.getAHeroByID(heroID);
-        TextArea heroStatsText = new TextArea();
-        heroStatsText.setText(currentlySelectedHero.getHeroName() + "\n");
+        updateHeroInformation();
+        try {
+            currentChoicesGridPane.add(getHeroStatsText(), 0, 0, 5, 1);
+        } catch (IllegalArgumentException ignored) {
+        }
+
+    }
+
+    private void updateHeroInformation() {
+        updateCenterWidth();
+        getHeroStatsText().setText(currentlySelectedHero.getHeroName() + "\n");
         currentHeroEquipmentMap.forEach((k, v) -> {
             if (v != null) {
-                heroStatsText.setText(heroStatsText.getText() + k + ": " + v.getItemName() + " \n");
+                getHeroStatsText().setText(getHeroStatsText().getText() + k + ": " + v.getItemName() + " \n");
             }
         });
-        heroStatsText.setText(heroStatsText.getText() + "Remaining Gold: " + currentlySelectedHero.getGold());
-        currentChoicesGridPane.add(heroStatsText, 0, 0);
+        getHeroStatsText().setText(getHeroStatsText().getText() + "Remaining Gold: " + currentlySelectedHero.getGold());
+        //currentChoicesGridPane.setGridLinesVisible(true);
+    }
+
+    private void updateCenterWidth() {
+        double width = getItemShopOuterPane().getCenter().getBoundsInLocal().getWidth();
+        //width--;
+        getHeroStatsText().setMinWidth(width);
+        itemStatsTextArea.setMinWidth(width);
     }
 
     private void addReturnToMainMenu() {
         Button returnToMainMenu = new Button();
         returnToMainMenu.setText("Return to Main Menu");
-        heroSelectionPane.add(returnToMainMenu, 0, 5);
+        currentChoicesGridPane.add(returnToMainMenu, 4, 6);
         returnToMainMenu.setOnAction(event -> returnToMainMenu());
     }
 
     private void addWeaponList() {
         ItemFactory itemInformation = new ItemFactory();
-        itemShopOuterPane.getStylesheets().add("DungeonCrawl/Styling/CharacterCreator.css");
+        getItemShopOuterPane().getStylesheets().add("DungeonCrawl/Styling/CharacterCreator.css");
         TitledPane weaponsTitledPane = new TitledPane("Weapons", new Label("Show available weapons"));
         ObservableList<String> weaponNames =
                 FXCollections.observableArrayList();
@@ -197,7 +215,7 @@ public class ItemShopGUI {
     }
 
     private void addImplementList() {
-        itemShopOuterPane.getStylesheets().add("DungeonCrawl/Styling/CharacterCreator.css");
+        getItemShopOuterPane().getStylesheets().add("DungeonCrawl/Styling/CharacterCreator.css");
         TitledPane implementsTitledPane = new TitledPane("Implements", new Label("Show available implements"));
         ObservableList<String> implementNames =
                 FXCollections.observableArrayList();
@@ -227,7 +245,7 @@ public class ItemShopGUI {
     }
 
     private void addArmorList() {
-        itemShopOuterPane.getStylesheets().add("DungeonCrawl/Styling/CharacterCreator.css");
+        getItemShopOuterPane().getStylesheets().add("DungeonCrawl/Styling/CharacterCreator.css");
         TitledPane armorsTitledPane = new TitledPane("Armors", new Label("Show available armors"));
         ObservableList<String> armorNames =
                 FXCollections.observableArrayList();
@@ -265,4 +283,11 @@ public class ItemShopGUI {
         System.out.println("Stage is closing");
     }
 
+    public TextArea getHeroStatsText() {
+        return heroStatsText;
+    }
+
+    public void setHeroStatsText(TextArea heroStatsText) {
+        this.heroStatsText = heroStatsText;
+    }
 }

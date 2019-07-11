@@ -52,11 +52,11 @@ public class ItemFactory {
         armorsList.put("Scale Armor", new ScaleArmor());
         armorsList.put("Banded Mail", new BandedMail());
         armorsList.put("Cloth Armor", new ClothArmor());
-        armorsList.put("Full Plate", new FullPlate());
+        armorsList.put("Full Plate Armor", new FullPlate());
         armorsList.put("Ring Mail", new RingMail());
-        armorsList.put("Spiked Plate", new SpikedPlate());
+        armorsList.put("Spiked Plate Armor", new SpikedPlate());
         armorsList.put("Splint Mail", new SplintMail());
-        armorsList.put("Studded Leather", new StuddedLeather());
+        armorsList.put("Studded Leather Armor", new StuddedLeather());
     }
 
     private void populateTheTablesWithWeapons() {

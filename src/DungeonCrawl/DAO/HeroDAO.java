@@ -206,10 +206,10 @@ public class HeroDAO {
         return list;
     }
 
-    public void updateHeroGold(Hero hero, int goldDifference) throws IOException {
+    public Hero updateHeroGold(Hero hero, int goldDifference) {
         int gold = hero.getGold();
         hero.setGold(gold - goldDifference);
-        addAHeroToDatabase(hero, false);
+        return hero;
     }
 
     public HeroDTO changeHeroToDTO(Hero heroToChange) {
