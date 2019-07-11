@@ -13,7 +13,7 @@ public class ItemFactory {
     public Map<String, Item> weaponsList = new HashMap<>();
     public Map<String, Item> armorsList = new HashMap<>();
     public Map<String, Item> implementsList = new HashMap<>();
-    public Map<String, Item> allItemsList = new HashMap<>();
+    private Map<String, Item> allItemsList = new HashMap<>();
 
     public ItemFactory() {
         populateTheTablesWithWeapons();
@@ -50,6 +50,13 @@ public class ItemFactory {
         armorsList.put("Leather Armor", new LeatherArmor());
         armorsList.put("Plate Armor", new PlateArmor());
         armorsList.put("Scale Armor", new ScaleArmor());
+        armorsList.put("Banded Mail", new BandedMail());
+        armorsList.put("Cloth Armor", new ClothArmor());
+        armorsList.put("Full Plate", new FullPlate());
+        armorsList.put("Ring Mail", new RingMail());
+        armorsList.put("Spiked Plate", new SpikedPlate());
+        armorsList.put("Splint Mail", new SplintMail());
+        armorsList.put("Studded Leather", new StuddedLeather());
     }
 
     private void populateTheTablesWithWeapons() {
