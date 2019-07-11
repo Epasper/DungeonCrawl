@@ -212,8 +212,6 @@ public class DungeonButtonEvents {
         System.out.println("Range Set");
         pathFinder.checkTheLineOfSight(encounterManager.getDungeonMap(), buttonGrid, currentHero);
         System.out.println("Marking Attack Distance");
-        //todo checkTheAvailableDistance takes time for long ranges
-        //pathFinder.checkTheAvailableDistance(currentHero, encounterManager.getDungeonMap(), buttonGrid, "Attack Range");
         pathFinder.checkTheAttacksRange(currentHero, encounterManager.getDungeonMap(), buttonGrid, selectedPower);
         System.out.println("Attack Range Marked");
         currentHeroPowers.clear();

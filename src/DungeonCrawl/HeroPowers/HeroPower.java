@@ -282,14 +282,15 @@ public abstract class HeroPower {
         List<Creature> listOfCreaturesAttacked = new ArrayList<>();
         System.out.println("---" + XPos + "---" + YPos + "---");
         if (this.getNumberOfTargets().contains("Burst")) {
-            //todo after selecting a burst power, all tiles should be clickable as a target of the power
-            //todo add a GUI element that shows the range of AoE attack to be made.
+            //todo add a GUI element that shows the range of Blast attacks
             manageBurstAttack(XPos, YPos, dungeonMap, allDiscoveredMonsters, allDiscoveredHeroes, listOfCreaturesAttacked);
         } else {
             listOfCreaturesAttacked.add(guiUtilities.getSingleMonsterByUniqueID(dungeonMap.getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID(), allDiscoveredMonsters));
         }
         return listOfCreaturesAttacked;
     }
+
+    //todo encounter and daily powers has to be locked after using, not after selecting it.
 
     private void manageBurstAttack(int XPos, int YPos, DungeonMap dungeonMap, List<Monster> allDiscoveredMonsters, List<Hero> allDiscoveredHeroes, List<Creature> listOfCreaturesAttacked) {
         int burstValue = this.getBurstValue();

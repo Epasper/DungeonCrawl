@@ -68,6 +68,7 @@ class DungeonGUI {
     //todo lock the possibility of attacking when no power is selected. After the attack, disable the power from currently selected powers.
 
     //todo lock encounter powers on use until the end of encounter. Lock daily powers on use once every 3 encounters.
+    // Change the locking so that it locks after USING a power, not SELECTING it.
 
     /*todo add messages to console:
      CURRENTLY SELECTED POWER:
@@ -170,8 +171,6 @@ class DungeonGUI {
         }
         mapManager.updateMapGraphics();
     }
-
-    //todo add a CursorManager class that manages the cursors - refactor these methods onto the new class.
 
     //todo change the monster portrait after it being bloodied
 

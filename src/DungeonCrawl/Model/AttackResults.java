@@ -1,7 +1,6 @@
 package DungeonCrawl.Model;
 
 public class AttackResults {
-    //todo change the attack methods, so that they use this class.
     private int damage;
     private int attributeBonus;
     private int toHitModifier;

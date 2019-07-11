@@ -97,8 +97,6 @@ public class DungeonConsoleGUI {
         this.initiativeTilePane = initiativeTilePane;
     }
 
-    //todo Fix the stackOverflow exception on selecting a single hero upon dungeon rolling
-
     private void sortTheCreaturesAccordingToInitiative(int i) {
         System.out.println("Iterating through array: ");
         if (initiativeArray[i] != null) {

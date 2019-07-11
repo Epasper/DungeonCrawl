@@ -152,7 +152,6 @@ public class EquipmentGUI {
         heroEquipmentMap.remove(sourceSlotName);
         heroEquipmentMap.put(targetSlotName, currentItem);
         itemsDTO.setMapOfItems(heroEquipmentMap);
-        //todo SQL connection is now done two times. Updating an item on DragAndDrop should only make one DB connection. Add a new method in the DAO.
         try {
             ItemsDAO itemsDAO = new ItemsDAO();
             System.out.println("Source slot name: " + sourceSlotName);
