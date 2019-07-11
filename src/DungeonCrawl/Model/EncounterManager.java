@@ -4,6 +4,7 @@ import DungeonCrawl.GUI.GUIUtilities;
 import DungeonCrawl.HeroPowers.HeroPower;
 import javafx.scene.control.Button;
 
+import java.text.CollationElementIterator;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -21,7 +22,7 @@ public class EncounterManager {
     private boolean hasTheCharacterBeenSelected = false;
     private int globalInitiative = 0;
 
-    public List<Monster> getDiscoveredMonsters() {
+    List<Monster> getDiscoveredMonsters() {
         return discoveredMonsters;
     }
 
@@ -187,6 +188,11 @@ public class EncounterManager {
         heroManager.setNumberOfHeroesThatFinishedMovement(heroManager.getNumberOfHeroesThatFinishedMovement() + 1);
         hero.setFinishedMovement(true);
         System.out.println(hero.getHeroName() + " has finished moving. " + heroManager.getNumberOfHeroesThatFinishedMovement() + " heroes had already finished moving");
+        System.out.println(ConsoleColors.ANSI_PURPLE + "Encounter online = " + encounterOnline + ConsoleColors.ANSI_RESET);
+        System.out.println(ConsoleColors.ANSI_RED
+                + "Verifying AllHeroMoved = " + checkIfAllHeroesHaveMoved()
+                + " Verifying AllMonstersMoved = " + checkIfAllOfMonstersHaveMoved()
+                + ConsoleColors.ANSI_RESET);
         if (isEncounterOnline()) {
             globalInitiative++;
             unlockTheNextCreatureInTheInitiativeOrder();
@@ -211,6 +217,9 @@ public class EncounterManager {
 
     private boolean checkIfAllOfMonstersHaveMoved() {
         this.discoveredMonsters = pathFinder.getDiscoveredMonsters();
+        if (discoveredMonsters.size() == 0){
+            return false;
+        }
         for (Monster monster : discoveredMonsters) {
             if (!monster.isFinishedMovement()) {
                 return false;
@@ -270,13 +279,13 @@ public class EncounterManager {
         return -1;
     }
 
-    public int getNextCharacterID(int currentInitiativeValue) {
+    private int getNextCharacterID(int currentInitiativeValue) {
         for (int i = currentInitiativeValue; i < pathFinder.dungeonConsoleGUI.getInitiativeArray().length; i++) {
             if (pathFinder.dungeonConsoleGUI.getInitiativeArray()[i] != null) {
-                System.out.println("FOUND" + i);
+                //System.out.println("FOUND" + i);
                 return pathFinder.dungeonConsoleGUI.getInitiativeArray()[i].getID();
             } else {
-                System.out.println("Not Found: " + i);
+                //System.out.println("Not Found: " + i);
             }
         }
         return -1;
@@ -313,7 +322,7 @@ public class EncounterManager {
         System.out.println("GLOBAL INITIATIVE SET TO: " + globalInitiative);
     }
 
-    public void unlockTheNextCreatureInTheInitiativeOrder() {
+    private void unlockTheNextCreatureInTheInitiativeOrder() {
         this.discoveredMonsters = pathFinder.getDiscoveredMonsters();
         int creatureIdFromInitiativeArray = getNextCharacterID(globalInitiative);
         System.out.println(creatureIdFromInitiativeArray);
@@ -324,39 +333,47 @@ public class EncounterManager {
         }
         System.out.println("NEXT INITIATIVE CHECK for number: " + creatureIdFromInitiativeArray);
         if (creatureIdFromInitiativeArray < 100) {
-            for (Hero hero : heroManager.getHeroList()) {
-                System.out.println(ConsoleColors.ANSI_GREEN + "NEXT CHAR ID: " +
-                        hero.getID()
-                        + " Hero name: " +
-                        hero.getHeroName() + ConsoleColors.ANSI_RESET);
-                if (hero.getID() == creatureIdFromInitiativeArray) {
-                    System.out.println("Initiative matches that of a hero. Unlocking the button.");
-                    allowNextHeroToMakeTheMove(hero, creatureIdFromInitiativeArray);
-                } else {
-                    lockTheInactiveHeroButton(buttonGrid[hero.getMapXPos()][hero.getMapYPos()]);
-                }
-            }
+            initiativeTrackerHasFoundAHero(creatureIdFromInitiativeArray);
         } else {
-            int monsterUniqueID = getNextMonsterUniqueID(globalInitiative);
-            for (Monster monster : discoveredMonsters) {
-                if (monster.getCurrentMonsterUniqueID() == monsterUniqueID)
-                    if (monster.isThisCreatureDead()) {
-                        monster.setFinishedMovement(true);
-                        System.out.println("Found a dead monster in the initiative order. Proceeding.");
-                        setGlobalInitiative(monster.getCurrentInitiative() + 1);
-                        unlockTheNextCreatureInTheInitiativeOrder();
-                        break;
-                    } else {
-                        System.out.println(ConsoleColors.ANSI_RED + "NEXT MONSTER ID: " +
-                                creatureIdFromInitiativeArray +
-                                " Monster UUID: " + monster.getCurrentMonsterUniqueID() + " || " + monsterUniqueID
-                                + " Monster name: " +
-                                monster.getMonsterName()
-                                + " Init: " + monster.getCurrentInitiative()
-                                + ConsoleColors.ANSI_RESET);
-                        enterTheCurrentMonstersRound(monster);
-                        break;
-                    }
+            initiativeTrackerHasFoundAMonster(creatureIdFromInitiativeArray);
+        }
+    }
+
+    private void initiativeTrackerHasFoundAMonster(int creatureIdFromInitiativeArray) {
+        int monsterUniqueID = getNextMonsterUniqueID(globalInitiative);
+        for (Monster monster : discoveredMonsters) {
+            if (monster.getCurrentMonsterUniqueID() == monsterUniqueID)
+                if (monster.isThisCreatureDead()) {
+                    monster.setFinishedMovement(true);
+                    System.out.println("Found a dead monster in the initiative order. Proceeding.");
+                    setGlobalInitiative(monster.getCurrentInitiative() + 1);
+                    unlockTheNextCreatureInTheInitiativeOrder();
+                    break;
+                } else {
+                    System.out.println(ConsoleColors.ANSI_RED + "NEXT MONSTER ID: " +
+                            creatureIdFromInitiativeArray +
+                            " Monster UUID: " + monster.getCurrentMonsterUniqueID() + " || " + monsterUniqueID
+                            + " Monster name: " +
+                            monster.getMonsterName()
+                            + " Init: " + monster.getCurrentInitiative()
+                            + ConsoleColors.ANSI_RESET);
+                    enterTheCurrentMonstersRound(monster);
+                    break;
+                }
+        }
+    }
+
+    private void initiativeTrackerHasFoundAHero(int creatureIdFromInitiativeArray) {
+        for (Hero hero : heroManager.getHeroList()) {
+            System.out.println(ConsoleColors.ANSI_GREEN + "NEXT CHAR ID: " +
+                    hero.getID()
+                    + " Hero name: " +
+                    hero.getHeroName() + ConsoleColors.ANSI_RESET);
+            if (hero.getID() == creatureIdFromInitiativeArray) {
+                System.out.println("Initiative matches that of a hero. Unlocking the button.");
+                allowNextHeroToMakeTheMove(hero, creatureIdFromInitiativeArray);
+            } else {
+                lockTheInactiveHeroButton(buttonGrid[hero.getMapXPos()][hero.getMapYPos()]);
             }
         }
     }
@@ -392,7 +409,7 @@ public class EncounterManager {
         }
     }
 
-    public void startTheMonsterAI(Monster monster) {
+    private void startTheMonsterAI(Monster monster) {
         //todo set the aggression level for each hero in regards to their class and raise aggression after using some powers.
         MonsterAI monsterAI = new MonsterAI();
         int attackedHeroId = monsterAI.makeAnAggressionRoll(heroManager.getHeroList(), monster);

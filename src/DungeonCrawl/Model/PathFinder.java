@@ -357,7 +357,7 @@ public class PathFinder {
             Monster monster = guiUtilities.getSingleMonsterByUniqueID(currentMapTile.getOccupyingCreatureUniqueID(), allMonstersList);
             if (!monster.isThisCreatureDead()) {
                 discoveredMonsters.add(monster);
-                alarmedMonsterVisible = true;
+                setAlarmedMonsterVisible(true);
                 System.out.println("Found a monster. Adding: " + monster.getMonsterName() + " UUID: " + monster.getCurrentMonsterUniqueID());
                 isCurrentEncounterFinished = false;
                 numberOfEncountersInThisDungeon++;
