@@ -5,8 +5,6 @@ import DungeonCrawl.GUI.GUIAnimations;
 import DungeonCrawl.GUI.GUIUtilities;
 import DungeonCrawl.GUI.Images.SkillIcons.SkillIcons;
 import DungeonCrawl.HeroPowers.HeroPower;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -88,24 +86,26 @@ public class DungeonButtonEvents {
                     encounterManager.getDiscoveredMonsters(),
                     encounterManager.getHeroManager().getHeroList());
             for (Creature creature : listOfAttackedCreatures) {
-                wasTheAttackFinished = hitResults(XPos, YPos, wasTheAttackFinished, currentPower, creature);
+                wasTheAttackFinished = checkIfTheAttackIsFinished(XPos, YPos, wasTheAttackFinished, currentPower, creature);
             }
         } catch (IndexOutOfBoundsException e) {
             pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("Please select a power before attacking");
         }
         if (wasTheAttackFinished) {
             mapManager.updateMapGraphics();
-
         }
     }
 
-    private boolean hitResults(int XPos, int YPos, boolean wasTheAttackFinished, HeroPower currentPower, Creature creature) {
+    private boolean checkIfTheAttackIsFinished(int XPos, int YPos, boolean wasTheAttackFinished, HeroPower currentPower, Creature creature) {
         String hitResult = encounterManager.attackASingleCreature(XPos, YPos, currentPower, creature);
         System.out.println(ConsoleColors.ANSI_PURPLE + "Hit Results: " + hitResult + ConsoleColors.ANSI_RESET);
         if (hitResult.contains("Hit")) {
             System.out.println(ConsoleColors.ANSI_GREEN + creature.getHeroName() + "  " + creature.getHitPoints() + " Was Hit" + ConsoleColors.ANSI_RESET);
             wasTheAttackFinished = false;
             guiAnimations.visualsOnHit(buttonGrid[creature.getMapXPos()][creature.getMapYPos()], hitResult, mapManager, encounterManager);
+/*            if (hitResult.contains("Bloodied")) {
+                buttonGrid[creature.getMapXPos()][creature.getMapYPos()].setGraphic(mapManager.addBloodDropImageToCreatureImage(creature));
+            }*/
         } else if (hitResult.contains("Miss")) {
             System.out.println(ConsoleColors.ANSI_BLUE + creature.getHeroName() + "  " + creature.getHitPoints() + " Was Missed" + ConsoleColors.ANSI_RESET);
             wasTheAttackFinished = false;

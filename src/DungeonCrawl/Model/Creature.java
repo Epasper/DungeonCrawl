@@ -24,8 +24,17 @@ public class Creature {
     private int initiativeBonus;
     private Map<String, Integer> defensesMap = new HashMap<>();
     private boolean isThisCreatureDead = false;
+    private boolean isThisCreatureBloodied = false;
     private int attackRange = 1;
     private boolean finishedMovement;
+
+    public boolean isThisCreatureBloodied() {
+        return isThisCreatureBloodied;
+    }
+
+    public void setThisCreatureBloodied(boolean thisCreatureBloodied) {
+        isThisCreatureBloodied = thisCreatureBloodied;
+    }
 
     public boolean isFinishedMovement() {
         return finishedMovement;

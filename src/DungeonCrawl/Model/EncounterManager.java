@@ -4,7 +4,6 @@ import DungeonCrawl.GUI.GUIUtilities;
 import DungeonCrawl.HeroPowers.HeroPower;
 import javafx.scene.control.Button;
 
-import java.text.CollationElementIterator;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -217,7 +216,7 @@ public class EncounterManager {
 
     private boolean checkIfAllOfMonstersHaveMoved() {
         this.discoveredMonsters = pathFinder.getDiscoveredMonsters();
-        if (discoveredMonsters.size() == 0){
+        if (discoveredMonsters.size() == 0) {
             return false;
         }
         for (Monster monster : discoveredMonsters) {
@@ -244,19 +243,23 @@ public class EncounterManager {
         }
     }
 
-    public String attackASingleCreature(int XPos, int YPos, HeroPower attackingPower, Creature creature) {
+    public String attackASingleCreature(int XPos, int YPos, HeroPower attackingPower, Creature attackedCreature) {
         Hero hero = guiUtilities.getHeroByID(heroManager.getCurrentlyActiveHeroID(), heroManager.getHeroList());
         System.out.println("Attacking a monster with unique ID: " + getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID());
         System.out.println("ID From Tile: " + getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID());
-        AttackResults attackResults = hero.attackAMonster(creature, attackingPower);
-        prepareTheAttackMessage(attackingPower, creature, attackResults);
+        AttackResults attackResults = hero.attackAMonster(attackedCreature, attackingPower);
+        prepareTheAttackMessage(attackingPower, attackedCreature, attackResults);
         if ((attackResults.getAttributeBonus() + attackResults.getDiceRollValue()) >
-                creature.getDefensesMap().get(attackingPower.getDefenseToBeChecked().toLowerCase())) {
+                attackedCreature.getDefensesMap().get(attackingPower.getDefenseToBeChecked().toLowerCase())) {
             triggerOnHit(attackingPower, hero, attackResults);
-            if (inflictDamageToCreature(attackResults, creature)) {
+            if (inflictDamageToCreatureAndCheckIfItsDead(attackResults, attackedCreature)) {
                 return "Dead";
             }
-            return "Hit - " + attackResults.getDamage();
+            if ((attackedCreature.getCurrentHitPoints() - attackResults.getDamage() * 2) < attackedCreature.getHitPoints()) {
+                return "Hit - " + attackResults.getDamage() + " - Bloodied";
+            } else {
+                return "Hit - " + attackResults.getDamage();
+            }
         } else {
             pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("Your attack has missed.");
             return "Missed";
@@ -379,7 +382,7 @@ public class EncounterManager {
     }
 
 
-    private boolean inflictDamageToCreature(AttackResults attackResults, Creature creature) {
+    private boolean inflictDamageToCreatureAndCheckIfItsDead(AttackResults attackResults, Creature creature) {
         boolean isTheCreatureDead = false;
         int damageDealt = attackResults.getDamage();
         creature.setCurrentHitPoints(creature.getCurrentHitPoints() - damageDealt);
@@ -393,6 +396,7 @@ public class EncounterManager {
         } else if (creature.getCurrentHitPoints() * 2 < creature.getHitPoints()) {
             pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("The attacked monster - " + creature.getMonsterName() + " - is now bloodied.");
             isTheCreatureDead = false;
+            creature.setThisCreatureBloodied(true);
         }
         return isTheCreatureDead;
     }

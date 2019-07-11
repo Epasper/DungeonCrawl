@@ -60,7 +60,7 @@ class DungeonGUI {
         returnToMainMenu.setOnAction(event -> returnToMainMenu());
         encounterManager.getDungeonMap().setHeroList(heroList);
         encounterManager.getDungeonMap().drawAMap();
-        updateGUIAccordingToMap(encounterManager.getDungeonMap());
+        updateGUIAccordingToMap();
     }
 
     //todo lock the portrait buttons' walk function when the hero is locked out of movement.
@@ -153,7 +153,7 @@ class DungeonGUI {
         getMapOuterPane().setCenter(equipmentGUI.displayAChosenHeroEquipment(currentHero));
     }
 
-    private void updateGUIAccordingToMap(DungeonMap dungeonMap) {
+    private void updateGUIAccordingToMap() {
         CursorManager cursorManager = new CursorManager(mapOuterPane, encounterManager);
         for (int i = 0; i < mapWidth; i++) {
             for (int j = 0; j < mapHeight; j++) {

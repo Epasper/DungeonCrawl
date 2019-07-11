@@ -42,8 +42,8 @@ public class MapManager {
         this.dungeonMap = dungeonMap;
     }
 
-    public void updateMapGraphics(){
-        updateMapGraphics( false);
+    public void updateMapGraphics() {
+        updateMapGraphics(false);
     }
 
     public void updateMapGraphics(boolean shouldWalkingTilesUpgradeBeSkipped) {
@@ -55,7 +55,7 @@ public class MapManager {
                 //debug mode only - make the whole dungeonMap alreadyDiscovered:
                 //dungeonMap.getMapTilesArray()[i][j].alreadyDiscovered = true;
                 dungeonImageLibraryGUI.applyATileImageToAButton(typeOfTile, buttonGrid[i][j]);
-                if (dungeonMap.getMapTilesArray()[i][j].isInRangedAttackRange() && shouldWalkingTilesUpgradeBeSkipped){
+                if (dungeonMap.getMapTilesArray()[i][j].isInRangedAttackRange() && shouldWalkingTilesUpgradeBeSkipped) {
                     buttonGrid[i][j].setStyle(FieldColors.ATTACK_RANGE);
                 }
                 if (currentEntityID > 0) {
@@ -77,8 +77,26 @@ public class MapManager {
                 aButton.setGraphic(new ImageView(monster.getCreatureImage()));
             } else {
                 aButton.setGraphic(addDeathImageToCreatureImage(monster));
+                return;
+            }
+            if (monster.isThisCreatureBloodied()) {
+                aButton.setGraphic(addBloodDropImageToCreatureImage(monster));
             }
         }
+    }
+
+    ImageView addBloodDropImageToCreatureImage(Creature creature) {
+        Image bloodDroplet = new Image("DungeonCrawl/GUI/Images/MapElements/CreatureBloodied.png");
+        Image monsterImage = creature.getCreatureImage();
+        ImageInput backImageView = new ImageInput(monsterImage);
+        ImageInput frontImageView = new ImageInput(bloodDroplet);
+        Blend imagesBlend = new Blend();
+        imagesBlend.setBottomInput(backImageView);
+        imagesBlend.setTopInput(frontImageView);
+        imagesBlend.setMode(BlendMode.ADD);
+        ImageView finalImageView = new ImageView(monsterImage);
+        finalImageView.setEffect(imagesBlend);
+        return finalImageView;
     }
 
     ImageView addDeathImageToCreatureImage(Creature creature) {
