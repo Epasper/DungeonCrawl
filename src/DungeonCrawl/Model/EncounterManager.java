@@ -441,11 +441,6 @@ public class EncounterManager extends MapManager {
         GUIAnimations animations = new GUIAnimations();
         System.out.println(ConsoleColors.ANSI_RED + "Calling Animation from Monster: " + ConsoleColors.ANSI_RESET);
         animations.heroClickAnimation(buttonGrid[monster.getMapXPos()][monster.getMapYPos()]);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         int attackedHeroId = monsterAI.makeAnAggressionRoll(heroManager.getHeroList(), monster);
         Hero attackedHero = guiUtilities.getHeroByID(attackedHeroId, heroManager.getHeroList());
         System.out.println(
