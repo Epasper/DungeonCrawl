@@ -4,7 +4,7 @@ import DungeonCrawl.Model.Hero;
 
 import java.util.List;
 
-public class HeroManager {
+public class HeroManager extends EncounterManager {
     private List<Hero> heroList;
     private int numberOfHeroesThatFinishedMovement;
     private int currentlyActiveHeroID;

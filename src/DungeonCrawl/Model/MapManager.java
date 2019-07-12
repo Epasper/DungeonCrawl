@@ -34,6 +34,9 @@ public class MapManager {
         heroManager = encounterManager.getHeroManager();
     }
 
+    public MapManager() {
+    }
+
     public DungeonMap getDungeonMap() {
         return dungeonMap;
     }
@@ -47,6 +50,8 @@ public class MapManager {
     }
 
     public void updateMapGraphics(boolean shouldWalkingTilesUpgradeBeSkipped) {
+        String breakline="br";
+        System.out.println(breakline);
         for (int i = 0; i < mapWidth; i++) {
             for (int j = 0; j < mapHeight; j++) {
                 int currentEntityID = dungeonMap.getMapTilesArray()[i][j].getOccupyingCreatureTypeId();
@@ -66,6 +71,7 @@ public class MapManager {
                 }
             }
         }
+        System.out.println(breakline);
     }
 
     private void applyEntityIconToAButton(int heroID, Button aButton, int uniqueMonsterID) {

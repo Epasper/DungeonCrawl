@@ -172,8 +172,6 @@ class DungeonGUI {
         mapManager.updateMapGraphics();
     }
 
-    //todo change the monster portrait after it being bloodied
-
     private void returnToMainMenu() {
         mainMenuGUI.setaStage(Main.getPrimaryStage());
         mainMenuGUI.getaStage().setScene(mainMenuGUI.aScene);

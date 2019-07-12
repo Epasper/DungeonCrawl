@@ -24,6 +24,8 @@ public class DungeonButtonEvents {
     private Button[][] buttonGrid;
     private List<HeroPower> currentHeroPowers;
 
+    public DungeonButtonEvents() {
+    }
 
     public DungeonButtonEvents(EncounterManager encounterManager, MapManager mapManager, HBox powersHBox, List<HeroPower> currentHeroPowers) {
         this.encounterManager = encounterManager;
@@ -46,6 +48,7 @@ public class DungeonButtonEvents {
         if (currentHeroID > 0 && currentHeroID < 100) {
             isTheTileInteractive = eventOnHeroClick(XPos, YPos, currentHeroID);
         } else if (encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].isInWalkRange()) {
+            boolean isThisMonsterRound = currentHeroID > 100;
             eventOnHeroMapInteraction(XPos, YPos, currentTypeOfTile);
         }
         if (currentHeroID > 100 && isTheTileWithinReach) {
@@ -59,7 +62,6 @@ public class DungeonButtonEvents {
         } else if (!currentTypeOfTile.contains("Closed")) {
             eventOnHeroMovement(XPos, YPos);
         }
-        //debug animation tinkering
         mapManager.updateMapGraphics();
         encounterManager.getDungeonMap().clearMapReachableProperties();
     }

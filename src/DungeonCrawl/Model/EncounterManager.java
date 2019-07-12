@@ -1,5 +1,6 @@
 package DungeonCrawl.Model;
 
+import DungeonCrawl.GUI.GUIAnimations;
 import DungeonCrawl.GUI.GUIUtilities;
 import DungeonCrawl.HeroPowers.HeroPower;
 import javafx.scene.control.Button;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class EncounterManager {
+public class EncounterManager extends MapManager {
 
     private boolean encounterOnline;
     private HeroManager heroManager;
@@ -20,6 +21,7 @@ public class EncounterManager {
     private List<Monster> discoveredMonsters;
     private boolean hasTheCharacterBeenSelected = false;
     private int globalInitiative = 0;
+    private boolean isThisTheMonstersTurn;
 
     List<Monster> getDiscoveredMonsters() {
         return discoveredMonsters;
@@ -53,6 +55,9 @@ public class EncounterManager {
         return heroManager;
     }
 
+    public EncounterManager() {
+    }
+
     public EncounterManager(HeroManager heroManager, Button[][] buttonGrid, PathFinder pathFinder) {
         this.heroManager = heroManager;
         this.buttonGrid = buttonGrid;
@@ -69,6 +74,14 @@ public class EncounterManager {
 
     public DungeonMap getDungeonMap() {
         return dungeonMap;
+    }
+
+    public boolean isThisTheMonstersTurn() {
+        return isThisTheMonstersTurn;
+    }
+
+    public void setThisTheMonstersTurn(boolean thisTheMonstersTurn) {
+        isThisTheMonstersTurn = thisTheMonstersTurn;
     }
 
     public boolean isEncounterOnline() {
@@ -296,6 +309,7 @@ public class EncounterManager {
 
 
     private void enterTheCurrentMonstersRound(Monster monster) {
+        setThisTheMonstersTurn(true);
         System.out.println(ConsoleColors.ANSI_PURPLE + "MONSTER ROUND" + ConsoleColors.ANSI_RESET);
         startTheMonsterAI(monster);
         globalInitiative = monster.getCurrentInitiative();
@@ -338,6 +352,10 @@ public class EncounterManager {
         if (creatureIdFromInitiativeArray < 100) {
             initiativeTrackerHasFoundAHero(creatureIdFromInitiativeArray);
         } else {
+            setThisTheMonstersTurn(true);
+            GUIAnimations animations = new GUIAnimations();
+            GUIUtilities utilities = new GUIUtilities();
+            Monster monster = utilities.getMonsterTypeByID(creatureIdFromInitiativeArray, getAllMonstersList());
             initiativeTrackerHasFoundAMonster(creatureIdFromInitiativeArray);
         }
     }
@@ -367,6 +385,8 @@ public class EncounterManager {
     }
 
     private void initiativeTrackerHasFoundAHero(int creatureIdFromInitiativeArray) {
+        setThisTheMonstersTurn(false);
+        setThisTheMonstersTurn(false);
         for (Hero hero : heroManager.getHeroList()) {
             System.out.println(ConsoleColors.ANSI_GREEN + "NEXT CHAR ID: " +
                     hero.getID()
@@ -416,6 +436,7 @@ public class EncounterManager {
     private void startTheMonsterAI(Monster monster) {
         //todo set the aggression level for each hero in regards to their class and raise aggression after using some powers.
         MonsterAI monsterAI = new MonsterAI();
+        GUIAnimations animations = new GUIAnimations();
         int attackedHeroId = monsterAI.makeAnAggressionRoll(heroManager.getHeroList(), monster);
         Hero attackedHero = guiUtilities.getHeroByID(attackedHeroId, heroManager.getHeroList());
         System.out.println(

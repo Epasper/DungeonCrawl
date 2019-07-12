@@ -1,6 +1,7 @@
 package DungeonCrawl.GUI;
 
 import DungeonCrawl.Main;
+import DungeonCrawl.Model.DungeonButtonEvents;
 import DungeonCrawl.Model.EncounterManager;
 import DungeonCrawl.Model.MapManager;
 import javafx.animation.FadeTransition;
@@ -22,9 +23,10 @@ import java.awt.*;
 
 public class GUIAnimations {
 
+
     public void visualsOnHit(Button button, String hitResult, MapManager mapManager, EncounterManager encounterManager) {
         String damageString = hitResult.replace("Hit - ", "");
-        creatureWasHitAnimation(button, mapManager, encounterManager);
+        creatureWasHitAnimation(button, mapManager);
         Popup damagePopup = new Popup();
         VBox damageBox = new VBox();
         Label damage = new Label();
@@ -53,7 +55,7 @@ public class GUIAnimations {
         scaleTransition.play();
     }
 
-    public void creatureWasHitAnimation(Button button, MapManager mapManager, EncounterManager encounterManager) {
+    public void creatureWasHitAnimation(Button button, MapManager mapManager) {
         RotateTransition rotateTransition = new RotateTransition(Duration.millis(180), button.getGraphic());
         rotateTransition.setByAngle(30);
         rotateTransition.setCycleCount(2);
