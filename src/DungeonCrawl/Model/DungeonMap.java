@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class DungeonMap {
+public class DungeonMap extends MapManager {
     private int corridorMaxLength = 8;
     private int numberOfTilesY = 40;
     private int numberOfTilesX = 40;

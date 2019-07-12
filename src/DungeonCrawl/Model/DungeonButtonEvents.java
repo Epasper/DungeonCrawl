@@ -91,7 +91,7 @@ public class DungeonButtonEvents {
                 wasTheAttackFinished = checkIfTheAttackIsFinished(XPos, YPos, wasTheAttackFinished, currentPower, creature);
             }
         } catch (IndexOutOfBoundsException e) {
-            pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("Please select a power before attacking");
+            encounterManager.getPathFinder().getDungeonConsoleGUI().updateTheDungeonConsole("Please select a power before attacking");
         }
         if (wasTheAttackFinished) {
             mapManager.updateMapGraphics();
@@ -146,7 +146,7 @@ public class DungeonButtonEvents {
             System.out.println("Should Encounter Be Triggered = " + shouldEncounterGetTriggered);
             encounterManager.setEncounterOnline(shouldEncounterGetTriggered);
         }
-        pathFinder.dungeonConsoleGUI.getInitiativeTracker().setContent(pathFinder.dungeonConsoleGUI.getInitiativeTilePane());
+        encounterManager.getPathFinder().getDungeonConsoleGUI().getInitiativeTracker().setContent(encounterManager.getPathFinder().getDungeonConsoleGUI().getInitiativeTilePane());
         if (shouldEncounterGetTriggered) {
             encounterManager.setTheEncounter();
         }
@@ -231,7 +231,7 @@ public class DungeonButtonEvents {
     }
 
     private void clearHoverEvents() {
-        DungeonMap dungeonMap = mapManager.getDungeonMap();
+        DungeonMap dungeonMap = encounterManager.getDungeonMap();
         for (int i = 0; i < dungeonMap.getNumberOfTilesX(); i++) {
             for (int j = 0; j < dungeonMap.getNumberOfTilesY(); j++) {
                 int finalJ = j;
@@ -245,7 +245,7 @@ public class DungeonButtonEvents {
     }
 
     private void markTilesAsAoEDamage(int burstValue) {
-        DungeonMap dungeonMap = mapManager.getDungeonMap();
+        DungeonMap dungeonMap = encounterManager.getDungeonMap();
         for (int i = 0; i < dungeonMap.getNumberOfTilesX(); i++) {
             for (int j = 0; j < dungeonMap.getNumberOfTilesY(); j++) {
                 if (dungeonMap.getMapTilesArray()[i][j].isInRangedAttackRange()) {

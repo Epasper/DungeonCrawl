@@ -102,7 +102,7 @@ public class EncounterManager extends MapManager {
         System.out.println("Currently Active Hero ID: " + currentHeroID + " || " + currentHero.getID());
         System.out.println("Current Hero Speed: " + ConsoleColors.ANSI_BLUE + currentHero.getCurrentSpeed() + ConsoleColors.ANSI_RESET);
         setHasTheCharacterBeenSelected(true);
-        pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("You have selected " + currentHero.getHeroName());
+        getPathFinder().getDungeonConsoleGUI().updateTheDungeonConsole("You have selected " + currentHero.getHeroName());
     }
 
     private void checkIfAllCreaturesInRoomAreDead() {
@@ -119,7 +119,7 @@ public class EncounterManager extends MapManager {
         resetAllHeroesSpeedToMax();
         List<Monster> emptyListOfMonsters = new ArrayList<>();
         pathFinder.setDiscoveredMonsters(emptyListOfMonsters);
-        pathFinder.dungeonConsoleGUI.clearInitiativeTracker();
+        getPathFinder().getDungeonConsoleGUI().clearInitiativeTracker();
         for (Hero currentHero : heroManager.getHeroList()) {
             for (HeroPower power : currentHero.getEncounterPowers()) {
                 power.setNumberOfLockedEncounters(0);
@@ -147,7 +147,7 @@ public class EncounterManager extends MapManager {
             weaponDamage = attackingPower.getTypeOfDamageDice();
             numberOfDice = attackingPower.getDamageDiceDealt();
         }
-        pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("It's a hit! Roll for damage: "
+        getPathFinder().getDungeonConsoleGUI().updateTheDungeonConsole("It's a hit! Roll for damage: "
                 + numberOfDice
                 + "d"
                 + weaponDamage);
@@ -162,18 +162,18 @@ public class EncounterManager extends MapManager {
         }
         int bonusDamage = hero.getHeroAttributesMap().get(attackingPower.getDamageModifier().toLowerCase());
         allDamage += bonusDamage;
-        pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("Result of damage dice rolls: "
+        getPathFinder().getDungeonConsoleGUI().updateTheDungeonConsole("Result of damage dice rolls: "
                 + diceDealt
                 + ". Bonus damage equal to your "
                 + attackingPower.getDamageModifier()
                 + ": "
                 + attackResults.getAttributeBonus());
-        pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("You've dealt " + allDamage + " damage");
+        getPathFinder().getDungeonConsoleGUI().updateTheDungeonConsole("You've dealt " + allDamage + " damage");
         attackResults.setDamage(allDamage);
     }
 
     private void prepareTheAttackMessage(HeroPower attackingPower, Creature attackedCreature, AttackResults attackResults) {
-        pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("You have attacked a " +
+        getPathFinder().getDungeonConsoleGUI().updateTheDungeonConsole("You have attacked a " +
                 attackedCreature.getMonsterName()
                 + " with "
                 + attackingPower.getPowerName()
@@ -276,7 +276,7 @@ public class EncounterManager extends MapManager {
                 return "Hit - " + attackResults.getDamage();
             }
         } else {
-            pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("Your attack has missed.");
+            getPathFinder().getDungeonConsoleGUI().updateTheDungeonConsole("Your attack has missed.");
             return "Missed";
         }
     }
@@ -288,20 +288,20 @@ public class EncounterManager extends MapManager {
     }
 
     public int getNextMonsterUniqueID(int currentInitiativeValue) {
-        for (int i = currentInitiativeValue; i < pathFinder.dungeonConsoleGUI.getInitiativeArray().length; i++) {
-            if (pathFinder.dungeonConsoleGUI.getInitiativeArray()[i] != null) {
-                System.out.println("Found monster Unique ID: " + pathFinder.dungeonConsoleGUI.getInitiativeArray()[i].getCurrentMonsterUniqueID());
-                return pathFinder.dungeonConsoleGUI.getInitiativeArray()[i].getCurrentMonsterUniqueID();
+        for (int i = currentInitiativeValue; i < pathFinder.getDungeonConsoleGUI().getInitiativeArray().length; i++) {
+            if (pathFinder.getDungeonConsoleGUI().getInitiativeArray()[i] != null) {
+                System.out.println("Found monster Unique ID: " + pathFinder.getDungeonConsoleGUI().getInitiativeArray()[i].getCurrentMonsterUniqueID());
+                return pathFinder.getDungeonConsoleGUI().getInitiativeArray()[i].getCurrentMonsterUniqueID();
             }
         }
         return -1;
     }
 
     private int getNextCharacterID(int currentInitiativeValue) {
-        for (int i = currentInitiativeValue; i < pathFinder.dungeonConsoleGUI.getInitiativeArray().length; i++) {
-            if (pathFinder.dungeonConsoleGUI.getInitiativeArray()[i] != null) {
+        for (int i = currentInitiativeValue; i < pathFinder.getDungeonConsoleGUI().getInitiativeArray().length; i++) {
+            if (pathFinder.getDungeonConsoleGUI().getInitiativeArray()[i] != null) {
                 //System.out.println("FOUND" + i);
-                return pathFinder.dungeonConsoleGUI.getInitiativeArray()[i].getID();
+                return pathFinder.getDungeonConsoleGUI().getInitiativeArray()[i].getID();
             } else {
                 //System.out.println("Not Found: " + i);
             }
@@ -412,11 +412,11 @@ public class EncounterManager extends MapManager {
         System.out.println("DEBUG: " + creature.getCurrentHitPoints() + " HP");
         System.out.println("DEBUG: " + creature.getID() + " ID");
         if (creature.getCurrentHitPoints() < 1) {
-            pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("The attacked monster - " + creature.getMonsterName() + " - has fallen!");
+            pathFinder.getDungeonConsoleGUI().updateTheDungeonConsole("The attacked monster - " + creature.getMonsterName() + " - has fallen!");
             eventOnCreatureDeath(creature);
             isTheCreatureDead = true;
         } else if (creature.getCurrentHitPoints() * 2 < creature.getHitPoints()) {
-            pathFinder.dungeonConsoleGUI.updateTheDungeonConsole("The attacked monster - " + creature.getMonsterName() + " - is now bloodied.");
+            pathFinder.getDungeonConsoleGUI().updateTheDungeonConsole("The attacked monster - " + creature.getMonsterName() + " - is now bloodied.");
             isTheCreatureDead = false;
             creature.setThisCreatureBloodied(true);
         }
@@ -455,6 +455,8 @@ public class EncounterManager extends MapManager {
                     ConsoleColors.ANSI_PURPLE + "Monster: " + monster.getMonsterName()
                             + " is attacking a hero: " + attackedHero.getHeroName()
                             + ConsoleColors.ANSI_RESET);
+        } else {
+            monsterAI.determineTheDistanceToAttackedHero(this, monster, attackedHeroId);
         }
     }
 }

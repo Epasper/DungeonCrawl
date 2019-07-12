@@ -51,7 +51,7 @@ class DungeonGUI {
 
         heroManager.setHeroList(heroList);
         manageTheConsoleAdding();
-        pathFinder.dungeonConsoleGUI.getDungeonConsole().setContent(pathFinder.dungeonConsoleGUI.getDungeonConsoleText());
+        pathFinder.getDungeonConsoleGUI().getDungeonConsole().setContent(pathFinder.getDungeonConsoleGUI().getDungeonConsoleText());
         getMapOuterPane().setCenter(mapScrollPane);
         mapScrollPane.setContent(mapGridPane);
         Button returnToMainMenu = new Button();
@@ -102,8 +102,8 @@ class DungeonGUI {
         portraitsVBox.getChildren().addAll(listOfHeroButtons);
         getMapOuterPane().setRight(portraitsVBox);
         getMapOuterPane().setLeft(controlsButtons);
-        pathFinder.dungeonConsoleGUI.getCompleteConsole().add(powersHBox, 0, 2);
-        getMapOuterPane().setBottom(pathFinder.dungeonConsoleGUI.getCompleteConsole());
+        pathFinder.getDungeonConsoleGUI().getCompleteConsole().add(powersHBox, 0, 2);
+        getMapOuterPane().setBottom(pathFinder.getDungeonConsoleGUI().getCompleteConsole());
     }
 
     private void viewMapEvent() {

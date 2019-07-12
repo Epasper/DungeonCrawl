@@ -9,14 +9,22 @@ import javafx.scene.control.Button;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PathFinder {
+public class PathFinder extends EncounterManager{
 
-    public DungeonConsoleGUI dungeonConsoleGUI = new DungeonConsoleGUI();
+    private DungeonConsoleGUI dungeonConsoleGUI = new DungeonConsoleGUI();
 
     private List<Monster> discoveredMonsters = new ArrayList<>();
     private boolean alarmedMonsterVisible = false;
     private int numberOfEncountersInThisDungeon;
     private boolean isCurrentEncounterFinished;
+
+    public DungeonConsoleGUI getDungeonConsoleGUI() {
+        return dungeonConsoleGUI;
+    }
+
+    public void setDungeonConsoleGUI(DungeonConsoleGUI dungeonConsoleGUI) {
+        this.dungeonConsoleGUI = dungeonConsoleGUI;
+    }
 
     public int getNumberOfEncountersInThisDungeon() {
         return numberOfEncountersInThisDungeon;

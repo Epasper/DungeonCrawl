@@ -40,6 +40,8 @@ public class MonsterAI {
         return false;
     }
 
+    //todo add attack info to console after attacking
+
     public AttackResults attackAHero(Monster monster, Hero hero) {
         int chanceToHit = monster.getAttack1toHitBonus();
         int defenseToBeChecked = hero.getDefensesMap().get(monster.getAttack1DefenseToBeChecked().toLowerCase());
@@ -54,6 +56,9 @@ public class MonsterAI {
             results.setHitSuccess(false);
         }
         return results;
+    }
+
+    public void determineTheDistanceToAttackedHero(EncounterManager encounterManager, Monster monster, int attackedHeroId) {
     }
 
     public void moveIntoMeleeRange(Monster monster) {
