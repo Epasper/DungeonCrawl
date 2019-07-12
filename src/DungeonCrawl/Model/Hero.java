@@ -60,6 +60,8 @@ public class Hero extends Creature {
     }
 
     public Hero() {
+        updateTheDefensesMap();
+        updateTheAttributesMap();
     }
 
     public void updateTheAttributesMap() {

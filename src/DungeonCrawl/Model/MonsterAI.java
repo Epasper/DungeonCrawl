@@ -1,5 +1,7 @@
 package DungeonCrawl.Model;
 
+import DungeonCrawl.GUI.GUIUtilities;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -24,12 +26,34 @@ public class MonsterAI {
         return aggressionList.get(aggressionRoll);
     }
 
-    public boolean checkIfTheHeroIsWithinRange () {
+    public boolean checkIfTheHeroIsWithinMeleeRange(EncounterManager encounterManager, Monster monster, int idOfHeroToBeChecked) {
+        DungeonMap map = encounterManager.getDungeonMap();
+        int monsterXPos = monster.getMapXPos();
+        int monsterYPos = monster.getMapYPos();
+        for (int i = -1; i < 2; i++) { //todo in future, set this loop for melee reach instead of 1
+            for (int j = -1; j < 2; j++) {
+                if (map.getMapTilesArray()[monsterXPos + i][monsterYPos + j].getOccupyingCreatureTypeId() == idOfHeroToBeChecked) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
-    public void attackAHero(Monster monster, Hero hero) {
-
+    public AttackResults attackAHero(Monster monster, Hero hero) {
+        int chanceToHit = monster.getAttack1toHitBonus();
+        int defenseToBeChecked = hero.getDefensesMap().get(monster.getAttack1DefenseToBeChecked().toLowerCase());
+        int diceRoll = new Random().nextInt(19) + 1;
+        AttackResults results = new AttackResults();
+        if (chanceToHit + diceRoll > defenseToBeChecked) {
+            results.setHitSuccess(true);
+            results.setDamage((new Random().nextInt(monster.getAttack1DamageDiceType() - 1) + 1) *
+                    monster.getAttack1DamageDiceAmount() +
+                    monster.getAttack1DamageBonus());
+        } else {
+            results.setHitSuccess(false);
+        }
+        return results;
     }
 
     public void moveIntoMeleeRange(Monster monster) {

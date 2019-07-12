@@ -23,7 +23,7 @@ public class GUIAnimations {
 
     public void visualsOnHit(Button button, String hitResult, MapManager mapManager, EncounterManager encounterManager) {
         String damageString = hitResult.replace("Hit - ", "");
-        creatureWasHitAnimation(button, mapManager);
+        creatureWasHitAnimation(button);
         Popup damagePopup = new Popup();
         VBox damageBox = new VBox();
         Label damage = new Label();
@@ -47,7 +47,6 @@ public class GUIAnimations {
         new AnimationTimer() {
             @Override
             public void handle(long now) {
-                System.out.println(now);
                 ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(120), button.getGraphic());
                 scaleTransition.setByX(-0.1f);
                 scaleTransition.setByY(-0.1f);
@@ -60,24 +59,34 @@ public class GUIAnimations {
         }.start();
     }
 
-    public void creatureWasHitAnimation(Button button, MapManager mapManager) {
-        RotateTransition rotateTransition = new RotateTransition(Duration.millis(180), button.getGraphic());
-        rotateTransition.setByAngle(30);
-        rotateTransition.setCycleCount(2);
-        rotateTransition.setAutoReverse(true);
-        rotateTransition.setOnFinished(e -> mapManager.updateMapGraphics());
-        System.out.println("Creature hit, rotating.");
-        rotateTransition.play();
+    public void creatureWasHitAnimation(Button button) {
+        new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                RotateTransition rotateTransition = new RotateTransition(Duration.millis(180), button.getGraphic());
+                rotateTransition.setByAngle(30);
+                rotateTransition.setCycleCount(2);
+                rotateTransition.setAutoReverse(true);
+                System.out.println("Creature hit, rotating.");
+                rotateTransition.play();
+                stop();
+            }
+        }.start();
     }
 
     public void creatureWasMissedAnimation(Button button, MapManager mapManager, EncounterManager encounterManager) {
-        TranslateTransition translateTransition = new TranslateTransition(Duration.millis(180), button.getGraphic());
-        translateTransition.setByX(10);
-        translateTransition.setCycleCount(2);
-        translateTransition.setAutoReverse(true);
-        translateTransition.setOnFinished(e -> mapManager.updateMapGraphics());
-        System.out.println("Creature missed, translating.");
-        translateTransition.play();
+        new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                TranslateTransition translateTransition = new TranslateTransition(Duration.millis(180), button.getGraphic());
+                translateTransition.setByX(10);
+                translateTransition.setCycleCount(2);
+                translateTransition.setAutoReverse(true);
+                System.out.println("Creature missed, translating.");
+                translateTransition.play();
+                stop();
+            }
+        }.start();
     }
 
 /*    public void walkingAnimation(int startingXPosition, int startingYPosition, int endXPosition, int endYPosition) {

@@ -36,7 +36,7 @@ public class PartySelectorGUI {
         fillThePanesWithPartyMembers();
     }
 
-    private void fillThePanesWithPartyMembers() throws SQLException, IOException {
+    private void fillThePanesWithPartyMembers(){
         ObservableList<String> heroNames =
                 FXCollections.observableArrayList();
         partySelectorOuterPlane.getStylesheets().add("DungeonCrawl/Styling/CharacterCreator.css");

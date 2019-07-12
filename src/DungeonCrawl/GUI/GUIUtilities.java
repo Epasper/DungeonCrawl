@@ -7,6 +7,8 @@ import java.util.List;
 
 public class GUIUtilities {
 
+    //todo think about making this class an interface
+
     public Hero getHeroByID(int ID, List<Hero> listOfHeroes) {
         Hero returnedHero = new Hero();
         returnedHero.updateTheDefensesMap();

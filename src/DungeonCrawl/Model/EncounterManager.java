@@ -442,10 +442,19 @@ public class EncounterManager extends MapManager {
         System.out.println(ConsoleColors.ANSI_RED + "Calling Animation from Monster: " + ConsoleColors.ANSI_RESET);
         animations.heroClickAnimation(buttonGrid[monster.getMapXPos()][monster.getMapYPos()]);
         int attackedHeroId = monsterAI.makeAnAggressionRoll(heroManager.getHeroList(), monster);
-        Hero attackedHero = guiUtilities.getHeroByID(attackedHeroId, heroManager.getHeroList());
-        System.out.println(
-                ConsoleColors.ANSI_PURPLE + "Monster: " + monster.getMonsterName()
-                        + " is attacking a hero: " + attackedHero.getHeroName()
-                        + ConsoleColors.ANSI_RESET);
+        if (monsterAI.checkIfTheHeroIsWithinMeleeRange(this, monster, attackedHeroId)) {
+            System.out.println(ConsoleColors.ANSI_GREEN + "Hero found in melee range. Attacking!" + ConsoleColors.ANSI_RESET);
+            Hero attackedHero = guiUtilities.getHeroByID(attackedHeroId, heroManager.getHeroList());
+            AttackResults results = monsterAI.attackAHero(monster, attackedHero);
+            System.out.println(ConsoleColors.ANSI_PURPLE + "Hit: " + results.isHitSuccess() +
+                    " for " + results.getDamage() + " damage." + ConsoleColors.ANSI_RESET);
+            attackedHero.setHitPoints(attackedHero.getHitPoints() - results.getDamage());
+            animations.creatureWasHitAnimation(
+                    buttonGrid[attackedHero.getMapXPos()][attackedHero.getMapYPos()]);
+            System.out.println(
+                    ConsoleColors.ANSI_PURPLE + "Monster: " + monster.getMonsterName()
+                            + " is attacking a hero: " + attackedHero.getHeroName()
+                            + ConsoleColors.ANSI_RESET);
+        }
     }
 }
