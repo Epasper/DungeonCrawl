@@ -4,10 +4,7 @@ import DungeonCrawl.Main;
 import DungeonCrawl.Model.DungeonButtonEvents;
 import DungeonCrawl.Model.EncounterManager;
 import DungeonCrawl.Model.MapManager;
-import javafx.animation.FadeTransition;
-import javafx.animation.RotateTransition;
-import javafx.animation.ScaleTransition;
-import javafx.animation.TranslateTransition;
+import javafx.animation.*;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -46,13 +43,19 @@ public class GUIAnimations {
     }
 
     public void heroClickAnimation(Button button) {
-        ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(180), button.getGraphic());
-        scaleTransition.setByX(-0.1f);
-        scaleTransition.setByY(-0.1f);
-        scaleTransition.setCycleCount(2);
-        scaleTransition.setAutoReverse(true);
-        System.out.println("heroClickAnimation Triggered");
-        scaleTransition.play();
+        new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(50), button.getGraphic());
+                scaleTransition.setByX(-0.1f);
+                scaleTransition.setByY(-0.1f);
+                scaleTransition.setCycleCount(2);
+                scaleTransition.setAutoReverse(true);
+                scaleTransition.setOnFinished(e->stop());
+                System.out.println("heroClickAnimation Triggered");
+                scaleTransition.play();
+            }
+        }.start();
     }
 
     public void creatureWasHitAnimation(Button button, MapManager mapManager) {

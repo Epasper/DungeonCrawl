@@ -5,6 +5,8 @@ import DungeonCrawl.GUI.GUIUtilities;
 import DungeonCrawl.HeroPowers.HeroPower;
 import javafx.scene.control.Button;
 
+import java.security.Timestamp;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -437,6 +439,13 @@ public class EncounterManager extends MapManager {
         //todo set the aggression level for each hero in regards to their class and raise aggression after using some powers.
         MonsterAI monsterAI = new MonsterAI();
         GUIAnimations animations = new GUIAnimations();
+        System.out.println(ConsoleColors.ANSI_RED + "Calling Animation from Monster: " + ConsoleColors.ANSI_RESET);
+        animations.heroClickAnimation(buttonGrid[monster.getMapXPos()][monster.getMapYPos()]);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         int attackedHeroId = monsterAI.makeAnAggressionRoll(heroManager.getHeroList(), monster);
         Hero attackedHero = guiUtilities.getHeroByID(attackedHeroId, heroManager.getHeroList());
         System.out.println(
