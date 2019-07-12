@@ -58,7 +58,24 @@ public class MonsterAI {
         return results;
     }
 
-    public void determineTheDistanceToAttackedHero(EncounterManager encounterManager, Monster monster, int attackedHeroId) {
+    public int determineTheDistanceToAttackedHero(EncounterManager encounterManager, Monster monster, Hero attackedHero) {
+        int monsterXPos = monster.getMapXPos();
+        int monsterYPos = monster.getMapYPos();
+        int heroXPos = attackedHero.getMapXPos();
+        int heroYPos = attackedHero.getMapYPos();
+        int distance = 0;
+        //todo determine the monster range algorithm
+        DungeonMap map = encounterManager.getDungeonMap();
+        while (heroXPos != monsterXPos && heroYPos != monsterYPos) {
+            if (monsterXPos > heroXPos) {
+                distance++;
+                heroXPos++;
+            } else {
+                distance++;
+                heroXPos--;
+            }
+        }
+        return 0;
     }
 
     public void moveIntoMeleeRange(Monster monster) {

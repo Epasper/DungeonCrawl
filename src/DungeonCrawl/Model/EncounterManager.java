@@ -4,9 +4,6 @@ import DungeonCrawl.GUI.GUIAnimations;
 import DungeonCrawl.GUI.GUIUtilities;
 import DungeonCrawl.HeroPowers.HeroPower;
 import javafx.scene.control.Button;
-
-import java.security.Timestamp;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -442,9 +439,9 @@ public class EncounterManager extends MapManager {
         System.out.println(ConsoleColors.ANSI_RED + "Calling Animation from Monster: " + ConsoleColors.ANSI_RESET);
         animations.heroClickAnimation(buttonGrid[monster.getMapXPos()][monster.getMapYPos()]);
         int attackedHeroId = monsterAI.makeAnAggressionRoll(heroManager.getHeroList(), monster);
+        Hero attackedHero = guiUtilities.getHeroByID(attackedHeroId, heroManager.getHeroList());
         if (monsterAI.checkIfTheHeroIsWithinMeleeRange(this, monster, attackedHeroId)) {
             System.out.println(ConsoleColors.ANSI_GREEN + "Hero found in melee range. Attacking!" + ConsoleColors.ANSI_RESET);
-            Hero attackedHero = guiUtilities.getHeroByID(attackedHeroId, heroManager.getHeroList());
             AttackResults results = monsterAI.attackAHero(monster, attackedHero);
             System.out.println(ConsoleColors.ANSI_PURPLE + "Hit: " + results.isHitSuccess() +
                     " for " + results.getDamage() + " damage." + ConsoleColors.ANSI_RESET);
@@ -456,7 +453,7 @@ public class EncounterManager extends MapManager {
                             + " is attacking a hero: " + attackedHero.getHeroName()
                             + ConsoleColors.ANSI_RESET);
         } else {
-            monsterAI.determineTheDistanceToAttackedHero(this, monster, attackedHeroId);
+            monsterAI.determineTheDistanceToAttackedHero(this, monster, attackedHero);
         }
     }
 }
