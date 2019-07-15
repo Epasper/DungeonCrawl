@@ -1,6 +1,8 @@
 package DungeonCrawl.Model;
 
 
+import javafx.scene.image.ImageView;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -104,13 +106,17 @@ public class MonsterAI {
         return distance;
     }
 
-    public int[][] determineSurroundings(EncounterManager encounterManager, Monster attackingMonster) {
+    public int[][] determineSurroundings(EncounterManager encounterManager, Monster attackingMonster, Hero attackedHero) {
         int[][] surroundings = new int[3][3];
         DungeonMap map = encounterManager.getDungeonMap();
-        for (int i = 0; i < surroundings.length; i++) {
-            for (int j = 0; j < surroundings.length; j++) {
+        for (int i = -1; i < surroundings.length - 1; i++) {
+            for (int j = -1; j < surroundings.length - 1; j++) {
                 try {
                     surroundings[i][j] = map.getMapTilesArray()[attackingMonster.getMapXPos() + i][attackingMonster.getMapYPos() + j].getOccupyingCreatureTypeId();
+                    if (surroundings[i][j] == attackedHero.getID()) {
+                        System.out.println("Found an attacked hero nearby");
+                        break;
+                    }
                 } catch (IndexOutOfBoundsException ignored) {
                 }
             }
@@ -118,10 +124,16 @@ public class MonsterAI {
         return surroundings;
     }
 
-    public void moveIntoMeleeRange(EncounterManager encounterManager, Monster monster, Hero attackedHero, int[][] monsterSurroundings, double distance, int XDirection, int YDirection) {
+    public void moveIntoMeleeRange(EncounterManager encounterManager, Monster monster, Hero attackedHero, double distance, int XDirection, int YDirection) {
+        int[][] monsterSurroundings = determineSurroundings(encounterManager, monster, attackedHero);
         for (int[] currentArray : monsterSurroundings) {
             for (int currentInt : currentArray) {
-                if (currentInt == attackedHero.getID()) {
+                try {
+                    if (currentInt == attackedHero.getID()) {
+                        System.out.println("FOUND A NEIGHBORING HERO; RETURNING");
+                        return;
+                    }
+                } catch (NullPointerException e) {
                     System.out.println("FOUND A NEIGHBORING HERO; RETURNING");
                     return;
                 }
@@ -148,30 +160,32 @@ public class MonsterAI {
                 encounterManager.getDungeonMap().getMapTilesArray()[monster.getMapXPos()][monster.getMapYPos()].setOccupyingCreatureTypeId(0);
                 encounterManager.getDungeonMap().getMapTilesArray()[monster.getMapXPos()][monster.getMapYPos()].setOccupyingCreatureUniqueID(0);
                 encounterManager.getDungeonMap().getMapTilesArray()[monster.getMapXPos() + XDirection][monster.getMapYPos() + YDirection].setOccupyingCreatureTypeId(monster.getID());
+                encounterManager.getButtonGrid()[monster.getMapXPos() + XDirection][monster.getMapYPos() + YDirection].setGraphic(new ImageView(monster.getCreatureImage()));
                 encounterManager.getDungeonMap().getMapTilesArray()[monster.getMapXPos() + XDirection][monster.getMapYPos() + YDirection].setOccupyingCreatureUniqueID(monster.getCurrentMonsterUniqueID());
                 monster.setMapXPos(monster.getMapXPos() + XDirection);
                 monster.setMapYPos(monster.getMapYPos() + YDirection);
+
                 distance--;
-                moveIntoMeleeRange(encounterManager, monster, attackedHero, monsterSurroundings, distance, 0, 0);
+                moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, 0, 0);
             }
         }
     }
 
     private void determineADifferentDirection(EncounterManager encounterManager, Monster monster, Hero attackedHero, int[][] monsterSurroundings, double distance, int XDirection, int YDirection) {
-        int deltaX = Math.abs(monster.getMapXPos() - attackedHero.getMapXPos());
+        /*int deltaX = Math.abs(monster.getMapXPos() - attackedHero.getMapXPos());
         int deltaY = Math.abs(monster.getMapYPos() - attackedHero.getMapYPos());
         if (deltaX == 0) {
-            moveIntoMeleeRange(encounterManager, monster, attackedHero, monsterSurroundings, distance, XDirection, 1);
+            moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, XDirection, 1);
             return;
         } else if (deltaY == 0) {
-            moveIntoMeleeRange(encounterManager, monster, attackedHero, monsterSurroundings, distance, 1, YDirection);
+            moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, 1, YDirection);
             return;
         }
         if (deltaX > deltaY) {
-            moveIntoMeleeRange(encounterManager, monster, attackedHero, monsterSurroundings, distance, XDirection, 0);
+            moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, XDirection, 0);
         } else if (deltaX < deltaY) {
-            moveIntoMeleeRange(encounterManager, monster, attackedHero, monsterSurroundings, distance, 0, YDirection);
-        }
+            moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, 0, YDirection);
+        }*/
     }
 
     public void moveAwayToRangedDistance(Monster monster) {

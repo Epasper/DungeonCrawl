@@ -455,8 +455,7 @@ public class EncounterManager extends MapManager {
                             + ConsoleColors.ANSI_RESET);
         } else {
             double distance = monsterAI.determineTheDistanceToAttackedHero(monster, attackedHero);
-            int[][] monsterSurroundings = monsterAI.determineSurroundings(this, monster);
-            monsterAI.moveIntoMeleeRange(this, monster, attackedHero, monsterSurroundings, distance, 0, 0);
+            monsterAI.moveIntoMeleeRange(this, monster, attackedHero, distance, 0, 0);
         }
     }
 }
