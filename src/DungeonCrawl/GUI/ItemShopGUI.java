@@ -146,6 +146,8 @@ public class ItemShopGUI {
         itemStatsTextArea.setMinWidth(width);
     }
 
+    //todo reverse the transaction when gold to be updated would be less than 0
+
     private void addReturnToMainMenu() {
         Button returnToMainMenu = new Button();
         returnToMainMenu.setText("Return to Main Menu");

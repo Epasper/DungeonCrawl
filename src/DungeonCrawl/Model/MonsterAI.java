@@ -1,6 +1,5 @@
 package DungeonCrawl.Model;
 
-import DungeonCrawl.GUI.GUIUtilities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,24 +57,51 @@ public class MonsterAI {
         return results;
     }
 
-    public int determineTheDistanceToAttackedHero(EncounterManager encounterManager, Monster monster, Hero attackedHero) {
+    public double determineTheDistanceToAttackedHero(Monster monster, Hero attackedHero) {
         int monsterXPos = monster.getMapXPos();
         int monsterYPos = monster.getMapYPos();
         int heroXPos = attackedHero.getMapXPos();
         int heroYPos = attackedHero.getMapYPos();
         int distance = 0;
         //todo determine the monster range algorithm
-        DungeonMap map = encounterManager.getDungeonMap();
-        while (heroXPos != monsterXPos && heroYPos != monsterYPos) {
+        while (heroXPos != monsterXPos || heroYPos != monsterYPos) {
             if (monsterXPos > heroXPos) {
-                distance++;
-                heroXPos++;
+                if (monsterYPos > heroYPos) {
+                    distance += 1.41;
+                    heroXPos++;
+                    heroYPos++;
+                } else if (monsterYPos < heroYPos) {
+                    distance += 1.41;
+                    heroXPos++;
+                    heroYPos--;
+                } else {
+                    distance++;
+                    heroXPos++;
+                }
+            } else if (monsterXPos < heroXPos) {
+                if (monsterYPos > heroYPos) {
+                    distance += 1.41;
+                    heroXPos--;
+                    heroYPos++;
+                } else if (monsterYPos < heroYPos) {
+                    distance += 1.41;
+                    heroXPos--;
+                    heroYPos--;
+                } else {
+                    distance++;
+                    heroXPos--;
+                }
             } else {
-                distance++;
-                heroXPos--;
+                if (monsterYPos > heroYPos) {
+                    distance++;
+                    heroYPos++;
+                } else {
+                    distance++;
+                    heroYPos--;
+                }
             }
         }
-        return 0;
+        return distance;
     }
 
     public void moveIntoMeleeRange(Monster monster) {

@@ -4,6 +4,7 @@ import DungeonCrawl.GUI.GUIAnimations;
 import DungeonCrawl.GUI.GUIUtilities;
 import DungeonCrawl.HeroPowers.HeroPower;
 import javafx.scene.control.Button;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -453,7 +454,7 @@ public class EncounterManager extends MapManager {
                             + " is attacking a hero: " + attackedHero.getHeroName()
                             + ConsoleColors.ANSI_RESET);
         } else {
-            monsterAI.determineTheDistanceToAttackedHero(this, monster, attackedHero);
+            double distance = monsterAI.determineTheDistanceToAttackedHero(monster, attackedHero);
         }
     }
 }
