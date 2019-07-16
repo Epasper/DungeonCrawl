@@ -179,7 +179,6 @@ public class MonsterAI {
         if (monsterSurroundings[XDirection + 1][YDirection + 1] > 0) {
             determineADifferentDirection(encounterManager, monster, attackedHero, monsterSurroundings, monsterSpeed, XDirection, YDirection);
         } else {
-            //todo animation sequence
             if (monsterSpeed > 0) {
                 DungeonImageLibraryGUI dungeonImageLibraryGUI = new DungeonImageLibraryGUI();
                 animations.scaleTransition.setDuration(Duration.millis(250));

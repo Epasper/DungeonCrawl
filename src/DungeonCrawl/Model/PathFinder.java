@@ -66,7 +66,6 @@ public class PathFinder extends EncounterManager{
         if (range == 0) {
             range = 2;
         }
-        //todo change this method so that it marks only the tiles in currently discovered room.
         for (int a = -1; a < 2; a += 2) {
             for (int b = -1; b < 2; b += 2) {
                 for (int i = 0; i < range; i++) {

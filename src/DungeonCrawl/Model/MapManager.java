@@ -49,6 +49,8 @@ public class MapManager {
         updateMapGraphics(false);
     }
 
+    //todo implement some random elements into room spawning - chairs, pillars, rubble and other.
+
     public void updateMapGraphics(boolean shouldWalkingTilesUpgradeBeSkipped) {
         String breakline = "br";
         System.out.println(mapHeight);
@@ -59,8 +61,6 @@ public class MapManager {
                 int currentEntityID = dungeonMap.getMapTilesArray()[i][j].getOccupyingCreatureTypeId();
                 String typeOfTile;
                 typeOfTile = dungeonMap.getMapTilesArray()[i][j].getTypeOfTile();
-                //this debug log checks for each type of tile while map is updated; floods the console quite fast.
-                //System.out.println(typeOfTile);
                 //debug mode only - make the whole dungeonMap alreadyDiscovered:
                 //dungeonMap.getMapTilesArray()[i][j].alreadyDiscovered = true;
                 dungeonImageLibraryGUI.applyATileImageToAButton(typeOfTile, buttonGrid[i][j]);

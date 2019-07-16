@@ -80,8 +80,8 @@ public class DungeonButtonEvents {
 
     private void eventOnAttackingAMonster(int XPos, int YPos, List<HeroPower> currentHeroPowers) {
         boolean wasTheAttackFinished = true;
+        HeroPower currentPower = currentHeroPowers.get(currentHeroPowers.size() - 1);
         try {
-            HeroPower currentPower = currentHeroPowers.get(currentHeroPowers.size() - 1);
             List<Creature> listOfAttackedCreatures = currentPower.determineTheNumberOfCreaturesAttacked(XPos,
                     YPos,
                     encounterManager.getDungeonMap(),
@@ -95,6 +95,11 @@ public class DungeonButtonEvents {
         }
         if (wasTheAttackFinished) {
             mapManager.updateMapGraphics();
+        }
+        if (currentPower.getTypeOfPower().contains("encounter")) {
+            currentPower.setNumberOfLockedEncounters(1);
+        } else if (currentPower.getTypeOfPower().contains("daily")) {
+            currentPower.setNumberOfLockedEncounters(3);
         }
     }
 
@@ -218,11 +223,6 @@ public class DungeonButtonEvents {
         System.out.println("Attack Range Marked");
         currentHeroPowers.clear();
         currentHeroPowers.add(selectedPower);
-        if (selectedPower.getTypeOfPower().contains("encounter")) {
-            selectedPower.setNumberOfLockedEncounters(1);
-        } else if (selectedPower.getTypeOfPower().contains("daily")) {
-            selectedPower.setNumberOfLockedEncounters(3);
-        }
         if (selectedPower.getBurstValue() > 0) {
             markTilesAsAoEDamage(selectedPower.getBurstValue());
         } else {
