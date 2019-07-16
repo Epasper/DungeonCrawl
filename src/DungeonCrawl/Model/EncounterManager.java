@@ -24,9 +24,18 @@ public class EncounterManager extends MapManager {
     private boolean hasTheCharacterBeenSelected = false;
     private int globalInitiative = 0;
     private boolean isThisTheMonstersTurn;
+    private boolean hasThisMonsterFinishedMoving;
 
     List<Monster> getDiscoveredMonsters() {
         return discoveredMonsters;
+    }
+
+    public boolean isHasThisMonsterFinishedMoving() {
+        return hasThisMonsterFinishedMoving;
+    }
+
+    public void setHasThisMonsterFinishedMoving(boolean hasThisMonsterFinishedMoving) {
+        this.hasThisMonsterFinishedMoving = hasThisMonsterFinishedMoving;
     }
 
     public void setDiscoveredMonsters(List<Monster> discoveredMonsters) {
@@ -199,7 +208,6 @@ public class EncounterManager extends MapManager {
     }
 
 
-
     public void endTheCurrentHeroMovement(Hero hero) {
         heroManager.setNumberOfHeroesThatFinishedMovement(heroManager.getNumberOfHeroesThatFinishedMovement() + 1);
         hero.setFinishedMovement(true);
@@ -316,6 +324,10 @@ public class EncounterManager extends MapManager {
         setThisTheMonstersTurn(true);
         System.out.println(ConsoleColors.ANSI_PURPLE + "MONSTER ROUND" + ConsoleColors.ANSI_RESET);
         startTheMonsterAI(monster);
+        if (isHasThisMonsterFinishedMoving()) {
+            setHasThisMonsterFinishedMoving(false);
+            enterTheCurrentMonstersRound(monster);
+        }
         globalInitiative = monster.getCurrentInitiative();
         globalInitiative++;
         System.out.println("GLOBAL INITIATIVE SET TO: " + globalInitiative);
@@ -445,22 +457,33 @@ public class EncounterManager extends MapManager {
         animations.heroClickAnimation(buttonGrid[monster.getMapXPos()][monster.getMapYPos()]);
         int attackedHeroId = monsterAI.makeAnAggressionRoll(heroManager.getHeroList(), monster);
         Hero attackedHero = guiUtilities.getHeroByID(attackedHeroId, heroManager.getHeroList());
+        verifyIfTheMonsterShouldAttack(monster, monsterAI, animations, attackedHeroId, attackedHero);
+    }
+
+    public void verifyIfTheMonsterShouldAttack(Monster monster, MonsterAI monsterAI, GUIAnimations animations, int attackedHeroId, Hero attackedHero) {
         if (monsterAI.checkIfTheHeroIsWithinMeleeRange(this, monster, attackedHeroId)) {
-            System.out.println(ConsoleColors.ANSI_GREEN + "Hero found in melee range. Attacking!" + ConsoleColors.ANSI_RESET);
-            AttackResults results = monsterAI.attackAHero(monster, attackedHero);
-            System.out.println(ConsoleColors.ANSI_PURPLE + "Hit: " + results.isHitSuccess() +
-                    " for " + results.getDamage() + " damage." + ConsoleColors.ANSI_RESET);
-            attackedHero.setHitPoints(attackedHero.getHitPoints() - results.getDamage());
-            animations.creatureWasHitAnimation(
-                    buttonGrid[attackedHero.getMapXPos()][attackedHero.getMapYPos()]);
-            System.out.println(
-                    ConsoleColors.ANSI_PURPLE + "Monster: " + monster.getMonsterName()
-                            + " is attacking a hero: " + attackedHero.getHeroName()
-                            + ConsoleColors.ANSI_RESET);
+            foundAHeroToAttack(monster, monsterAI, animations, attackedHero);
         } else {
             double distance = monsterAI.determineTheDistanceToAttackedHero(monster, attackedHero);
             monsterAI.moveIntoMeleeRange(this, monster, attackedHero, monster.getCurrentSpeed(), 0, 0);
-            //monsterAI.animations.playTheTimeline();
         }
+    }
+
+    //todo after killing a monster, hero should be able to step onto its tile
+
+    //todo consider centering the screen on the active hero
+
+    private void foundAHeroToAttack(Monster monster, MonsterAI monsterAI, GUIAnimations animations, Hero attackedHero) {
+        System.out.println(ConsoleColors.ANSI_GREEN + "Hero found in melee range. Attacking!" + ConsoleColors.ANSI_RESET);
+        AttackResults results = monsterAI.attackAHero(monster, attackedHero);
+        System.out.println(ConsoleColors.ANSI_PURPLE + "Hit: " + results.isHitSuccess() +
+                " for " + results.getDamage() + " damage." + ConsoleColors.ANSI_RESET);
+        attackedHero.setHitPoints(attackedHero.getHitPoints() - results.getDamage());
+        animations.creatureWasHitAnimation(
+                buttonGrid[attackedHero.getMapXPos()][attackedHero.getMapYPos()]);
+        System.out.println(
+                ConsoleColors.ANSI_PURPLE + "Monster: " + monster.getMonsterName()
+                        + " is attacking a hero: " + attackedHero.getHeroName()
+                        + ConsoleColors.ANSI_RESET);
     }
 }

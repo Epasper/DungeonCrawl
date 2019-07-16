@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class MonsterAI {
+public class MonsterAI extends EncounterManager {
     GUIAnimations animations = new GUIAnimations();
     public ArrayList<Animation> listOfAIAnimations = new ArrayList<>();
 
@@ -142,6 +142,9 @@ public class MonsterAI {
     }
 
     public void moveIntoMeleeRange(MapManager encounterManager, Monster monster, Hero attackedHero, double monsterSpeed, int XDirection, int YDirection) {
+        if (monsterSpeed < 1) {
+            setHasThisMonsterFinishedMoving(true);
+        }
         DungeonMap map = encounterManager.getDungeonMap();
         System.out.println("The map given: " + map.toString() + " X: " + map.getNumberOfTilesX() + " Y: " + map.getNumberOfTilesY());
         int[][] monsterSurroundings = determineSurroundings(encounterManager, monster, attackedHero);
@@ -184,7 +187,12 @@ public class MonsterAI {
                 animations.scaleTransition.setDuration(Duration.millis(250));
                 monsterSpeed--;
                 double finalMonsterSpeed = monsterSpeed;
-                animations.scaleTransition.setOnFinished(e -> moveIntoMeleeRange(encounterManager, monster, attackedHero, finalMonsterSpeed, 0, 0));
+                animations.scaleTransition.setOnFinished(e -> {
+                    moveIntoMeleeRange(encounterManager, monster, attackedHero, finalMonsterSpeed, 0, 0);
+/*                    if (isHasThisMonsterFinishedMoving()){
+                        super.verifyIfTheMonsterShouldAttack(monster, this, animations);
+                    }*/
+                });
                 animations.heroClickAnimation(encounterManager.getButtonGrid()[monster.getMapXPos()][monster.getMapYPos()]);
                 System.out.println("Map Checking: " + map.toString() + ".." + map.getNumberOfTilesY() + ".." + map.getNumberOfTilesY());
                 String typeOfTile = map.getMapTilesArray()[monster.getMapXPos()][monster.getMapYPos()].getTypeOfTile();
@@ -202,6 +210,8 @@ public class MonsterAI {
             }
         }
     }
+
+    //todo after tapping spacebar, center the screen on current Creature
 
     private void determineADifferentDirection(MapManager encounterManager, Monster monster, Hero attackedHero, int[][] monsterSurroundings, double distance, int XDirection, int YDirection) {
         /*int deltaX = Math.abs(monster.getMapXPos() - attackedHero.getMapXPos());
