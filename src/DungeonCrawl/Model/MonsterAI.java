@@ -109,10 +109,14 @@ public class MonsterAI {
     public int[][] determineSurroundings(EncounterManager encounterManager, Monster attackingMonster, Hero attackedHero) {
         int[][] surroundings = new int[3][3];
         DungeonMap map = encounterManager.getDungeonMap();
-        for (int i = -1; i < surroundings.length - 1; i++) {
-            for (int j = -1; j < surroundings.length - 1; j++) {
+        System.out.println("Monster Coordinates: X: " + attackingMonster.getMapXPos() + " Y: " + attackingMonster.getMapYPos());
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
                 try {
-                    surroundings[i][j] = map.getMapTilesArray()[attackingMonster.getMapXPos() + i][attackingMonster.getMapYPos() + j].getOccupyingCreatureTypeId();
+                    int x = attackingMonster.getMapXPos() + i -1;
+                    int y = attackingMonster.getMapYPos() + j -1;
+                    surroundings[i][j] = map.getMapTilesArray()[x][y].getOccupyingCreatureTypeId();
+                    System.out.println("Surround check for tile: X: " + (x) + " Y: " + (y));
                     if (surroundings[i][j] == attackedHero.getID()) {
                         System.out.println("Found an attacked hero nearby");
                         break;
@@ -126,9 +130,13 @@ public class MonsterAI {
 
     public void moveIntoMeleeRange(EncounterManager encounterManager, Monster monster, Hero attackedHero, double distance, int XDirection, int YDirection) {
         int[][] monsterSurroundings = determineSurroundings(encounterManager, monster, attackedHero);
+        System.out.println(ConsoleColors.ANSI_RED
+                + "Current Monster Coordinates: X:" + monster.getMapXPos() + " - - Y:" + monster.getMapYPos()
+                + ConsoleColors.ANSI_RESET);
         for (int[] currentArray : monsterSurroundings) {
             for (int currentInt : currentArray) {
                 try {
+                    System.out.println("Current int:" + currentInt);
                     if (currentInt == attackedHero.getID()) {
                         System.out.println("FOUND A NEIGHBORING HERO; RETURNING");
                         return;
