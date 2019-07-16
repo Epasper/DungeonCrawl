@@ -198,6 +198,8 @@ public class EncounterManager extends MapManager {
                 + attackedCreature.getDefensesMap().get(attackingPower.getDefenseToBeChecked().toLowerCase())));
     }
 
+
+
     public void endTheCurrentHeroMovement(Hero hero) {
         heroManager.setNumberOfHeroesThatFinishedMovement(heroManager.getNumberOfHeroesThatFinishedMovement() + 1);
         hero.setFinishedMovement(true);
@@ -458,9 +460,7 @@ public class EncounterManager extends MapManager {
         } else {
             double distance = monsterAI.determineTheDistanceToAttackedHero(monster, attackedHero);
             monsterAI.moveIntoMeleeRange(this, monster, attackedHero, monster.getCurrentSpeed(), 0, 0);
-            System.out.println("Playing Timeline. Length: " + monsterAI.animations.animationKeyFrames.size());
             //monsterAI.animations.playTheTimeline();
-            updateMapGraphics();
         }
     }
 }

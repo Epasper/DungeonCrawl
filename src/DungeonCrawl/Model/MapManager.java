@@ -50,13 +50,17 @@ public class MapManager {
     }
 
     public void updateMapGraphics(boolean shouldWalkingTilesUpgradeBeSkipped) {
-        String breakline="br";
+        String breakline = "br";
+        System.out.println(mapHeight);
+        System.out.println(mapWidth);
         System.out.println(breakline);
         for (int i = 0; i < mapWidth; i++) {
             for (int j = 0; j < mapHeight; j++) {
                 int currentEntityID = dungeonMap.getMapTilesArray()[i][j].getOccupyingCreatureTypeId();
                 String typeOfTile;
                 typeOfTile = dungeonMap.getMapTilesArray()[i][j].getTypeOfTile();
+                //this debug log checks for each type of tile while map is updated; floods the console quite fast.
+                //System.out.println(typeOfTile);
                 //debug mode only - make the whole dungeonMap alreadyDiscovered:
                 //dungeonMap.getMapTilesArray()[i][j].alreadyDiscovered = true;
                 dungeonImageLibraryGUI.applyATileImageToAButton(typeOfTile, buttonGrid[i][j]);

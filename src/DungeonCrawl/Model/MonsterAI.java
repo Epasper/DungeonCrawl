@@ -1,12 +1,15 @@
 package DungeonCrawl.Model;
 
 
+import DungeonCrawl.GUI.DungeonImageLibraryGUI;
 import DungeonCrawl.GUI.FieldColors;
 import DungeonCrawl.GUI.GUIAnimations;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.SequentialTransition;
 import javafx.animation.Timeline;
+import javafx.scene.Node;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
@@ -115,9 +118,10 @@ public class MonsterAI {
         return distance;
     }
 
-    public int[][] determineSurroundings(EncounterManager encounterManager, Monster attackingMonster, Hero attackedHero) {
+    public int[][] determineSurroundings(MapManager encounterManager, Monster attackingMonster, Hero attackedHero) {
         int[][] surroundings = new int[3][3];
         DungeonMap map = encounterManager.getDungeonMap();
+        System.out.println("Map Check: " + map.getNumberOfTilesY() + "  " + map.getNumberOfTilesY());
         System.out.println("Monster Coordinates: X: " + attackingMonster.getMapXPos() + " Y: " + attackingMonster.getMapYPos());
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -137,7 +141,9 @@ public class MonsterAI {
         return surroundings;
     }
 
-    public void moveIntoMeleeRange(EncounterManager encounterManager, Monster monster, Hero attackedHero, double monsterSpeed, int XDirection, int YDirection) {
+    public void moveIntoMeleeRange(MapManager encounterManager, Monster monster, Hero attackedHero, double monsterSpeed, int XDirection, int YDirection) {
+        DungeonMap map = encounterManager.getDungeonMap();
+        System.out.println("The map given: " + map.toString() + " X: " + map.getNumberOfTilesX() + " Y: " + map.getNumberOfTilesY());
         int[][] monsterSurroundings = determineSurroundings(encounterManager, monster, attackedHero);
         System.out.println(ConsoleColors.ANSI_RED
                 + "Current Monster Coordinates: X:" + monster.getMapXPos() + " - - Y:" + monster.getMapYPos()
@@ -175,35 +181,30 @@ public class MonsterAI {
         } else {
             //todo animation sequence
             if (monsterSpeed > 0) {
-                GUIAnimations animations = new GUIAnimations();
+                DungeonImageLibraryGUI dungeonImageLibraryGUI = new DungeonImageLibraryGUI();
                 animations.scaleTransition.setDuration(Duration.millis(250));
                 monsterSpeed--;
                 double finalMonsterSpeed = monsterSpeed;
-                animations.scaleTransition.setOnFinished(e -> {
-                    moveIntoMeleeRange(encounterManager, monster, attackedHero, finalMonsterSpeed, 0, 0);
-                });
-                KeyFrame keyFrame = new KeyFrame(Duration.millis(250), e -> animations.heroClickAnimation(encounterManager.getButtonGrid()[monster.getMapXPos()][monster.getMapYPos()]));
-//                this.animations.animationKeyFrames.add(keyFrame);
-                Timeline timeline = new Timeline(keyFrame, new KeyFrame(Duration.millis(300), e-> encounterManager.updateMapGraphics()));
-                timeline.play();
-                //animations.heroClickAnimation(encounterManager.getButtonGrid()[monster.getMapXPos()][monster.getMapYPos()]);
-//                animations.scaleTransition = animations.prepareTheMonsterAnimation(encounterManager.getButtonGrid()[monster.getMapXPos()][monster.getMapYPos()]);
-                listOfAIAnimations.add(animations.scaleTransition);
-                System.out.println(ConsoleColors.ANSI_PURPLE + "Current Speed: " + monsterSpeed + ConsoleColors.ANSI_RESET);
+                animations.scaleTransition.setOnFinished(e -> moveIntoMeleeRange(encounterManager, monster, attackedHero, finalMonsterSpeed, 0, 0));
+                animations.heroClickAnimation(encounterManager.getButtonGrid()[monster.getMapXPos()][monster.getMapYPos()]);
+                System.out.println("Map Checking: " + map.toString() + ".." + map.getNumberOfTilesY() + ".." + map.getNumberOfTilesY());
+                String typeOfTile = map.getMapTilesArray()[monster.getMapXPos()][monster.getMapYPos()].getTypeOfTile();
+                dungeonImageLibraryGUI.applyATileImageToAButton(typeOfTile, encounterManager.getButtonGrid()[monster.getMapXPos()][monster.getMapYPos()]);
                 encounterManager.getDungeonMap().getMapTilesArray()[monster.getMapXPos()][monster.getMapYPos()].setOccupyingCreatureTypeId(0);
                 encounterManager.getDungeonMap().getMapTilesArray()[monster.getMapXPos()][monster.getMapYPos()].setOccupyingCreatureUniqueID(0);
+                listOfAIAnimations.add(animations.scaleTransition);
+                System.out.println(ConsoleColors.ANSI_PURPLE + "Current Speed: " + monsterSpeed + ConsoleColors.ANSI_RESET);
                 encounterManager.getDungeonMap().getMapTilesArray()[monster.getMapXPos() + XDirection][monster.getMapYPos() + YDirection].setOccupyingCreatureTypeId(monster.getID());
                 encounterManager.getButtonGrid()[monster.getMapXPos() + XDirection][monster.getMapYPos() + YDirection].setStyle(FieldColors.WALK_RANGE);
                 encounterManager.getButtonGrid()[monster.getMapXPos() + XDirection][monster.getMapYPos() + YDirection].setGraphic(new ImageView(monster.getCreatureImage()));
                 encounterManager.getDungeonMap().getMapTilesArray()[monster.getMapXPos() + XDirection][monster.getMapYPos() + YDirection].setOccupyingCreatureUniqueID(monster.getCurrentMonsterUniqueID());
                 monster.setMapXPos(monster.getMapXPos() + XDirection);
                 monster.setMapYPos(monster.getMapYPos() + YDirection);
-                encounterManager.updateMapGraphics();
             }
         }
     }
 
-    private void determineADifferentDirection(EncounterManager encounterManager, Monster monster, Hero attackedHero, int[][] monsterSurroundings, double distance, int XDirection, int YDirection) {
+    private void determineADifferentDirection(MapManager encounterManager, Monster monster, Hero attackedHero, int[][] monsterSurroundings, double distance, int XDirection, int YDirection) {
         /*int deltaX = Math.abs(monster.getMapXPos() - attackedHero.getMapXPos());
         int deltaY = Math.abs(monster.getMapYPos() - attackedHero.getMapYPos());
         if (deltaX == 0) {
