@@ -1,6 +1,7 @@
 package DungeonCrawl.GUI;
 
 import DungeonCrawl.Main;
+import DungeonCrawl.Model.ConsoleColors;
 import DungeonCrawl.Model.DungeonButtonEvents;
 import DungeonCrawl.Model.EncounterManager;
 import DungeonCrawl.Model.MapManager;
@@ -17,9 +18,12 @@ import javafx.stage.Popup;
 import javafx.util.Duration;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class GUIAnimations {
 
+    public ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(120));
+    public ArrayList<KeyFrame> animationKeyFrames = new ArrayList<>();
 
     public void visualsOnHit(Button button, String hitResult, MapManager mapManager, EncounterManager encounterManager) {
         String damageString = hitResult.replace("Hit - ", "");
@@ -42,17 +46,75 @@ public class GUIAnimations {
         fadeTransition.play();
     }
 
+    public void playTheTimeline (){
+        Timeline timeline = new Timeline();
+        timeline.getKeyFrames().addAll(animationKeyFrames);
+        timeline.play();
+    }
+
+    /*public void heroClickAnimation(Button button, EncounterManager manager){
+        new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                //ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(120), button.getGraphic());
+                scaleTransition.setNode(button.getGraphic());
+                scaleTransition.setByX(-0.1f);
+                scaleTransition.setByY(-0.1f);
+                scaleTransition.setCycleCount(2);
+                scaleTransition.setAutoReverse(true);
+                System.out.println("heroClickAnimation Triggered" + now);
+                scaleTransition.play();
+                stop();
+            }
+        }.start();
+    }*/
+
+    public Duration calculateTheAnimationDuration(ArrayList<Animation> listOfAnimations) {
+
+        System.out.println(ConsoleColors.ANSI_GREEN + "number of Animations in the list: " + listOfAnimations.size() + ConsoleColors.ANSI_RESET);
+        SequentialTransition sequentialTransition = new SequentialTransition();
+        sequentialTransition.getChildren().addAll(listOfAnimations);
+        Duration duration = sequentialTransition.getCycleDuration();
+
+        /*for (Animation currentAnimation : listOfAnimations) {
+            sequentialTransition.getChildren().add(currentAnimation);
+        }*/
+        //sequentialTransition.play();
+        return duration;
+    }
+
+    public ScaleTransition prepareTheMonsterAnimation(Button button) {
+/*        new AnimationTimer() {
+            @Override
+            public void handle(long now) {*/
+        //ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(120), button.getGraphic());
+        scaleTransition.setNode(button.getGraphic());
+        scaleTransition.setByX(-0.1f);
+        scaleTransition.setByY(-0.1f);
+        scaleTransition.setCycleCount(2);
+        scaleTransition.setAutoReverse(true);
+        System.out.println("heroClickAnimation Prepared");
+/*                if (shouldIPlayTheAnimation){
+                    scaleTransition.play();
+                    stop();
+                }*/
+        return scaleTransition;
+    }
+//        }.start();
+    // }
+
     public void heroClickAnimation(Button button) {
 
         new AnimationTimer() {
             @Override
             public void handle(long now) {
-                ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(120), button.getGraphic());
+                //ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(120), button.getGraphic());
+                scaleTransition.setNode(button.getGraphic());
                 scaleTransition.setByX(-0.1f);
                 scaleTransition.setByY(-0.1f);
                 scaleTransition.setCycleCount(2);
                 scaleTransition.setAutoReverse(true);
-                System.out.println("heroClickAnimation Triggered");
+                System.out.println("heroClickAnimation Triggered" + now);
                 scaleTransition.play();
                 stop();
             }

@@ -3,6 +3,8 @@ package DungeonCrawl.Model;
 import DungeonCrawl.GUI.GUIAnimations;
 import DungeonCrawl.GUI.GUIUtilities;
 import DungeonCrawl.HeroPowers.HeroPower;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.control.Button;
 
 import java.util.ArrayList;
@@ -456,6 +458,9 @@ public class EncounterManager extends MapManager {
         } else {
             double distance = monsterAI.determineTheDistanceToAttackedHero(monster, attackedHero);
             monsterAI.moveIntoMeleeRange(this, monster, attackedHero, monster.getCurrentSpeed(), 0, 0);
+            System.out.println("Playing Timeline. Length: " + monsterAI.animations.animationKeyFrames.size());
+            //monsterAI.animations.playTheTimeline();
+            updateMapGraphics();
         }
     }
 }

@@ -1,14 +1,22 @@
 package DungeonCrawl.Model;
 
 
+import DungeonCrawl.GUI.FieldColors;
 import DungeonCrawl.GUI.GUIAnimations;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.SequentialTransition;
+import javafx.animation.Timeline;
 import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class MonsterAI {
+    GUIAnimations animations = new GUIAnimations();
+    public ArrayList<Animation> listOfAIAnimations = new ArrayList<>();
 
     public int makeAnAggressionRoll(List<Hero> listOfHeroes, Monster monster) {
         List<Integer> aggressionList = new ArrayList<>();
@@ -117,7 +125,7 @@ public class MonsterAI {
                     int x = attackingMonster.getMapXPos() + i - 1;
                     int y = attackingMonster.getMapYPos() + j - 1;
                     surroundings[i][j] = map.getMapTilesArray()[x][y].getOccupyingCreatureTypeId();
-                    System.out.println("Surround check for tile: X: " + (x) + " Y: " + (y));
+                    //System.out.println("Surround check for tile: X: " + (x) + " Y: " + (y));
                     if (surroundings[i][j] == attackedHero.getID()) {
                         System.out.println("Found an attacked hero nearby");
                         break;
@@ -137,7 +145,7 @@ public class MonsterAI {
         for (int[] currentArray : monsterSurroundings) {
             for (int currentInt : currentArray) {
                 try {
-                    System.out.println("Current int:" + currentInt);
+                    //System.out.println("Current int:" + currentInt);
                     if (currentInt == attackedHero.getID()) {
                         System.out.println("FOUND A NEIGHBORING HERO; RETURNING");
                         return;
@@ -165,19 +173,32 @@ public class MonsterAI {
         if (monsterSurroundings[XDirection + 1][YDirection + 1] > 0) {
             determineADifferentDirection(encounterManager, monster, attackedHero, monsterSurroundings, monsterSpeed, XDirection, YDirection);
         } else {
+            //todo animation sequence
             if (monsterSpeed > 0) {
                 GUIAnimations animations = new GUIAnimations();
-                animations.heroClickAnimation(encounterManager.getButtonGrid()[monster.getMapXPos()][monster.getMapYPos()]);
+                animations.scaleTransition.setDuration(Duration.millis(250));
+                monsterSpeed--;
+                double finalMonsterSpeed = monsterSpeed;
+                animations.scaleTransition.setOnFinished(e -> {
+                    moveIntoMeleeRange(encounterManager, monster, attackedHero, finalMonsterSpeed, 0, 0);
+                });
+                KeyFrame keyFrame = new KeyFrame(Duration.millis(250), e -> animations.heroClickAnimation(encounterManager.getButtonGrid()[monster.getMapXPos()][monster.getMapYPos()]));
+//                this.animations.animationKeyFrames.add(keyFrame);
+                Timeline timeline = new Timeline(keyFrame, new KeyFrame(Duration.millis(300), e-> encounterManager.updateMapGraphics()));
+                timeline.play();
+                //animations.heroClickAnimation(encounterManager.getButtonGrid()[monster.getMapXPos()][monster.getMapYPos()]);
+//                animations.scaleTransition = animations.prepareTheMonsterAnimation(encounterManager.getButtonGrid()[monster.getMapXPos()][monster.getMapYPos()]);
+                listOfAIAnimations.add(animations.scaleTransition);
                 System.out.println(ConsoleColors.ANSI_PURPLE + "Current Speed: " + monsterSpeed + ConsoleColors.ANSI_RESET);
                 encounterManager.getDungeonMap().getMapTilesArray()[monster.getMapXPos()][monster.getMapYPos()].setOccupyingCreatureTypeId(0);
                 encounterManager.getDungeonMap().getMapTilesArray()[monster.getMapXPos()][monster.getMapYPos()].setOccupyingCreatureUniqueID(0);
                 encounterManager.getDungeonMap().getMapTilesArray()[monster.getMapXPos() + XDirection][monster.getMapYPos() + YDirection].setOccupyingCreatureTypeId(monster.getID());
+                encounterManager.getButtonGrid()[monster.getMapXPos() + XDirection][monster.getMapYPos() + YDirection].setStyle(FieldColors.WALK_RANGE);
                 encounterManager.getButtonGrid()[monster.getMapXPos() + XDirection][monster.getMapYPos() + YDirection].setGraphic(new ImageView(monster.getCreatureImage()));
                 encounterManager.getDungeonMap().getMapTilesArray()[monster.getMapXPos() + XDirection][monster.getMapYPos() + YDirection].setOccupyingCreatureUniqueID(monster.getCurrentMonsterUniqueID());
                 monster.setMapXPos(monster.getMapXPos() + XDirection);
                 monster.setMapYPos(monster.getMapYPos() + YDirection);
-                monsterSpeed--;
-                moveIntoMeleeRange(encounterManager, monster, attackedHero, monsterSpeed, 0, 0);
+                encounterManager.updateMapGraphics();
             }
         }
     }
