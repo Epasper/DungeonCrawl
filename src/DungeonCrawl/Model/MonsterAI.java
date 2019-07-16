@@ -1,6 +1,7 @@
 package DungeonCrawl.Model;
 
 
+import DungeonCrawl.GUI.GUIAnimations;
 import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
@@ -113,8 +114,8 @@ public class MonsterAI {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 try {
-                    int x = attackingMonster.getMapXPos() + i -1;
-                    int y = attackingMonster.getMapYPos() + j -1;
+                    int x = attackingMonster.getMapXPos() + i - 1;
+                    int y = attackingMonster.getMapYPos() + j - 1;
                     surroundings[i][j] = map.getMapTilesArray()[x][y].getOccupyingCreatureTypeId();
                     System.out.println("Surround check for tile: X: " + (x) + " Y: " + (y));
                     if (surroundings[i][j] == attackedHero.getID()) {
@@ -128,7 +129,7 @@ public class MonsterAI {
         return surroundings;
     }
 
-    public void moveIntoMeleeRange(EncounterManager encounterManager, Monster monster, Hero attackedHero, double distance, int XDirection, int YDirection) {
+    public void moveIntoMeleeRange(EncounterManager encounterManager, Monster monster, Hero attackedHero, double monsterSpeed, int XDirection, int YDirection) {
         int[][] monsterSurroundings = determineSurroundings(encounterManager, monster, attackedHero);
         System.out.println(ConsoleColors.ANSI_RED
                 + "Current Monster Coordinates: X:" + monster.getMapXPos() + " - - Y:" + monster.getMapYPos()
@@ -162,9 +163,12 @@ public class MonsterAI {
             }
         }
         if (monsterSurroundings[XDirection + 1][YDirection + 1] > 0) {
-            determineADifferentDirection(encounterManager, monster, attackedHero, monsterSurroundings, distance, XDirection, YDirection);
+            determineADifferentDirection(encounterManager, monster, attackedHero, monsterSurroundings, monsterSpeed, XDirection, YDirection);
         } else {
-            if (distance > 0) {
+            if (monsterSpeed > 0) {
+                GUIAnimations animations = new GUIAnimations();
+                animations.heroClickAnimation(encounterManager.getButtonGrid()[monster.getMapXPos()][monster.getMapYPos()]);
+                System.out.println(ConsoleColors.ANSI_PURPLE + "Current Speed: " + monsterSpeed + ConsoleColors.ANSI_RESET);
                 encounterManager.getDungeonMap().getMapTilesArray()[monster.getMapXPos()][monster.getMapYPos()].setOccupyingCreatureTypeId(0);
                 encounterManager.getDungeonMap().getMapTilesArray()[monster.getMapXPos()][monster.getMapYPos()].setOccupyingCreatureUniqueID(0);
                 encounterManager.getDungeonMap().getMapTilesArray()[monster.getMapXPos() + XDirection][monster.getMapYPos() + YDirection].setOccupyingCreatureTypeId(monster.getID());
@@ -172,9 +176,8 @@ public class MonsterAI {
                 encounterManager.getDungeonMap().getMapTilesArray()[monster.getMapXPos() + XDirection][monster.getMapYPos() + YDirection].setOccupyingCreatureUniqueID(monster.getCurrentMonsterUniqueID());
                 monster.setMapXPos(monster.getMapXPos() + XDirection);
                 monster.setMapYPos(monster.getMapYPos() + YDirection);
-
-                distance--;
-                moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, 0, 0);
+                monsterSpeed--;
+                moveIntoMeleeRange(encounterManager, monster, attackedHero, monsterSpeed, 0, 0);
             }
         }
     }
