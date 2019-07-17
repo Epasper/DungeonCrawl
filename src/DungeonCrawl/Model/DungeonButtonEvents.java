@@ -21,7 +21,6 @@ public class DungeonButtonEvents {
     private MapManager mapManager;
     private EncounterManager encounterManager;
     private HBox powersHBox;
-    private Button[][] buttonGrid;
     private List<HeroPower> currentHeroPowers;
 
     public DungeonButtonEvents() {
@@ -109,20 +108,20 @@ public class DungeonButtonEvents {
         if (hitResult.contains("Hit")) {
             System.out.println(ConsoleColors.ANSI_GREEN + creature.getHeroName() + "  " + creature.getHitPoints() + " Was Hit" + ConsoleColors.ANSI_RESET);
             wasTheAttackFinished = false;
-            guiAnimations.visualsOnHit(buttonGrid[creature.getMapXPos()][creature.getMapYPos()], hitResult, mapManager, encounterManager);
+            guiAnimations.visualsOnHit(encounterManager.getButtonGrid()[creature.getMapXPos()][creature.getMapYPos()], hitResult, mapManager, encounterManager);
 /*            if (hitResult.contains("Bloodied")) {
                 buttonGrid[creature.getMapXPos()][creature.getMapYPos()].setGraphic(mapManager.addBloodDropImageToCreatureImage(creature));
             }*/
         } else if (hitResult.contains("Miss")) {
             System.out.println(ConsoleColors.ANSI_BLUE + creature.getHeroName() + "  " + creature.getHitPoints() + " Was Missed" + ConsoleColors.ANSI_RESET);
             wasTheAttackFinished = false;
-            guiAnimations.creatureWasMissedAnimation(buttonGrid[creature.getMapXPos()][creature.getMapYPos()], mapManager, encounterManager);
+            guiAnimations.creatureWasMissedAnimation(encounterManager.getButtonGrid()[creature.getMapXPos()][creature.getMapYPos()], mapManager, encounterManager);
         } else if (hitResult.contains("Dead")) {
             System.out.println(ConsoleColors.ANSI_RED + creature.getHeroName() + "  " + creature.getHitPoints() + " Is Dead" + ConsoleColors.ANSI_RESET);
             wasTheAttackFinished = false;
-            guiAnimations.visualsOnHit(buttonGrid[creature.getMapXPos()][creature.getMapYPos()], hitResult, mapManager, encounterManager);
+            guiAnimations.visualsOnHit(encounterManager.getButtonGrid()[creature.getMapXPos()][creature.getMapYPos()], hitResult, mapManager, encounterManager);
             //mapManager.addDeathImageToCreatureImage(creature);
-            buttonGrid[creature.getMapXPos()][creature.getMapYPos()].setGraphic(mapManager.addDeathImageToCreatureImage(creature));
+            encounterManager.getButtonGrid()[creature.getMapXPos()][creature.getMapYPos()].setGraphic(mapManager.addDeathImageToCreatureImage(creature));
         }
         clearHoverEvents();
         return wasTheAttackFinished;
@@ -217,9 +216,9 @@ public class DungeonButtonEvents {
         System.out.println("Setting Attack Range");
         currentHero.setAttackRange(selectedPower.getRange());
         System.out.println("Range Set");
-        pathFinder.checkTheLineOfSight(encounterManager.getDungeonMap(), buttonGrid, currentHero);
+        pathFinder.checkTheLineOfSight(encounterManager.getDungeonMap(), encounterManager.getButtonGrid(), currentHero);
         System.out.println("Marking Attack Distance");
-        pathFinder.checkTheAttacksRange(currentHero, encounterManager.getDungeonMap(), buttonGrid, selectedPower);
+        pathFinder.checkTheAttacksRange(currentHero, encounterManager.getDungeonMap(), encounterManager.getButtonGrid(), selectedPower);
         System.out.println("Attack Range Marked");
         currentHeroPowers.clear();
         currentHeroPowers.add(selectedPower);
@@ -252,7 +251,7 @@ public class DungeonButtonEvents {
                     int finalI = i;
                     int finalJ = j;
                     encounterManager.getButtonGrid()[i][j].setOnAction(event -> eventOnAttackingAMonster(finalI, finalJ, currentHeroPowers));
-                    encounterManager.getButtonGrid()[i][j].setOnMouseEntered(event -> paintTheTilesInRange(buttonGrid, finalI, finalJ, burstValue));
+                    encounterManager.getButtonGrid()[i][j].setOnMouseEntered(event -> paintTheTilesInRange(encounterManager.getButtonGrid(), finalI, finalJ, burstValue));
                     encounterManager.getButtonGrid()[i][j].setOnMouseExited(event -> mapManager.updateMapGraphics(true));
                 } else {
                     encounterManager.getButtonGrid()[i][j].setOnMouseExited(event -> mapManager.updateMapGraphics(true));
