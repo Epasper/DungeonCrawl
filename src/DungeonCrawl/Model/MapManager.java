@@ -18,19 +18,19 @@ public class MapManager {
     private EncounterManager encounterManager;
     private int mapWidth;
     private int mapHeight;
-    private Button[][] buttonGrid;
+//    private Button[][] buttonGrid;
     private DungeonMap dungeonMap;
 
-    Button[][] getButtonGrid() {
+/*    Button[][] getButtonGrid() {
         return buttonGrid;
-    }
+    }*/
 
     public MapManager(int mapWidth, int mapHeight, EncounterManager encounterManager) {
         this.mapWidth = mapWidth;
         this.mapHeight = mapHeight;
         this.encounterManager = encounterManager;
         this.dungeonMap = encounterManager.getDungeonMap();
-        buttonGrid = encounterManager.getButtonGrid();
+        //buttonGrid = encounterManager.getButtonGrid();
         heroManager = encounterManager.getHeroManager();
     }
 
@@ -63,15 +63,15 @@ public class MapManager {
                 typeOfTile = dungeonMap.getMapTilesArray()[i][j].getTypeOfTile();
                 //debug mode only - make the whole dungeonMap alreadyDiscovered:
                 //dungeonMap.getMapTilesArray()[i][j].alreadyDiscovered = true;
-                dungeonImageLibraryGUI.applyATileImageToAButton(typeOfTile, buttonGrid[i][j]);
+                dungeonImageLibraryGUI.applyATileImageToAButton(typeOfTile, encounterManager.getButtonGrid()[i][j]);
                 if (dungeonMap.getMapTilesArray()[i][j].isInRangedAttackRange() && shouldWalkingTilesUpgradeBeSkipped) {
-                    buttonGrid[i][j].setStyle(FieldColors.ATTACK_RANGE);
+                    encounterManager.getButtonGrid()[i][j].setStyle(FieldColors.ATTACK_RANGE);
                 }
                 if (currentEntityID > 0) {
-                    applyEntityIconToAButton(currentEntityID, buttonGrid[i][j], dungeonMap.getMapTilesArray()[i][j].getOccupyingCreatureUniqueID());
+                    applyEntityIconToAButton(currentEntityID, encounterManager.getButtonGrid()[i][j], dungeonMap.getMapTilesArray()[i][j].getOccupyingCreatureUniqueID());
                 }
                 if (!dungeonMap.getMapTilesArray()[i][j].isAlreadyDiscovered()) {
-                    dungeonImageLibraryGUI.applyATileImageToAButton("Fog", buttonGrid[i][j]);
+                    dungeonImageLibraryGUI.applyATileImageToAButton("Fog", encounterManager.getButtonGrid()[i][j]);
                 }
             }
         }

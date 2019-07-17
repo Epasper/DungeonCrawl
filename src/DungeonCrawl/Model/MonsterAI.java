@@ -40,12 +40,11 @@ public class MonsterAI extends EncounterManager {
     }
 
     public boolean checkIfTheHeroIsWithinMeleeRange(EncounterManager encounterManager, Monster monster, int idOfHeroToBeChecked) {
-        DungeonMap map = encounterManager.getDungeonMap();
         int monsterXPos = monster.getMapXPos();
         int monsterYPos = monster.getMapYPos();
         for (int i = -1; i < 2; i++) { //todo in future, set this loop for melee reach instead of 1
             for (int j = -1; j < 2; j++) {
-                if (map.getMapTilesArray()[monsterXPos + i][monsterYPos + j].getOccupyingCreatureTypeId() == idOfHeroToBeChecked) {
+                if (encounterManager.getDungeonMap().getMapTilesArray()[monsterXPos + i][monsterYPos + j].getOccupyingCreatureTypeId() == idOfHeroToBeChecked) {
                     return true;
                 }
             }
@@ -141,7 +140,7 @@ public class MonsterAI extends EncounterManager {
         return surroundings;
     }
 
-    public void moveIntoMeleeRange(MapManager encounterManager, Monster monster, Hero attackedHero, double monsterSpeed, int XDirection, int YDirection) {
+    public void moveIntoMeleeRange(EncounterManager encounterManager, Monster monster, Hero attackedHero, double monsterSpeed, int XDirection, int YDirection) {
         if (monsterSpeed < 1) {
             setHasThisMonsterFinishedMoving(true);
         }
@@ -156,10 +155,12 @@ public class MonsterAI extends EncounterManager {
                 try {
                     //System.out.println("Current int:" + currentInt);
                     if (currentInt == attackedHero.getID()) {
+                        verifyIfTheMonsterShouldAttack(encounterManager,monster, attackedHero);
                         System.out.println("FOUND A NEIGHBORING HERO; RETURNING");
                         return;
                     }
                 } catch (NullPointerException e) {
+                    verifyIfTheMonsterShouldAttack(encounterManager,monster, attackedHero);
                     System.out.println("FOUND A NEIGHBORING HERO; RETURNING");
                     return;
                 }

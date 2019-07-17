@@ -3,8 +3,6 @@ package DungeonCrawl.Model;
 import DungeonCrawl.GUI.GUIAnimations;
 import DungeonCrawl.GUI.GUIUtilities;
 import DungeonCrawl.HeroPowers.HeroPower;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.scene.control.Button;
 
 import java.util.ArrayList;
@@ -25,6 +23,19 @@ public class EncounterManager extends MapManager {
     private int globalInitiative = 0;
     private boolean isThisTheMonstersTurn;
     private boolean hasThisMonsterFinishedMoving;
+
+    public EncounterManager() {
+    }
+
+    public EncounterManager(HeroManager heroManager, Button[][] buttonGrid, PathFinder pathFinder) {
+        this.heroManager = heroManager;
+        this.buttonGrid = buttonGrid;
+        this.pathFinder = pathFinder;
+    }
+
+    public void setButtonGrid(Button[][] buttonGrid) {
+        this.buttonGrid = buttonGrid;
+    }
 
     List<Monster> getDiscoveredMonsters() {
         return discoveredMonsters;
@@ -64,15 +75,6 @@ public class EncounterManager extends MapManager {
 
     public HeroManager getHeroManager() {
         return heroManager;
-    }
-
-    public EncounterManager() {
-    }
-
-    public EncounterManager(HeroManager heroManager, Button[][] buttonGrid, PathFinder pathFinder) {
-        this.heroManager = heroManager;
-        this.buttonGrid = buttonGrid;
-        this.pathFinder = pathFinder;
     }
 
     public boolean isHasTheCharacterBeenSelected() {
@@ -457,12 +459,13 @@ public class EncounterManager extends MapManager {
         animations.heroClickAnimation(buttonGrid[monster.getMapXPos()][monster.getMapYPos()]);
         int attackedHeroId = monsterAI.makeAnAggressionRoll(heroManager.getHeroList(), monster);
         Hero attackedHero = guiUtilities.getHeroByID(attackedHeroId, heroManager.getHeroList());
-        verifyIfTheMonsterShouldAttack(monster, monsterAI, animations, attackedHeroId, attackedHero);
+        verifyIfTheMonsterShouldAttack(this, monster, attackedHero);
     }
 
-    public void verifyIfTheMonsterShouldAttack(Monster monster, MonsterAI monsterAI, GUIAnimations animations, int attackedHeroId, Hero attackedHero) {
-        if (monsterAI.checkIfTheHeroIsWithinMeleeRange(this, monster, attackedHeroId)) {
-            foundAHeroToAttack(monster, monsterAI, animations, attackedHero);
+    public void verifyIfTheMonsterShouldAttack(EncounterManager encounterManager, Monster monster, Hero attackedHero) {
+        MonsterAI monsterAI = new MonsterAI();
+        if (monsterAI.checkIfTheHeroIsWithinMeleeRange(encounterManager, monster, attackedHero.getID())) {
+            foundAHeroToAttack(encounterManager, monster, monsterAI, attackedHero);
         } else {
             double distance = monsterAI.determineTheDistanceToAttackedHero(monster, attackedHero);
             monsterAI.moveIntoMeleeRange(this, monster, attackedHero, monster.getCurrentSpeed(), 0, 0);
@@ -473,14 +476,15 @@ public class EncounterManager extends MapManager {
 
     //todo consider centering the screen on the active hero
 
-    private void foundAHeroToAttack(Monster monster, MonsterAI monsterAI, GUIAnimations animations, Hero attackedHero) {
+    private void foundAHeroToAttack(EncounterManager encounterManager, Monster monster, MonsterAI monsterAI, Hero attackedHero) {
+        GUIAnimations animations = new GUIAnimations();
         System.out.println(ConsoleColors.ANSI_GREEN + "Hero found in melee range. Attacking!" + ConsoleColors.ANSI_RESET);
         AttackResults results = monsterAI.attackAHero(monster, attackedHero);
         System.out.println(ConsoleColors.ANSI_PURPLE + "Hit: " + results.isHitSuccess() +
                 " for " + results.getDamage() + " damage." + ConsoleColors.ANSI_RESET);
         attackedHero.setHitPoints(attackedHero.getHitPoints() - results.getDamage());
         animations.creatureWasHitAnimation(
-                buttonGrid[attackedHero.getMapXPos()][attackedHero.getMapYPos()]);
+                encounterManager.getButtonGrid()[attackedHero.getMapXPos()][attackedHero.getMapYPos()]);
         System.out.println(
                 ConsoleColors.ANSI_PURPLE + "Monster: " + monster.getMonsterName()
                         + " is attacking a hero: " + attackedHero.getHeroName()

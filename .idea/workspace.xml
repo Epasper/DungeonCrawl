@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="de97b43a-8902-45e2-a345-dc80bad4fa20" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/Model/DungeonButtonEvents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/Model/DungeonButtonEvents.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/Model/EncounterManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/Model/EncounterManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/Model/MapManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/Model/MapManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/Model/MonsterAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/Model/MonsterAI.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -25,44 +27,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/DungeonMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="327" column="10" selection-start-line="327" selection-start-column="10" selection-end-line="327" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Cleric/LanceOfFaith.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/EncounterManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="462" column="10" selection-start-line="462" selection-start-column="10" selection-end-line="462" selection-end-column="10" />
+            <state relative-caret-position="256">
+              <caret line="489" selection-start-line="489" selection-end-line="489" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1094#1095#0" expanded="true" />
-                <element signature="e#1145#1146#0" expanded="true" />
-                <element signature="e#2284#2285#0" expanded="true" />
-                <element signature="e#2328#2329#0" expanded="true" />
-                <element signature="e#2399#2400#0" expanded="true" />
-                <element signature="e#2458#2459#0" expanded="true" />
+                <element signature="e#20480#20481#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Cleric/SacredFlame.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/EncounterManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
+            <state relative-caret-position="243">
+              <caret line="486" column="48" selection-start-line="486" selection-start-column="48" selection-end-line="486" selection-end-column="48" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1272#1273#0" expanded="true" />
+                <element signature="e#1316#1317#0" expanded="true" />
+                <element signature="e#1094#1095#0" expanded="true" />
+                <element signature="e#1145#1146#0" expanded="true" />
+                <element signature="e#1847#1848#0" expanded="true" />
+                <element signature="e#1880#1881#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -70,19 +57,51 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/HeroPower.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
+            <state relative-caret-position="3094">
               <caret line="292" column="20" selection-start-line="292" selection-start-column="11" selection-end-line="292" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/MonsterAI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="192" column="86" selection-start-line="192" selection-start-column="86" selection-end-line="192" selection-end-column="86" />
+            <state relative-caret-position="76">
+              <caret line="43" column="47" lean-forward="true" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/MapTile.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="107">
+              <caret line="69" selection-start-line="69" selection-end-line="69" />
+              <folding>
+                <element signature="e#1646#1647#0" expanded="true" />
+                <element signature="e#1679#1680#0" expanded="true" />
+                <element signature="e#2013#2014#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/Creature.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="123">
+              <caret line="201" selection-start-line="201" selection-end-line="201" />
+              <folding>
+                <element signature="e#881#882#0" expanded="true" />
+                <element signature="e#926#927#0" expanded="true" />
+                <element signature="e#999#1000#0" expanded="true" />
+                <element signature="e#1060#1061#0" expanded="true" />
+                <element signature="e#2930#2931#0" expanded="true" />
+                <element signature="e#2964#2965#0" expanded="true" />
+                <element signature="e#4577#4578#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -91,8 +110,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/DungeonButtonEvents.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="80" column="28" selection-start-line="80" selection-start-column="28" selection-end-line="80" selection-end-column="28" />
+            <state relative-caret-position="153">
+              <caret line="74" column="73" selection-start-line="74" selection-start-column="73" selection-end-line="74" selection-end-column="73" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -103,7 +122,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/PathFinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
+            <state relative-caret-position="4386">
               <caret line="275" column="42" selection-start-line="275" selection-start-column="42" selection-end-line="275" selection-end-column="42" />
             </state>
           </provider>
@@ -112,7 +131,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/StaticRules/HeroClassInformation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
+            <state relative-caret-position="1326">
               <caret line="120" column="11" selection-start-line="120" selection-start-column="11" selection-end-line="120" selection-end-column="11" />
             </state>
           </provider>
@@ -121,9 +140,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/MapManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="72" column="80" lean-forward="true" selection-start-line="72" selection-start-column="80" selection-end-line="72" selection-end-column="80" />
+            <state relative-caret-position="-63">
+              <caret line="73" column="107" selection-start-line="73" selection-start-column="107" selection-end-line="73" selection-end-column="107" />
               <folding>
+                <element signature="e#1280#1281#0" expanded="true" />
+                <element signature="e#1313#1314#0" expanded="true" />
                 <element signature="e#1452#1453#0" expanded="true" />
                 <element signature="e#1492#1493#0" expanded="true" />
               </folding>
@@ -239,11 +260,11 @@
         <option value="$PROJECT_DIR$/src/AnimationSequenceTest.java" />
         <option value="$PROJECT_DIR$/src/DungeonCrawl/GUI/GUIAnimations.java" />
         <option value="$PROJECT_DIR$/src/DungeonCrawl/GUI/DungeonGUI.java" />
-        <option value="$PROJECT_DIR$/src/DungeonCrawl/Model/MapManager.java" />
         <option value="$PROJECT_DIR$/src/DungeonCrawl/Model/PathFinder.java" />
+        <option value="$PROJECT_DIR$/src/DungeonCrawl/Model/MapManager.java" />
         <option value="$PROJECT_DIR$/src/DungeonCrawl/Model/DungeonButtonEvents.java" />
-        <option value="$PROJECT_DIR$/src/DungeonCrawl/Model/EncounterManager.java" />
         <option value="$PROJECT_DIR$/src/DungeonCrawl/Model/MonsterAI.java" />
+        <option value="$PROJECT_DIR$/src/DungeonCrawl/Model/EncounterManager.java" />
       </list>
     </option>
   </component>
@@ -261,10 +282,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1481" />
-    <option name="y" value="-300" />
-    <option name="width" value="1366" />
-    <option name="height" value="738" />
+    <option name="x" value="170" />
+    <option name="y" value="92" />
+    <option name="width" value="1026" />
+    <option name="height" value="554" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -331,8 +352,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -461,13 +482,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1556870921453</updated>
-    </task>
-    <task id="LOCAL-00153" summary="added new todos and changed some minor things.">
-      <created>1562156959315</created>
-      <option name="number" value="00153" />
-      <option name="presentableId" value="LOCAL-00153" />
-      <option name="project" value="LOCAL" />
-      <updated>1562156959318</updated>
     </task>
     <task id="LOCAL-00154" summary="Encounter and Daily Power now lock after being used. Unlocking at the next encounter is still TBD">
       <created>1562227303183</created>
@@ -805,7 +819,14 @@
       <option name="project" value="LOCAL" />
       <updated>1563277274164</updated>
     </task>
-    <option name="localTasksCounter" value="202" />
+    <task id="LOCAL-00202" summary="Monster AI - beginning of verification of the distance after walking.">
+      <created>1563281435694</created>
+      <option name="number" value="00202" />
+      <option name="presentableId" value="LOCAL-00202" />
+      <option name="project" value="LOCAL" />
+      <updated>1563281435694</updated>
+    </task>
+    <option name="localTasksCounter" value="203" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -824,10 +845,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="-290" width="1696" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49892932" visible="true" weight="0.13508557" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49892932" visible="true" weight="0.13691376" />
       <window_info id="Structure" order="1" sideWeight="0.5010707" side_tool="true" weight="0.2200489" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -836,15 +857,15 @@
       <window_info id="Favorites" order="6" sideWeight="0.5010707" side_tool="true" weight="0.2200489" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32869378" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.54765505" visible="true" weight="0.18522485" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49633253" weight="0.27730194" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.54765505" weight="0.18488745" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49633253" visible="true" weight="0.4067524" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.76475036" weight="0.254818" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.21382637" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.45234492" side_tool="true" weight="0.27813506" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.49356914" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.30942184" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.30868167" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.25" />
       <window_info anchor="right" id="Palette" order="2" />
@@ -857,7 +878,6 @@
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="StackOverflow Exception when selecting a single hero for the dungeon has been fixed." />
     <MESSAGE value="Item Shop has been also changed to using JSON" />
     <MESSAGE value="Cleaned ToDos, added new ToDos" />
     <MESSAGE value="Added a button that changes the console size" />
@@ -882,7 +902,32 @@
     <MESSAGE value="Monster AI - animation for monsters is working, but the map is not updating properly at the end f animations" />
     <MESSAGE value="Monster AI - animation got fixed, but monsters are still going through walls." />
     <MESSAGE value="Power Buttons - disabling a power button now takes place after using a power rather than selecting it" />
-    <option name="LAST_COMMIT_MESSAGE" value="Power Buttons - disabling a power button now takes place after using a power rather than selecting it" />
+    <MESSAGE value="Monster AI - beginning of verification of the distance after walking." />
+    <option name="LAST_COMMIT_MESSAGE" value="Monster AI - beginning of verification of the distance after walking." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/DungeonCrawl/Model/EncounterManager.java</url>
+          <line>486</line>
+          <properties />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/DungeonCrawl/Model/EncounterManager.java</url>
+          <line>485</line>
+          <properties />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/DungeonCrawl/Model/EncounterManager.java</url>
+          <line>484</line>
+          <properties />
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -988,18 +1033,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/MapTile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="57" selection-start-line="57" selection-end-line="57" />
-          <folding>
-            <element signature="e#1679#1680#0" expanded="true" />
-            <element signature="e#1967#1968#0" expanded="true" />
-            <element signature="e#2013#2014#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/sql/Time.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -1090,21 +1123,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2245">
           <caret line="63" column="33" selection-start-line="63" selection-start-column="33" selection-end-line="63" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/Creature.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
-          <folding>
-            <element signature="e#881#882#0" expanded="true" />
-            <element signature="e#926#927#0" expanded="true" />
-            <element signature="e#999#1000#0" expanded="true" />
-            <element signature="e#1060#1061#0" expanded="true" />
-            <element signature="e#2930#2931#0" expanded="true" />
-            <element signature="e#2964#2965#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1226,13 +1244,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/PathFinder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="275" column="42" selection-start-line="275" selection-start-column="42" selection-end-line="275" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/Cleric/LanceOfFaith.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -1247,25 +1258,72 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/HeroPower.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3094">
+          <caret line="292" column="20" selection-start-line="292" selection-start-column="11" selection-end-line="292" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/PathFinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4386">
+          <caret line="275" column="42" selection-start-line="275" selection-start-column="42" selection-end-line="275" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/StaticRules/HeroClassInformation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
+        <state relative-caret-position="1326">
           <caret line="120" column="11" selection-start-line="120" selection-start-column="11" selection-end-line="120" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/Creature.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="201" selection-start-line="201" selection-end-line="201" />
+          <folding>
+            <element signature="e#881#882#0" expanded="true" />
+            <element signature="e#926#927#0" expanded="true" />
+            <element signature="e#999#1000#0" expanded="true" />
+            <element signature="e#1060#1061#0" expanded="true" />
+            <element signature="e#2930#2931#0" expanded="true" />
+            <element signature="e#2964#2965#0" expanded="true" />
+            <element signature="e#4577#4578#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/MapTile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="69" selection-start-line="69" selection-end-line="69" />
+          <folding>
+            <element signature="e#1646#1647#0" expanded="true" />
+            <element signature="e#1679#1680#0" expanded="true" />
+            <element signature="e#2013#2014#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/DungeonMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="327" column="10" selection-start-line="327" selection-start-column="10" selection-end-line="327" selection-end-column="10" />
+        <state relative-caret-position="256">
+          <caret line="489" selection-start-line="489" selection-end-line="489" />
+          <folding>
+            <element signature="e#20480#20481#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/MapManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="72" column="80" lean-forward="true" selection-start-line="72" selection-start-column="80" selection-end-line="72" selection-end-column="80" />
+        <state relative-caret-position="-63">
+          <caret line="73" column="107" selection-start-line="73" selection-start-column="107" selection-end-line="73" selection-end-column="107" />
           <folding>
+            <element signature="e#1280#1281#0" expanded="true" />
+            <element signature="e#1313#1314#0" expanded="true" />
             <element signature="e#1452#1453#0" expanded="true" />
             <element signature="e#1492#1493#0" expanded="true" />
           </folding>
@@ -1274,43 +1332,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/DungeonButtonEvents.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="80" column="28" selection-start-line="80" selection-start-column="28" selection-end-line="80" selection-end-column="28" />
+        <state relative-caret-position="153">
+          <caret line="74" column="73" selection-start-line="74" selection-start-column="73" selection-end-line="74" selection-end-column="73" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/HeroPowers/HeroPower.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="292" column="20" selection-start-line="292" selection-start-column="11" selection-end-line="292" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/EncounterManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="462" column="10" selection-start-line="462" selection-start-column="10" selection-end-line="462" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1094#1095#0" expanded="true" />
-            <element signature="e#1145#1146#0" expanded="true" />
-            <element signature="e#2284#2285#0" expanded="true" />
-            <element signature="e#2328#2329#0" expanded="true" />
-            <element signature="e#2399#2400#0" expanded="true" />
-            <element signature="e#2458#2459#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/MonsterAI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="192" column="86" selection-start-line="192" selection-start-column="86" selection-end-line="192" selection-end-column="86" />
+        <state relative-caret-position="76">
+          <caret line="43" column="47" lean-forward="true" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/EncounterManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="486" column="48" selection-start-line="486" selection-start-column="48" selection-end-line="486" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1272#1273#0" expanded="true" />
+            <element signature="e#1316#1317#0" expanded="true" />
+            <element signature="e#1094#1095#0" expanded="true" />
+            <element signature="e#1145#1146#0" expanded="true" />
+            <element signature="e#1847#1848#0" expanded="true" />
+            <element signature="e#1880#1881#0" expanded="true" />
           </folding>
         </state>
       </provider>

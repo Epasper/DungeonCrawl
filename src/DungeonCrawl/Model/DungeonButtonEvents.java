@@ -33,7 +33,7 @@ public class DungeonButtonEvents {
         this.powersHBox = powersHBox;
         this.currentHeroPowers = currentHeroPowers;
         pathFinder = encounterManager.getPathFinder();
-        buttonGrid = mapManager.getButtonGrid();
+       // buttonGrid = mapManager.getButtonGrid();
         heroManager = encounterManager.getHeroManager();
     }
 
@@ -72,7 +72,7 @@ public class DungeonButtonEvents {
         clearHoverEvents();
         mapManager.getDungeonMap().clearMapReachableProperties();
         encounterManager.manageHeroClicking(currentHeroID);
-        guiAnimations.heroClickAnimation(buttonGrid[XPos][YPos]);
+        guiAnimations.heroClickAnimation(encounterManager.getButtonGrid()[XPos][YPos]);
         updateButtonsWithSkillIcons(guiUtilities.getHeroByID(currentHeroID, heroManager.getHeroList()));
         isTheTileInteractive = encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange();
         return isTheTileInteractive;
@@ -236,9 +236,9 @@ public class DungeonButtonEvents {
             for (int j = 0; j < dungeonMap.getNumberOfTilesY(); j++) {
                 int finalJ = j;
                 int finalI = i;
-                buttonGrid[i][j].setOnAction(event -> buttonEvent(finalI, finalJ, currentHeroPowers));
-                buttonGrid[i][j].setOnMouseEntered(null);
-                buttonGrid[i][j].setOnMouseExited(null);
+                encounterManager.getButtonGrid()[i][j].setOnAction(event -> buttonEvent(finalI, finalJ, currentHeroPowers));
+                encounterManager.getButtonGrid()[i][j].setOnMouseEntered(null);
+                encounterManager.getButtonGrid()[i][j].setOnMouseExited(null);
             }
         }
         System.out.println("Hover Events Cleared");
@@ -251,11 +251,11 @@ public class DungeonButtonEvents {
                 if (dungeonMap.getMapTilesArray()[i][j].isInRangedAttackRange()) {
                     int finalI = i;
                     int finalJ = j;
-                    buttonGrid[i][j].setOnAction(event -> eventOnAttackingAMonster(finalI, finalJ, currentHeroPowers));
-                    buttonGrid[i][j].setOnMouseEntered(event -> paintTheTilesInRange(buttonGrid, finalI, finalJ, burstValue));
-                    buttonGrid[i][j].setOnMouseExited(event -> mapManager.updateMapGraphics(true));
+                    encounterManager.getButtonGrid()[i][j].setOnAction(event -> eventOnAttackingAMonster(finalI, finalJ, currentHeroPowers));
+                    encounterManager.getButtonGrid()[i][j].setOnMouseEntered(event -> paintTheTilesInRange(buttonGrid, finalI, finalJ, burstValue));
+                    encounterManager.getButtonGrid()[i][j].setOnMouseExited(event -> mapManager.updateMapGraphics(true));
                 } else {
-                    buttonGrid[i][j].setOnMouseExited(event -> mapManager.updateMapGraphics(true));
+                    encounterManager.getButtonGrid()[i][j].setOnMouseExited(event -> mapManager.updateMapGraphics(true));
                 }
             }
         }
