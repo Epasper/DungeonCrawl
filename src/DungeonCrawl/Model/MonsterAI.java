@@ -219,8 +219,9 @@ public class MonsterAI extends EncounterManager {
 
     //todo monsters should attack one-by-one instead of all at once.
 
-    private void determineADifferentDirection(MapManager encounterManager, Monster monster, Hero attackedHero, int[][] monsterSurroundings, double distance, int XDirection, int YDirection) {
-
+    private void determineADifferentDirection(EncounterManager encounterManager, Monster monster, Hero attackedHero, int[][] monsterSurroundings, double distance, int XDirection, int YDirection) {
+//todo delete this call and set a proper method
+        encounterManager.endTheMonstersRound(monster);
         /*int deltaX = Math.abs(monster.getMapXPos() - attackedHero.getMapXPos());
         int deltaY = Math.abs(monster.getMapYPos() - attackedHero.getMapYPos());
         if (deltaX == 0) {
