@@ -141,9 +141,6 @@ public class MonsterAI extends EncounterManager {
     }
 
     public void moveIntoMeleeRange(EncounterManager encounterManager, Monster monster, Hero attackedHero, double monsterSpeed, int XDirection, int YDirection) {
-        if (monsterSpeed < 1) {
-            setHasThisMonsterFinishedMoving(true);
-        }
         DungeonMap map = encounterManager.getDungeonMap();
         System.out.println("The map given: " + map.toString() + " X: " + map.getNumberOfTilesX() + " Y: " + map.getNumberOfTilesY());
         int[][] monsterSurroundings = determineSurroundings(encounterManager, monster, attackedHero);
@@ -151,20 +148,26 @@ public class MonsterAI extends EncounterManager {
                 + "Current Monster Coordinates: X:" + monster.getMapXPos() + " - - Y:" + monster.getMapYPos()
                 + ConsoleColors.ANSI_RESET);
         for (int[] currentArray : monsterSurroundings) {
-            for (int currentInt : currentArray) {
+            for (int currentSurroundingCheck : currentArray) {
                 try {
                     //System.out.println("Current int:" + currentInt);
-                    if (currentInt == attackedHero.getID()) {
-                        verifyIfTheMonsterShouldAttack(encounterManager,monster, attackedHero);
+                    if (currentSurroundingCheck == attackedHero.getID()) {
+                        verifyIfTheMonsterShouldAttack(encounterManager, monster, attackedHero);
                         System.out.println("FOUND A NEIGHBORING HERO; RETURNING");
+                        encounterManager.endTheMonstersRound(monster);
                         return;
                     }
                 } catch (NullPointerException e) {
-                    verifyIfTheMonsterShouldAttack(encounterManager,monster, attackedHero);
+                    verifyIfTheMonsterShouldAttack(encounterManager, monster, attackedHero);
                     System.out.println("FOUND A NEIGHBORING HERO; RETURNING");
+                    encounterManager.endTheMonstersRound(monster);
                     return;
                 }
             }
+        }
+        if (monsterSpeed < 1) {
+            encounterManager.endTheMonstersRound(monster);
+            return;
         }
         if (XDirection == 0) {
             if (monster.getMapXPos() > attackedHero.getMapXPos()) {
@@ -214,7 +217,10 @@ public class MonsterAI extends EncounterManager {
 
     //todo after tapping spacebar, center the screen on current Creature
 
+    //todo monsters should attack one-by-one instead of all at once.
+
     private void determineADifferentDirection(MapManager encounterManager, Monster monster, Hero attackedHero, int[][] monsterSurroundings, double distance, int XDirection, int YDirection) {
+
         /*int deltaX = Math.abs(monster.getMapXPos() - attackedHero.getMapXPos());
         int deltaY = Math.abs(monster.getMapYPos() - attackedHero.getMapYPos());
         if (deltaX == 0) {

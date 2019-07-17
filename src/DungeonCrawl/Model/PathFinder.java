@@ -350,6 +350,7 @@ public class PathFinder extends EncounterManager{
         int YPos = hero.getMapYPos();
         setTheRoomAsVisible(XPos, YPos, dungeonMap, allMonstersList);
         if (alarmedMonsterVisible && !fightAlreadyTakingPlace) {
+            System.out.println(ConsoleColors.ANSI_YELLOW + "Roll for Initiative!" + ConsoleColors.ANSI_RESET);
             for (Monster monster : discoveredMonsters) {
                 System.out.println("Passing the monster: " + monster.getMonsterName() + " UUID: " + monster.getCurrentMonsterUniqueID());
             }

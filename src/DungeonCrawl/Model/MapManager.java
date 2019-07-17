@@ -52,10 +52,6 @@ public class MapManager {
     //todo implement some random elements into room spawning - chairs, pillars, rubble and other.
 
     public void updateMapGraphics(boolean shouldWalkingTilesUpgradeBeSkipped) {
-        String breakline = "br";
-        System.out.println(mapHeight);
-        System.out.println(mapWidth);
-        System.out.println(breakline);
         for (int i = 0; i < mapWidth; i++) {
             for (int j = 0; j < mapHeight; j++) {
                 int currentEntityID = dungeonMap.getMapTilesArray()[i][j].getOccupyingCreatureTypeId();
@@ -75,7 +71,6 @@ public class MapManager {
                 }
             }
         }
-        System.out.println(breakline);
     }
 
     private void applyEntityIconToAButton(int heroID, Button aButton, int uniqueMonsterID) {

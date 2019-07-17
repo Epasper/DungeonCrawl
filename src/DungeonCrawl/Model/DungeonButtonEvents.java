@@ -144,6 +144,7 @@ public class DungeonButtonEvents {
             encounterManager.endTheCurrentHeroMovement(hero);
         }
         if (!encounterManager.isEncounterOnline()) {
+            encounterManager.setGlobalInitiative(0);
             encounterManager.resetAllHeroesSpeedToMax();
             shouldEncounterGetTriggered = pathFinder.checkIfTheEncounterShouldStart
                     (encounterManager.getAllMonstersList(), heroManager.getHeroList(), hero, encounterManager.getDungeonMap(), encounterManager.isEncounterOnline());

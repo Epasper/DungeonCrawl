@@ -107,6 +107,9 @@ public class EncounterManager extends MapManager {
 
     public void manageHeroClicking(int currentHeroID) {
         Hero currentHero = guiUtilities.getHeroByID(currentHeroID, heroManager.getHeroList());
+        if (currentHero.getSpeed() < 1) {
+            endTheCurrentHeroMovement(currentHero);
+        }
         pathFinder.checkTheAvailableDistance(currentHero, dungeonMap, buttonGrid, "Available Distance");
         System.out.println(ConsoleColors.ANSI_GREEN + "Clicked the ID " + currentHeroID + " hero." + ConsoleColors.ANSI_RESET);
         heroManager.setCurrentlyActiveHeroID(currentHeroID);
@@ -228,6 +231,18 @@ public class EncounterManager extends MapManager {
         }
     }
 
+    public void endTheMonstersRound(Monster monster) {
+        monster.setFinishedMovement(true);
+        if (isEncounterOnline()) {
+            globalInitiative = monster.getCurrentInitiative();
+            globalInitiative++;
+            unlockTheNextCreatureInTheInitiativeOrder();
+        }
+        if (checkIfAllHeroesHaveMoved() && checkIfAllOfMonstersHaveMoved()) {
+            restartInitiative();
+        }
+    }
+
     private void restartInitiative() {
         setGlobalInitiative(0);
         for (Hero currentHero : heroManager.getHeroList()) {
@@ -334,7 +349,6 @@ public class EncounterManager extends MapManager {
         globalInitiative++;
         System.out.println("GLOBAL INITIATIVE SET TO: " + globalInitiative);
         monster.setFinishedMovement(true);
-        unlockTheNextCreatureInTheInitiativeOrder();
     }
 
     private void lockTheInactiveHeroButton(Button button) {
@@ -475,6 +489,11 @@ public class EncounterManager extends MapManager {
     //todo after killing a monster, hero should be able to step onto its tile
 
     //todo consider centering the screen on the active hero
+
+    //todo Hero turn should end when all of the actions are used up, not when his movement points are depleted.
+
+    //todo add treasure lists to dead creatures
+
 
     private void foundAHeroToAttack(EncounterManager encounterManager, Monster monster, MonsterAI monsterAI, Hero attackedHero) {
         GUIAnimations animations = new GUIAnimations();
