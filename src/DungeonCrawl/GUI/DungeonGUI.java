@@ -67,15 +67,12 @@ class DungeonGUI {
 
     //todo lock the possibility of attacking when no power is selected. After the attack, disable the power from currently selected powers.
 
-    //todo lock encounter powers on use until the end of encounter. Lock daily powers on use once every 3 encounters.
-    // Change the locking so that it locks after USING a power, not SELECTING it.
-
     /*todo add messages to console:
      CURRENTLY SELECTED POWER:
     ...
      */
 
-    //todo in future, change the portraits, so that each hero has a bigger portrait on the right and small icon on the field.
+    //todo change the portraits, so that each hero has a bigger portrait on the right and small icon on the field.
 
     //todo download some bigger portraits from the internet and use JavaFX resize to fit the big ones in the buttons
 

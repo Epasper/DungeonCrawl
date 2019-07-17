@@ -86,8 +86,6 @@ public class EquipmentGUI {
         return innerPane;
     }
 
-    //todo reverse the item putting when the slot is already occupied
-
     private void eventOnDragDetected(String slotName, Label currentLabel, String finalFilledSlot, MouseEvent event) {
         //System.out.println("Dragging Detected");
         //System.out.println("Slot Name: " + slotName);
