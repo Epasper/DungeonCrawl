@@ -1,11 +1,13 @@
 package DungeonCrawl.Model;
 
+import DungeonCrawl.GUI.DungeonGUI;
 import DungeonCrawl.GUI.FieldColors;
 import DungeonCrawl.GUI.GUIAnimations;
 import DungeonCrawl.GUI.GUIUtilities;
 import DungeonCrawl.GUI.Images.SkillIcons.SkillIcons;
 import DungeonCrawl.HeroPowers.HeroPower;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
@@ -22,23 +24,60 @@ public class DungeonButtonEvents {
     private EncounterManager encounterManager;
     private HBox powersHBox;
     private List<HeroPower> currentHeroPowers;
+    private DungeonGUI dungeonGUI;
 
-    public DungeonButtonEvents() {
-    }
-
-    public DungeonButtonEvents(EncounterManager encounterManager, MapManager mapManager, HBox powersHBox, List<HeroPower> currentHeroPowers) {
+    public DungeonButtonEvents(EncounterManager encounterManager, MapManager mapManager, HBox powersHBox, List<HeroPower> currentHeroPowers, DungeonGUI dungeonGUI) {
         this.encounterManager = encounterManager;
         this.mapManager = mapManager;
         this.powersHBox = powersHBox;
         this.currentHeroPowers = currentHeroPowers;
         pathFinder = encounterManager.getPathFinder();
-       // buttonGrid = mapManager.getButtonGrid();
         heroManager = encounterManager.getHeroManager();
+        this.dungeonGUI = dungeonGUI;
+    }
+
+    public void centerTheGUIOnCurrentCharacter(int ID, ScrollPane mapScrollPane) {
+        Creature currentCreature;
+        if (ID < 100) {
+            currentCreature = guiUtilities.getHeroByID(ID, heroManager.getHeroList());
+        } else {
+            currentCreature = guiUtilities.getSingleMonsterByUniqueID(ID, encounterManager.getAllMonstersList());
+        }
+        System.out.println("CENTERING:----------------------------------------");
+        System.out.println("Current ID " + ID);
+        System.out.println("XPos of current hero: " + currentCreature.getMapXPos());
+        System.out.println("YPos of current hero: " + currentCreature.getMapYPos());
+        System.out.println("Map Tiles X: " + mapManager.getDungeonMap().getNumberOfTilesX());
+        System.out.println("Map Tiles Y: " + mapManager.getDungeonMap().getNumberOfTilesY());
+        System.out.println("VMax: " + mapScrollPane.getVmax() + " VMin: " + mapScrollPane.getVmin());
+        System.out.println("HMax: " + mapScrollPane.getHmax() + " HMin: " + mapScrollPane.getHmin());
+        double newHValue = (double) currentCreature.getMapYPos() / (double) mapManager.getDungeonMap().getNumberOfTilesY();
+        double rescaledHValue = rescaleScrollerValue(newHValue, 0.25, 2.5);
+        double newVValue = (double) currentCreature.getMapXPos() / (double) mapManager.getDungeonMap().getNumberOfTilesX();
+        double rescaledVValue = rescaleScrollerValue(newVValue, 0.1, 1.2);
+        System.out.println("Values: " + newHValue + "  " + newVValue);
+        mapScrollPane.setHvalue(rescaledHValue);
+        mapScrollPane.setVvalue(rescaledVValue);
+        System.out.println("VValue: " + mapScrollPane.getVvalue() + " VValue: " + mapScrollPane.getVvalue());
+        System.out.println("HValue: " + mapScrollPane.getHvalue() + " HValue: " + mapScrollPane.getHvalue());
+        System.out.println("CENTERING ENDED-----------------------------------");
+    }
+
+    private double rescaleScrollerValue(double inputValue, double border, double slope) {
+        //* maxValue;
+        if (inputValue < border) {
+            return 0;
+        } else if (inputValue > (1 - border)) {
+            return 1;
+        } else return (inputValue - border) * slope;
     }
 
     public void buttonEvent(int XPos, int YPos, List<HeroPower> currentHeroPowers) {
         String currentTypeOfTile = encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].getTypeOfTile();
         int currentHeroID = encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureTypeId();
+        if (currentHeroID > 0) {
+            centerTheGUIOnCurrentCharacter(currentHeroID, dungeonGUI.getMapScrollPane());
+        }
         boolean isTheTileInteractive = encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange();
         boolean isTheTileWithinReach = encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].isInRangedAttackRange();
         if (encounterManager.isHasTheCharacterBeenSelected() && currentHeroID > 0) {

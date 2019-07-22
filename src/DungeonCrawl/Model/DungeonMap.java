@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 public class DungeonMap extends MapManager {
-    private int corridorMaxLength = 8;
+    private int corridorMaxLength = 12;
     private int numberOfTilesY = 40;
     private int numberOfTilesX = 40;
     private MapTile[][] mapTilesArray = new MapTile[numberOfTilesX][numberOfTilesY];
@@ -119,19 +119,19 @@ public class DungeonMap extends MapManager {
         Random randomH = new Random();
         Random randomW = new Random();
         Room room = new Room();
-        room.roomYStartPos = initialYPos;
-        room.roomXStartPos = initialXPos;
-        int minRoomHeight = 7;
-        int maxRoomHeight = 12;
-        room.roomHeight = randomH.nextInt(maxRoomHeight - minRoomHeight);
-        int minRoomWidth = 7;
-        int maxRoomWidth = 12;
-        room.roomWidth = randomW.nextInt(maxRoomWidth - minRoomWidth);
-        room.roomHeight += minRoomHeight;
-        room.roomWidth += minRoomWidth;
+        room.setRoomYStartPos(initialYPos);
+        room.setRoomXStartPos(initialXPos);
+        int minRoomHeight = 10; //todo previous value:7
+        int maxRoomHeight = 15; //todo previous value:12
+        room.setRoomHeight(randomH.nextInt(maxRoomHeight - minRoomHeight));
+        int minRoomWidth = 10;
+        int maxRoomWidth = 15;
+        room.setRoomWidth(randomW.nextInt(maxRoomWidth - minRoomWidth));
+        room.setRoomHeight(room.getRoomHeight() + minRoomHeight);
+        room.setRoomWidth(room.getRoomWidth() + minRoomWidth);
         if (checkIfTheRoomCanBeSeeded(room)) {
-            for (int i = 0; i < room.roomWidth; i++) {
-                for (int j = 0; j < room.roomHeight; j++) {
+            for (int i = 0; i < room.getRoomWidth(); i++) {
+                for (int j = 0; j < room.getRoomHeight(); j++) {
                     seedASingleRoomTile(initialXPos, initialYPos, i, j);
                 }
             }
@@ -188,34 +188,34 @@ public class DungeonMap extends MapManager {
     private void seedCorridors(Room room) {
 
         Random randomH = new Random();
-        int VSpawn = randomH.nextInt(room.roomHeight - 2);
+        int VSpawn = randomH.nextInt(room.getRoomHeight() - 2);
         VSpawn++;
         Random randomV = new Random();
-        int HSpawn = randomV.nextInt(room.roomWidth - 2);
+        int HSpawn = randomV.nextInt(room.getRoomWidth() - 2);
         HSpawn++;
-        if (!searchForCrossingCorridors(room.roomXStartPos + room.roomWidth, room.roomXStartPos + room.roomWidth, "CorridorVertical")) {
+        if (!searchForCrossingCorridors(room.getRoomXStartPos() + room.getRoomWidth(), room.getRoomXStartPos() + room.getRoomWidth(), "CorridorVertical")) {
             for (int i = 0; i < corridorMaxLength; i++) {
                 try {
-                    if (!getMapTilesArray()[room.roomXStartPos + room.roomWidth + i][room.roomYStartPos + VSpawn].getTypeOfTile().contains("Room")) {
-                        getMapTilesArray()[room.roomXStartPos + room.roomWidth + i][room.roomYStartPos + VSpawn].setTypeOfTile("CorridorVertical");
+                    if (!getMapTilesArray()[room.getRoomXStartPos() + room.getRoomWidth() + i][room.getRoomYStartPos() + VSpawn].getTypeOfTile().contains("Room")) {
+                        getMapTilesArray()[room.getRoomXStartPos() + room.getRoomWidth() + i][room.getRoomYStartPos() + VSpawn].setTypeOfTile("CorridorVertical");
                     }
                 } catch (IndexOutOfBoundsException ignored) {
 
                 } catch (NullPointerException e) {
-                    getMapTilesArray()[room.roomXStartPos + room.roomWidth + i][room.roomYStartPos + VSpawn].setTypeOfTile("CorridorVertical");
+                    getMapTilesArray()[room.getRoomXStartPos() + room.getRoomWidth() + i][room.getRoomYStartPos() + VSpawn].setTypeOfTile("CorridorVertical");
                 }
             }
         }
-        if (!searchForCrossingCorridors(room.roomXStartPos + HSpawn, room.roomYStartPos + room.roomHeight, "CorridorHorizontal")) {
+        if (!searchForCrossingCorridors(room.getRoomXStartPos() + HSpawn, room.getRoomYStartPos() + room.getRoomHeight(), "CorridorHorizontal")) {
             for (int i = 0; i < corridorMaxLength; i++) {
                 try {
-                    if (!getMapTilesArray()[room.roomXStartPos + HSpawn][room.roomYStartPos + room.roomHeight + i].getTypeOfTile().contains("Room")) {
-                        getMapTilesArray()[room.roomXStartPos + HSpawn][room.roomYStartPos + room.roomHeight + i].setTypeOfTile("CorridorHorizontal");
+                    if (!getMapTilesArray()[room.getRoomXStartPos() + HSpawn][room.getRoomYStartPos() + room.getRoomHeight() + i].getTypeOfTile().contains("Room")) {
+                        getMapTilesArray()[room.getRoomXStartPos() + HSpawn][room.getRoomYStartPos() + room.getRoomHeight() + i].setTypeOfTile("CorridorHorizontal");
                     }
                 } catch (IndexOutOfBoundsException ignored) {
 
                 } catch (NullPointerException e) {
-                    getMapTilesArray()[room.roomXStartPos + HSpawn][room.roomYStartPos + room.roomHeight + i].setTypeOfTile("CorridorHorizontal");
+                    getMapTilesArray()[room.getRoomXStartPos() + HSpawn][room.getRoomYStartPos() + room.getRoomHeight() + i].setTypeOfTile("CorridorHorizontal");
                 }
             }
         }
@@ -223,10 +223,10 @@ public class DungeonMap extends MapManager {
 
     private boolean checkIfTheRoomHasEntrance(Room room) {
         boolean roomEntranceFound = false;
-        for (int i = 0; i < room.roomWidth; i++) {
-            for (int j = 0; j < room.roomHeight; j++) {
+        for (int i = 0; i < room.getRoomWidth(); i++) {
+            for (int j = 0; j < room.getRoomHeight(); j++) {
                 try {
-                    if (getMapTilesArray()[room.roomXStartPos + i][room.roomYStartPos + j].getTypeOfTile().contains("Corridor")) {
+                    if (getMapTilesArray()[room.getRoomXStartPos() + i][room.getRoomYStartPos() + j].getTypeOfTile().contains("Corridor")) {
                         roomEntranceFound = true;
                         break;
                     }
@@ -244,11 +244,11 @@ public class DungeonMap extends MapManager {
         boolean seedingAllowed = true;
         boolean roomHasEntrance;
         try {
-            for (int i = -1; i < room.roomWidth + 1; i++) {
-                for (int j = -1; j < room.roomHeight + 1; j++) {
+            for (int i = -1; i < room.getRoomWidth() + 1; i++) {
+                for (int j = -1; j < room.getRoomHeight() + 1; j++) {
                     if (i != 0 || j != 0) {
                         try {
-                            if (getMapTilesArray()[room.roomXStartPos + i][room.roomYStartPos + j].getTypeOfTile().contains("Room")) {
+                            if (getMapTilesArray()[room.getRoomXStartPos() + i][room.getRoomYStartPos() + j].getTypeOfTile().contains("Room")) {
                                 seedingAllowed = false;
                                 break;
                             }
@@ -338,16 +338,16 @@ public class DungeonMap extends MapManager {
             System.out.println(currentMonster.getMonsterName() + " Monster Experience: " + currentMonster.getXpValue());
         }
         for (int i = 0; i < monsterList.size(); i++) {
-            currentMonsterXPos = randX.nextInt(room.roomWidth);
-            currentMonsterYPos = randY.nextInt(room.roomHeight);
+            currentMonsterXPos = randX.nextInt(room.getRoomWidth());
+            currentMonsterYPos = randY.nextInt(room.getRoomHeight());
             Monster currentMonster = monsterList.get(i);
             System.out.println("Monster UUID: " + currentMonster.getCurrentMonsterUniqueID() + "---" + currentMonsterUniqueID);
-            if (getMapTilesArray()[room.roomXStartPos + currentMonsterXPos][room.roomYStartPos + currentMonsterYPos].getOccupyingCreatureTypeId() == 0) {
-                getMapTilesArray()[room.roomXStartPos + currentMonsterXPos][room.roomYStartPos + currentMonsterYPos].setOccupyingCreatureTypeId(currentMonster.getID());
+            if (getMapTilesArray()[room.getRoomXStartPos() + currentMonsterXPos][room.getRoomYStartPos() + currentMonsterYPos].getOccupyingCreatureTypeId() == 0) {
+                getMapTilesArray()[room.getRoomXStartPos() + currentMonsterXPos][room.getRoomYStartPos() + currentMonsterYPos].setOccupyingCreatureTypeId(currentMonster.getID());
                 currentMonsterUniqueID++;
-                getMapTilesArray()[room.roomXStartPos + currentMonsterXPos][room.roomYStartPos + currentMonsterYPos].setOccupyingCreatureUniqueID(currentMonster.getCurrentMonsterUniqueID());
-                currentMonster.setMapXPos(room.roomXStartPos + currentMonsterXPos);
-                currentMonster.setMapYPos(room.roomYStartPos + currentMonsterYPos);
+                getMapTilesArray()[room.getRoomXStartPos() + currentMonsterXPos][room.getRoomYStartPos() + currentMonsterYPos].setOccupyingCreatureUniqueID(currentMonster.getCurrentMonsterUniqueID());
+                currentMonster.setMapXPos(room.getRoomXStartPos() + currentMonsterXPos);
+                currentMonster.setMapYPos(room.getRoomYStartPos() + currentMonsterYPos);
                 System.out.println("Monster Spawning: " + currentMonster.getMonsterName() + " X: " + currentMonster.getMapXPos() + " Y: " + currentMonster.getMapYPos());
                 System.out.println("Monster UUID: " + currentMonster.getCurrentMonsterUniqueID() + "|||" + currentMonsterUniqueID);
             } else {
@@ -377,14 +377,14 @@ public class DungeonMap extends MapManager {
         int currentHeroYPos;
         System.out.println("Number of heroes upon spawning: " + heroList.size());
         for (int i = 0; i < heroList.size(); i++) {
-            currentHeroXPos = randX.nextInt(room.roomWidth);
-            currentHeroYPos = randY.nextInt(room.roomHeight);
+            currentHeroXPos = randX.nextInt(room.getRoomWidth());
+            currentHeroYPos = randY.nextInt(room.getRoomHeight());
             Hero currentHero = heroList.get(i);
             System.out.println("Name of current spawning hero: " + heroList.get(i).getMonsterName());
-            if (getMapTilesArray()[room.roomXStartPos + currentHeroXPos][room.roomYStartPos + currentHeroYPos].getOccupyingCreatureTypeId() == 0) {
-                getMapTilesArray()[room.roomXStartPos + currentHeroXPos][room.roomYStartPos + currentHeroYPos].setOccupyingCreatureTypeId(currentHero.getID());
-                currentHero.setMapXPos(room.roomXStartPos + currentHeroXPos);
-                currentHero.setMapYPos(room.roomYStartPos + currentHeroYPos);
+            if (getMapTilesArray()[room.getRoomXStartPos() + currentHeroXPos][room.getRoomYStartPos() + currentHeroYPos].getOccupyingCreatureTypeId() == 0) {
+                getMapTilesArray()[room.getRoomXStartPos() + currentHeroXPos][room.getRoomYStartPos() + currentHeroYPos].setOccupyingCreatureTypeId(currentHero.getID());
+                currentHero.setMapXPos(room.getRoomXStartPos() + currentHeroXPos);
+                currentHero.setMapYPos(room.getRoomYStartPos() + currentHeroYPos);
                 System.out.println("Hero Class: " + currentHero.getHeroClass() + " X: " + currentHero.getMapXPos() + " Y: " + currentHero.getMapYPos());
             } else {
                 i--;

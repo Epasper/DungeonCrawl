@@ -1,8 +1,6 @@
 package DungeonCrawl.GUI;
 
 import javafx.geometry.Insets;
-import javafx.scene.Cursor;
-import javafx.scene.ImageCursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -12,13 +10,10 @@ import DungeonCrawl.*;
 import DungeonCrawl.DAO.ItemsDAO;
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.Model.*;
-
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-class DungeonGUI {
+public class DungeonGUI {
 
     private MainMenuGUI mainMenuGUI = new MainMenuGUI();
     private int mapWidth = 40;
@@ -37,7 +32,23 @@ class DungeonGUI {
     private PathFinder pathFinder = new PathFinder();
     private EncounterManager encounterManager = new EncounterManager(heroManager, buttonGrid, pathFinder);
     private MapManager mapManager = new MapManager(mapWidth, mapHeight, encounterManager);
-    private DungeonButtonEvents dungeonButtonEvents = new DungeonButtonEvents(encounterManager, mapManager, powersHBox, currentHeroPowers);
+    private DungeonButtonEvents dungeonButtonEvents = new DungeonButtonEvents(encounterManager, mapManager, powersHBox, currentHeroPowers, this);
+
+    public GridPane getMapGridPane() {
+        return mapGridPane;
+    }
+
+    public void setMapGridPane(GridPane mapGridPane) {
+        this.mapGridPane = mapGridPane;
+    }
+
+    public ScrollPane getMapScrollPane() {
+        return mapScrollPane;
+    }
+
+    public void setMapScrollPane(ScrollPane mapScrollPane) {
+        this.mapScrollPane = mapScrollPane;
+    }
 
     public BorderPane getMapOuterPane() {
         return mapOuterPane;
@@ -54,6 +65,7 @@ class DungeonGUI {
         pathFinder.getDungeonConsoleGUI().getDungeonConsole().setContent(pathFinder.getDungeonConsoleGUI().getDungeonConsoleText());
         getMapOuterPane().setCenter(mapScrollPane);
         mapScrollPane.setContent(mapGridPane);
+        mapGridPane.setPadding(new Insets(80));
         Button returnToMainMenu = new Button();
         returnToMainMenu.setText("Return to Main Menu");
         mapGridPane.add(returnToMainMenu, 0, mapHeight + 1, 3, 3);
@@ -62,6 +74,7 @@ class DungeonGUI {
         encounterManager.getDungeonMap().drawAMap();
         updateGUIAccordingToMap();
     }
+
 
     //todo lock the portrait buttons' walk function when the hero is locked out of movement.
 
@@ -117,32 +130,23 @@ class DungeonGUI {
     private Button addViewEquipmentButton() {
         Button equipmentButton = new Button();
         equipmentButton.setOnAction(event -> {
-            try {
-                showCurrentCharactersEquipment(heroManager.getCurrentlyActiveHeroID());
-            } catch (IOException | SQLException e) {
-                e.printStackTrace();
-            } finally {
-                for (Button heroButton : listOfHeroButtons) {
-                    heroButton.setOnAction(innerEvent -> {
-                        try {
-                            int heroId = Integer.valueOf(heroButton.getId());
-                            showCurrentCharactersEquipment(heroId);
-                        } catch (IOException | SQLException e) {
-                            e.printStackTrace();
-                        }
-                    });
-                }
+            showCurrentCharactersEquipment(heroManager.getCurrentlyActiveHeroID());
+            for (Button heroButton : listOfHeroButtons) {
+                heroButton.setOnAction(innerEvent -> {
+                    int heroId = Integer.valueOf(heroButton.getId());
+                    showCurrentCharactersEquipment(heroId);
+                });
             }
-        });
-        Image eqIcon = new Image(getClass().getResourceAsStream("Images/Equipment.jpg"));
-        ImageView eqIconView = new ImageView(eqIcon);
+    });
+    Image eqIcon = new Image(getClass().getResourceAsStream("Images/Equipment.jpg"));
+    ImageView eqIconView = new ImageView(eqIcon);
         equipmentButton.setGraphic(eqIconView);
         return equipmentButton;
-    }
+}
 
     //todo add the character's sheet view
 
-    private void showCurrentCharactersEquipment(int currentlyActiveHeroID) throws IOException, SQLException {
+    private void showCurrentCharactersEquipment(int currentlyActiveHeroID) {
         Hero currentHero = guiUtilities.getHeroByID(currentlyActiveHeroID, heroManager.getHeroList());
         ItemsDAO itemsDAO = new ItemsDAO();
         currentHero.setHeroEquipment(itemsDAO.getHeroEquipmentByHeroID(currentHero.getID()));
