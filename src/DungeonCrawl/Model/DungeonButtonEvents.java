@@ -36,6 +36,8 @@ public class DungeonButtonEvents {
         this.dungeonGUI = dungeonGUI;
     }
 
+    //todo centering algorithm has to be upgraded and both slope and border values have to be derived instead of being guessed.
+
     public void centerTheGUIOnCurrentCharacter(int ID, ScrollPane mapScrollPane) {
         Creature currentCreature;
         if (ID < 100) {
@@ -65,6 +67,7 @@ public class DungeonButtonEvents {
 
     private double rescaleScrollerValue(double inputValue, double border, double slope) {
         //* maxValue;
+        double derivedSlope = 0; //todo calculations here
         if (inputValue < border) {
             return 0;
         } else if (inputValue > (1 - border)) {

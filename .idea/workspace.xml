@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="de97b43a-8902-45e2-a345-dc80bad4fa20" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/GUI/DungeonGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/GUI/DungeonGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/Model/DungeonButtonEvents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/Model/DungeonButtonEvents.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/Model/DungeonMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/Model/DungeonMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/Model/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/Model/Room.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/DungeonCrawl1.0/target/" />
@@ -130,8 +127,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/DungeonButtonEvents.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="56" column="72" selection-start-line="56" selection-start-column="72" selection-end-line="56" selection-end-column="72" />
+            <state relative-caret-position="187">
+              <caret line="69" column="57" selection-start-line="69" selection-start-column="57" selection-end-line="69" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -488,13 +485,6 @@
       <option name="presentableId" value="Default" />
       <updated>1556870921453</updated>
     </task>
-    <task id="LOCAL-00159" summary="Encounter Manager - attacking now uses the &quot;AttackResults&quot; class.">
-      <created>1562312171195</created>
-      <option name="number" value="00159" />
-      <option name="presentableId" value="LOCAL-00159" />
-      <option name="project" value="LOCAL" />
-      <updated>1562312171195</updated>
-    </task>
     <task id="LOCAL-00160" summary="Encounter Manager - AoE attacks now function correctly. HP will have to be set for heroes">
       <created>1562328088839</created>
       <option name="number" value="00160" />
@@ -831,7 +821,14 @@
       <option name="project" value="LOCAL" />
       <updated>1563365458244</updated>
     </task>
-    <option name="localTasksCounter" value="208" />
+    <task id="LOCAL-00208" summary="Centering on active hero works, but still has to be upgraded">
+      <created>1563799478495</created>
+      <option name="number" value="00208" />
+      <option name="presentableId" value="LOCAL-00208" />
+      <option name="project" value="LOCAL" />
+      <updated>1563799478496</updated>
+    </task>
+    <option name="localTasksCounter" value="209" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -883,7 +880,6 @@
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ItemShopGUI - corrections to some bugs with buying items, minor GUI remodelling and bug fixes." />
     <MESSAGE value="Equipment GUI - after moving an item onto a different item, it no longer overwrites it but reverts the drag and drop events." />
     <MESSAGE value="Dungen GUI - blood droplets image is now applied onto the bloodied creatures." />
     <MESSAGE value="Added inheritance hierarchy to some classes, started making the monster animation on monster round." />
@@ -908,7 +904,8 @@
     <MESSAGE value="Monster AI - Monsters are attacking, but the initiative order is bugged due to stack delay. Probably setOnFinished method has to be changed." />
     <MESSAGE value="Monster AI - Monster turn now ends when colliding with different monsters, which fixed a bug with monster turns." />
     <MESSAGE value="Cleaned ToDos and added tasks" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleaned ToDos and added tasks" />
+    <MESSAGE value="Centering on active hero works, but still has to be upgraded" />
+    <option name="LAST_COMMIT_MESSAGE" value="Centering on active hero works, but still has to be upgraded" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1355,8 +1352,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/DungeonButtonEvents.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="56" column="72" selection-start-line="56" selection-start-column="72" selection-end-line="56" selection-end-column="72" />
+        <state relative-caret-position="187">
+          <caret line="69" column="57" selection-start-line="69" selection-start-column="57" selection-end-line="69" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
