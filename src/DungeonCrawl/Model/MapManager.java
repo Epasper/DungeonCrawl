@@ -73,7 +73,7 @@ public class MapManager {
         }
     }
 
-    private void applyEntityIconToAButton(int heroID, Button aButton, int uniqueMonsterID) {
+    public void applyEntityIconToAButton(int heroID, Button aButton, int uniqueMonsterID) {
         if (heroID < 100) {
             aButton.setGraphic(new ImageView(guiUtilities.getHeroByID(heroID, heroManager.getHeroList()).getCreatureImage()));
         } else {

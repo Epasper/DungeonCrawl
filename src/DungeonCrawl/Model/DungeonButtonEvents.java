@@ -6,6 +6,7 @@ import DungeonCrawl.GUI.GUIAnimations;
 import DungeonCrawl.GUI.GUIUtilities;
 import DungeonCrawl.GUI.Images.SkillIcons.SkillIcons;
 import DungeonCrawl.HeroPowers.HeroPower;
+import com.sun.xml.internal.bind.v2.model.core.ID;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
@@ -82,20 +83,22 @@ public class DungeonButtonEvents {
         }*/
         boolean isTheTileInteractive = encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange();
         boolean isTheTileWithinReach = encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].isInRangedAttackRange();
+        GUIUtilities utilities = new GUIUtilities();
         if (encounterManager.isHasTheCharacterBeenSelected() && currentHeroID > 0) {
             eventOnReachableTileClick();
         }
+        int currentMonsterUniqueID = encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureUniqueID();
         if (currentHeroID > 0 && currentHeroID < 100) {
-            isTheTileInteractive = eventOnHeroClick(XPos, YPos, currentHeroID);
+            eventOnHeroClick(XPos, YPos, currentHeroID);
+            mapManager.applyEntityIconToAButton(currentHeroID, encounterManager.getButtonGrid()[XPos][YPos],currentMonsterUniqueID);
         } else if (encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].isInWalkRange()) {
-            boolean isThisMonsterRound = currentHeroID > 100;
             eventOnHeroMapInteraction(XPos, YPos, currentTypeOfTile);
         }
         if (currentHeroID > 100 && isTheTileWithinReach) {
             eventOnAttackingAMonster(XPos, YPos, currentHeroPowers);
+            mapManager.applyEntityIconToAButton(currentHeroID, encounterManager.getButtonGrid()[XPos][YPos],currentMonsterUniqueID);
         }
         currentHeroPowers.clear();
-
     }
 
     private void eventOnHeroMapInteraction(int XPos, int YPos, String currentTypeOfTile) {
@@ -108,16 +111,12 @@ public class DungeonButtonEvents {
         encounterManager.getDungeonMap().clearMapReachableProperties();
     }
 
-    private boolean eventOnHeroClick(int XPos, int YPos, int currentHeroID) {
-
-        boolean isTheTileInteractive;
+    private void eventOnHeroClick(int XPos, int YPos, int currentHeroID) {
         clearHoverEvents();
         mapManager.getDungeonMap().clearMapReachableProperties();
         encounterManager.manageHeroClicking(currentHeroID);
         guiAnimations.heroClickAnimation(encounterManager.getButtonGrid()[XPos][YPos]);
         updateButtonsWithSkillIcons(guiUtilities.getHeroByID(currentHeroID, heroManager.getHeroList()));
-        isTheTileInteractive = encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange();
-        return isTheTileInteractive;
     }
 
     private void eventOnAttackingAMonster(int XPos, int YPos, List<HeroPower> currentHeroPowers) {
