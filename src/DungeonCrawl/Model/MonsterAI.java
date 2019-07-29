@@ -13,8 +13,8 @@ import java.util.List;
 import java.util.Random;
 
 public class MonsterAI extends EncounterManager {
-    GUIAnimations animations = new GUIAnimations();
-    public ArrayList<Animation> listOfAIAnimations = new ArrayList<>();
+    private GUIAnimations animations = new GUIAnimations();
+    //public ArrayList<Animation> listOfAIAnimations = new ArrayList<>();
 
     public int makeAnAggressionRoll(List<Hero> listOfHeroes, Monster monster) {
         List<Integer> aggressionList = new ArrayList<>();
@@ -183,22 +183,22 @@ public class MonsterAI extends EncounterManager {
         } else {
             if (monsterSpeed > 0) {
                 DungeonImageLibraryGUI dungeonImageLibraryGUI = new DungeonImageLibraryGUI();
-                animations.scaleTransition.setDuration(Duration.millis(250));
+                getAnimations().scaleTransition.setDuration(Duration.millis(250));
                 monsterSpeed--;
                 double finalMonsterSpeed = monsterSpeed;
-                animations.scaleTransition.setOnFinished(e -> {
+                getAnimations().scaleTransition.setOnFinished(e -> {
                     moveIntoMeleeRange(encounterManager, monster, attackedHero, finalMonsterSpeed, 0, 0);
 /*                    if (isHasThisMonsterFinishedMoving()){
                         super.verifyIfTheMonsterShouldAttack(monster, this, animations);
                     }*/
                 });
-                animations.heroClickAnimation(encounterManager.getButtonGrid()[monster.getMapXPos()][monster.getMapYPos()]);
+                getAnimations().heroClickAnimation(encounterManager.getButtonGrid()[monster.getMapXPos()][monster.getMapYPos()]);
                 System.out.println("Map Checking: " + map.toString() + ".." + map.getNumberOfTilesY() + ".." + map.getNumberOfTilesY());
                 String typeOfTile = map.getMapTilesArray()[monster.getMapXPos()][monster.getMapYPos()].getTypeOfTile();
                 dungeonImageLibraryGUI.applyATileImageToAButton(typeOfTile, encounterManager.getButtonGrid()[monster.getMapXPos()][monster.getMapYPos()]);
                 encounterManager.getDungeonMap().getMapTilesArray()[monster.getMapXPos()][monster.getMapYPos()].setOccupyingCreatureTypeId(0);
                 encounterManager.getDungeonMap().getMapTilesArray()[monster.getMapXPos()][monster.getMapYPos()].setOccupyingCreatureUniqueID(0);
-                listOfAIAnimations.add(animations.scaleTransition);
+               // listOfAIAnimations.add(getAnimations().scaleTransition);
                 System.out.println(ConsoleColors.ANSI_PURPLE + "Current Speed: " + monsterSpeed + ConsoleColors.ANSI_RESET);
                 encounterManager.getDungeonMap().getMapTilesArray()[monster.getMapXPos() + XDirection][monster.getMapYPos() + YDirection].setOccupyingCreatureTypeId(monster.getID());
                 encounterManager.getButtonGrid()[monster.getMapXPos() + XDirection][monster.getMapYPos() + YDirection].setStyle(FieldColors.WALK_RANGE);
@@ -235,5 +235,13 @@ public class MonsterAI extends EncounterManager {
 
     public void moveAwayToRangedDistance(Monster monster) {
 
+    }
+
+    public GUIAnimations getAnimations() {
+        return animations;
+    }
+
+    public void setAnimations(GUIAnimations animations) {
+        this.animations = animations;
     }
 }

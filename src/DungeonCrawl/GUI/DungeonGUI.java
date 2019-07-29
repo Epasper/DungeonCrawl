@@ -59,6 +59,8 @@ public class DungeonGUI {
     }
 
     DungeonGUI(List<Hero> heroList) {
+        mapOuterPane.getStylesheets().add("DungeonCrawl/Styling/CharacterCreator.css");
+        //mapScrollPane.getStylesheets().add("DungeonCrawl/Styling/CharacterCreator.css");
 
         heroManager.setHeroList(heroList);
         manageTheConsoleAdding();
@@ -92,7 +94,8 @@ public class DungeonGUI {
     //todo a method that identifies a flanking position - in a separate Flanking Finder Class
 
     private void manageTheConsoleAdding() {
-        powersHBox.setStyle("-fx-background-color:grey;");
+
+        //powersHBox.setStyle("-fx-background-color:grey;");
         powersHBox.setMinSize(200, 60);
         Button equipmentButton = addViewEquipmentButton();
         Button viewDungeon = new Button();
@@ -123,8 +126,6 @@ public class DungeonGUI {
         }
     }
 
-    //todo the left and right panes have to read the stylesheets correctly.
-
     private Button addViewEquipmentButton() {
         Button equipmentButton = new Button();
         equipmentButton.setOnAction(event -> {
@@ -151,6 +152,8 @@ public class DungeonGUI {
         EquipmentGUI equipmentGUI = new EquipmentGUI();
         getMapOuterPane().setCenter(equipmentGUI.displayAChosenHeroEquipment(currentHero));
     }
+
+    //todo change the "extend the console" button from white background to transparent, so it looks better with current CSS
 
     private void updateGUIAccordingToMap() {
         CursorManager cursorManager = new CursorManager(mapOuterPane, encounterManager);
