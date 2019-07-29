@@ -32,7 +32,7 @@ public class DungeonGUI {
     private PathFinder pathFinder = new PathFinder();
     private EncounterManager encounterManager = new EncounterManager(heroManager, buttonGrid, pathFinder);
     private MapManager mapManager = new MapManager(mapWidth, mapHeight, encounterManager);
-    private DungeonButtonEvents dungeonButtonEvents = new DungeonButtonEvents(encounterManager, mapManager, powersHBox, currentHeroPowers, this);
+    private DungeonButtonEvents dungeonButtonEvents = new DungeonButtonEvents(encounterManager, mapManager, powersHBox, currentHeroPowers);
 
     public GridPane getMapGridPane() {
         return mapGridPane;

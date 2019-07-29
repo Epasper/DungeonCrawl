@@ -24,16 +24,14 @@ public class DungeonButtonEvents {
     private EncounterManager encounterManager;
     private HBox powersHBox;
     private List<HeroPower> currentHeroPowers;
-    private DungeonGUI dungeonGUI;
 
-    public DungeonButtonEvents(EncounterManager encounterManager, MapManager mapManager, HBox powersHBox, List<HeroPower> currentHeroPowers, DungeonGUI dungeonGUI) {
+    public DungeonButtonEvents(EncounterManager encounterManager, MapManager mapManager, HBox powersHBox, List<HeroPower> currentHeroPowers) {
         this.encounterManager = encounterManager;
         this.mapManager = mapManager;
         this.powersHBox = powersHBox;
         this.currentHeroPowers = currentHeroPowers;
         pathFinder = encounterManager.getPathFinder();
         heroManager = encounterManager.getHeroManager();
-        this.dungeonGUI = dungeonGUI;
     }
 
     //todo centering algorithm.
@@ -124,8 +122,8 @@ public class DungeonButtonEvents {
 
     private void eventOnAttackingAMonster(int XPos, int YPos, List<HeroPower> currentHeroPowers) {
         boolean wasTheAttackFinished = true;
-        HeroPower currentPower = currentHeroPowers.get(currentHeroPowers.size() - 1);
         try {
+            HeroPower currentPower = currentHeroPowers.get(currentHeroPowers.size() - 1);
             List<Creature> listOfAttackedCreatures = currentPower.determineTheNumberOfCreaturesAttacked(XPos,
                     YPos,
                     encounterManager.getDungeonMap(),
@@ -134,16 +132,16 @@ public class DungeonButtonEvents {
             for (Creature creature : listOfAttackedCreatures) {
                 wasTheAttackFinished = checkIfTheAttackIsFinished(XPos, YPos, wasTheAttackFinished, currentPower, creature);
             }
+            if (wasTheAttackFinished) {
+                mapManager.updateMapGraphics();
+            }
+            if (currentPower.getTypeOfPower().contains("encounter")) {
+                currentPower.setNumberOfLockedEncounters(1);
+            } else if (currentPower.getTypeOfPower().contains("daily")) {
+                currentPower.setNumberOfLockedEncounters(3);
+            }
         } catch (IndexOutOfBoundsException e) {
             encounterManager.getPathFinder().getDungeonConsoleGUI().updateTheDungeonConsole("Please select a power before attacking");
-        }
-        if (wasTheAttackFinished) {
-            mapManager.updateMapGraphics();
-        }
-        if (currentPower.getTypeOfPower().contains("encounter")) {
-            currentPower.setNumberOfLockedEncounters(1);
-        } else if (currentPower.getTypeOfPower().contains("daily")) {
-            currentPower.setNumberOfLockedEncounters(3);
         }
     }
 
