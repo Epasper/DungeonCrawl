@@ -296,9 +296,9 @@ public class EncounterManager extends MapManager {
             triggerOnHit(attackingPower, hero, attackResults);
             if (inflictDamageToCreatureAndCheckIfItsDead(attackResults, attackedCreature)) {
                 return "Dead";
-            }
+            /*}
             if ((attackedCreature.getCurrentHitPoints() - attackResults.getDamage() * 2) < attackedCreature.getHitPoints()) {
-                return "Hit - " + attackResults.getDamage() + " - Bloodied";
+                return "Hit - " + attackResults.getDamage() + " - Bloodied";*/
             } else {
                 return "Hit - " + attackResults.getDamage();
             }

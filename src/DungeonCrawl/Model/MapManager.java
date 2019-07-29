@@ -85,6 +85,7 @@ public class MapManager {
                 return;
             }
             if (monster.isThisCreatureBloodied()) {
+                monster.setCreatureImage(addBloodDropImageToCreatureImage(monster).getImage());
                 aButton.setGraphic(addBloodDropImageToCreatureImage(monster));
             }
         }

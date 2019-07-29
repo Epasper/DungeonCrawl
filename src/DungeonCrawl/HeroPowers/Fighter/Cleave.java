@@ -17,7 +17,7 @@ public class Cleave extends HeroPower {
         setPowerLevel(1);
         setRange(0);
         setNumberOfTargets("One target");
-        setAttributeUsedToHit(AttributeNames.Strength.toString()+"+2");
+        setAttributeUsedToHit(AttributeNames.Strength.toString());
         setDefenseToBeChecked(CreatureDefenses.AC.toString());
         setDamageDiceDealt(1);
         setDamageModifier(AttributeNames.Strength.toString());
