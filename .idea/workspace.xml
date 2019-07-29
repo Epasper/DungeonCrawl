@@ -5,14 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de97b43a-8902-45e2-a345-dc80bad4fa20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/DungeonCrawl/Model/FlankingManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/GUI/DungeonGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/GUI/DungeonGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/GUI/FieldColors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/GUI/FieldColors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/Model/MonsterAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/Model/MonsterAI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/Styling/Caspian.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/Styling/Caspian.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/Styling/flatBee.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/Styling/flatBee.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Ravenlyss.JSON" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/UserFiles/Ravenlyss.JSON" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon10.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon10.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon11.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon11.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon12.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon12.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon13.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon13.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon14.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon14.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon15.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon15.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon5.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon6.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon7.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon8.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon9.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/HeroPortraits/icon9.png" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/DungeonCrawl1.0/target/" />
@@ -27,19 +35,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/Room.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
-              <folding>
-                <element signature="e#785#786#0" expanded="true" />
-                <element signature="e#827#828#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/PathFinder.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -74,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/CharacterCreatorGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="108" column="39" lean-forward="true" selection-start-line="108" selection-start-column="39" selection-end-line="108" selection-end-column="105" />
+            <state relative-caret-position="170">
+              <caret line="46" column="64" lean-forward="true" selection-start-line="46" selection-start-column="64" selection-end-line="46" selection-end-column="64" />
             </state>
           </provider>
         </entry>
@@ -87,7 +82,7 @@
         <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/EncounterManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="139">
-              <caret line="299" column="120" lean-forward="true" selection-start-line="299" selection-start-column="120" selection-end-line="299" selection-end-column="120" />
+              <caret line="299" column="120" selection-start-line="299" selection-start-column="120" selection-end-line="299" selection-end-column="120" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -95,11 +90,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/DungeonGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="62" column="10" selection-start-line="62" selection-start-column="10" selection-end-line="62" selection-end-column="10" />
+            <state relative-caret-position="264">
+              <caret line="151" column="36" selection-start-line="151" selection-start-column="36" selection-end-line="151" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1612#1613#0" expanded="true" />
@@ -320,6 +315,23 @@
               <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="GUI" type="462c0819:PsiDirectoryNode" />
+              <item name="Images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="GUI" type="462c0819:PsiDirectoryNode" />
+              <item name="Images" type="462c0819:PsiDirectoryNode" />
+              <item name="HeroPortraits" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DungeonCrawl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="DungeonCrawl" type="462c0819:PsiDirectoryNode" />
               <item name="Items" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -524,13 +536,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1556870921453</updated>
-    </task>
-    <task id="LOCAL-00165" summary="Dungeon GUI - Range indicator is now faster on long ranges, GUI of indicator is now working better, AoE damage now functions correctly">
-      <created>1562588017382</created>
-      <option name="number" value="00165" />
-      <option name="presentableId" value="LOCAL-00165" />
-      <option name="project" value="LOCAL" />
-      <updated>1562588017382</updated>
     </task>
     <task id="LOCAL-00166" summary="FieldColors - enw class with static styles for button colors">
       <created>1562589743788</created>
@@ -868,7 +873,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564385995975</updated>
     </task>
-    <option name="localTasksCounter" value="214" />
+    <task id="LOCAL-00214" summary="CSS are now working properly on Dungeon GUI">
+      <created>1564392712313</created>
+      <option name="number" value="00214" />
+      <option name="presentableId" value="LOCAL-00214" />
+      <option name="project" value="LOCAL" />
+      <updated>1564392712313</updated>
+    </task>
+    <option name="localTasksCounter" value="215" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -890,7 +902,7 @@
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49892932" visible="true" weight="0.11119516" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49892932" visible="true" weight="0.20953101" />
       <window_info id="Structure" order="1" sideWeight="0.5010707" side_tool="true" weight="0.2200489" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -899,13 +911,13 @@
       <window_info id="Favorites" order="6" sideWeight="0.5010707" side_tool="true" weight="0.2200489" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4969743" weight="0.3279743" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5355522" visible="true" weight="0.34244373" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.53479576" visible="true" weight="0.34244373" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49633253" weight="0.4067524" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.7579425" weight="0.2540193" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.75718606" weight="0.2540193" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.21382637" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.4644478" side_tool="true" visible="true" weight="0.34244373" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.46520424" side_tool="true" visible="true" weight="0.34244373" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.49356914" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.4969743" weight="0.30868167" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -920,7 +932,6 @@
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="OnHeroClickAnimation changed so that it only triggers once during the AnimationTimer" />
     <MESSAGE value="Monster AI - monsters are now able to attack a hero when i melee range." />
     <MESSAGE value="Added inheritance to some classes and encapsulated some fields." />
     <MESSAGE value="Starting of the distance checking method for monster AI" />
@@ -945,20 +956,14 @@
     <MESSAGE value="Fixed the &quot;please select a power before attacking&quot; reminder message." />
     <MESSAGE value="Fixing the bloodied creature portrait upon HP being below 50%" />
     <MESSAGE value="Bloodied creature's portraits are now updated straight after their HP is reduced to below 50%" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bloodied creature's portraits are now updated straight after their HP is reduced to below 50%" />
+    <MESSAGE value="CSS are now working properly on Dungeon GUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="CSS are now working properly on Dungeon GUI" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/DungeonImageLibraryGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
-          <caret line="68" selection-start-line="68" selection-end-line="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/stage/Stage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="11560">
@@ -1295,17 +1300,10 @@
     <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/Model/EncounterManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="139">
-          <caret line="299" column="120" lean-forward="true" selection-start-line="299" selection-start-column="120" selection-end-line="299" selection-end-column="120" />
+          <caret line="299" column="120" selection-start-line="299" selection-start-column="120" selection-end-line="299" selection-end-column="120" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/CharacterCreatorGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="108" column="39" lean-forward="true" selection-start-line="108" selection-start-column="39" selection-end-line="108" selection-end-column="105" />
         </state>
       </provider>
     </entry>
@@ -1358,10 +1356,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/Images/SkillIcons/SkillIcons.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="5" column="22" lean-forward="true" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/DungeonGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="62" column="10" selection-start-line="62" selection-start-column="10" selection-end-line="62" selection-end-column="10" />
+        <state relative-caret-position="264">
+          <caret line="151" column="36" selection-start-line="151" selection-start-column="36" selection-end-line="151" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1612#1613#0" expanded="true" />
@@ -1369,6 +1374,13 @@
             <element signature="e#1702#1703#0" expanded="true" />
             <element signature="e#1748#1749#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DungeonCrawl/GUI/CharacterCreatorGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="46" column="64" lean-forward="true" selection-start-line="46" selection-start-column="64" selection-end-line="46" selection-end-column="64" />
         </state>
       </provider>
     </entry>
