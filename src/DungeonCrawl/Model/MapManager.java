@@ -75,17 +75,17 @@ public class MapManager {
 
     public void applyEntityIconToAButton(int heroID, Button aButton, int uniqueMonsterID) {
         if (heroID < 100) {
-            aButton.setGraphic(new ImageView(guiUtilities.getHeroByID(heroID, heroManager.getHeroList()).getCreatureImage()));
+            aButton.setGraphic(new ImageView(guiUtilities.getHeroByID(heroID, heroManager.getHeroList()).getCreatureIcon()));
         } else {
             Monster monster = guiUtilities.getSingleMonsterByUniqueID(uniqueMonsterID, encounterManager.getAllMonstersList());
             if (!monster.isThisCreatureDead()) {
-                aButton.setGraphic(new ImageView(monster.getCreatureImage()));
+                aButton.setGraphic(new ImageView(monster.getCreatureIcon()));
             } else {
                 aButton.setGraphic(addDeathImageToCreatureImage(monster));
                 return;
             }
             if (monster.isThisCreatureBloodied()) {
-                monster.setCreatureImage(addBloodDropImageToCreatureImage(monster).getImage());
+                monster.setCreatureIcon(addBloodDropImageToCreatureImage(monster).getImage());
                 aButton.setGraphic(addBloodDropImageToCreatureImage(monster));
             }
         }
@@ -93,7 +93,7 @@ public class MapManager {
 
     ImageView addBloodDropImageToCreatureImage(Creature creature) {
         Image bloodDroplet = new Image("DungeonCrawl/GUI/Images/MapElements/CreatureBloodied.png");
-        Image monsterImage = creature.getCreatureImage();
+        Image monsterImage = creature.getCreatureIcon();
         ImageInput backImageView = new ImageInput(monsterImage);
         ImageInput frontImageView = new ImageInput(bloodDroplet);
         Blend imagesBlend = new Blend();
@@ -107,7 +107,7 @@ public class MapManager {
 
     ImageView addDeathImageToCreatureImage(Creature creature) {
         Image skull = new Image("DungeonCrawl/GUI/Images/MapElements/Skull.jpg");
-        Image monsterImage = creature.getCreatureImage();
+        Image monsterImage = creature.getCreatureIcon();
         ImageInput backImageView = new ImageInput(monsterImage);
         ImageInput frontImageView = new ImageInput(skull);
         Blend imagesBlend = new Blend();

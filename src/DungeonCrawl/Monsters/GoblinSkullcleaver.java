@@ -15,7 +15,7 @@ public class GoblinSkullcleaver extends Monster {
         this.setWill(12);
         this.setHeroName("Goblin Skullcleaver");
         this.setMonsterType("Humanoid");
-        this.setCreatureImage(new Image(getClass().getResourceAsStream("MonsterImages\\GoblinSkullcleaver.png")));
+        this.setCreatureIcon(new Image(getClass().getResourceAsStream("MonsterImages\\GoblinSkullcleaver.png")));
         this.setXpValue(150);
         this.setInitiativeBonus(5);
         this.setAttack1Name("Battleaxe");

@@ -106,7 +106,7 @@ public class DungeonGUI {
         for (Hero hero : heroManager.getHeroList()) {
             Button heroButton = new Button();
             heroButton.setId(String.valueOf(hero.getID()));
-            heroButton.setGraphic(new ImageView(hero.getCreatureImage()));
+            heroButton.setGraphic(new ImageView(hero.getCreaturePortrait()));
             heroButton.setOnAction(event -> dungeonButtonEvents.buttonEvent(hero.getMapXPos(), hero.getMapYPos(), currentHeroPowers));
             listOfHeroButtons.add(heroButton);
         }

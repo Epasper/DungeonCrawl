@@ -1,7 +1,6 @@
 package DungeonCrawl.DAO;
 
 import DungeonCrawl.DTO.HeroDTO;
-import DungeonCrawl.DTO.ItemsDTO;
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.Items.Item;
 import DungeonCrawl.Items.ItemFactory;
@@ -29,6 +28,11 @@ public class HeroDAO {
 
     public HeroDAO() {
         //todo decryption takes place here
+    }
+    public Image getHeroPortraitByID(int id) {
+        File file = new File("src\\DungeonCrawl\\GUI\\Images\\HeroPortraits\\FullArts\\" + id + ".jpg");
+        System.out.println("Overwriting base Portrait with Following: " + id);
+        return new Image(file.toURI().toString());
     }
 
     public Image getHeroIconByID(int id) {
@@ -87,7 +91,8 @@ public class HeroDAO {
         hero.updateTheDefensesMap();
         System.out.println("-----> Hero ID From DAO:  " + ID);
         JSONObject jsonObject = new JSONObject(json);
-        hero.setCreatureImage(getHeroIconByID(jsonObject.getInt("heroIconId")));
+        hero.setCreatureIcon(getHeroIconByID(jsonObject.getInt("heroIconId")));
+        hero.setCreaturePortrait(getHeroPortraitByID(jsonObject.getInt("heroIconId")));
         hero.setHeroName(jsonObject.getString("heroName"));
         hero.setHeroIconId(jsonObject.getInt("heroIconId"));
         hero.setID(ID);

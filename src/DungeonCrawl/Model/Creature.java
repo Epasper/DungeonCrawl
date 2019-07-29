@@ -7,7 +7,8 @@ import java.util.Map;
 
 public class Creature {
     private String heroName;
-    private Image creatureImage;
+    private Image creatureIcon;
+    private Image creaturePortrait;
     private int ID;
     private int currentMonsterUniqueID;
     private int mapXPos;
@@ -27,6 +28,14 @@ public class Creature {
     private boolean isThisCreatureBloodied = false;
     private int attackRange = 1;
     private boolean finishedMovement;
+
+    public Image getCreaturePortrait() {
+        return creaturePortrait;
+    }
+
+    public void setCreaturePortrait(Image creaturePortrait) {
+        this.creaturePortrait = creaturePortrait;
+    }
 
     public boolean isThisCreatureBloodied() {
         return isThisCreatureBloodied;
@@ -60,12 +69,12 @@ public class Creature {
         isThisCreatureDead = thisCreatureDead;
     }
 
-    public Image getCreatureImage() {
-        return creatureImage;
+    public Image getCreatureIcon() {
+        return creatureIcon;
     }
 
-    public void setCreatureImage(Image creatureImage) {
-        this.creatureImage = creatureImage;
+    public void setCreatureIcon(Image creatureIcon) {
+        this.creatureIcon = creatureIcon;
     }
 
     public int getCurrentMonsterUniqueID() {

@@ -15,7 +15,7 @@ public class GoblinSharpshooter extends Monster {
         this.setWill(11);
         this.setHeroName("Goblin Sharpshooter");
         this.setMonsterType("Humanoid");
-        this.setCreatureImage(new Image(getClass().getResourceAsStream("MonsterImages\\GoblinSharpshooter.png")));
+        this.setCreatureIcon(new Image(getClass().getResourceAsStream("MonsterImages\\GoblinSharpshooter.png")));
         this.setXpValue(125);
         this.setInitiativeBonus(5);
         this.setAttack1Name("Short Sword");

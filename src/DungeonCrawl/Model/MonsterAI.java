@@ -4,7 +4,6 @@ package DungeonCrawl.Model;
 import DungeonCrawl.GUI.DungeonImageLibraryGUI;
 import DungeonCrawl.GUI.FieldColors;
 import DungeonCrawl.GUI.GUIAnimations;
-import javafx.animation.Animation;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
@@ -202,7 +201,7 @@ public class MonsterAI extends EncounterManager {
                 System.out.println(ConsoleColors.ANSI_PURPLE + "Current Speed: " + monsterSpeed + ConsoleColors.ANSI_RESET);
                 encounterManager.getDungeonMap().getMapTilesArray()[monster.getMapXPos() + XDirection][monster.getMapYPos() + YDirection].setOccupyingCreatureTypeId(monster.getID());
                 encounterManager.getButtonGrid()[monster.getMapXPos() + XDirection][monster.getMapYPos() + YDirection].setStyle(FieldColors.WALK_RANGE);
-                encounterManager.getButtonGrid()[monster.getMapXPos() + XDirection][monster.getMapYPos() + YDirection].setGraphic(new ImageView(monster.getCreatureImage()));
+                encounterManager.getButtonGrid()[monster.getMapXPos() + XDirection][monster.getMapYPos() + YDirection].setGraphic(new ImageView(monster.getCreatureIcon()));
                 encounterManager.getDungeonMap().getMapTilesArray()[monster.getMapXPos() + XDirection][monster.getMapYPos() + YDirection].setOccupyingCreatureUniqueID(monster.getCurrentMonsterUniqueID());
                 monster.setMapXPos(monster.getMapXPos() + XDirection);
                 monster.setMapYPos(monster.getMapYPos() + YDirection);

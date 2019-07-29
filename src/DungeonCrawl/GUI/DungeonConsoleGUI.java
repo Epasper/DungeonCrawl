@@ -3,8 +3,6 @@ package DungeonCrawl.GUI;
 import DungeonCrawl.Model.Creature;
 import DungeonCrawl.Model.Hero;
 import DungeonCrawl.Model.Monster;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -126,7 +124,7 @@ public class DungeonConsoleGUI {
             System.out.println("Found a creature in the array: " + creature.getMonsterName());
             Button initiativeButton = new Button();
             System.out.println(initiativeButton);
-            initiativeButton.setGraphic(new ImageView(creature.getCreatureImage()));
+            initiativeButton.setGraphic(new ImageView(creature.getCreatureIcon()));
             System.out.println(initiativeButton + initiativeButton.getGraphic().toString());
             listOfButtons.add(initiativeButton);
         }
