@@ -4,9 +4,13 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DungeonImageLibraryGUI {
     private Image wallImage = new Image(getClass().getResourceAsStream("Images\\MapElements\\wall.png"));
     private Image floorImage = new Image(getClass().getResourceAsStream("Images\\MapElements\\floor.png"));
+    private List<ImageView> imageViewList = new ArrayList<>();
     private Image fogImage = new Image(getClass().getResourceAsStream("Images\\MapElements\\fog.png"));
     private Image wallWestImage = new Image(getClass().getResourceAsStream("Images\\MapElements\\FloorWallW.png"));
     private Image wallEastImage = new Image(getClass().getResourceAsStream("Images\\MapElements\\FloorWallE.png"));
@@ -23,7 +27,16 @@ public class DungeonImageLibraryGUI {
     private Image openedDoorVertical = new Image(getClass().getResourceAsStream("Images\\MapElements\\OpenedDoorVertical.png"));
     private Image openedDoorHorizontal = new Image(getClass().getResourceAsStream("Images\\MapElements\\OpenedDoorHorizontal.png"));
 
-    public void applyATileImageToAButton(String typeOfTile, Button aButton) {
+   /* public DungeonImageLibraryGUI() {
+        for (int i = 1; i < 10; i++) {
+            Image floorImage = new Image(getClass().getResourceAsStream("Images\\MapElements\\FloorTiles\\Floor" + i + ".png"));
+            ImageView floorImageView = new ImageView(floorImage);
+            imageViewList.add(floorImageView);
+        }
+    }*/
+
+    public void applyATileImageToAButton(String typeOfTile, Button aButton, int floorTileID) {
+        System.out.println("Current FloorTileID: " + floorTileID);
         switch (typeOfTile) {
             case "RoomSeed":
             case "WallWest":

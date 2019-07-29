@@ -1,5 +1,7 @@
 package DungeonCrawl.Model;
 
+import javafx.scene.image.Image;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -70,6 +72,7 @@ public class DungeonMap extends MapManager {
         for (int i = 0; i < numberOfTilesX; i++) {
             for (int j = 0; j < numberOfTilesY; j++) {
                 MapTile mapTile = new MapTile();
+                mapTile.setTileImageID(rollForTileImage());
                 getMapTilesArray()[i][j] = mapTile;
             }
         }
@@ -357,6 +360,10 @@ public class DungeonMap extends MapManager {
         allMonstersList.addAll(monsterList);
     }
 
+    private int rollForTileImage() {
+        Random random = new Random();
+        return random.nextInt(9) + 1;
+    }
 
 
     public void clearMapReachableProperties() {

@@ -341,6 +341,11 @@ public class Hero extends Creature {
         return gold;
     }
 
+    @Override
+    public String toString() {
+        return "Hero name: " + getHeroName() + " Hero class: " + getHeroClass() + " Hero race: " + getHeroRace();
+    }
+
     public AttackResults attackAMonster(Creature attackedCreature, HeroPower powerUsedForAttacking) {
         AttackResults attackResults = new AttackResults();
         String usedAttribute = powerUsedForAttacking.getAttributeUsedToHit();

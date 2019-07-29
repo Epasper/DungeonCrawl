@@ -194,7 +194,7 @@ public class MonsterAI extends EncounterManager {
                 getAnimations().heroClickAnimation(encounterManager.getButtonGrid()[monster.getMapXPos()][monster.getMapYPos()]);
                 System.out.println("Map Checking: " + map.toString() + ".." + map.getNumberOfTilesY() + ".." + map.getNumberOfTilesY());
                 String typeOfTile = map.getMapTilesArray()[monster.getMapXPos()][monster.getMapYPos()].getTypeOfTile();
-                dungeonImageLibraryGUI.applyATileImageToAButton(typeOfTile, encounterManager.getButtonGrid()[monster.getMapXPos()][monster.getMapYPos()]);
+                dungeonImageLibraryGUI.applyATileImageToAButton(typeOfTile, encounterManager.getButtonGrid()[monster.getMapXPos()][monster.getMapYPos()], encounterManager.getDungeonMap().getMapTilesArray()[monster.getMapXPos()][monster.getMapYPos()].getTileImageID());
                 encounterManager.getDungeonMap().getMapTilesArray()[monster.getMapXPos()][monster.getMapYPos()].setOccupyingCreatureTypeId(0);
                 encounterManager.getDungeonMap().getMapTilesArray()[monster.getMapXPos()][monster.getMapYPos()].setOccupyingCreatureUniqueID(0);
                // listOfAIAnimations.add(getAnimations().scaleTransition);

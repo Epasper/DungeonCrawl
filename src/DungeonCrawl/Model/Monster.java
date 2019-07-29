@@ -33,6 +33,11 @@ public class Monster extends Creature {
     private String passive2Description;
     private String passive3Description;
 
+    @Override
+    public String toString() {
+        return " Monster name: " + getMonsterName() + " Monster type: " + getMonsterType();
+    }
+
     public Monster() {
     }
 

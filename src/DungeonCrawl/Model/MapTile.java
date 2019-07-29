@@ -1,5 +1,7 @@
 package DungeonCrawl.Model;
 
+import javafx.scene.image.Image;
+
 import java.util.Random;
 
 public class MapTile {
@@ -13,6 +15,15 @@ public class MapTile {
     private boolean withinInteractionRange = false;
     private boolean currentlyInvisible = false;
     private boolean currentlyBehindCover = false;
+    private int tileImageID = -1;
+
+    public int getTileImageID() {
+        return tileImageID;
+    }
+
+    public void setTileImageID(int tileImageID) {
+        this.tileImageID = tileImageID;
+    }
 
     public boolean isInRangedAttackRange() {
         return inRangedAttackRange;
