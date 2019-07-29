@@ -36,9 +36,9 @@ public class DungeonButtonEvents {
         this.dungeonGUI = dungeonGUI;
     }
 
-    //todo centering algorithm has to be upgraded and both slope and border values have to be derived instead of being guessed.
+    //todo centering algorithm.
 
-    public void centerTheGUIOnCurrentCharacter(int ID, ScrollPane mapScrollPane) {
+   /* public void centerTheGUIOnCurrentCharacter(int ID, ScrollPane mapScrollPane) {
         Creature currentCreature;
         if (ID < 100) {
             currentCreature = guiUtilities.getHeroByID(ID, heroManager.getHeroList());
@@ -54,9 +54,9 @@ public class DungeonButtonEvents {
         System.out.println("VMax: " + mapScrollPane.getVmax() + " VMin: " + mapScrollPane.getVmin());
         System.out.println("HMax: " + mapScrollPane.getHmax() + " HMin: " + mapScrollPane.getHmin());
         double newHValue = (double) currentCreature.getMapYPos() / (double) mapManager.getDungeonMap().getNumberOfTilesY();
-        double rescaledHValue = rescaleScrollerValue(newHValue, 0.25, 2.5);
+        double rescaledHValue = rescaleScrollerValue((double) mapManager.getDungeonMap().getNumberOfTilesY(), newHValue, 0.2, 2.5);
         double newVValue = (double) currentCreature.getMapXPos() / (double) mapManager.getDungeonMap().getNumberOfTilesX();
-        double rescaledVValue = rescaleScrollerValue(newVValue, 0.1, 1.2);
+        double rescaledVValue = rescaleScrollerValue((double) mapManager.getDungeonMap().getNumberOfTilesX(), newVValue, 0.03, 1.2);
         System.out.println("Values: " + newHValue + "  " + newVValue);
         mapScrollPane.setHvalue(rescaledHValue);
         mapScrollPane.setVvalue(rescaledVValue);
@@ -65,22 +65,23 @@ public class DungeonButtonEvents {
         System.out.println("CENTERING ENDED-----------------------------------");
     }
 
-    private double rescaleScrollerValue(double inputValue, double border, double slope) {
+    private double rescaleScrollerValue(double max, double inputValue, double border, double slope) {
         //* maxValue;
-        double derivedSlope = 0; //todo calculations here
+        double derivedSlope = (max - 2 * border) / max;
+        System.out.println("DERIVED SLOPE: " + derivedSlope);
         if (inputValue < border) {
             return 0;
         } else if (inputValue > (1 - border)) {
             return 1;
-        } else return (inputValue - border) * slope;
-    }
+        } else return (inputValue - border) * derivedSlope;
+    }*/
 
     public void buttonEvent(int XPos, int YPos, List<HeroPower> currentHeroPowers) {
         String currentTypeOfTile = encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].getTypeOfTile();
         int currentHeroID = encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].getOccupyingCreatureTypeId();
-        if (currentHeroID > 0) {
+        /*if (currentHeroID > 0) {
             centerTheGUIOnCurrentCharacter(currentHeroID, dungeonGUI.getMapScrollPane());
-        }
+        }*/
         boolean isTheTileInteractive = encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].isWithinInteractionRange();
         boolean isTheTileWithinReach = encounterManager.getDungeonMap().getMapTilesArray()[XPos][YPos].isInRangedAttackRange();
         if (encounterManager.isHasTheCharacterBeenSelected() && currentHeroID > 0) {
@@ -95,6 +96,8 @@ public class DungeonButtonEvents {
         if (currentHeroID > 100 && isTheTileWithinReach) {
             eventOnAttackingAMonster(XPos, YPos, currentHeroPowers);
         }
+        currentHeroPowers.clear();
+
     }
 
     private void eventOnHeroMapInteraction(int XPos, int YPos, String currentTypeOfTile) {
