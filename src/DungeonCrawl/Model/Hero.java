@@ -2,6 +2,7 @@ package DungeonCrawl.Model;
 
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.Items.Item;
+import javafx.scene.image.ImageView;
 
 import java.util.*;
 
@@ -42,6 +43,15 @@ public class Hero extends Creature {
     private Map<String, Integer> heroAttributesMap;
     private Map<String, Item> heroEquipment;
     private int aggressionLevel = 5;
+    private ImageView currentHeroPortrait;
+
+    public ImageView getCurrentHeroPortrait() {
+        return currentHeroPortrait;
+    }
+
+    public void setCurrentHeroPortrait(ImageView currentHeroPortrait) {
+        this.currentHeroPortrait = currentHeroPortrait;
+    }
 
     public int getAggressionLevel() {
         return aggressionLevel;

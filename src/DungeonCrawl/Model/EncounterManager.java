@@ -31,6 +31,15 @@ public class EncounterManager extends MapManager {
     private int globalInitiative = 0;
     private boolean isThisTheMonstersTurn;
     private boolean hasThisMonsterFinishedMoving;
+    private List<Button> listOfHeroButtons;
+
+    public List<Button> getListOfHeroButtons() {
+        return listOfHeroButtons;
+    }
+
+    public void setListOfHeroButtons(List<Button> listOfHeroButtons) {
+        this.listOfHeroButtons = listOfHeroButtons;
+    }
 
     public EncounterManager() {
     }
@@ -489,7 +498,7 @@ public class EncounterManager extends MapManager {
         if (monsterAI.checkIfTheHeroIsWithinMeleeRange(encounterManager, monster, attackedHero.getID())) {
             foundAHeroToAttack(encounterManager, monster, monsterAI, attackedHero);
         } else {
-           // double distance = monsterAI.determineTheDistanceToAttackedHero(monster, attackedHero);
+            // double distance = monsterAI.determineTheDistanceToAttackedHero(monster, attackedHero);
             monsterAI.moveIntoMeleeRange(this, monster, attackedHero, monster.getCurrentSpeed(), 0, 0);
         }
     }
@@ -520,7 +529,7 @@ public class EncounterManager extends MapManager {
                 adjust,
                 new ColorInput(
                         0,
-                        (imageView.getImage().getHeight())-(imageView.getImage().getHeight()
+                        (imageView.getImage().getHeight()) - (imageView.getImage().getHeight()
                                 * redPaintFillRatio),
                         imageView.getImage().getWidth(),
                         imageView.getImage().getHeight()
@@ -536,16 +545,24 @@ public class EncounterManager extends MapManager {
         return imageView;
     }
 
+    public void updateHeroPortraits() {
+        for (Button button : listOfHeroButtons) {
+            Hero hero = guiUtilities.getHeroByID(Integer.valueOf(button.getId()), heroManager.getHeroList());
+            button.setGraphic(hero.getCurrentHeroPortrait());
+        }
+    }
+
     private void foundAHeroToAttack(EncounterManager encounterManager, Monster monster, MonsterAI monsterAI, Hero attackedHero) {
         GUIAnimations animations = new GUIAnimations();
         System.out.println(ConsoleColors.ANSI_GREEN + "Hero found in melee range. Attacking!" + ConsoleColors.ANSI_RESET);
         AttackResults results = monsterAI.attackAHero(monster, attackedHero);
         System.out.println(ConsoleColors.ANSI_PURPLE + "Hit: " + results.isHitSuccess() +
                 " for " + results.getDamage() + " damage." + ConsoleColors.ANSI_RESET);
-        attackedHero.setHitPoints(attackedHero.getHitPoints() - results.getDamage());
+        attackedHero.setCurrentHitPoints(attackedHero.getCurrentHitPoints() - results.getDamage());
         animations.creatureWasHitAnimation(
                 encounterManager.getButtonGrid()[attackedHero.getMapXPos()][attackedHero.getMapYPos()]);
-        paintTheCharactersPortraitRed(attackedHero);
+        attackedHero.setCurrentHeroPortrait(paintTheCharactersPortraitRed(attackedHero));
+        encounterManager.updateHeroPortraits();
         System.out.println(
                 ConsoleColors.ANSI_PURPLE + "Monster: " + monster.getMonsterName()
                         + " is attacking a hero: " + attackedHero.getHeroName()

@@ -68,7 +68,6 @@ public class DungeonGUI {
     DungeonGUI(List<Hero> heroList) {
         mapOuterPane.getStylesheets().add("DungeonCrawl/Styling/CharacterCreator.css");
         //mapScrollPane.getStylesheets().add("DungeonCrawl/Styling/CharacterCreator.css");
-
         heroManager.setHeroList(heroList);
         manageTheConsoleAdding();
         pathFinder.getDungeonConsoleGUI().getDungeonConsole().setContent(pathFinder.getDungeonConsoleGUI().getDungeonConsoleText());
@@ -114,17 +113,20 @@ public class DungeonGUI {
             Button heroButton = new Button();
             heroButton.setId(String.valueOf(hero.getID()));
             ImageView redPaintedPortrait = encounterManager.paintTheCharactersPortraitRed(hero);
+            hero.setCurrentHeroPortrait(redPaintedPortrait);
             heroButton.setGraphic(redPaintedPortrait);
             heroButton.setOnAction(event -> dungeonButtonEvents.buttonEvent(hero.getMapXPos(), hero.getMapYPos(), currentHeroPowers));
             listOfHeroButtons.add(heroButton);
             System.out.println(hero.toString());
         }
         portraitsVBox.getChildren().addAll(listOfHeroButtons);
+        encounterManager.setListOfHeroButtons(this.listOfHeroButtons);
         getMapOuterPane().setRight(portraitsVBox);
         getMapOuterPane().setLeft(controlsButtons);
         pathFinder.getDungeonConsoleGUI().getCompleteConsole().add(powersHBox, 0, 2);
         getMapOuterPane().setBottom(pathFinder.getDungeonConsoleGUI().getCompleteConsole());
     }
+
 
     private void viewMapEvent() {
         getMapOuterPane().setCenter(mapScrollPane);
@@ -151,7 +153,6 @@ public class DungeonGUI {
         equipmentButton.setGraphic(eqIconView);
         return equipmentButton;
     }
-
 
 
     //todo add the character's sheet view
