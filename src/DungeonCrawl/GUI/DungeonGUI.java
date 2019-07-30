@@ -1,8 +1,12 @@
 package DungeonCrawl.GUI;
 
+import javafx.beans.binding.Bindings;
 import javafx.geometry.Insets;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.CacheHint;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.effect.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -10,6 +14,9 @@ import DungeonCrawl.*;
 import DungeonCrawl.DAO.ItemsDAO;
 import DungeonCrawl.HeroPowers.HeroPower;
 import DungeonCrawl.Model.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -106,9 +113,11 @@ public class DungeonGUI {
         for (Hero hero : heroManager.getHeroList()) {
             Button heroButton = new Button();
             heroButton.setId(String.valueOf(hero.getID()));
-            heroButton.setGraphic(new ImageView(hero.getCreaturePortrait()));
+            ImageView redPaintedPortrait = encounterManager.paintTheCharactersPortraitRed(hero);
+            heroButton.setGraphic(redPaintedPortrait);
             heroButton.setOnAction(event -> dungeonButtonEvents.buttonEvent(hero.getMapXPos(), hero.getMapYPos(), currentHeroPowers));
             listOfHeroButtons.add(heroButton);
+            System.out.println(hero.toString());
         }
         portraitsVBox.getChildren().addAll(listOfHeroButtons);
         getMapOuterPane().setRight(portraitsVBox);
@@ -136,12 +145,14 @@ public class DungeonGUI {
                     showCurrentCharactersEquipment(heroId);
                 });
             }
-    });
-    Image eqIcon = new Image(getClass().getResourceAsStream("Images/Equipment.jpg"));
-    ImageView eqIconView = new ImageView(eqIcon);
+        });
+        Image eqIcon = new Image(getClass().getResourceAsStream("Images/Equipment.jpg"));
+        ImageView eqIconView = new ImageView(eqIcon);
         equipmentButton.setGraphic(eqIconView);
         return equipmentButton;
-}
+    }
+
+
 
     //todo add the character's sheet view
 

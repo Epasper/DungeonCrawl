@@ -3,7 +3,15 @@ package DungeonCrawl.Model;
 import DungeonCrawl.GUI.GUIAnimations;
 import DungeonCrawl.GUI.GUIUtilities;
 import DungeonCrawl.HeroPowers.HeroPower;
+import javafx.scene.CacheHint;
 import javafx.scene.control.Button;
+import javafx.scene.effect.Blend;
+import javafx.scene.effect.BlendMode;
+import javafx.scene.effect.ColorAdjust;
+import javafx.scene.effect.ColorInput;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -481,7 +489,7 @@ public class EncounterManager extends MapManager {
         if (monsterAI.checkIfTheHeroIsWithinMeleeRange(encounterManager, monster, attackedHero.getID())) {
             foundAHeroToAttack(encounterManager, monster, monsterAI, attackedHero);
         } else {
-            double distance = monsterAI.determineTheDistanceToAttackedHero(monster, attackedHero);
+           // double distance = monsterAI.determineTheDistanceToAttackedHero(monster, attackedHero);
             monsterAI.moveIntoMeleeRange(this, monster, attackedHero, monster.getCurrentSpeed(), 0, 0);
         }
     }
@@ -494,6 +502,39 @@ public class EncounterManager extends MapManager {
 
     //todo add treasure lists to dead creatures
 
+    public ImageView paintTheCharactersPortraitRed(Hero hero) {
+        Image inputImage = hero.getCreaturePortrait();
+        int maxHP = hero.getHitPoints();
+        System.out.println("Max HP: " + maxHP);
+        int currentHP = hero.getCurrentHitPoints();
+        System.out.println("Current HP: " + currentHP);
+        double redPaintFillRatio = ((double) maxHP - (double) currentHP) / (double) maxHP;
+        System.out.println("Current HP to full HP ratio: " + redPaintFillRatio);
+        ImageView imageView = new ImageView(inputImage);
+        imageView.setClip(new ImageView(inputImage));
+
+        ColorAdjust adjust = new ColorAdjust();
+
+        Blend redBlend = new Blend(
+                BlendMode.MULTIPLY,
+                adjust,
+                new ColorInput(
+                        0,
+                        (imageView.getImage().getHeight())-(imageView.getImage().getHeight()
+                                * redPaintFillRatio),
+                        imageView.getImage().getWidth(),
+                        imageView.getImage().getHeight()
+                                * redPaintFillRatio,
+                        Color.RED
+                )
+        );
+
+        imageView.setEffect(redBlend);
+
+        imageView.setCache(true);
+        imageView.setCacheHint(CacheHint.SPEED);
+        return imageView;
+    }
 
     private void foundAHeroToAttack(EncounterManager encounterManager, Monster monster, MonsterAI monsterAI, Hero attackedHero) {
         GUIAnimations animations = new GUIAnimations();
@@ -504,6 +545,7 @@ public class EncounterManager extends MapManager {
         attackedHero.setHitPoints(attackedHero.getHitPoints() - results.getDamage());
         animations.creatureWasHitAnimation(
                 encounterManager.getButtonGrid()[attackedHero.getMapXPos()][attackedHero.getMapYPos()]);
+        paintTheCharactersPortraitRed(attackedHero);
         System.out.println(
                 ConsoleColors.ANSI_PURPLE + "Monster: " + monster.getMonsterName()
                         + " is attacking a hero: " + attackedHero.getHeroName()

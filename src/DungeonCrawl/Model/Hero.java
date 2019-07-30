@@ -343,7 +343,7 @@ public class Hero extends Creature {
 
     @Override
     public String toString() {
-        return "Hero name: " + getHeroName() + " Hero class: " + getHeroClass() + " Hero race: " + getHeroRace();
+        return "Hero name: " + getHeroName() + " Hero class: " + getHeroClass() + " Hero race: " + getHeroRace() + " MAX HP: " + getHitPoints() + " Current HP: " + getCurrentHitPoints();
     }
 
     public AttackResults attackAMonster(Creature attackedCreature, HeroPower powerUsedForAttacking) {

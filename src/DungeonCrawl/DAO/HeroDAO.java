@@ -86,8 +86,8 @@ public class HeroDAO {
         Hero hero = new Hero();
         String heroName = getHeroNameByID(ID);
         String json = jsonToString("src\\DungeonCrawl\\UserFiles\\" + heroName + ".JSON");
-        hero.setHitPoints(1000); //todo set HP properly
-        hero.setCurrentHitPoints(1000);
+        hero.setHitPoints(100); //todo set HP properly
+        hero.setCurrentHitPoints(80);
         hero.updateTheDefensesMap();
         System.out.println("-----> Hero ID From DAO:  " + ID);
         JSONObject jsonObject = new JSONObject(json);
