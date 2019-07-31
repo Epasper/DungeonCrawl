@@ -91,12 +91,6 @@ public class DungeonGUI {
     ...
      */
 
-    //todo change the portraits, so that each hero has a bigger portrait on the right and small icon on the field.
-
-    //todo download some bigger portraits from the internet and use JavaFX resize to fit the big ones in the buttons
-
-    //todo Hero portraits to turn red with damage taken.
-
     //todo a method that identifies a flanking position - in a separate Flanking Finder Class
 
     private void manageTheConsoleAdding() {
@@ -166,6 +160,26 @@ public class DungeonGUI {
     }
 
     //todo change the "extend the console" button from white background to transparent, so it looks better with current CSS
+
+    //todo add a scene, that would show the progress bar of a map being built
+
+    //todo player's turn should be finished when his powers are used up or when he chooses it to be finished
+
+    //todo add the control buttons for minor, main and move actions.
+
+    //todo add map elements to the rooms - tables, trees, altars, barrels, carpets and so forth.
+
+    //todo add a difficult terrain feature to some of the tiles
+
+    //todo make the dead monsters lootable
+
+    //todo create some treasure hoards for some of the rooms - chests, closets, crates or gold piles.
+
+    //todo some rooms could have other shapes from just being plain rectangular.
+
+    //todo add some additional monsters other than plain goblins
+
+    //todo change the monster icons, so they better fit the dark and smooth style of current design.
 
     private void updateGUIAccordingToMap() {
         CursorManager cursorManager = new CursorManager(mapOuterPane, encounterManager);

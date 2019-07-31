@@ -109,6 +109,7 @@ public class DungeonButtonEvents {
         }
         mapManager.updateMapGraphics();
         encounterManager.getDungeonMap().clearMapReachableProperties();
+
     }
 
     private void eventOnHeroClick(int XPos, int YPos, int currentHeroID) {

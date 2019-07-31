@@ -91,7 +91,7 @@ public class MapManager {
         }
     }
 
-    ImageView addBloodDropImageToCreatureImage(Creature creature) {
+    private ImageView addBloodDropImageToCreatureImage(Creature creature) {
         Image bloodDroplet = new Image("DungeonCrawl/GUI/Images/MapElements/CreatureBloodied.png");
         Image monsterImage = creature.getCreatureIcon();
         ImageInput backImageView = new ImageInput(monsterImage);

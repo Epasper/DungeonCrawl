@@ -8,9 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DungeonImageLibraryGUI {
+
     private Image wallImage = new Image(getClass().getResourceAsStream("Images\\MapElements\\wall.png"));
     private Image floorImage = new Image(getClass().getResourceAsStream("Images\\MapElements\\floor.png"));
-    private List<ImageView> imageViewList = new ArrayList<>();
+    private ImageView floorImageView = new ImageView();
     private Image fogImage = new Image(getClass().getResourceAsStream("Images\\MapElements\\fog.png"));
     private Image wallWestImage = new Image(getClass().getResourceAsStream("Images\\MapElements\\FloorWallW.png"));
     private Image wallEastImage = new Image(getClass().getResourceAsStream("Images\\MapElements\\FloorWallE.png"));
@@ -36,7 +37,6 @@ public class DungeonImageLibraryGUI {
     }*/
 
     public void applyATileImageToAButton(String typeOfTile, Button aButton, int floorTileID) {
-        System.out.println("Current FloorTileID: " + floorTileID);
         switch (typeOfTile) {
             case "RoomSeed":
             case "WallWest":
