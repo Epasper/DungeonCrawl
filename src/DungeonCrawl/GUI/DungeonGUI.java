@@ -83,11 +83,20 @@ public class DungeonGUI {
         updateGUIAccordingToMap();
     }
 
-
     //todo lock the portrait buttons' walk function when the hero is locked out of movement.
+
+    //todo add experience gain from killing a monster.
+    // Exp should be added to a field on slaying event,
+    // and hero experience should be updated on end of encounter.
+
+    //todo while monsters are moving, all hero buttons should be locked.
 
     /*todo add messages to console:
      CURRENTLY SELECTED POWER:
+     DAMAGE DEALT:
+     ATTACK MISSED!
+     ENCOUNTER BEGINS
+
     ...
      */
 
@@ -179,7 +188,11 @@ public class DungeonGUI {
 
     //todo add some additional monsters other than plain goblins
 
+    //todo monsters should not be able to cross wall tiles.
+
     //todo change the monster icons, so they better fit the dark and smooth style of current design.
+
+    //todo after running away from monster, the attack monster algorithm checks for old coordinates, it seems.
 
     private void updateGUIAccordingToMap() {
         CursorManager cursorManager = new CursorManager(mapOuterPane, encounterManager);
