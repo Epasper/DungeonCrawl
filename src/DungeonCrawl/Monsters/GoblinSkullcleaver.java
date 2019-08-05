@@ -6,6 +6,7 @@ import DungeonCrawl.Model.Monster;
 public class GoblinSkullcleaver extends Monster {
 
     public GoblinSkullcleaver() {
+        this.setLevel(3);
         this.setID(102);
         this.setHitPoints(53);
         this.setCurrentHitPoints(53);

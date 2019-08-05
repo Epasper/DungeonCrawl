@@ -6,6 +6,7 @@ import DungeonCrawl.Model.Monster;
 public class GoblinSharpshooter extends Monster {
 
     public GoblinSharpshooter() {
+        this.setLevel(2);
         this.setID(101);
         this.setHitPoints(31);
         this.setCurrentHitPoints(31);

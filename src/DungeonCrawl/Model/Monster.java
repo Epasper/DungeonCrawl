@@ -5,6 +5,7 @@ import javafx.scene.image.Image;
 public class Monster extends Creature {
     private String monsterName;
     private String monsterType;
+    private int level;
     private int xpValue;
     private int initiativeBonus;
     private String attack1Name;
@@ -32,6 +33,7 @@ public class Monster extends Creature {
     private String passive1Description;
     private String passive2Description;
     private String passive3Description;
+    MonsterDrop monsterDrop = new MonsterDrop(level);
 
     @Override
     public String toString() {
@@ -39,6 +41,26 @@ public class Monster extends Creature {
     }
 
     public Monster() {
+    }
+
+    public void setMonsterName(String monsterName) {
+        this.monsterName = monsterName;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public MonsterDrop getMonsterDrop() {
+        return monsterDrop;
+    }
+
+    public void setMonsterDrop(MonsterDrop monsterDrop) {
+        this.monsterDrop = monsterDrop;
     }
 
     public String getLoreDescription() {
