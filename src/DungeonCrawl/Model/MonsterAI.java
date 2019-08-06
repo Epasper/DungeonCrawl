@@ -121,6 +121,9 @@ public class MonsterAI extends EncounterManager {
                 try {
                     int x = attackingMonster.getMapXPos() + i - 1;
                     int y = attackingMonster.getMapYPos() + j - 1;
+                    if (map.getMapTilesArray()[x][y].getTypeOfTile().contains("Wall")) {
+                        surroundings[i][j] = -1;
+                    }
                     surroundings[i][j] = map.getMapTilesArray()[x][y].getOccupyingCreatureTypeId();
                     //System.out.println("Surround check for tile: X: " + (x) + " Y: " + (y));
                     if (surroundings[i][j] == attackedHero.getID()) {
@@ -141,24 +144,7 @@ public class MonsterAI extends EncounterManager {
         System.out.println(ConsoleColors.ANSI_RED
                 + "Current Monster Coordinates: X:" + monster.getMapXPos() + " - - Y:" + monster.getMapYPos()
                 + ConsoleColors.ANSI_RESET);
-        for (int[] currentArray : monsterSurroundings) {
-            for (int currentSurroundingCheck : currentArray) {
-                try {
-                    //System.out.println("Current int:" + currentInt);
-                    if (currentSurroundingCheck == attackedHero.getID()) {
-                        verifyIfTheMonsterShouldAttack(encounterManager, monster, attackedHero);
-                        System.out.println("FOUND A NEIGHBORING HERO; RETURNING");
-                        encounterManager.endTheMonstersRound(monster);
-                        return;
-                    }
-                } catch (NullPointerException e) {
-                    verifyIfTheMonsterShouldAttack(encounterManager, monster, attackedHero);
-                    System.out.println("FOUND A NEIGHBORING HERO; RETURNING");
-                    encounterManager.endTheMonstersRound(monster);
-                    return;
-                }
-            }
-        }
+        if (chechSurroundings(encounterManager, monster, attackedHero, monsterSurroundings)) return;
         if (monsterSpeed < 1) {
             encounterManager.endTheMonstersRound(monster);
             return;
@@ -177,8 +163,9 @@ public class MonsterAI extends EncounterManager {
                 YDirection = 1;
             }
         }
-        if (monsterSurroundings[XDirection + 1][YDirection + 1] > 0) {
-            determineADifferentDirection(encounterManager, monster, attackedHero, monsterSurroundings, monsterSpeed, XDirection, YDirection);
+        int currentID = monsterSurroundings[XDirection + 1][YDirection + 1];
+        if (currentID > 0 || currentID == -1) {
+            launchAnAlternativePath(encounterManager, monster, attackedHero, monsterSurroundings, monsterSpeed, XDirection, YDirection);
         } else {
             if (monsterSpeed > 0) {
                 DungeonImageLibraryGUI dungeonImageLibraryGUI = new DungeonImageLibraryGUI();
@@ -197,7 +184,7 @@ public class MonsterAI extends EncounterManager {
                 dungeonImageLibraryGUI.applyATileImageToAButton(typeOfTile, encounterManager.getButtonGrid()[monster.getMapXPos()][monster.getMapYPos()], encounterManager.getDungeonMap().getMapTilesArray()[monster.getMapXPos()][monster.getMapYPos()].getTileImageID());
                 encounterManager.getDungeonMap().getMapTilesArray()[monster.getMapXPos()][monster.getMapYPos()].setOccupyingCreatureTypeId(0);
                 encounterManager.getDungeonMap().getMapTilesArray()[monster.getMapXPos()][monster.getMapYPos()].setOccupyingCreatureUniqueID(0);
-               // listOfAIAnimations.add(getAnimations().scaleTransition);
+                // listOfAIAnimations.add(getAnimations().scaleTransition);
                 System.out.println(ConsoleColors.ANSI_PURPLE + "Current Speed: " + monsterSpeed + ConsoleColors.ANSI_RESET);
                 encounterManager.getDungeonMap().getMapTilesArray()[monster.getMapXPos() + XDirection][monster.getMapYPos() + YDirection].setOccupyingCreatureTypeId(monster.getID());
                 encounterManager.getButtonGrid()[monster.getMapXPos() + XDirection][monster.getMapYPos() + YDirection].setStyle(FieldColors.WALK_RANGE);
@@ -209,27 +196,63 @@ public class MonsterAI extends EncounterManager {
         }
     }
 
+    private boolean chechSurroundings(EncounterManager encounterManager, Monster monster, Hero attackedHero, int[][] monsterSurroundings) {
+        for (int[] currentArray : monsterSurroundings) {
+            for (int currentSurroundingCheck : currentArray) {
+                try {
+                    //System.out.println("Current int:" + currentInt);
+                    if (currentSurroundingCheck == attackedHero.getID()) {
+                        verifyIfTheMonsterShouldAttack(encounterManager, monster, attackedHero);
+                        System.out.println("FOUND A NEIGHBORING HERO; RETURNING");
+                        encounterManager.endTheMonstersRound(monster);
+                        return true;
+                    }
+                } catch (NullPointerException e) {
+                    verifyIfTheMonsterShouldAttack(encounterManager, monster, attackedHero);
+                    System.out.println("FOUND A NEIGHBORING HERO; RETURNING");
+                    encounterManager.endTheMonstersRound(monster);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     //todo after tapping spacebar, center the screen on current Creature
 
     //todo monsters should attack one-by-one instead of all at once.
 
-    private void determineADifferentDirection(EncounterManager encounterManager, Monster monster, Hero attackedHero, int[][] monsterSurroundings, double distance, int XDirection, int YDirection) {
+    private void launchAnAlternativePath(EncounterManager encounterManager, Monster monster, Hero attackedHero, int[][] monsterSurroundings, double distance, int XDirection, int YDirection) {
 //todo delete this call and set a proper method
-        encounterManager.endTheMonstersRound(monster);
-        /*int deltaX = Math.abs(monster.getMapXPos() - attackedHero.getMapXPos());
-        int deltaY = Math.abs(monster.getMapYPos() - attackedHero.getMapYPos());
+        //todo determine algorithm change based on monsterSurroundings. On wall, the monsterSurroundings gets a -1;
+        //encounterManager.endTheMonstersRound(monster);
+        int xDiff = monster.getMapXPos() - attackedHero.getMapXPos();
+        int yDiff = monster.getMapYPos() - attackedHero.getMapYPos();
+        System.out.println(ConsoleColors.ANSI_YELLOW + "XDiff: " + xDiff + " YDiff: " + yDiff);
+        int deltaX = Math.abs(xDiff);
+        int deltaY = Math.abs(yDiff);
+        System.out.println("X-Delta: " + deltaX + " Y-Delta: " + deltaY);
+        System.out.println("X-Sgn: " + Integer.signum(deltaX) + " Y-Sgn: " + Integer.signum(deltaY) + ConsoleColors.ANSI_RESET);
         if (deltaX == 0) {
-            moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, XDirection, 1);
+            moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, 1, 0);
             return;
         } else if (deltaY == 0) {
-            moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, 1, YDirection);
+            moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, 0, 1);
             return;
         }
-        if (deltaX > deltaY) {
-            moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, XDirection, 0);
-        } else if (deltaX < deltaY) {
-            moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, 0, YDirection);
-        }*/
+        if (deltaX > 0) {
+            if (deltaY > 0) {
+                moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, -1, 0);
+            } else {
+                moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, 1, 0);
+            }
+        } else  {
+            if (deltaY > 0) {
+                moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, 0, -1);
+            } else {
+                moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, 0, 1);
+            }
+        }
     }
 
     public void moveAwayToRangedDistance(Monster monster) {

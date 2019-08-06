@@ -1,7 +1,4 @@
 package DungeonCrawl.Model;
-
-import javafx.scene.image.Image;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -16,6 +13,11 @@ public class DungeonMap extends MapManager {
     private List<Monster> allMonstersList = new ArrayList<>();
     private List<Room> allRoomsList = new ArrayList<>();
     private int currentMonsterUniqueID = 1;
+
+    @Override
+    public String toString() {
+        return "Current map size: " + numberOfTilesX + "--" + numberOfTilesY + " Corridor Length: " + corridorMaxLength;
+    }
 
     public int getNumberOfTilesY() {
         return numberOfTilesY;

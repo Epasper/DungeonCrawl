@@ -49,7 +49,7 @@ public class MonsterDrop {
                 listToBeReturned.add(addAnItem("Set of Playing Dice", 10, 0));
                 listToBeReturned.add(addAnItem("Set of Playing Cards", 10, 0));
                 listToBeReturned.add(addAnItem("Carved Stick", 10, 0));
-                listToBeReturned.add(addAnItem("Carved Stick", 10, 0));
+                listToBeReturned.add(addAnItem("Dog figurine", 10, 0));
             }
             case 3: {
                 listToBeReturned.add(addAnItem("Bronze Medallion", 15, 0));
@@ -57,7 +57,7 @@ public class MonsterDrop {
                 listToBeReturned.add(addAnItem("Set of Playing Dice", 15, 0));
                 listToBeReturned.add(addAnItem("Set of Playing Cards", 15, 0));
                 listToBeReturned.add(addAnItem("Carved Stick", 15, 0));
-                listToBeReturned.add(addAnItem("Carved Stick", 15, 0));
+                listToBeReturned.add(addAnItem("Silver Ring", 15, 0));
             }
         }
         return listToBeReturned;
