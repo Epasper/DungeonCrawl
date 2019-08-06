@@ -499,7 +499,7 @@ public class EncounterManager extends MapManager {
             foundAHeroToAttack(encounterManager, monster, monsterAI, attackedHero);
         } else {
             // double distance = monsterAI.determineTheDistanceToAttackedHero(monster, attackedHero);
-            monsterAI.moveIntoMeleeRange(this, monster, attackedHero, monster.getCurrentSpeed(), 0, 0);
+            monsterAI.moveIntoMeleeRange(this, monster, attackedHero, monster.getCurrentSpeed(), 0, 0, true);
         }
     }
 

@@ -121,7 +121,9 @@ public class MonsterAI extends EncounterManager {
                 try {
                     int x = attackingMonster.getMapXPos() + i - 1;
                     int y = attackingMonster.getMapYPos() + j - 1;
-                    if (map.getMapTilesArray()[x][y].getTypeOfTile().contains("Wall")) {
+                    if (!map.getMapTilesArray()[x][y].getTypeOfTile().contains("Blank")
+                            ||
+                            !map.getMapTilesArray()[x][y].getTypeOfTile().contains("Room")) {
                         surroundings[i][j] = -1;
                     }
                     surroundings[i][j] = map.getMapTilesArray()[x][y].getOccupyingCreatureTypeId();
@@ -137,31 +139,33 @@ public class MonsterAI extends EncounterManager {
         return surroundings;
     }
 
-    public void moveIntoMeleeRange(EncounterManager encounterManager, Monster monster, Hero attackedHero, double monsterSpeed, int XDirection, int YDirection) {
+    public void moveIntoMeleeRange(EncounterManager encounterManager, Monster monster, Hero attackedHero, double monsterSpeed, int XDirection, int YDirection, boolean firstIteration) {
         DungeonMap map = encounterManager.getDungeonMap();
         System.out.println("The map given: " + map.toString() + " X: " + map.getNumberOfTilesX() + " Y: " + map.getNumberOfTilesY());
         int[][] monsterSurroundings = determineSurroundings(encounterManager, monster, attackedHero);
         System.out.println(ConsoleColors.ANSI_RED
                 + "Current Monster Coordinates: X:" + monster.getMapXPos() + " - - Y:" + monster.getMapYPos()
                 + ConsoleColors.ANSI_RESET);
-        if (chechSurroundings(encounterManager, monster, attackedHero, monsterSurroundings)) return;
+        if (checkSurroundings(encounterManager, monster, attackedHero, monsterSurroundings)) return;
         if (monsterSpeed < 1) {
             encounterManager.endTheMonstersRound(monster);
             return;
         }
-        if (XDirection == 0) {
+
+        if (XDirection == 0 && YDirection == 0) {
             if (monster.getMapXPos() > attackedHero.getMapXPos()) {
                 XDirection = -1;
             } else if (monster.getMapXPos() < attackedHero.getMapXPos()) {
                 XDirection = 1;
             }
-        }
-        if (YDirection == 0) {
+//        }
+//        if (YDirection == 0) {
             if (monster.getMapYPos() > attackedHero.getMapYPos()) {
                 YDirection = -1;
             } else if (monster.getMapYPos() < attackedHero.getMapYPos()) {
                 YDirection = 1;
             }
+
         }
         int currentID = monsterSurroundings[XDirection + 1][YDirection + 1];
         if (currentID > 0 || currentID == -1) {
@@ -173,7 +177,7 @@ public class MonsterAI extends EncounterManager {
                 monsterSpeed--;
                 double finalMonsterSpeed = monsterSpeed;
                 getAnimations().scaleTransition.setOnFinished(e -> {
-                    moveIntoMeleeRange(encounterManager, monster, attackedHero, finalMonsterSpeed, 0, 0);
+                    moveIntoMeleeRange(encounterManager, monster, attackedHero, finalMonsterSpeed, 0, 0, false);
 /*                    if (isHasThisMonsterFinishedMoving()){
                         super.verifyIfTheMonsterShouldAttack(monster, this, animations);
                     }*/
@@ -196,7 +200,7 @@ public class MonsterAI extends EncounterManager {
         }
     }
 
-    private boolean chechSurroundings(EncounterManager encounterManager, Monster monster, Hero attackedHero, int[][] monsterSurroundings) {
+    private boolean checkSurroundings(EncounterManager encounterManager, Monster monster, Hero attackedHero, int[][] monsterSurroundings) {
         for (int[] currentArray : monsterSurroundings) {
             for (int currentSurroundingCheck : currentArray) {
                 try {
@@ -222,37 +226,93 @@ public class MonsterAI extends EncounterManager {
 
     //todo monsters should attack one-by-one instead of all at once.
 
-    private void launchAnAlternativePath(EncounterManager encounterManager, Monster monster, Hero attackedHero, int[][] monsterSurroundings, double distance, int XDirection, int YDirection) {
+    private void launchAnAlternativePath(EncounterManager encounterManager, Monster monster, Hero attackedHero,
+                                         int[][] monsterSurroundings, double distance, int XDirection, int YDirection) {
 //todo delete this call and set a proper method
         //todo determine algorithm change based on monsterSurroundings. On wall, the monsterSurroundings gets a -1;
         //encounterManager.endTheMonstersRound(monster);
-        int xDiff = monster.getMapXPos() - attackedHero.getMapXPos();
-        int yDiff = monster.getMapYPos() - attackedHero.getMapYPos();
+        int xDiff = attackedHero.getMapXPos() - monster.getMapXPos();
+        int yDiff = attackedHero.getMapYPos() - monster.getMapYPos();
         System.out.println(ConsoleColors.ANSI_YELLOW + "XDiff: " + xDiff + " YDiff: " + yDiff);
         int deltaX = Math.abs(xDiff);
         int deltaY = Math.abs(yDiff);
         System.out.println("X-Delta: " + deltaX + " Y-Delta: " + deltaY);
         System.out.println("X-Sgn: " + Integer.signum(deltaX) + " Y-Sgn: " + Integer.signum(deltaY) + ConsoleColors.ANSI_RESET);
+        int[] nextCoordinates = determineTheNextStep(monsterSurroundings, Integer.signum(deltaX), Integer.signum(deltaY));
         if (deltaX == 0) {
-            moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, 1, 0);
+            moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, nextCoordinates[0], nextCoordinates[1], false);
             return;
         } else if (deltaY == 0) {
-            moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, 0, 1);
+            moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, nextCoordinates[0], nextCoordinates[1], false);
             return;
         }
         if (deltaX > 0) {
             if (deltaY > 0) {
-                moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, -1, 0);
+                moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, nextCoordinates[0], nextCoordinates[1], false);
             } else {
-                moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, 1, 0);
+                moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, nextCoordinates[0], nextCoordinates[1], false);
             }
-        } else  {
+        } else {
             if (deltaY > 0) {
-                moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, 0, -1);
+                moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, nextCoordinates[0], nextCoordinates[1], false);
             } else {
-                moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, 0, 1);
+                moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, nextCoordinates[0], nextCoordinates[1], false);
             }
         }
+    }
+
+    private int[] determineTheNextStep(int[][] monsterSurroundings, int lastStepX, int lastStepY) {
+        System.out.println("Changing Alternate");
+        if (lastStepX == 1 && lastStepY == 1) {
+            if (monsterSurroundings[2][1] == 0) {
+                return new int[]{1, 0};
+            } else if (monsterSurroundings[1][2] == 0) {
+                return new int[]{0, 1};
+            }
+        } else if (lastStepX == -1 && lastStepY == 1) {
+            if (monsterSurroundings[0][1] == 0) {
+                return new int[]{-1, 0};
+            } else if (monsterSurroundings[1][2] == 0) {
+                return new int[]{0, 1};
+            }
+        } else if (lastStepX == -1 && lastStepY == -1) {
+            if (monsterSurroundings[0][1] == 0) {
+                return new int[]{-1, 0};
+            } else if (monsterSurroundings[1][0] == 0) {
+                return new int[]{0, -1};
+            }
+        } else if (lastStepX == 1 && lastStepY == -1) {
+            if (monsterSurroundings[1][2] == 0) {
+                return new int[]{1, 0};
+            } else if (monsterSurroundings[0][1] == 0) {
+                return new int[]{0, -1};
+            }
+        } else if (lastStepX == 0 && lastStepY == 1) {
+            if (monsterSurroundings[0][2] == 0) {
+                return new int[]{-1, 1};
+            } else if (monsterSurroundings[2][2] == 0) {
+                return new int[]{1, 1};
+            }
+        } else if (lastStepX == 0 && lastStepY == -1) {
+            if (monsterSurroundings[0][0] == 0) {
+                return new int[]{-1, -1};
+            } else if (monsterSurroundings[2][0] == 0) {
+                return new int[]{1, -1};
+            }
+        } else if (lastStepX == 1 && lastStepY == 0) {
+            if (monsterSurroundings[2][2] == 0) {
+                return new int[]{1, 1};
+            } else if (monsterSurroundings[2][0] == 0) {
+                return new int[]{1, -1};
+            }
+        } else if (lastStepX == -1 && lastStepY == 0) {
+            if (monsterSurroundings[0][0] == 0) {
+                return new int[]{-1, -1};
+            } else if (monsterSurroundings[2][0] == 0) {
+                return new int[]{1, -1};
+            }
+        }
+        return null;
     }
 
     public void moveAwayToRangedDistance(Monster monster) {
