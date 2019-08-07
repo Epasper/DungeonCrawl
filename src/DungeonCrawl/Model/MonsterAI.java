@@ -121,12 +121,12 @@ public class MonsterAI extends EncounterManager {
                 try {
                     int x = attackingMonster.getMapXPos() + i - 1;
                     int y = attackingMonster.getMapYPos() + j - 1;
-                    if (!map.getMapTilesArray()[x][y].getTypeOfTile().contains("Blank")
-                            ||
-                            !map.getMapTilesArray()[x][y].getTypeOfTile().contains("Room")) {
+                    if (!map.getMapTilesArray()[x][y].getTypeOfTile().contains("Room")
+                    ) {
                         surroundings[i][j] = -1;
+                    } else {
+                        surroundings[i][j] = map.getMapTilesArray()[x][y].getOccupyingCreatureTypeId();
                     }
-                    surroundings[i][j] = map.getMapTilesArray()[x][y].getOccupyingCreatureTypeId();
                     //System.out.println("Surround check for tile: X: " + (x) + " Y: " + (y));
                     if (surroundings[i][j] == attackedHero.getID()) {
                         System.out.println("Found an attacked hero nearby");
@@ -238,32 +238,39 @@ public class MonsterAI extends EncounterManager {
         int deltaY = Math.abs(yDiff);
         System.out.println("X-Delta: " + deltaX + " Y-Delta: " + deltaY);
         System.out.println("X-Sgn: " + Integer.signum(deltaX) + " Y-Sgn: " + Integer.signum(deltaY) + ConsoleColors.ANSI_RESET);
-        int[] nextCoordinates = determineTheNextStep(monsterSurroundings, Integer.signum(deltaX), Integer.signum(deltaY));
-        if (deltaX == 0) {
-            moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, nextCoordinates[0], nextCoordinates[1], false);
-            return;
-        } else if (deltaY == 0) {
-            moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, nextCoordinates[0], nextCoordinates[1], false);
-            return;
-        }
-        if (deltaX > 0) {
-            if (deltaY > 0) {
+        int[] nextCoordinates;
+        try {
+            nextCoordinates = determineTheNextStep(monsterSurroundings, (Integer.signum(xDiff)), (Integer.signum(yDiff)));
+            if (deltaX == 0) {
                 moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, nextCoordinates[0], nextCoordinates[1], false);
-            } else {
+                return;
+            } else if (deltaY == 0) {
                 moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, nextCoordinates[0], nextCoordinates[1], false);
+                return;
             }
-        } else {
-            if (deltaY > 0) {
-                moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, nextCoordinates[0], nextCoordinates[1], false);
+            if (deltaX > 0) {
+                if (deltaY > 0) {
+                    moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, nextCoordinates[0], nextCoordinates[1], false);
+                } else {
+                    moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, nextCoordinates[0], nextCoordinates[1], false);
+                }
             } else {
-                moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, nextCoordinates[0], nextCoordinates[1], false);
+                if (deltaY > 0) {
+                    moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, nextCoordinates[0], nextCoordinates[1], false);
+                } else {
+                    moveIntoMeleeRange(encounterManager, monster, attackedHero, distance, nextCoordinates[0], nextCoordinates[1], false);
+                }
             }
+        } catch (NullPointerException e) {
+            monster.setSpeed(0);
+            encounterManager.endTheMonstersRound(monster);
         }
     }
 
     private int[] determineTheNextStep(int[][] monsterSurroundings, int lastStepX, int lastStepY) {
         System.out.println("Changing Alternate");
         if (lastStepX == 1 && lastStepY == 1) {
+            //mark
             if (monsterSurroundings[2][1] == 0) {
                 return new int[]{1, 0};
             } else if (monsterSurroundings[1][2] == 0) {
@@ -288,6 +295,7 @@ public class MonsterAI extends EncounterManager {
                 return new int[]{0, -1};
             }
         } else if (lastStepX == 0 && lastStepY == 1) {
+            //mark
             if (monsterSurroundings[0][2] == 0) {
                 return new int[]{-1, 1};
             } else if (monsterSurroundings[2][2] == 0) {
@@ -300,6 +308,7 @@ public class MonsterAI extends EncounterManager {
                 return new int[]{1, -1};
             }
         } else if (lastStepX == 1 && lastStepY == 0) {
+            //mark
             if (monsterSurroundings[2][2] == 0) {
                 return new int[]{1, 1};
             } else if (monsterSurroundings[2][0] == 0) {
